@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>单调栈</title>
+    <url>/2022/11/30/%E5%8D%95%E8%B0%83%E6%A0%88/</url>
+    <content><![CDATA[<h1 id="单调栈的”一栈两用“"><a href="#单调栈的”一栈两用“" class="headerlink" title="单调栈的”一栈两用“"></a>单调栈的”一栈两用“</h1><p>对数组<strong>从左至右</strong>维护<strong>严格单调递增</strong>栈需要不断移除栈顶元素直到栈顶元素小于待入栈元素。在这个过程中待入栈元素是移除元素右侧第一个小于等于自身的元素。在移除过程结束后，栈顶元素是待入栈元素的左侧第一个小于自身的元素。这样一个<strong>从左至右严格单调递增栈</strong>可以获得每个元素左侧第一个小于自身的元素以及每个元素右侧第一个小于等于自身的元素。</p>
+<h1 id="不同单调栈的作用"><a href="#不同单调栈的作用" class="headerlink" title="不同单调栈的作用"></a>不同单调栈的作用</h1><p><strong>从左至右严格单调递增栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>小于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>小于等于</strong>自身的元素。</p>
+<p><strong>从左至右单调非减栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>小于等于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>小于</strong>自身的元素。</p>
+<p><strong>从左至右严格单调递减栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>大于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>大于等于</strong>自身的元素。</p>
+<p><strong>从左至右单调非增栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>大于等于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>大于</strong>自身的元素。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>从左至右维护单调栈可以解决所有需求，然后跟增有关的栈得到左右小于或小于等于自身的值，而减有关的栈得到左右大于/大于等于自身的值。总之在从左至右前提下，<strong>增小减大</strong>。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">    <span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;index &quot;</span>; <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>; cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;val &quot;</span>; <span class="keyword">for</span> (<span class="type">int</span> i:v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>; cout &lt;&lt; endl;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">l_g</span><span class="params">(n, <span class="number">-1</span>)</span>, <span class="title">r_ge</span><span class="params">(n, n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (st.<span class="built_in">size</span>() &amp;&amp; v[st.<span class="built_in">back</span>()] &lt;= v[i]) &#123;<span class="comment">//严减</span></span><br><span class="line">            r_ge[st.<span class="built_in">back</span>()] = i;</span><br><span class="line">            st.<span class="built_in">pop_back</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(st.<span class="built_in">size</span>()) l_g[i] = st.<span class="built_in">back</span>();</span><br><span class="line">        st.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;l_g &quot;</span>; <span class="keyword">for</span> (<span class="type">int</span> i:l_g) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>; cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;r_ge &quot;</span>; <span class="keyword">for</span> (<span class="type">int</span> i:r_ge) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>; cout &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    st.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">l_ge</span><span class="params">(n, <span class="number">-1</span>)</span>, <span class="title">r_g</span><span class="params">(n, n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (st.<span class="built_in">size</span>() &amp;&amp; v[st.<span class="built_in">back</span>()] &lt; v[i]) &#123;<span class="comment">//非增</span></span><br><span class="line">            r_g[st.<span class="built_in">back</span>()] = i;</span><br><span class="line">            st.<span class="built_in">pop_back</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(st.<span class="built_in">size</span>()) l_ge[i] = st.<span class="built_in">back</span>();</span><br><span class="line">        st.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;l_ge &quot;</span>; <span class="keyword">for</span> (<span class="type">int</span> i:l_ge) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>; cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;r_g &quot;</span>; <span class="keyword">for</span> (<span class="type">int</span> i:r_g) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>; cout &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    st.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">l_l</span><span class="params">(n, <span class="number">-1</span>)</span>, <span class="title">r_le</span><span class="params">(n, n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (st.<span class="built_in">size</span>() &amp;&amp; v[st.<span class="built_in">back</span>()] &gt;= v[i]) &#123;<span class="comment">//严增</span></span><br><span class="line">            r_le[st.<span class="built_in">back</span>()] = i;</span><br><span class="line">            st.<span class="built_in">pop_back</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(st.<span class="built_in">size</span>()) l_l[i] = st.<span class="built_in">back</span>();</span><br><span class="line">        st.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;l_l &quot;</span>; <span class="keyword">for</span> (<span class="type">int</span> i:l_l) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>; cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;r_le &quot;</span>; <span class="keyword">for</span> (<span class="type">int</span> i:r_le) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>; cout &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    st.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">l_le</span><span class="params">(n, <span class="number">-1</span>)</span>, <span class="title">r_l</span><span class="params">(n, n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (st.<span class="built_in">size</span>() &amp;&amp; v[st.<span class="built_in">back</span>()] &gt; v[i]) &#123;<span class="comment">//非减</span></span><br><span class="line">            r_l[st.<span class="built_in">back</span>()] = i;</span><br><span class="line">            st.<span class="built_in">pop_back</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(st.<span class="built_in">size</span>()) l_le[i] = st.<span class="built_in">back</span>();</span><br><span class="line">        st.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;l_le &quot;</span>; <span class="keyword">for</span> (<span class="type">int</span> i:l_le) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>; cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;r_l &quot;</span>; <span class="keyword">for</span> (<span class="type">int</span> i:r_l) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>; cout &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;          </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="输出情况"><a href="#输出情况" class="headerlink" title="输出情况"></a>输出情况</h2><table>
+<thead>
+<tr>
+<th>index</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>val</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>l_g</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>r_ge</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>10</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr>
+<td>l_ge</td>
+<td>-1</td>
+<td>0</td>
+<td>-1</td>
+<td>-1</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>5</td>
+<td>8</td>
+<td>4</td>
+</tr>
+<tr>
+<td>r_g</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>11</td>
+<td>11</td>
+<td>10</td>
+<td>8</td>
+<td>8</td>
+<td>10</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr>
+<td>l_l</td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td>7</td>
+<td>7</td>
+<td>9</td>
+</tr>
+<tr>
+<td>r_le</td>
+<td>1</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>11</td>
+<td>9</td>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<td>l_le</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>r_l</td>
+<td>11</td>
+<td>11</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>6</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>算法模板</category>
+      </categories>
+      <tags>
+        <tag>单调栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>泰勒展开</title>
+    <url>/2022/12/06/%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80/</url>
+    <content><![CDATA[<h1 id="泰勒展开"><a href="#泰勒展开" class="headerlink" title="泰勒展开"></a>泰勒展开</h1><p>$f(x) = f(x)+f’(x)x+\frac{f’’(x)}{2!}x^2+\frac{f’’’(x)}{3!}x^3+\dots++\frac{f^{(n)}(x)}{n!}x^n = \sum \limits_{k=0}^{n}\frac{f^{(k)}(x)}{k!}x^k$</p>
+<span id="more"></span>
+<h1 id="sin-x"><a href="#sin-x" class="headerlink" title="$\sin(x)$"></a>$\sin(x)$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$sin(x)$</td>
+<td>$0$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$cos(x)$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$-sin(x)$</td>
+<td>$0$</td>
+<td>$\frac{1}{2}$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$-cos(x)$</td>
+<td>$-1$</td>
+<td>$\frac{1}{3!}$</td>
+</tr>
+<tr>
+<td>$f^{n}(x)$</td>
+<td>$f^{n \mod 4}(x)$</td>
+<td>$f^{n \mod 4}(0)$</td>
+<td>$\frac{1}{n!}$</td>
+</tr>
+</tbody></table>
+<p>$sin(x) = x- \frac{x^3}{3!}+ \frac{x^5}{5!}- \frac{x^7}{7!}+ \frac{x^9}{9!}-\dots+\frac{x^{2n+1}}{(2n+1)!}(-1)^n = \sum \limits_{k=0}^{n}\frac{x^{2k+1}}{(2k+1)!}(-1)^k$</p>
+<h1 id="cos-x"><a href="#cos-x" class="headerlink" title="$\cos(x)$"></a>$\cos(x)$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$cos(x)$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$-sin(x)$</td>
+<td>$0$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$-cos(x)$</td>
+<td>$-1$</td>
+<td>$\frac{1}{2}$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$sin(x)$</td>
+<td>$0$</td>
+<td>$\frac{1}{3!}$</td>
+</tr>
+<tr>
+<td>$f^n(x)$</td>
+<td>$f^{n \mod 4}(x)$</td>
+<td>$f^{n \mod 4}(0)$</td>
+<td>$\frac{1}{n!}$</td>
+</tr>
+</tbody></table>
+<p>$cos(x) = 1- \frac{x^2}{2!}+ \frac{x^4}{4!}- \frac{x^6}{6!}+ \frac{x^8}{8!}-\dots+\frac{x^{2n}}{(2n)!}(-1)^n = \sum \limits_{k=0}^{n}\frac{x^{2k}}{(2k)!}(-1)^k$</p>
+<h1 id="tan-x"><a href="#tan-x" class="headerlink" title="$\tan(x)$"></a>$\tan(x)$</h1><p>$tan(x) = x + \frac{x^3}{3} + \frac{2\cdot x^5}{15} + o(x^5)$</p>
+<h1 id="arcsin-x"><a href="#arcsin-x" class="headerlink" title="$\arcsin(x)$"></a>$\arcsin(x)$</h1><p>$\arcsin(x) = x+\frac{1\cdot x^3}{2\cdot 3}+\frac{1\cdot 3 \cdot x^5}{2\cdot 4 \cdot5} +\frac{1\cdot 3 \cdot 5 \cdot x^7}{2\cdot 4 \cdot 6 \cdot 7} + o(x^7)$</p>
+<h1 id="arccos-x"><a href="#arccos-x" class="headerlink" title="$\arccos(x)$"></a>$\arccos(x)$</h1><p>$\arccos(x) = \frac{\pi}{2}-\arcsin(x)=\frac{\pi}{2}-(x+\frac{1\cdot x^3}{2\cdot 3}+\frac{1\cdot 3 \cdot x^5}{2\cdot 4 \cdot5} +\frac{1\cdot 3 \cdot 5 \cdot x^7}{2\cdot 4 \cdot 6 \cdot 7} + o(x^7))$</p>
+<h1 id="arctan-x"><a href="#arctan-x" class="headerlink" title="$\arctan(x)$"></a>$\arctan(x)$</h1><p>$\arctan(x) = x- \frac{x^3}{3}+ \frac{x^5}{5}- \frac{x^7}{7}+ \frac{x^9}{9}-\dots+\frac{x^{2n+1}}{2n+1}(-1)^n = \sum \limits_{k=0}^{n}\frac{x^{2k+1}}{2k+1}(-1)^k$</p>
+<h1 id="a-x"><a href="#a-x" class="headerlink" title="$a^x$"></a>$a^x$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$a^{x}$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$a^{x}\ln a$</td>
+<td>$\ln a$</td>
+<td>$\ln a$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$a^{x}\ln^2 a$</td>
+<td>$\ln^2 a$</td>
+<td>$\frac{\ln^2a}{2}$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$a^{x}\ln^3 a$</td>
+<td>$\ln^3 a$</td>
+<td>$\frac{\ln^3a}{3!}$</td>
+</tr>
+<tr>
+<td>$f^n(x)$</td>
+<td>$a^{x}\ln^n a$</td>
+<td>$\ln^n a$</td>
+<td>$\frac{\ln^na}{n!}$</td>
+</tr>
+</tbody></table>
+<p>$a^x = 1+ x\ln a + \frac{(x\ln a)^2}{2!} + \frac{(x\ln a)^3}{3!} + \frac{(x\ln a)^4}{4!}+ \frac{(x\ln a)^5}{5!}+\dots+\frac{(x\ln a)^{n}}{n!} = \sum\limits_{k=0}^{n}\frac{(x\ln a)^k}{k!}$</p>
+<h1 id="e-x"><a href="#e-x" class="headerlink" title="$e^x$"></a>$e^x$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$e^{x}$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$e^{x}$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$e^{x}$</td>
+<td>$1$</td>
+<td>$\frac{1}{2}$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$e^{x}$</td>
+<td>$1$</td>
+<td>$\frac{1}{3!}$</td>
+</tr>
+<tr>
+<td>$f^n(x)$</td>
+<td>$e^{x}$</td>
+<td>$1$</td>
+<td>$\frac{1}{n!}$</td>
+</tr>
+</tbody></table>
+<p>$e^x = 1+ x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!}+ \frac{x^5}{5!}+\dots+\frac{x^{n}}{n!} = \sum\limits_{k=0}^{n}\frac{x^k}{k!}$</p>
+<h1 id="e-xi"><a href="#e-xi" class="headerlink" title="$e^{xi}$"></a>$e^{xi}$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$e^{xi}$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$ie^{xi}$</td>
+<td>$i$</td>
+<td>$i$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$i^2e^{xi}$</td>
+<td>$i^2$</td>
+<td>$\frac{i^2}{2}$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$i^3e^{xi}$</td>
+<td>$i^3$</td>
+<td>$\frac{i^3}{3!}$</td>
+</tr>
+<tr>
+<td>$f^n(x)$</td>
+<td>$i^ne^{xi}$</td>
+<td>$i^n$</td>
+<td>$\frac{i^n}{n!}$</td>
+</tr>
+</tbody></table>
+<p>$e^{xi} = 1+ xi + \frac{i^2x^2}{2!} + \frac{i^3x^3}{3!} + \frac{i^4x^4}{4!}+ \frac{i^5x^5}{5!}+\dots+\frac{i^nx^{n}}{n!} = \sum\limits_{k=0}^{n}\frac{i^kx^k}{k!}$</p>
+<p>$e^{xi} = 1+ xi - \frac{x^2}{2!} - \frac{ix^3}{3!} + \frac{x^4}{4!}+ \frac{ix^5}{5!}+\dots+\frac{i^nx^{n}}{n!} = \sum\limits_{k=0}^{n}(\frac{x^{2k}}{(2k)!}+\frac{x^{2k+1}}{(2k+1)!}i)(-1)^k$</p>
+<p>$e^{xi} = \sum\limits_{k=0}^{n}(\frac{x^{2k}}{(2k)!}+\frac{x^{2k+1}}{(2k+1)!}i)(-1)^k=\sum\limits_{k=0}^{n}\frac{x^{2k}}{(2k)!}(-1)^k+i\sum\limits_{k=0}^{n}\frac{x^{2k+1}}{(2k+1)!}(-1)^k$</p>
+<p>$e^{xi}= cos(x)+sin(x)i$</p>
+<h1 id="1-x-a"><a href="#1-x-a" class="headerlink" title="$(1+x)^a$"></a>$(1+x)^a$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$(1+x)^a$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$a\cdot(1+x)^{a-1}$</td>
+<td>$a$</td>
+<td>$a$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$a\cdot (a-1) \cdot(1+x)^{a-2}$</td>
+<td>$a\cdot(a-1)$</td>
+<td>$\frac{a\cdot(a-1)}{2}$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$a\cdot (a-1) \cdot (a-2) \cdot(1+x)^{a-3}$</td>
+<td>$a\cdot (a-1) \cdot (a-2)$</td>
+<td>$\frac{a\cdot (a-1) \cdot (a-2)}{3!}$</td>
+</tr>
+<tr>
+<td>$f^n(x)$</td>
+<td>$A_a^n(1+x)^{a-n}$</td>
+<td>$A_a^n$</td>
+<td>$\frac{A_a^n}{n!}$</td>
+</tr>
+</tbody></table>
+<p>$(1+x)^a = 1+ax+\frac{a(a-1)}{2!}x^2+\frac{a(a-1)(a-2)}{3!}x^3+\dots+\frac{a(a-1)\cdots(a-n+1)}{n!}x^n$</p>
+<h1 id="1-x-a-1"><a href="#1-x-a-1" class="headerlink" title="$(1-x)^a$"></a>$(1-x)^a$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$(1-x)^a$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$-a\cdot(1-x)^{a-1}$</td>
+<td>$a$</td>
+<td>$a$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$a\cdot (a-1) \cdot(1-x)^{a-2}$</td>
+<td>$a\cdot(a-1)$</td>
+<td>$\frac{a\cdot(a-1)}{2}$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$-a\cdot (a-1) \cdot (a-2) \cdot(1-x)^{a-3}$</td>
+<td>$a\cdot (a-1) \cdot (a-2)$</td>
+<td>$\frac{a\cdot (a-1) \cdot (a-2)}{3!}$</td>
+</tr>
+<tr>
+<td>$f^n(x)$</td>
+<td>$(-1)^nA_a^n(1-x)^{a-n}$</td>
+<td>$(-1)^nA_a^n$</td>
+<td>$(-1)^n\frac{A_a^n}{n!}$</td>
+</tr>
+</tbody></table>
+<p>$(1-x)^a = 1-ax+\frac{a(a-1)}{2!}x^2-\frac{a(a-1)(a-2)}{3!}x^3+\dots+(-1)^n\frac{a(a-1)\cdots(a-n+1)}{n!}x^n$</p>
+<h1 id="frac-1-1-x"><a href="#frac-1-1-x" class="headerlink" title="$\frac{1}{1-x}$"></a>$\frac{1}{1-x}$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$\frac{1}{1-x}$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$\frac{1}{1-x}^2$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$2\frac{1}{1-x}^3$</td>
+<td>$2!$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$3!\frac{1}{1-x}^4$</td>
+<td>$3!$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f^n(x)$</td>
+<td>$n!\frac{1}{1-x}^{(n+1)}$</td>
+<td>$n!$</td>
+<td>$1$</td>
+</tr>
+</tbody></table>
+<p>$\frac{1}{1-x} = 1 + x + x^2 + x^3+\dots+x^n=\sum\limits_{i=0}^{n}x^i$</p>
+<h1 id="frac-1-1-x-1"><a href="#frac-1-1-x-1" class="headerlink" title="$\frac{1}{1+x}$"></a>$\frac{1}{1+x}$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$\frac{1}{1+x}$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$-\frac{1}{1+x}^2$</td>
+<td>$-1$</td>
+<td>$-1$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$2\frac{1}{1+x}^3$</td>
+<td>$2!$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$-3!\frac{1}{1+x}^4$</td>
+<td>$-3!$</td>
+<td>$-1$</td>
+</tr>
+<tr>
+<td>$f^n(x)$</td>
+<td>$(-1)^nn!\frac{1}{1+x}^{(n+1)}$</td>
+<td>$(-1)^nn!$</td>
+<td>$(-1)^n$</td>
+</tr>
+</tbody></table>
+<p>$\frac{1}{1+x} = 1 - x + x^2 - x^3+\dots+(-1)^nx^n=\sum\limits_{i=0}^{n}x^i(-1)^n$</p>
+<h1 id="ln-1-x"><a href="#ln-1-x" class="headerlink" title="$\ln(1-x)$"></a>$\ln(1-x)$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$\ln(1-x)$</td>
+<td>$0$</td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$-\frac{1}{1-x}$</td>
+<td>$-1$</td>
+<td>$-1$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$-\frac{1}{1-x}^2$</td>
+<td>$-1$</td>
+<td>$-\frac{1}{2}$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$-2\frac{1}{1-x}^3$</td>
+<td>$-2!$</td>
+<td>$-\frac{2!}{3!}=\frac{1}{3}$</td>
+</tr>
+<tr>
+<td>$f^4(x)$</td>
+<td>$-3!\frac{1}{1-x}^4$</td>
+<td>$-3!$</td>
+<td>$-\frac{1}{4}$</td>
+</tr>
+<tr>
+<td>$f^n(x)$</td>
+<td>$-(n-1)!\frac{1}{1-x}^{n}$</td>
+<td>$-(n-1)!$</td>
+<td>$-\frac{1}{n}$</td>
+</tr>
+</tbody></table>
+<p>$\ln(1-x) = -x - \frac{x^2}{2} - \frac{x^3}{3}-\dots-\frac{x^n}{n}=-\sum\limits_{i=1}^{n}\frac{x^i}{n}$</p>
+<h1 id="ln-1-x-1"><a href="#ln-1-x-1" class="headerlink" title="$\ln(1+x)$"></a>$\ln(1+x)$</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>$f^n(x)$</th>
+<th>$f^n(0)$</th>
+<th>$a_n=\frac{f^n(0)}{n!}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$f(x)$</td>
+<td>$\ln(1+x)$</td>
+<td>$0$</td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>$f’(x)$</td>
+<td>$\frac{1}{1+x}$</td>
+<td>$1$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$f’’(x)$</td>
+<td>$-\frac{1}{1+x}^2$</td>
+<td>$-1$</td>
+<td>$-\frac{1}{2}$</td>
+</tr>
+<tr>
+<td>$f’’’(x)$</td>
+<td>$2\frac{1}{1+x}^3$</td>
+<td>$2!$</td>
+<td>$\frac{2!}{3!}=\frac{1}{3}$</td>
+</tr>
+<tr>
+<td>$f^4(x)$</td>
+<td>$-3!\frac{1}{1+x}^4$</td>
+<td>$-3!$</td>
+<td>$-\frac{1}{4}$</td>
+</tr>
+<tr>
+<td>$f^n(x)$</td>
+<td>$(-1)^{n+1}(n-1)!\frac{1}{1+x}^{n}$</td>
+<td>$(-1)^{n+1}(n-1)!$</td>
+<td>$(-1)^{n+1}\frac{1}{n}$</td>
+</tr>
+</tbody></table>
+<p>$\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3}-\dots+(-1)^{n+1}\frac{x^n}{n}=\sum\limits_{i=1}^{n}\frac{x^i}{n}(-1)^{i+1}$</p>
+]]></content>
+      <categories>
+        <category>微积分</category>
+      </categories>
+      <tags>
+        <tag>泰勒公式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NEXT设置彩色标签</title>
+    <url>/2022/12/07/NEXT%E8%AE%BE%E7%BD%AE%E5%BD%A9%E8%89%B2%E6%A0%87%E7%AD%BE/</url>
+    <content><![CDATA[<h1 id="标签页设置彩色标签"><a href="#标签页设置彩色标签" class="headerlink" title="标签页设置彩色标签"></a>标签页设置彩色标签</h1><p>添加代码如下</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">     <span class="keyword">var</span> alltags = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&#x27;tag-cloud-tags&#x27;</span>);</span><br><span class="line">     <span class="keyword">var</span> tags = alltags[<span class="number">0</span>].<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">var</span> i = tags.<span class="property">length</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">       <span class="keyword">var</span> golden_ratio = <span class="number">0.618033988749895</span>;</span><br><span class="line">       <span class="keyword">var</span> s = <span class="number">0.5</span>;</span><br><span class="line">       <span class="keyword">var</span> v = <span class="number">0.999</span>;</span><br><span class="line">       <span class="keyword">var</span> h = golden_ratio + <span class="title class_">Math</span>.<span class="title function_">random</span>()*<span class="number">0.8</span> - <span class="number">0.5</span>;</span><br><span class="line">       <span class="keyword">var</span> h_i = <span class="built_in">parseInt</span>(h * <span class="number">6</span>);</span><br><span class="line">       <span class="keyword">var</span> f = h * <span class="number">6</span> - h_i;</span><br><span class="line">       <span class="keyword">var</span> p = v * (<span class="number">1</span> - s);</span><br><span class="line">       <span class="keyword">var</span> q = v * (<span class="number">1</span> - f * s);</span><br><span class="line">       <span class="keyword">var</span> t = v * (<span class="number">1</span> - (<span class="number">1</span> - f) * s);</span><br><span class="line">       <span class="keyword">var</span> r, g, b;</span><br><span class="line">       <span class="keyword">switch</span> (h_i) &#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">              r = v;</span><br><span class="line">              g = t;</span><br><span class="line">              b = p;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">              r = q;</span><br><span class="line">              g = v;</span><br><span class="line">              b = p;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">              r = p;</span><br><span class="line">              g = v;</span><br><span class="line">              b = t;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">3</span> :</span><br><span class="line">              r = p;</span><br><span class="line">              g = q;</span><br><span class="line">              b = v;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">              r = t;</span><br><span class="line">              g = p;</span><br><span class="line">              b = v;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">              r = v;</span><br><span class="line">              g = p;</span><br><span class="line">              b = q;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          <span class="attr">default</span>:</span><br><span class="line">              r = <span class="number">1</span>;</span><br><span class="line">              g = <span class="number">1</span>;</span><br><span class="line">              b = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">       tags[i].<span class="property">style</span>.<span class="property">background</span> = <span class="string">&quot;rgba(&quot;</span>+<span class="built_in">parseInt</span>(r*<span class="number">255</span>)+<span class="string">&quot;,&quot;</span>+<span class="built_in">parseInt</span>(g*<span class="number">255</span>)+<span class="string">&quot;,&quot;</span>+<span class="built_in">parseInt</span>(b*<span class="number">255</span>)+<span class="string">&quot;,&quot;</span>+<span class="number">0.7</span>+<span class="string">&quot;)&quot;</span>;</span><br><span class="line">     &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"> </span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="selector-class">.tag-cloud-tags</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">text-align</span>: center;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">counter-reset</span>: tags;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="selector-class">.tag-cloud-tags</span> <span class="selector-tag">a</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">display</span>: inline-block;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">border</span>: <span class="number">0px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">padding</span>: <span class="number">0px</span> <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">margin</span>: <span class="number">8px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">color</span>: <span class="built_in">rgba</span>(<span class="number">34</span>, <span class="number">34</span>, <span class="number">34</span>, <span class="number">0.8</span>);</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    </span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="comment">/* 文字前添加相应的符号，content后的Unicode可以自定义*/</span></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="selector-class">.tag-cloud-tags</span> <span class="selector-tag">a</span><span class="selector-pseudo">:before</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">font-family</span>: <span class="string">&#x27;Font Awesome 5 Free&#x27;</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">content</span>: <span class="string">&quot;\f02b&quot;</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">font-weight</span>: <span class="number">900</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="selector-class">.tag-cloud-tags</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">     <span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">5px</span> <span class="number">15px</span> <span class="number">0px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">4</span>);</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">     <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.1</span>);</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">     <span class="attribute">transition-duration</span>: <span class="number">0.15s</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>两种方法</p>
+<ol>
+<li><p>路径 <code>\node_modules\hexo-theme-next\layout</code>下新建<code>tag-color.njk</code>，并将以上代码粘贴，然后在<code>node_modules\hexo-theme-next\layout\page.njk</code>中以下位置添加<code>&#123;% include 'tag-color.njk' %&#125;</code></p>
+ <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;div <span class="keyword">class</span>=<span class="string">&quot;post-body&#123;% if page.direction and page.direction.toLowerCase() === &#x27;rtl&#x27; %&#125; rtl&#123;% endif %&#125;&quot;</span>&gt;</span><br><span class="line">  &#123;%- <span class="keyword">if</span> page.<span class="property">type</span> === <span class="string">&#x27;tags&#x27;</span> %&#125;</span><br><span class="line">    &#123;%- include <span class="string">&#x27;_partials/page/tags.njk&#x27;</span> -%&#125;</span><br><span class="line">  &#123;% elif page.<span class="property">type</span> === <span class="string">&#x27;categories&#x27;</span> %&#125;</span><br><span class="line">    &#123;%- include <span class="string">&#x27;_partials/page/categories.njk&#x27;</span> -%&#125;</span><br><span class="line">  &#123;% elif page.<span class="property">type</span> === <span class="string">&#x27;schedule&#x27;</span> %&#125;</span><br><span class="line">    &#123;%- include <span class="string">&#x27;_partials/page/schedule.njk&#x27;</span> -%&#125;</span><br><span class="line">  &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;&#123; page.<span class="property">content</span> &#125;&#125;</span><br><span class="line">  &#123;%- endif %&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% include <span class="string">&#x27;tag-color.njk&#x27;</span> %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>或者不用新建文件再引入，直接将代码粘贴在<code>&lt;/div&gt;</code>后面</p>
+</li>
+</ol>
+<h1 id="文章页面底部标签"><a href="#文章页面底部标签" class="headerlink" title="文章页面底部标签"></a>文章页面底部标签</h1><p>找到<code>node_modules\hexo-theme-next\layout\_macro\post.njk</code>，并在以下含<code>post-tags</code>类的<code>&lt;div&gt;</code>标签后添加<code>&lt;script&gt;</code>和<code>&lt;style&gt;</code>标签，另外注意标签的图标可以在<code>theme.tag_icon</code>字段设置为<code>true</code>替换<code>#</code></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&#123;%- set tag_indicate = <span class="string">&#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;</span> <span class="keyword">if</span> theme.<span class="property">tag_icon</span> <span class="keyword">else</span> <span class="string">&#x27;#&#x27;</span> %&#125;</span><br><span class="line">&lt;div <span class="keyword">class</span>=<span class="string">&quot;post-tags&quot;</span>&gt;</span><br><span class="line">  &#123;%- <span class="keyword">for</span> tag <span class="keyword">in</span> post.<span class="property">tags</span>.<span class="title function_">toArray</span>() %&#125;</span><br><span class="line">    &lt;a href=<span class="string">&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot;</span> rel=<span class="string">&quot;tag&quot;</span>&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.<span class="property">name</span> &#125;&#125;&lt;/a&gt;</span><br><span class="line">  &#123;%- endfor %&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">var</span> tagsall=<span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;post-tags&quot;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">for</span> (<span class="keyword">var</span> i = tagsall.<span class="property">length</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">var</span> tags=tagsall[i].<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">for</span> (<span class="keyword">var</span> j = tags.<span class="property">length</span> - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">var</span> golden_ratio = <span class="number">0.618033988749895</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">var</span> s = <span class="number">0.5</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">var</span> v = <span class="number">0.999</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">var</span> h = golden_ratio + <span class="title class_">Math</span>.<span class="title function_">random</span>()*<span class="number">0.8</span> - <span class="number">0.5</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">var</span> h_i = <span class="built_in">parseInt</span>(h * <span class="number">6</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">var</span> f = h * <span class="number">6</span> - h_i;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">var</span> p = v * (<span class="number">1</span> - s);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">var</span> q = v * (<span class="number">1</span> - f * s);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">var</span> t = v * (<span class="number">1</span> - (<span class="number">1</span> - f) * s);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">var</span> r, g, b;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">switch</span> (h_i) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="keyword">case</span> <span class="number">0</span>:</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  r = v;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  g = t;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  b = p;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  <span class="keyword">break</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="keyword">case</span> <span class="number">1</span>:</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  r = q;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  g = v;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  b = p;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  <span class="keyword">break</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="keyword">case</span> <span class="number">2</span>:</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  r = p;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  g = v;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  b = t;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  <span class="keyword">break</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="keyword">case</span> <span class="number">3</span> :</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  r = p;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  g = q;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  b = v;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  <span class="keyword">break</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="keyword">case</span> <span class="number">4</span>:</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  r = t;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  g = p;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  b = v;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  <span class="keyword">break</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="keyword">case</span> <span class="number">5</span>:</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  r = v;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  g = p;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  b = q;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  <span class="keyword">break</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="attr">default</span>:</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  r = <span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  g = <span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                  b = <span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          tags[j].<span class="property">style</span>.<span class="property">background</span> = <span class="string">&quot;rgba(&quot;</span>+<span class="built_in">parseInt</span>(r*<span class="number">255</span>)+<span class="string">&quot;,&quot;</span>+<span class="built_in">parseInt</span>(g*<span class="number">255</span>)+<span class="string">&quot;,&quot;</span>+<span class="built_in">parseInt</span>(b*<span class="number">255</span>)+<span class="string">&quot;,&quot;</span>+<span class="number">0.7</span>+<span class="string">&quot;)&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.post-tags</span> <span class="selector-tag">a</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">display</span>: inline-block;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">font-size</span>: <span class="number">0.8em</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">padding</span>: <span class="number">0px</span> <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">border-radius</span>: <span class="number">8px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">color</span>: <span class="built_in">rgb</span>(<span class="number">85</span>, <span class="number">85</span>, <span class="number">85</span>);</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">border</span>: <span class="number">0px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.post-tags</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">5px</span> <span class="number">15px</span> <span class="number">0px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">4</span>);</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.1</span>);</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">transition-duration</span>: <span class="number">0.15s</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>开发</category>
+      </categories>
+      <tags>
+        <tag>next主题</tag>
+      </tags>
+  </entry>
+</search>
