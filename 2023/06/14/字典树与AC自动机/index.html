@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bit_medium.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bit_small.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"grainmad.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="多图详解字典树与ac自动机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字典树与AC自动机">
+<meta property="og:url" content="https://grainmad.github.io/2023/06/14/%E5%AD%97%E5%85%B8%E6%A0%91%E4%B8%8EAC%E8%87%AA%E5%8A%A8%E6%9C%BA/index.html">
+<meta property="og:site_name" content="一jo踢翻尘世界">
+<meta property="og:description" content="多图详解字典树与ac自动机">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdnjson.com/images/2023/06/14/1115_1.gif">
+<meta property="og:image" content="https://cdnjson.com/images/2023/06/14/1087_1.png">
+<meta property="og:image" content="https://cdnjson.com/images/2023/06/14/1089_1.gif">
+<meta property="og:image" content="https://cdnjson.com/images/2023/06/14/1091_1.png">
+<meta property="og:image" content="https://cdnjson.com/images/2023/06/14/1093_1.gif">
+<meta property="og:image" content="https://cdnjson.com/images/2023/06/14/1097_1.gif">
+<meta property="og:image" content="https://cdnjson.com/images/2023/06/14/1095_1.gif">
+<meta property="og:image" content="https://imgs.wiki/imgs/2023/06/14/07dec5613e91185b.gif">
+<meta property="og:image" content="https://cdnjson.com/images/2023/06/14/1099_1.png">
+<meta property="og:image" content="https://cdnjson.com/images/2023/06/14/1101_1.png">
+<meta property="article:published_time" content="2023-06-14T16:35:25.000Z">
+<meta property="article:modified_time" content="2023-06-14T16:35:25.000Z">
+<meta property="article:author" content="GrainMad">
+<meta property="article:tag" content="Trie">
+<meta property="article:tag" content="Aho-Corasick automaton">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdnjson.com/images/2023/06/14/1115_1.gif">
+
+
+<link rel="canonical" href="https://grainmad.github.io/2023/06/14/%E5%AD%97%E5%85%B8%E6%A0%91%E4%B8%8EAC%E8%87%AA%E5%8A%A8%E6%9C%BA/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/2023/06/14/%E5%AD%97%E5%85%B8%E6%A0%91%E4%B8%8EAC%E8%87%AA%E5%8A%A8%E6%9C%BA/","path":"2023/06/14/字典树与AC自动机/","title":"字典树与AC自动机"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>字典树与AC自动机 | 一jo踢翻尘世界</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一jo踢翻尘世界</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">215</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E6%A0%91%E5%92%8CAC%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.</span> <span class="nav-text">字典树和AC自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Trie"><span class="nav-number">1.1.</span> <span class="nav-text">Trie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%AD%97%E5%85%B8%E6%A0%91"><span class="nav-number">1.1.1.</span> <span class="nav-text">构建字典树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trie%E6%A0%91%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.1.2.</span> <span class="nav-text">Trie树的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E6%A0%91%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.3.</span> <span class="nav-text">字典树代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ac%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">ac自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert"><span class="nav-number">1.2.1.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#build"><span class="nav-number">1.2.2.</span> <span class="nav-text">build</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#query"><span class="nav-number">1.2.3.</span> <span class="nav-text">query</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.2.4.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">1.2.5.</span> <span class="nav-text">完整代码</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GrainMad"
+      src="/images/bit.jpg">
+  <p class="site-author-name" itemprop="name">GrainMad</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">215</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/grainmad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;grainmad" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/grainmad" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/2023/06/14/%E5%AD%97%E5%85%B8%E6%A0%91%E4%B8%8EAC%E8%87%AA%E5%8A%A8%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bit.jpg">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一jo踢翻尘世界">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="字典树与AC自动机 | 一jo踢翻尘世界">
+      <meta itemprop="description" content="多图详解字典树与ac自动机">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          字典树与AC自动机
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-06-14 16:35:25" itemprop="dateCreated datePublished" datetime="2023-06-14T16:35:25+00:00">2023-06-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/" itemprop="url" rel="index"><span itemprop="name">算法模板</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">多图详解字典树与ac自动机</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="字典树和AC自动机"><a href="#字典树和AC自动机" class="headerlink" title="字典树和AC自动机"></a>字典树和AC自动机</h1><h2 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h2><p>Trie树，又叫字典树、前缀树（Prefix Tree）、单词查找树 或 键树，是一种多叉树结构。</p>
+<p><img data-src="https://cdnjson.com/images/2023/06/14/1115_1.gif" alt="1115_1.gif"></p>
+<p>此图是一棵Trie树，表示了关键字集合{“hers”, “his”, “she”, “i”, “he”} 。从图中可以看出：</p>
+<p>从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串。</p>
+<p>从根节点到标记呈橙色节点路径上字符组成的字符串是一个关键字。图中橙色节点就是关键字节点。</p>
+<p>有共同前缀关键字有共同路径。</p>
+<h3 id="构建字典树"><a href="#构建字典树" class="headerlink" title="构建字典树"></a>构建字典树</h3><p>如果我们以英文小写字母作为字符集，那么每个节点都有26个分支子节点。由于有些节点是标志着一个插入字符串的结尾，所以需要有一个标记位判断是否是一个关键字。</p>
+<p>我们定义根节点的结构如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">bool</span> isKey;   <span class="comment">// 标记该节点是否代表一个关键字</span></span><br><span class="line">    Node * children[<span class="number">26</span>]; <span class="comment">// 各个子节点</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>刚开始字典树是只有一个根节点的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Node* root = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br></pre></td></tr></table></figure>
+
+<p>我们需要通过一条一条加入字符串构建字典树。</p>
+<p>插入一条字符串的过程：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(string word)</span> </span>&#123;</span><br><span class="line">    Node* t = root;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;word.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="type">int</span> s = word[i]-<span class="string">&#x27;a&#x27;</span>;<span class="comment">//得到数组下标</span></span><br><span class="line">        <span class="keyword">if</span> (t-&gt;child[s] == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            t-&gt;child[s] = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        t = t-&gt;child[s];</span><br><span class="line">    &#125;</span><br><span class="line">    t-&gt;isKey = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Trie树的应用"><a href="#Trie树的应用" class="headerlink" title="Trie树的应用"></a>Trie树的应用</h3><ol>
+<li><p>字符串检索</p>
+<p> 检索/查询功能是Trie树最原始的功能。思路就是从根节点开始一个一个字符进行比较：</p>
+<p> 如果沿路比较，发现不存在的字符，则表示该字符串在集合中不存在。</p>
+<p> 如果所有的字符全部比较完并且全部相同，还需判断最后一个节点的标志位</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">bool</span> isKey;   <span class="comment">// 标记该节点是否代表一个关键字</span></span><br><span class="line">    Node * children[<span class="number">26</span>]; <span class="comment">// 各个子节点</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>词频统计</p>
+<p> Trie树常被搜索引擎系统用于文本词频统计 。</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">bool</span> isKey;   <span class="comment">// 标记该节点是否代表一个关键字</span></span><br><span class="line">    Node * children[<span class="number">26</span>]; <span class="comment">// 各个子节点</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p> 思路：为了实现词频统计，我们修改了节点结构，用一个整型变量count来计数。对每一个关键字执行插入操作，若已存在，计数加1，若不存在，插入后count置1。</p>
+</li>
+<li><p>字符串排序</p>
+<p> Trie树可以对大量字符串按字典序进行排序，思路也很简单：遍历一次所有关键字，将它们全部插入trie树，树的每个结点的所有儿子很显然地按照字母表排序，然后先序遍历输出Trie树中所有关键字即可。</p>
+</li>
+<li><p>前缀匹配</p>
+<p> 例如：找出一个字符串集合中所有以ab开头的字符串。我们只需要用所有字符串构造一个trie树，然后输出以a-&gt;b-&gt;开头的路径上的关键字即可。</p>
+<p> trie树前缀匹配常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能。</p>
+</li>
+<li><p>作为其他数据结构和算法的辅助结构</p>
+<p> 如后缀树，AC自动机等。</p>
+</li>
+</ol>
+<h3 id="字典树代码实现"><a href="#字典树代码实现" class="headerlink" title="字典树代码实现"></a>字典树代码实现</h3><p>字符串检索的Trie树代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Trie</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">        <span class="type">bool</span> isKey;<span class="comment">//是否当前节点作为一个单词的结尾</span></span><br><span class="line">        Node* child[<span class="number">26</span>];<span class="comment">//a-z</span></span><br><span class="line">    &#125; *head;</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="built_in">Trie</span>() &#123;</span><br><span class="line">        head = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Inserts a word into the trie. */</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(string word)</span> </span>&#123;</span><br><span class="line">        Node* t = head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;word.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="type">int</span> s = word[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (t-&gt;child[s] == <span class="literal">NULL</span>) &#123;</span><br><span class="line">                t-&gt;child[s] = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            t = t-&gt;child[s];</span><br><span class="line">        &#125;</span><br><span class="line">        t-&gt;isKey = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Returns if the word is in the trie. */</span></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">search</span><span class="params">(string word)</span> </span>&#123;</span><br><span class="line">        Node* t = head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;word.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="type">int</span> s = word[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (t-&gt;child[s] == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            t = t-&gt;child[s];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> t-&gt;isKey;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Returns if there is any word in the trie that starts with the given prefix. */</span></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">startsWith</span><span class="params">(string prefix)</span> </span>&#123;</span><br><span class="line">        Node* t = head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;prefix.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="type">int</span> s = prefix[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (t-&gt;child[s] == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            t = t-&gt;child[s];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>用数组作为trie的储存结构。</p>
+<p>数组下表起到指针的作用，new 一个节点得到的指针就是将当前树的大小作为指针, 因为sz是树中节点的个数(包括根节点)，而节点的编号是从0开始，所以树中存在编号0到sz-1刚好sz个，此时若分配新节点刚好是sz作为编号。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Trie</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 1000005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SIGMA 26</span></span><br><span class="line"><span class="comment">//仅含小写英文字母</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">namespace</span> Trie &#123;</span><br><span class="line">	<span class="type">int</span> tr[MAXN][SIGMA];<span class="comment">//数组存储Trie树节点,下标起到指针作用</span></span><br><span class="line">	<span class="type">int</span> val[MAXN];<span class="comment">//若当前节点不是一个模式串的结尾则为0</span></span><br><span class="line">	<span class="type">int</span> sz;<span class="comment">//Trie中当前节点个数</span></span><br><span class="line">	<span class="built_in">Trie</span>() &#123;</span><br><span class="line">		<span class="built_in">memset</span>(tr, <span class="number">0</span>, <span class="built_in">sizeof</span>(tr));</span><br><span class="line">		<span class="built_in">memset</span>(val, <span class="number">0</span>, <span class="built_in">sizeof</span>(val));</span><br><span class="line">		sz = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//插入</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">char</span>* s)</span> </span>&#123;</span><br><span class="line">		<span class="type">int</span> len = <span class="built_in">strlen</span>(s), u = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;len; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>] == <span class="number">0</span>) &#123;<span class="comment">//不存在新开就一个节点</span></span><br><span class="line">				tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>] = sz;</span><br><span class="line">				sz++;</span><br><span class="line">			&#125;</span><br><span class="line">			u = tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		val[u] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//查询s是否存在</span></span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">query</span><span class="params">(<span class="type">char</span>* s)</span> </span>&#123;</span><br><span class="line">		<span class="type">int</span> len = <span class="built_in">strlen</span>(s), u = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;len; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>] == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			u = tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> val[u];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> txt[<span class="number">100</span>];</span><br><span class="line"><span class="type">char</span> pat[<span class="number">5</span>][<span class="number">100</span>] = &#123;<span class="string">&quot;hers&quot;</span>, <span class="string">&quot;he&quot;</span>, <span class="string">&quot;his&quot;</span>, <span class="string">&quot;she&quot;</span>, <span class="string">&quot;i&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Trie::<span class="built_in">Trie</span>();</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;</span><br><span class="line">		Trie::<span class="built_in">insert</span>(pat[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">		cin &gt;&gt; txt;</span><br><span class="line">		cout &lt;&lt; Trie::<span class="built_in">query</span>(txt) &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>01字典树，查询满足异或值范围的个数，x^a≤b的x个数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Trie</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">        <span class="type">int</span> cnt;</span><br><span class="line">        Node* child[<span class="number">2</span>];</span><br><span class="line">        <span class="built_in">Node</span>():<span class="built_in">cnt</span>(<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">memset</span>(child, <span class="number">0</span>, <span class="built_in">sizeof</span>(child));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; *head;</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="built_in">Trie</span>() &#123;</span><br><span class="line">        head = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Inserts a word into the trie. */</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">        Node* t = head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">14</span>; i&gt;=<span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="type">int</span> s = num&gt;&gt;i&amp;<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (t-&gt;child[s] == <span class="literal">NULL</span>) &#123;</span><br><span class="line">                t-&gt;child[s] = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            t = t-&gt;child[s];</span><br><span class="line">            t-&gt;cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回当前trie中x的个数，其中x^a&lt;=b</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">search</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">        Node* t = head;</span><br><span class="line">        <span class="type">int</span> rt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">14</span>; i&gt;=<span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="type">int</span> ai = a&gt;&gt;i&amp;<span class="number">1</span>, bi = b&gt;&gt;i&amp;<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (bi) &#123;</span><br><span class="line">                <span class="keyword">if</span> (t-&gt;child[ai]) rt += t-&gt;child[ai]-&gt;cnt;</span><br><span class="line">                <span class="keyword">if</span> (t-&gt;child[<span class="number">1</span>^ai] == <span class="literal">NULL</span>) <span class="keyword">return</span> rt;</span><br><span class="line">                <span class="keyword">else</span> t = t-&gt;child[<span class="number">1</span>^ai];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (t-&gt;child[ai] == <span class="literal">NULL</span>) <span class="keyword">return</span> rt;</span><br><span class="line">                <span class="keyword">else</span> t = t-&gt;child[ai];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rt+t-&gt;cnt;<span class="comment">// 当前trie中满足x^a&lt;=b的x个数。（非rt+1，可能trie中存在多个使得x^a=b的x）</span></span><br><span class="line">        <span class="comment">// return rt; // 当前trie中满足x^a&lt;b的x个数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ac自动机"><a href="#ac自动机" class="headerlink" title="ac自动机"></a>ac自动机</h2><p>ac自动机的作用：在一个文本串中如果要找一个模式串在文本串中的位置，可以用kmp算法，但是若存在多个模式串要查找，就可用ac自动机来查询。</p>
+<p>AC自动机是以Trie的结构为基础，结合KMP的思想建立的。</p>
+<p>简单来说，建立一个AC自动机有两个步骤：</p>
+<p>基础的Trie结构：将所有的模式串构成一棵Trie。KMP的思想：对Trie树上所有的结点构造失配指针。然后就可以利用它进行多模式匹配了。</p>
+<p>在代码实现上需要写三个函数：</p>
+<p><code>insert(char* pattern)</code> 构成trie树需要通过一条一条插入字符串来构造</p>
+<p><code>build()</code> 构造ac自动机，其中包括两个目的：建立fail指针，建造字典图；</p>
+<p><code>query(char* text)</code> 将文本串放到自动机里跑，查询你要查询的信息，如：哪个模式串在文本串哪个位置出现；每个模式串出现了多少次 等。</p>
+<h3 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h3><p>就是普通的字典树插入函数。只是在插入模式串后的关键字节点应当以编号形式出现，因为可能需要定位到具体是哪一个模式串在文本串中出现。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">char</span>* s, <span class="type">int</span> id)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(s), u = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;len; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">            tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>] = sz++;</span><br><span class="line">        &#125;</span><br><span class="line">        u = tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    val[u] = id;<span class="comment">//默认其他非关键字节点id为0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><p>build 得理解fail指针和字典图。</p>
+<p><strong>失配指针fail</strong></p>
+<ol>
+<li><p>fail是什么。</p>
+<p> 在kmp算法中当失配后不是从头开始再匹配，而是跳转到一个合适的位置上，继续匹配。这个合适的位置是基于当前串<strong>最长的相同前后缀</strong>的，而ac自动机的fail指针也是基于这个思想，不同之处在于后缀是根节点到当前节点路径上的字符组成一个字符串的后缀，而前缀则是前缀树中某个前缀。ac自动机的fail指向当前状态的一个最长后缀，不停的跳转fail指针得到的就是当前状态的一个后缀集合</p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1087_1.png" alt="1087_1.png"></p>
+</li>
+<li><p>fail怎么构造。<br> 或许我们能直观的找出每个节点的fail。构造fail的算法是怎样的呢?</p>
+<p> 构造fail指针的基本思想：</p>
+<p> 考虑字典树中的当前节点为<code>u</code>, <code>u</code>的父节点是<code>p</code>, <code>p</code>通过字符<code>c</code>的边指向<code>u</code>， 即<code>trie[p, c] = u</code>, 假设深度小于<code>u</code>的所有节点的fail指针都求出。</p>
+<ol>
+<li><p>若u失败指针指向的节点的c边存在，即<code>trie[fail[p], c]</code>存在， 让u的fail指针指向<code>trie[fail[p], c]</code>.</p>
+</li>
+<li><p>若u失败指针指向的节点的c边不存在，即<code>trie[fail[p], c]</code>不存在， 继续找<code>trie[fail[fail[p]], c]</code>, 重复1过程，到根节点</p>
+</li>
+<li><p>根节点也没有c边，就指向根。</p>
+<p> 要求深度大的节点的fail指针，比他深度小的节点的fail都要求求出，因此，可用树的层序遍历，也就是广度优先搜搜。</p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1089_1.gif" alt="1089_1.gif"></p>
+</li>
+</ol>
+</li>
+<li><p>fail的用处</p>
+<p> fail指针虽然叫失配指针，但是在实际查询中并没有失配现象，这得益于字典图的构建。fail指针也帮助构了字典图。</p>
+<p> 此外fail指针最重要的一点就是再查询时的作用。(之后查询再讲)</p>
+</li>
+</ol>
+<p><strong>字典图</strong></p>
+<ol>
+<li><p>字典图是什么</p>
+<p> 现在需要值得注意的是，以上所述fail指针的的实现只是基本思想，在实际广搜过程中还会给字典树增加一些边使得成为一个字典图，这个图中每个节点的26个子节点都存在。不存在的都指向根节点(图中未标注)。这个字典图会简化实现fail指针的基本思想</p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1091_1.png" alt="1091_1.png"></p>
+</li>
+<li><p>字典图怎样构造</p>
+<p> 字典图和fail指针构造同时进行</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建立fail指针和字典图</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    queue&lt;<span class="type">int</span>&gt; que;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;SIGMA; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (tr[<span class="number">0</span>][i]) que.<span class="built_in">push</span>(tr[<span class="number">0</span>][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="type">int</span> u = que.<span class="built_in">front</span>(); que.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;SIGMA; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tr[u][i]) &#123;<span class="comment">//子节点存在，构建fail</span></span><br><span class="line">                fail[tr[u][i]] = tr[fail[u]][i];</span><br><span class="line">                que.<span class="built_in">push</span>(tr[u][i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;<span class="comment">//子节点不存在，建立新边</span></span><br><span class="line">                tr[u][i] = tr[fail[u]][i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1093_1.gif" alt="1093_1.gif"></p>
+</li>
+<li><p>字典图的用处</p>
+<p> 通过这两图发现构建fail指针不会发现空儿子了，因此不用一直跳fail指针，提高了构造fail指针的效率</p>
+<p> 字典图在查找时使得匹配转移完善。</p>
+<p> 总之<strong>对于fail指针和字典图他们相互对对方的构造起到帮助，且在最后的查询时都起到了重要作用。</strong></p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1097_1.gif" alt="1097_1.gif"></p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1095_1.gif" alt="1095_1.gif"></p>
+</li>
+</ol>
+<h3 id="query"><a href="#query" class="headerlink" title="query"></a>query</h3><p>查询代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查询, 每个节点都要暴力跳fial指针直到根节点， 期间可能有单词节点</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">query</span><span class="params">(<span class="type">char</span>* s)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> u = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>, len=<span class="built_in">strlen</span>(s); i&lt;len; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>]; j; j=fail[j]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (val[j] != <span class="number">0</span>) &#123;<span class="comment">//j是单词节点</span></span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;编号为%d的模式串最后一个字符出现在文本串下标%d位置\\n&quot;</span>, val[j], i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        u = tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://imgs.wiki/imgs/2023/06/14/07dec5613e91185b.gif" alt="1119_1.gif"></p>
+<p>字典图的构建使得每个节点的子节点都有了转移的位置，使得文本串中的字符有着统一的节点转移函数<code>u=tr[u][s[i]-&#39;a&#39;]</code>, 使得查询代码对于失配情况和非失配情况有着同样的处理方法。</p>
+<p>fail指针链上的节点是当前字符串的后缀集合，其中有些字符串是模式串，所以对于每一个节点需要遍历fail指针链。</p>
+<p><img data-src="https://cdnjson.com/images/2023/06/14/1099_1.png" alt="1099_1.png"></p>
+<p>从上图可以看出：</p>
+<p>当前节点为13时遍历fail指针却没有一个是关键字节点。</p>
+<p>当前节点为14时遍历fail指针有些是关键字节点，有些不是。</p>
+<p>当前节点为15时遍历fail指针全是关键字节点。</p>
+<p>遍历到非关键字节点是不必要的。</p>
+<p>我们可以对每一个节点引入一个last指针，利用fail指针链路径压缩使得<code>last[i]</code>代表i节点指向fail链中离自己最近的一个关键字节点，如图：</p>
+<p><img data-src="https://cdnjson.com/images/2023/06/14/1101_1.png" alt="1101_1.png"></p>
+<p>这样，在查询时就可以遍历last指针链了，这样做的好处是last指向的一定是一个关键字节点，除了根节点外。此外对于当前节点可能是关节字节点也可能不是。</p>
+<p>代码上的实现</p>
+<p>在构建fail指针后紧接着构建last指针:</p>
+<p>若需要构建last指针的节点为i，<code>fail[i]</code>指针所指节点是一个关键字节点，那么<code>last[i] = fail[i]</code>, 否则，<code>last[i] = last[fail[i]]</code>, 类似动态规划，在求i之前，比i深度小的节点已经建立last。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">last[tr[u][i]] = val[fail[tr[u][i]]]?fail[tr[u][i]]:last[fail[tr[u][i]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>定义$|s_i|$是第i个模板串的长度，$|S|$是文本串的长度， $|\sigma|$是字符集的大小（常数，一般为 26）。如果没有连 trie 图，时间复杂度就是$O(\sum|s_i|+n|\sigma|+|S|)$ ，其中$n$是 AC 自动机中结点的数目，并且最大可以达到$O(\sum|s_i|)$。如果连 trie 图，并且在构建 fail 指针的时候避免遍历到空儿子，时间复杂度就是 $O(\sum|s_i|+|S|)$ 。</p>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 1000005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SIGMA 26</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1. 建立字典树</span></span><br><span class="line"><span class="comment">2. 生成fail指针和字典图</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Ac &#123;</span><br><span class="line">	<span class="type">int</span> tr[MAXN][SIGMA];</span><br><span class="line">	<span class="type">int</span> val[MAXN];<span class="comment">//关键字节点 val[i] i号节点是编号为val[i]的模式串，从1开始</span></span><br><span class="line">	<span class="type">int</span> fail[MAXN];<span class="comment">//指向最长的后缀且是前缀树的前缀</span></span><br><span class="line">	<span class="type">int</span> last[MAXN];<span class="comment">//在fail链中指向离自己最近的关键字节点</span></span><br><span class="line">	<span class="type">int</span> cnt[MAXN]; <span class="comment">//cnt[i] 编号为i的模式串出现的次数数</span></span><br><span class="line">	<span class="type">int</span> sz;<span class="comment">//节点个数</span></span><br><span class="line">	<span class="type">int</span> id;<span class="comment">//为将插入的模式串分配的id</span></span><br><span class="line">	<span class="built_in">Ac</span>() &#123;</span><br><span class="line">		<span class="built_in">memset</span>(tr, <span class="number">0</span>, <span class="built_in">sizeof</span>(tr));</span><br><span class="line">		<span class="built_in">memset</span>(val, <span class="number">0</span>, <span class="built_in">sizeof</span>(val));</span><br><span class="line">		<span class="built_in">memset</span>(fail, <span class="number">0</span>, <span class="built_in">sizeof</span>(fail));</span><br><span class="line">		sz = <span class="number">1</span>;</span><br><span class="line">		id = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//插入</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">char</span>* s)</span> </span>&#123;</span><br><span class="line">		<span class="type">int</span> len = <span class="built_in">strlen</span>(s), u = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;len; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">				tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>] = sz++;</span><br><span class="line">			&#125;</span><br><span class="line">			u = tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		val[u] = id++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//建立fail指针和字典图 优化：在建立fail后再建立last</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		queue&lt;<span class="type">int</span>&gt; que;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;SIGMA; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (tr[<span class="number">0</span>][i]) que.<span class="built_in">push</span>(tr[<span class="number">0</span>][i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">			<span class="type">int</span> u = que.<span class="built_in">front</span>(); que.<span class="built_in">pop</span>();</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;SIGMA; i++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (tr[u][i]) &#123;<span class="comment">//存在</span></span><br><span class="line">					fail[tr[u][i]] = tr[fail[u]][i];</span><br><span class="line">					last[tr[u][i]] = val[fail[tr[u][i]]]?fail[tr[u][i]]:last[fail[tr[u][i]]];<span class="comment">//优化</span></span><br><span class="line">					que.<span class="built_in">push</span>(tr[u][i]);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					tr[u][i] = tr[fail[u]][i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//查询, 每个节点都要暴力跳fial指针直到根节点， 期间可能有单词节点</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">query</span><span class="params">(<span class="type">char</span>* s)</span> </span>&#123;</span><br><span class="line">		<span class="type">int</span> u = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>, len=<span class="built_in">strlen</span>(s); i&lt;len; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j=tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>]; j; j=fail[j]) &#123;</span><br><span class="line">				<span class="keyword">if</span> (val[j] != <span class="number">0</span>) &#123;<span class="comment">//j是单词节点</span></span><br><span class="line">					cnt[val[j]]++;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">&quot;编号为%d的模式串最后一个字符出现在文本串下标%d位置\\n&quot;</span>, val[j], i);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			u = tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//优化查询</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">queryWithLast</span><span class="params">(<span class="type">char</span>* s)</span> </span>&#123;</span><br><span class="line">		<span class="type">int</span> u = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>, len=<span class="built_in">strlen</span>(s); i&lt;len; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j=tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>]; j; j=last[j]) &#123;</span><br><span class="line">				<span class="keyword">if</span> (val[j] != <span class="number">0</span>) &#123;<span class="comment">//j是单词节点</span></span><br><span class="line">					cnt[val[j]]++;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">&quot;编号为%d的模式串最后一个字符出现在文本串下标%d位置\\n&quot;</span>, val[j], i);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			u = tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//打印每个字符串出现次数</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=id; i++) &#123;</span><br><span class="line">			cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; cnt[i] &lt;&lt; endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//debug</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">debug</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;sz; i++) &#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;fail[%d]=%d\\n&quot;</span>, i, fail[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;sz; i++) &#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;last[%d]=%d\\n&quot;</span>, i, last[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> txt[<span class="number">100</span>];</span><br><span class="line"><span class="comment">//char pat[5][100] = &#123;&quot;i&quot;, &quot;she&quot;, &quot;his&quot;, &quot;hers&quot;, &quot;he&quot;&#125;;</span></span><br><span class="line"><span class="type">char</span> pat[<span class="number">8</span>][<span class="number">100</span>] = &#123;</span><br><span class="line"><span class="string">&quot;abc&quot;</span>,</span><br><span class="line"><span class="string">&quot;aabc&quot;</span>,</span><br><span class="line"><span class="string">&quot;aaabc&quot;</span>,</span><br><span class="line"><span class="string">&quot;aaaabc&quot;</span>,</span><br><span class="line"><span class="string">&quot;aaaaabc&quot;</span>,</span><br><span class="line"><span class="string">&quot;ab&quot;</span>,</span><br><span class="line"><span class="string">&quot;aaab&quot;</span>,</span><br><span class="line"><span class="string">&quot;aaaaab&quot;</span></span><br><span class="line">&#125; ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Ac::<span class="built_in">Ac</span>();</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++) &#123;</span><br><span class="line">		Ac::<span class="built_in">insert</span>(pat[i]);</span><br><span class="line">		cout &lt;&lt; i+<span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; pat[i] &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	Ac::<span class="built_in">build</span>();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">		cin &gt;&gt; txt;</span><br><span class="line">		Ac::<span class="built_in">query</span>(txt);</span><br><span class="line">		Ac::<span class="built_in">print</span>();</span><br><span class="line">		Ac::<span class="built_in">debug</span>();</span><br><span class="line">		<span class="built_in">memset</span>(Ac::cnt, <span class="number">0</span>, <span class="built_in">sizeof</span>(Ac::cnt));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">1 abc</span><br><span class="line">2 aabc</span><br><span class="line">3 aaabc</span><br><span class="line">4 aaaabc</span><br><span class="line">5 aaaaabc</span><br><span class="line">6 ab</span><br><span class="line">7 aaab</span><br><span class="line">8 aaaaab</span><br><span class="line">aaaaab</span><br><span class="line">编号为8的模式串最后一个字符出现在文本串下标5位置</span><br><span class="line">编号为7的模式串最后一个字符出现在文本串下标5位置</span><br><span class="line">编号为6的模式串最后一个字符出现在文本串下标5位置</span><br><span class="line">每个模式串出现的次数</span><br><span class="line">1 0</span><br><span class="line">2 0</span><br><span class="line">3 0</span><br><span class="line">4 0</span><br><span class="line">5 0</span><br><span class="line">6 1</span><br><span class="line">7 1</span><br><span class="line">8 1</span><br><span class="line">fail[0]=0</span><br><span class="line">fail[1]=0</span><br><span class="line">fail[2]=0</span><br><span class="line">fail[3]=0</span><br><span class="line">fail[4]=1</span><br><span class="line">fail[5]=2</span><br><span class="line">fail[6]=3</span><br><span class="line">fail[7]=4</span><br><span class="line">fail[8]=5</span><br><span class="line">fail[9]=6</span><br><span class="line">fail[10]=7</span><br><span class="line">fail[11]=8</span><br><span class="line">fail[12]=9</span><br><span class="line">fail[13]=10</span><br><span class="line">fail[14]=11</span><br><span class="line">fail[15]=12</span><br><span class="line">last[0]=0</span><br><span class="line">last[1]=0</span><br><span class="line">last[2]=0</span><br><span class="line">last[3]=0</span><br><span class="line">last[4]=0</span><br><span class="line">last[5]=2</span><br><span class="line">last[6]=3</span><br><span class="line">last[7]=0</span><br><span class="line">last[8]=2</span><br><span class="line">last[9]=6</span><br><span class="line">last[10]=0</span><br><span class="line">last[11]=8</span><br><span class="line">last[12]=9</span><br><span class="line">last[13]=0</span><br><span class="line">last[14]=8</span><br><span class="line">last[15]=12</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>参考文献<br><a target="_blank" rel="noopener" href="https://oi-wiki.org/string/ac-automaton/">https://oi-wiki.org/string/ac-automaton/</a></p>
+<p>专题练习<br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/70326">https://vjudge.net/contest/70326</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Trie/" rel="tag"><i class="fa fa-tag"></i> Trie</a>
+              <a href="/tags/Aho-Corasick-automaton/" rel="tag"><i class="fa fa-tag"></i> Aho-Corasick automaton</a>
+          </div>
+          <script type="text/javascript">
+            var tagsall=document.getElementsByClassName("post-tags")
+            for (var i = tagsall.length - 1; i >= 0; i--){
+                var tags=tagsall[i].getElementsByTagName("a");
+                for (var j = tags.length - 1; j >= 0; j--) {
+                    var golden_ratio = 0.618033988749895;
+                    var s = 0.5;
+                    var v = 0.999;
+                    var h = golden_ratio + Math.random()*0.8 - 0.5;
+                    var h_i = parseInt(h * 6);
+                    var f = h * 6 - h_i;
+                    var p = v * (1 - s);
+                    var q = v * (1 - f * s);
+                    var t = v * (1 - (1 - f) * s);
+                    var r, g, b;
+                    switch (h_i) {
+                        case 0:
+                            r = v;
+                            g = t;
+                            b = p;
+                            break;
+                        case 1:
+                            r = q;
+                            g = v;
+                            b = p;
+                            break;
+                        case 2:
+                            r = p;
+                            g = v;
+                            b = t;
+                            break;
+                        case 3 :
+                            r = p;
+                            g = q;
+                            b = v;
+                            break;
+                        case 4:
+                            r = t;
+                            g = p;
+                            b = v;
+                            break;
+                        case 5:
+                            r = v;
+                            g = p;
+                            b = q;
+                            break;
+                        default:
+                            r = 1;
+                            g = 1;
+                            b = 1;
+                      }
+                    tags[j].style.background = "rgba("+parseInt(r*255)+","+parseInt(g*255)+","+parseInt(b*255)+","+0.7+")";
+                }
+            }
+          </script>
+          <style>
+          .post-tags a {
+              display: inline-block;
+              font-size: 0.8em;
+              padding: 0px 10px;
+              border-radius: 8px;
+              color: rgb(85, 85, 85);
+              border: 0px;
+          }
+          .post-tags a:hover{
+              box-shadow: 0px 5px 15px 0px rgba(0,0,0,.4);
+              transform: scale(1.1);
+              transition-duration: 0.15s;
+          }
+          </style>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/06/14/76E/" rel="prev" title="76E Points">
+                  <i class="fa fa-chevron-left"></i> 76E Points
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/06/14/KMP/" rel="next" title="KMP">
+                  KMP <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GrainMad</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.7/mermaid.min.js","integrity":"sha256-G58AID1YoX5YaEtWfXSI0VLrZ6N4kvNvwg0BI8zUFxE="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#606863',
+  buttonColorLight: '#dcdee3',
+  saveInCookies: true,
+  label: '🌗',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"grainmad/grainmad.github.io","issue_term":"pathname","theme":"github-dark-orange"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":450},"mobile":{"show":false,"scale":0.5},"react":{"opacity":0.7}});</script></body>
+</html>
