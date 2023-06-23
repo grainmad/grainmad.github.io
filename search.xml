@@ -2600,11 +2600,11 @@
 <p>每一块披萨的大小按顺时针方向由循环数组 <code>slices</code> 表示。</p>
 <p>请你返回你可以获得的披萨大小总和的最大值。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/03/21/sample_3_1723.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/03/21/sample_3_1723.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：slices = [1,2,3,4,5,6]</span><br><span class="line">输出：10</span><br><span class="line">解释：选择大小为 4 的披萨，Alice 和 Bob 分别挑选大小为 3 和 5 的披萨。然后你选择大小为 6 的披萨，Alice 和 Bob 分别挑选大小为 2 和 1 的披萨。你获得的披萨总大小为 4 + 6 = 10 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><strong><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/03/21/sample_4_1723.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/03/21/sample_4_1723.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：slices = [8,9,8,6,1,1]</span><br><span class="line">输出：16</span><br><span class="line">解释：两轮都选大小为 8 的披萨。如果你选择大小为 9 的披萨，你的朋友们就会选择大小为 8 的披萨，这种情况下你的总和不是最大的。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -3280,7 +3280,7 @@
 <p>后缀是包含最后字符且不包含第一个字符的子串.</p>
 <p>图解<code>lps</code>的含义, 设<code>lps[i-1] = k</code>;</p>
 <p>则表明在<code>pat[0...i-1]</code>存在<code>pat[0,k-1]=pat[i-k+1...i]</code>, 即<code>pat</code>开头的<code>k</code>个字符组成的字符串<code>a</code>与<code>pat</code>结尾的<code>k</code>个字符串相同<code>b</code>.</p>
-<p><img src="https://cdnjson.com/images/2023/06/14/606_1.png" alt="606_1.png"></p>
+<p><img data-src="https://cdnjson.com/images/2023/06/14/606_1.png" alt="606_1.png"></p>
 <p>接下来说如何求得<code>lps</code></p>
 <p>这里利用的是动态规划的思想, 逐个求出<code>lps[0]</code>到<code>lps[i]</code>.</p>
 <p>显然当<code>i=0</code>时 <code>lps[0]=0</code></p>
@@ -3290,9 +3290,9 @@
 <li>相等, 则<code>lps[i]=k1+1</code></li>
 <li>不等, 则令<code>k1=lps[k1-1]</code>, 继续以上过程</li>
 </ul>
-<p><img src="https://cdnjson.com/images/2023/06/14/607_1.png" alt="607_1.png"></p>
+<p><img data-src="https://cdnjson.com/images/2023/06/14/607_1.png" alt="607_1.png"></p>
 <p>例如当<code>lps[k1-1]=k2</code> 时：</p>
-<p><img src="https://cdnjson.com/images/2023/06/14/608_1.png" alt="608_1.png"></p>
+<p><img data-src="https://cdnjson.com/images/2023/06/14/608_1.png" alt="608_1.png"></p>
 <p>由于黄色区域都是相等的, 所以<code>pat[0...k2]=pat[i-k2...i-1]</code>, 仅需比较<code>pat[k2]</code>与<code>pat[i]</code>是否相同, 若相同则<code>lps[i] = k2+1</code>;</p>
 <p>我们在代码里写了两种求lps数组的方式，但本质上是一样的。</p>
 <p>函数<code>computeLPSArray1</code> 实现了上述过程，注意到第i次外层循环<code>len</code>的变化由<code>lps[i-1]</code>变为<code>lps[i]-1</code> ,内层循环的次数不超过<code>lps[i-1]-lps[i]+1</code> ，总内循环次数$\sum \limits_{i=1}^{n-1}lps[i-1] + lps[i]+1 = n-lps[n]$，所以总时间复杂度$O(n)$</p>
@@ -3301,7 +3301,7 @@
 <p>比较<code>pat[j]</code> 与 <code>txt</code>当前窗口中的字符.</p>
 <ul>
 <li>在<code>pat[j]</code> 与 <code>txt[i]</code>相等时同时递增i和j</li>
-<li>当不相等时可知<code>pat[0...j-1]</code> 与 <code>txt[i-j...i-1]</code> 是已匹配字符串. 若此时<code>lps[j-1] = k</code> 则 可知 <code>pat[0...k] = pat[j-k...j-1] = txt[i-k...i-1]</code>, 也就是说不用再匹配<code>pat</code>的前<code>k</code>个字符了, 让<code>j</code>回到<code>k</code>即可, 代码上的实现就是<code>j=lps[j-1]</code>; 特例情况就是<code>j=0</code>时, 一开始就失配, 让<code>i++</code>即可.  <img src="https://cdnjson.com/images/2023/06/14/609_1.png" alt="609_1.png"></li>
+<li>当不相等时可知<code>pat[0...j-1]</code> 与 <code>txt[i-j...i-1]</code> 是已匹配字符串. 若此时<code>lps[j-1] = k</code> 则 可知 <code>pat[0...k] = pat[j-k...j-1] = txt[i-k...i-1]</code>, 也就是说不用再匹配<code>pat</code>的前<code>k</code>个字符了, 让<code>j</code>回到<code>k</code>即可, 代码上的实现就是<code>j=lps[j-1]</code>; 特例情况就是<code>j=0</code>时, 一开始就失配, 让<code>i++</code>即可.  <img data-src="https://cdnjson.com/images/2023/06/14/609_1.png" alt="609_1.png"></li>
 <li>当<code>j==M</code>时, 匹配完成, 若要继续匹配, 可将j看为失配点, 令j = lps[j-1]</li>
 </ul>
 <h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C++ program for implementation of KMP pattern searching</span></span><br><span class="line"><span class="comment">// algorithm</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">computeLPSArray1</span><span class="params">(<span class="type">char</span> *pat, <span class="type">int</span> M, <span class="type">int</span> *lps)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">computeLPSArray2</span><span class="params">(<span class="type">char</span> *pat, <span class="type">int</span> M, <span class="type">int</span> *lps)</span></span>;</span><br><span class="line"><span class="comment">// Prints occurrences of txt[] in pat[]</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">KMPSearch</span><span class="params">(<span class="type">char</span> *pat, <span class="type">char</span> *txt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> M = <span class="built_in">strlen</span>(pat);</span><br><span class="line">    <span class="type">int</span> N = <span class="built_in">strlen</span>(txt);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// create lps[] that will hold the longest prefix suffix</span></span><br><span class="line">    <span class="comment">// values for pattern</span></span><br><span class="line">    <span class="type">int</span> lps[M];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Preprocess the pattern (calculate lps[] array)</span></span><br><span class="line">    <span class="built_in">computeLPSArray1</span>(pat, M, lps);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; M; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, lps[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="built_in">computeLPSArray2</span>(pat, M, lps);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; M; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, lps[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>; <span class="comment">// index for txt[]</span></span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>; <span class="comment">// index for pat[]</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; N)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (pat[j] == txt[i])</span><br><span class="line">        &#123;</span><br><span class="line">            j++;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (j == M)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Found pattern at index %d &quot;</span>, i - j);</span><br><span class="line">            j = lps[j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// mismatch after j matches</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; N &amp;&amp; pat[j] != txt[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Do not match lps[0..lps[j-1]] characters,</span></span><br><span class="line">            <span class="comment">// they will match anyway</span></span><br><span class="line">            <span class="keyword">if</span> (j != <span class="number">0</span>)</span><br><span class="line">                j = lps[j - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                i = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Fills lps[] for given patttern pat[0..M-1]</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">computeLPSArray1</span><span class="params">(<span class="type">char</span> *pat, <span class="type">int</span> M, <span class="type">int</span> *lps)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// length of the previous longest prefix suffix</span></span><br><span class="line">    <span class="type">int</span> len = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    lps[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">// lps[0] is always 0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// the loop calculates lps[i] for i = 1 to M-1</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; M)</span><br><span class="line">    &#123;</span><br><span class="line">        len = lps[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (len != <span class="number">0</span> &amp;&amp; pat[len] != pat[i])</span><br><span class="line">            len = lps[len - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">0</span> &amp;&amp; pat[len] != pat[i])</span><br><span class="line">            lps[i] = <span class="number">0</span>; <span class="comment">// just len == 0 and pat[len] != pat[i]</span></span><br><span class="line">        <span class="keyword">if</span> (pat[len] == pat[i])</span><br><span class="line">            lps[i] = len + <span class="number">1</span>; <span class="comment">// whatever value len is.</span></span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Fills lps[] for given patttern pat[0..M-1]</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">computeLPSArray2</span><span class="params">(<span class="type">char</span> *pat, <span class="type">int</span> M, <span class="type">int</span> *lps)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// length of the previous longest prefix suffix</span></span><br><span class="line">    <span class="type">int</span> len = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    lps[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">// lps[0] is always 0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// the loop calculates lps[i] for i = 1 to M-1</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; M)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (pat[i] == pat[len])</span><br><span class="line">        &#123;</span><br><span class="line">            len++;</span><br><span class="line">            lps[i] = len;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">// (pat[i] != pat[len])</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// This is tricky. Consider the example.</span></span><br><span class="line">            <span class="comment">// AAACAAAA and i = 7. The idea is similar</span></span><br><span class="line">            <span class="comment">// to search step.</span></span><br><span class="line">            <span class="keyword">if</span> (len != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                len = lps[len - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Also, note that we do not increment</span></span><br><span class="line">                <span class="comment">// i here</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="comment">// if (len == 0)</span></span><br><span class="line">            &#123;</span><br><span class="line">                lps[i] = <span class="number">0</span>;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Driver program to test above function</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> txt[] = <span class="string">&quot;ABABDABACDABABCABAB&quot;</span>;</span><br><span class="line">    <span class="type">char</span> pat[] = <span class="string">&quot;ABABCABAB&quot;</span>;</span><br><span class="line">    <span class="built_in">KMPSearch</span>(pat, txt);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -3711,7 +3711,7 @@
 <p>[1,n]上所有置换共n!个，构成一个群，称之为n阶对称群，记为$S_n$</p>
 <hr>
 <p>对于一个等边三角形的转动群</p>
-<p><img src="https://i.328888.xyz/2022/12/24/Djsip.png" alt="Djsip.png"></p>
+<p><img data-src="https://i.328888.xyz/2022/12/24/Djsip.png" alt="Djsip.png"></p>
 <p>$p1 = \left( \begin{array}{c} 1&amp;2&amp;3\<br>1&amp;2&amp;3<br>\end{array}\right)$</p>
 <p>$p2 = \left( \begin{array}{c} 1&amp;2&amp;3\<br>2&amp;3&amp;1<br>\end{array}\right)$</p>
 <p>$p3 = \left( \begin{array}{c} 1&amp;2&amp;3\<br>3&amp;1&amp;2<br>\end{array}\right)$</p>
@@ -3775,7 +3775,7 @@
 <p>$l = \frac{\sum \limits _{k=1}^{n}|Z_k|}{|G|}=\frac{\sum \limits _{j=1}^{|G|}c_1(a_j)}{|G|}$</p>
 <hr>
 <p>对于一个正方形用红蓝两种颜色对顶点涂色有多少种涂法?</p>
-<p><img src="https://i.328888.xyz/2022/12/24/Dj53k.png" alt="Dj53k.png"></p>
+<p><img data-src="https://i.328888.xyz/2022/12/24/Dj53k.png" alt="Dj53k.png"></p>
 <p>只需考虑旋转的等价类个数，涂色方案即等价类个数。</p>
 <p>四种不同的旋转，构成置换群内置换个数有4个。</p>
 <p>$p_1 = (1)(2)(3)(4)(5)(6)(7)(8)(9)(10)(11)(12)(13)(14)(15)(16)$</p>
@@ -4189,15 +4189,15 @@
 <p>你可以花费 <code>cost = 1</code> 的代价修改一个格子中的数字，但每个格子中的数字 <strong>只能修改一次</strong> 。</p>
 <p>请你返回让网格图至少有一条有效路径的最小代价。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/29/grid1.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/29/grid1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[1,1,1,1],[2,2,2,2],[1,1,1,1],[2,2,2,2]]</span><br><span class="line">输出：3</span><br><span class="line">解释：你将从点 (0, 0) 出发。</span><br><span class="line">到达 (3, 3) 的路径为： (0, 0) --&gt; (0, 1) --&gt; (0, 2) --&gt; (0, 3) 花费代价 cost = 1 使方向向下 --&gt; (1, 3) --&gt; (1, 2) --&gt; (1, 1) --&gt; (1, 0) 花费代价 cost = 1 使方向向下 --&gt; (2, 0) --&gt; (2, 1) --&gt; (2, 2) --&gt; (2, 3) 花费代价 cost = 1 使方向向下 --&gt; (3, 3)</span><br><span class="line">总花费为 cost = 3.</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/29/grid2.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/29/grid2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[1,1,3],[3,2,2],[1,1,4]]</span><br><span class="line">输出：0</span><br><span class="line">解释：不修改任何数字你就可以从 (0, 0) 到达 (2, 2) 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/29/grid3.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/29/grid3.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[1,2],[4,3]]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 4：</strong></p>
@@ -4239,15 +4239,15 @@
 <p>如果存在使 <code>source</code> 到 <code>destination</code> 最短距离为 <code>target</code> 的方案，请你按任意顺序返回包含所有边的数组（包括未修改边权的边）。如果不存在这样的方案，请你返回一个 <strong>空数组</strong> 。</p>
 <p><strong>注意：</strong>你不能修改一开始边权为正数的边。</p>
 <p><strong>示例 1：</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2023/04/18/graph.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode.com/uploads/2023/04/18/graph.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 5, edges = [[4,1,-1],[2,0,-1],[0,3,-1],[4,3,-1]], source = 0, destination = 1, target = 5</span><br><span class="line">输出：[[4,1,1],[2,0,1],[0,3,3],[4,3,1]]</span><br><span class="line">解释：上图展示了一个满足题意的修改方案，从 0 到 1 的最短距离为 5 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2023/04/18/graph-2.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode.com/uploads/2023/04/18/graph-2.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 3, edges = [[0,1,-1],[0,2,5]], source = 0, destination = 2, target = 6</span><br><span class="line">输出：[]</span><br><span class="line">解释：上图是一开始的图。没有办法通过修改边权为 -1 的边，使得 0 到 2 的最短距离等于 6 ，所以返回一个空数组。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2023/04/19/graph-3.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode.com/uploads/2023/04/19/graph-3.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 4, edges = [[1,0,4],[1,2,3],[2,3,5],[0,3,-1]], source = 0, destination = 2, target = 6</span><br><span class="line">输出：[[1,0,4],[1,2,3],[2,3,5],[0,3,1]]</span><br><span class="line">解释：上图展示了一个满足题意的修改方案，从 0 到 2 的最短距离为 6 。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -4302,11 +4302,11 @@
 <p>返回可以有效分割数组的最小下标 <code>i</code> ，如果不存在有效分割，则返回 <code>-1</code> 。</p>
 <p>当且仅当 <code>gcd(val1, val2) == 1</code> 成立时，<code>val1</code> 和 <code>val2</code> 这两个值才是互质的，其中 <code>gcd(val1, val2)</code> 表示 <code>val1</code> 和 <code>val2</code> 的最大公约数。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/12/14/second.PNG"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/12/14/second.PNG"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [4,7,8,15,3,5]</span><br><span class="line">输出：2</span><br><span class="line">解释：上表展示了每个下标 i 处的前 i + 1 个元素的乘积、剩余元素的乘积和它们的最大公约数的值。</span><br><span class="line">唯一一个有效分割位于下标 2 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/12/14/capture.PNG"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/12/14/capture.PNG"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [4,7,15,8,3,5]</span><br><span class="line">输出：-1</span><br><span class="line">解释：上表展示了每个下标 i 处的前 i + 1 个元素的乘积、剩余元素的乘积和它们的最大公约数的值。</span><br><span class="line">不存在有效分割。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -4383,11 +4383,11 @@
 <p>你可以向上、下、左、右移动，从一个空单元格移动到另一个空单元格。</p>
 <p>现在你需要从左上角 <code>(0, 0)</code> 移动到右下角 <code>(m - 1, n - 1)</code> ，返回需要移除的障碍物的 <strong>最小</strong> 数目。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/04/06/example1drawio-1.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/04/06/example1drawio-1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[0,1,1],[1,1,0],[1,1,0]]</span><br><span class="line">输出：2</span><br><span class="line">解释：可以移除位于 (0, 1) 和 (0, 2) 的障碍物来创建从 (0, 0) 到 (2, 2) 的路径。</span><br><span class="line">可以证明我们至少需要移除两个障碍物，所以返回 2 。</span><br><span class="line">注意，可能存在其他方式来移除 2 个障碍物，创建出可行的路径。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/04/06/example1drawio.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/04/06/example1drawio.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[0,1,0,0,0],[0,1,0,1,0],[0,0,0,1,0]]</span><br><span class="line">输出：0</span><br><span class="line">解释：不移除任何障碍物就能从 (0, 0) 到 (2, 4) ，所以返回 0 。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -4735,11 +4735,11 @@
 <p>投掷到墙上的飞镖用二维平面上的点坐标数组表示。飞镖靶的半径为 <code>r</code> 。</p>
 <p>请返回能够落在 <strong>任意</strong> 半径为 <code>r</code> 的圆形靶内或靶上的最大飞镖数。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/05/16/sample_1_1806.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/05/16/sample_1_1806.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：points = [[-2,0],[2,0],[0,2],[0,-2]], r = 2</span><br><span class="line">输出：4</span><br><span class="line">解释：如果圆形的飞镖靶的圆心为 (0,0) ，半径为 2 ，所有的飞镖都落在靶上，此时落在靶上的飞镖数最大，值为 4 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><strong><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/05/16/sample_2_1806.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/05/16/sample_2_1806.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：points = [[-3,0],[3,0],[2,6],[5,4],[0,9],[7,8]], r = 5</span><br><span class="line">输出：5</span><br><span class="line">解释：如果圆形的飞镖靶的圆心为 (0,4) ，半径为 5 ，则除了 (7,8) 之外的飞镖都落在靶上，此时落在靶上的飞镖数最大，值为 5 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
@@ -4816,11 +4816,11 @@
 <p>你从 <strong>最左上角</strong> 出发，出发时刻为 <code>0</code> ，你必须一直移动到上下左右相邻四个格子中的 <strong>任意</strong> 一个格子（即不能停留在格子上）。每次移动都需要花费 1 单位时间。</p>
 <p>请你返回 <strong>最早</strong> 到达右下角格子的时间，如果你无法到达右下角的格子，请你返回 <code>-1</code> 。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2023/02/14/yetgriddrawio-8.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2023/02/14/yetgriddrawio-8.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[0,1,3,2],[5,1,2,5],[4,3,8,6]]</span><br><span class="line">输出：7</span><br><span class="line">解释：一条可行的路径为：</span><br><span class="line">- 时刻 t = 0 ，我们在格子 (0,0) 。</span><br><span class="line">- 时刻 t = 1 ，我们移动到格子 (0,1) ，可以移动的原因是 grid[0][1] &lt;= 1 。</span><br><span class="line">- 时刻 t = 2 ，我们移动到格子 (1,1) ，可以移动的原因是 grid[1][1] &lt;= 2 。</span><br><span class="line">- 时刻 t = 3 ，我们移动到格子 (1,2) ，可以移动的原因是 grid[1][2] &lt;= 3 。</span><br><span class="line">- 时刻 t = 4 ，我们移动到格子 (1,1) ，可以移动的原因是 grid[1][1] &lt;= 4 。</span><br><span class="line">- 时刻 t = 5 ，我们移动到格子 (1,2) ，可以移动的原因是 grid[1][2] &lt;= 5 。</span><br><span class="line">- 时刻 t = 6 ，我们移动到格子 (1,3) ，可以移动的原因是 grid[1][3] &lt;= 6 。</span><br><span class="line">- 时刻 t = 7 ，我们移动到格子 (2,3) ，可以移动的原因是 grid[2][3] &lt;= 7 。</span><br><span class="line">最终到达时刻为 7 。这是最早可以到达的时间。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2023/02/14/yetgriddrawio-9.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2023/02/14/yetgriddrawio-9.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[0,2,4],[3,2,1],[1,0,4]]</span><br><span class="line">输出：-1</span><br><span class="line">解释：没法从左上角按题目规定走到右下角。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -4857,15 +4857,15 @@
 <p>返回 <em>多边形进行三角剖分后可以得到的最低分</em> 。  
  </p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/02/25/shape1.jpg"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/02/25/shape1.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：values = [1,2,3]</span><br><span class="line">输出：6</span><br><span class="line">解释：多边形已经三角化，唯一三角形的分数为 6。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/02/25/shape2.jpg"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/02/25/shape2.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：values = [3,7,4,5]</span><br><span class="line">输出：144</span><br><span class="line">解释：有两种三角剖分，可能得分分别为：3*7*5 + 4*5*7 = 245，或 3*4*5 + 3*4*7 = 144。最低分数为 144。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/02/25/shape3.jpg"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/02/25/shape3.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：values = [1,3,1,4,1,5]</span><br><span class="line">输出：13</span><br><span class="line">解释：最低分数三角剖分的得分情况为 1*1*3 + 1*1*4 + 1*1*5 + 1*1*1 = 13。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -4895,7 +4895,7 @@
 <p>给你一维空间的 <code>n</code> 个点，其中第 <code>i</code> 个点（编号从 <code>0</code> 到 <code>n-1</code>）位于 <code>x = i</code> 处，请你找到 <strong>恰好</strong> <code>k</code> <strong>个不重叠</strong> 线段且每个线段至少覆盖两个点的方案数。线段的两个端点必须都是 <strong>整数坐标</strong> 。这 <code>k</code> 个线段不需要全部覆盖全部 <code>n</code> 个点，且它们的端点 <strong>可以</strong> 重合。</p>
 <p>请你返回 <code>k</code> 个不重叠线段的方案数。由于答案可能很大，请将结果对 <code>10^9 + 7</code> <strong>取余</strong> 后返回。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/17/ex1.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/17/ex1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 4, k = 2</span><br><span class="line">输出：5</span><br><span class="line">解释：</span><br><span class="line">如图所示，两个线段分别用红色和蓝色标出。</span><br><span class="line">上图展示了 5 种不同的方案 &#123;(0,2),(2,3)&#125;，&#123;(0,1),(1,3)&#125;，&#123;(0,1),(2,3)&#125;，&#123;(1,2),(2,3)&#125;，&#123;(0,1),(1,2)&#125; 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
@@ -5036,7 +5036,7 @@
     <title>字典树与AC自动机</title>
     <url>/2023/06/14/%E5%AD%97%E5%85%B8%E6%A0%91%E4%B8%8EAC%E8%87%AA%E5%8A%A8%E6%9C%BA/</url>
     <content><![CDATA[<h1 id="字典树和AC自动机"><a href="#字典树和AC自动机" class="headerlink" title="字典树和AC自动机"></a>字典树和AC自动机</h1><h2 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h2><p>Trie树，又叫字典树、前缀树（Prefix Tree）、单词查找树 或 键树，是一种多叉树结构。</p>
-<p><img src="https://cdnjson.com/images/2023/06/14/1115_1.gif" alt="1115_1.gif"></p>
+<p><img data-src="https://cdnjson.com/images/2023/06/14/1115_1.gif" alt="1115_1.gif"></p>
 <p>此图是一棵Trie树，表示了关键字集合{“hers”, “his”, “she”, “i”, “he”} 。从图中可以看出：</p>
 <p>从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串。</p>
 <p>从根节点到标记呈橙色节点路径上字符组成的字符串是一个关键字。图中橙色节点就是关键字节点。</p>
@@ -5101,7 +5101,7 @@
 <ol>
 <li><p>fail是什么。</p>
 <p> 在kmp算法中当失配后不是从头开始再匹配，而是跳转到一个合适的位置上，继续匹配。这个合适的位置是基于当前串<strong>最长的相同前后缀</strong>的，而ac自动机的fail指针也是基于这个思想，不同之处在于后缀是根节点到当前节点路径上的字符组成一个字符串的后缀，而前缀则是前缀树中某个前缀。ac自动机的fail指向当前状态的一个最长后缀，不停的跳转fail指针得到的就是当前状态的一个后缀集合</p>
-<p> <img src="https://cdnjson.com/images/2023/06/14/1087_1.png" alt="1087_1.png"></p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1087_1.png" alt="1087_1.png"></p>
 </li>
 <li><p>fail怎么构造。<br> 或许我们能直观的找出每个节点的fail。构造fail的算法是怎样的呢?</p>
 <p> 构造fail指针的基本思想：</p>
@@ -5113,7 +5113,7 @@
 </li>
 <li><p>根节点也没有c边，就指向根。</p>
 <p> 要求深度大的节点的fail指针，比他深度小的节点的fail都要求求出，因此，可用树的层序遍历，也就是广度优先搜搜。</p>
-<p> <img src="https://cdnjson.com/images/2023/06/14/1089_1.gif" alt="1089_1.gif"></p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1089_1.gif" alt="1089_1.gif"></p>
 </li>
 </ol>
 </li>
@@ -5126,35 +5126,35 @@
 <ol>
 <li><p>字典图是什么</p>
 <p> 现在需要值得注意的是，以上所述fail指针的的实现只是基本思想，在实际广搜过程中还会给字典树增加一些边使得成为一个字典图，这个图中每个节点的26个子节点都存在。不存在的都指向根节点(图中未标注)。这个字典图会简化实现fail指针的基本思想</p>
-<p> <img src="https://cdnjson.com/images/2023/06/14/1091_1.png" alt="1091_1.png"></p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1091_1.png" alt="1091_1.png"></p>
 </li>
 <li><p>字典图怎样构造</p>
 <p> 字典图和fail指针构造同时进行</p>
  <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//建立fail指针和字典图</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    queue&lt;<span class="type">int</span>&gt; que;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;SIGMA; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (tr[<span class="number">0</span>][i]) que.<span class="built_in">push</span>(tr[<span class="number">0</span>][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="type">int</span> u = que.<span class="built_in">front</span>(); que.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;SIGMA; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tr[u][i]) &#123;<span class="comment">//子节点存在，构建fail</span></span><br><span class="line">                fail[tr[u][i]] = tr[fail[u]][i];</span><br><span class="line">                que.<span class="built_in">push</span>(tr[u][i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;<span class="comment">//子节点不存在，建立新边</span></span><br><span class="line">                tr[u][i] = tr[fail[u]][i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> <img src="https://cdnjson.com/images/2023/06/14/1093_1.gif" alt="1093_1.gif"></p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1093_1.gif" alt="1093_1.gif"></p>
 </li>
 <li><p>字典图的用处</p>
 <p> 通过这两图发现构建fail指针不会发现空儿子了，因此不用一直跳fail指针，提高了构造fail指针的效率</p>
 <p> 字典图在查找时使得匹配转移完善。</p>
 <p> 总之<strong>对于fail指针和字典图他们相互对对方的构造起到帮助，且在最后的查询时都起到了重要作用。</strong></p>
-<p> <img src="https://cdnjson.com/images/2023/06/14/1097_1.gif" alt="1097_1.gif"></p>
-<p> <img src="https://cdnjson.com/images/2023/06/14/1095_1.gif" alt="1095_1.gif"></p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1097_1.gif" alt="1097_1.gif"></p>
+<p> <img data-src="https://cdnjson.com/images/2023/06/14/1095_1.gif" alt="1095_1.gif"></p>
 </li>
 </ol>
 <h3 id="query"><a href="#query" class="headerlink" title="query"></a>query</h3><p>查询代码如下</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//查询, 每个节点都要暴力跳fial指针直到根节点， 期间可能有单词节点</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">query</span><span class="params">(<span class="type">char</span>* s)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> u = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>, len=<span class="built_in">strlen</span>(s); i&lt;len; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>]; j; j=fail[j]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (val[j] != <span class="number">0</span>) &#123;<span class="comment">//j是单词节点</span></span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;编号为%d的模式串最后一个字符出现在文本串下标%d位置\\n&quot;</span>, val[j], i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        u = tr[u][s[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://imgs.wiki/imgs/2023/06/14/07dec5613e91185b.gif" alt="1119_1.gif"></p>
+<p><img data-src="https://imgs.wiki/imgs/2023/06/14/07dec5613e91185b.gif" alt="1119_1.gif"></p>
 <p>字典图的构建使得每个节点的子节点都有了转移的位置，使得文本串中的字符有着统一的节点转移函数<code>u=tr[u][s[i]-&#39;a&#39;]</code>, 使得查询代码对于失配情况和非失配情况有着同样的处理方法。</p>
 <p>fail指针链上的节点是当前字符串的后缀集合，其中有些字符串是模式串，所以对于每一个节点需要遍历fail指针链。</p>
-<p><img src="https://cdnjson.com/images/2023/06/14/1099_1.png" alt="1099_1.png"></p>
+<p><img data-src="https://cdnjson.com/images/2023/06/14/1099_1.png" alt="1099_1.png"></p>
 <p>从上图可以看出：</p>
 <p>当前节点为13时遍历fail指针却没有一个是关键字节点。</p>
 <p>当前节点为14时遍历fail指针有些是关键字节点，有些不是。</p>
 <p>当前节点为15时遍历fail指针全是关键字节点。</p>
 <p>遍历到非关键字节点是不必要的。</p>
 <p>我们可以对每一个节点引入一个last指针，利用fail指针链路径压缩使得<code>last[i]</code>代表i节点指向fail链中离自己最近的一个关键字节点，如图：</p>
-<p><img src="https://cdnjson.com/images/2023/06/14/1101_1.png" alt="1101_1.png"></p>
+<p><img data-src="https://cdnjson.com/images/2023/06/14/1101_1.png" alt="1101_1.png"></p>
 <p>这样，在查询时就可以遍历last指针链了，这样做的好处是last指向的一定是一个关键字节点，除了根节点外。此外对于当前节点可能是关节字节点也可能不是。</p>
 <p>代码上的实现</p>
 <p>在构建fail指针后紧接着构建last指针:</p>
@@ -5284,7 +5284,7 @@
 <p>令$A_i$为不满足$x_i$的约束的数目，那么答案是$|\bar A_1 \cap \bar A_2 \cap \bar A_3|$，利用容斥原理即可。</p>
 <hr>
 <p>格路问题</p>
-<p><img src="https://i.328888.xyz/2022/12/17/4mIPv.png" alt="4mIPv.png"></p>
+<p><img data-src="https://i.328888.xyz/2022/12/17/4mIPv.png" alt="4mIPv.png"></p>
 <p>不经过障碍的条数。</p>
 <p>利用容斥思想，求出经过障碍的条数。</p>
 <p>设经过障碍AB的集合为$A_1$，经过障碍CD的集合为$A_2$，经过障碍EF的集合为$A_3$，经过障碍HG的集合为$A_4$。答案是$|\bar A_1 \cap \bar A_2 \cap \bar A_3 \cap \bar A_4|$</p>
@@ -5390,14 +5390,14 @@
 <p>给你一个长度为 <code>2 * n</code> 的整数数组。你需要将 <code>nums</code> 分成 <strong>两个</strong> 长度为 <code>n</code> 的数组，分别求出两个数组的和，并 <strong>最小化</strong> 两个数组和之 <strong>差的绝对值</strong> 。<code>nums</code> 中每个元素都需要放入两个数组之一。</p>
 <p>请你返回 <strong>最小</strong> 的数组和之差。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/10/02/ex1.png" alt="example-1"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/10/02/ex1.png" alt="example-1"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [3,9,7,3]</span><br><span class="line">输出：2</span><br><span class="line">解释：最优分组方案是分成 [3,9] 和 [7,3] 。</span><br><span class="line">数组和之差的绝对值为 abs((3 + 9) - (7 + 3)) = 2 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [-36,36]</span><br><span class="line">输出：72</span><br><span class="line">解释：最优分组方案是分成 [-36] 和 [36] 。</span><br><span class="line">数组和之差的绝对值为 abs((-36) - (36)) = 72 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/10/02/ex3.png" alt="example-3"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/10/02/ex3.png" alt="example-3"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [2,-1,0,4,-2,-9]</span><br><span class="line">输出：0</span><br><span class="line">解释：最优分组方案是分成 [2,4,-9] 和 [-1,0,-2] 。</span><br><span class="line">数组和之差的绝对值为 abs((2 + 4 + -9) - (-1 + 0 + -2)) = 0 。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -5436,11 +5436,11 @@
 <p>在一个学期中，你 <strong>最多</strong> 可以同时上 <code>k</code> 门课，前提是这些课的先修课在之前的学期里已经上过了。</p>
 <p>请你返回上完所有课最少需要多少个学期。题目保证一定存在一种上完所有课的方式。</p>
 <p><strong>示例 1：</strong></p>
-<p><strong><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/06/27/leetcode_parallel_courses_1.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/06/27/leetcode_parallel_courses_1.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 4, relations = [[2,1],[3,1],[1,4]], k = 2</span><br><span class="line">输出：3 </span><br><span class="line">解释：上图展示了题目输入的图。在第一个学期中，我们可以上课程 2 和课程 3 。然后第二个学期上课程 1 ，第三个学期上课程 4 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><strong><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/06/27/leetcode_parallel_courses_2.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/06/27/leetcode_parallel_courses_2.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 5, relations = [[2,1],[3,1],[4,1],[1,5]], k = 2</span><br><span class="line">输出：4 </span><br><span class="line">解释：上图展示了题目输入的图。一个最优方案是：第一学期上课程 2 和 3，第二学期上课程 4 ，第三学期上课程 1 ，第四学期上课程 5 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
@@ -5496,7 +5496,7 @@
 </ul>
 <p>计算并返回 <code>nums</code> 的所有 <strong>非空</strong> 子序列中 <strong>不同</strong> 最大公约数的 <strong>数目</strong> 。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/04/03/image-1.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/04/03/image-1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [6,10,3]</span><br><span class="line">输出：5</span><br><span class="line">解释：上图显示了所有的非空子序列与各自的最大公约数。</span><br><span class="line">不同的最大公约数为 6 、10 、3 、2 和 1 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
@@ -5777,7 +5777,7 @@
 </ul>
 <p>返回将箱子推到目标位置的最小 <strong>推动</strong> 次数，如果无法做到，请返回 <code>-1</code>。</p>
 <p><strong>示例 1：</strong></p>
-<p><strong><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/16/sample_1_1620.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/16/sample_1_1620.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;],</span><br><span class="line">             [&quot;#&quot;,&quot;T&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;],</span><br><span class="line">             [&quot;#&quot;,&quot;.&quot;,&quot;.&quot;,&quot;B&quot;,&quot;.&quot;,&quot;#&quot;],</span><br><span class="line">             [&quot;#&quot;,&quot;.&quot;,&quot;#&quot;,&quot;#&quot;,&quot;.&quot;,&quot;#&quot;],</span><br><span class="line">             [&quot;#&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;S&quot;,&quot;#&quot;],</span><br><span class="line">             [&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;]]</span><br><span class="line">输出：3</span><br><span class="line">解释：我们只需要返回推箱子的次数。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
@@ -5824,11 +5824,11 @@
 <p>你需要收集树中所有的金币，并且回到出发节点，请你返回最少经过的边数。</p>
 <p>如果你多次经过一条边，每一次经过都会给答案加一。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2023/03/01/graph-2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2023/03/01/graph-2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：coins = [1,0,0,0,0,1], edges = [[0,1],[1,2],[2,3],[3,4],[4,5]]</span><br><span class="line">输出：2</span><br><span class="line">解释：从节点 2 出发，收集节点 0 处的金币，移动到节点 3 ，收集节点 5 处的金币，然后移动回节点 2 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2023/03/02/graph-4.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2023/03/02/graph-4.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：coins = [0,0,0,1,1,0,0,1], edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[5,6],[5,7]]</span><br><span class="line">输出：2</span><br><span class="line">解释：从节点 0 出发，收集节点 4 和 3 处的金币，移动到节点 2 处，收集节点 7 处的金币，移动回节点 0 。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -5866,15 +5866,15 @@
 </ul>
 <p>给你一个整数 <code>n</code> ，返回接触地面的盒子的 <strong>最少</strong> 可能数量<em>。</em></p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/3-boxes.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/3-boxes.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 3</span><br><span class="line">输出：3</span><br><span class="line">解释：上图是 3 个盒子的摆放位置。</span><br><span class="line">这些盒子放在房间的一角，对应左侧位置。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/4-boxes.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/4-boxes.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 4</span><br><span class="line">输出：3</span><br><span class="line">解释：上图是 3 个盒子的摆放位置。</span><br><span class="line">这些盒子放在房间的一角，对应左侧位置。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/10-boxes.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/10-boxes.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 10</span><br><span class="line">输出：6</span><br><span class="line">解释：上图是 10 个盒子的摆放位置。</span><br><span class="line">这些盒子放在房间的一角，对应后方位置。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -5992,11 +5992,11 @@
 <p>你可以选择树中任意一个节点作为根节点 <code>root</code> 。选择 <code>root</code> 为根的 <strong>开销</strong> 是以 <code>root</code> 为起点的所有路径中，<strong>价值和</strong> 最大的一条路径与最小的一条路径的差值。</p>
 <p>请你返回所有节点作为根节点的选择中，<strong>最大</strong> 的 <strong>开销</strong> 为多少。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/12/01/example14.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/12/01/example14.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 6, edges = [[0,1],[1,2],[1,3],[3,4],[3,5]], price = [9,8,7,6,10,5]</span><br><span class="line">输出：24</span><br><span class="line">解释：上图展示了以节点 2 为根的树。左图（红色的节点）是最大价值和路径，右图（蓝色的节点）是最小价值和路径。</span><br><span class="line">- 第一条路径节点为 [2,1,3,4]：价值为 [7,8,6,10] ，价值和为 31 。</span><br><span class="line">- 第二条路径节点为 [2] ，价值为 [7] 。</span><br><span class="line">最大路径和与最小路径和的差值为 24 。24 是所有方案中的最大开销。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/11/24/p1_example2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/11/24/p1_example2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 3, edges = [[0,1],[1,2]], price = [1,1,1]</span><br><span class="line">输出：2</span><br><span class="line">解释：上图展示了以节点 0 为根的树。左图（红色的节点）是最大价值和路径，右图（蓝色的节点）是最小价值和路径。</span><br><span class="line">- 第一条路径包含节点 [0,1,2]：价值为 [1,1,1] ，价值和为 3 。</span><br><span class="line">- 第二条路径节点为 [0] ，价值为 [1] 。</span><br><span class="line">最大路径和与最小路径和的差值为 2 。2 是所有方案中的最大开销。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -6081,15 +6081,15 @@
 <p>一条路径耗费的 <strong>体力值</strong> 是路径上相邻格子之间 <strong>高度差绝对值</strong> 的 <strong>最大值</strong> 决定的。</p>
 <p>请你返回从左上角走到右下角的最小 <strong>体力消耗值</strong> 。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/ex1.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/ex1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：heights = [[1,2,2],[3,8,2],[5,3,5]]</span><br><span class="line">输出：2</span><br><span class="line">解释：路径 [1,3,5,3,5] 连续格子的差值绝对值最大为 2 。</span><br><span class="line">这条路径比路径 [1,2,2,2,5] 更优，因为另一条路径差值最大值为 3 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/ex2.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/ex2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：heights = [[1,2,3],[3,8,4],[5,3,5]]</span><br><span class="line">输出：1</span><br><span class="line">解释：路径 [1,2,3,4,5] 的相邻格子差值绝对值最大为 1 ，比路径 [1,3,5,3,5] 更优。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/ex3.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/ex3.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：heights = [[1,2,1,1,1],[1,2,1,2,1],[1,2,1,2,1],[1,2,1,2,1],[1,1,1,2,1]]</span><br><span class="line">输出：0</span><br><span class="line">解释：上图所示路径不需要消耗任何体力。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -6162,11 +6162,11 @@
 <p>在执行第一次旅行之前，你可以选择一些 <strong>非相邻节点</strong> 并将价格减半。</p>
 <p>返回执行所有旅行的最小价格总和。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2023/03/16/diagram2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2023/03/16/diagram2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 4, edges = [[0,1],[1,2],[1,3]], price = [2,2,10,6], trips = [[0,3],[2,1],[2,3]]</span><br><span class="line">输出：23</span><br><span class="line">解释：</span><br><span class="line">上图表示将节点 2 视为根之后的树结构。第一个图表示初始树，第二个图表示选择节点 0 、2 和 3 并使其价格减半后的树。</span><br><span class="line">第 1 次旅行，选择路径 [0,1,3] 。路径的价格总和为 1 + 2 + 3 = 6 。</span><br><span class="line">第 2 次旅行，选择路径 [2,1] 。路径的价格总和为 2 + 5 = 7 。</span><br><span class="line">第 3 次旅行，选择路径 [2,1,3] 。路径的价格总和为 5 + 2 + 3 = 10 。</span><br><span class="line">所有旅行的价格总和为 6 + 7 + 10 = 23 。可以证明，23 是可以实现的最小答案。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2023/03/16/diagram3.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2023/03/16/diagram3.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 2, edges = [[0,1]], price = [2,2], trips = [[0,0]]</span><br><span class="line">输出：1</span><br><span class="line">解释：</span><br><span class="line">上图表示将节点 0 视为根之后的树结构。第一个图表示初始树，第二个图表示选择节点 0 并使其价格减半后的树。 </span><br><span class="line">第 1 次旅行，选择路径 [0] 。路径的价格总和为 1 。 </span><br><span class="line">所有旅行的价格总和为 1 。可以证明，1 是可以实现的最小答案。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -6291,19 +6291,19 @@
 <p>给定在 xy 平面上的一组点，确定由这些点组成的任何矩形的最小面积，其中矩形的边<strong>不一定平行于</strong> x 轴和 y 轴。</p>
 <p>如果没有任何矩形，就返回 0。</p>
 <p><strong>示例 1：</strong></p>
-<p><strong><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/22/1a.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/22/1a.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：[[1,2],[2,1],[1,0],[0,1]]</span><br><span class="line">输出：2.00000</span><br><span class="line">解释：最小面积的矩形出现在 [1,2],[2,1],[1,0],[0,1] 处，面积为 2。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/23/2.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/23/2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：[[0,1],[2,1],[1,1],[1,0],[2,0]]</span><br><span class="line">输出：1.00000</span><br><span class="line">解释：最小面积的矩形出现在 [1,0],[1,1],[2,1],[2,0] 处，面积为 1。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/23/3.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/23/3.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：[[0,3],[1,2],[3,1],[1,3],[2,1]]</span><br><span class="line">输出：0</span><br><span class="line">解释：没法从这些点中组成任何矩形。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 4：</strong></p>
-<p><strong><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/21/4c.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/21/4c.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：[[3,1],[1,1],[0,1],[2,1],[3,3],[3,2],[0,2],[2,3]]</span><br><span class="line">输出：2.00000</span><br><span class="line">解释：最小面积的矩形出现在 [2,1],[2,3],[3,3],[3,1] 处，面积为 2。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ol>
@@ -6344,15 +6344,15 @@
 <p>这只青蛙从点 0 处跑道 <code>2</code> 出发，并想到达点 <code>n</code> 处的 <strong>任一跑道</strong> ，请你返回 <strong>最少侧跳次数</strong> 。</p>
 <p><strong>注意</strong>：点 <code>0</code> 处和点 <code>n</code> 处的任一跑道都不会有障碍。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/03/25/ic234-q3-ex1.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/03/25/ic234-q3-ex1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：obstacles = [0,1,2,3,0]</span><br><span class="line">输出：2 </span><br><span class="line">解释：最优方案如上图箭头所示。总共有 2 次侧跳（红色箭头）。</span><br><span class="line">注意，这只青蛙只有当侧跳时才可以跳过障碍（如上图点 2 处所示）。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/03/25/ic234-q3-ex2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/03/25/ic234-q3-ex2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：obstacles = [0,1,1,3,3,0]</span><br><span class="line">输出：0</span><br><span class="line">解释：跑道 2 没有任何障碍，所以不需要任何侧跳。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/03/25/ic234-q3-ex3.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/03/25/ic234-q3-ex3.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：obstacles = [0,2,1,0,3,0]</span><br><span class="line">输出：2</span><br><span class="line">解释：最优方案如上图所示。总共有 2 次侧跳。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -6683,11 +6683,11 @@
 <p>给你一个查询数组<code>queries</code> ，其中 <code>queries[j] = [pj, qj, limitj]</code> ，你的任务是对于每个查询 <code>queries[j]</code> ，判断是否存在从 <code>pj</code> 到 <code>qj</code> 的路径，且这条路径上的每一条边都 <strong>严格小于</strong> <code>limitj</code> 。</p>
 <p>请你返回一个 <strong>布尔数组</strong> <code>answer</code> ，其中 <code>answer.length == queries.length</code> ，当 <code>queries[j]</code> 的查询结果为 <code>true</code> 时， <code>answer</code> 第 <code>j</code> 个值为 <code>true</code> ，否则为 <code>false</code> 。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/19/h.png" alt="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/19/h.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/19/h.png" alt="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/19/h.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：n = 3, edgeList = [[0,1,2],[1,2,4],[2,0,8],[1,0,16]], queries = [[0,1,2],[0,2,5]]</span><br><span class="line">输出：[false,true]</span><br><span class="line">解释：上图为给定的输入数据。注意到 0 和 1 之间有两条重边，分别为 2 和 16 。</span><br><span class="line">对于第一个查询，0 和 1 之间没有小于 2 的边，所以我们返回 false 。</span><br><span class="line">对于第二个查询，有一条路径（0 -&gt; 1 -&gt; 2）两条边都小于 5 ，所以这个查询我们返回 true 。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/19/q.png" alt="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/19/q.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/19/q.png" alt="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/19/q.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：n = 5, edgeList = [[0,1,10],[1,2,5],[2,3,9],[3,4,13]], queries = [[0,4,14],[1,4,13]]</span><br><span class="line">输出：[true,false]</span><br><span class="line">解释：上图为给定数据。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>提示：</strong></p>
@@ -6838,7 +6838,7 @@
 <p>$c(x) = \frac{1-\sqrt{1-4x}}{2x}=\sum \limits_{i=1}^{\infty}\frac{(2i-3)!!}{n!}(2x)^{i-1}=\sum \limits_{i=1}^{\infty}\frac{(2i-3)!!(2i-2)!!}{i!(i-1)!}x^{i-1}=\sum \limits_{i=1}^{\infty}\frac{(2i-2)!}{i!(i-1)!}x^{i-1} = \sum \limits_{i=0}^{\infty}\frac{(2i)!}{i!(i+1)!}x^{i} = \sum \limits_{i=0}^{\infty}\frac{C_{2i}^i}{i+1}x^{i}$</p>
 <p>$C(i) = \frac{C_{2i}^{i}}{i+1}$</p>
 <p><strong>格路模型</strong></p>
-<p><img src="https://i.328888.xyz/2022/12/12/yOcut.png" alt="yOcut.png"></p>
+<p><img data-src="https://i.328888.xyz/2022/12/12/yOcut.png" alt="yOcut.png"></p>
 <p>一个$n*n$的网格，问从左下角顶点$(0,0)$到右上角顶点$(n,n)$每次只能向右或向上走一个单位，且不能越过$y=x$这条对角线到达上半区域的路径数。我们可以先求出可越过对角线的所有路径，然后减去不合法路径。其实不合法路径一定会经过$y=x+1$这条线，从$(-1,1)$到$(n,n)$一定越过了$y=x+1$，由对称性$(-1,1)$到$(n,n)$的每一条路径都对应着$(0,0)$到$(n,n)$的不合法路径，所以合法路径数是$C_{2n}^{n}-C_{2n}^{n-1} = \frac{C_{2n}^{n}}{n+1}$</p>
 <h1 id="指数型母函数"><a href="#指数型母函数" class="headerlink" title="指数型母函数"></a>指数型母函数</h1><p>普通母函数定义：对于$c_0,c_1,c_2,\dots$ 构造函数$G(x) = c_0+c_1x+c_2x^2+\dots$ 称$G(x)$为序列$c_0,c_1,c_2,\dots$ 的母函数，普通母函数可用于求<strong>多重组合数</strong></p>
 <p>eg: 3个a，2个b，3个c取4个数进行组合。</p>
@@ -6946,11 +6946,11 @@
 <p>当开始下雨时，在时间为 <code>t</code> 时，水池中的水位为 <code>t</code> 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。</p>
 <p>你从坐标方格的左上平台 <code>(0，0)</code> 出发。返回 <em>你到达坐标方格的右下平台 <code>(n-1, n-1)</code> 所需的最少时间 。</em></p>
 <p><strong>示例 1:</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/06/29/swim1-grid.jpg"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/06/29/swim1-grid.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入: grid = [[0,2],[1,3]]</span><br><span class="line">输出: 3</span><br><span class="line">解释:</span><br><span class="line">时间为0时，你位于坐标方格的位置为 (0, 0)。</span><br><span class="line">此时你不能游向任意方向，因为四个相邻方向平台的高度都大于当前时间为 0 时的水位。</span><br><span class="line">等时间到达 3 时，你才可以游向平台 (1, 1). 因为此时的水位是 3，坐标方格中的平台没有比水位 3 更高的，所以你可以游向坐标方格中的任意位置</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2:</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入: grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]</span><br><span class="line">输出: 16</span><br><span class="line">解释: 最终的路线用加粗进行了标记。</span><br><span class="line">我们必须等到时间为 16，此时才能保证平台 (0, 0) 和 (4, 4) 是连通的</span><br></pre></td></tr></table></figure>
 <p><strong>提示:</strong></p>
 <ul>
@@ -7555,7 +7555,7 @@
 <p>给你一个整数 <code>n</code> 和一个长度为 <code>n + 1</code> 的整数数组 <code>ranges</code> ，其中 <code>ranges[i]</code> （下标从 0 开始）表示：如果打开点 <code>i</code> 处的水龙头，可以灌溉的区域为 <code>[i -  ranges[i], i + ranges[i]]</code> 。</p>
 <p>请你返回可以灌溉整个花园的 <strong>最少水龙头数目</strong> 。如果花园始终存在无法灌溉到的地方，请你返回 <strong>-1</strong> 。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/01/19/1685_example_1.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/01/19/1685_example_1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 5, ranges = [3,4,1,1,0,0]</span><br><span class="line">输出：1</span><br><span class="line">解释：</span><br><span class="line">点 0 处的水龙头可以灌溉区间 [-3,3]</span><br><span class="line">点 1 处的水龙头可以灌溉区间 [-3,5]</span><br><span class="line">点 2 处的水龙头可以灌溉区间 [1,3]</span><br><span class="line">点 3 处的水龙头可以灌溉区间 [2,4]</span><br><span class="line">点 4 处的水龙头可以灌溉区间 [4,4]</span><br><span class="line">点 5 处的水龙头可以灌溉区间 [5,5]</span><br><span class="line">只需要打开点 1 处的水龙头即可灌溉整个花园 [0,5] 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
@@ -7642,11 +7642,11 @@
 <p>另给你一个字符串 <code>s</code> ，长度也是 <code>n</code> ，其中 <code>s[i]</code> 表示分配给节点 <code>i</code> 的字符。</p>
 <p>请你找出路径上任意一对相邻节点都没有分配到相同字符的 <strong>最长路径</strong> ，并返回该路径的长度。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/03/25/testingdrawio.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/03/25/testingdrawio.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：parent = [-1,0,0,1,1,2], s = &quot;abacbe&quot;</span><br><span class="line">输出：3</span><br><span class="line">解释：任意一对相邻节点字符都不同的最长路径是：0 -&gt; 1 -&gt; 3 。该路径的长度是 3 ，所以返回 3 。</span><br><span class="line">可以证明不存在满足上述条件且比 3 更长的路径。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/03/25/graph2drawio.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/03/25/graph2drawio.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：parent = [-1,0,0,0], s = &quot;aabc&quot;</span><br><span class="line">输出：3</span><br><span class="line">解释：任意一对相邻节点字符都不同的最长路径是：2 -&gt; 0 -&gt; 3 。该路径的长度为 3 ，所以返回 3 。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -7684,15 +7684,15 @@
 <p>请你找出从某个单元开始访问矩阵所能访问的 <strong>单元格的最大数量</strong> 。</p>
 <p>返回一个表示可访问单元格最大数量的整数。</p>
 <p><strong>示例 1：</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2023/04/23/diag1drawio.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode.com/uploads/2023/04/23/diag1drawio.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：mat = [[3,1],[3,4]]</span><br><span class="line">输出：2</span><br><span class="line">解释：上图展示了从第 1 行、第 2 列的单元格开始，可以访问 2 个单元格。可以证明，无论从哪个单元格开始，最多只能访问 2 个单元格，因此答案是 2 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2023/04/23/diag3drawio.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode.com/uploads/2023/04/23/diag3drawio.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：mat = [[1,1],[1,1]]</span><br><span class="line">输出：1</span><br><span class="line">解释：由于目标单元格必须严格大于当前单元格，在本示例中只能访问 1 个单元格。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2023/04/23/diag4drawio.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode.com/uploads/2023/04/23/diag4drawio.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：mat = [[3,1,6],[-9,5,7]]</span><br><span class="line">输出：4</span><br><span class="line">解释：上图展示了从第 2 行、第 1 列的单元格开始，可以访问 4 个单元格。可以证明，无论从哪个单元格开始，最多只能访问 4 个单元格，因此答案是 4 。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -7735,11 +7735,11 @@
 <p>在过程结束后，<code>answer[i]</code> 是你可以获得的最大分数。注意，对于每个查询，你可以访问同一个单元格 <strong>多次</strong> 。</p>
 <p>返回结果数组 <code>answer</code> 。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/10/19/yetgriddrawio.png" alt="https://assets.leetcode.com/uploads/2022/10/19/yetgriddrawio.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/10/19/yetgriddrawio.png" alt="https://assets.leetcode.com/uploads/2022/10/19/yetgriddrawio.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：grid = [[1,2,3],[2,5,7],[3,5,1]], queries = [5,6,2]</span><br><span class="line">输出：[5,8,1]</span><br><span class="line">解释：上图展示了每个查询中访问并获得分数的单元格。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/10/20/yetgriddrawio-2.png" alt="https://assets.leetcode.com/uploads/2022/10/20/yetgriddrawio-2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/10/20/yetgriddrawio-2.png" alt="https://assets.leetcode.com/uploads/2022/10/20/yetgriddrawio-2.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：grid = [[5,2,1],[1,1,2]], queries = [3]</span><br><span class="line">输出：[0]</span><br><span class="line">解释：无法获得分数，因为左上角单元格的值大于等于 3 。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>提示：</strong></p>
@@ -7787,19 +7787,19 @@
 </ul>
 <p>题目保证按照上面规则 <code>answer</code> 数组是唯一的。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/rank1.jpg"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/rank1.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：matrix = [[1,2],[3,4]]</span><br><span class="line">输出：[[1,2],[2,3]]</span><br><span class="line">解释：</span><br><span class="line">matrix[0][0] 的秩为 1 ，因为它是所在行和列的最小整数。</span><br><span class="line">matrix[0][1] 的秩为 2 ，因为 matrix[0][1] &gt; matrix[0][0] 且 matrix[0][0] 的秩为 1 。</span><br><span class="line">matrix[1][0] 的秩为 2 ，因为 matrix[1][0] &gt; matrix[0][0] 且 matrix[0][0] 的秩为 1 。</span><br><span class="line">matrix[1][1] 的秩为 3 ，因为 matrix[1][1] &gt; matrix[0][1]， matrix[1][1] &gt; matrix[1][0] 且 matrix[0][1] 和 matrix[1][0] 的秩都为 2 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/rank2.jpg"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/rank2.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：matrix = [[7,7],[7,7]]</span><br><span class="line">输出：[[1,1],[1,1]]</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/rank3.jpg"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/rank3.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：matrix = [[20,-21,14],[-19,4,19],[22,-47,24],[-19,4,19]]</span><br><span class="line">输出：[[4,2,3],[1,3,4],[5,1,6],[1,3,4]]</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 4：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/rank4.jpg"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/rank4.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：matrix = [[7,3,6],[1,4,5],[9,8,2]]</span><br><span class="line">输出：[[5,1,4],[1,2,3],[6,3,1]]</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -7844,7 +7844,7 @@
 <p>建立一个图，图中节点是n-1位的k进制数，若节点x移除高位尾接一个低位e（e &lt; k）转变为节点y，则x存在指向y的一条有向边，边权为e。</p>
 <p>例：</p>
 <p>n = 3, k = 2</p>
-<p><img src="https://pic.leetcode-cn.com/ded26d0675ecbf5e6921523abd976f61e7bef51d9636bd6519f9c8e6f2d12efc-image.png"></p>
+<p><img data-src="https://pic.leetcode-cn.com/ded26d0675ecbf5e6921523abd976f61e7bef51d9636bd6519f9c8e6f2d12efc-image.png"></p>
 <p>图来自大佬<a href="https://leetcode.cn/u/newhar/">newhar</a></p>
 <p>我们只需要不重复的遍历所有边那么构造出来的字符串就是最短的。</p>
 <p>图中每个点有k个入度和k个出度，所以存在欧拉回路。</p>
@@ -7857,7 +7857,7 @@
 <p>最后完成深搜，栈中保存的就是逆向的欧拉回路，通过不断出栈得到的序列就是欧拉回路。</p>
 <p>例：</p>
 <p>n = 3, k = 2</p>
-<p><img src="https://pic.leetcode-cn.com/ded26d0675ecbf5e6921523abd976f61e7bef51d9636bd6519f9c8e6f2d12efc-image.png"></p>
+<p><img data-src="https://pic.leetcode-cn.com/ded26d0675ecbf5e6921523abd976f61e7bef51d9636bd6519f9c8e6f2d12efc-image.png"></p>
 <p>图来自大佬<a href="https://leetcode.cn/u/newhar/">newhar</a></p>
 <p>若选取00作为起点，每次尽可能选取边权较小的边。</p>
 <p>00 通过0边走向 00，删除0边</p>
@@ -7943,11 +7943,11 @@
 <li>树的高度是从根到树中某个节点的 <strong>最长简单路径中的边数</strong> 。</li>
 </ul>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/09/07/binaryytreeedrawio-1.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/09/07/binaryytreeedrawio-1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：root = [1,3,4,2,null,6,5,null,null,null,null,null,7], queries = [4]</span><br><span class="line">输出：[2]</span><br><span class="line">解释：上图展示了从树中移除以 4 为根节点的子树。</span><br><span class="line">树的高度是 2（路径为 1 -&gt; 3 -&gt; 2）。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/09/07/binaryytreeedrawio-2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/09/07/binaryytreeedrawio-2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：root = [5,8,9,2,1,3,7,4,6], queries = [3,2,4,8]</span><br><span class="line">输出：[3,2,3,2]</span><br><span class="line">解释：执行下述查询：</span><br><span class="line">- 移除以 3 为根节点的子树。树的高度变为 3（路径为 5 -&gt; 8 -&gt; 2 -&gt; 4）。</span><br><span class="line">- 移除以 2 为根节点的子树。树的高度变为 2（路径为 5 -&gt; 8 -&gt; 1）。</span><br><span class="line">- 移除以 4 为根节点的子树。树的高度变为 3（路径为 5 -&gt; 8 -&gt; 2 -&gt; 6）。</span><br><span class="line">- 移除以 8 为根节点的子树。树的高度变为 2（路径为 5 -&gt; 9 -&gt; 3）。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -8186,11 +8186,11 @@
 <p>请你返回一个整数数组 <code>count</code> ，长度为 <code>points.length</code>，其中 <code>count[j]</code>是 <strong>包含</strong> 第 <code>j</code> 个点的矩形数目。</p>
 <p>如果 <code>0 &lt;= xj &lt;= li</code> 且 <code>0 &lt;= yj &lt;= hi</code> ，那么我们说第 <code>i</code> 个矩形包含第 <code>j</code> 个点。如果一个点刚好在矩形的 <strong>边上</strong> ，这个点也被视为被矩形包含。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/03/02/example1.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/03/02/example1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：rectangles = [[1,2],[2,3],[2,5]], points = [[2,1],[1,4]]</span><br><span class="line">输出：[2,1]</span><br><span class="line">解释：</span><br><span class="line">第一个矩形不包含任何点。</span><br><span class="line">第二个矩形只包含一个点 (2, 1) 。</span><br><span class="line">第三个矩形包含点 (2, 1) 和 (1, 4) 。</span><br><span class="line">包含点 (2, 1) 的矩形数目为 2 。</span><br><span class="line">包含点 (1, 4) 的矩形数目为 1 。</span><br><span class="line">所以，我们返回 [2, 1] 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/03/02/example2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/03/02/example2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：rectangles = [[1,1],[2,2],[3,3]], points = [[1,3],[1,1]]</span><br><span class="line">输出：[1,3]</span><br><span class="line">解释：</span><br><span class="line">第一个矩形只包含点 (1, 1) 。</span><br><span class="line">第二个矩形只包含点 (1, 1) 。</span><br><span class="line">第三个矩形包含点 (1, 3) 和 (1, 1) 。</span><br><span class="line">包含点 (1, 3) 的矩形数目为 1 。</span><br><span class="line">包含点 (1, 1) 的矩形数目为 3 。</span><br><span class="line">所以，我们返回 [1, 3] 。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -8280,11 +8280,11 @@
 <p>Alice 非常懒，她不想逐个回答 Bob 的猜测，只告诉 Bob 这些猜测里面 <strong>至少</strong> 有 <code>k</code> 个猜测的结果为 <code>true</code> 。</p>
 <p>给你二维整数数组 <code>edges</code> ，Bob 的所有猜测和整数 <code>k</code> ，请你返回可能成为树根的 <strong>节点数目</strong> 。如果没有这样的树，则返回 <code>0</code>。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/12/19/ex-1.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/12/19/ex-1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：edges = [[0,1],[1,2],[1,3],[4,2]], guesses = [[1,3],[0,1],[1,0],[2,4]], k = 3</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">根为节点 0 ，正确的猜测为 [1,3], [0,1], [2,4]</span><br><span class="line">根为节点 1 ，正确的猜测为 [1,3], [1,0], [2,4]</span><br><span class="line">根为节点 2 ，正确的猜测为 [1,3], [1,0], [2,4]</span><br><span class="line">根为节点 3 ，正确的猜测为 [1,0], [2,4]</span><br><span class="line">根为节点 4 ，正确的猜测为 [1,3], [1,0]</span><br><span class="line">节点 0 ，1 或 2 为根时，可以得到 3 个正确的猜测。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/12/19/ex-2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/12/19/ex-2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：edges = [[0,1],[1,2],[2,3],[3,4]], guesses = [[1,0],[3,4],[2,1],[3,2]], k = 1</span><br><span class="line">输出：5</span><br><span class="line">解释：</span><br><span class="line">根为节点 0 ，正确的猜测为 [3,4]</span><br><span class="line">根为节点 1 ，正确的猜测为 [1,0], [3,4]</span><br><span class="line">根为节点 2 ，正确的猜测为 [1,0], [2,1], [3,4]</span><br><span class="line">根为节点 3 ，正确的猜测为 [1,0], [2,1], [3,2], [3,4]</span><br><span class="line">根为节点 4 ，正确的猜测为 [1,0], [2,1], [3,2]</span><br><span class="line">任何节点为根，都至少有 1 个正确的猜测。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -8433,7 +8433,7 @@
 <p>请你返回一个大小为 <code>n-1</code> 的数组，其中第 <code>d</code> 个元素（<strong>下标从 1 开始</strong>）是城市间 <strong>最大距离</strong> 恰好等于 <code>d</code> 的子树数目。</p>
 <p><strong>请注意</strong>，两个城市间距离定义为它们之间需要经过的边的数目。</p>
 <p><strong>示例 1：</strong></p>
-<p><strong><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/11/p1.png"></strong></p>
+<p><strong><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/11/p1.png"></strong></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 4, edges = [[1,2],[2,3],[2,4]]</span><br><span class="line">输出：[3,4,0]</span><br><span class="line">解释：</span><br><span class="line">子树 &#123;1,2&#125;, &#123;2,3&#125; 和 &#123;2,4&#125; 最大距离都是 1 。</span><br><span class="line">子树 &#123;1,2,3&#125;, &#123;1,2,4&#125;, &#123;2,3,4&#125; 和 &#123;1,2,3,4&#125; 最大距离都为 2 。</span><br><span class="line">不存在城市间最大距离为 3 的子树。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
@@ -8475,15 +8475,15 @@
 </ul>
 <p>请你返回到达 <strong>右下角</strong> 格子 <code>(m - 1, n - 1)</code> 需要经过的最少移动格子数，如果无法到达右下角格子，请你返回 <code>-1</code> 。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2023/01/25/ex1.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2023/01/25/ex1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[3,4,2,1],[4,2,3,1],[2,1,0,0],[2,4,0,0]]</span><br><span class="line">输出：4</span><br><span class="line">解释：上图展示了到达右下角格子经过的 4 个格子。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2023/01/25/ex2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2023/01/25/ex2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[3,4,2,1],[4,2,1,1],[2,1,1,0],[3,4,1,0]]</span><br><span class="line">输出：3</span><br><span class="line">解释：上图展示了到达右下角格子经过的 3 个格子。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2023/01/26/ex3.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2023/01/26/ex3.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[2,1,0],[1,0,0]]</span><br><span class="line">输出：-1</span><br><span class="line">解释：无法到达右下角格子。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -8719,15 +8719,15 @@
 <p><strong>单值网格</strong> 是全部元素都相等的网格。</p>
 <p>返回使网格化为单值网格所需的 <strong>最小</strong> 操作数。如果不能，返回 <code>-1</code> 。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/09/21/gridtxt.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/09/21/gridtxt.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[2,4],[6,8]], x = 2</span><br><span class="line">输出：4</span><br><span class="line">解释：可以执行下述操作使所有元素都等于 4 ： </span><br><span class="line">- 2 加 x 一次。</span><br><span class="line">- 6 减 x 一次。</span><br><span class="line">- 8 减 x 两次。</span><br><span class="line">共计 4 次操作。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/09/21/gridtxt-1.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/09/21/gridtxt-1.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[1,5],[2,3]], x = 1</span><br><span class="line">输出：5</span><br><span class="line">解释：可以使所有元素都等于 3 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/09/21/gridtxt-2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/09/21/gridtxt-2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[1,2],[3,4]], x = 2</span><br><span class="line">输出：-1</span><br><span class="line">解释：无法使所有元素相等。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -8942,7 +8942,7 @@
 <li><code>int shortestPath(int node1, int node2)</code> 返回从节点 <code>node1</code> 到 <code>node2</code> 的路径 <strong>最小</strong> 代价。如果路径不存在，返回 <code>-1</code> 。一条路径的代价是路径中所有边代价之和。</li>
 </ul>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2023/01/11/graph3drawio-2.png"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2023/01/11/graph3drawio-2.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：</span><br><span class="line">[&quot;Graph&quot;, &quot;shortestPath&quot;, &quot;shortestPath&quot;, &quot;addEdge&quot;, &quot;shortestPath&quot;]</span><br><span class="line">[[4, [[0, 2, 5], [0, 1, 2], [1, 2, 1], [3, 0, 3]]], [3, 2], [0, 3], [[1, 3, 4]], [0, 3]]</span><br><span class="line">输出：</span><br><span class="line">[null, 6, -1, null, 6]</span><br><span class="line"></span><br><span class="line">解释：</span><br><span class="line">Graph g = new Graph(4, [[0, 2, 5], [0, 1, 2], [1, 2, 1], [3, 0, 3]]);</span><br><span class="line">g.shortestPath(3, 2); // 返回 6 。从 3 到 2 的最短路径如第一幅图所示：3 -&gt; 0 -&gt; 1 -&gt; 2 ，总代价为 3 + 2 + 1 = 6 。</span><br><span class="line">g.shortestPath(0, 3); // 返回 -1 。没有从 0 到 3 的路径。</span><br><span class="line">g.addEdge([1, 3, 4]); // 添加一条节点 1 到节点 3 的边，得到第二幅图。</span><br><span class="line">g.shortestPath(0, 3); // 返回 6 。从 0 到 3 的最短路径为 0 -&gt; 1 -&gt; 3 ，总代价为 2 + 4 = 6 。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -9106,15 +9106,15 @@
 <p>注意，如果你到达安全屋后，火马上到了安全屋，这视为你能够安全到达安全屋。</p>
 <p>如果两个格子有共同边，那么它们为 <strong>相邻</strong> 格子。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/03/10/ex1new.jpg"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/03/10/ex1new.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[0,2,0,0,0,0,0],[0,0,0,2,2,1,0],[0,2,0,0,1,2,0],[0,0,2,2,2,0,2],[0,0,0,0,0,0,0]]</span><br><span class="line">输出：3</span><br><span class="line">解释：上图展示了你在初始位置停留 3 分钟后的情形。</span><br><span class="line">你仍然可以安全到达安全屋。</span><br><span class="line">停留超过 3 分钟会让你无法安全到达安全屋。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/03/10/ex2new2.jpg"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/03/10/ex2new2.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[0,0,0,0],[0,1,2,0],[0,2,0,0]]</span><br><span class="line">输出：-1</span><br><span class="line">解释：上图展示了你马上开始朝安全屋移动的情形。</span><br><span class="line">火会蔓延到你可以移动的所有格子，所以无法安全到达安全屋。</span><br><span class="line">所以返回 -1 。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2022/03/10/ex3new.jpg"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2022/03/10/ex3new.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：grid = [[0,0,0],[2,2,0],[1,2,0]]</span><br><span class="line">输出：1000000000</span><br><span class="line">解释：上图展示了初始网格图。</span><br><span class="line">注意，由于火被墙围了起来，所以无论如何你都能安全到达安全屋。</span><br><span class="line">所以返回 109 。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -9212,11 +9212,11 @@
 </ul>
 <p>假定所有机票至少存在一种合理的行程。且所有的机票 必须都用一次 且 只能用一次。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/03/14/itinerary1-graph.jpg"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/03/14/itinerary1-graph.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：tickets = [[&quot;MUC&quot;,&quot;LHR&quot;],[&quot;JFK&quot;,&quot;MUC&quot;],[&quot;SFO&quot;,&quot;SJC&quot;],[&quot;LHR&quot;,&quot;SFO&quot;]]</span><br><span class="line">输出：[&quot;JFK&quot;,&quot;MUC&quot;,&quot;LHR&quot;,&quot;SFO&quot;,&quot;SJC&quot;]</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/03/14/itinerary2-graph.jpg"></p>
+<p><img data-src="https://assets.leetcode.com/uploads/2021/03/14/itinerary2-graph.jpg"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：tickets = [[&quot;JFK&quot;,&quot;SFO&quot;],[&quot;JFK&quot;,&quot;ATL&quot;],[&quot;SFO&quot;,&quot;ATL&quot;],[&quot;ATL&quot;,&quot;JFK&quot;],[&quot;ATL&quot;,&quot;SFO&quot;]]</span><br><span class="line">输出：[&quot;JFK&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;SFO&quot;]</span><br><span class="line">解释：另一种有效的行程是 [&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;ATL&quot;,&quot;SFO&quot;] ，但是它字典排序更大更靠后。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
@@ -9256,15 +9256,15 @@
 <p>假设正方形瓷砖的规格不限，边长都是整数。</p>
 <p>请你帮设计师计算一下，最少需要用到多少块方形瓷砖？</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/25/sample_11_1592.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/25/sample_11_1592.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 2, m = 3</span><br><span class="line">输出：3</span><br><span class="line">解释：3 块地砖就可以铺满卧室。</span><br><span class="line">     2 块 1x1 地砖</span><br><span class="line">     1 块 2x2 地砖</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/25/sample_22_1592.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/25/sample_22_1592.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 5, m = 8</span><br><span class="line">输出：5</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/25/sample_33_1592.png"></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/25/sample_33_1592.png"></p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：n = 11, m = 13</span><br><span class="line">输出：6</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
