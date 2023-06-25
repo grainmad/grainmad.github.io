@@ -3148,6 +3148,35 @@
       </tags>
   </entry>
   <entry>
+    <title>798C Mike and gcd problem</title>
+    <url>/2023/06/26/798C/</url>
+    <content><![CDATA[<h1 id="Mike-and-gcd-problem"><a href="#Mike-and-gcd-problem" class="headerlink" title="Mike and gcd problem"></a>Mike and gcd problem</h1><p>Created by LXC on Sun Jun 25 23:29:49 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/798/C">https://codeforces.com/problemset/problem/798/C</a></p>
+<p>ranting: 1700</p>
+<p>tag: dp, greedy, number theory</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出一个长度为n的数组，n&gt;2。</p>
+<p>当一个数组的最大公约数为大于1时则为美丽数组。</p>
+<p>每次操作可以让相邻的两个数$a_i$与$a_{i+1}$分别重新赋值为$a_i-a_{i+1}$和$a_i+a_{i+1}$。</p>
+<p>问最少多少次操作可以使得数组变为美丽数组。</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>猜测结论，当数组不为美丽数组可以通过操作变为美丽数组。</p>
+<p>因为两个相邻的数都是奇数则一次操作后都变偶数；当为一奇一偶则一次操作变成两个奇数。</p>
+<p>所以理论上所有数都可以变成偶数。因此最大公约数可以大于1。</p>
+<p>我们统计每个连续奇数的子段长度。不妨设共有k段，第i段的长度为$len_i$。</p>
+<p>对于$len_i$为偶数则只需要$\frac{len_i}{2}$次操作；对于$len_i$为奇数数则只需要$\frac{len_i-1}{2}$次操作基础上再加两次；</p>
+<p>所以答案为$\sum \limits_{i=1}^{k}( \lfloor \frac{len_i}{2} \rfloor + 2 \times len_i \bmod 2)$</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;ll&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">    ll g = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : a)</span><br><span class="line">        cin &gt;&gt; i, g = __gcd(g, i);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (g &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;0\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, p; i &lt; n; i++) &#123;</span><br><span class="line">            p = i;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; n &amp;&amp; a[i] % <span class="number">2</span>)</span><br><span class="line">                i++;</span><br><span class="line">            ans += (i - p) / <span class="number">2</span> + (i - p) % <span class="number">2</span> * <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>greedy</tag>
+        <tag>dp</tag>
+        <tag>number theory</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>818F Level Generation</title>
     <url>/2023/05/17/818F/</url>
     <content><![CDATA[<h1 id="Level-Generation"><a href="#Level-Generation" class="headerlink" title="Level Generation"></a>Level Generation</h1><p>Created by LXC on Wed May  3 12:50:29 2023</p>
