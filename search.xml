@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>1043E Train Hard, Win Easy</title>
+    <url>/2023/06/25/1043E/</url>
+    <content><![CDATA[<h1 id="Train-Hard-Win-Easy"><a href="#Train-Hard-Win-Easy" class="headerlink" title="Train Hard, Win Easy"></a>Train Hard, Win Easy</h1><p>Created by LXC on Fri Jun 23 23:22:28 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1043/E">https://codeforces.com/problemset/problem/1043/E</a></p>
+<p>ranting: 1900</p>
+<p>tag: constructive algorithms, greedy, math, sortings</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>constructive algorithms</tag>
+        <tag>greedy</tag>
+        <tag>math</tag>
+        <tag>sortings</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1061C Multiplicity</title>
     <url>/2023/06/06/1061C/</url>
     <content><![CDATA[<h1 id="Multiplicity"><a href="#Multiplicity" class="headerlink" title="Multiplicity"></a>Multiplicity</h1><p>Created by LXC on Tue May 30 09:23:32 2023</p>
@@ -24,10 +44,10 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>math</tag>
         <tag>data structures</tag>
         <tag>dp</tag>
         <tag>implementation</tag>
-        <tag>math</tag>
         <tag>number theory</tag>
       </tags>
   </entry>
@@ -56,9 +76,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>greedy</tag>
         <tag>dp</tag>
         <tag>binary search</tag>
-        <tag>greedy</tag>
       </tags>
   </entry>
   <entry>
@@ -81,8 +101,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
         <tag>greedy</tag>
+        <tag>implementation</tag>
         <tag>two pointers</tag>
       </tags>
   </entry>
@@ -105,10 +125,10 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>binary search</tag>
         <tag>greedy</tag>
-        <tag>two pointers</tag>
         <tag>sortings</tag>
+        <tag>binary search</tag>
+        <tag>two pointers</tag>
         <tag>ternary search</tag>
       </tags>
   </entry>
@@ -167,11 +187,11 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
-        <tag>binary search</tag>
+        <tag>constructive algorithms</tag>
         <tag>greedy</tag>
         <tag>sortings</tag>
-        <tag>constructive algorithms</tag>
+        <tag>implementation</tag>
+        <tag>binary search</tag>
         <tag>divide and conquer</tag>
       </tags>
   </entry>
@@ -196,9 +216,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
-        <tag>greedy</tag>
         <tag>constructive algorithms</tag>
+        <tag>greedy</tag>
+        <tag>implementation</tag>
         <tag>strings</tag>
       </tags>
   </entry>
@@ -226,9 +246,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
-        <tag>greedy</tag>
         <tag>constructive algorithms</tag>
+        <tag>greedy</tag>
+        <tag>implementation</tag>
         <tag>brute force</tag>
         <tag>geometry</tag>
       </tags>
@@ -318,8 +338,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>dp</tag>
         <tag>greedy</tag>
+        <tag>dp</tag>
         <tag>bitmasks</tag>
         <tag>graphs</tag>
       </tags>
@@ -350,8 +370,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
         <tag>math</tag>
+        <tag>implementation</tag>
         <tag>binary search</tag>
         <tag>two pointers</tag>
       </tags>
@@ -374,9 +394,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>constructive algorithms</tag>
         <tag>math</tag>
         <tag>number theory</tag>
-        <tag>constructive algorithms</tag>
       </tags>
   </entry>
   <entry>
@@ -402,8 +422,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>dp</tag>
         <tag>greedy</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -428,8 +448,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>dp</tag>
         <tag>greedy</tag>
+        <tag>dp</tag>
         <tag>brute force</tag>
         <tag>bitmasks</tag>
       </tags>
@@ -481,8 +501,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>math</tag>
         <tag>constructive algorithms</tag>
+        <tag>math</tag>
         <tag>bitmasks</tag>
         <tag>interactive</tag>
       </tags>
@@ -559,10 +579,10 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>dp</tag>
         <tag>math</tag>
-        <tag>number theory</tag>
         <tag>sortings</tag>
+        <tag>dp</tag>
+        <tag>number theory</tag>
       </tags>
   </entry>
   <entry>
@@ -633,8 +653,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>greedy</tag>
         <tag>constructive algorithms</tag>
+        <tag>greedy</tag>
       </tags>
   </entry>
   <entry>
@@ -659,9 +679,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>math</tag>
         <tag>data structures</tag>
         <tag>dp</tag>
-        <tag>math</tag>
       </tags>
   </entry>
   <entry>
@@ -707,9 +727,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
         <tag>math</tag>
         <tag>sortings</tag>
+        <tag>implementation</tag>
       </tags>
   </entry>
   <entry>
@@ -801,9 +821,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>math</tag>
         <tag>data structures</tag>
         <tag>implementation</tag>
-        <tag>math</tag>
         <tag>combinatorics</tag>
         <tag>brute force</tag>
       </tags>
@@ -965,8 +985,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
         <tag>math</tag>
+        <tag>implementation</tag>
         <tag>strings</tag>
         <tag>brute force</tag>
       </tags>
@@ -1053,6 +1073,30 @@
       <tags>
         <tag>cf</tag>
         <tag>contest</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1689D Lena and Matrix</title>
+    <url>/2023/06/25/1689D/</url>
+    <content><![CDATA[<h1 id="Lena-and-Matrix"><a href="#Lena-and-Matrix" class="headerlink" title="Lena and Matrix"></a>Lena and Matrix</h1><p>Created by LXC on Sat Jun 24 10:59:39 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1689/D">https://codeforces.com/problemset/problem/1689/D</a></p>
+<p>ranting: 1900</p>
+<p>tag: data structures, dp, geometry, shortest paths</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>在一个n行m列矩阵中，元素非黑即白。</p>
+<p>元素值为该元素的的位置与所有黑色元素位置的欧几里得距离中的最大值。</p>
+<p>求最小的元素值的元素位置。</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>只需要记录x-y最大和最小的黑色元素，和x+y最大和最小的黑色元素。然后计算每个元素到它们的距离，求出最小值即可。</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="comment">// #define SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="function">vector&lt;string&gt; <span class="title">g</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : g)</span><br><span class="line">        cin &gt;&gt; i;</span><br><span class="line">    <span class="type">int</span> mxlu = -N, mnlu = N, mxru = -N, mnru = N;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (g[i][j] == <span class="string">&#x27;B&#x27;</span>) &#123;</span><br><span class="line">                mxlu = <span class="built_in">max</span>(mxlu, i - j);</span><br><span class="line">                mnlu = <span class="built_in">min</span>(mnlu, i - j);</span><br><span class="line">                mxru = <span class="built_in">max</span>(mxru, i + j);</span><br><span class="line">                mnru = <span class="built_in">min</span>(mnru, i + j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> ans = N, x, y;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">            <span class="type">int</span> mx = <span class="built_in">max</span>(&#123;<span class="built_in">abs</span>(i - mnlu - j), <span class="built_in">abs</span>(i - mxlu - j),</span><br><span class="line">                          <span class="built_in">abs</span>(mnru - i - j), <span class="built_in">abs</span>(mxru - i - j)&#125;);</span><br><span class="line">            <span class="keyword">if</span> (ans &gt; mx) &#123;</span><br><span class="line">                ans = mx;</span><br><span class="line">                x = i;</span><br><span class="line">                y = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; x + <span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y + <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>data structures</tag>
+        <tag>dp</tag>
+        <tag>geometry</tag>
+        <tag>shortest paths</tag>
       </tags>
   </entry>
   <entry>
@@ -1730,10 +1774,10 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>data structures</tag>
         <tag>math</tag>
-        <tag>binary search</tag>
         <tag>sortings</tag>
+        <tag>data structures</tag>
+        <tag>binary search</tag>
         <tag>bitmasks</tag>
         <tag>hashing</tag>
       </tags>
@@ -2556,8 +2600,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
         <tag>math</tag>
+        <tag>implementation</tag>
         <tag>geometry</tag>
       </tags>
   </entry>
@@ -2735,8 +2779,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>math</tag>
         <tag>greedy</tag>
+        <tag>math</tag>
         <tag>probabilities</tag>
       </tags>
   </entry>
@@ -2761,8 +2805,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
         <tag>math</tag>
+        <tag>implementation</tag>
         <tag>brute force</tag>
       </tags>
   </entry>
@@ -2814,8 +2858,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>binary search</tag>
         <tag>greedy</tag>
+        <tag>binary search</tag>
       </tags>
   </entry>
   <entry>
@@ -2866,8 +2910,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
         <tag>greedy</tag>
+        <tag>implementation</tag>
       </tags>
   </entry>
   <entry>
@@ -2893,8 +2937,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>binary search</tag>
         <tag>greedy</tag>
+        <tag>binary search</tag>
         <tag>two pointers</tag>
       </tags>
   </entry>
@@ -2916,9 +2960,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>math</tag>
         <tag>dp</tag>
         <tag>implementation</tag>
-        <tag>math</tag>
         <tag>brute force</tag>
         <tag>hashing</tag>
       </tags>
@@ -2988,9 +3032,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>math</tag>
         <tag>dp</tag>
         <tag>implementation</tag>
-        <tag>math</tag>
         <tag>combinatorics</tag>
         <tag>matrices</tag>
       </tags>
@@ -3017,9 +3061,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
-        <tag>math</tag>
         <tag>constructive algorithms</tag>
+        <tag>math</tag>
+        <tag>implementation</tag>
       </tags>
   </entry>
   <entry>
@@ -3057,8 +3101,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>implementation</tag>
         <tag>math</tag>
+        <tag>implementation</tag>
       </tags>
   </entry>
   <entry>
@@ -3145,8 +3189,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>math</tag>
         <tag>constructive algorithms</tag>
+        <tag>math</tag>
       </tags>
   </entry>
   <entry>
@@ -3169,8 +3213,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>data structures</tag>
         <tag>math</tag>
+        <tag>data structures</tag>
         <tag>brute force</tag>
       </tags>
   </entry>
@@ -6073,6 +6117,51 @@
       </tags>
   </entry>
   <entry>
+    <title>最大和查询</title>
+    <url>/2023/06/25/%E6%9C%80%E5%A4%A7%E5%92%8C%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/maximum-sum-queries/">2736. 最大和查询</a></p>
+<hr>
+<p>给你两个长度为 <code>n</code> 、下标从 <strong>0</strong> 开始的整数数组 <code>nums1</code> 和 <code>nums2</code> ，另给你一个下标从 <strong>1</strong> 开始的二维数组 <code>queries</code> ，其中 <code>queries[i] = [xi, yi]</code> 。</p>
+<p>对于第 <code>i</code> 个查询，在所有满足 <code>nums1[j] &gt;= xi</code> 且 <code>nums2[j] &gt;= yi</code> 的下标 <code>j</code> <code>(0 &lt;= j &lt; n)</code> 中，找出 <code>nums1[j] + nums2[j]</code> 的 <strong>最大值</strong> ，如果不存在满足条件的 <code>j</code> 则返回 <strong>-1</strong> 。</p>
+<p>返回数组 <code>answer</code> <em>，</em>其中 <code>answer[i]</code> 是第 <code>i</code> 个查询的答案。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums1 = [4,3,1,2], nums2 = [2,4,9,5], queries = [[4,1],[1,3],[2,5]]</span><br><span class="line">输出：[6,10,7]</span><br><span class="line">解释：</span><br><span class="line">对于第 1 个查询：xi = 4 且 yi = 1 ，可以选择下标 j = 0 ，此时 nums1[j] &gt;= 4 且 nums2[j] &gt;= 1 。nums1[j] + nums2[j] 等于 6 ，可以证明 6 是可以获得的最大值。</span><br><span class="line">对于第 2 个查询：xi = 1 且 yi = 3 ，可以选择下标 j = 2 ，此时 nums1[j] &gt;= 1 且 nums2[j] &gt;= 3 。nums1[j] + nums2[j] 等于 10 ，可以证明 10 是可以获得的最大值。</span><br><span class="line">对于第 3 个查询：xi = 2 且 yi = 5 ，可以选择下标 j = 3 ，此时 nums1[j] &gt;= 2 且 nums2[j] &gt;= 5 。nums1[j] + nums2[j] 等于 7 ，可以证明 7 是可以获得的最大值。</span><br><span class="line">因此，我们返回 [6,10,7] 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums1 = [3,2,5], nums2 = [2,3,4], queries = [[4,4],[3,2],[1,1]]</span><br><span class="line">输出：[9,9,9]</span><br><span class="line">解释：对于这个示例，我们可以选择下标 j = 2 ，该下标可以满足每个查询的限制。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums1 = [2,1], nums2 = [2,3], queries = [[3,3]]</span><br><span class="line">输出：[-1]</span><br><span class="line">解释：示例中的查询 xi = 3 且 yi = 3 。对于每个下标 j ，都只满足 nums1[j] &lt; xi 或者 nums2[j] &lt; yi 。因此，不存在答案。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li>  <code>nums1.length == nums2.length</code> </li>
+<li>  <code>n == nums1.length</code> </li>
+<li>  <code>1 &lt;= n &lt;= 10^5</code></li>
+<li>  <code>1 &lt;= nums1[i], nums2[i] &lt;= 10^9</code> </li>
+<li>  <code>1 &lt;= queries.length &lt;= 10^5</code></li>
+<li>  <code>queries[i].length == 2</code></li>
+<li>  <code>xi == queries[i][1]</code></li>
+<li>  <code>yi == queries[i][2]</code></li>
+<li><code>1 &lt;= xi, yi &lt;= 10^9</code></li>
+</ul>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>离线处理查询，将查询按照x相等则y大的排在前面，x不相等则x大的排前面进行排序。</p>
+<p>遍历排序后的查询，设当前查询为<code>(x,y)</code>，那么我们将所有<code>(nums1[i], nums2[i])</code>的点对中<code>nums1[i]&gt;=x</code>的<code>nums2[i]</code>作为键以及<code>nums1[i]+nums[j]</code>作为值加入到树状数组中。这样就可以用树状数组求出大于等于y的最大值以作为当前查询的答案。</p>
+<p>这里有几个细节问题需要解决。</p>
+<p>首先<code>num2[i]</code>最大值可达1e9，不能直接作为树状数组的索引。但是<code>nums1 nums2 queries</code>大小均不超过1e5, 我们可以对所有值进行离散化，再将离散化后的<code>nums2[i]</code>可以作为树状数组的键。</p>
+<p>此外，树状数组的基本功能可以做到单点修改，前缀求和。稍微修改可以求前缀的最大值。但是本题要求后缀的最大值（大于等于y的最大值）。我们可以用索引N-i替代索引i，反转了索引大小关系。这里N为树状数组大小。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> N 400004</span></span><br><span class="line">    <span class="type">int</span> a[N];</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">ask</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> rt = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=x; i; i-=i&amp;-i) &#123;</span><br><span class="line">            rt = <span class="built_in">max</span>(rt, a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=x; i&lt;N; i+=i&amp;-i) &#123;</span><br><span class="line">            a[i] = <span class="built_in">max</span>(a[i], val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">maximumSumQueries</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; queries)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">-1</span>, <span class="built_in">sizeof</span>(a));</span><br><span class="line">        map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; mp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i:nums1) mp[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i:nums2) mp[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i:queries) mp[i[<span class="number">0</span>]], mp[i[<span class="number">1</span>]];</span><br><span class="line">        <span class="type">int</span> c = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [i,j]:mp) j = c++;</span><br><span class="line">        <span class="type">int</span> n = nums1.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">idx</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="built_in">iota</span>(idx.<span class="built_in">begin</span>(), idx.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">sort</span>(idx.<span class="built_in">begin</span>(), idx.<span class="built_in">end</span>(), [&amp;](<span class="type">int</span> a, <span class="type">int</span> b) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums1[a] == nums1[b]) <span class="keyword">return</span> nums2[a] &gt; nums2[b];</span><br><span class="line">            <span class="keyword">return</span> nums1[a] &gt; nums1[b];</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="type">int</span> qn = queries.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">qidx</span><span class="params">(qn)</span></span>;</span><br><span class="line">        <span class="built_in">iota</span>(qidx.<span class="built_in">begin</span>(), qidx.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">sort</span>(qidx.<span class="built_in">begin</span>(), qidx.<span class="built_in">end</span>(), [&amp;](<span class="type">int</span> a, <span class="type">int</span> b) &#123;</span><br><span class="line">            <span class="keyword">return</span> queries[a][<span class="number">0</span>] &gt; queries[b][<span class="number">0</span>];</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(qn)</span></span>;</span><br><span class="line">        <span class="type">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i:qidx) &#123;</span><br><span class="line">            <span class="comment">// cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt;queries[i][0] &lt;&lt; &quot; &quot; &lt;&lt; queries[i][1] &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">            <span class="type">int</span> x = mp[queries[i][<span class="number">0</span>]], y = mp[queries[i][<span class="number">1</span>]];</span><br><span class="line">            <span class="keyword">while</span> (p&lt;n &amp;&amp; mp[nums1[idx[p]]]&gt;=x) &#123;</span><br><span class="line">                <span class="comment">// cout &lt;&lt; nums1[idx[p]] &lt;&lt; &quot; &quot; &lt;&lt; nums2[idx[p]] &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">                <span class="built_in">add</span>(N-mp[nums2[idx[p]]], nums1[idx[p]]+nums2[idx[p]]);</span><br><span class="line">                p++;</span><br><span class="line">            &#125;</span><br><span class="line">            ans[i] = <span class="built_in">ask</span>(N-y);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>一种比较优雅的实现方式，将查询二元组和点对二元组合并到一个三元组数组中，其中三元组第三关键字作为区分查询和点对的标志。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> N 400004</span></span><br><span class="line">    <span class="type">int</span> a[N];</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">ask</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> rt = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=x; i; i-=i&amp;-i) &#123;</span><br><span class="line">            rt = <span class="built_in">max</span>(rt, a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=x; i&lt;N; i+=i&amp;-i) &#123;</span><br><span class="line">            a[i] = <span class="built_in">max</span>(a[i], val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">maximumSumQueries</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; queries)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">-1</span>, <span class="built_in">sizeof</span>(a));</span><br><span class="line">        map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; mp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i:nums1) mp[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i:nums2) mp[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i:queries) mp[i[<span class="number">0</span>]], mp[i[<span class="number">1</span>]];</span><br><span class="line">        <span class="type">int</span> c = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [i,j]:mp) j = c++;</span><br><span class="line">        vector&lt;tuple&lt;<span class="type">int</span>,<span class="type">int</span>,<span class="type">int</span>&gt;&gt; a;</span><br><span class="line">        <span class="type">int</span> n = nums1.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">            a.<span class="built_in">emplace_back</span>(mp[nums1[i]], mp[nums2[i]], i+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> qn = queries.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;qn; i++) &#123;</span><br><span class="line">            a.<span class="built_in">emplace_back</span>(mp[queries[i][<span class="number">0</span>]], mp[queries[i][<span class="number">1</span>]], -i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(a.<span class="built_in">rbegin</span>(), a.<span class="built_in">rend</span>()); <span class="comment">// 三元组字典序降序排序</span></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(qn)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> [i,j,k]:a) &#123;</span><br><span class="line">            <span class="keyword">if</span> (k &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">add</span>(N-j, nums1[k<span class="number">-1</span>] + nums2[k<span class="number">-1</span>]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ans[-k] = <span class="built_in">ask</span>(N-j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>树状数组线段树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>最小体力消耗路径</title>
     <url>/2023/04/09/%E6%9C%80%E5%B0%8F%E4%BD%93%E5%8A%9B%E6%B6%88%E8%80%97%E8%B7%AF%E5%BE%84/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/path-with-minimum-effort/">1631. 最小体力消耗路径</a></p>
@@ -8063,6 +8152,53 @@
       </tags>
   </entry>
   <entry>
+    <title>给墙壁刷油漆</title>
+    <url>/2023/06/25/%E7%BB%99%E5%A2%99%E5%A3%81%E5%88%B7%E6%B2%B9%E6%BC%86/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/painting-the-walls/">2742. 给墙壁刷油漆</a></p>
+<hr>
+<p>给你两个长度为 <code>n</code> 下标从 <strong>0</strong> 开始的整数数组 <code>cost</code> 和 <code>time</code> ，分别表示给 <code>n</code> 堵不同的墙刷油漆需要的开销和时间。你有两名油漆匠：</p>
+<ul>
+<li>  一位需要 <strong>付费</strong> 的油漆匠，刷第 <code>i</code> 堵墙需要花费 <code>time[i]</code> 单位的时间，开销为 <code>cost[i]</code> 单位的钱。</li>
+<li>  一位 <strong>免费</strong> 的油漆匠，刷 <strong>任意</strong> 一堵墙的时间为 <code>1</code> 单位，开销为 <code>0</code> 。但是必须在付费油漆匠 <strong>工作</strong> 时，免费油漆匠才会工作。</li>
+</ul>
+<p>请你返回刷完 <code>n</code> 堵墙最少开销为多少。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：cost = [1,2,3,2], time = [1,2,3,2]</span><br><span class="line">输出：3</span><br><span class="line">解释：下标为 0 和 1 的墙由付费油漆匠来刷，需要 3 单位时间。同时，免费油漆匠刷下标为 2 和 3 的墙，需要 2 单位时间，开销为 0 。总开销为 1 + 2 = 3 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：cost = [2,3,4,2], time = [1,1,1,1]</span><br><span class="line">输出：4</span><br><span class="line">解释：下标为 0 和 3 的墙由付费油漆匠来刷，需要 2 单位时间。同时，免费油漆匠刷下标为 1 和 2 的墙，需要 2 单位时间，开销为 0 。总开销为 2 + 2 = 4 。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li>  <code>1 &lt;= cost.length &lt;= 500</code></li>
+<li>  <code>cost.length == time.length</code></li>
+<li>  <code>1 &lt;= cost[i] &lt;= 10^6</code></li>
+<li><code>1 &lt;= time[i] &lt;= 500</code></li>
+</ul>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>转化成01背包。</p>
+<p>只要付费刷墙的时间&gt;=非付费刷墙的个数，在这种情况下花的时间越少越好。</p>
+<p>转化一下，付费刷墙的时间+付费刷墙的个数&gt;=n的情况下，所花的最小费用。</p>
+<p>可以让每面墙所花时间+1.</p>
+<p>定义$f_{i,j}$为前i面墙<strong>至少</strong>花费j时间的最小费用。</p>
+<p>那么$f_{i,j} = max(f_{i-1, j-time_i-1}+cost_i, f_{i-1, j})$</p>
+<p>$f_{i,j} = \left{ \begin{array}{ll}<br>0 &amp; j&lt;0 \<br>INF &amp; i=-1, j&gt;0<br>\end{array} \right.$</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        付费刷墙的时间 &gt;= n-付费墙个数</span></span><br><span class="line"><span class="comment">        付费墙的时间+付费墙的个数&gt;=n</span></span><br><span class="line"><span class="comment">        每面付费墙的所需时间都+1</span></span><br><span class="line"><span class="comment">        f_&#123;i,j&#125; 前i面墙，花时间至少为j的最小花销。</span></span><br><span class="line"><span class="comment">        f_&#123;i,j&#125; = min(f_&#123;i-1,j-time[i]-1&#125;+cost[i], f_&#123;i-1, j&#125;)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">paintWalls</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; cost, vector&lt;<span class="type">int</span>&gt;&amp; time)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// int f[505][505];</span></span><br><span class="line">        <span class="comment">// memset(f, -1, sizeof(f));</span></span><br><span class="line">        <span class="comment">// function&lt;int(int,int)&gt; dfs = [&amp;](int i, int j) &#123;</span></span><br><span class="line">        <span class="comment">//     if (j&lt;=0) return 0;</span></span><br><span class="line">        <span class="comment">//     if (i&lt;0) return INF;</span></span><br><span class="line">        <span class="comment">//     if (f[i][j] != -1) return f[i][j];</span></span><br><span class="line">        <span class="comment">//     return f[i][j] = min(dfs(i-1, j-time[i]-1) + cost[i], dfs(i-1, j));</span></span><br><span class="line">        <span class="comment">// &#125;;</span></span><br><span class="line">        <span class="comment">// return dfs(cost.size()-1, cost.size());</span></span><br><span class="line">        <span class="type">int</span> f[<span class="number">505</span>][<span class="number">505</span>];</span><br><span class="line">        <span class="built_in">memset</span>(f, <span class="number">0x3f</span>, <span class="built_in">sizeof</span>(f));</span><br><span class="line">        f[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> n = cost.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;=n; j++) &#123;</span><br><span class="line">                f[i][j] = <span class="built_in">min</span>(f[i<span class="number">-1</span>][<span class="built_in">max</span>(<span class="number">0</span>, j-time[i<span class="number">-1</span>]<span class="number">-1</span>)]+cost[i<span class="number">-1</span>], f[i<span class="number">-1</span>][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f[n][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>定义$f_{i,j,k}$ 前i面墙，刷了免费费j面，所用付费时间为k的最小花销。 空间和时间都超出。</p>
+<p>用c=k-j代替i和k，定义$f_{i,c}$为前i面墙，付费时间-免费时间至少为c，所需最小的花费。</p>
+<p>显然当c大于剩余要刷的墙时，剩余的墙都可以免费刷。</p>
+<p>$f_{i,c} = max(f_{i-1, c+time_i}+cost_i, f_{i-1, c-1})$</p>
+<p>$f_{i,c} = \left{ \begin{array}{ll}<br>0 &amp; c\ge i+1 \<br>INF &amp; i=-1, c&gt;0<br>\end{array} \right.$</p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        f_&#123;i,j,k&#125; 前i面墙，刷了免费费j面，所用付费时间为k的最小花销。 超时</span></span><br><span class="line"><span class="comment">        当k&gt;=j时是合法的。用c=k-j代替i和k，将状态变为2维。</span></span><br><span class="line"><span class="comment">        f_&#123;i,c&#125; = min(f_&#123;i-1, c+time[i]&#125;+cost[i], f_&#123;i-1, c-1&#125;)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">paintWalls</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; cost, vector&lt;<span class="type">int</span>&gt;&amp; time)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> f[<span class="number">505</span>][<span class="number">1015</span>];</span><br><span class="line">        <span class="built_in">memset</span>(f, <span class="number">-1</span>, <span class="built_in">sizeof</span>(f));</span><br><span class="line">        function&lt;<span class="type">int</span>(<span class="type">int</span>,<span class="type">int</span>)&gt; dfs = [&amp;](<span class="type">int</span> i, <span class="type">int</span> j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j&gt;=i+<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (i&lt;<span class="number">0</span>) <span class="keyword">return</span> INF;</span><br><span class="line">            <span class="keyword">if</span> (f[i][j+<span class="number">505</span>] != <span class="number">-1</span>) <span class="keyword">return</span> f[i][j+<span class="number">505</span>];</span><br><span class="line">            <span class="keyword">return</span> f[i][j+<span class="number">505</span>] = <span class="built_in">min</span>(<span class="built_in">dfs</span>(i<span class="number">-1</span>, j+time[i])+cost[i], <span class="built_in">dfs</span>(i<span class="number">-1</span>, j<span class="number">-1</span>));</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(cost.<span class="built_in">size</span>()<span class="number">-1</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>leetcode</tag>
+        <tag>背包dp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>统计上升四元组</title>
     <url>/2023/04/09/%E7%BB%9F%E8%AE%A1%E4%B8%8A%E5%8D%87%E5%9B%9B%E5%85%83%E7%BB%84/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/count-increasing-quadruplets/">6340. 统计上升四元组</a></p>
@@ -9088,6 +9224,48 @@
       <tags>
         <tag>leetcode</tag>
         <tag>栈队列堆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>连通两组点的最小成本</title>
+    <url>/2023/06/25/%E8%BF%9E%E9%80%9A%E4%B8%A4%E7%BB%84%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%88%90%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/minimum-cost-to-connect-two-groups-of-points/">1595. 连通两组点的最小成本</a></p>
+<hr>
+<p>给你两组点，其中第一组中有 <code>size1</code> 个点，第二组中有 <code>size2</code> 个点，且 <code>size1 &gt;= size2</code> 。</p>
+<p>任意两点间的连接成本 <code>cost</code> 由大小为 <code>size1 x size2</code> 矩阵给出，其中 <code>cost[i][j]</code> 是第一组中的点 <code>i</code> 和第二组中的点 <code>j</code> 的连接成本。<strong>如果两个组中的每个点都与另一组中的一个或多个点连接，则称这两组点是连通的。</strong>换言之，第一组中的每个点必须至少与第二组中的一个点连接，且第二组中的每个点必须至少与第一组中的一个点连接。</p>
+<p>返回连通两组点所需的最小成本。</p>
+<p><strong>示例 1：</strong></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/09/20/ex1.jpg"></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：cost = [[15, 96], [36, 2]]</span><br><span class="line">输出：17</span><br><span class="line">解释：连通两组点的最佳方法是：</span><br><span class="line">1--A</span><br><span class="line">2--B</span><br><span class="line">总成本为 17 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/09/20/ex2.jpg"></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：cost = [[1, 3, 5], [4, 1, 1], [1, 5, 3]]</span><br><span class="line">输出：4</span><br><span class="line">解释：连通两组点的最佳方法是：</span><br><span class="line">1--A</span><br><span class="line">2--B</span><br><span class="line">2--C</span><br><span class="line">3--A</span><br><span class="line">最小成本为 4 。</span><br><span class="line">请注意，虽然有多个点连接到第一组中的点 2 和第二组中的点 A ，但由于题目并不限制连接点的数目，所以只需要关心最低总成本。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：cost = [[2, 5, 1], [3, 4, 7], [8, 1, 2], [6, 2, 4], [3, 8, 8]]</span><br><span class="line">输出：10</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li>  <code>size1 == cost.length</code></li>
+<li>  <code>size2 == cost[i].length</code></li>
+<li>  <code>1 &lt;= size1, size2 &lt;= 12</code></li>
+<li>  <code>size1 &gt;= size2</code></li>
+<li><code>0 &lt;= cost[i][j] &lt;= 100</code></li>
+</ul>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>考虑枚举第一组的前i个与第二组的选取集合j。</p>
+<p>对于j的枚举可以从0枚举到$2^m-1$。用二进制的1代表选取情况。并且由小到大的枚举保证了当前集合的子集在之前枚举过。</p>
+<p>现在定义状态$f_{i,j}$代表第一组的前i个与第二组的选取集合j时，所需最小成本。</p>
+<p>初始化$f_{0,0} = 0$ 其余无穷。</p>
+<p>$f_{i,j}$的状态转移，由于i需要选取至少一条边连接j中选取的节点。我们设j中选取了第k个点。<br>那么$f_{i,j} = f_{i,j\oplus k}, f_{i-1,j\oplus k}, f_{i-1, j})+cost_{i-1,k}$，$a \oplus b$ 代表a集合中移除了j元素后的子集。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">connectTwoGroups</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = cost.<span class="built_in">size</span>(), m = cost[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> f[n+<span class="number">1</span>][<span class="number">1</span>&lt;&lt;m];</span><br><span class="line">        <span class="built_in">memset</span>(f, <span class="number">0x3f</span>, <span class="built_in">sizeof</span>(f));</span><br><span class="line">        f[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;<span class="number">1</span>&lt;&lt;m; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">0</span>; k&lt;m; k++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (j&gt;&gt;k&amp;<span class="number">1</span>) &#123;</span><br><span class="line">                        <span class="type">int</span> mn = <span class="built_in">min</span>(&#123;f[i][j^<span class="number">1</span>&lt;&lt;k], f[i<span class="number">-1</span>][j^<span class="number">1</span>&lt;&lt;k], f[i<span class="number">-1</span>][j]&#125;)+cost[i<span class="number">-1</span>][k];</span><br><span class="line">                        f[i][j] = <span class="built_in">min</span>(f[i][j], mn);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;   </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// for (int i=1; i&lt;=n; i++) &#123;</span></span><br><span class="line">        <span class="comment">//     for (int j=0; j&lt;1&lt;&lt;m; j++) &#123;</span></span><br><span class="line">        <span class="comment">//         cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot; &quot; &lt;&lt; f[i][j] &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> f[n][(<span class="number">1</span>&lt;&lt;m)<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>leetcode</tag>
+        <tag>状压dp</tag>
       </tags>
   </entry>
   <entry>
