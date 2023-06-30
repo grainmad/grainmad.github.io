@@ -176,6 +176,25 @@
       </tags>
   </entry>
   <entry>
+    <title>1220D Alex and Julian</title>
+    <url>/2023/06/30/1220D/</url>
+    <content><![CDATA[<h1 id="Alex-and-Julian"><a href="#Alex-and-Julian" class="headerlink" title="Alex and Julian"></a>Alex and Julian</h1><p>Created by LXC on Fri Jun 30 14:57:14 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1220/D">https://codeforces.com/problemset/problem/1220/D</a></p>
+<p>ranting: 1900</p>
+<p>tag: bitmasks, math, number theory</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>math</tag>
+        <tag>number theory</tag>
+        <tag>bitmasks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1237C2 Balanced Removals (Harder)</title>
     <url>/2023/05/20/1237C2/</url>
     <content><![CDATA[<h1 id="Balanced-Removals-Harder"><a href="#Balanced-Removals-Harder" class="headerlink" title="Balanced Removals (Harder)"></a>Balanced Removals (Harder)</h1><p>Created by LXC on Fri May 19 15:13:38 2023</p>
@@ -460,8 +479,8 @@
         <tag>cf</tag>
         <tag>greedy</tag>
         <tag>dp</tag>
-        <tag>brute force</tag>
         <tag>bitmasks</tag>
+        <tag>brute force</tag>
       </tags>
   </entry>
   <entry>
@@ -3097,6 +3116,24 @@
         <tag>greedy</tag>
         <tag>binary search</tag>
         <tag>two pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>621E Wet Shark and Blocks</title>
+    <url>/2023/06/30/621E/</url>
+    <content><![CDATA[<h1 id="Wet-Shark-and-Blocks"><a href="#Wet-Shark-and-Blocks" class="headerlink" title="Wet Shark and Blocks"></a>Wet Shark and Blocks</h1><p>Created by LXC on Thu Jun 29 00:11:28 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/621/E">https://codeforces.com/problemset/problem/621/E</a></p>
+<p>ranting: 2000</p>
+<p>tag: dp, matrices</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>dp</tag>
+        <tag>matrices</tag>
       </tags>
   </entry>
   <entry>
@@ -6345,6 +6382,58 @@
       <tags>
         <tag>leetcode</tag>
         <tag>树状数组线段树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最小不兼容性</title>
+    <url>/2023/06/30/%E6%9C%80%E5%B0%8F%E4%B8%8D%E5%85%BC%E5%AE%B9%E6%80%A7/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/minimum-incompatibility/">1681. 最小不兼容性</a></p>
+<hr>
+<p>给你一个整数数组 <code>nums</code>​​​ 和一个整数 <code>k</code> 。你需要将这个数组划分到 <code>k</code> 个相同大小的子集中，使得同一个子集里面没有两个相同的元素。</p>
+<p>一个子集的 <strong>不兼容性</strong> 是该子集里面最大值和最小值的差。</p>
+<p>请你返回将数组分成 <code>k</code> 个子集后，各子集 <strong>不兼容性</strong> 的 <strong>和</strong> 的 <strong>最小值</strong> ，如果无法分成分成 <code>k</code> 个子集，返回 <code>-1</code> 。</p>
+<p>子集的定义是数组中一些数字的集合，对数字顺序没有要求。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [1,2,1,4], k = 2</span><br><span class="line">输出：4</span><br><span class="line">解释：最优的分配是 [1,2] 和 [1,4] 。</span><br><span class="line">不兼容性和为 (2-1) + (4-1) = 4 。</span><br><span class="line">注意到 [1,1] 和 [2,4] 可以得到更小的和，但是第一个集合有 2 个相同的元素，所以不可行。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [6,3,8,1,3,1,2,2], k = 4</span><br><span class="line">输出：6</span><br><span class="line">解释：最优的子集分配为 [1,2]，[2,3]，[6,8] 和 [1,3] 。</span><br><span class="line">不兼容性和为 (2-1) + (3-2) + (8-6) + (3-1) = 6 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [5,3,3,6,3,3], k = 3</span><br><span class="line">输出：-1</span><br><span class="line">解释：没办法将这些数字分配到 3 个子集且满足每个子集里没有相同数字。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li>  <code>1 &lt;= k &lt;= nums.length &lt;= 16</code></li>
+<li>  <code>nums.length</code> 能被 <code>k</code> 整除。</li>
+<li><code>1 &lt;= nums[i] &lt;= nums.length</code></li>
+</ul>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>状压dp</p>
+<p>定义$f_{s}$为nums中选取下标集合为s的最小不兼容性。s用一个二进制数表示集合，二进制的第i位为1代表选取<code>nums[i]</code>。</p>
+<p>例如<code>nums = [1,2,1,4]</code>，$f_10 = 2$，这是因为$10 = (1010) _2$，低位若从0开始，我们选取低位第2和第3位，得到$f _{10} = nums[3] - nums[0]=3$</p>
+<p>我们的状态转移可以从小集合向大集合转移。</p>
+<p>假设对于集合s，比其小的集合t，状态$f_t$均已求出。</p>
+<p>那么我们只需枚举s的合法子集u（合法子集就是u的大小为n/k且u对于nums中不能有重复的数），并求出u中最大的nums值$mx_u$以及最小值$mn_u$,然后$f_{s-u}+mx_u-mn_u$的最大值便是$f_{s}$。</p>
+<p>以这个思路实现了一份代码，不幸的是超时了。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minimumIncompatibility</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(<span class="number">1</span>&lt;&lt;n, INF)</span></span>;</span><br><span class="line">        f[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;<span class="number">1</span>&lt;&lt;n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=i; j!=<span class="number">0</span>; j = (j<span class="number">-1</span>)&amp;i) &#123;</span><br><span class="line">                <span class="type">int</span> bc = <span class="number">0</span>, ok = <span class="number">1</span>, pre=<span class="number">-1</span>, mx=<span class="number">-1</span>, mn=<span class="number">20</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> c=<span class="number">0</span>; c&lt;n; c++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (j&gt;&gt;c&amp;<span class="number">1</span>) &#123;</span><br><span class="line">                        bc++;</span><br><span class="line">                        mx = <span class="built_in">max</span>(mx, nums[c]);</span><br><span class="line">                        mn = <span class="built_in">min</span>(mn, nums[c]);</span><br><span class="line">                        <span class="keyword">if</span> (pre == nums[c]) ok = <span class="number">0</span>;</span><br><span class="line">                        <span class="keyword">else</span> pre = nums[c];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (ok &amp;&amp; bc == n/k) f[i] = <span class="built_in">min</span>(f[i], f[i^j]+mx-mn);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// for (int i=0; i&lt;1&lt;&lt;n; i++) &#123;</span></span><br><span class="line">        <span class="comment">//     cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; f[i] &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> f[(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>] == INF ? <span class="number">-1</span> : f[(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在分析这份代码的时间复杂度。</p>
+<p>我们从小到大地枚举了$[1,2^n)$内的数，我们将这些数视为二进制数，则可以认为是按照大小从小到大的枚举了集合。保证了在求大集合的状态时，其子集状态均已求出。</p>
+<p>随后我们使用了二进制的技巧实现了枚举当前集合i的子集j。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j=i; j!=<span class="number">0</span>; j = (j<span class="number">-1</span>)&amp;i) &#123;</span><br><span class="line">    <span class="comment">// j is subset </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后又花了$O(n)$时间检查子集是否合法，并求出集合中的最大/最小值。</p>
+<p>我们换一种思路来分析外两层循环的时间复杂度。</p>
+<p>在$[1,2^n)$中有只含1个1的二进制数有n个；只含两个1的二进制数有$\binom{n}{2}$个；只含i个1的二进制数有$\binom{n}{i}$个;</p>
+<p>对于含i个1的二进制数其子集的个数又有$2^i$个。根据二项式定理，外层两层循环次数$\sum \limits_{i=0}^n 2^i\binom{n}{i} = (2+1)^n$</p>
+<p>再记上内层循环，时间复杂度为$O(n3^n)$。</p>
+<p>考虑如何优化这份代码，实际上可以预处理出所有大小为n/k且不含重复数字的合法子集以及它们的最大值和最小值。预处理的时间是$O(n2^n)$，但之后的只需$O(1)$便可判断子集是否合法以及获取最大/最小值。那么总时间复杂度就降到了$O(3^n)$。可以通过本题。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">bit_cnt</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> rt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x) &#123;</span><br><span class="line">            rt++;</span><br><span class="line">            x &amp;= (x<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minimumIncompatibility</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ok</span><span class="params">(<span class="number">1</span>&lt;&lt;n, <span class="number">1</span>)</span></span>; <span class="comment">// 满足集合大小为n/k，且无重复</span></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">mx</span><span class="params">(<span class="number">1</span>&lt;&lt;n, <span class="number">-1</span>)</span></span>; <span class="comment">// 满足集合中最大值</span></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">mn</span><span class="params">(<span class="number">1</span>&lt;&lt;n, <span class="number">20</span>)</span></span>; <span class="comment">// 满足集合中最小值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">1</span>&lt;&lt;n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">bit_cnt</span>(i) != n/k) &#123;</span><br><span class="line">                ok[i] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> pre = <span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i&gt;&gt;j&amp;<span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (pre == nums[j]) &#123;</span><br><span class="line">                        ok[i] = <span class="number">0</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125; </span><br><span class="line">                    mx[i] = <span class="built_in">max</span>(mx[i], nums[j]);</span><br><span class="line">                    mn[i] = <span class="built_in">min</span>(mn[i], nums[j]);</span><br><span class="line">                    pre = nums[j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(<span class="number">1</span>&lt;&lt;n, INF)</span></span>;</span><br><span class="line">        f[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;<span class="number">1</span>&lt;&lt;n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=i; j!=<span class="number">0</span>; j = (j<span class="number">-1</span>)&amp;i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (ok[j]) f[i] = <span class="built_in">min</span>(f[i], f[i^j]+mx[j]-mn[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// for (int i=0; i&lt;1&lt;&lt;n; i++) &#123;</span></span><br><span class="line">        <span class="comment">//     cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; f[i] &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> f[(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>] == INF ? <span class="number">-1</span> : f[(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>leetcode</tag>
+        <tag>状压dp</tag>
       </tags>
   </entry>
   <entry>
