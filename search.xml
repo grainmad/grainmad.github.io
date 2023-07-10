@@ -4657,6 +4657,51 @@
       </tags>
   </entry>
   <entry>
+    <title>乘法逆元</title>
+    <url>/2023/07/10/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/</url>
+    <content><![CDATA[<blockquote>
+<p>若$a * x \equiv  1 \pmod b$，且$a$与$b$互质，那么我们就能定义: $x$ 为 $a$ 的逆元，记为$a^{-1}$，所以我们也可以称 $x$ 为 $a$ 在$\mod b$ 意义下的倒数，</p>
+</blockquote>
+<blockquote>
+<p>所以对于 $\frac{a}{b} \pmod p$ ，我们就可以求出 $b$ 在 $\mod p$ 下的逆元，然后乘上 $a$ ，再 $\mod p$，就是这个分数的值了。</p>
+</blockquote>
+<h1 id="一些求解逆元的方法"><a href="#一些求解逆元的方法" class="headerlink" title="一些求解逆元的方法"></a>一些求解逆元的方法</h1><h2 id="拓展欧几里得"><a href="#拓展欧几里得" class="headerlink" title="拓展欧几里得"></a>拓展欧几里得</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// a*x+b*y = d</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ex_gcd</span><span class="params">(ll a, ll b, ll* d, ll* x, ll* y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (b == <span class="number">0</span>) &#123;</span><br><span class="line">		*d = a;</span><br><span class="line">		*x = <span class="number">1</span>;</span><br><span class="line">		*y = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">ex_gcd</span>(b, a%b, d, x, y);</span><br><span class="line">		ll t = *x;</span><br><span class="line">		*x = *y;</span><br><span class="line">		*y = t - (a/b)*(*y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// a*x = 1 (mod n) -&gt; a*x + n*y = 1</span></span><br><span class="line"><span class="function">ll <span class="title">inv</span><span class="params">(ll a, ll n)</span> </span>&#123;</span><br><span class="line">	ll x, y, d;</span><br><span class="line">	<span class="built_in">ex_gcd</span>(a, n, x, y, d);</span><br><span class="line">	<span class="keyword">return</span> d == <span class="number">1</span> ? (x+n)%n : <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>感觉很少用，因为大部分题模的数都是质数，所以可以用费马小定理替代。</p>
+<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><blockquote>
+<p>若$p$为素数，$a$为正整数，且$a$、$p$互质。<br>则有$a^{p-1} = 1 \pmod p$</p>
+</blockquote>
+<p>$<em>a∗x≡1\pmod p</em>$</p>
+<p>$a*x\equiv a^{p-1}\pmod p$</p>
+<p>$x \equiv a^{p-2} \pmod p$ </p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">ll <span class="title">fpow</span><span class="params">(ll x, ll p, ll m)</span> </span>&#123;</span><br><span class="line">	ll rt = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (p) &#123;</span><br><span class="line">		<span class="keyword">if</span> (p&amp;<span class="number">1</span>) rt *= x, rt %= m;</span><br><span class="line">		x *= x; x %= m;</span><br><span class="line">		p &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> rt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">fpow</span>(x, p<span class="number">-2</span>, p); <span class="comment">// inv(x)</span></span><br></pre></td></tr></table></figure>
+
+<p>求一个数的逆元，时间复杂度$O(log(p))$</p>
+<h2 id="线性求逆元"><a href="#线性求逆元" class="headerlink" title="线性求逆元"></a>线性求逆元</h2><p>$p=k*i+r,(1&lt;r&lt;i&lt;p)$</p>
+<p>其中 $k = \lfloor \frac{p}{i} \rfloor$，$r = p \mod i$</p>
+<p>$k*i+r \equiv 0 \pmod p$</p>
+<p>$i^{-1} = -k*r^{-1} \pmod p$</p>
+<p>$i^{-1} = -\lfloor \frac{p}{i} \rfloor*(p \mod i)^{-1} \pmod p$</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ll inv[N];</span><br><span class="line">inv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">2</span>; i&lt;=n; i++) &#123;</span><br><span class="line">		inv[i] = (p-p/i)*inv[p%i]%p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>求出1到n所有数的逆元，时间复杂度$O(n)$</p>
+<h3 id="模MOD下的组合数-C-n-m"><a href="#模MOD下的组合数-C-n-m" class="headerlink" title="模MOD下的组合数$C_{n}^{m}$"></a>模MOD下的组合数$C_{n}^{m}$</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="type">const</span> ll MOD = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="function">ll <span class="title">C</span><span class="params">(ll n, ll m)</span> </span>&#123; <span class="comment">//n个里选m个</span></span><br><span class="line">    ll inv[n+<span class="number">1</span>];</span><br><span class="line">    inv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">2</span>; i&lt;=n; i++) &#123;</span><br><span class="line">            inv[i] = (MOD-MOD/i)*inv[MOD%i]%MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    ll rt = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=m; i&gt;<span class="number">0</span>; i--) &#123;</span><br><span class="line">        rt = rt*(n-i+<span class="number">1</span>)%MOD*inv[i]%MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> rt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="阶乘逆元"><a href="#阶乘逆元" class="headerlink" title="阶乘逆元"></a>阶乘逆元</h2><p>$n! \equiv (n+1)!^{-1}*(n+1) \pmod p$</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="type">const</span> ll MOD = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 100005</span></span><br><span class="line">ll fac[N], inv_fac[N];</span><br><span class="line"><span class="function">ll <span class="title">fpow</span><span class="params">(ll x, ll p, ll m)</span> </span>&#123;</span><br><span class="line">	ll rt = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (p) &#123;</span><br><span class="line">		<span class="keyword">if</span> (p&amp;<span class="number">1</span>) rt *= x, rt %= m;</span><br><span class="line">		x *= x; x %= m;</span><br><span class="line">		p &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> rt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pre</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;N; i++) &#123;</span><br><span class="line">        fac[i] = fac[i<span class="number">-1</span>]*i%MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    inv_fac[N<span class="number">-1</span>] = <span class="built_in">fpow</span>(fac[N<span class="number">-1</span>], MOD<span class="number">-2</span>, MOD);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=N<span class="number">-2</span>; i&gt;=<span class="number">0</span>; i--) &#123;</span><br><span class="line">        inv_fac[i] = inv_fac[i+<span class="number">1</span>]*(i+<span class="number">1</span>)%MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于阶乘一般很大，线性求逆元也有局限性。可以用这个线性求1到n每个数的阶乘的逆元。时间复杂度$O(n)$</p>
+]]></content>
+      <categories>
+        <category>算法模板</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>数论</tag>
+        <tag>乘法逆元</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>从仓库到码头运输箱子</title>
     <url>/2023/04/09/%E4%BB%8E%E4%BB%93%E5%BA%93%E5%88%B0%E7%A0%81%E5%A4%B4%E8%BF%90%E8%BE%93%E7%AE%B1%E5%AD%90/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/delivering-boxes-from-storage-to-ports/">1687. 从仓库到码头运输箱子</a></p>
@@ -8731,6 +8776,30 @@
       <tags>
         <tag>leetcode</tag>
         <tag>欧拉路径</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>离散期望</title>
+    <url>/2023/07/10/%E7%A6%BB%E6%95%A3%E6%9C%9F%E6%9C%9B/</url>
+    <content><![CDATA[<ul>
+<li><strong>数学期望</strong> : 随机试验中每次可能结果的概率乘以其结果的总和，反映随机变量平均取值的大小。</li>
+<li><strong>离散期望公式</strong> : $<em>E(x)= \sum\limits_{k=1}^{\infin } x_kp_k</em>$</li>
+</ul>
+<h2 id="经典模型"><a href="#经典模型" class="headerlink" title="经典模型"></a>经典模型</h2><p><img data-src="https://cdnjson.com/images/2023/07/10/d7de3d6d80218216b4e0c51c0ddfc927.png" alt="d7de3d6d80218216b4e0c51c0ddfc927.png"></p>
+<p>假设你初始位置在1号点，现在需要走向3号点。每一步都会等概率的从当前点选择一条出边并走向指向的点。问从1号走到3号点的期望步数是多少？</p>
+<p>设$E_{1 \rightarrow 3}$为从1走向3的期望步数</p>
+<p>$E_{1 \rightarrow 2} = \frac{1}{2} \times 1 + \frac{1}{2} \times (E_{1 \rightarrow 2} + 1) \Rightarrow E_{1 \rightarrow 2} = 2$</p>
+<p>$E_{2 \rightarrow 3} = \frac{1}{3} \times 1 + \frac{1}{3} \times (E_{2 \rightarrow 3} + 1) + \frac{1}{3} \times (E_{1 \rightarrow 3} + 1)$ </p>
+<p>由期望的线性性，$E_{1 \rightarrow 3} = E_{1 \rightarrow 2} + E_{2 \rightarrow 3}$</p>
+<p>$E_{2 \rightarrow 3} = \frac{1}{3} \times 1 + \frac{1}{3} \times (E_{2 \rightarrow 3} + 1) + \frac{1}{3} \times (E_{1 \rightarrow 2}+E_{2 \rightarrow 3} + 1) \Rightarrow E_{2 \rightarrow 3} = 5$</p>
+<p>$E_{1 \rightarrow 3} = E_{1 \rightarrow 2} + E_{2 \rightarrow 3} = 2 + 5 = 7$</p>
+]]></content>
+      <categories>
+        <category>算法模板</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>期望</tag>
       </tags>
   </entry>
   <entry>
