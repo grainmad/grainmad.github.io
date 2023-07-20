@@ -86,6 +86,35 @@
       </tags>
   </entry>
   <entry>
+    <title>1077E Thematic Contests</title>
+    <url>/2023/07/20/1077E/</url>
+    <content><![CDATA[<h1 id="Thematic-Contests"><a href="#Thematic-Contests" class="headerlink" title="Thematic Contests"></a>Thematic Contests</h1><p>Created by LXC on Thu Jul 20 00:03:04 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1077/E">https://codeforces.com/problemset/problem/1077/E</a></p>
+<p>ranting: 1800</p>
+<p>tag: greedy, sortings</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>现在在举行若干场编程竞赛，可选的题目有n个，每个题都有一个主题。</p>
+<p>一场比赛的题目都属于同一个主题。</p>
+<p>一场比赛的题目不限。</p>
+<p>如果举行了多场比赛，后一场比赛的题目数目必须是前一场的2倍。</p>
+<p>现在对比赛场数不限制，求最多能选多少个题目。</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>预处理<code>cnt[i]</code>代表题目个数为i个的主题的个数。</p>
+<p>求其后缀和，得到<code>cnt[i]</code>代表题目个数至少为i个的主题的个数。</p>
+<p>枚举初始比赛的题目个数x，由于一场比赛的题目属于同一个主题，所以枚举的上界不超过mx，mx为拥有题目最多的主题的题数。显然mx不超过n。</p>
+<p>后续的比赛是前一场的两倍，我们只需要检测<code>cnt[x] cnt[2x] cnt[4x] ... </code>都非0，则答案就是<code>x+2x+4x+...</code>。</p>
+<p>值得注意的是，当我们遇到<code>cnt[kx] = 1</code>时，此时只有1个主题的题数为kx，因此需要停止后续的检测。另外由于题目个数大于x的主题个数为<code>cnt[x]</code>，当所有检测的个数不超过<code>cnt[x]</code>个。</p>
+<p>对于每个枚举的x，内层检测的枚举下标是x乘以2的幂次，内层复杂度是$log(n/x)$。</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span>&amp; i : a)</span><br><span class="line">        cin &gt;&gt; i;</span><br><span class="line">    <span class="built_in">sort</span>(a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>());</span><br><span class="line">    <span class="comment">// for (int i : a) &#123;</span></span><br><span class="line">    <span class="comment">//     cout &lt;&lt; i &lt;&lt; &quot; &quot;;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// cout &lt;&lt; endl;</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">cnt</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="type">int</span> mx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n;) &#123;</span><br><span class="line">        <span class="type">int</span> p = i;</span><br><span class="line">        <span class="keyword">while</span> (p &lt; n &amp;&amp; a[p] == a[i])</span><br><span class="line">            p++;</span><br><span class="line">        mx = <span class="built_in">max</span>(mx, p - i);</span><br><span class="line">        cnt[p - i]++;</span><br><span class="line">        i = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = mx - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        cnt[i] += cnt[i + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    ll ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">1</span>; i &lt;= mx; i++) &#123;</span><br><span class="line">        ll c = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i, k = cnt[j]; j &lt;= mx &amp;&amp; k; j *= <span class="number">2</span>, k--) &#123;</span><br><span class="line">            c += j;</span><br><span class="line">            <span class="keyword">if</span> (cnt[j] == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans, c);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>greedy</tag>
+        <tag>sortings</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1082E Increasing Frequency</title>
     <url>/2023/06/06/1082E/</url>
     <content><![CDATA[<h1 id="Increasing-Frequency"><a href="#Increasing-Frequency" class="headerlink" title="Increasing Frequency"></a>Increasing Frequency</h1><p>Created by LXC on Wed May 31 19:16:05 2023</p>
@@ -164,6 +193,30 @@
         <tag>binary search</tag>
         <tag>two pointers</tag>
         <tag>ternary search</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1178E Archaeology</title>
+    <url>/2023/07/20/1178E/</url>
+    <content><![CDATA[<h1 id="Archaeology"><a href="#Archaeology" class="headerlink" title="Archaeology"></a>Archaeology</h1><p>Created by LXC on Wed Jul 19 09:09:36 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1178/E">https://codeforces.com/problemset/problem/1178/E</a></p>
+<p>ranting: 1900</p>
+<p>tag: brute force, constructive algorithms, greedy, strings</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出一个仅由<code>a b c</code>三种字符组成的字符串s，且s的任意两个相邻字符都不相同。</p>
+<p>求s的一个长度至少为$\lfloor \frac{|s|}{2} \rfloor$回文子序列</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>注意到字符串只有三种字符组成，那么s的首两个字符和末两个字符中一定有两个相同的字符，由于相邻的字符不相同，所以首两个字符中有一个字符会出现在末两个字符中。</p>
+<p>在原串每四个字符就可以构造回文串的两个字符。不足四个的可以任意选一个作为回文串的中心。</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">3</span>) &#123;</span><br><span class="line">        cout &lt;&lt; s[<span class="number">0</span>] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    string ans;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i + <span class="number">1</span> &lt; n / <span class="number">2</span>; i += <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == s[n - <span class="number">1</span> - i] || s[i] == s[n - <span class="number">2</span> - i])</span><br><span class="line">            ans.<span class="built_in">push_back</span>(s[i]);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ans.<span class="built_in">push_back</span>(s[i + <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">    <span class="built_in">reverse</span>(ans.<span class="built_in">begin</span>(), ans.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">if</span> (n / <span class="number">2</span> % <span class="number">2</span>)</span><br><span class="line">        cout &lt;&lt; s[n / <span class="number">2</span>];</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>constructive algorithms</tag>
+        <tag>greedy</tag>
+        <tag>brute force</tag>
+        <tag>strings</tag>
       </tags>
   </entry>
   <entry>
@@ -436,10 +489,10 @@
         <tag>cf</tag>
         <tag>greedy</tag>
         <tag>dp</tag>
+        <tag>brute force</tag>
+        <tag>strings</tag>
         <tag>bitmasks</tag>
         <tag>divide and conquer</tag>
-        <tag>strings</tag>
-        <tag>brute force</tag>
         <tag>dfs and similar</tag>
         <tag>trees</tag>
       </tags>
@@ -725,8 +778,8 @@
         <tag>cf</tag>
         <tag>greedy</tag>
         <tag>dp</tag>
-        <tag>bitmasks</tag>
         <tag>brute force</tag>
+        <tag>bitmasks</tag>
       </tags>
   </entry>
   <entry>
@@ -972,6 +1025,34 @@
         <tag>implementation</tag>
         <tag>brute force</tag>
         <tag>geometry</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1514D Cut and Stick</title>
+    <url>/2023/07/20/1514D/</url>
+    <content><![CDATA[<h1 id="Cut-and-Stick"><a href="#Cut-and-Stick" class="headerlink" title="Cut and Stick"></a>Cut and Stick</h1><p>Created by LXC on Tue Jul 18 10:04:41 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1514/D">https://codeforces.com/problemset/problem/1514/D</a></p>
+<p>ranting: 2000</p>
+<p>tag: binary search, data structures, greedy, implementation, sortings</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出一个数组，以及q次查询，每次查询一个区间，问最少可以将这个区间分成多少个子序列，使得每个子序列出现最多的数不超过数组长度的一半（长度为奇数则向上取整）。若f为区间最大频次，len为区间长度，$f \le \lceil \frac{len}{f} \rceil$</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>关键结论：划分的子序列个数是<code>max(1, f-(len-f))</code></p>
+<p>所以我们需要较快求出区间的最大频次。</p>
+<p>注意到可以离线，所以可以用莫队。时间复杂度$O(n\sqrt n)$</p>
+<p>另一种思路就是随机思想，由于只有最大频次大于区间一半才能需要分成多个子序列。假设最大频次大于区间一半，我们随机选取一个区间内的数，其不属于最大频次的数的概率小于$\frac{1}{2}$，我们选取n次，n次每个都不属于最大频次的数的概率是小于$\frac{1}{2^n}$的。</p>
+<p>而我们选取个30次，几乎不可能选不到最大频次的数。</p>
+<p>对于每次抽到的数，我们需要求其在区间内的频次，我们可以预处理每个数的前缀和。然后两次二分可以得到区间内的出现次数。</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 1000006</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> bsz;</span><br><span class="line"><span class="type">int</span> feq[N], cnt[N], v[N], ans[N];</span><br><span class="line"><span class="type">int</span> mxf = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> l, r, id;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&lt;(Node&amp; o) &#123;</span><br><span class="line">        <span class="keyword">return</span> l / bsz == o.l / bsz ? r &lt; o.r : l / bsz &lt; o.l / bsz;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    cnt[feq[v[x]]]--;</span><br><span class="line">    feq[v[x]]++;</span><br><span class="line">    cnt[feq[v[x]]]++;</span><br><span class="line">    mxf = <span class="built_in">max</span>(mxf, feq[v[x]]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sub</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    cnt[feq[v[x]]]--;</span><br><span class="line">    feq[v[x]]--;</span><br><span class="line">    cnt[feq[v[x]]]++;</span><br><span class="line">    <span class="keyword">if</span> (mxf == feq[v[x]] + <span class="number">1</span> &amp;&amp; cnt[feq[v[x]] + <span class="number">1</span>] == <span class="number">0</span>)</span><br><span class="line">        mxf = feq[v[x]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, q;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; q;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; q; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i].l &gt;&gt; a[i].r;</span><br><span class="line">        a[i].id = i;</span><br><span class="line">    &#125;</span><br><span class="line">    bsz = <span class="built_in">sqrt</span>(n);</span><br><span class="line">    <span class="built_in">sort</span>(a, a + q);</span><br><span class="line">    <span class="type">int</span> l = <span class="number">1</span>, r = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; q; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (a[i].l &lt; l)</span><br><span class="line">            <span class="built_in">add</span>(--l);</span><br><span class="line">        <span class="keyword">while</span> (a[i].r &gt; r)</span><br><span class="line">            <span class="built_in">add</span>(++r);</span><br><span class="line">        <span class="keyword">while</span> (a[i].l &gt; l)</span><br><span class="line">            <span class="built_in">sub</span>(l++);</span><br><span class="line">        <span class="keyword">while</span> (a[i].r &lt; r)</span><br><span class="line">            <span class="built_in">sub</span>(r--);</span><br><span class="line">        ans[a[i].id] = <span class="built_in">max</span>(<span class="number">1</span>, <span class="number">2</span> * mxf - (r - l + <span class="number">1</span>));</span><br><span class="line">        <span class="comment">// cout &lt;&lt; mxf &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; q; i++) &#123;</span><br><span class="line">        cout &lt;&lt; ans[i] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">mt19937 <span class="title">rng</span><span class="params">(chrono::steady_clock::now().time_since_epoch().count())</span></span>;</span><br><span class="line">    <span class="type">int</span> n, q;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; q;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">g</span>(n + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        g[a[i]].<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (q--) &#123;</span><br><span class="line">        <span class="type">int</span> l, r;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        l--;</span><br><span class="line">        r--;</span><br><span class="line">        <span class="type">int</span> feq = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">40</span>; i++) &#123;</span><br><span class="line">            <span class="type">int</span> sl = a[<span class="built_in">uniform_int_distribution</span>&lt;<span class="type">int</span>&gt;(l, r)(rng)];</span><br><span class="line">            <span class="type">int</span> x = <span class="built_in">lower_bound</span>(g[sl].<span class="built_in">begin</span>(), g[sl].<span class="built_in">end</span>(), l) - g[sl].<span class="built_in">begin</span>();</span><br><span class="line">            <span class="type">int</span> y = <span class="built_in">upper_bound</span>(g[sl].<span class="built_in">begin</span>(), g[sl].<span class="built_in">end</span>(), r) - g[sl].<span class="built_in">begin</span>();</span><br><span class="line">            feq = <span class="built_in">max</span>(feq, y - x);</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="built_in">max</span>(<span class="number">1</span>, <span class="number">2</span> * feq - (r - l + <span class="number">1</span>)) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line">    <span class="comment">// sol2();</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>greedy</tag>
+        <tag>sortings</tag>
+        <tag>data structures</tag>
+        <tag>implementation</tag>
+        <tag>binary search</tag>
       </tags>
   </entry>
   <entry>
@@ -1255,8 +1336,8 @@
         <tag>math</tag>
         <tag>data structures</tag>
         <tag>implementation</tag>
-        <tag>combinatorics</tag>
         <tag>brute force</tag>
+        <tag>combinatorics</tag>
       </tags>
   </entry>
   <entry>
@@ -1418,8 +1499,8 @@
         <tag>cf</tag>
         <tag>math</tag>
         <tag>implementation</tag>
-        <tag>strings</tag>
         <tag>brute force</tag>
+        <tag>strings</tag>
       </tags>
   </entry>
   <entry>
@@ -1554,8 +1635,8 @@
         <tag>data structures</tag>
         <tag>dp</tag>
         <tag>graphs</tag>
-        <tag>shortest paths</tag>
         <tag>brute force</tag>
+        <tag>shortest paths</tag>
       </tags>
   </entry>
   <entry>
