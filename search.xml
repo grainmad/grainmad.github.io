@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>1029D Concatenated Multiples</title>
+    <url>/2023/07/29/1029D/</url>
+    <content><![CDATA[<h1 id="Concatenated-Multiples"><a href="#Concatenated-Multiples" class="headerlink" title="Concatenated Multiples"></a>Concatenated Multiples</h1><p>Created by LXC on Wed Jul 26 00:24:34 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1029/D">https://codeforces.com/problemset/problem/1029/D</a></p>
+<p>ranting: 1900</p>
+<p>tag: implementation, math</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出n个数的数组a，求任意两个数$a_i$和$a_j$（$i\ne j$）在拼接后是k的倍数的数对$(i,j)$的个数。</p>
+<p>$1\le n\le 2\cdot 10^5, 1 \le a_i \le 10^9, 2 \le k \le 10^9$</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>设$a_i$的10进制位数为$len_i$<br>$a_i$和$a_j$拼接后的值是$a_i\cdot10^{len_{a_j}}+a_j$，所以如果拼接后是k的倍数，那么$a_i\cdot10^{len_{a_j}}$除以k的余数加上$a_j$除以k的余数是k或者是0。</p>
+<p>预处理出$r_{i,j}$为10进制长度为i且除以k的余数是j的个数。可以用10个平衡树作为存储结构。</p>
+<p>可以枚举每个数$a_i$在其后拼接长度为j的数，拼接后的一部分值为$a_i\cdot10^j$，很容易求出它除以k的余数，设余数为t，我们需要求在a中有多少个长度为j的数且除以k的余数为k-t或0，显然为$r_{j,k-t}$。</p>
+<p>值得注意的是拼接的两个数是在a中下标不可以相同，但在这里我们计算进去了。所以当$a_i$和$a_i$拼接后是k的倍数，则需要将答案减少1</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll n, k;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="function">vector&lt;ll&gt; <span class="title">len</span><span class="params">(n)</span>, <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">    map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; r[<span class="number">11</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        ll x;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        a[i] = x;</span><br><span class="line">        <span class="keyword">while</span> (x)</span><br><span class="line">            len[i]++, x /= <span class="number">10</span>;</span><br><span class="line">        r[len[i]][a[i] % k]++;</span><br><span class="line">    &#125;</span><br><span class="line">    ll ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        ll x = a[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt; <span class="number">11</span>; j++) &#123;</span><br><span class="line">            x *= <span class="number">10</span>;</span><br><span class="line">            x %= k;</span><br><span class="line">            ll t = (k - x) % k;</span><br><span class="line">            <span class="keyword">if</span> (r[j].<span class="built_in">count</span>(t))</span><br><span class="line">                ans += r[j][t];</span><br><span class="line">            <span class="keyword">if</span> (len[i] == j &amp;&amp; (x + a[i] % k) % k == <span class="number">0</span>)</span><br><span class="line">                ans--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>implementation</tag>
+        <tag>math</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1043E Train Hard, Win Easy</title>
     <url>/2023/06/25/1043E/</url>
     <content><![CDATA[<h1 id="Train-Hard-Win-Easy"><a href="#Train-Hard-Win-Easy" class="headerlink" title="Train Hard, Win Easy"></a>Train Hard, Win Easy</h1><p>Created by LXC on Fri Jun 23 23:22:28 2023</p>
@@ -24,9 +48,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>math</tag>
         <tag>constructive algorithms</tag>
         <tag>greedy</tag>
-        <tag>math</tag>
         <tag>sortings</tag>
       </tags>
   </entry>
@@ -54,11 +78,38 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>math</tag>
         <tag>data structures</tag>
         <tag>dp</tag>
-        <tag>implementation</tag>
         <tag>number theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1067A Array Without Local Maximums</title>
+    <url>/2023/07/29/1067A/</url>
+    <content><![CDATA[<h1 id="Array-Without-Local-Maximums"><a href="#Array-Without-Local-Maximums" class="headerlink" title="Array Without Local Maximums"></a>Array Without Local Maximums</h1><p>Created by LXC on Thu Jul 27 09:38:49 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1067/A">https://codeforces.com/problemset/problem/1067/A</a></p>
+<p>ranting: 1900</p>
+<p>tag: dp</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出n个数的数组a，每个数的大小在1到200或者为-1，你需要所有将-1替换为1到200内的数，形成一个新的数组，这个数组满足任意元素<code>a[i]</code>必定小于等于它的一个相邻元素<code>a[i-1]</code>或<code>a[i+1]</code>。</p>
+<p>问有多少种这样的新数组。</p>
+<p>$2 \le n\le 10^5$</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>朴素做法就是枚举每个-1的可能再判断是否满足条件，如果每个数都是-1，那么每个-1有200种可能性，构造数组的个数有$200^n$个，判断每个数组合法所需时间为$O(n)$，总时间复杂度为$O(n\cdot200^n)$</p>
+<p>考虑动态规划，</p>
+<p>观察相邻前缀数组之间合法数组的个数是否存在子问题的关系。</p>
+<p>合法数组的相邻元素存在大小关系的条件，我们可以在前缀状态种加入相邻元素的大小关系的参数。每个-1有200种可能，我们可以定义$f_{i,j,k}$为以k结尾$a_{i-1}$与$a_{i}$的大小关系为j（j=0，小于，j=1，大于等于）前i个数的合法数目。</p>
+<p>$a_{i-1} &lt; a_i$，则$a_{i-2}$与$a_{i-1}$关系可以是任意的。<br>所以$f_{i,0,k} = \sum \limits_{c=1}^{k-1} (f_{i-1, 0, c} + f_{i-1, 1, c})$</p>
+<p>$a_{i-1} \ge a_i$，则$a_{i-2} \ge a_{i-1}$才能保证$a_{i-1}$合法，但是还有一种特殊情况，$a_{i-1} = a_i$时，可以存在$a_{i-2} &lt; a_{i-1}$。<br>所以$f_{i,1,k} = \sum \limits_{c=k}^{200} (f_{i-1, 0, c} + f_{i-1, 1, c}) + f_{i-1, 0, k}$</p>
+<p>每次转移时预处理前/后缀数组，可以将$O(g^2n)$将为$O(gn)$，$g=200$。</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 100005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// f[i][j][k] 前i个以k结尾，a[i-1]和a[i]的大小关系为j的方案数。0 小于 1大于等于</span></span><br><span class="line"><span class="type">int</span> f[N][<span class="number">2</span>][<span class="number">202</span>];</span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">if</span> (a[<span class="number">1</span>] != <span class="number">-1</span> &amp;&amp; a[<span class="number">2</span>] != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a[<span class="number">1</span>] &gt; a[<span class="number">2</span>]) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;0\n&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (a[<span class="number">1</span>] == a[<span class="number">2</span>]) &#123;</span><br><span class="line">            f[<span class="number">2</span>][<span class="number">1</span>][a[<span class="number">2</span>]] = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            f[<span class="number">2</span>][<span class="number">0</span>][a[<span class="number">2</span>]] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a[<span class="number">1</span>] != <span class="number">-1</span> &amp;&amp; a[<span class="number">2</span>] == <span class="number">-1</span>) &#123;</span><br><span class="line">        f[<span class="number">2</span>][<span class="number">1</span>][a[<span class="number">1</span>]] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = a[<span class="number">1</span>] + <span class="number">1</span>; i &lt;= <span class="number">200</span>; i++) &#123;</span><br><span class="line">            f[<span class="number">2</span>][<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a[<span class="number">1</span>] == <span class="number">-1</span> &amp;&amp; a[<span class="number">2</span>] != <span class="number">-1</span>) &#123;</span><br><span class="line">        f[<span class="number">2</span>][<span class="number">1</span>][a[<span class="number">2</span>]] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// for (int i = 1; i &lt; a[2]; i++) &#123;</span></span><br><span class="line">        <span class="comment">//     f[2][0][a[2]]++;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        f[<span class="number">2</span>][<span class="number">0</span>][a[<span class="number">2</span>]] = a[<span class="number">2</span>] - <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">200</span>; i++) &#123;</span><br><span class="line">            f[<span class="number">2</span>][<span class="number">1</span>][i] = <span class="number">1</span>;</span><br><span class="line">            f[<span class="number">2</span>][<span class="number">0</span>][i] = i - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        vector&lt;vector&lt;ll&gt;&gt; <span class="built_in">prf</span>(<span class="number">2</span>, <span class="built_in">vector</span>&lt;ll&gt;(<span class="number">202</span>, <span class="number">0</span>)),</span><br><span class="line">            <span class="built_in">suf</span>(<span class="number">2</span>, <span class="built_in">vector</span>&lt;ll&gt;(<span class="number">202</span>, <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= <span class="number">200</span>; k++) &#123;</span><br><span class="line">                prf[j][k] = (prf[j][k - <span class="number">1</span>] + f[i - <span class="number">1</span>][j][k]) % MOD;</span><br><span class="line">                prf[j][k] %= MOD;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">200</span>; k &gt;= <span class="number">1</span>; k--) &#123;</span><br><span class="line">                suf[j][k] = (suf[j][k + <span class="number">1</span>] + f[i - <span class="number">1</span>][j][k]) % MOD;</span><br><span class="line">                suf[j][k] %= MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (a[i] == <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">200</span>; j++) &#123;</span><br><span class="line">                f[i][<span class="number">0</span>][j] = (prf[<span class="number">0</span>][j - <span class="number">1</span>] + prf[<span class="number">1</span>][j - <span class="number">1</span>]) % MOD;</span><br><span class="line">                f[i][<span class="number">0</span>][j] %= MOD;</span><br><span class="line">                f[i][<span class="number">1</span>][j] = (suf[<span class="number">1</span>][j] + f[i - <span class="number">1</span>][<span class="number">0</span>][j]) % MOD;</span><br><span class="line">                f[i][<span class="number">1</span>][j] %= MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> j = a[i];</span><br><span class="line">            f[i][<span class="number">0</span>][j] = (prf[<span class="number">0</span>][j - <span class="number">1</span>] + prf[<span class="number">1</span>][j - <span class="number">1</span>]) % MOD;</span><br><span class="line">            f[i][<span class="number">0</span>][j] %= MOD;</span><br><span class="line">            f[i][<span class="number">1</span>][j] = (suf[<span class="number">1</span>][j] + f[i - <span class="number">1</span>][<span class="number">0</span>][j]) % MOD;</span><br><span class="line">            f[i][<span class="number">1</span>][j] %= MOD;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ll ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">200</span>; i++) &#123;</span><br><span class="line">        ans += f[n][<span class="number">1</span>][i];</span><br><span class="line">        ans %= MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -145,6 +196,32 @@
       </tags>
   </entry>
   <entry>
+    <title>1119E Pavel and Triangles</title>
+    <url>/2023/07/29/1119E/</url>
+    <content><![CDATA[<h1 id="Pavel-and-Triangles"><a href="#Pavel-and-Triangles" class="headerlink" title="Pavel and Triangles"></a>Pavel and Triangles</h1><p>Created by LXC on Mon Jul 24 14:57:42 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1119/E">https://codeforces.com/problemset/problem/1119/E</a></p>
+<p>ranting: 1900</p>
+<p>tag: brute force, dp, fft, greedy, ternary search</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出$a_0, a_1, \cdots, a_{n-1}$，分别代表你有$a_i$根长度为$2^i$的棍子。</p>
+<p>现在你要将这些棍子组成尽可能多的面积大于0的三角形。</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>由于棍子是二的幂次，我们不可能选三种不同长度的棍子。</p>
+<p>所以我们只能组成等腰三角形或等边三角形。</p>
+<p>我们由小到大选择棍子长度，对于当前的长度的棍子选择两根与比它短的未匹配的进行组合。直到未匹配的棍子不够或者当前的棍子不够则停止匹配，如果则当前剩余的棍子还足够多则可以组成等边三角形。最后剩余的则给后续的棍子匹配。</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    ll ans = <span class="number">0</span>, p = <span class="number">0</span>, u = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; u;</span><br><span class="line">        <span class="keyword">if</span> (u &gt;= <span class="number">2</span> * p) &#123;</span><br><span class="line">            ans += p;</span><br><span class="line">            u -= <span class="number">2</span> * p;</span><br><span class="line">            ans += u / <span class="number">3</span>;</span><br><span class="line">            p = u % <span class="number">3</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ans += u / <span class="number">2</span>;</span><br><span class="line">            p -= u / <span class="number">2</span>;</span><br><span class="line">            p += u % <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>greedy</tag>
+        <tag>dp</tag>
+        <tag>brute force</tag>
+        <tag>fft</tag>
+        <tag>ternary search</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1120A Diana and Liana</title>
     <url>/2023/05/28/1120A/</url>
     <content><![CDATA[<h1 id="Diana-and-Liana"><a href="#Diana-and-Liana" class="headerlink" title="Diana and Liana"></a>Diana and Liana</h1><p>Created by LXC on Sun May 21 23:20:53 2023</p>
@@ -164,8 +241,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>greedy</tag>
         <tag>implementation</tag>
+        <tag>greedy</tag>
         <tag>two pointers</tag>
       </tags>
   </entry>
@@ -218,8 +295,8 @@
         <tag>greedy</tag>
         <tag>sortings</tag>
         <tag>binary search</tag>
-        <tag>two pointers</tag>
         <tag>ternary search</tag>
+        <tag>two pointers</tag>
       </tags>
   </entry>
   <entry>
@@ -354,10 +431,10 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>constructive algorithms</tag>
         <tag>greedy</tag>
         <tag>sortings</tag>
-        <tag>implementation</tag>
         <tag>binary search</tag>
         <tag>divide and conquer</tag>
       </tags>
@@ -439,9 +516,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>greedy</tag>
-        <tag>math</tag>
         <tag>implementation</tag>
+        <tag>math</tag>
+        <tag>greedy</tag>
       </tags>
   </entry>
   <entry>
@@ -465,9 +542,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>constructive algorithms</tag>
         <tag>greedy</tag>
-        <tag>implementation</tag>
         <tag>strings</tag>
       </tags>
   </entry>
@@ -548,9 +625,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>constructive algorithms</tag>
         <tag>greedy</tag>
-        <tag>implementation</tag>
         <tag>brute force</tag>
         <tag>geometry</tag>
       </tags>
@@ -640,8 +717,8 @@
         <tag>cf</tag>
         <tag>data structures</tag>
         <tag>dp</tag>
-        <tag>two pointers</tag>
         <tag>brute force</tag>
+        <tag>two pointers</tag>
       </tags>
   </entry>
   <entry>
@@ -697,8 +774,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>math</tag>
         <tag>implementation</tag>
+        <tag>math</tag>
         <tag>binary search</tag>
         <tag>two pointers</tag>
       </tags>
@@ -721,8 +798,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>constructive algorithms</tag>
         <tag>math</tag>
+        <tag>constructive algorithms</tag>
         <tag>number theory</tag>
       </tags>
   </entry>
@@ -856,8 +933,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>constructive algorithms</tag>
         <tag>math</tag>
+        <tag>constructive algorithms</tag>
         <tag>bitmasks</tag>
         <tag>interactive</tag>
       </tags>
@@ -1007,8 +1084,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>constructive algorithms</tag>
         <tag>math</tag>
+        <tag>constructive algorithms</tag>
         <tag>number theory</tag>
       </tags>
   </entry>
@@ -1070,9 +1147,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>constructive algorithms</tag>
-        <tag>math</tag>
         <tag>implementation</tag>
+        <tag>math</tag>
+        <tag>constructive algorithms</tag>
         <tag>brute force</tag>
         <tag>geometry</tag>
       </tags>
@@ -1127,10 +1204,10 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>greedy</tag>
         <tag>sortings</tag>
         <tag>data structures</tag>
-        <tag>implementation</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -1155,9 +1232,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>data structures</tag>
         <tag>dp</tag>
-        <tag>implementation</tag>
         <tag>dfs and similar</tag>
         <tag>trees</tag>
       </tags>
@@ -1291,9 +1368,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>math</tag>
         <tag>sortings</tag>
-        <tag>implementation</tag>
       </tags>
   </entry>
   <entry>
@@ -1361,12 +1438,34 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>greedy</tag>
         <tag>math</tag>
+        <tag>greedy</tag>
         <tag>data structures</tag>
         <tag>number theory</tag>
         <tag>binary search</tag>
         <tag>two pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1635D Infinite Set</title>
+    <url>/2023/07/29/1635D/</url>
+    <content><![CDATA[<h1 id="Infinite-Set"><a href="#Infinite-Set" class="headerlink" title="Infinite Set"></a>Infinite Set</h1><p>Created by LXC on Tue Jul 25 23:57:13 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1635/D">https://codeforces.com/problemset/problem/1635/D</a></p>
+<p>ranting: 1800</p>
+<p>tag: bitmasks, dp, math, matrices, number theory, strings</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>math</tag>
+        <tag>dp</tag>
+        <tag>number theory</tag>
+        <tag>strings</tag>
+        <tag>bitmasks</tag>
+        <tag>matrices</tag>
       </tags>
   </entry>
   <entry>
@@ -1412,9 +1511,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>math</tag>
         <tag>data structures</tag>
-        <tag>implementation</tag>
         <tag>brute force</tag>
         <tag>combinatorics</tag>
       </tags>
@@ -1512,6 +1611,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Codeforces Round #782 (Div. 2)</title>
+    <url>/2023/05/17/1659/</url>
+    <content><![CDATA[<h1 id="Codeforces-Round-782-Div-2"><a href="#Codeforces-Round-782-Div-2" class="headerlink" title="Codeforces Round #782 (Div. 2)"></a>Codeforces Round #782 (Div. 2)</h1><h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p>红队和蓝队在打比赛，红队的胜场比蓝队多。<br>给出比赛场数n，红队胜利场数r，蓝队胜利场数b<br>请构造红蓝对决的n场比赛结果，要求红队连胜尽可能少</p>
+<p>可以将红队胜场分成b+1份，然后用b场蓝队胜利分隔它们。<br>红队连胜尽量平均，可分为a%(b+1)组连胜a/(b+1)+1场，b+1-a%(b+1)组连胜a/(b+1)场。</p>
+<h1 id="B"><a href="#B" class="headerlink" title="B"></a>B</h1><p>给出一个01串，每次操作可以选取一个位置i，除了i以外其他位置都取反。问在k次操作后最大字典序的01串是多少</p>
+<p>通过观察发现<br>当k为奇数时，每次应当反转从左到右原串1出现的位置，因为0在奇数次取反后会变为1，从左到右的顺序是为了字典序最大。设原串的1出现的次数是cnt1，那么在k&gt;cnt1时，cnt1为奇数那么答案为全1，为偶数则除最后一个全1. 在k&lt; cnt1时，在第k个1的位置及之前都是1，后面的数由于奇数次取反，所以整体取反。<br>当k为偶数时，同理，每次选0的位置。 </p>
+<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><p>给出一个n个城的位置，这些位置是升序排序的。 每次的操作有两种：<br>征服：每次可以征服离你最近的一座未征服的城市。 需要花费a* |c1-c2|<br>迁都：每次可以迁移到任意一座你已经征服的城市。 需要花费b* |c1-c2|<br>c1是你当前的位置，初始为0，c2是目标城市位置<br>问征服所有城市的最小花费</p>
+<p>实际上，当我们迁都到i城市的时候，中间无论是怎样组合的操作。到i城市花费总是pos[i]* (a+b)<br>这样可以枚举每个城市作为根据点去征服其他城市的花费。然后维护总花费最小即可，注意到当i作为根据地征服后面的城市花费若为cost，那么i-1城市征服之后的城市花费是(n-i)* (pos[i]-pos[i-1]) + cost, 这样我们可以从后向前枚举，并维护后缀和。时间复杂度O(n)</p>
+<h1 id="D"><a href="#D" class="headerlink" title="D"></a>D</h1><p>给出一个长度为n的01串s，若s1为给s前1个数排序后的串，s2为给s前2个数排序后的串，si为给s前i个数排序后的串<br>数组c中元素分别记录s1,s2,…,sn每个位上的和。<br>初始给出c，构造出s</p>
+<p>s中每个1在si中都做出了相同贡献。那么c中元素总和/n便是s中1的个数。设1的个数为k。<br>若s的最后一个值为1则c的最后一个值必定为n，否则不为n<br>无论s最后一个数是否为0，我么可以让当前c的后k个数都减少1。 然后舍弃c最后一个元素<br>在舍弃之前c最后一个数是1，则k应当减少1.<br>这个区间减少可以用线段树维护，也可以维护一个差分数组并维护一个后缀和。</p>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>contest</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Codeforces Round #780 (Div. 3)</title>
     <url>/2023/05/17/1660/</url>
     <content><![CDATA[<h1 id="Codeforces-Round-780-Div-3"><a href="#Codeforces-Round-780-Div-3" class="headerlink" title="Codeforces Round #780 (Div. 3)"></a>Codeforces Round #780 (Div. 3)</h1><h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p>给出a个面值为1的硬币和b个面值为2的硬币。问最小不能表示的大于0的面值。</p>
@@ -1556,8 +1675,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>math</tag>
         <tag>implementation</tag>
+        <tag>math</tag>
         <tag>brute force</tag>
         <tag>strings</tag>
       </tags>
@@ -1813,6 +1932,52 @@
       <tags>
         <tag>cf</tag>
         <tag>contest</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1732C1 Sheikh (Easy version)</title>
+    <url>/2023/07/29/1732C1/</url>
+    <content><![CDATA[<h1 id="Sheikh-Easy-version"><a href="#Sheikh-Easy-version" class="headerlink" title="Sheikh (Easy version)"></a>Sheikh (Easy version)</h1><p>Created by LXC on Fri Jul 28 10:55:36 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1732/C1">https://codeforces.com/problemset/problem/1732/C1</a></p>
+<p>ranting: 1800</p>
+<p>tag: binary search, bitmasks, greedy, two pointers</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出一个数组a，长度为n。<br>定义$f(l, r) = \operatorname{sum}(l, r) - \operatorname{xor}(l, r)$，$\operatorname{sum}(l, r) = a_l + a_{l+1} + \ldots + a_r$，$\operatorname{xor}(l, r) = a_l \oplus a_{l+1} \oplus \ldots \oplus a_r$。</p>
+<p>求最大f值的子数组。</p>
+<p>$n\le 10^5$</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>核心规律$f(l, r) \leq f(l, r + 1)$，区间长度越大f不会减小。存在区间包含的单调性，可以用二分或双指针。</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="comment">// #define SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, q;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; q;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : a)</span><br><span class="line">        cin &gt;&gt; i;</span><br><span class="line">    <span class="type">int</span> L, R;</span><br><span class="line">    cin &gt;&gt; L &gt;&gt; R;</span><br><span class="line">    <span class="type">int</span> mn = n + <span class="number">1</span>;</span><br><span class="line">    <span class="function">vector&lt;ll&gt; <span class="title">suf_sm</span><span class="params">(n + <span class="number">1</span>, <span class="number">0</span>)</span>, <span class="title">suf_xr</span><span class="params">(n + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    ll sm = <span class="number">0</span>, xr = <span class="number">0</span>;</span><br><span class="line">    ll mx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        sm += a[i];</span><br><span class="line">        xr ^= a[i];</span><br><span class="line">        suf_sm[i] = sm;</span><br><span class="line">        suf_xr[i] = xr;</span><br><span class="line">        mx = <span class="built_in">max</span>(mx, sm - xr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mx != sm - xr)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="type">int</span> l = i + <span class="number">1</span>, r = n;</span><br><span class="line">        <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">            <span class="type">int</span> m = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="comment">// ll tsm = 0, txr = 0;</span></span><br><span class="line">            <span class="comment">// for (int j = i; j &lt; m; j++) &#123;</span></span><br><span class="line">            <span class="comment">//     tsm += a[j];</span></span><br><span class="line">            <span class="comment">//     txr ^= a[j];</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">            ll tsm = sm - suf_sm[m], txr = xr ^ suf_xr[m];</span><br><span class="line">            <span class="keyword">if</span> (tsm - txr == mx) &#123;</span><br><span class="line">                r = m;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                l = m + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (mn &gt; r - i) &#123;</span><br><span class="line">            L = i + <span class="number">1</span>;</span><br><span class="line">            R = r;</span><br><span class="line">            mn = r - i;</span><br><span class="line">        &#125;</span><br><span class="line">        sm -= a[i];</span><br><span class="line">        xr ^= a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; L &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; R &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, q;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; q;</span><br><span class="line">    <span class="function">vector&lt;ll&gt; <span class="title">a</span><span class="params">(n + <span class="number">1</span>)</span>, <span class="title">sm</span><span class="params">(n + <span class="number">1</span>)</span>, <span class="title">xr</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line">    ll mx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        sm[i] = sm[i - <span class="number">1</span>] + a[i];</span><br><span class="line">        xr[i] = xr[i - <span class="number">1</span>] ^ a[i];</span><br><span class="line">        mx = <span class="built_in">max</span>(mx, sm[i] - xr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> L, R;</span><br><span class="line">    cin &gt;&gt; L &gt;&gt; R;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        j = <span class="built_in">max</span>(i, j);</span><br><span class="line">        <span class="keyword">while</span> (j &lt;= n &amp;&amp; sm[j] - sm[i - <span class="number">1</span>] - (xr[j] ^ xr[i - <span class="number">1</span>]) &lt; mx)</span><br><span class="line">            j++;</span><br><span class="line">        <span class="keyword">if</span> (j &gt; n)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> (j - i &lt; R - L) &#123;</span><br><span class="line">            R = j, L = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; L &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; R &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="comment">// sol();</span></span><br><span class="line">        <span class="built_in">sol2</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>greedy</tag>
+        <tag>binary search</tag>
+        <tag>two pointers</tag>
+        <tag>bitmasks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1738D Permutation Addicts</title>
+    <url>/2023/07/29/1738D/</url>
+    <content><![CDATA[<h1 id="Permutation-Addicts"><a href="#Permutation-Addicts" class="headerlink" title="Permutation Addicts"></a>Permutation Addicts</h1><p>Created by LXC on Sat Jul 29 00:11:26 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/1738/D">https://codeforces.com/problemset/problem/1738/D</a></p>
+<p>ranting: 1900</p>
+<p>tag: constructive algorithms, data structures, dfs and similar, dsu, graphs, trees</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>constructive algorithms</tag>
+        <tag>data structures</tag>
+        <tag>graphs</tag>
+        <tag>dfs and similar</tag>
+        <tag>trees</tag>
+        <tag>dsu</tag>
       </tags>
   </entry>
   <entry>
@@ -2807,26 +2972,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Codeforces Round #782 (Div. 2)</title>
-    <url>/2023/05/17/1659/</url>
-    <content><![CDATA[<h1 id="Codeforces-Round-782-Div-2"><a href="#Codeforces-Round-782-Div-2" class="headerlink" title="Codeforces Round #782 (Div. 2)"></a>Codeforces Round #782 (Div. 2)</h1><h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p>红队和蓝队在打比赛，红队的胜场比蓝队多。<br>给出比赛场数n，红队胜利场数r，蓝队胜利场数b<br>请构造红蓝对决的n场比赛结果，要求红队连胜尽可能少</p>
-<p>可以将红队胜场分成b+1份，然后用b场蓝队胜利分隔它们。<br>红队连胜尽量平均，可分为a%(b+1)组连胜a/(b+1)+1场，b+1-a%(b+1)组连胜a/(b+1)场。</p>
-<h1 id="B"><a href="#B" class="headerlink" title="B"></a>B</h1><p>给出一个01串，每次操作可以选取一个位置i，除了i以外其他位置都取反。问在k次操作后最大字典序的01串是多少</p>
-<p>通过观察发现<br>当k为奇数时，每次应当反转从左到右原串1出现的位置，因为0在奇数次取反后会变为1，从左到右的顺序是为了字典序最大。设原串的1出现的次数是cnt1，那么在k&gt;cnt1时，cnt1为奇数那么答案为全1，为偶数则除最后一个全1. 在k&lt; cnt1时，在第k个1的位置及之前都是1，后面的数由于奇数次取反，所以整体取反。<br>当k为偶数时，同理，每次选0的位置。 </p>
-<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><p>给出一个n个城的位置，这些位置是升序排序的。 每次的操作有两种：<br>征服：每次可以征服离你最近的一座未征服的城市。 需要花费a* |c1-c2|<br>迁都：每次可以迁移到任意一座你已经征服的城市。 需要花费b* |c1-c2|<br>c1是你当前的位置，初始为0，c2是目标城市位置<br>问征服所有城市的最小花费</p>
-<p>实际上，当我们迁都到i城市的时候，中间无论是怎样组合的操作。到i城市花费总是pos[i]* (a+b)<br>这样可以枚举每个城市作为根据点去征服其他城市的花费。然后维护总花费最小即可，注意到当i作为根据地征服后面的城市花费若为cost，那么i-1城市征服之后的城市花费是(n-i)* (pos[i]-pos[i-1]) + cost, 这样我们可以从后向前枚举，并维护后缀和。时间复杂度O(n)</p>
-<h1 id="D"><a href="#D" class="headerlink" title="D"></a>D</h1><p>给出一个长度为n的01串s，若s1为给s前1个数排序后的串，s2为给s前2个数排序后的串，si为给s前i个数排序后的串<br>数组c中元素分别记录s1,s2,…,sn每个位上的和。<br>初始给出c，构造出s</p>
-<p>s中每个1在si中都做出了相同贡献。那么c中元素总和/n便是s中1的个数。设1的个数为k。<br>若s的最后一个值为1则c的最后一个值必定为n，否则不为n<br>无论s最后一个数是否为0，我么可以让当前c的后k个数都减少1。 然后舍弃c最后一个元素<br>在舍弃之前c最后一个数是1，则k应当减少1.<br>这个区间减少可以用线段树维护，也可以维护一个差分数组并维护一个后缀和。</p>
-]]></content>
-      <categories>
-        <category>cf</category>
-      </categories>
-      <tags>
-        <tag>cf</tag>
-        <tag>contest</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Educational Codeforces Round 146 (Rated for Div. 2) 1814</title>
     <url>/2023/05/17/1814/</url>
     <content><![CDATA[<h1 id="Educational-Codeforces-Round-146-Rated-for-Div-2-1814"><a href="#Educational-Codeforces-Round-146-Rated-for-Div-2-1814" class="headerlink" title="Educational Codeforces Round 146 (Rated for Div. 2) 1814"></a>Educational Codeforces Round 146 (Rated for Div. 2) 1814</h1><p><a href="https://codeforces.com/contest/1814/problems">Complete problemset</a></p>
@@ -3720,9 +3865,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>math</tag>
         <tag>sortings</tag>
-        <tag>implementation</tag>
         <tag>number theory</tag>
       </tags>
   </entry>
@@ -3747,8 +3892,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>math</tag>
         <tag>implementation</tag>
+        <tag>math</tag>
         <tag>geometry</tag>
       </tags>
   </entry>
@@ -3799,8 +3944,8 @@
         <tag>math</tag>
         <tag>data structures</tag>
         <tag>binary search</tag>
-        <tag>two pointers</tag>
         <tag>brute force</tag>
+        <tag>two pointers</tag>
       </tags>
   </entry>
   <entry>
@@ -3978,8 +4123,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>greedy</tag>
         <tag>math</tag>
+        <tag>greedy</tag>
         <tag>probabilities</tag>
       </tags>
   </entry>
@@ -4004,8 +4149,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>math</tag>
         <tag>implementation</tag>
+        <tag>math</tag>
         <tag>brute force</tag>
       </tags>
   </entry>
@@ -4109,8 +4254,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>greedy</tag>
         <tag>implementation</tag>
+        <tag>greedy</tag>
       </tags>
   </entry>
   <entry>
@@ -4190,9 +4335,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>math</tag>
         <tag>dp</tag>
-        <tag>implementation</tag>
         <tag>brute force</tag>
         <tag>hashing</tag>
       </tags>
@@ -4291,9 +4436,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
+        <tag>implementation</tag>
         <tag>math</tag>
         <tag>dp</tag>
-        <tag>implementation</tag>
         <tag>combinatorics</tag>
         <tag>matrices</tag>
       </tags>
@@ -4320,9 +4465,9 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>constructive algorithms</tag>
-        <tag>math</tag>
         <tag>implementation</tag>
+        <tag>math</tag>
+        <tag>constructive algorithms</tag>
       </tags>
   </entry>
   <entry>
@@ -4360,8 +4505,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>math</tag>
         <tag>implementation</tag>
+        <tag>math</tag>
       </tags>
   </entry>
   <entry>
@@ -4477,8 +4622,8 @@
       </categories>
       <tags>
         <tag>cf</tag>
-        <tag>constructive algorithms</tag>
         <tag>math</tag>
+        <tag>constructive algorithms</tag>
       </tags>
   </entry>
   <entry>
