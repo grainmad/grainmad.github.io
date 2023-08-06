@@ -1180,31 +1180,6 @@
       </tags>
   </entry>
   <entry>
-    <title>14C Four Segments</title>
-    <url>/2023/07/06/14C/</url>
-    <content><![CDATA[<h1 id="Four-Segments"><a href="#Four-Segments" class="headerlink" title="Four Segments"></a>Four Segments</h1><p>Created by LXC on Wed Jul  5 21:50:50 2023</p>
-<p><a href="https://codeforces.com/problemset/problem/14/C">https://codeforces.com/problemset/problem/14/C</a></p>
-<p>ranting: 1700</p>
-<p>tag: brute force, constructive algorithms, geometry, implementation, math</p>
-<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出四条线段问能否组成矩形，且矩形的边平行于坐标轴。</p>
-<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>平行于x轴和y轴的边都是2条</p>
-<p>此外每个点都需要经过两次</p>
-<p>此外线段的长度不能为0</p>
-<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> r=<span class="number">0</span>, c=<span class="number">0</span>, ok = <span class="number">1</span>;</span><br><span class="line">    map&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;, <span class="type">int</span>&gt; cnt;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) &#123;</span><br><span class="line">        <span class="type">int</span> x1, y1, x2, y2;</span><br><span class="line">        cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;</span><br><span class="line">        <span class="keyword">if</span> (x1 == x2) r++;</span><br><span class="line">		<span class="keyword">if</span> (y1 == y2) c++;</span><br><span class="line">        <span class="keyword">if</span> (x1 == x2 &amp;&amp; y1 == y2) ok = <span class="number">0</span>;</span><br><span class="line">        cnt[&#123;x1,y1&#125;]++;</span><br><span class="line">        cnt[&#123;x2,y2&#125;]++;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">if</span> (!ok ||r != <span class="number">2</span> || c != <span class="number">2</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> [i,j]:cnt) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j != <span class="number">2</span>) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>cf</category>
-      </categories>
-      <tags>
-        <tag>cf</tag>
-        <tag>implementation</tag>
-        <tag>math</tag>
-        <tag>constructive algorithms</tag>
-        <tag>brute force</tag>
-        <tag>geometry</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>1513D GCD and MST</title>
     <url>/2023/07/23/1513D/</url>
     <content><![CDATA[<h1 id="GCD-and-MST"><a href="#GCD-and-MST" class="headerlink" title="GCD and MST"></a>GCD and MST</h1><p>Created by LXC on Fri Jul 21 11:13:34 2023</p>
@@ -1287,6 +1262,31 @@
         <tag>dp</tag>
         <tag>trees</tag>
         <tag>dfs and similar</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>14C Four Segments</title>
+    <url>/2023/07/06/14C/</url>
+    <content><![CDATA[<h1 id="Four-Segments"><a href="#Four-Segments" class="headerlink" title="Four Segments"></a>Four Segments</h1><p>Created by LXC on Wed Jul  5 21:50:50 2023</p>
+<p><a href="https://codeforces.com/problemset/problem/14/C">https://codeforces.com/problemset/problem/14/C</a></p>
+<p>ranting: 1700</p>
+<p>tag: brute force, constructive algorithms, geometry, implementation, math</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出四条线段问能否组成矩形，且矩形的边平行于坐标轴。</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>平行于x轴和y轴的边都是2条</p>
+<p>此外每个点都需要经过两次</p>
+<p>此外线段的长度不能为0</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> r=<span class="number">0</span>, c=<span class="number">0</span>, ok = <span class="number">1</span>;</span><br><span class="line">    map&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;, <span class="type">int</span>&gt; cnt;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) &#123;</span><br><span class="line">        <span class="type">int</span> x1, y1, x2, y2;</span><br><span class="line">        cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;</span><br><span class="line">        <span class="keyword">if</span> (x1 == x2) r++;</span><br><span class="line">		<span class="keyword">if</span> (y1 == y2) c++;</span><br><span class="line">        <span class="keyword">if</span> (x1 == x2 &amp;&amp; y1 == y2) ok = <span class="number">0</span>;</span><br><span class="line">        cnt[&#123;x1,y1&#125;]++;</span><br><span class="line">        cnt[&#123;x2,y2&#125;]++;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">if</span> (!ok ||r != <span class="number">2</span> || c != <span class="number">2</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> [i,j]:cnt) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j != <span class="number">2</span>) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cf</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>implementation</tag>
+        <tag>math</tag>
+        <tag>constructive algorithms</tag>
+        <tag>brute force</tag>
+        <tag>geometry</tag>
       </tags>
   </entry>
   <entry>
@@ -5867,6 +5867,51 @@
         <tag>dp</tag>
         <tag>leetcode</tag>
         <tag>线性dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使数组和小于等于 x 的最少时间</title>
+    <url>/2023/08/06/%E4%BD%BF%E6%95%B0%E7%BB%84%E5%92%8C%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E%20x%20%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/minimum-time-to-make-array-sum-at-most-x/">6987. 使数组和小于等于 x 的最少时间</a></p>
+<hr>
+<p>给你两个长度相等下标从 <strong>0</strong> 开始的整数数组 <code>nums1</code> 和 <code>nums2</code> 。每一秒，对于所有下标 <code>0 &lt;= i &lt; nums1.length</code> ，<code>nums1[i]</code> 的值都增加 <code>nums2[i]</code> 。操作 <strong>完成后</strong> ，你可以进行如下操作：</p>
+<ul>
+<li>  选择任一满足 <code>0 &lt;= i &lt; nums1.length</code> 的下标 <code>i</code> ，并使 <code>nums1[i] = 0</code> 。</li>
+</ul>
+<p>同时给你一个整数 <code>x</code> 。</p>
+<p>请你返回使 <code>nums1</code> 中所有元素之和 <strong>小于等于</strong> <code>x</code> 所需要的 <strong>最少</strong> 时间，如果无法实现，那么返回 <code>-1</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums1 = [1,2,3], nums2 = [1,2,3], x = 4</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">第 1 秒，我们对 i = 0 进行操作，得到 nums1 = [0,2+2,3+3] = [0,4,6] 。</span><br><span class="line">第 2 秒，我们对 i = 1 进行操作，得到 nums1 = [0+1,0,6+3] = [1,0,9] 。</span><br><span class="line">第 3 秒，我们对 i = 2 进行操作，得到 nums1 = [1+1,0+2,0] = [2,2,0] 。</span><br><span class="line">现在 nums1 的和为 4 。不存在更少次数的操作，所以我们返回 3 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums1 = [1,2,3], nums2 = [3,3,3], x = 4</span><br><span class="line">输出：-1</span><br><span class="line">解释：不管如何操作，nums1 的和总是会超过 x 。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li>  <code>1 &lt;= nums1.length &lt;= 10^3</code></li>
+<li>  <code>1 &lt;= nums1[i] &lt;= 10^3</code></li>
+<li>  <code>0 &lt;= nums2[i] &lt;= 10^3</code></li>
+<li>  <code>nums1.length == nums2.length</code></li>
+<li><code>0 &lt;= x &lt;= 10^6</code></li>
+</ul>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>设两个数组的大小为n，s1为nums1的总和，s2为nums2的总和。</p>
+<p>如果n次操作后都没有使得nums1数组和小于等于x，那么没有答案。超过n次说明某个数会归零多次，实际上只会保留最后一次归零。</p>
+<p>假设确定只需要t次操作，如果没有进行归零操作，那么总和是<code>s1+t*s2</code>，我们需要将t次归零进行分配，进而减小总和。那么根据排序不等式，nums2越小的要越早分配归零操作，才能使得减少部分最大化，总和最小化。</p>
+<p>我们将nums1和nums2同时以以nums2升序排序。</p>
+<p>对于假设对第i个数在第j次操作时进行归零，那么会对总和减少<code>nums1[i]+nums2[i]*j</code>。</p>
+<p>我们可以用01背包求解n个数在第i操作时的减少值的最大值。</p>
+<p>定义$f_{i,j}$为前i个数中选择j个数进行归零操作得到的最大和。</p>
+<p>显然对于每个i我们可以选与不选，若不选，则从前i-1个数中选j个；若选，则从前i-1个数中选j-1个然后加上<code>nums1[i]+nums2[i]*j</code>。选与不选两种情况取最大值。</p>
+<p>所以状态转移为$f_{i,j} = max(f_{i-1, j}, f_{i-1,j-1}+nums1_i+nums2_i\times j)$</p>
+<p>答案就是是第一个满足$s1+s2*i-f_{n,i}\le x$的$i$。没有满足的i答案就是-1.</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minimumTime</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums1.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">idx</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="built_in">iota</span>(idx.<span class="built_in">begin</span>(), idx.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">sort</span>(idx.<span class="built_in">begin</span>(), idx.<span class="built_in">end</span>(), [&amp;](<span class="type">int</span> x, <span class="type">int</span> y) &#123;</span><br><span class="line">            <span class="keyword">return</span> nums2[x] &lt; nums2[y];</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        vector&lt;vector&lt;int&gt;&gt; f(n+1, vector&lt;int&gt;(n+1, 0)); // f[i][j] 前i个数中选j个的最大值。</span></span><br><span class="line"><span class="comment">        for (int i=1; i&lt;=n; i++) &#123; // 320 ms	123.7 MB</span></span><br><span class="line"><span class="comment">            for (int j=1; j&lt;=n; j++) &#123;</span></span><br><span class="line"><span class="comment">                f[i][j] = max(f[i-1][j], f[i-1][j-1]+nums1[idx[i-1]]+nums2[idx[i-1]]*j);</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        vector&lt;int&gt; f(n+1, 0); // f[i][j] 前i个数中选j个的最大值。</span></span><br><span class="line"><span class="comment">        for (int i=1; i&lt;=n; i++) &#123; // 228 ms	61 MB</span></span><br><span class="line"><span class="comment">            for (int j=n; j&gt;=1; j--) &#123;</span></span><br><span class="line"><span class="comment">                f[j] = max(f[j], f[j-1]+nums1[idx[i-1]]+nums2[idx[i-1]]*j);</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="comment">/*</span></span><br><span class="line"><span class="comment">        vector&lt;int&gt; f(n+1, 0); // f[i][j] 前i个数中选j个的最大值。</span></span><br><span class="line"><span class="comment">        for (int i=1; i&lt;=n; i++) &#123; // 136 ms	60.8 MB</span></span><br><span class="line"><span class="comment">            for (int j=i; j&gt;=1; j--) &#123;</span></span><br><span class="line"><span class="comment">                f[j] = max(f[j], f[j-1]+nums1[idx[i-1]]+nums2[idx[i-1]]*j);</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line"></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(n+<span class="number">1</span>, <span class="number">0</span>)</span></span>; <span class="comment">// f[i][j] 前i个数中选j个的最大值。</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i:idx) &#123; <span class="comment">// 176 ms	60.7 MB</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=n; j&gt;=<span class="number">1</span>; j--) &#123;</span><br><span class="line">                f[j] = <span class="built_in">max</span>(f[j], f[j<span class="number">-1</span>]+nums1[i]+nums2[i]*j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> s1 = <span class="built_in">accumulate</span>(nums1.<span class="built_in">begin</span>(), nums1.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">        <span class="type">int</span> s2 = <span class="built_in">accumulate</span>(nums2.<span class="built_in">begin</span>(), nums2.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;=n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s1 + i*s2 - f[i] &lt;= x) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>leetcode</tag>
+        <tag>背包dp</tag>
       </tags>
   </entry>
   <entry>
