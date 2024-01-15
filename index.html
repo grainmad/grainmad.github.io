@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">88</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">366</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">88</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">367</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">366</span>
+          <span class="site-state-item-count">367</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,91 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/2024/01/15/1369D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/15/1369D/" class="post-title-link" itemprop="url">1369D TediousLee</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-15 20:20:00" itemprop="dateCreated datePublished" datetime="2024-01-15T20:20:00+00:00">2024-01-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>首先，我们定义 `RDB` 为一棵具有特殊性质的树，它有一个级别 $level$。<br>一个级别为 $1$ 的 `RDB` 是一个单独的节点。<br>接着，对于所有 $i>1$，级别为 $i$ 的 `RDB` 的构成方法如下。<br>先求出级别为 $i-1$ 的 `RDB`，然后对于该 `RDB` 中的每个节点 $x$。<br>- 如果 $x$ 没有孩子，那么给他加上一个孩子。<br>- 如果 $x$ 只有一个孩子，那么给他加上两个孩子。<br>- 如果 $x$ 已经有了超过一个孩子，那么我们跳过节点 $x$。<br>以下是 $1\le n \le 3$ 的所有 `RDB`<br>![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ubHVvZ3UuY29tLmNuL3VwbG9hZC92anVkZ2VfcGljL0NGMTM2OUQvNjRjNjY3Zjg4YjBiYTNiNThhNDU4MWU4ZjcyNmQ0ODQ3ZDk3N2E2Yy5wbmc?x-oss-process=image/format,png)<br>接下来，我们定义一个 `claw`  （见下图），它也是一棵具有特殊性质的树，并且将节点 $1$ 称为这个 `claw` 的中心，其他的称为底部节点。<br>![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ubHVvZ3UuY29tLmNuL3VwbG9hZC92anVkZ2VfcGljL0NGMTM2OUQvNDE0MmRhNTE0NDVmNGNmY2UxNmVhNjhkOTY4MzJjYWFiZjE3YWNjZS5wbmc?x-oss-process=image/format,png)<br>现在，给出一个级别为 $n$ 的 `RDB`，初始时他上面的所有节点都为绿色，你可以进行一些操作。<br>对于每次操作，你需要在给出的 `RDB` 中找到一个 `claw`，满足所有底部节点在 `RDB` 中都是中心节点的儿子，且这四个节点在 `RDB` 中都是绿色。然后将这四个节点染为黄色。<br>问最多可以将多少个节点染成黄色。<br>**输入格式**<br>第一行一个整数 $T$，表示数据的组数。<br>接下来 $T$ 行，每行一个正整数 $n$，表示有一棵级别为 $n$ 的 `RDB`。<br>**输出格式**<br>输出有 $n$ 行，每行一个整数，对应每组数据的答案。<br>这个答案可能很大，所以输出它对 $10^9+7$ 取模后的结果。<br>**说明与提示**<br>$1\le T\le 10^4$<br>$1\le n \le 2\cdot 10^6$<br>感谢 @[_Wolverine](https://www.luogu.com.cn/user/120362) 提供的翻译</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/01/15/1369D/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -325,6 +410,13 @@
       <span class="post-meta-item-text">发表于</span>
 
       <time title="创建时间：2024-01-14 13:36:40" itemprop="dateCreated datePublished" datetime="2024-01-14T13:36:40+00:00">2024-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-15 20:20:00" itemprop="dateModified" datetime="2024-01-15T20:20:00+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -945,91 +1037,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/01/11/1747D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/2024/01/11/%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%86%E5%89%B2%E6%95%B0%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/01/11/%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%86%E5%89%B2%E6%95%B0%E9%87%8F/" class="post-title-link" itemprop="url">执行操作后的最大分割数量</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-11 16:20:58" itemprop="dateCreated datePublished" datetime="2024-01-11T16:20:58+00:00">2024-01-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>leetcode<br>dp<br>线性dp</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/01/11/%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%86%E5%89%B2%E6%95%B0%E9%87%8F/">
                 阅读全文 &raquo;
               </a>
             </div>
