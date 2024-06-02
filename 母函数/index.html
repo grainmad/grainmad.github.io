@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"grainmad.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="组合数学笔记——母函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="母函数">
+<meta property="og:url" content="https://grainmad.github.io/%E6%AF%8D%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="代码如诗">
+<meta property="og:description" content="组合数学笔记——母函数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.328888.xyz/2022/12/12/yOcut.png">
+<meta property="article:published_time" content="2023-01-06T17:58:53.000Z">
+<meta property="article:modified_time" content="2023-01-06T17:58:53.000Z">
+<meta property="article:author" content="GrainMad">
+<meta property="article:tag" content="组合数学">
+<meta property="article:tag" content="母函数">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.328888.xyz/2022/12/12/yOcut.png">
+
+
+<link rel="canonical" href="https://grainmad.github.io/%E6%AF%8D%E5%87%BD%E6%95%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/%E6%AF%8D%E5%87%BD%E6%95%B0/","path":"母函数/","title":"母函数"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>母函数 | 代码如诗</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">代码如诗</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">88</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">484</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AF%8D%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">母函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">整数拆分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E6%8B%86%E5%88%86"><span class="nav-number">2.1.</span> <span class="nav-text">有序拆分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E5%BA%8F%E6%8B%86%E5%88%86"><span class="nav-number">2.2.</span> <span class="nav-text">无序拆分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ferrers%E5%9B%BE%E5%83%8F"><span class="nav-number">2.3.</span> <span class="nav-text">Ferrers图像</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%89%E8%AF%BA%E5%A1%94"><span class="nav-number">3.</span> <span class="nav-text">汉诺塔</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BA%E7%8E%B0%E5%81%B6%E6%95%B0%E6%AC%A1%E6%95%B05%E7%9A%84n%E4%BD%8D10%E8%BF%9B%E5%88%B6%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">出现偶数次数5的n位10进制数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fibonacci"><span class="nav-number">5.</span> <span class="nav-text">Fibonacci</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%B8%B8%E7%B3%BB%E6%95%B0%E9%BD%90%E6%AC%A1%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB"><span class="nav-number">6.</span> <span class="nav-text">线性常系数齐次递推关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E8%A7%A3%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB"><span class="nav-number">7.</span> <span class="nav-text">特征多项式求解递推关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Catalan%E6%95%B0"><span class="nav-number">8.</span> <span class="nav-text">Catalan数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E5%9E%8B%E6%AF%8D%E5%87%BD%E6%95%B0"><span class="nav-number">9.</span> <span class="nav-text">指数型母函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%99%E4%BD%8D%E6%8E%92%E5%88%97"><span class="nav-number">10.</span> <span class="nav-text">错位排列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stirling%E6%95%B0"><span class="nav-number">11.</span> <span class="nav-text">Stirling数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%B1%BBStirling%E6%95%B0"><span class="nav-number">11.1.</span> <span class="nav-text">第一类Stirling数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%B1%BBStirling%E6%95%B0"><span class="nav-number">11.2.</span> <span class="nav-text">第二类Stirling数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AB%E7%A7%8D%E6%94%BE%E7%90%83%E6%A8%A1%E5%9E%8B"><span class="nav-number">12.</span> <span class="nav-text">八种放球模型</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GrainMad"
+      src="/images/mona-loading-dimmed-5da225352fd7.gif">
+  <p class="site-author-name" itemprop="name">GrainMad</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">484</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/grainmad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;grainmad" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/grainmad" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/%E6%AF%8D%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="母函数 | 代码如诗">
+      <meta itemprop="description" content="组合数学笔记——母函数">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          母函数
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-06 17:58:53" itemprop="dateCreated datePublished" datetime="2023-01-06T17:58:53+00:00">2023-01-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">组合数学</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">组合数学笔记——母函数</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="母函数"><a href="#母函数" class="headerlink" title="母函数"></a>母函数</h1><p>在数学中，某个序列${\displaystyle (a_{n}){n\in \mathbb {N} }}(a{n})_{n\in \mathbb {N} }$ 的母函数（又称生成函数，英语：Generating function）是一种形式幂级数，其每一项的系数可以提供关于这个序列的信息。</p>
+<p>母函数就是一列用来展示一串数字序列的挂衣架。</p>
+<p>定义：对于$c_0,c_1,c_2,\dots$ 构造函数$G(x) = c_0+c_1x+c_2x^2+\dots$ 称$G(x)$为序列$c_0,c_1,c_2,\dots$ 的母函数</p>
+<hr>
+<p>投掷m粒骰子时，加起来点数等于n的方式的数目？</p>
+<p>等价于求$G(x) = (x+x^2+x^3+x^4+x^5+x^6)^m$的$x^n$的系数。</p>
+<hr>
+<p>有1g，2g，3g，4g的砝码，问有多少种重量组合方案。</p>
+<p>对于1g砝码有选与不选两种选择，所以可以表示为$x^0+x^1$，以此类推有$x^0+x^2$，$x^0+x^3$，$x^0+x^4$</p>
+<p>母函数G(x) =$(1+x)(1+x^2)(1+x^3)(1+x^4)$，展开后不同幂次代表不同重量，系数代表该重量的方案数。</p>
+<hr>
+<p>将整数n拆分成1，2，… , m的和。求母函数</p>
+<p>每个数代表幂次，每个数出现的次数可以是0次，1次，… ，无限次。</p>
+<p>$G(x) = (1+x+x^2+x^3+\cdots)(1+x^2+x^4+x^6+\cdots)\cdots(1+x^m+x^{2m}+x^{3m}+\cdots)$</p>
+<h1 id="整数拆分"><a href="#整数拆分" class="headerlink" title="整数拆分"></a>整数拆分</h1><p>将一个正整数拆分成若干个<strong>正整数</strong>之和。</p>
+<h2 id="有序拆分"><a href="#有序拆分" class="headerlink" title="有序拆分"></a><strong>有序拆分</strong></h2><p>各个部分之间考虑顺序叫做有序拆分（Composition）</p>
+<p>数字n拆分成r个正整数之和，有多少种拆分方案？</p>
+<p>相当于将n个<strong>无差别</strong>的球放入r个<strong>有标志</strong>区域，每个区域至少一个球。</p>
+<p>用隔板法需要r-1个隔板，且隔板应该放入每个球的间隙之间，隔板是无差别的所以应该是$C(n-1,r-1)$</p>
+<h2 id="无序拆分"><a href="#无序拆分" class="headerlink" title="无序拆分"></a><strong>无序拆分</strong></h2><p>各个部分不考虑顺序的拆分叫无序拆分（Partition）</p>
+<p>把n个无区别的球放到r个无标志的盒子，盒子可以是空的。</p>
+<p>$G(x) = (1+x+x^2+x^3+\cdots)(1+x^2+x^4+x^6+\cdots)\cdots(1+x^r+x^{2r}+x^{3r}+\cdots)$，n的拆分个数就是$x^n$的系数。</p>
+<p>1出现的母函数$(1+x+x^2+x^3+\cdots)$</p>
+<p>2出现的母函数$(1+x^2+x^4+x^6+\cdots)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">cnt = [<span class="number">1</span>]*(x+<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, x+<span class="number">1</span>):</span><br><span class="line">    c = [<span class="number">0</span>]*(x+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, x+<span class="number">1</span>, i):</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(j, x+<span class="number">1</span>):</span><br><span class="line">            <span class="comment"># print(i+1, j, k)</span></span><br><span class="line">            c[k]+=cnt[k-j];</span><br><span class="line">    cnt = c</span><br><span class="line">    <span class="comment"># for i, j in enumerate(cnt):</span></span><br><span class="line">    <span class="comment">#     print(&quot;cnt[&#123;&#125;]=&#123;&#125;&quot;.format(i, j), end= &#x27; &#x27;)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;&#125;可拆分方案数为&#123;&#125;&quot;</span>.<span class="built_in">format</span>(x, cnt[x]))</span><br></pre></td></tr></table></figure>
+
+<h2 id="Ferrers图像"><a href="#Ferrers图像" class="headerlink" title="Ferrers图像"></a><strong>Ferrers图像</strong></h2><p>整数n拆分成最大数为k的拆分数，和数n拆分成k个数的和的拆分数相等。</p>
+<p>整数n拆分成最多不超过m个数的和的拆分数，和数n拆分最大不超过的拆分数相等。</p>
+<p>奇数个拆分只有一种图像</p>
+<h1 id="汉诺塔"><a href="#汉诺塔" class="headerlink" title="汉诺塔"></a>汉诺塔</h1><p>母函数可作为<strong>递推公式</strong>和<strong>通项公式</strong>的<strong>桥梁</strong></p>
+<p>现有编号$A$、$B$和$C$三根柱子，有$n$个中空盘子在$A$柱子上，盘子大小互不相同从小到大依次排列，每次只能移动最上面的盘子且移动后要保证小盘子在大盘子上。</p>
+<p>现在需要将$A$柱子上的$n$个盘子移动到$C$上，三步走，首先移动$n-1$个盘到$B$柱子上，然后将最后一个盘子移动到$C$上，最后将$B$上的$n-1$个盘子移动到$C$上。</p>
+<p>我们设移动$n$个盘子到另一根柱子上需要$f(n)$步，根据三步走有递推公式$f(i) = 2 * f(i-1) + 1,f(0) = 0$。</p>
+<p>构造母函数$G(x) = f(0) + f(1)x + f(2)x^2 + f(3)x^3 + \cdots$</p>
+<p>这时候我们要$f(n)$就只要求出$x^n$的系数即可。</p>
+<p>将递推公式带入$G(x)$可得</p>
+<p>$G(x) = (2f(0)+1)x+(2f(1)+1)x^2+(2f(2)+1)x^3+\cdots$</p>
+<p>$G(x) = 2x(f(0)+f(1)x+f(2)x^2+\cdots) + x + x^2 + x^3 + \cdots$</p>
+<p>$G(x) = 2xG(x) + x+ x^2 + x^3 + \cdots$</p>
+<p>根据泰勒公式</p>
+<p>$G(x) = 2xG(x) + \frac{1}{1-x}-1$</p>
+<p>$G(x) = \frac{x}{(1-2x)(1-x)} = \frac{1}{1-2x} - \frac{1}{1-x} = (1+2x+ 2^2x^2 + 2^3x^3 + \cdots)-(1+x+ x^2 + x^3 + \cdots)=\sum \limits_{i=0}^{\infty} (2^i-1)x^i$</p>
+<h1 id="出现偶数次数5的n位10进制数"><a href="#出现偶数次数5的n位10进制数" class="headerlink" title="出现偶数次数5的n位10进制数"></a>出现偶数次数5的n位10进制数</h1><p>给出一个长度位n的10进制数，问出现5的次数是偶数的个数有多少?不能有前导零。</p>
+<p>用动态规划的思想寻找子问题。</p>
+<p>考虑前i个数以5结尾和非5结尾的个数有多少个。</p>
+<p>设$a_i$前$i$位偶数个5的个数，$b_i$前$i$位奇数个5的个数。</p>
+<p>从显然对于长度为1的偶数个5的情况是不包含5，但也不能是前导0，所以$a_1 = 8$，对于长度为1的奇数个5的情况就是选择5，$b_i = 1$</p>
+<p>对于$a_i$的求解考虑第i位是否为5，如果是5那么前i-1为应该为奇数个5；如果不是5那么前i-1位应该为偶数个5，即$a_i = 9*a_{i-1}+b_{i-1}$</p>
+<p>对于$b_i$同理可得$b_i = 9*b_{i-1}+a_{i-1}$</p>
+<p>我们得到了两个相互依赖的递推式</p>
+<p>设母函数</p>
+<p>$A(x) = a_1+a_2x+a_3x^2+\cdots$</p>
+<p>$B(x) = b_1+b_2x+b_3x^2+\cdots$</p>
+<p>对于每个系数$a_i,b_i,i&gt;1$都带入递推式，整理后得到</p>
+<p>$A(x) = 8 + x(9A(x) + B(x))$</p>
+<p>$B(x) = 1 + x(9B(x) + A(x))$</p>
+<p>联立方程组求得$A(x) = \frac{8-71x}{(1-10x)(1-8x)} = \frac{1}{2}(\frac{9}{1-10x}+\frac{7}{1-8x}) = \sum \limits_{i=0}^{\infty}(\frac{9\cdot10^i+7\cdot8^i}{2})x^{i}$</p>
+<p>$a_i = \frac{9\cdot10^{i-1}+7\cdot8^{i-1}}{2}$</p>
+<h1 id="Fibonacci"><a href="#Fibonacci" class="headerlink" title="Fibonacci"></a>Fibonacci</h1><p>$F_i = F_{i-1} + F_{i-2} , i&gt;2$</p>
+<p>$F_1 = F_2 = 1$</p>
+<p>a母函数法求$F_i$，构造母函数$G(x) = F_1x+F_2x^2+\cdots+F_ix^i+\cdots$</p>
+<p>$G(x) = x + xG(x)+x^2G(x)$</p>
+<p>$G(x) = \frac{x}{1-x-x^2}$</p>
+<p>由于需要利用$\frac{1}{1-x}$的泰勒展开，我们将分母因式分解为形如$(1-ax)(1-bx)$的形式。</p>
+<p>$1^2-x+\frac{x^2}{4}-\frac{5x^2}{4}=(1-\frac{x}{2})^2-(\frac{\sqrt5x}{2})^2=(1-\frac{1+\sqrt5}{2}x)(1-\frac{1-\sqrt5}{2}x)$</p>
+<p>因此$G(x) = \frac{x}{(1-\frac{1+\sqrt5}{2}x)(1-\frac{1-\sqrt5}{2}x)}$</p>
+<p>设$a = \frac{1+\sqrt5}{2}$，$b=\frac{1-\sqrt5}{2}$</p>
+<p>y用待定系数法将$G(x)$拆为两项$G(x) = \frac{x}{(1-ax)(1-bx)} = \frac{A}{1-ax} + \frac{B}{1-bx} = \frac{A(1-bx)+B(1-ax)}{(1-ax)(1-bx)} = \frac{-(Ab+Ba)x+A+B}{(1-ax)(1-bx)}$，可知$-(Ab+Ba) = 1, A+B = 0$，解得$A=\frac{1}{\sqrt5}, B = -\frac{1}{\sqrt5}$</p>
+<p>$G(x) = \frac{1}{\sqrt5}(\frac{1}{1-ax}-\frac{1}{1-bx})=\sum \limits_{i=0}^{\infty} \frac{1}{\sqrt5}(a^i-b^i)x^i=\sum \limits_{i=0}^{\infty} \frac{1}{\sqrt5}((\frac{1+\sqrt5}{2})^i-(\frac{1-\sqrt5}{2})^i)x^i$</p>
+<p>so $F_i = \frac{1}{\sqrt5}((\frac{1+\sqrt5}{2})^i-(\frac{1-\sqrt5}{2})^i)$</p>
+<p>Fibonacci<strong>恒等式</strong></p>
+<p>$F_1^2+F_2^2+F_3^2+\cdots+F_n^2 = F_nF_{n+1}$</p>
+<p>右侧有$F_{n+1}$，左侧没有需要凑出一个$F_{n+1}$且是正数</p>
+<p>对每一项$F_i$替换为$F_{i+1}-F_{i-1}$，得到：</p>
+<p>$F_1^2+F_2(F_3-F_1)+\cdots+F_n(F_{n+1}-F_{n-1})=F_nF_{n+1}$</p>
+<hr>
+<p>$F_1+F_2+F_3+\cdots+F_n = F_{n+2}-1$</p>
+<p>右侧有$F_{n+2}$，将$F_n$替换为$F_{n+2}-F_{n+1}$</p>
+<hr>
+<h1 id="线性常系数齐次递推关系"><a href="#线性常系数齐次递推关系" class="headerlink" title="线性常系数齐次递推关系"></a>线性常系数齐次递推关系</h1><p>若序列${a_n}$满足</p>
+<p>$a_n + c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} = 0$</p>
+<p>$a_i = d_i, 0≤i&lt;k,$ $d_i$为常数</p>
+<p>则${a_n}$为<strong>k阶线性常系数齐次</strong>递推关系。</p>
+<h1 id="特征多项式求解递推关系"><a href="#特征多项式求解递推关系" class="headerlink" title="特征多项式求解递推关系"></a>特征多项式求解递推关系</h1><p>${a_n}$为k阶线性常系数齐次递推关系</p>
+<p>$a_n + c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} = 0$</p>
+<p>特征多项式为$C(x) = x^k+c_1x^{k-1}+c_2x^{k-2}+\cdots+c_k=(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_k)=0$</p>
+<p><strong>当$C(x)$无重根</strong></p>
+<p>$G(x)$可化为$G(x) = \frac{l_1}{1-\alpha_1x} + \frac{l_2}{1-\alpha_2x} + \cdots + \frac{l_k}{1-\alpha_kx}=\sum \limits ^{k}_{i=1} \frac{l_i}{1-\alpha_i x}$，$l_i$是待定系数</p>
+<p>通过泰勒公式展开，$x^n$的系数就是我们要求的$a_n$，即 $a_n = \sum \limits_{i=1}^{k} l_i\alpha_i^n$</p>
+<p>已知${a_n}$的前k项初始值，就可以形成k个方程求解k个待定系数$l_1,l_2,\dots,l_k$</p>
+<p>eg：用特征多项式求解Fibonacci</p>
+<p>$F_i - F_{i-1} + F_{i-2}=0,F_1 = F_2 = 1$</p>
+<p>特征多项式$x^2-x-1=(x-\frac{1+\sqrt5}{2})(x-\frac{1-\sqrt5}{2})$</p>
+<p>令$\alpha_1 =\frac{1+\sqrt5}{2}, \alpha_2 = \frac{1-\sqrt5}{2}$</p>
+<p>由$a_n = \sum \limits_{i=1}^{2} l_i\alpha_i^n$联立方程组</p>
+<p>$\left { \begin{array}{l}<br>f_1 = l_1\alpha_1+l_2\alpha_2 = 1 \<br>f_2 = l_1\alpha_1^2+l_2\alpha_2^2  = 1<br>\end{array}\right.$</p>
+<p>解得$l_1=\frac{1}{\sqrt5}, l_2 = -\frac{1}{\sqrt5}$</p>
+<p>$a_n =  \frac{1}{\sqrt5} (\frac{1+\sqrt5}{2})^n - \frac{1}{\sqrt5} (\frac{1-\sqrt5}{2})^n$</p>
+<p><strong>当$C(x)$有重根</strong></p>
+<p>有时候特征方程有k重根$\alpha$，组成母函数的部分分式$A(x) = \frac{l_1}{1-\alpha_1x} + \frac{l_2}{(1-\alpha_2x)^2} + \cdots + \frac{l_k}{(1-\alpha_kx)^k}=\sum \limits ^{k}_{i=1} \frac{l_i}{(1-\alpha_i x)^i}$</p>
+<p>$x^n$的系数$a_n = \sum \limits_{i=1}^{k}l_iC_{n+i-1}^{i-1}\alpha^n$，</p>
+<p>这个组合数是n的i-1次多项式，可以将递推关系的解对应$(A_0+A_1n+\cdots+A_{k-1}n^{k-1})\alpha^n$，只需要求出$A_0,A_1,\dots,A_{k-1}$这k个待定系数即可。</p>
+<p><strong>当$C(x)$有虚数根</strong></p>
+<p>略</p>
+<h1 id="Catalan数"><a href="#Catalan数" class="headerlink" title="Catalan数"></a>Catalan数</h1><p>一个无穷大的栈的进站序列为$1,2,\cdots,n$有多少个不同的出栈序列？</p>
+<p>若栈第二次为空时面临着第$i+1$个元素入栈，那么最后一个从栈里拿出的就是第一个元素，实际上问题就被拆解为$i-1$个元素的出栈顺序数和$n-i$个元素的出栈顺序数的乘积。</p>
+<p>因此得到递推关系$C(n) = C(n-1)*C(0) + C(n-2)*C(1) + \cdots + C(1)*C(n-2)+C(0)*C(n-1)$</p>
+<p><strong>母函数证明</strong></p>
+<p>设母函数为$c(x) = \sum \limits _{i=0}^{\infty}C(i)x^n$</p>
+<p>$c(x)^2 = C(0)C(0) + (C(1)C(0)+C(0)C(1))x+(C(2)C(0)+C(1)C(1)+C(0)C(2))x^2+\cdots$</p>
+<p>$c(x)^2 = C(1)+C(2)x+C(3)x^2+ \cdots$</p>
+<p>$c(x) = 1+xc(x)^2$</p>
+<p>$c(x) = \frac{1-\sqrt{1-4x}}{2x}, \lim \limits_{x\rightarrow 0^+} = C(0) = 1$</p>
+<p>$(1+x)^{\alpha} = 1+\sum \limits_{i=1}^{\infty}C_{\alpha}^ix^i$</p>
+<p>$\sqrt{1-4x} = 1 + \sum \limits_{i=1}^{\infty}C_{\frac{1}{2}}^i(-4x)^i$</p>
+<p>$C_{\frac{1}{2}}^i = \frac{1}{2}(\frac{1}{2}-1)(\frac{1}{2}-2)\cdots(\frac{1}{2}-i+1)/i! = (-1)^{i-1}\frac{(2i-3)!!}{2^ii!}$</p>
+<p>$\sqrt{1-4x} =1+\sum \limits_{i=1}^{\infty}C_{\frac{1}{2}}^i(-4x)^i = 1+\sum \limits_{i=1}^{\infty}(-1)^{i-1}\frac{(2i-3)!!}{2^ii!}(-4x)^i = 1-\sum \limits_{i=1}^{\infty}\frac{(2i-3)!!}{i!}(2x)^i$</p>
+<p>$c(x) = \frac{1-\sqrt{1-4x}}{2x}=\sum \limits_{i=1}^{\infty}\frac{(2i-3)!!}{i!}(2x)^{i-1}$</p>
+<p>$(2i-2)!! = 2^i(i-1)!$</p>
+<p>$c(x) = \frac{1-\sqrt{1-4x}}{2x}=\sum \limits_{i=1}^{\infty}\frac{(2i-3)!!}{n!}(2x)^{i-1}=\sum \limits_{i=1}^{\infty}\frac{(2i-3)!!(2i-2)!!}{i!(i-1)!}x^{i-1}=\sum \limits_{i=1}^{\infty}\frac{(2i-2)!}{i!(i-1)!}x^{i-1} = \sum \limits_{i=0}^{\infty}\frac{(2i)!}{i!(i+1)!}x^{i} = \sum \limits_{i=0}^{\infty}\frac{C_{2i}^i}{i+1}x^{i}$</p>
+<p>$C(i) = \frac{C_{2i}^{i}}{i+1}$</p>
+<p><strong>格路模型</strong></p>
+<p><img data-src="https://i.328888.xyz/2022/12/12/yOcut.png" alt="yOcut.png"></p>
+<p>一个$n*n$的网格，问从左下角顶点$(0,0)$到右上角顶点$(n,n)$每次只能向右或向上走一个单位，且不能越过$y=x$这条对角线到达上半区域的路径数。我们可以先求出可越过对角线的所有路径，然后减去不合法路径。其实不合法路径一定会经过$y=x+1$这条线，从$(-1,1)$到$(n,n)$一定越过了$y=x+1$，由对称性$(-1,1)$到$(n,n)$的每一条路径都对应着$(0,0)$到$(n,n)$的不合法路径，所以合法路径数是$C_{2n}^{n}-C_{2n}^{n-1} = \frac{C_{2n}^{n}}{n+1}$</p>
+<h1 id="指数型母函数"><a href="#指数型母函数" class="headerlink" title="指数型母函数"></a>指数型母函数</h1><p>普通母函数定义：对于$c_0,c_1,c_2,\dots$ 构造函数$G(x) = c_0+c_1x+c_2x^2+\dots$ 称$G(x)$为序列$c_0,c_1,c_2,\dots$ 的母函数，普通母函数可用于求<strong>多重组合数</strong></p>
+<p>eg: 3个a，2个b，3个c取4个数进行组合。</p>
+<p>构造母函数$G(x) = (1+x+x^2+x^3)(1+x+x^2)(1+x+x^2+x^3)$求出$x^4$的系数即可。</p>
+<p>指数型母函数定义：对于$c_0,c_1,c_2,\dots$ 构造函数$G(x) = c_0+\frac{c1}{1!}x\frac{c_2}{2!}x^2+\dots$ 称$G(x)$为序列$c_0,c_1,c_2,\dots$ 的指数型母函数，指数型母函数可用于求<strong>多重排列数</strong></p>
+<p>eg:数字1出现次数不超过2次，不能不出现；2出现次数不超过1次；3出现次数可达3次，可以不出现；4出现次数为偶数，满足条件的n位数有多少种？</p>
+<p>构造母函数$G(x) = (\frac{x}{1!}+\frac{x^2}{2!})(1+x)(1+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!})(1+\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots)$求出$x^n$的系数就是满足条件的n位数的方案数。</p>
+<h1 id="错位排列"><a href="#错位排列" class="headerlink" title="错位排列"></a>错位排列</h1><p>有n对男女跳舞，跳完后必须交换舞伴。有多少种方案？</p>
+<p>设D(n)为n对男女的交换方案数</p>
+<p>显然D(1) = 0, D(2) = 1</p>
+<p>对于D(n), n&gt;2，分两种情况:</p>
+<ol>
+<li><p>考虑第n对男女与前n-1对男女中的一对进行交换，剩余的n-2相互交换有D(n-2)种方式，这时有(n-1)*D(n-2)种方案</p>
+</li>
+<li><p>考虑在n-1对男女交换完毕后，第n对男女再与前n-1对中的一对进行交换。这时有(n-1)*D(n-1)种。</p>
+</li>
+</ol>
+<p>这两种情况不会重复，因为在第一种情况中第n个人交换是两对男女的错位，第二种情况中至少是3对男女的错位。</p>
+<p>由此错排的递推式 $D(n) = (n-1)(D(n-1)+D(n-2))，D(1) = 0, D(2) = 1;$</p>
+<p>求D(n)的通项公式</p>
+<p>$D(n) = (n-1)(D(n-1)+D(n-2)), D(1) = 0, D(2) = 1$</p>
+<p>$D(n) - nD(n-1) = -(D(n-1) - (n-1)D(n-2))$</p>
+<p>$D(n) - nD(n-1) = (-1)^(n-2) = (-1)^n$</p>
+<p>$D(1) - D(0) = -1, D(0) = 1$</p>
+<p>设指数型母函数$G(x) = D(0) + D(1)x+\frac{D(2)}{2!}x^2+\frac{D(3)}{3!}x^3+\cdots$</p>
+<p>$G(x) = e^{-1} + G(x)*x$</p>
+<p>$G(x) = \frac{e^{-1}}{1-x} = (1-x+\frac{x^2}{2!}-\cdots)(1+x+x^2+\cdots) = \sum \limits_{k=0}^{n}(-1)^kC_n^k(n-k)!$</p>
+<h1 id="Stirling数"><a href="#Stirling数" class="headerlink" title="Stirling数"></a>Stirling数</h1><h2 id="第一类Stirling数"><a href="#第一类Stirling数" class="headerlink" title="第一类Stirling数"></a>第一类Stirling数</h2><p><strong>Unsigned Stirling numbers of the first kind</strong></p>
+<p>n个元素分成m个圆环的方法数目。</p>
+<p>$s(n,m)=s(n-1,m-1) + ns(n-1,m),s(n,0)=0,s(1,1) = 1$</p>
+<p><strong>Rising factorial</strong></p>
+<p>$x(x+1)(x+2)\cdots(x+n-1)=s(n,0) + s(n,1)x + s(n,2)x^2 + \cdots + s(n,n)x^n$</p>
+<hr>
+<p><strong>Singed Stirling numbers of the first kind</strong></p>
+<p>$s(n,k)=s(n-1,k-1)-ns(n-1,k)$</p>
+<p><strong>Falling factorial</strong></p>
+<p>$x(x-1)(x-2)\cdots(x-n+1)=s(n,0) + s(n,1)x + s(n,2)x^2 + \cdots + s(n,n)x^n$</p>
+<p>$x(x-1)(x-2)\cdots(x-n+1)(x-n)=(s(n,0) + s(n,1)x + s(n,2)x^2 + \cdots + s(n,n)x^n)(x-n)=s(n,0)+(s(n,0)-ns(n,1))x+(s(n,1)-ns(n,2))x+(s(n,2)-ns(n,3))x+\cdots+(s(n,n-1)-ns(n,n))x = s(n+1,0)+s(n+1,1)x+s(n+1,x^2)^2+s(n+1,3)x^3+\cdots+s(n+1,n+1)x^{n+1}$</p>
+<h2 id="第二类Stirling数"><a href="#第二类Stirling数" class="headerlink" title="第二类Stirling数"></a>第二类Stirling数</h2><p>n个有区别的球放到m个相同的盒子中，要求无一空盒。</p>
+<p>$S(n,0) = 0, S(n,1) = 1$</p>
+<p>$S(n,m) = S(n-1,m-1) + mS(n-1,m)$</p>
+<p>寻找子问题，考虑最后一个球是否独占一个盒子</p>
+<h1 id="八种放球模型"><a href="#八种放球模型" class="headerlink" title="八种放球模型"></a>八种放球模型</h1><ul>
+<li>$n$个无区别的球放到$r$个有区别的盒子，盒子可以为空，有多少种方案数？  相当于整数有序拆分，可拆分出0  <strong>隔板法</strong>  将$n$个球排成一行分成连续的$r$个区间，这$r$个连续的区间就代表着有区别的盒子。将r个盒子看作$r-1$个无区别的隔板，盒子为空说明隔板位置不限。直接用多重全排列，有$2$种球$1$种出现$n$个，$1$种出现$r-1$个。答案即为$\frac{(n+r-1)!}{n!(r-1)!}$，这不是$n+r-1$个里面选$r-1$个的组合数$C_{n+r-1}^{r-1}$吗? 所以也有了另一种思路在$n+r-1$个位置中选$r-1$个放隔板，剩余的放球就行了.  <strong>母函数</strong>  $G(x) = (1+x+x^2+x^3+\cdots)^r = (1-x)^{-r}=\sum \limits_{n=0}^{\infty}C_{n+r-1}^{r-1}x^n$</li>
+<li>$n$个无区别的球放到$r$个有区别的盒子，盒子不能为空，有多少种方案数？  相当于整数有序拆分，不可拆分出0  <strong>隔板法</strong>  将$n$个球排成一行分成连续的$r$个区间，这$r$个连续的区间就代表着有区别的盒子。盒子不能为空那r-1个隔板就只能放n个球的n-1间隙，直接在n-1个间隙中选r-1个位置的组合数就行，相比有区别就是少乘了有区别的球的排列，答案$C_{n-1}^{r-1}$  <strong>母函数</strong>  $G(x) = (1+x+x^2+x^3+\cdots)^r$</li>
+<li>$n$个无区别的球放到$r$个无区别的盒子，盒子可以为空，有多少种方案数？  相当于整数无序拆分，可拆分出0  <strong>母函数</strong>  $G(x) = (1+x+x^2+x^3+\cdots)(1+x^2+x^4+x^6+\cdots)\cdots(1+x^r+x^{2r}+x^{3r}+\cdots)$  方案数是$x^n$的系数</li>
+<li>$n$个无区别的球放到$r$个无区别的盒子，盒子不能为空，有多少种方案数？  相当于整数无序拆分，不可拆分出0  <strong>母函数</strong>  $G(x) = (x+x^2+x^3+\cdots)(x^2+x^4+x^6+\cdots)\cdots(x^r+x^{2r}+x^{3r}+\cdots)$  方案数是$x^n$的系数</li>
+<li>$n$个有区别的球放到$r$个有区别的盒子，盒子可以为空，有多少种方案数？  相当于r种元素，每种元素可选0次或任意次，从中选n个的排列数。  所以答案就是$r^n$种。  <strong>母函数</strong>  $G_e(x) = (1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots)^r = (e^x)^r=1+\frac{r}{1!}x+\frac{r^2}{2!}x^2+\frac{r^3}{3!}x^3+\cdots=\sum \limits_{n=0}^{\infty} \frac{r^n}{n!}x^n$  方案数为$r^n$</li>
+<li>$n$个有区别的球放到$r$个有区别的盒子，盒子不能为空，有多少种方案数？  相当于第二类Stirling数乘以盒子的全排列，即$r!S(n,r)$  当于r个有标志的元素取n个作允许重复的排列，r种元素至少每个选一个。  <strong>母函数</strong>  $G_e(x) = (x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots)^r = (e^x-1)^r =\sum \limits_{h=0}^{r} C_{r}^h(-1)^he^{(r-h)x}$  $e^{(r-h)x} = 1+\frac{r-h}{1!}x+\frac{(r-h)^2}{2!}x^2+\frac{(r-h)^3}{3!}x^3+\cdots=\sum \limits_{n=0}^{\infty} \frac{(r-h)^n}{n!}x^n$  $G_e(x) = \sum \limits_{h=0}^{r}C_{r}^h(-1)^h\sum \limits_{n=0}^{\infty} \frac{(r-h)^n}{n!}x^n= \sum \limits_{n=0}^{\infty} \frac{x^n}{n!}\sum \limits_{h=0}^{r}C_{r}^h(-1)^h(r-h)^n$  方案数为$\sum \limits_{h=0}^{r}C_{r}^h(-1)^h(r-h)^n$</li>
+<li>$n$个有区别的球放到$r$个无区别的盒子，盒子可以为空，有多少种方案数？  利用第二类Stirling数，枚举盒子为空的个数，没有盒子为空有S(n,r)种，有一个盒子为空有S(n,r-1)种，两个盒子为空有S(n,r-2)种，……，r-1个盒子为空有S(n,1)。不存在所有盒子都为空。</li>
+<li>$n$个有区别的球放到$r$个无区别的盒子，盒子不能为空，有多少种方案数？  相当于第二类Stirling数  <strong>母函数</strong>  通过$<strong>n$个有区别的球放到$r$个有区别的盒子，盒子不能为空</strong>的母函数可知$r!S(n,r) = \sum \limits_{h=0}^{r}C_{r}^h(-1)^h(r-h)^n$  $S(n,r) = \frac{1}{r!}\sum \limits_{h=0}^{r}C_{r}^h(-1)^h(r-h)^n$  <strong>递推式</strong>  动态规划寻找子问题，考虑最后一个球是否独占一个盒子  $S(n,0) = 0, S(n,1) = 1$  $S(n,m) = S(n-1,m-1) + mS(n-1,m)$</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://fightinggg.github.io/ACM/stencil/math/%E7%90%83%E7%9B%92%E6%A8%A1%E5%9E%8B.html">https://fightinggg.github.io/ACM/stencil/math/球盒模型.html</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 组合数学</a>
+              <a href="/tags/%E6%AF%8D%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 母函数</a>
+          </div>
+          <script type="text/javascript">
+            var tagsall=document.getElementsByClassName("post-tags")
+            for (var i = tagsall.length - 1; i >= 0; i--){
+                var tags=tagsall[i].getElementsByTagName("a");
+                for (var j = tags.length - 1; j >= 0; j--) {
+                    var golden_ratio = 0.618033988749895;
+                    var s = 0.5;
+                    var v = 0.999;
+                    var h = golden_ratio + Math.random()*0.8 - 0.5;
+                    var h_i = parseInt(h * 6);
+                    var f = h * 6 - h_i;
+                    var p = v * (1 - s);
+                    var q = v * (1 - f * s);
+                    var t = v * (1 - (1 - f) * s);
+                    var r, g, b;
+                    switch (h_i) {
+                        case 0:
+                            r = v;
+                            g = t;
+                            b = p;
+                            break;
+                        case 1:
+                            r = q;
+                            g = v;
+                            b = p;
+                            break;
+                        case 2:
+                            r = p;
+                            g = v;
+                            b = t;
+                            break;
+                        case 3 :
+                            r = p;
+                            g = q;
+                            b = v;
+                            break;
+                        case 4:
+                            r = t;
+                            g = p;
+                            b = v;
+                            break;
+                        case 5:
+                            r = v;
+                            g = p;
+                            b = q;
+                            break;
+                        default:
+                            r = 1;
+                            g = 1;
+                            b = 1;
+                      }
+                    tags[j].style.background = "rgba("+parseInt(r*255)+","+parseInt(g*255)+","+parseInt(b*255)+","+0.7+")";
+                }
+            }
+          </script>
+          <style>
+          .post-tags a {
+              display: inline-block;
+              font-size: 0.8em;
+              padding: 0px 10px;
+              border-radius: 8px;
+              color: rgb(85, 85, 85);
+              border: 0px;
+          }
+          .post-tags a:hover{
+              box-shadow: 0px 5px 15px 0px rgba(0,0,0,.4);
+              transform: scale(1.1);
+              transition-duration: 0.15s;
+          }
+          </style>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="prev" title="排列组合">
+                  <i class="fa fa-chevron-left"></i> 排列组合
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E5%AE%B9%E6%96%A5%E4%B8%8E%E9%B8%BD%E5%B7%A2/" rel="next" title="容斥与鸽巢">
+                  容斥与鸽巢 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GrainMad</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.7/mermaid.min.js","integrity":"sha256-G58AID1YoX5YaEtWfXSI0VLrZ6N4kvNvwg0BI8zUFxE="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#606863',
+  buttonColorLight: '#dcdee3',
+  saveInCookies: true,
+  label: '🌗',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"grainmad/grainmad.github.io","issue_term":"pathname","theme":"github-dark-orange"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":450},"mobile":{"show":false,"scale":0.5},"react":{"opacity":0.7}});</script></body>
+</html>
