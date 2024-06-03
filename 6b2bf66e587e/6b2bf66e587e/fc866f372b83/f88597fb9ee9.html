@@ -1,0 +1,102 @@
+<hr>
+<p>title: “快速平方根倒数”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 轮子]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="快速平方根倒数"><a href="#快速平方根倒数" class="headerlink" title="快速平方根倒数"></a>快速平方根倒数</h1><p>如何求一个正数$n$的平方根倒数$\frac{1}{\sqrt n}$</p>
+<blockquote>
+<p>牛顿迭代法它是一种在实数域和复数域上近似求解方程的方法。方法使用函数$f(x)$的泰勒级数前面几项来寻找方程$f(x)=0$的根。</p>
+<p>首先，选择一个接近函数$f(x)$零点的$x_{0}$，计算相应的$f(x_{0})$和切线斜率$f’(x_{0})$（这里$f’$表示函数$f$的导数）。然后我们计算穿过点$(x_{0},f(x_{0}))$并且斜率为$f’(x_{0})$的直线和$x$轴的交点的$x$坐标，也就是方程$0=(x-x_{0})\cdot f’(x_{0})+f(x_{0})$的解。</p>
+<p>我们将新求得的点的$x$坐标命名为$x_{1}$，通常$x_{1}$会比$x_{0}$更接近方程$f(x)=0$的解。因此我们现在可以利用$x_{1}$开始下一轮迭代。迭代公式可化简为$x_{n+1}=x_{n}-{\frac {f(x_{n})}{f’(x_{n})}}$</p>
+</blockquote>
+<p>若$\frac{1}{\sqrt n}$为函数$f(x)$的根，$x=\frac{1}{\sqrt n} \Rightarrow n = \frac{1}{x^2} \Rightarrow f(x) = \frac{1}{x^2}-N$</p>
+<p>通过已知的$f(x)$得到具体迭代公式为$x_{t+1} = x_t - \frac{x^{-2}-n}{-2x^{-3}} = \frac{3}{2}x_{t}-\frac{n}{2}x_t^3$</p>
+<!--more-->
+<p>为了减少迭代次数，初始时找到选择一个接近函数$f(x)$零点的$x_{0}$尤为重要。</p>
+<blockquote>
+<p>一个浮点数 (Value) 的表示其实可以这样表示：</p>
+<p>$Value =sign \times exponent \times fraction$</p>
+<p>也就是浮点数的实际值，等于符号位（sign bit）乘以指数偏移值（exponent bias）再乘以分数值（fraction）。</p>
+<p>IEEE754浮点数标准中，32位浮点数的组成：最高位$S$为符号位，接下来8位数为指数$E$，最后低位23为分数值$F$。($S,E,F$均以无符号型二进制数表示)。</p>
+<p>{% asset_img ‘e63f25e1-408a-440b-9968-f62d3a8e3545.png’ %}</p>
+<p>浮点数的数值表示为$(-1)^{S+1}(1+\frac{F}{2^{23}})2^{E-127}$</p>
+</blockquote>
+<p>我们只考虑正数，所以符号位$S=0$。</p>
+<p>对于一个32位的正浮点数$T$，若将二进制存储视为32位整型数$T_b$，可知$T_b = 2^{23}E+F$</p>
+<p>我们尝试寻找$T$和$T_b$的关系。二者取对数后仍相等，$log_2(T) = log_2(1+\frac{F}{2^{23}})+E-127$</p>
+<p>由于$\frac{F}{2^{23}} \in [0, 1)$，通过观察$log_2(x+1)$的函数图像</p>
+<p>{% asset_img ‘Untitled.png’ %}</p>
+<p>{% asset_img ‘Untitled 1.png’ %}</p>
+<p>发现，$0\le x &lt; 1$时，$x\le log_2(x+1) \le x-log_2(ln(2))-\frac{1}{ln(2)}+1 \approx x+0.0860713320559$<br>我们可以近似认为$log_2(x+1) \approx x+u$, $u$是一个附加常数。</p>
+<p>$log_2(T) = log_2(1+\frac{F}{2^{23}})+E-127 \approx \frac{F}{2^{23}} + u + E - 127 = \frac{1}{2^{23}}(F+2^{23}E) + u - 127$</p>
+<p>32位浮点数与其二进制之间存在一个<strong>近似的关系</strong>$log_2(T) \approx \frac{T_b}{2^{23}} + u - 127$</p>
+<p>类似的，64位浮点数与其二进制之间存在一个<strong>近似的关系</strong>$log_2(T) \approx \frac{T_b}{2^{52}} + u - 1023$</p>
+<p>利用这个关系来求$\frac{1}{\sqrt n}$的近似值，设$y = \frac{1}{\sqrt n}$</p>
+<p>$log_2(y) = log_2 n^{-\frac{1}{2}} \Rightarrow \frac{y_b}{2^{23}} + u - 127 = -\frac{1}{2}(\frac{n_b}{2^{23}} + u - 127) \Rightarrow y_b = 3(127-u)2^{22} - \frac{n_b}{2}$</p>
+<p>在c语言中，float型浮点数n在取地址后，可以用任意类型指针变量存储。一般情况下我们用<code>float*</code> 指针存储，通过指针访问所指内容就是float型变量，但是如果用<code>long*</code> 存储float型地址，那么通过指针访问会认为所指内容是long型，也就得到了浮点数的存储的二进制结构。</p>
+<p>通过指针得到$n$的二进制$n_b$，通过神奇的运算$3(127-u)2^{22} - \frac{n_b}{2}$得到平方根倒数的二进制$y_b$，再通过指针转为浮点数$y$。$y \approx \frac{1}{\sqrt n}$</p>
+<p>$u$取多少才能使得误差较小呢？</p>
+<p>$y = x-log_2(ln(2))-\frac{1}{ln(2)}+1$是$y = log_2(x+1)$一条斜率为1的切线。</p>
+<p>当$u = \frac{1}{2}(1-log_2(ln(2))-\frac{1}{ln(2)}) \approx 0.043035666028$，此时$y = x + u$处于上界与下界的中心，在直观上给人感觉误差较小。</p>
+<p>{% asset_img ‘Untitled 2.png’ %}</p>
+<p>{% asset_img ‘Untitled 3.png’ %}</p>
+<p>此时计算$3(127-u)2^{22}$得到<code>0x5f37bcb6</code>，离神奇数字<code>0x5f3759df</code>还是有点差距。</p>
+<pre><code class="python">&gt;&gt;&gt; (127-0.043035666028)*(1&lt;&lt;23)*3/2
+1597488310.0015082
+&gt;&gt;&gt; hex(1597488310)
+&#39;0x5f37bcb6&#39;
+</code></pre>
+<p>进一步的，是不是可以计算$n^a$？</p>
+<p>令$y = n^a, y_b = a\cdot n_b + (a-1)(u-127)*2^{23}$</p>
+<p>$a = 2, u = 0.043035666028$时，$y_b = 2\cdot n_b + (u-127)2^{23} \approx 2n_b-0x3f7a7dce$</p>
+<p>$a = \frac{1}{2}, u = 0.043035666028$时， $y_b = \frac{n_b}{2} + (127-u)*2^{22} \approx \frac{n_b}{2} + 0x1fbd3ee7$</p>
+<p>以下代码在没有用牛顿迭代的情况下，可以得到一个比较粗糙的结果。</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+float Q_rsqrt(float number)
+{
+    long i;
+    float y;
+    y= number;
+    i= * (long * ) &amp;y;
+    i= 0x5f3759df-(i&gt;&gt;1);
+    y= * (float * ) &amp;i;
+    return y;
+}
+
+float Q_pow(float number)
+{
+    long i;
+    float y;
+    y= number;
+    i= * (long * ) &amp;y;
+    i= 2*i-0x3f7a7dce;
+    y= * (float * ) &amp;i;
+    return y;
+}
+
+float Q_sqrt(float number)
+{
+    long i;
+    float y;
+    y= number;
+    i= * (long * ) &amp;y;
+    i = 0x1fbd3ee7 + (i&gt;&gt;1);
+    y= * (float * ) &amp;i;
+    return y;
+}
+
+int main() {
+    cout &lt;&lt; setprecision(15) &lt;&lt; fixed;
+    float p = 2.31;
+    cout &lt;&lt; &quot;q_rsqrt &quot; &lt;&lt; (1/sqrt(p)) &lt;&lt; &quot; &quot; &lt;&lt; Q_rsqrt(p) &lt;&lt; endl;
+    cout &lt;&lt; &quot;q_pow &quot; &lt;&lt; (p*p) &lt;&lt; &quot; &quot; &lt;&lt; Q_pow(p) &lt;&lt; endl;
+    cout &lt;&lt; &quot;q_sqrt &quot; &lt;&lt; (sqrt(p)) &lt;&lt; &quot; &quot; &lt;&lt; Q_sqrt(p) &lt;&lt; endl;
+    return 0;
+}
+/*
+q_rsqrt 0.657951712608337 0.677465081214905
+q_pow 5.336099624633789 5.412142753601074
+q_sqrt 1.519868373870850 1.555982112884521
+*/
+</code></pre>

@@ -1,0 +1,20 @@
+<hr>
+<p>title: “离散期望”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="离散期望"><a href="#离散期望" class="headerlink" title="离散期望"></a>离散期望</h1><ul>
+<li><strong>数学期望</strong> : 随机试验中每次可能结果的概率乘以其结果的总和，反映随机变量平均取值的大小。</li>
+<li><strong>离散期望公式</strong> : $<em>E(x)= \sum\limits_{k=1}^{\infin } x_kp_k</em>$</li>
+</ul>
+<h2 id="经典模型"><a href="#经典模型" class="headerlink" title="经典模型"></a>经典模型</h2><p>{% asset_img ‘Untitled.png’ %}</p>
+<p>假设你初始位置在1号点，现在需要走向3号点。每一步都会等概率的从当前点选择一条出边并走向指向的点。问从1号走到3号点的期望步数是多少？</p>
+<p>设$E_{1 \rightarrow 3}$为从1走向3的期望步数</p>
+<p>$E_{1 \rightarrow 2} = \frac{1}{2} \times 1 + \frac{1}{2} \times (E_{1 \rightarrow 2} + 1) \Rightarrow E_{1 \rightarrow 2} = 2$</p>
+<!--more-->$E_{2 \rightarrow 3} = \frac{1}{3} \times 1 + \frac{1}{3} \times (E_{2 \rightarrow 3} + 1) + \frac{1}{3} \times (E_{1 \rightarrow 3} + 1)$ 
+
+<p>由期望的线性性，$E_{1 \rightarrow 3} = E_{1 \rightarrow 2} + E_{2 \rightarrow 3}$</p>
+<p>$E_{2 \rightarrow 3} = \frac{1}{3} \times 1 + \frac{1}{3} \times (E_{2 \rightarrow 3} + 1) + \frac{1}{3} \times (E_{1 \rightarrow 2}+E_{2 \rightarrow 3} + 1) \Rightarrow E_{2 \rightarrow 3} = 5$</p>
+<p>$E_{1 \rightarrow 3} = E_{1 \rightarrow 2} + E_{2 \rightarrow 3} = 2 + 5 = 7$</p>
+<h1 id="求期望"><a href="#求期望" class="headerlink" title="求期望"></a>求期望</h1><p>概率是<code>有效方案数/总方案数</code> ，而期望是<code>有效方案结果值之和/总方案数</code>，由于无效方案结果值为0，也可以<code>所有方案结果值之和/总方案数</code> </p>
+<p>我们设$s$为总方案数，$t$为所有方案的结果值之和。</p>
+<p>可以将所有方案结果值拆分为k类，$t_1,t_2,\cdots,t_k$，期望就是$\frac{t_1+t_2+\cdots +t_k}{s}$</p>
+<p>将结果值相同的分为一类，拆分为k类结果值，$x_1,x_2,\cdots,x_k$，设结果值$x_i$出现了$c_i$次，那么期望是$\frac{x_1c_1+x_2c_2+\cdots +x_kc_k}{s}$。$\frac{c_i}{s}$是结果值为$x_i$的出现的概率，记为$p_i$，期望为$\sum x_ip_i$</p>

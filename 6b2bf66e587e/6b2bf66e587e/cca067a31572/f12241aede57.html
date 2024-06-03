@@ -1,0 +1,214 @@
+<hr>
+<p>title: “可持久化线段树（主席树）”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 可持久化数据结构]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="可持久化线段树（主席树）"><a href="#可持久化线段树（主席树）" class="headerlink" title="可持久化线段树（主席树）"></a>可持久化线段树（主席树）</h1><p>保留历史版本的线段树，每次修改只会修改logn个节点。新版本只需新开logn个节点，其他节点不变。使用动态开点线段树。</p>
+<pre><code class="cpp">// 单点修改，区间求和
+#define N 200005
+#define lc(x) tr[x].l
+#define rc(x) tr[x].r
+struct node {
+    int l, r;
+    ll s;
+} tr[N * 25];
+// n(logn+3)?
+
+&lt;!--more--&gt;int root[N], idx;
+
+// 初始版本构建build(root[0], l, r)
+void build(int&amp; x, int l, int r) {
+    x = ++idx;
+    if (l == r)
+        return;
+    int m = l + r &gt;&gt; 1;
+    build(lc(x), l, m);
+    build(rc(x), m + 1, r);
+}
+
+// 单点插入，拷贝前一版本的一条路径
+void insert(int x, int&amp; y, int l, int r, int pos, ll val) {
+    y = ++idx;
+    tr[y] = tr[x];
+    if (l == r) {
+        tr[y].s += val;
+        return;
+    }
+    int m = l + r &gt;&gt; 1;
+    if (pos &lt;= m)
+        insert(lc(x), lc(y), l, m, pos, val);
+    else
+        insert(rc(x), rc(y), m + 1, r, pos, val);
+    tr[y].s = tr[lc(y)].s + tr[rc(y)].s;
+}
+
+// 查询前缀区间[... pos]的和
+ll presum(int x, int l, int r, int pos) {
+    if (l == r)
+        return tr[x].s;
+    int m = l + r &gt;&gt; 1;
+    if (m &lt; pos) {
+        return tr[lc(x)].s + presum(rc(x), m+1, r, pos);
+    } else {
+        return presum(lc(x), l, m, pos);
+    }
+}
+
+// 查询区间和
+ll query(int x, int l, int r, int ql, int qr) {
+    if (ql &lt;= l &amp;&amp; r &lt;= qr)
+        return tr[x].s;
+    int m = l + r &gt;&gt; 1;
+    // 判断查询区间[ql, qr] 覆盖[l,m], [m+1,r]的情况。
+    ll rt = 0;
+    if (ql&lt;=m) {
+        rt += query(lc(x), l, m, ql, qr);
+    } 
+    if (m&lt;qr) {
+        rt += query(rc(x), m+1, r, ql, qr);
+    }
+    return rt;
+}
+</code></pre>
+<p><strong>可持久化线段树，用于实现可持久化数组</strong></p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+using namespace std;
+
+#define N 1000005
+#define lc(x) tr[x].l
+#define rc(x) tr[x].r
+int n, m, a[N];
+struct node {
+    int l, r;
+    int v;
+} tr[N * 25];
+
+// 初始2n个节点，n次修改，每次最多增加logn+1个节点，共n(logn+3)节点
+
+int root[N], idx;
+
+void build(int&amp; x, int l, int r) {
+    x = ++idx;
+    if (l == r) {
+        tr[x].v = a[l];
+        return;
+    }
+    int m = l + r &gt;&gt; 1;
+    build(lc(x), l, m);
+    build(rc(x), m + 1, r);
+}
+void modify(int&amp; x, int y, int l, int r, int pos, int v) {
+    x = ++idx;
+    tr[x] = tr[y];
+    if (l == r) {
+        tr[x].v = v;
+        return;
+    }
+    int mid = l + r &gt;&gt; 1;
+    if (pos &lt;= mid)
+        modify(lc(x), lc(y), l, mid, pos, v);
+    else
+        modify(rc(x), rc(y), mid + 1, r, pos, v);
+}
+int query(int x, int l, int r, int pos) {
+    if (l == r)
+        return tr[x].v;
+    int mid = l + r &gt;&gt; 1;
+    if (pos &lt;= mid)
+        return query(lc(x), l, mid, pos);
+    else
+        return query(rc(x), mid + 1, r, pos);
+}
+int main() {
+    int ver, op, x, y;
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    for (int i = 1; i &lt;= n; i++)
+        scanf(&quot;%d&quot;, a + i);
+    build(root[0], 1, n);
+    for (int i = 1; i &lt;= m; i++) {
+        scanf(&quot;%d%d&quot;, &amp;ver, &amp;op);
+        if (op == 1) {
+            scanf(&quot;%d%d&quot;, &amp;x, &amp;y);
+            modify(root[i], root[ver], 1, n, x, y);
+        } else {
+            scanf(&quot;%d&quot;, &amp;x);
+            printf(&quot;%d\n&quot;, query(root[ver], 1, n, x));
+            root[i] = root[ver];
+        }
+    }
+}
+</code></pre>
+<p><strong>可持久化权值线段树，区间第k小</strong></p>
+<pre><code class="cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// 每个前缀[1,i]都构建一颗权值线段树
+// 查区间[l,r]的第k小，只需将版本r和版本l-1的值做差，找到前缀和为k的下标t，则t就是第k小。
+
+#define N 200005
+#define lc(x) tr[x].l
+#define rc(x) tr[x].r
+struct node {
+    int l, r, s;  // s:节点值域中有多少个数
+} tr[N * 20];
+// n(logn+3)
+
+int root[N], idx;
+int n, m, a[N];
+vector&lt;int&gt; b;
+
+void build(int&amp; x, int l, int r) {
+    x = ++idx;
+    if (l == r)
+        return;
+    int m = l + r &gt;&gt; 1;
+    build(lc(x), l, m);
+    build(rc(x), m + 1, r);
+}
+void insert(int x, int&amp; y, int l, int r, int k) {
+    y = ++idx;
+    tr[y] = tr[x];
+    tr[y].s++;
+    if (l == r)
+        return;
+    int m = l + r &gt;&gt; 1;
+    if (k &lt;= m)
+        insert(lc(x), lc(y), l, m, k);
+    else
+        insert(rc(x), rc(y), m + 1, r, k);
+}
+
+int query(int x, int y, int l, int r, int k) {
+    if (l == r)
+        return l;
+    int m = l + r &gt;&gt; 1;
+    int s = tr[lc(y)].s - tr[lc(x)].s;
+    if (k &lt;= s)
+        return query(lc(x), lc(y), l, m, k);
+    else
+        return query(rc(x), rc(y), m + 1, r, k - s);
+}
+int main() {
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    for (int i = 1; i &lt;= n; i++) {
+        scanf(&quot;%d&quot;, &amp;a[i]);
+        b.push_back(a[i]);
+    }
+    sort(b.begin(), b.end());
+    b.erase(unique(b.begin(), b.end()), b.end());
+    int bn = b.size();
+
+    build(root[0], 1, bn);
+    for (int i = 1; i &lt;= n; i++) {
+        int id = lower_bound(b.begin(), b.end(), a[i]) - b.begin() + 1;
+        insert(root[i - 1], root[i], 1, bn, id);
+    }
+    while (m--) {
+        int l, r, k;
+        scanf(&quot;%d%d%d&quot;, &amp;l, &amp;r, &amp;k);
+        int id = query(root[l - 1], root[r], 1, bn, k) - 1;
+        printf(&quot;%d\n&quot;, b[id]);
+    }
+    return 0;
+}
+</code></pre>

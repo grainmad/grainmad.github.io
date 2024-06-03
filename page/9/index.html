@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">88</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">484</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">99</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">549</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,18 +153,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">484</span>
+          <span class="site-state-item-count">549</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-count">99</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1611D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1208C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1611D/" class="post-title-link" itemprop="url">1611D Weights Assignment For Tree Edges</a>
+          <a href="/1208C/" class="post-title-link" itemprop="url">1208C Magic Grid</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,7 +239,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -261,10 +261,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>给定一个含有 $n$ 个点的**有根树**和一个长度为 $n$ 的**排列** $p$，你需要给这棵树的每一条边赋权，使得对于所有的 $1 \leq i<j \leq n$，点 $p_{i}$ 到根的距离小于点 $p_{j}$ 到根的距离。<br>你需要保证每条边的边权都是 $[1,1 \times 10^{9}]$ 内的整数。<br>**多组数据**。若无解，输出 $-1$。否则输出 $n$ 个整数，第 $i$ 个整数 $w_{i}$ 表示点 $i$ 到其父亲的边权为 $w_{i}$，特别地，默认**根到其父亲的边权为 $0$**。<br>Translated by @HPXXZYY.</p>
+          <p>### 题目描述<br>我们定义“魔法网格”为一个满足以下两个条件的大小为 $n \times n$ 的整数方阵：<br>$1.$ 从 $0$ 到 $n^2-1$ 的所有整数都在矩阵中出现过恰好一次。<br>$2.$ 矩阵中的每行元素的按位异或和与每列元素的按位异或和都相等。<br>按位异或，即 $C/C++$ 中的 $\wedge$ 运算符或 $Pascal$ 中的 $xor$ 运算符。<br>现在给你一个 $n$ ，保证 $n$ 是 $4$ 的倍数。请构造一个“魔法网格”。<br>输入仅包含一行，为一个整数 $n$ ，保证 $n$ 是 $4$ 的倍数。<br>输出 $n$ 行，每行 $n$ 个整数，每个整数之间用一个空格隔开，第 $i$ 行第 $j$ 列输出的数表示“魔法网格”的第 $i$ 行第 $j$ 列的数。<br>如果有多个答案，请输入任意一个。保证每组数据至少有一个合法解。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1611D/">
+              <a class="btn" href="/1208C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -295,7 +295,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1759E/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1244D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -313,7 +313,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1759E/" class="post-title-link" itemprop="url">1759E The Humanoid</a>
+          <a href="/1244D/" class="post-title-link" itemprop="url">1244D Paint the Tree</a>
         </h2>
 
         <div class="post-meta-container">
@@ -324,7 +324,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -346,10 +346,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>有 $n$ 名宇航员，他们每个人有大小为 $a_i$ 的能量。一个初始具有 $h$ 单位能量的邪恶的人形生物来这里吸收宇航员们的能量。<br>人型生物可以做以下三个动作：<br>- 吸收一个能量值严格低于当前人型生物的宇航员。<br>- 将自身的能量值翻倍 ($\times 2$), 这个操作最多能进行两次。<br>- 将自身的能量值翻三倍 ($\times 3$), 这个操作最多能进行一次。<br>其中，当一名具有 $a_i$ 能量的宇航员被吸收时，这名宇航员消失，人型生物的能量增加 $\lfloor {a_i\over 2} \rfloor$。<br>请你帮他算一算，如果他用最佳方案进行操作，他最多能吸收几名宇航员的能量？<br>第一行包含一个整数 $t\ (1\leq t \leq 10^4)$, 表示数据组数。<br>对于每组数据，第一行包含两个整数 $n\ (1\leq n \leq 2\cdot 10^5),h\ (1\leq h \leq 10^6)$, 分别代表宇航员人数和人形生物的初始能量。第二行包含 $n$ 个整数 $a_i\ (1\leq a_i \leq 10^8)$, 表示每名宇航员的能量。<br>保证 $\sum n\leq 2\cdot 10^5$。<br>对于每组数据，在单独的一行里输出一个整数，表示人形生物可以吸收宇航员的最大数量。</p>
+          <p>有一棵树，有3种颜色，第$i$个节点染成第$j$种颜色的代价是$c_{j,i}$，现在要你求出一种染色方案，使得总代价最小，且对于任意三个相邻的节点，颜色不能相同。输出最小代价与其中一种方案。无解输出$-1$。<br>$3\le n\le 10^5$</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1759E/">
+              <a class="btn" href="/1244D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -380,7 +380,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1849D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1256F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -398,7 +398,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1849D/" class="post-title-link" itemprop="url">1849D Array Painting</a>
+          <a href="/1256F/" class="post-title-link" itemprop="url">1256F Equalizing Two Strings</a>
         </h2>
 
         <div class="post-meta-container">
@@ -409,7 +409,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -431,10 +431,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>有一个长度为 $n$ 的数组 $a$，满足 $\forall a_i\in\{0,1,2\}$，一开始所有元素均为蓝色。<br>可以有如下操作：<br>- 用一枚硬币，把一个蓝色元素涂成红色；<br>- 选择一个不等于 $0$ 的红色元素和一个与其相邻的蓝色元素，将所选的红色元素减少 $1$，并将所选的蓝色元素涂成红色。<br>要将所有元素涂红，最少需要多少硬币？</p>
+          <p>给你两长度都为 $n$ 的小写字符串 $S, T$。<br>每次操作中你可以任选一个 $L (1\le L\le n)$，同时翻转 $S$ 中的任意一个长度为 $L$ 的子串和 $T$ 中任意一个长度为 $L$ 的子串。<br>请回答你是否能在若干次操作后使两字符串一样？<br>输入格式<br>第一行一个正整数 $q(1\le q\le 10^4)$ 表示询问次数<br>接下来 $q$ 组数据，每组数据三行，第一行一个正整数 $n(1\le n\le 2\times 10^5)$，第二行一个字符串 $S$，第三行一个字符串 $T$。<br>保证 $\sum n\le 2\times 10^5$<br>输出格式<br>$q$ 行，每行一个字符串 ``YES`` 或 ``NO``。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1849D/">
+              <a class="btn" href="/1256F/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -465,7 +465,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1934/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1329A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -483,7 +483,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1934/" class="post-title-link" itemprop="url">Codeforces Round 931 (Div. 2)</a>
+          <a href="/1329A/" class="post-title-link" itemprop="url">1329A Dreamoon Likes Coloring</a>
         </h2>
 
         <div class="post-meta-container">
@@ -494,7 +494,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -516,10 +516,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>[A. Too Min Too Max](https://codeforces.com/contest/1934/problem/A)<br>[B. Yet Another Coin Problem](https://codeforces.com/contest/1934/problem/B)<br>[C. Find a Mine](https://codeforces.com/contest/1934/problem/C)<br>[D1. XOR Break — Solo Version](https://codeforces.com/contest/1934/problem/D1)<br>[D2. XOR Break — Game Version](https://codeforces.com/contest/1934/problem/D2)<br>[E. Weird LCM Operations](https://codeforces.com/contest/1934/problem/E)</p>
+          <p>给定长为 $n$ 的格子和 $m$ 种颜色。<br>Dreamoon 会**依次**刷这 $m$ 种颜色，对于第 $i$ 种颜色，他会从第 $p_i$ 格开始刷到第 $p_i+l_i-1$ 格。$p_i$ 不能超过 $n-l_i+1$ 或小于 $1$，这样会超出格子。<br>您的任务是找出一组 $p_i$，使得 Dreamoon 刷完所有颜色之后每种颜色至少出现了一次，且每个格子都被刷上了颜色。<br>$1 \leq m \leq n \leq 10^5$，$1 \leq l_i \leq n$<br>翻译 by Meatherm</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1934/">
+              <a class="btn" href="/1329A/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -550,7 +550,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1937/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1380D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -568,7 +568,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1937/" class="post-title-link" itemprop="url">Codeforces Round 930 (Div. 2)</a>
+          <a href="/1380D/" class="post-title-link" itemprop="url">1380D Berserk And Fireball</a>
         </h2>
 
         <div class="post-meta-container">
@@ -579,7 +579,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -601,10 +601,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>[A. Shuffle Party](https://codeforces.com/contest/1937/problem/A)<br>[B. Binary Path](https://codeforces.com/contest/1937/problem/B)<br>[C. Bitwise Operation Wizard](https://codeforces.com/contest/1937/problem/C)<br>[D. Pinball](https://codeforces.com/contest/1937/problem/D)<br>[E. Pokémon Arena](https://codeforces.com/contest/1937/problem/E)<br>[F. Bitwise Paradox](https://codeforces.com/contest/1937/problem/F)</p>
+          <p>有 $n$ 个战士站成一排，第 $i$ 个战士的战力是 $a_i$。所有战士的战力都是两两不同的。<br>你可以使用两种类型的咒语：<br>1. 火球术：你可以消耗 $x$ 点法力值来干掉连续的 $k$ 个战士（你必须干掉正好 $k$ 个，而不能干掉 $\le k$ 个）。<br>2. 狂暴术：你可以消耗 $y$ 点法力值，选择站在一起的两个战士使他们展开决斗，战力较弱的那个战士将会被干掉。<br>我们来举个例子，假设有 $7$ 个战士，其战力分别为 $[2,3,7,8,11,5,4]$，且此时的$k=3$（$k$ 的定义详见火球术）。如果你对战力为 $8$ 与 $11$ 的两个战士施加狂暴术，剩下战士的战力将会变成 $[2,3,7,11,5,4]$（战力为 $8$ 的战士在决斗中战死）。然后如果我们对战力为 $[7,11,5]$ 的战士施加火球术，剩下战士的战力将会变成 $[2,3,4]$。<br>你想要组建一支军队，因此你想要将所有战士战力的序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$。试计算你所需的最少法力值。<br>输入格式<br>第一行两个整数 $n,m (1\le n,m\le 2\cdot 10^5)$ ——序列 $a$ 的长度和序列 $b$ 的长度。<br>第二行三个整数 $x,k,y (1\le x,y\le 10^9,1\le k\le n)$ ——火球术消耗的法力值，火球术的范围和狂暴术消耗的法力值。<br>第三行 $n$ 个整数 $a_1,a_2,…,a_n (1\le a_i\le n)$。保证 $a_i$ 是两两不同的。<br>第四行 $m$ 个整数 $b_1,b_2,…,b_m(1\le b_i\le n)$。保证 $b_i$ 是两两不同的。<br>输出格式<br>一行一个整数，即将序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$所需的最少法力值。如果无法完成变换，则输出$-1$。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1937/">
+              <a class="btn" href="/1380D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -635,7 +635,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1190D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1416B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -653,7 +653,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1190D/" class="post-title-link" itemprop="url">1190D Tokitsukaze and Strange Rectangle</a>
+          <a href="/1416B/" class="post-title-link" itemprop="url">1416B Make Them Equal</a>
         </h2>
 
         <div class="post-meta-container">
@@ -664,7 +664,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-01 21:09:57" itemprop="dateCreated datePublished" datetime="2024-03-01T21:09:57+00:00">2024-03-01</time>
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -686,10 +686,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>平面上有n个点，第i个点在（xi，yi）处<br>小t想绘制一个矩形区域（如下图<br>![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1190D/61dd515911e657abcecc735a28955cca0cecb620.png)<br>该矩形被其左侧、底部和右侧的三条线围起：x=l，y=a和x=r(l, r, a 都可以为实数并且l<r)。<br>求可能有多少种不同的非空点集可以被小t的矩形覆盖，我们认为两个集合不同是在一个集合中存在一个点而不在另一个集合中存在。</p>
+          <p>- 给出一个序列 $a$，求出一个长度不超过 $3n$ 的操作序列，使序列 $a$ 中每个元素相等。<br>- 定义一次操作为：选出 $(i,j,x)$ 三元组，满足 $i,j$ 为序列合法下标，$x$ 为 $10^9$ 以内非负整数，令 $a_i:= a_i-x\cdot i,a_j:=a_j+x\cdot i$。<br>- 必须保证操作过程中的任意时刻序列 $a$ 中每个元素都非负。<br>- 输出时先输出操作次数 $k$，然后输出 $k$ 行操作序列。<br>- 数据组数 $t\le10^4$，序列长度 $n\le10^4$，元素大小 $1\le a_i\le10^5$。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1190D/">
+              <a class="btn" href="/1416B/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -720,7 +720,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/abc342/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1428D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -738,7 +738,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/abc342/" class="post-title-link" itemprop="url">HUAWEI Programming Contest 2024（AtCoder Beginner Contest 342）</a>
+          <a href="/1428D/" class="post-title-link" itemprop="url">1428D Bouncing Boomerangs</a>
         </h2>
 
         <div class="post-meta-container">
@@ -749,7 +749,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-01 21:09:57" itemprop="dateCreated datePublished" datetime="2024-03-01T21:09:57+00:00">2024-03-01</time>
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -757,7 +757,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/atcode/" itemprop="url" rel="index"><span itemprop="name">atcode</span></a>
+          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
         </span>
     </span>
 
@@ -771,10 +771,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>[A - Yay!](https://atcoder.jp/contests/abc342/tasks/abc342_a)<br>[B - Which is ahead?](https://atcoder.jp/contests/abc342/tasks/abc342_b)<br>[C - Many Replacement](https://atcoder.jp/contests/abc342/tasks/abc342_c)<br>[D - Square Pair](https://atcoder.jp/contests/abc342/tasks/abc342_d)<br>[E - Last Train](https://atcoder.jp/contests/abc342/tasks/abc342_e)<br>[F - Black Jack](https://atcoder.jp/contests/abc342/tasks/abc342_f)<br>[G - Retroactive Range Chmax](https://atcoder.jp/contests/abc342/tasks/abc342_g)</p>
+          <p>在$n\times n$的网格上，有若干目标。从最低下扔回旋镖，碰到目标会右转。每行、每列不超过两个目标。现在已知从每一列扔出去会撞到$a_i$个障碍($a_i\le 3$)，请求出一种合法方案。<br>翻译 by jun头吉吉</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/abc342/">
+              <a class="btn" href="/1428D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -805,7 +805,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1316D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1438C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -823,7 +823,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1316D/" class="post-title-link" itemprop="url">1316D Nash Matrix</a>
+          <a href="/1438C/" class="post-title-link" itemprop="url">1438C Engineer Artem</a>
         </h2>
 
         <div class="post-meta-container">
@@ -834,7 +834,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-02-29 14:56:43" itemprop="dateCreated datePublished" datetime="2024-02-29T14:56:43+00:00">2024-02-29</time>
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -856,10 +856,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>有一种用 $n \times n$ 的网格玩的游戏。<br>* 当 $(i,j)$ 填的是 `L` 时，你会走到 $(i, j - 1)$；<br>* 当 $(i,j)$ 填的是 `R` 时，你会走到 $(i, j + 1)$；<br>* 当 $(i,j)$ 填的是 `U` 时，你会走到 $(i - 1, j )$；<br>* 当 $(i,j)$ 填的是 `D` 时，你会走到 $(i + 1, j)$；<br>* 当 $(i,j)$ 填的是 `X` 时，你将不动。<br>当你从 $(i, j)$ 出发，最后将会停止在 $(x_{(i, j)}, y_{(i, j)})$。或者，如果你永远不会停止，$(x_{(i, j)}, y_{(i, j)})$ 是 $(-1, -1)$。<br>现在给出所有的 $(x_{(i, j)}, y_{(i, j)})$，试构造出原网格。如果无法构造，输出 `INVALID`，否则输出 `VALID`，并输出一种合法网格。</p>
+          <p>给出一个 $n\times m$ 的矩阵 $a$（$1\le n,m\le 100$），其中 $1\le a_{i,j}\le 10^9$。<br>定义一个矩阵是合法的当且仅当没有任何两个相邻的元素是相等的（上下左右为相邻）。<br>你可以将矩阵中若干个元素加一，使其合法，输出最终矩阵。<br>形式化地，对于每个 $(i,j)$，$b_{i,j}=a_{i,j}$ 或者 $b_{i,j}=a_{i,j}+1$，输出合法的 $b$ 矩阵。<br>$t$ 组数据（$t\le 10$）。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1316D/">
+              <a class="btn" href="/1438C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -890,7 +890,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1338B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1491D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -908,7 +908,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1338B/" class="post-title-link" itemprop="url">1338B Edge Weight Assignment</a>
+          <a href="/1491D/" class="post-title-link" itemprop="url">1491D Zookeeper and The Infinite Zoo</a>
         </h2>
 
         <div class="post-meta-container">
@@ -919,7 +919,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-02-28 21:43:34" itemprop="dateCreated datePublished" datetime="2024-02-28T21:43:34+00:00">2024-02-28</time>
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -941,10 +941,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>给定一棵 $n$ 个点的无根树，要求给每条边分配一个**正整数**权值，使得任意两个叶子节点之间路径上的边权异或值为 $0$。求最少要多少种不同权值，以及最多可以使用多少种不同权值。<br>这里，填入的边权值可以为任意大。<br>$3 \le n\le 10^5$</p>
+          <p>有一个无限图，其中有无数个节点，从 $1$ 开始标号。有一条从 $u$ 到 $u+v$ 的单向边，当且仅当 $u \&  v = v$ (这里的 $\&$ 指 [按位与](https://zh.wikipedia.org/wiki/位操作#按位与（AND）) 。除此以外没有其它边。<br>有 $q$ 个询问，询问是否存在一条从 $u$ 到 $v$ 的路径。<br>输入格式<br>第一行一个整数 $q$ （$1\le q\le10^5 $） —— 询问的个数<br>接下来 $q$ 行中，每行有两个整数 $u,v$ ($1 \leq u,v < 2^{30}$)，意义如上<br>输出格式<br>对于每个询问，输出一行 `YES` 来表示存在从 $u$ 到 $v$ 的一条路径，或输出一行 `NO` 表示不存在这样一条路径。(你可以以任意大小写形式来输出 `YES` 或 `NO`)</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1338B/">
+              <a class="btn" href="/1491D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -975,7 +975,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1487E/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1508A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -993,7 +993,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1487E/" class="post-title-link" itemprop="url">1487E Cheap Dinner</a>
+          <a href="/1508A/" class="post-title-link" itemprop="url">1508A Binary Literature</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1004,7 +1004,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-02-28 21:43:34" itemprop="dateCreated datePublished" datetime="2024-02-28T21:43:34+00:00">2024-02-28</time>
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1026,10 +1026,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>#### 题目描述<br>有 $4$ 种菜类——开胃菜，主菜，饮品和甜点。一顿晚饭由 $4$ 种菜类各一道组成。<br>对于第 $i$ 种菜类，共有 $n_i$ 种供选择。开胃菜、主菜、饮品和甜点价格分别为 $a_i$、$b_i$、$c_i$、$d_i$。<br>有些菜品不能搭配。对于开胃菜和主菜来说，有 $m_1$ 对不能搭配。对于主菜和饮品、饮品和甜点分别有 $m_2$，$m_3$ 对。<br>试问总价格最小的晚饭需要多少钱？<br>输入<br>第一行有 $n_1$、$n_2$、$n_3$、$n_4$；<br>接下来四行分别为 $a_i$，$b_i$，$c_i$，$d_i$；<br>接下来一行为 $m_1$，接下来 $m_1$ 行中，每一行有 $x_i$，$y_i$，表示第 $x_i$ 道开胃菜和第 $y_i$ 道主菜不能搭配。<br>主菜和饮品，饮品和甜点的搭配需求也以相同的方式输入。<br>输出<br>如果不存在，输出 `-1`；<br>否则，输出最小花费。<br>数据规模<br>$1\le n_i\le 150000$，$0\le m_i\le 200000$，$1\le a_i,b_i,c_i,d_i\le 10^8$。<br>保证 $1\le x_i\le n_t$，$1\le y_i\le n_{t+1}$，且对于相同的 $t$，$(x_i,y_i)$ 互不相同。</p>
+          <p>给你一个正整数 $n$ 和三个长度为 $2\times n$ 的 01 字符串 $s_1,s_2,s_3$。你需要构造一个 01 字符串 $S$，使得：<br>- 字符串 $S$ 的长度不能超过 $3\times n$。<br>- $s_1,s_2,s_3$ 当中至少有两个字符串是 $S$ 的子序列。<br>可以证明一定有解，有多种解时输出任意一种即可。$T$ 组数据。<br>$1\leq T\leq10^4;1\leq n,\sum n\leq10^5;$</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1487E/">
+              <a class="btn" href="/1508A/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1053,7 +1053,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

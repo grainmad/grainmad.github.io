@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"grainmad.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="平衡树splay伸展树特点就是每次操作完一个节点，将其旋转至根，保证BST性质的同时保持平衡不至于退化成链。对于一条长链，底端的节点旋转至顶会让这条链被压缩。 旋转rotate操作，分为左旋与右旋   伸展splay操作是旋转的组合，将某子树内节点x变为根节点。  当x已经成为根的子节点时，做单次旋转 否则存在x的父节点y，爷节点z x-y-z处于一条“直链”，则先旋转y再旋转x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="平衡树">
+<meta property="og:url" content="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/index.html">
+<meta property="og:site_name" content="代码如诗">
+<meta property="og:description" content="平衡树splay伸展树特点就是每次操作完一个节点，将其旋转至根，保证BST性质的同时保持平衡不至于退化成链。对于一条长链，底端的节点旋转至顶会让这条链被压缩。 旋转rotate操作，分为左旋与右旋   伸展splay操作是旋转的组合，将某子树内节点x变为根节点。  当x已经成为根的子节点时，做单次旋转 否则存在x的父节点y，爷节点z x-y-z处于一条“直链”，则先旋转y再旋转x">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/Untitled.png">
+<meta property="og:image" content="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/Untitled%201.png">
+<meta property="og:image" content="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/Untitled.gif">
+<meta property="og:image" content="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/Untitled%202.png">
+<meta property="article:published_time" content="2024-06-03T10:42:02.000Z">
+<meta property="article:modified_time" content="2024-06-03T10:42:02.000Z">
+<meta property="article:author" content="GrainMad">
+<meta property="article:tag" content="notion">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="树与图">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/Untitled.png">
+
+
+<link rel="canonical" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/","path":"6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/","title":"平衡树"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>平衡树 | 代码如诗</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">代码如诗</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">99</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">549</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">平衡树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splay"><span class="nav-number">2.</span> <span class="nav-text">splay</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#P3369-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%99%AE%E9%80%9A%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="nav-number">2.1.</span> <span class="nav-text">P3369 【模板】普通平衡树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3391-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%96%87%E8%89%BA%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="nav-number">2.2.</span> <span class="nav-text">P3391 【模板】文艺平衡树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FHQ-Treap"><span class="nav-number">3.</span> <span class="nav-text">FHQ Treap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#P3369-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%99%AE%E9%80%9A%E5%B9%B3%E8%A1%A1%E6%A0%91-1"><span class="nav-number">3.1.</span> <span class="nav-text">P3369 【模板】普通平衡树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3391-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%96%87%E8%89%BA%E5%B9%B3%E8%A1%A1%E6%A0%91-1"><span class="nav-number">3.2.</span> <span class="nav-text">P3391 【模板】文艺平衡树</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GrainMad"
+      src="/images/mona-loading-dimmed-5da225352fd7.gif">
+  <p class="site-author-name" itemprop="name">GrainMad</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">549</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">99</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/grainmad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;grainmad" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/grainmad" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="平衡树 | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          平衡树
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h1><h1 id="splay"><a href="#splay" class="headerlink" title="splay"></a>splay</h1><p>伸展树特点就是每次操作完一个节点，将其旋转至根，保证BST性质的同时保持平衡不至于退化成链。对于一条长链，底端的节点旋转至顶会让这条链被压缩。</p>
+<p>旋转rotate操作，分为左旋与右旋</p>
+<img data-src="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/Untitled.png" class="">
+
+<p>伸展splay操作是旋转的组合，将某子树内节点x变为根节点。</p>
+<ul>
+<li>当x已经成为根的子节点时，做单次旋转</li>
+<li>否则存在x的父节点y，爷节点z<ul>
+<li>x-y-z处于一条“直链”，则先旋转y再旋转x<span id="more"></span>    - x-y-z处于一条“折链”，则先旋转x再旋转x</li>
+</ul>
+</li>
+</ul>
+<img data-src="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/Untitled%201.png" class="">
+
+<img data-src="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/Untitled.gif" class="">
+
+<h2 id="P3369-【模板】普通平衡树"><a href="#P3369-【模板】普通平衡树" class="headerlink" title="P3369 【模板】普通平衡树"></a><strong>P3369 【模板】普通平衡树</strong></h2><blockquote>
+<p>您需要写一种数据结构（可参考题目标题），来维护一些数，其中需要提供以下操作：</p>
+</blockquote>
+<ol>
+<li>插入 $x$ 数</li>
+<li>删除 $x$ 数(若有多个相同的数，应只删除一个)</li>
+<li>查询 $x$ 数的排名(排名定义为比当前数小的数的个数 $+1$ )</li>
+<li>查询排名为 $x$ 的数</li>
+<li>求 $x$ 的前驱(前驱定义为小于 $x$，且最大的数)</li>
+<li>求 $x$ 的后继(后继定义为大于 $x$，且最小的数)<blockquote>
+</blockquote>
+</li>
+</ol>
+<p>基于伸展操作，可以实现以下操作</p>
+<ul>
+<li>插入x。二叉查找树的性质可以找到x，让节点计数值自增；否则若x不存在，则会增加一个叶子x。然后为了保证不退化成链，让x旋转至根。</li>
+<li>删除x。让x前驱旋转至根，再让x后继旋转至根的右儿子，此时x必是叶子。减少x节点计数值，若为0则直接删除节点x。</li>
+<li>找到x的排名。x旋转至根，则左子树的大小+1就是x的排名。（注意具体实现时，会添加正负无穷哨兵避免边界特判的复杂实现）</li>
+<li>找到排名为r的值。基于各子树大小与二叉查找树的性质实现。</li>
+<li>找到x的前驱/后继。让x旋转至根，找左/右子树中的最大/小值即为前驱/后继。</li>
+</ul>
+<p>所有操作均摊$O(logn)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P3369</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ls(x) tr[x].s[0]</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rs(x) tr[x].s[1]</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1100010</span>, INF = (<span class="number">1</span> &lt;&lt; <span class="number">30</span>) + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;</span><br><span class="line">    <span class="type">int</span> s[<span class="number">2</span>];  <span class="comment">// 左右儿子</span></span><br><span class="line">    <span class="type">int</span> p;     <span class="comment">// 父亲</span></span><br><span class="line">    <span class="type">int</span> v;     <span class="comment">// 节点权值</span></span><br><span class="line">    <span class="type">int</span> cnt;   <span class="comment">// 权值出现次数</span></span><br><span class="line">    <span class="type">int</span> siz;   <span class="comment">// 子树大小</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> p1, <span class="type">int</span> v1)</span> </span>&#123;</span><br><span class="line">        p = p1, v = v1;</span><br><span class="line">        cnt = siz = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; tr[N];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> root;  <span class="comment">// 根节点编号</span></span><br><span class="line"><span class="type">int</span> idx;   <span class="comment">// 节点个数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    tr[x].siz = tr[<span class="built_in">ls</span>(x)].siz + tr[<span class="built_in">rs</span>(x)].siz + tr[x].cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 左/右旋 6个指针的断开重连</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> y = tr[x].p, z = tr[y].p;</span><br><span class="line">    <span class="type">int</span> k = tr[y].s[<span class="number">1</span>] == x;</span><br><span class="line">    tr[z].s[tr[z].s[<span class="number">1</span>] == y] = x;</span><br><span class="line">    tr[x].p = z;</span><br><span class="line">    tr[y].s[k] = tr[x].s[k ^ <span class="number">1</span>];</span><br><span class="line">    tr[tr[x].s[k ^ <span class="number">1</span>]].p = y;</span><br><span class="line">    tr[x].s[k ^ <span class="number">1</span>] = y;</span><br><span class="line">    tr[y].p = x;</span><br><span class="line">    <span class="built_in">pushup</span>(y), <span class="built_in">pushup</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将x不断旋转至k的儿子，k为0则x变为根</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">splay</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (tr[x].p != k) &#123;</span><br><span class="line">        <span class="type">int</span> y = tr[x].p, z = tr[y].p;</span><br><span class="line">        <span class="keyword">if</span> (z != k)  <span class="comment">// 折转底，直转中</span></span><br><span class="line">            (<span class="built_in">ls</span>(y) == x) ^ (<span class="built_in">ls</span>(z) == y) ? <span class="built_in">rotate</span>(x) : <span class="built_in">rotate</span>(y);</span><br><span class="line">        <span class="built_in">rotate</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!k)</span><br><span class="line">        root = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先二分查找，找到v则自增，否则添加新节点v（添加的位置必为叶子），并将v旋转至根</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;  <span class="comment">// 插入</span></span><br><span class="line">    <span class="type">int</span> x = root, p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x &amp;&amp; tr[x].v != v)</span><br><span class="line">        p = x, x = tr[x].s[v &gt; tr[x].v];</span><br><span class="line">    <span class="keyword">if</span> (x)</span><br><span class="line">        tr[x].cnt++;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        x = ++idx;</span><br><span class="line">        <span class="keyword">if</span> (p)</span><br><span class="line">            tr[p].s[v &gt; tr[p].v] = x;</span><br><span class="line">        tr[x].<span class="built_in">init</span>(p, v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">splay</span>(x, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二分找到值为v的节点，然后旋转至根。</span></span><br><span class="line"><span class="comment">// v不存在，返回 小于v的最大值 或 大于v的最小值 节点</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">find</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;  <span class="comment">// 找到v并转到根</span></span><br><span class="line">    <span class="type">int</span> x = root;</span><br><span class="line">    <span class="keyword">while</span> (tr[x].s[v &gt; tr[x].v] &amp;&amp; v != tr[x].v)</span><br><span class="line">        x = tr[x].s[v &gt; tr[x].v];</span><br><span class="line">    <span class="built_in">splay</span>(x, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find(v)，根节点值小于v，则根节点就是v的前驱</span></span><br><span class="line"><span class="comment">// 否则根左子树的最大值为前驱</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getpre</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;  <span class="comment">// 前驱</span></span><br><span class="line">    <span class="built_in">find</span>(v);</span><br><span class="line">    <span class="type">int</span> x = root;</span><br><span class="line">    <span class="keyword">if</span> (tr[x].v &lt; v)</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    x = <span class="built_in">ls</span>(x);</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">rs</span>(x))</span><br><span class="line">        x = <span class="built_in">rs</span>(x);</span><br><span class="line">    <span class="built_in">splay</span>(x, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find(v)，根节点值大于v，则根节点就是v的后继</span></span><br><span class="line"><span class="comment">// 否则根右子树的最小值为后继</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getsuc</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;  <span class="comment">// 后继</span></span><br><span class="line">    <span class="built_in">find</span>(v);</span><br><span class="line">    <span class="type">int</span> x = root;</span><br><span class="line">    <span class="keyword">if</span> (tr[x].v &gt; v)</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    x = <span class="built_in">rs</span>(x);</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">ls</span>(x))</span><br><span class="line">        x = <span class="built_in">ls</span>(x);</span><br><span class="line">    <span class="built_in">splay</span>(x, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 找到v的前驱和后继，让前驱成为根，后继成为根的右儿子</span></span><br><span class="line"><span class="comment">// 由于v的前驱后继唯一，所以此时v必为叶子节点。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">del</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;  <span class="comment">// 删除</span></span><br><span class="line">    <span class="type">int</span> pre = <span class="built_in">getpre</span>(v);</span><br><span class="line">    <span class="type">int</span> suc = <span class="built_in">getsuc</span>(v);</span><br><span class="line">    <span class="built_in">splay</span>(pre, <span class="number">0</span>), <span class="built_in">splay</span>(suc, pre);</span><br><span class="line">    <span class="type">int</span> del = tr[suc].s[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span> (tr[del].cnt &gt; <span class="number">1</span>)</span><br><span class="line">        tr[del].cnt--, <span class="built_in">splay</span>(del, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        tr[suc].s[<span class="number">0</span>] = <span class="number">0</span>, <span class="built_in">splay</span>(suc, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 值为v在树中的排名，其左子树的大小就是排名（负无穷哨兵的存在）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getrank</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;  <span class="comment">// 排名</span></span><br><span class="line">    <span class="built_in">insert</span>(v);</span><br><span class="line">    <span class="type">int</span> res = tr[tr[root].s[<span class="number">0</span>]].siz;</span><br><span class="line">    <span class="built_in">del</span>(v);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取排名为k的值，二分</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getval</span><span class="params">(<span class="type">int</span> k)</span> </span>&#123;  <span class="comment">// 数值</span></span><br><span class="line">    <span class="type">int</span> x = root;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (k &lt;= tr[<span class="built_in">ls</span>(x)].siz)  <span class="comment">// 其必在左子树</span></span><br><span class="line">            x = <span class="built_in">ls</span>(x);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (k &lt;= tr[<span class="built_in">ls</span>(x)].siz + tr[x].cnt)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            k -= tr[<span class="built_in">ls</span>(x)].siz + tr[x].cnt, x = <span class="built_in">rs</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">splay</span>(x, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> tr[x].v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 插入哨兵 insert(-INF), insert(INF)</span></span><br><span class="line"><span class="comment">// 插入，删除，查询节点值x排名，查询排名x的节点值，查询节点值x的前驱和后继节点值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">insert</span>(-INF);</span><br><span class="line">    <span class="built_in">insert</span>(INF);  <span class="comment">// 哨兵</span></span><br><span class="line">    <span class="type">int</span> n, op, x;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;op, &amp;x);</span><br><span class="line">        <span class="keyword">if</span> (op == <span class="number">1</span>)</span><br><span class="line">            <span class="built_in">insert</span>(x);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">2</span>)</span><br><span class="line">            <span class="built_in">del</span>(x);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">3</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">getrank</span>(x));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">4</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">getval</span>(x + <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">5</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, tr[<span class="built_in">getpre</span>(x)].v);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, tr[<span class="built_in">getsuc</span>(x)].v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="P3391-【模板】文艺平衡树"><a href="#P3391-【模板】文艺平衡树" class="headerlink" title="P3391 【模板】文艺平衡树"></a><strong>P3391 【模板】文艺平衡树</strong></h2><blockquote>
+<p>您需要写一种数据结构，来维护一个有序数列。<br>其中需要提供以下操作：翻转一个区间，例如原有序序列是 $5\ 4\ 3\ 2\ 1$，翻转区间是 $[2,4]$ 的话，结果是 $5\ 2\ 3\ 4\ 1$。<br>第一行两个正整数 $n,m$，表示序列长度与操作个数。序列中第 $i$ 项初始为 $i$。<br>接下来 $m$ 行，每行两个正整数 $l,r$，表示翻转的区间。<br>输出一行 $n$ 个正整数，表示原始序列经过 $m$ 次变换后的结果。</p>
+</blockquote>
+<p>对于已经构成的二叉树，其中序遍历是原有序列，我们对区间的反转实际是对其中一颗子树的反转？实际并不是。与线段树类似一个区间可能覆盖了多颗子树。</p>
+<p>但是我们可以利用splay操作将区间[<code>l,r]</code> 内的节点聚集在一颗子树上。具体做法就是找到排名为l-1的节点编号x，找到排名为r+1的节点编号y。通过伸展操作让x为根，y为x的右儿子。这时区间<code>[l,r]</code> 所有节点都在y的左子树上。</p>
+<p>我们要反转区间<code>[l,r]</code> 。只需对这颗子树的反转，可以为其打上懒标记。懒标记的作用在于当遍历到含懒标记的节点时交换左右儿子，并传递懒标记。对于打上偶数次懒标记相当于交换偶数次，也就是无需交换。</p>
+<p>我们发现本题构造了一颗二叉平衡树，但是却不是二叉搜索树（反转操作后，中序遍历二叉树并不是有序的）。但是找到排名为k的节点编号却可以用二叉搜索实现，其二叉搜索的条件取决于子树的节点数目而不是子节点的值。</p>
+<p>我们找到排名为k的节点编号x，然后将x旋转至根，这个过程中时不会遇到懒标记的，因为在找x的过程中所经过的节点都会处理懒标记。所以x旋转至根的这条链上不会遇到懒标记。</p>
+<p>最后中序遍历输出，过程中遇到懒标记便处理并下传。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P3391</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 100005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NINF 0xf3f3f3f3</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ls(x) tr[x].s[0]</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rs(x) tr[x].s[1]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;</span><br><span class="line">    <span class="type">int</span> s[<span class="number">2</span>];  <span class="comment">// 左右儿子</span></span><br><span class="line">    <span class="type">int</span> p;     <span class="comment">// 父亲</span></span><br><span class="line">    <span class="type">int</span> v;     <span class="comment">// 节点权值</span></span><br><span class="line">    <span class="type">int</span> siz;   <span class="comment">// 子树大小</span></span><br><span class="line">    <span class="type">int</span> tag;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> p1, <span class="type">int</span> v1)</span> </span>&#123;</span><br><span class="line">        p = p1, v = v1;</span><br><span class="line">        siz = <span class="number">1</span>;</span><br><span class="line">        tag = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; tr[N];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> root;  <span class="comment">// 根节点编号</span></span><br><span class="line"><span class="type">int</span> idx;   <span class="comment">// 节点个数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    tr[x].siz = tr[<span class="built_in">ls</span>(x)].siz + tr[<span class="built_in">rs</span>(x)].siz + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushdown</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tr[x].tag) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(<span class="built_in">ls</span>(x), <span class="built_in">rs</span>(x));</span><br><span class="line">        tr[<span class="built_in">ls</span>(x)].tag ^= <span class="number">1</span>;</span><br><span class="line">        tr[<span class="built_in">rs</span>(x)].tag ^= <span class="number">1</span>;</span><br><span class="line">        tr[x].tag = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 左/右旋 6个指针的断开重连</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> y = tr[x].p, z = tr[y].p;</span><br><span class="line">    <span class="type">int</span> k = tr[y].s[<span class="number">1</span>] == x;</span><br><span class="line">    tr[z].s[tr[z].s[<span class="number">1</span>] == y] = x;</span><br><span class="line">    tr[x].p = z;</span><br><span class="line">    tr[y].s[k] = tr[x].s[k ^ <span class="number">1</span>];</span><br><span class="line">    tr[tr[x].s[k ^ <span class="number">1</span>]].p = y;</span><br><span class="line">    tr[x].s[k ^ <span class="number">1</span>] = y;</span><br><span class="line">    tr[y].p = x;</span><br><span class="line">    <span class="built_in">pushup</span>(y), <span class="built_in">pushup</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将x不断旋转至k的儿子，k为0则x变为根</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">splay</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (tr[x].p != k) &#123;</span><br><span class="line">        <span class="type">int</span> y = tr[x].p, z = tr[y].p;</span><br><span class="line">        <span class="keyword">if</span> (z != k)  <span class="comment">// 折转底，直转中</span></span><br><span class="line">            (<span class="built_in">ls</span>(y) == x) ^ (<span class="built_in">ls</span>(z) == y) ? <span class="built_in">rotate</span>(x) : <span class="built_in">rotate</span>(y);</span><br><span class="line">        <span class="built_in">rotate</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!k)</span><br><span class="line">        root = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先二分查找，找到v则自增，否则添加新节点v（添加的位置必为叶子），并将v旋转至根</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;  <span class="comment">// 插入</span></span><br><span class="line">    <span class="type">int</span> x = root, p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x &amp;&amp; tr[x].v != v)</span><br><span class="line">        p = x, x = tr[x].s[v &gt; tr[x].v];</span><br><span class="line">    x = ++idx;</span><br><span class="line">    <span class="keyword">if</span> (p)</span><br><span class="line">        tr[p].s[v &gt; tr[p].v] = x;</span><br><span class="line">    tr[x].<span class="built_in">init</span>(p, v);</span><br><span class="line">    <span class="built_in">splay</span>(x, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取排名为k的节点编号</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getid</span><span class="params">(<span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x = root;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="built_in">pushdown</span>(x);</span><br><span class="line">        <span class="keyword">if</span> (k &lt;= tr[<span class="built_in">ls</span>(x)].siz)  <span class="comment">// 其必在左子树</span></span><br><span class="line">            x = <span class="built_in">ls</span>(x);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (k == tr[<span class="built_in">ls</span>(x)].siz + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            k -= tr[<span class="built_in">ls</span>(x)].siz + <span class="number">1</span>, x = <span class="built_in">rs</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!o)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">pushdown</span>(o);</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="built_in">ls</span>(o));</span><br><span class="line">    <span class="keyword">if</span> (tr[o].v != INF &amp;&amp; tr[o].v != NINF)</span><br><span class="line">        cout &lt;&lt; tr[o].v &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="built_in">rs</span>(o));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">insert</span>(NINF);</span><br><span class="line">    <span class="built_in">insert</span>(INF);</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="built_in">insert</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="type">int</span> l, r;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        <span class="comment">// 将排名为 [l+1, r+1] 聚集到一颗子树上，然后打上懒标记</span></span><br><span class="line">        <span class="type">int</span> x = <span class="built_in">getid</span>(l), y = <span class="built_in">getid</span>(r + <span class="number">2</span>);</span><br><span class="line">        <span class="built_in">splay</span>(x, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">splay</span>(y, x);</span><br><span class="line">        tr[<span class="built_in">ls</span>(y)].tag ^= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="FHQ-Treap"><a href="#FHQ-Treap" class="headerlink" title="FHQ Treap"></a>FHQ Treap</h1><p>无旋Treap每颗子树内，节点权值val满足二叉查找树的性质，节点随机值key满足堆的性质。节点的随机值保证了形成的树不会退化成链较为平衡。</p>
+<p>通过分割操作将一颗树分为两颗treap树x和y，x树内节点值均小于等于v，y树内节点值均大于v。</p>
+<p>通过合并操作将两颗treap树合为一颗treap树。</p>
+<img data-src="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/Untitled%202.png" class="">
+
+<h2 id="P3369-【模板】普通平衡树-1"><a href="#P3369-【模板】普通平衡树-1" class="headerlink" title="P3369 【模板】普通平衡树"></a><strong>P3369 【模板】普通平衡树</strong></h2><blockquote>
+<p>您需要写一种数据结构（可参考题目标题），来维护一些数，其中需要提供以下操作：</p>
+</blockquote>
+<ol>
+<li>插入 $x$ 数</li>
+<li>删除 $x$ 数(若有多个相同的数，应只删除一个)</li>
+<li>查询 $x$ 数的排名(排名定义为比当前数小的数的个数 $+1$ )</li>
+<li>查询排名为 $x$ 的数</li>
+<li>求 $x$ 的前驱(前驱定义为小于 $x$，且最大的数)</li>
+<li>求 $x$ 的后继(后继定义为大于 $x$，且最小的数)<blockquote>
+</blockquote>
+</li>
+</ol>
+<p>通过分割与合并可以实现：</p>
+<ul>
+<li>插入x。直接以x作为分割点分割成两树，然后将x视为一颗树，将三颗树合并即可。</li>
+<li>删除x。先分割成三颗树a,b,c，a树内节点值均小于x，b树内节点值等于x，c树内节点均大于x。随后让b树两子节点合并成为新的b树。这样相当于删除了b树的根节点，然后让a,b,c三树合并。</li>
+<li>找到x的排名。分割出节点值均小于x的树a，a的大小+1就是当前x的排名。</li>
+<li>找到排名为r的值。利用子树大小与BST的性质，二叉查找。</li>
+<li>找到x的前驱/后继。分割出节点值小/大于x的树a，a中最大/小值为x的前驱/后继</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P3369</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;</span><br><span class="line">    <span class="type">int</span> l, r;  <span class="comment">// 左右儿子</span></span><br><span class="line">    <span class="type">int</span> val;   <span class="comment">// 树的权值</span></span><br><span class="line">    <span class="type">int</span> rnd;   <span class="comment">// 堆的随机值</span></span><br><span class="line">    <span class="type">int</span> size;  <span class="comment">// 子树大小</span></span><br><span class="line">&#125; tr[N];</span><br><span class="line"><span class="type">int</span> root, idx;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">newnode</span><span class="params">(<span class="type">int</span>&amp; x, <span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    x = ++idx;</span><br><span class="line">    tr[x].val = v;</span><br><span class="line">    tr[x].rnd = <span class="built_in">rand</span>();</span><br><span class="line">    tr[x].size = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> p)</span> </span>&#123;</span><br><span class="line">    tr[p].size = tr[tr[p].l].size + tr[tr[p].r].size + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从根节点p开始将树分裂成以x为根和y为根的两棵树</span></span><br><span class="line"><span class="comment">// x树内节点值均小于等于v，y树内节点值均大于v</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">split</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> v, <span class="type">int</span>&amp; x, <span class="type">int</span>&amp; y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!p) &#123;</span><br><span class="line">        x = y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (tr[p].val &lt;= v) &#123;</span><br><span class="line">        x = p;</span><br><span class="line">        <span class="built_in">split</span>(tr[x].r, v, tr[x].r, y);</span><br><span class="line">        <span class="built_in">pushup</span>(x);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        y = p;</span><br><span class="line">        <span class="built_in">split</span>(tr[y].l, v, x, tr[y].l);</span><br><span class="line">        <span class="built_in">pushup</span>(y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// x树和y树合并成新树，返回根节点</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!x || !y)</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    <span class="keyword">if</span> (tr[x].rnd &lt; tr[y].rnd) &#123;</span><br><span class="line">        tr[x].r = <span class="built_in">merge</span>(tr[x].r, y);</span><br><span class="line">        <span class="built_in">pushup</span>(x);</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        tr[y].l = <span class="built_in">merge</span>(x, tr[y].l);</span><br><span class="line">        <span class="built_in">pushup</span>(y);</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入v节点，以v为分割拆分成两个树x和y，将x,v,y三树合并</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x, y, z;</span><br><span class="line">    <span class="built_in">split</span>(root, v, x, y);</span><br><span class="line">    <span class="built_in">newnode</span>(z, v);</span><br><span class="line">    root = <span class="built_in">merge</span>(<span class="built_in">merge</span>(x, z), y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拆分出三颗树，x树内值小于v，y树内值等于v，z树内值大于v。</span></span><br><span class="line"><span class="comment">// y树左右子树合并成为新的y树，相当于将根删除，删除了一个v节点。</span></span><br><span class="line"><span class="comment">// 合并x, y, z三颗树。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">del</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x, y, z;</span><br><span class="line">    <span class="built_in">split</span>(root, v, x, z);</span><br><span class="line">    <span class="built_in">split</span>(x, v - <span class="number">1</span>, x, y);</span><br><span class="line">    y = <span class="built_in">merge</span>(tr[y].l, tr[y].r);</span><br><span class="line">    root = <span class="built_in">merge</span>(<span class="built_in">merge</span>(x, y), z);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取值的排名，以v-1进行分割，得到x树内值都小于等于v-1</span></span><br><span class="line"><span class="comment">// x树大小+1为v值的排名</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getrank</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x, y;</span><br><span class="line">    <span class="built_in">split</span>(root, v - <span class="number">1</span>, x, y);</span><br><span class="line">    <span class="type">int</span> ans = tr[x].size + <span class="number">1</span>;</span><br><span class="line">    root = <span class="built_in">merge</span>(x, y);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取排名为v的值，二分</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getval</span><span class="params">(<span class="type">int</span> root, <span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (v == tr[tr[root].l].size + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> tr[root].val;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (v &lt;= tr[tr[root].l].size)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getval</span>(tr[root].l, v);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getval</span>(tr[root].r, v - tr[tr[root].l].size - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// v值前驱，拆分出x树，x树内值均小于v</span></span><br><span class="line"><span class="comment">// 找到x树内最大值</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getpre</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x, y, s, ans;</span><br><span class="line">    <span class="built_in">split</span>(root, v - <span class="number">1</span>, x, y);</span><br><span class="line">    s = tr[x].size;</span><br><span class="line">    ans = <span class="built_in">getval</span>(x, s);</span><br><span class="line">    root = <span class="built_in">merge</span>(x, y);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// v值前驱，拆分出y树，x树内值均大于v</span></span><br><span class="line"><span class="comment">// 找到y树内最小值</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getnxt</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x, y, ans;</span><br><span class="line">    <span class="built_in">split</span>(root, v, x, y);</span><br><span class="line">    ans = <span class="built_in">getval</span>(y, <span class="number">1</span>);</span><br><span class="line">    root = <span class="built_in">merge</span>(x, y);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, op, v;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;op, &amp;v);</span><br><span class="line">        <span class="keyword">if</span> (op == <span class="number">1</span>)</span><br><span class="line">            <span class="built_in">insert</span>(v);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">2</span>)</span><br><span class="line">            <span class="built_in">del</span>(v);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">3</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">getrank</span>(v));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">4</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">getval</span>(root, v));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">5</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">getpre</span>(v));</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">getnxt</span>(v));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="P3391-【模板】文艺平衡树-1"><a href="#P3391-【模板】文艺平衡树-1" class="headerlink" title="P3391 【模板】文艺平衡树"></a><strong>P3391 【模板】文艺平衡树</strong></h2><blockquote>
+<p>您需要写一种数据结构，来维护一个有序数列。<br>其中需要提供以下操作：翻转一个区间，例如原有序序列是 $5\ 4\ 3\ 2\ 1$，翻转区间是 $[2,4]$ 的话，结果是 $5\ 2\ 3\ 4\ 1$。<br>第一行两个正整数 $n,m$，表示序列长度与操作个数。序列中第 $i$ 项初始为 $i$。<br>接下来 $m$ 行，每行两个正整数 $l,r$，表示翻转的区间。<br>输出一行 $n$ 个正整数，表示原始序列经过 $m$ 次变换后的结果。</p>
+</blockquote>
+<p>对于splay可以将利用伸展操作将区间[<code>l,r]</code> 内的节点聚集在一颗子树上。而无旋treap也可以将区间聚集到一颗树上，然后打上懒标记。可以按照排名分裂，先将区间<code>[1,n]</code>分为<code>[1, r], [r+1, n]</code>，然后将<code>[1, r]</code>分为<code>[1, l-1], [l, r]</code> 。然后将<code>[l,r]</code>子树打上懒标记。</p>
+<p>合并和分割操作遇到的每个节点都需要处理懒标记。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 100005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;</span><br><span class="line">    <span class="type">int</span> l, r;  <span class="comment">// 左右儿子</span></span><br><span class="line">    <span class="type">int</span> val;   <span class="comment">// 树的权值</span></span><br><span class="line">    <span class="type">int</span> rnd;   <span class="comment">// 堆的随机值</span></span><br><span class="line">    <span class="type">int</span> size;  <span class="comment">// 子树大小</span></span><br><span class="line">    <span class="type">int</span> tag;   <span class="comment">// 懒标记</span></span><br><span class="line">&#125; tr[N];</span><br><span class="line"><span class="type">int</span> root, idx;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">newnode</span><span class="params">(<span class="type">int</span>&amp; x, <span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    x = ++idx;</span><br><span class="line">    tr[x].val = v;</span><br><span class="line">    tr[x].rnd = <span class="built_in">rand</span>();</span><br><span class="line">    tr[x].size = <span class="number">1</span>;</span><br><span class="line">    tr[x].tag = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> p)</span> </span>&#123;</span><br><span class="line">    tr[p].size = tr[tr[p].l].size + tr[tr[p].r].size + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushdown</span><span class="params">(<span class="type">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tr[p].tag) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(tr[p].l, tr[p].r);</span><br><span class="line">        tr[tr[p].l].tag ^= <span class="number">1</span>;</span><br><span class="line">        tr[tr[p].r].tag ^= <span class="number">1</span>;</span><br><span class="line">        tr[p].tag = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按照排名进行分裂，节点排名小于等于v划分到x，其余划分到y</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">split</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> v, <span class="type">int</span>&amp; x, <span class="type">int</span>&amp; y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!p) &#123;</span><br><span class="line">        x = y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">pushdown</span>(p);                 <span class="comment">// 向下分裂过程中处理懒标记</span></span><br><span class="line">    <span class="keyword">if</span> (tr[tr[p].l].size &lt; v) &#123;  <span class="comment">// 当前划分到x</span></span><br><span class="line">        v -= tr[tr[p].l].size + <span class="number">1</span>;</span><br><span class="line">        x = p;</span><br><span class="line">        <span class="built_in">split</span>(tr[x].r, v, tr[x].r, y);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        y = p;</span><br><span class="line">        <span class="built_in">split</span>(tr[y].l, v, x, tr[y].l);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">pushup</span>(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// x树和y树合并成新树，返回根节点</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!x || !y)</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    <span class="keyword">if</span> (tr[x].rnd &lt; tr[y].rnd) &#123;</span><br><span class="line">        <span class="built_in">pushdown</span>(x);</span><br><span class="line">        tr[x].r = <span class="built_in">merge</span>(tr[x].r, y);</span><br><span class="line">        <span class="built_in">pushup</span>(x);</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">pushdown</span>(y);</span><br><span class="line">        tr[y].l = <span class="built_in">merge</span>(x, tr[y].l);</span><br><span class="line">        <span class="built_in">pushup</span>(y);</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入v节点，以v为分割拆分成两个树x和y，将x,v,y三树合并</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x, y, z;</span><br><span class="line">    <span class="built_in">split</span>(root, v, x, y);</span><br><span class="line">    <span class="built_in">newnode</span>(z, v);</span><br><span class="line">    root = <span class="built_in">merge</span>(<span class="built_in">merge</span>(x, z), y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!p)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">pushdown</span>(p);</span><br><span class="line">    <span class="built_in">dfs</span>(tr[p].l);</span><br><span class="line">    cout &lt;&lt; tr[p].val &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="built_in">dfs</span>(tr[p].r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="built_in">insert</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="type">int</span> l, r;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        <span class="type">int</span> a, b, c;</span><br><span class="line">        <span class="comment">// 由于按照排名分裂的缘故，分裂有顺序要求</span></span><br><span class="line">        <span class="built_in">split</span>(root, r, a, c);   <span class="comment">// 先分开[1 r] [r+1, n]</span></span><br><span class="line">        <span class="built_in">split</span>(a, l - <span class="number">1</span>, a, b);  <span class="comment">// 再分开[1, l-1] [l, r]</span></span><br><span class="line">        tr[b].tag ^= <span class="number">1</span>;</span><br><span class="line">        root = <span class="built_in">merge</span>(<span class="built_in">merge</span>(a, b), c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/notion/" rel="tag"><i class="fa fa-tag"></i> notion</a>
+              <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+              <a href="/tags/%E6%A0%91%E4%B8%8E%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 树与图</a>
+          </div>
+          <script type="text/javascript">
+            var tagsall=document.getElementsByClassName("post-tags")
+            for (var i = tagsall.length - 1; i >= 0; i--){
+                var tags=tagsall[i].getElementsByTagName("a");
+                for (var j = tags.length - 1; j >= 0; j--) {
+                    var golden_ratio = 0.618033988749895;
+                    var s = 0.5;
+                    var v = 0.999;
+                    var h = golden_ratio + Math.random()*0.8 - 0.5;
+                    var h_i = parseInt(h * 6);
+                    var f = h * 6 - h_i;
+                    var p = v * (1 - s);
+                    var q = v * (1 - f * s);
+                    var t = v * (1 - (1 - f) * s);
+                    var r, g, b;
+                    switch (h_i) {
+                        case 0:
+                            r = v;
+                            g = t;
+                            b = p;
+                            break;
+                        case 1:
+                            r = q;
+                            g = v;
+                            b = p;
+                            break;
+                        case 2:
+                            r = p;
+                            g = v;
+                            b = t;
+                            break;
+                        case 3 :
+                            r = p;
+                            g = q;
+                            b = v;
+                            break;
+                        case 4:
+                            r = t;
+                            g = p;
+                            b = v;
+                            break;
+                        case 5:
+                            r = v;
+                            g = p;
+                            b = q;
+                            break;
+                        default:
+                            r = 1;
+                            g = 1;
+                            b = 1;
+                      }
+                    tags[j].style.background = "rgba("+parseInt(r*255)+","+parseInt(g*255)+","+parseInt(b*255)+","+0.7+")";
+                }
+            }
+          </script>
+          <style>
+          .post-tags a {
+              display: inline-block;
+              font-size: 0.8em;
+              padding: 0px 10px;
+              border-radius: 8px;
+              color: rgb(85, 85, 85);
+              border: 0px;
+          }
+          .post-tags a:hover{
+              box-shadow: 0px 5px 15px 0px rgba(0,0,0,.4);
+              transform: scale(1.1);
+              transition-duration: 0.15s;
+          }
+          </style>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/df29370933f7/" rel="prev" title="最短路">
+                  <i class="fa fa-chevron-left"></i> 最短路
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/d56e9598c761/" rel="next" title="tarjan 桥与割点">
+                  tarjan 桥与割点 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GrainMad</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.7/mermaid.min.js","integrity":"sha256-G58AID1YoX5YaEtWfXSI0VLrZ6N4kvNvwg0BI8zUFxE="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#606863',
+  buttonColorLight: '#dcdee3',
+  saveInCookies: true,
+  label: '🌗',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"grainmad/grainmad.github.io","issue_term":"pathname","theme":"github-dark-orange"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":450},"mobile":{"show":false,"scale":0.5},"react":{"opacity":0.7}});</script></body>
+</html>

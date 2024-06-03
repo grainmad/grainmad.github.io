@@ -1,0 +1,32 @@
+<hr>
+<p>title: “树的直径与中心”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 树与图, 树上问题]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="树的直径与中心"><a href="#树的直径与中心" class="headerlink" title="树的直径与中心"></a>树的直径与中心</h1><pre><code class="cpp">int n;
+cin &gt;&gt; n;
+vector&lt;vector&lt;int&gt;&gt; g(n+1);
+vector&lt;vector&lt;int&gt;&gt; d(3, vector&lt;int&gt;(n+1));
+for (int i=1; i&lt;n; i++) {
+    int u, v;
+    cin &gt;&gt; u &gt;&gt; v;
+    g[u].push_back(v);
+    g[v].push_back(u);
+}
+int c = 0;
+function&lt;void(int,int,int)&gt; dfs = [&amp;](int u, int fa, int o) {
+&lt;!--more--&gt;    for (int v : g[u]) {
+        if (v == fa) continue;
+        d[o][v] = d[o][u] + 1;
+        if (d[o][v] &gt; d[o][c]) c = v;
+        dfs(v, u, o);
+    }
+};
+dfs(1, 0, 0);
+dfs(c, 0, 1);
+dfs(c, 0, 2);
+// cout &lt;&lt; d &lt;&lt; endl;
+// d[2][c] 直径
+vector&lt;int&gt; h; // 某条直径上的中心点,直径奇数一个,偶数两个
+for (int i=1; i&lt;=n; i++) {
+    if (d[1][i]+d[2][i] == d[2][c] &amp;&amp; abs(d[1][i]-d[2][i]) == d[2][c]%2) h.push_back(i);
+}
+</code></pre>

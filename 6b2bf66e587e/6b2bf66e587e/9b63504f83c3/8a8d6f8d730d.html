@@ -1,0 +1,84 @@
+<hr>
+<p>title: “矩阵快速幂”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h1><h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><pre><code class="cpp">struct Matrix {
+    ll mat[N][N];
+};
+// a: n*n b: n*n
+Matrix mul_matrix(Matrix a, Matrix b, int n, ll m) {
+    Matrix res;
+    for (int i = 0; i &lt; n; i++) {
+        for (int j = 0; j &lt; n; j++) {
+            res.mat[i][j] = 0;
+            for (int k = 0; k &lt; n; k++) {
+&lt;!--more--&gt;                res.mat[i][j] += a.mat[i][k] * b.mat[k][j] % m;
+                res.mat[i][j] %= m;
+            }
+        }
+    }
+    return res;
+}
+// a^p
+Matrix pow_matrix(Matrix a, ll p, int n, ll m) {
+    Matrix res;
+    // 单位矩阵
+    for (int i = 0; i &lt; n; i++) {
+        for (int j = 0; j &lt; n; j++) {
+            res.mat[i][j] = (i == j ? 1 : 0);
+        }
+    }
+    while (p != 0) {
+        if (p &amp; 1)
+            res = mul_matrix(a, res, n, m);
+        a = mul_matrix(a, a, n, m);
+        p &gt;&gt;= 1;
+    }
+    return res;
+}
+</code></pre>
+<p>大矩阵作为函数参数且以值传递会发生段错误。</p>
+<p>一种大矩阵不会段错误的实现方式。</p>
+<pre><code class="cpp">#define N 505
+#define MOD 998244353
+
+struct Matrix {
+    int mat[N][N];
+    int n;
+    Matrix(int n) : n(n) { memset(mat, 0, sizeof(mat)); }
+    inline void operator*=(const Matrix&amp; o) {
+        int ans[n][n] = {};
+        for (int i = 0; i &lt; n; i++)
+            for (int j = 0; j &lt; n; j++)
+                if (mat[i][j])
+                    for (int k = 0; k &lt; n; k++)
+                        ans[i][k] =
+                            (ans[i][k] + (long long)(mat[i][j]) * o.mat[j][k]) %
+                            MOD;
+        for (int i = 0; i &lt; n; ++i)
+            for (int j = 0; j &lt; n; ++j)
+                mat[i][j] = ans[i][j];
+    }
+    void print() {
+        for (int i = 0; i &lt; n; i++) {
+            for (int j = 0; j &lt; n; j++) {
+                cout &lt;&lt; mat[i][j] &lt;&lt; &quot; &quot;;
+            }
+            cout &lt;&lt; &quot;\n&quot;;
+        }
+    }
+};
+/*
+    // a *= b^n
+    for (; n; n &gt;&gt;= 1, b *= b)
+        if (n &amp; 1)
+            a *= b;
+    a.print();
+*/
+</code></pre>
+<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p>常系数的递推式</p>
+<p>已知$f_0, f_1,\cdots,f_{k-1}$</p>
+<p>$f_i= c_0+c_1f_{i-1}+c_2f_{i-2}+\cdots+c_kf_{i-k}, i\ge k$</p>
+<hr>
+<p>二维状态转移只依赖前一维度</p>
+<p>$f_{p,i} = \sum \limits_{j=0}^{n-1}f_{p-1, j}*c_{i,j}$</p>
+<p>设置一个$n\times n$的转移矩阵A。设置元素$A_{i,j}$为前一状态$f_{p-1,i}$向当前状态$f_{p,j}$转移的贡献$c_{i,j}$</p>

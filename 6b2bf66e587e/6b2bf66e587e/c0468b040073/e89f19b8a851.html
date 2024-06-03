@@ -1,0 +1,63 @@
+<hr>
+<p>title: “ST表”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="ST表"><a href="#ST表" class="headerlink" title="ST表"></a>ST表</h1><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+#define MAXN 5005
+int st[MAXN][30]; //st[i][j] 代表区间[i, i+2^j)最小值
+
+void ST(const vector&lt;int&gt;&amp; a) {
+    int n = a.size();
+    for (int i=0; i&lt;n; i++) st[i][0] = a[i];
+    for (int j=1; (1&lt;&lt;j)&lt;=n; j++) {//区间大小 
+        for (int i=0; i+(1&lt;&lt;j)-1&lt;n; i++) {//区间下限 
+            st[i][j] = min(st[i][j-1], st[i+(1&lt;&lt;(j-1))][j-1]);
+&lt;!--more--&gt;        }
+    }
+}
+
+int ask(int l, int r) {
+        int k = 0;
+        while ((1&lt;&lt;(k+1))&lt;=r-l+1) k++;
+        return min(st[l][k], st[r-(1&lt;&lt;k)+1][k]);
+}
+
+int main() {
+    vector&lt;int&gt; a = {1,2,3,4,2,1};
+    ST(a);
+    cout &lt;&lt; ask(0,2) &lt;&lt; endl;
+    cout &lt;&lt; ask(2,3) &lt;&lt; endl;
+    cout &lt;&lt; ask(2,4) &lt;&lt; endl;
+    cout &lt;&lt; ask(2,5) &lt;&lt; endl;
+}
+/*
+1
+3
+2
+1
+*/
+</code></pre>
+<p>封装</p>
+<pre><code class="cpp">struct ST {
+    vector&lt;vector&lt;int&gt;&gt; st;  // st[i][j] 代表区间[i, i+2^j)最小值
+    ST(const vector&lt;int&gt;&amp; a) : st(a.size(), vector&lt;int&gt;(30)) {
+        int sz = a.size();
+        for (int i = 0; i &lt; sz; i++)
+            st[i][0] = a[i];
+        for (int j = 1; (1 &lt;&lt; j) &lt;= sz; j++) {             // 区间大小
+            for (int i = 0; i + (1 &lt;&lt; j) - 1 &lt; sz; i++) {  // 区间下限
+                int x = st[i][j - 1], y = st[i + (1 &lt;&lt; (j - 1))][j - 1];
+                st[i][j] = dep[x] &lt; dep[y] ? x : y;
+            }
+        }
+    }
+    int ask(int l, int r) {
+        int k = 0;
+        while ((1 &lt;&lt; (k + 1)) &lt;= r - l + 1)
+            k++;
+        int x = st[l][k], y = st[r - (1 &lt;&lt; k) + 1][k];
+        return dep[x] &lt; dep[y] ? x : y;
+    }
+};
+</code></pre>

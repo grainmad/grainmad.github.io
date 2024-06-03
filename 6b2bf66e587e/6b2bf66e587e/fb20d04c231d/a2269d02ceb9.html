@@ -1,0 +1,12 @@
+<hr>
+<p>title: “子树计数模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="子树计数模板"><a href="#子树计数模板" class="headerlink" title="子树计数模板"></a>子树计数模板</h1><pre><code class="cpp">function&lt;int(int,int)&gt; dfs = [&amp;](int x, int fa) { // 当前节点x, x的父节点fa
+    int rt = nums[x];//当前节点值nums[x]
+    for (int i:g[x]) {
+        if (i == fa) continue;
+        rt += dfs(i, x);
+    }
+    return rt;
+};
+</code></pre>

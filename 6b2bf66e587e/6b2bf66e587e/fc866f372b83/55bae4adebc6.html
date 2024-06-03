@@ -1,0 +1,263 @@
+<hr>
+<p>title: “排序”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 轮子]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>对于子数组<code>nums[left…right],</code>我们将<code>nums[left]</code>排到正确的位置上</p>
+<p>每次排好一个元素,然后以这个元素作为分割,递归解决子问题</p>
+<h3 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h3><ul>
+<li>对于右指针向左寻找第一个小于等于<code>nums[left]</code>的元素</li>
+<li>对于左指针向右寻找第一个大于<code>nums[left]</code>的元素</li>
+<li>将两个指针所指向的元素进行交换</li>
+</ul>
+<p>注意到<strong>左指针自始至终满足小于等于<code>nums[left]</code></strong> ,也就是说当指针相遇<code>l=r</code>时,都满足<code>nums[left…l] ≤ nums[left]</code>,我们可以让<code>nums[left]</code>和<code>nums[l]</code>交换,也就排好<code>nums[left]</code>这个元素,然后递归处理子数组nums[left…l-1]和<code>nums[l+1,right]</code></p>
+<!--more-->
+<p>为什么是右指针先移动?</p>
+<p>确保了指针相遇时指针以及指针左侧的元素都小于<code>nums[left]</code></p>
+<ul>
+<li>如果右指针向左移动遇到了左指针,左指针再次之前必定是小于等于<code>nums[left]</code> 的</li>
+<li>如果左指针向右移动遇到了右指针,右指针再次之前必定是小于等于<code>nums[left]</code> 的</li>
+</ul>
+<pre><code class="cpp">void quickSort(vector&lt;int&gt;&amp; nums, int left, int right) {
+      if (left &gt;= right) return ;
+      swap(nums[(left+right)/2], nums[left]);
+      int pivot = nums[left];
+      int l = left, r = right;
+      while (l &lt; r) {
+          while (l&lt;r &amp;&amp; nums[r]&gt;pivot) r--;
+          while (l&lt;r &amp;&amp; nums[l]&lt;=pivot) l++; 
+          swap(nums[l], nums[r]);
+      }
+      swap(nums[l], nums[left]);
+      quickSort(nums, left, l-1);
+      quickSort(nums, l+1, right);
+  }
+</code></pre>
+<h3 id="挖坑法"><a href="#挖坑法" class="headerlink" title="挖坑法"></a>挖坑法</h3><p>先取出<code>nums[left]</code>保留到临时变量<code>pivot</code>上,空位在左指针上,然后每一轮:</p>
+<ul>
+<li>从右侧开始寻找小于<code>pivot</code>的元素,将其移动到左指针空位上,现在空位在右指针上.</li>
+<li>从左侧开始寻找大于<code>pivot</code>的元素,将其移动到右指针空位上,现在空位又回到左指针上.</li>
+</ul>
+<p>最后左右指针相遇,将<code>pivot</code>移动到空位l上</p>
+<p>为什么右指针先移动?</p>
+<p>因为空位最开始在左边</p>
+<pre><code class="cpp">void quickSort(vector&lt;int&gt;&amp; nums, int left, int right) {
+      if (left &gt;= right) return;
+      swap(nums[(left+right)/2], nums[left]);//三点取中
+      int pivot = nums[left];
+      int l = left, r = right;
+      while (l &lt; r) {
+          while (l&lt;r &amp;&amp; nums[r]&gt;=pivot) r--;
+          nums[l] = nums[r];
+          while (l&lt;r &amp;&amp; nums[l]&lt;=pivot) l++;
+          nums[r] = nums[l];
+      }
+      nums[l] = pivot;
+      quickSort(nums, left, l-1);
+      quickSort(nums, l+1, right);
+  }
+</code></pre>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>先将数组对半分开,排好左右两边,然后合并两个有序数组</p>
+<pre><code class="cpp">void mergeSort(vector&lt;int&gt;&amp; nums, int left, int right) { // [left, right)
+      if (left + 1 &gt;= right) return ;
+      int m = left+right&gt;&gt;1;
+      mergeSort(nums, left, m);
+      mergeSort(nums, m, right);
+      vector&lt;int&gt; mg;
+      int p1 = left, p2 = m;
+      while (p1&lt;m &amp;&amp; p2&lt;right) {
+          if (nums[p1] &lt; nums[p2]) {
+              mg.push_back(nums[p1++]);
+          } else {
+              mg.push_back(nums[p2++]);
+          }
+      }
+      while (p1&lt;m) {
+          mg.push_back(nums[p1++]);
+      }
+      while (p2&lt;right) {
+          mg.push_back(nums[p2++]);
+      }
+      for (int i=left; i&lt;right; i++) {
+          nums[i] = mg[i-left];
+      }
+  }
+</code></pre>
+<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><p>对于十进制来说,先排个位,再排十位,再排百位…</p>
+<p>对链表进行基数排序</p>
+<ul>
+<li>distribute $O(n)$</li>
+<li>collect $O(|\Sigma|)$,$|\Sigma|$为进制</li>
+</ul>
+<p>对于值域在$[0,2^{31})$,$\Sigma=1024$只需要不超过3次distribute</p>
+<h3 id="链表排序"><a href="#链表排序" class="headerlink" title="链表排序"></a>链表排序</h3><pre><code class="cpp">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    // -10^5 &lt;= Node.val &lt;= 10^5 偏移为正数 +131072
+    #define BIAS (1&lt;&lt;17)
+    #define BIT 10
+    // 以SIGMA进制 1024
+    #define SIGMA (1&lt;&lt;BIT)
+    ListNode* f[SIGMA], * e[SIGMA];
+    void distribute(ListNode* head, int rd) {
+        memset(f, 0, sizeof(f));
+        memset(e, 0, sizeof(e));
+        while (head) {
+            int v = (head-&gt;val+BIAS&gt;&gt;rd)&amp;(SIGMA-1);
+            if (!f[v]) {
+                f[v] = e[v] = head;
+            } else {
+                e[v]-&gt;next = head;
+                e[v] = e[v]-&gt;next;
+            }
+            head = head-&gt;next;
+        }
+    }
+    ListNode* collect() {
+        int i=-1;
+        while (!f[++i]);//不会全空, 第一个非空
+        ListNode* rt = f[i]; 
+        int p = i;
+        while (++i&lt;SIGMA) {
+            if (f[i]) {
+                e[p]-&gt;next = f[i];
+                p = i;
+            }
+        }
+        e[p]-&gt;next = NULL;
+        return rt;
+    }
+    ListNode* RadixSort(ListNode* head) {
+        if (!head) return head;
+        int maxval = head-&gt;val;
+        ListNode* t = head;
+        while (t) {
+            if (maxval &lt; t-&gt;val) maxval = t-&gt;val;
+            t = t-&gt;next;
+        }
+        maxval += BIAS;
+        t = head;
+        for (int i=0; (1LL&lt;&lt;i)&lt;=maxval; i+=BIT) {
+            // cout &lt;&lt; i &lt;&lt; endl;
+            distribute(t, i);
+            t = collect();
+        }
+        return t;
+    }
+    ListNode* sortList(ListNode* head){
+        return RadixSort(head);
+    }
+};
+</code></pre>
+<h3 id="数组模拟链表"><a href="#数组模拟链表" class="headerlink" title="数组模拟链表"></a>数组模拟链表</h3><pre><code class="cpp">// -10^5 &lt;= Node.val &lt;= 10^5 偏移为正数 +131072
+#define BIAS (1&lt;&lt;17)
+#define BIT 10
+// 以SIGMA进制 1024
+#define SIGMA (1&lt;&lt;BIT)
+#define EMP 0x3f3f3f3f
+int f[SIGMA], e[SIGMA];
+vector&lt;int&gt; lk, bk;
+void distribute(int head, int rd) {
+    memset(f, 0x3f, sizeof(f));
+    memset(e, 0x3f, sizeof(e));
+    while (head != -1) {
+        int v = (bk[head]+BIAS&gt;&gt;rd)&amp;(SIGMA-1);
+        if (f[v] == EMP) {
+            f[v] = e[v] = head;
+        } else {
+            lk[e[v]] = head;
+            e[v] = lk[e[v]];
+        }
+        head = lk[head];
+    }
+}
+int collect() {
+    int i=-1;
+    while (f[++i] == EMP);//不会全空, 第一个非空
+    int rt = f[i]; 
+    int p = i;
+    while (++i&lt;SIGMA) {
+        if (f[i] != EMP) {
+            lk[e[p]] = f[i];
+            p = i;
+        }
+    }
+    lk[e[p]] = -1;
+    return rt;
+}
+void radixSort(vector&lt;int&gt;&amp; nums) {
+    if (nums.empty()) return ;
+    int maxval = *max_element(nums.begin(), nums.end()) + BIAS;
+    int n = nums.size();
+    bk = nums;
+    lk.resize(n);
+    iota(lk.begin(), lk.end(), 1);
+    lk.back() = -1;
+    // cout &lt;&lt; nums &lt;&lt; endl;
+    // cout &lt;&lt; lk &lt;&lt; endl;
+    int t = 0;
+    for (int i=0; (1LL&lt;&lt;i)&lt;=maxval; i+=BIT) {
+        // cout &lt;&lt; i &lt;&lt; endl;
+        distribute(t, i);
+        t = collect();
+        // for (int j=t; j!=-1; j=lk[j]) {
+        //     cout &lt;&lt; bk[j] &lt;&lt; &quot; &quot;;
+        // }
+        // cout &lt;&lt; endl;
+    }
+    for (int i=0; i&lt;n; i++) {
+        nums[i] = bk[t];
+        t = lk[t];
+    }
+}
+</code></pre>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>基于数组建立完全二叉树,通过下标确定了节点间父子关系.</p>
+<p>数组下标从0开始,那么对于下标为x的节点,它的左儿子是2x+1,右儿子是2x+2.</p>
+<p>大根堆的性质就是每个节点值不小于两个儿子的节点值.一旦违背这条性质就需要调整堆</p>
+<p><strong>调整堆</strong>,不妨设节点x的左儿子lx值大于右儿子rx,而节点x的值却小于lx的值域,所以将x和lx的值进行交换,然后对于节点lx递归处理子问题,直到叶子节点.时间复杂度$O(logn)$</p>
+<p><strong>初始化堆</strong>,需要先找到最后一个非叶子节点,我们直到如果共有n个节点值,那么由于数组下标从0开始,最后一个节点的编号是n-1,设其父亲为x,$n-1=2x+1\ 或\ 2x+2 \Rightarrow n-2=2x\ 或\ 2x+1 \Rightarrow \lfloor \frac{n-2}{2} \rfloor = x \Rightarrow \lfloor \frac{n}{2} \rfloor-1=x$, 从第一个非叶子开始倒序遍历各个节点,并对每个节点执行调整堆操作.</p>
+<p>创建的堆的时间复杂度</p>
+<p>看似有我们需要对0到$\lfloor \frac{n}{2} \rfloor-1$的节点进行调整堆操作,看似时间复杂度$O(nlogn)$</p>
+<p>如果我们将完全二叉树补充一些节点,形成为完美二叉树,其复杂度不会更优.</p>
+<p>我们知道完美二叉树每一层节点数是上一层的两倍,如果有k层,按么总节点数就是$n=2^0+2^1+2^2+2^{k-1} = 2^k-1$</p>
+<p>第1层节点的个数有$2^0$个,调整堆需要节点下沉k-1次</p>
+<p>第2层节点的个数有$2^1$个,调整堆需要节点下沉k-2次</p>
+<p>…</p>
+<p>第k层节点的个数有$2^{k-1}$个,调整堆需要节点下沉0次</p>
+<p>所以总的下沉次数是$\sum \limits_{i=0}^{k-1}2^i(k-i-1)$</p>
+<p>{% asset_img ‘Untitled.png’ %}</p>
+<p>时间复杂度$O(n-logn)$</p>
+<pre><code class="cpp">//大根堆调整
+void adjustHeap(vector&lt;int&gt;&amp; hp, int pos, int sz) {
+    int t = hp[pos];
+    for (int i=pos*2+1; i&lt;sz; i=i*2+1) {
+        if (i+1&lt;sz &amp;&amp; hp[i]&lt;hp[i+1]) i = i+1; // 左右儿子选大的
+        if (t &lt; hp[i]) {
+            hp[pos] = hp[i]; pos = i;
+        } else break;
+    }
+    hp[pos] = t;
+}
+//创建大根堆
+void creatHeap(vector&lt;int&gt;&amp; hp) {
+    //完全二叉树 最后一个非叶子节点的位置=总节点个数/2
+    for (int i=hp.size()/2-1; i&gt;=0; i--) {
+        adjustHeap(hp, i, hp.size());
+    }
+}
+//堆排序
+void heapSort(vector&lt;int&gt;&amp; hp) {
+    creatHeap(hp);
+    for (int i=hp.size()-1; i&gt;0; i--) {
+        swap(hp[i], hp[0]);
+        adjustHeap(hp, 0, i);
+    }
+}
+</code></pre>

@@ -1,0 +1,457 @@
+<hr>
+<p>title: “LCA”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 树与图, 树上问题]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="LCA"><a href="#LCA" class="headerlink" title="LCA"></a>LCA</h1><h1 id="倍增法"><a href="#倍增法" class="headerlink" title="倍增法"></a>倍增法</h1><ul>
+<li>每个节点保存了离自己2的幂次距离的祖先节点，那么每个节点只需要保存$logn$个信息。因此预处理花$O(nlogn)$时间与空间。</li>
+<li>寻找LCA的过程，先让两个节点处于同一层，只需$O(logn)$时间，再花费$O(logn)$移动到LCA的子节点。</li>
+</ul>
+<p>实际上还可保留每个节点与2的幂次祖先节点之间的节点区间信息，如果相邻区间信息的可合。那么只需$O(logn)$次合并，便可得到树上任意两点之间的区间信息。例如：任意两点间的距离，任意两点间的最大子段和（通过维护区间的最大前缀和、最大后缀和、总和以及最大子段和）。</p>
+<pre><code class="cpp">#define N 100005
+
+std::vector&lt;int&gt; g[N];
+
+// 默认不存在的节点编号是0
+&lt;!--more--&gt;int fa[N][31], dep[N];
+
+// dfs，用来为 lca 算法做准备。接受两个参数：dfs 起始节点和它的父亲节点。
+void dfs(int u, int fno) {
+    // 初始化：第 2^0 = 1 个祖先就是它的父亲节点，dep 也比父亲节点多 1。
+    fa[u][0] = fno;
+    dep[u] = dep[fa[u][0]] + 1;
+    // 初始化：其他的祖先节点：第 2^i 的祖先节点是第 2^(i-1) 的祖先节点的第
+    // 2^(i-1) 的祖先节点。
+    for (int i = 1; i &lt; 31; ++i) {
+        fa[u][i] = fa[fa[u][i - 1]][i - 1];
+    }
+    // 遍历子节点来进行 dfs。
+    for (int v : g[u]) {
+        if (v == fno)
+            continue;
+        dfs(v, u);
+    }
+}
+
+// lca。用倍增算法算取 x 和 y 的 lca 节点。
+int lca(int x, int y) {
+    // 令 y 比 x 深。
+    if (dep[x] &gt; dep[y])
+        swap(x, y);
+    // 令 y 和 x 在一个深度。
+    int tmp = dep[y] - dep[x];
+    for (int j = 0; tmp; ++j, tmp &gt;&gt;= 1)
+        if (tmp &amp; 1)
+            y = fa[y][j];
+    // 如果这个时候 y = x，那么 x，y 就都是它们自己的祖先。
+    if (y == x)
+        return x;
+    // 不然的话，找到第一个不是它们祖先的两个点。
+    for (int j = 30; j &gt;= 0 &amp;&amp; y != x; --j) {
+        if (fa[x][j] != fa[y][j]) {
+            x = fa[x][j];
+            y = fa[y][j];
+        }
+    }
+    // 返回结果。
+    return fa[x][0];
+}
+
+void add(int x, int y) {
+    g[x].push_back(y);
+    g[y].push_back(x);
+}
+
+// 注意初始时以0作为根节点的父亲，dfs(u,0)
+</code></pre>
+<p>一棵树，树的节点有权值，求树上任意两节点之间的最大子段和<a href="https://codeforces.com/contest/1843/problem/F2">https://codeforces.com/contest/1843/problem/F2</a></p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+// #define SINGLE_INPUT
+#define ull unsigned long long
+#define ll long long
+#define N 200005
+#define LG 31
+#define MOD 998244353
+using namespace std;
+
+std::vector&lt;int&gt; g[N];
+
+int fa[N][LG], dep[N];
+
+struct Info {
+    int sum, max_prf, min_prf, max_suf, min_suf, max_seg, min_seg;
+    Info(int val = 0) {
+        sum = val;
+        max_prf = max_suf = max_seg = max(0, val);
+        min_prf = min_suf = min_seg = min(0, val);
+    }
+    Info operator+(const Info&amp; o) {
+        Info rt(0);
+        rt.sum = sum + o.sum;
+        rt.min_prf = min(min_prf, sum + o.min_prf);
+        rt.max_prf = max(max_prf, sum + o.max_prf);
+        rt.min_suf = min(o.min_suf, o.sum + min_suf);
+        rt.max_suf = max(o.max_suf, o.sum + max_suf);
+        rt.min_seg = min({min_suf + o.min_prf, min_seg, o.min_seg});
+        rt.max_seg = max({max_suf + o.max_prf, max_seg, o.max_seg});
+        return rt;
+    }
+} info[N][LG];
+
+// fa[i][j] i节点的第2^j个祖先
+// info[i][j] 在i节点的第2^j个祖先（不包含f[i][j]）到当前的节点i的区间信息。
+
+// dfs，用来为 lca 算法做准备。接受两个参数：dfs 起始节点和它的父亲节点。
+void dfs(int u, int fno) {
+    // 初始化：第 2^0 = 1 个祖先就是它的父亲节点，dep 也比父亲节点多 1。
+    fa[u][0] = fno;
+    dep[u] = dep[fa[u][0]] + 1;
+    // 初始化：其他的祖先节点：第 2^i 的祖先节点是第 2^(i-1) 的祖先节点的第
+    // 2^(i-1) 的祖先节点。
+    for (int i = 1; i &lt; LG; ++i) {
+        fa[u][i] = fa[fa[u][i - 1]][i - 1];
+        info[u][i] = info[fa[u][i - 1]][i - 1] + info[u][i - 1];
+    }
+    // 遍历子节点来进行 dfs。
+    for (int v : g[u]) {
+        if (v == fno)
+            continue;
+        dfs(v, u);
+    }
+}
+
+Info lca(int x, int y) {
+    // 令 y 比 x 深。
+    if (dep[x] &gt; dep[y])
+        swap(x, y);
+    // 令 y 和 x 在一个深度。
+    Info a, b;
+    int tmp = dep[y] - dep[x];
+    for (int j = 0; tmp; ++j, tmp &gt;&gt;= 1)
+        if (tmp &amp; 1)
+            b = info[y][j] + b, y = fa[y][j];
+    // 如果这个时候 y = x，那么 x，y 就都是它们自己的祖先。
+    if (y == x) {
+        return info[x][0] + b;
+    }
+    // 不然的话，找到第一个不是它们祖先的两个点。
+    for (int j = LG - 1; j &gt;= 0 &amp;&amp; y != x; --j) {
+        if (fa[x][j] != fa[y][j]) {
+            a = info[x][j] + a;
+            x = fa[x][j];
+            b = info[y][j] + b;
+            y = fa[y][j];
+        }
+    }
+    // 返回结果。
+    a = info[x][1] + a;
+    b = info[y][0] + b;
+    swap(a.max_prf, a.max_suf);
+    swap(a.min_prf, a.min_suf);
+    return a + b;
+}
+
+void add(int x, int y) {
+    g[x].push_back(y);
+    g[y].push_back(x);
+}
+
+void sol() {
+    int n;
+    cin &gt;&gt; n;
+    int cur = 2;
+    info[1][0] = Info(1);
+    vector&lt;tuple&lt;int, int, int&gt;&gt; q;
+    for (int i = 0; i &lt; n; i++) {
+        string s;
+        cin &gt;&gt; s;
+        if (s == &quot;+&quot;) {
+            int v, val;
+            cin &gt;&gt; v &gt;&gt; val;
+            info[cur][0] = Info(val);
+            add(v, cur++);
+        } else {
+            int u, v, k;
+            cin &gt;&gt; u &gt;&gt; v &gt;&gt; k;
+            q.emplace_back(u, v, k);
+        }
+    }
+    dfs(1, 0);
+    for (auto [u, v, k] : q) {
+        auto rt = lca(u, v);
+        if (rt.min_seg &lt;= k &amp;&amp; k &lt;= rt.max_seg) {
+            cout &lt;&lt; &quot;YES\n&quot;;
+        } else {
+            cout &lt;&lt; &quot;NO\n&quot;;
+        }
+    }
+    for (int i = 0; i &lt; cur; i++) {
+        g[i].clear();
+    }
+}
+
+int main() {
+    cout &lt;&lt; setprecision(15) &lt;&lt; fixed;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+#ifndef SINGLE_INPUT
+    int t;
+    cin &gt;&gt; t;
+    while (t--) {
+        sol();
+    }
+#else
+    sol();
+#endif
+    return 0;
+}
+</code></pre>
+<h1 id="欧拉序"><a href="#欧拉序" class="headerlink" title="欧拉序"></a>欧拉序</h1><p>dfs欧拉序，ST表</p>
+<p>通过求出树的欧拉序，可以将树上最近公共祖先问题转化为区间问题。</p>
+<p>求lca的rmq方法，先求树的欧拉序，并预处理出每个节点的深度。然后记录每个点<code>x</code>在欧拉序中的第一个位置<code>p[x]</code>。求两个点<code>x</code>和<code>y</code>的lca实际上就是欧拉序中的子区间<code>[p[x], p[y]]</code>中深度最小的点。</p>
+<p>感觉单纯的求lca可以用，如果还有路径上的值需要维护，还得倍增。</p>
+<pre><code class="cpp">//https://www.luogu.com.cn/problem/P3379
+#include &lt;bits/stdc++.h&gt;
+#define SINGLE_INPUT
+#define ull unsigned long long
+#define ll long long
+#define N 500005
+#define MOD 998244353
+using namespace std;
+
+vector&lt;int&gt; g[N];
+vector&lt;int&gt; eulerTour;
+
+int fc[N], dep[N];
+
+void dfs(int u, int fno) {
+    dep[u] = dep[fno] + 1;  // 每个节点的深度
+    // 每个节点欧拉序中第一次出现的位置
+    fc[u] = eulerTour.size();  // 每个节点第一次在欧拉序中出现的位置
+    eulerTour.push_back(u);  // 欧拉序
+
+    for (auto v : g[u]) {
+        if (v == fno)
+            continue;
+        dfs(v, u);
+        eulerTour.push_back(u);
+    }
+}
+// 用st表维护欧拉序区间最小值，按照深度比较
+struct ST {
+    vector&lt;vector&lt;int&gt;&gt; st;  // st[i][j] 代表区间[i, i+2^j)最小值
+    ST(const vector&lt;int&gt;&amp; a) : st(a.size(), vector&lt;int&gt;(30)) {
+        int sz = a.size();
+        for (int i = 0; i &lt; sz; i++)
+            st[i][0] = a[i];
+        for (int j = 1; (1 &lt;&lt; j) &lt;= sz; j++) {             // 区间大小
+            for (int i = 0; i + (1 &lt;&lt; j) - 1 &lt; sz; i++) {  // 区间下限
+                int x = st[i][j - 1], y = st[i + (1 &lt;&lt; (j - 1))][j - 1];
+                st[i][j] = dep[x] &lt; dep[y] ? x : y;
+            }
+        }
+    }
+    int ask(int l, int r) {
+        int k = 0;
+        while ((1 &lt;&lt; (k + 1)) &lt;= r - l + 1)
+            k++;
+        int x = st[l][k], y = st[r - (1 &lt;&lt; k) + 1][k];
+        return dep[x] &lt; dep[y] ? x : y;
+    }
+};
+
+// 建图g
+// 根为s则调用dfs(s,0)
+// 通过欧拉序建立ST表
+// 查找x和y的lca, st.ask(min(fc[x], fc[y]), max(fc[x], fc[y]))
+void sol() {
+    int n, m, s;
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s;
+    for (int i = 1; i &lt; n; i++) {
+        int x, y;
+        cin &gt;&gt; x &gt;&gt; y;
+        g[x].push_back(y);
+        g[y].push_back(x);
+    }
+    dfs(s, 0);
+    ST st(eulerTour);
+    for (int i = 0; i &lt; m; i++) {
+        int x, y;
+        cin &gt;&gt; x &gt;&gt; y;
+        // 获取x和y的lca
+        cout &lt;&lt; st.ask(min(fc[x], fc[y]), max(fc[x], fc[y])) &lt;&lt; endl;
+    }
+}
+
+int main() {
+    cout &lt;&lt; setprecision(15) &lt;&lt; fixed;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+#ifndef SINGLE_INPUT
+    int t;
+    cin &gt;&gt; t;
+    while (t--) {
+        sol();
+    }
+#else
+    sol();
+#endif
+    return 0;
+}
+</code></pre>
+<h1 id="tarjan"><a href="#tarjan" class="headerlink" title="tarjan"></a>tarjan</h1><p>离线，并查集</p>
+<p>我们用vis数值记录每个节点是否被dfs遍历过。</p>
+<p>深搜遍历子树u结束后（函数调用结束），子树的根节点在并查集上指向其父节点。</p>
+<p>深搜遍历子树u在u的子节点全部遍历后（函数调用结束前），寻找查询中含u的点对(u,v)（这一步可以离线处理），若v已经被遍历vis[v] = true，则u和v的最近公共祖先就是并查集中v的根root。</p>
+<pre><code class="cpp">// https://www.luogu.com.cn/problem/P3379
+#include &lt;bits/stdc++.h&gt;
+#define SINGLE_INPUT
+#define ull unsigned long long
+#define ll long long
+#define N 500005
+#define MOD 998244353
+using namespace std;
+
+vector&lt;int&gt; g[N];
+vector&lt;pair&lt;int, int&gt;&gt; q[N];
+int vis[N], ans[N];
+
+int fa[N];
+
+int ufind(int x) {
+    return fa[x] &lt; 0 ? x : fa[x] = ufind(fa[x]);
+}
+
+void tarjan(int u) {
+    vis[u] = 1;
+    for (auto v : g[u]) {
+        if (vis[v])
+            continue;
+        tarjan(v);
+        fa[v] = u;
+    }
+    for (auto [v, i] : q[u]) {
+        if (vis[v])
+            ans[i] = ufind(v);
+    }
+}
+
+void sol() {
+    int n, m, s;
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s;
+    for (int i = 1; i &lt; n; i++) {
+        int x, y;
+        cin &gt;&gt; x &gt;&gt; y;
+        g[x].push_back(y);
+        g[y].push_back(x);
+    }
+    for (int i = 0; i &lt; m; i++) {
+        int x, y;
+        cin &gt;&gt; x &gt;&gt; y;
+        q[x].emplace_back(y, i);
+        q[y].emplace_back(x, i);
+    }
+    memset(fa, -1, sizeof(fa));
+    tarjan(s);
+    for (int i = 0; i &lt; m; i++) {
+        cout &lt;&lt; ans[i] &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+int main() {
+    cout &lt;&lt; setprecision(15) &lt;&lt; fixed;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+#ifndef SINGLE_INPUT
+    int t;
+    cin &gt;&gt; t;
+    while (t--) {
+        sol();
+    }
+#else
+    sol();
+#endif
+    return 0;
+}
+</code></pre>
+<h1 id="重链剖分"><a href="#重链剖分" class="headerlink" title="重链剖分"></a>重链剖分</h1><p>树链剖分用于将树分割成若干条链的形式，以维护树上路径的信息。</p>
+<p>具体来说，将整棵树剖分为若干条链，使它组合成线性结构，然后用其他的数据结构维护信息。</p>
+<p><strong>树链剖分</strong>（树剖/链剖）有多种形式，如 <strong>重链剖分</strong>，<strong>长链剖分</strong> 和用于 Link/cut Tree 的剖分（有时被称作「实链剖分」），大多数情况下（没有特别说明时），「树链剖分」都指「重链剖分」。</p>
+<p>重链剖分可以将树上的任意一条路径划分成不超过logn条连续的链，每条链上的点深度互不相同（即是自底向上的一条链，链上所有点的 LCA 为链的一个端点）。</p>
+<blockquote>
+<p>当我们向下经过一条 <strong>轻边</strong> 时，所在子树的大小至少会除以二。<br>因此，对于树上的任意一条路径，把它拆分成从LCA分别向两边往下走，分别最多走logn次，因此，树上的每条路径都可以被拆分成不超过logn条重链。</p>
+</blockquote>
+<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
+<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
+<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
+<p>重链剖分还能保证划分出的每条链上的节点 DFS 序连续，因此可以方便地用一些维护序列的数据结构（如线段树）来维护树上路径的信息。</p>
+<pre><code class="cpp">#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+int n, m, s, a, b;
+
+// !!! 空节点为0，0为根节点的父节点
+
+const int N = 500010;
+vector&lt;int&gt; e[N];
+int fa[N],   // fa[i] i的父节点
+    son[N],  // son[i] i的重儿子
+    dep[N],  // dep[i] i的深度
+    siz[N],  // siz[i] i子树的节点数
+    top[N];  // top[i] i所在链的顶端（轻儿子）
+
+// 重链剖分将产生logn条链，基于树上启发式合并
+
+void dfs1(int u, int f) {  // 搞fa,dep,son
+    fa[u] = f;
+    siz[u] = 1;
+    dep[u] = dep[f] + 1;
+    for (int v : e[u]) {
+        if (v == f)
+            continue;
+        dfs1(v, u);
+        siz[u] += siz[v];
+        if (siz[son[u]] &lt; siz[v])  // 重儿子为节点数多的儿子
+            son[u] = v;
+    }
+}
+void dfs2(int u, int t) {  // 搞top
+    top[u] = t;            // 记录链头
+    if (!son[u])           // 每个节点必有重儿子，除非为叶子
+        return;            // 无重儿子
+    dfs2(son[u], t);       // 搜重儿子
+    for (int v : e[u]) {
+        if (v == fa[u] || v == son[u])
+            continue;
+        dfs2(v, v);  // 搜轻儿子，轻儿子是一条链的开端
+    }
+}
+int lca(int u, int v) {
+    while (top[u] !=
+           top[v]) {  // 只有logn条链，跳转不超过logn次将处于同一条链上
+        if (dep[top[u]] &lt; dep[top[v]])
+            swap(u, v);
+        u = fa[top[u]];
+    }
+    // 深度小的为lca
+    return dep[u] &lt; dep[v] ? u : v;
+}
+int main() {
+    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;s);
+    for (int i = 1; i &lt; n; i++) {
+        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+        e[a].push_back(b);
+        e[b].push_back(a);
+    }
+    dfs1(s, 0);
+    dfs2(s, s);
+    while (m--) {
+        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+        printf(&quot;%d\n&quot;, lca(a, b));
+    }
+    return 0;
+}
+</code></pre>

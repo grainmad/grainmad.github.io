@@ -1,0 +1,573 @@
+<hr>
+<p>title: “背包dp”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 动态规划]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="背包dp"><a href="#背包dp" class="headerlink" title="背包dp"></a>背包dp</h1><h1 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h1><p>给出背包容量$V$，$n$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品只能选1次或不选，选取物品总体积不超过$V$的情况下，最大总价值是多少？</p>
+<p>定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。</p>
+<p>$$<br>f[i,v]=max{f[i-1, v],f[i-1, v-c_i]+w_i}<br>$$</p>
+<pre><code class="cpp">// [https://www.acwing.com/problem/content/2/](https://www.acwing.com/problem/content/2/)
+// WA，j&lt;vi时没有转移
+&lt;!--more--&gt;#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n, v;
+    cin &gt;&gt; n &gt;&gt; v;
+    vector&lt;vector&lt;int&gt;&gt; f(n+1, vector&lt;int&gt;(v+1, 0));
+    for (int i=1; i&lt;=n; i++) {
+        int vi, wi;
+        cin &gt;&gt; vi &gt;&gt; wi;
+        for (int j=vi; j&lt;=v; j++) {
+            f[i][j] = max(f[i-1][j], f[i-1][j-vi]+wi);
+        }
+    }
+    cout &lt;&lt; f[n][v] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// AC
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int n, v;
+    cin &gt;&gt; n &gt;&gt; v;
+    vector&lt;vector&lt;int&gt;&gt; f(n+1, vector&lt;int&gt;(v+1, 0));
+    for (int i=1; i&lt;=n; i++) {
+        int vi, wi;
+        cin &gt;&gt; vi &gt;&gt; wi;
+        for (int j=0; j&lt;=v; j++) {
+            if (j&gt;=vi) f[i][j] = max(f[i-1][j], f[i-1][j-vi]+wi);
+            else f[i][j] = f[i-1][j];
+        }
+    }
+    cout &lt;&lt; f[n][v] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// AC
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int n, v;
+    cin &gt;&gt; n &gt;&gt; v;
+    vector&lt;vector&lt;int&gt;&gt; f(n+1, vector&lt;int&gt;(v+1, 0));
+    for (int i=1; i&lt;=n; i++) {
+        int vi, wi;
+        cin &gt;&gt; vi &gt;&gt; wi;
+        for (int j=0; j&lt;vi; j++) {
+            f[i][j] = f[i-1][j];
+        }
+        for (int j=vi; j&lt;=v; j++) {
+            f[i][j] = max(f[i-1][j], f[i-1][j-vi]+wi);
+        }
+    }
+    cout &lt;&lt; f[n][v] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<p>优化空间复杂度，使用滚动数组，自动将<code>f[i-1][] → f[i][]</code></p>
+<pre><code class="cpp">// [https://www.acwing.com/problem/content/2/](https://www.acwing.com/problem/content/2/)
+
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int n, v;
+    cin &gt;&gt; n &gt;&gt; v;
+    vector&lt;int&gt; f(v+1);
+    for (int i=1; i&lt;=n; i++) {
+        int vi, wi;
+        cin &gt;&gt; vi &gt;&gt; wi;
+        for (int j=v; j&gt;=vi; j--) {
+            f[j] = max(f[j], f[j-vi]+wi);
+        }
+    }
+    cout &lt;&lt; f[v] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<p><strong>初始化的问题</strong>，有的题目要求<strong>恰好装满背包</strong>，有的则<strong>不需要背包装满</strong>。</p>
+<p>要求恰好装满背包,那么在初始化时除了 $f[0]$ 为 0,其它 $f[1…V]$ 均设为负无穷，这样就可以保证最终得到的$f[V]$是一种恰好装满背包的最优解。 </p>
+<p>如果并没有要求必须把背包装满，而是只希望价格尽量大，初始化时应该将$f[0…v]$全部设为 0。</p>
+<h1 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h1><p>给出背包容量$V$，$N$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品能选无数次或不选，选取物品总体积不超过$V$的情况下，最大总价值是多少？</p>
+<p>定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。</p>
+<p>$$<br>f[i,v]=max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v}<br>$$</p>
+<p>状态$f[i,v]$的求解时间是$O(\frac{v}{c_i})$，总求解时间复杂度为$O(NV\sum \frac{V}{c_i})$</p>
+<pre><code class="cpp">// https://www.acwing.com/problem/content/3/
+
+// TLE
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int n, v;
+    cin &gt;&gt; n &gt;&gt; v;
+    vector&lt;vector&lt;int&gt;&gt; f(n+1, vector&lt;int&gt;(v+1, 0));
+    for (int i=1; i&lt;=n; i++) {
+        int vi, wi;
+        cin &gt;&gt; vi &gt;&gt; wi;
+        // for (int j=0; j&lt;=v; j++) {
+        //     f[i][j] = f[i-1][j];
+        // }
+        for (int j=0; j&lt;=v; j++) {
+            for (int k=0; k*vi&lt;=j; k++) {
+                f[i][j] = max(f[i][j], f[i-1][j-k*vi]+k*wi);
+            }
+            
+        }
+    }
+    cout &lt;&lt; f[n][v] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<p><strong>优化</strong></p>
+<p>$\begin{array}{lll}<br>f[i,v]&amp; = &amp; max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v} \<br> &amp; = &amp; max{f[i-1, v], f[i-1, v- c_i]+w_i, \cdots, f[i-1, v-\lfloor \frac{v}{c_i} \rfloor \cdot c_i]+\lfloor \frac{v}{c_i} \rfloor\cdot w_i} \<br>\end{array}$</p>
+<p>$\begin{array}{lll}<br>f[i,v-c_i]&amp; = &amp; max{f[i-1, v-c_i-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v-c_i} \<br>&amp; = &amp; max{f[i-1, v-c_i], f[i-1, v- 2c_i]+w_i, \cdots, f[i-1, v-c_i-(\lfloor \frac{v}{c_i} \rfloor-1) \cdot c_i]+(\lfloor \frac{v}{c_i} \rfloor-1)\cdot w_i} \<br>\end{array}$</p>
+<p>$$<br>f[i,v]=max{f[i-1, v], f[i, v-c_i]+w_i}<br>$$</p>
+<p>时间复杂度$O(NV)$</p>
+<pre><code class="cpp">// https://www.acwing.com/problem/content/3/
+
+// AC
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int n, v;
+    cin &gt;&gt; n &gt;&gt; v;
+    vector&lt;vector&lt;int&gt;&gt; f(n+1, vector&lt;int&gt;(v+1, 0));
+    for (int i=1; i&lt;=n; i++) {
+        int vi, wi;
+        cin &gt;&gt; vi &gt;&gt; wi;
+        for (int j=0; j&lt;vi; j++) {
+            f[i][j] = f[i-1][j];
+        }
+        for (int j=vi; j&lt;=v; j++) {
+            f[i][j] = max(f[i-1][j], f[i][j-vi]+wi);
+            
+        }
+    }
+    cout &lt;&lt; f[n][v] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// AC 滚动数组
+
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int n, v;
+    cin &gt;&gt; n &gt;&gt; v;
+    vector&lt;int&gt; f(v+1, 0);
+    for (int i=1; i&lt;=n; i++) {
+        int vi, wi;
+        cin &gt;&gt; vi &gt;&gt; wi;
+        for (int j=vi; j&lt;=v; j++) {
+            f[j] = max(f[j], f[j-vi]+wi);
+            
+        }
+    }
+    cout &lt;&lt; f[v] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<h1 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h1><p>给出背包容量$V$，$n$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品最多能选$m_i$次，选取物品总体积不超过$V$的情况下，最大总价值是多少？</p>
+<p>定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。</p>
+<p>$$<br>f[i,v]=max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k \le m_i}<br>$$</p>
+<p>复杂度$O(V\sum m_i)$</p>
+<pre><code class="cpp">// https://www.acwing.com/problem/content/4/
+
+// AC
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int n, v;
+    cin &gt;&gt; n &gt;&gt; v;
+    vector&lt;vector&lt;int&gt;&gt; f(n+1, vector&lt;int&gt;(v+1, 0));
+    for (int i=1; i&lt;=n; i++) {
+        int vi, wi, si;
+        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;
+        for (int j=0; j&lt;=v; j++) {
+            for (int k=0; k&lt;=si &amp;&amp; k*vi&lt;=j; k++) {
+                f[i][j] = max(f[i][j], f[i-1][j-k*vi]+k*wi);
+            }
+            
+        }
+    }
+    cout &lt;&lt; f[n][v] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// WA，先遍历每件物品的数目不行
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int n, v;
+    cin &gt;&gt; n &gt;&gt; v;
+    vector&lt;vector&lt;int&gt;&gt; f(n+1, vector&lt;int&gt;(v+1, 0));
+    for (int i=1; i&lt;=n; i++) {
+        int vi, wi, si;
+        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;
+        for (int k=0; k&lt;=si; k++) {
+            for (int j=k*si; j&lt;=v; j++) {
+                f[i][j] = max(f[i][j], f[i-1][j-k*vi]+k*wi);
+            }
+            
+        }
+    }
+    cout &lt;&lt; f[n][v] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<p><strong>二进制优化</strong>，对于一个物品最多选$m_i$次，我们可以构造$1, 2, 2^2, 2^{k-1}, m_i-(2^k-1)$，共$O(log(m_i))$个物品，这些物品选与不选可以构造出选0到$m_i$个物品。$O(V\sum m_i)$</p>
+<pre><code class="cpp">// https://www.acwing.com/problem/content/5/
+
+// AC
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int N, V;
+    cin &gt;&gt; N &gt;&gt; V;
+    vector&lt;int&gt; v, w;
+    for (int i=1; i&lt;=N; i++) {
+        int vi, wi, si;
+        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;
+        int t = 1;
+        while (t &lt;= si) {
+            v.push_back(vi*t);
+            w.push_back(wi*t);
+            si -= t;
+            t *= 2;
+        }
+        if (si&gt;0) {
+            v.push_back(vi*si);
+            w.push_back(wi*si);
+        }
+    }
+    int sz = v.size();
+    vector&lt;int&gt; f(V+1, 0);
+    for (int i=1; i&lt;=sz; i++) {
+        for (int j=V; j&gt;=v[i-1]; j--) {
+            f[j] = max(f[j], f[j-v[i-1]]+w[i-1]);
+        }
+    }
+    cout &lt;&lt; f[V] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// AC
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int N, V;
+    cin &gt;&gt; N &gt;&gt; V;
+    vector&lt;int&gt; v, w;
+    for (int i=1; i&lt;=N; i++) {
+        int vi, wi, si;
+        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;
+        int t = 1;
+        while (t &lt; si) {
+            v.push_back(vi*t);
+            w.push_back(wi*t);
+            si -= t;
+            t *= 2;
+        }
+        v.push_back(vi*si);
+        w.push_back(wi*si);
+    }
+    int sz = v.size();
+    vector&lt;int&gt; f(V+1, 0);
+    for (int i=1; i&lt;=sz; i++) {
+        for (int j=V; j&gt;=v[i-1]; j--) {
+            f[j] = max(f[j], f[j-v[i-1]]+w[i-1]);
+        }
+    }
+    cout &lt;&lt; f[V] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// AC
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int N, V;
+    cin &gt;&gt; N &gt;&gt; V;
+    vector&lt;int&gt; f(V+1, 0);
+    for (int i=1; i&lt;=N; i++) {
+        int vi, wi, si;
+        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;
+        int t = 1;
+        while (t &lt; si) {
+            for (int j=V; j&gt;=t*vi; j--) {
+                f[j] = max(f[j], f[j-t*vi]+t*wi);
+            }
+            si -= t;
+            t *= 2;
+        }
+        for (int j=V; j&gt;=si*vi; j--) {
+            f[j] = max(f[j], f[j-si*vi]+si*wi);
+        }
+    }
+    cout &lt;&lt; f[V] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// AC
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int N, V;
+    cin &gt;&gt; N &gt;&gt; V;
+    vector&lt;int&gt; f(V+1, 0);
+    for (int i=1; i&lt;=N; i++) {
+        int vi, wi, si;
+        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;
+        for (int b=1; b&lt;si; si-=b, b&lt;&lt;=1) {
+            for (int j=V; j&gt;=b*vi; j--) {
+                f[j] = max(f[j], f[j-b*vi]+b*wi);
+            }
+        }
+        for (int j=V; j&gt;=si*vi; j--) {
+            f[j] = max(f[j], f[j-si*vi]+si*wi);
+        }
+    }
+    cout &lt;&lt; f[V] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<p><strong>单调队列优化</strong></p>
+<p>$f[i,v]=max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k \le m_i}$</p>
+<p>$f[i-1, v], f[i-1, v-c_i] + w_i,f[i-1, v-2c_i] + 2w_i, \cdots, f[i-1, v-m_ic_i] + m_iw_i$</p>
+<p>$f[i,v-c_i]=max{F[i-1, v-c_i-k\cdot c_i]+k\cdot w_i|0\le k \le m_i}$</p>
+<p>$f[i-1, v-c_i], f[i-1, v-2c_i] + w_i,f[i-1, v-3c_i] + 2w_i, \cdots, f[i-1, v-(m_i+1)c_i] + m_iw_i$</p>
+<p>在不看$+kc_i$的情况下，$f[i,v]$和$f[i, v-c_i]$分别展开后，我们可以认为$f[i,v]$比$f[i, v-c_i]$多了$f[i-1, v]$这一项，少了$f[i-1, v-(m_i+1)c_i]$这一项。</p>
+<p>对于第i件物品其体积为v，价值为w，最多可选次数为s。</p>
+<p>$f[i][]$的求解可以分为v组进行，这v组中第r组($0\le r &lt; v$)为$f[i-1][r], f[i-1][v+r], f[i-1][2v+r], \cdots, f[i-1][g\cdot v + r], (g=\lfloor \frac{V}{v} \rfloor)$</p>
+<p>对于可选次数为3，求解$f[i][4v+r]$，实际上为$max { f[i-1][4v+r], f[i-1][3v+r]+w, f[i-1][2v+r]+2w, f[i-1][v+r]+3w}$</p>
+<p>用单调队列维护$r, r+v, r+2v, r+3v, \cdots, r+gv$。</p>
+<ul>
+<li>保证队首队尾相差不超过$sv$</li>
+<li>对于队列中的任意两个元素$r+iv$和$r+jv$，$i&lt;j$。确保$f[i-1][r+iv]+(j-i)w &gt; f[i-1][r+jv]$</li>
+</ul>
+<pre><code class="cpp">// https://www.acwing.com/problem/content/description/6/
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int N, V;
+    cin &gt;&gt; N &gt;&gt; V;
+    vector&lt;vector&lt;int&gt;&gt; f(N+1, vector&lt;int&gt;(V+1, 0));
+    vector&lt;int&gt; q(V);
+    for (int i=1; i&lt;=N; i++) {
+        int v, w, s;
+        cin &gt;&gt; v &gt;&gt; w &gt;&gt; s;
+        for (int j=0; j&lt;v; j++) {
+            int l = 0, r = 0;
+            for (int k=j; k&lt;=V; k+=v) {
+                while (l&lt;r &amp;&amp; k-q[l] &gt; s*v) l++;
+                while (l&lt;r &amp;&amp; f[i-1][q[r-1]] + (k-q[r-1])/v*w &lt;= f[i-1][k]) r--; // 维护严格单调减小
+                q[r++] = k;
+                f[i][k] = f[i-1][q[l]] + (k-q[l])/v*w;
+            }
+        }
+    }
+    cout &lt;&lt; f[N][V] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// f[i][] 依赖 f[i-1][]，用两个数组交替滚动覆盖。
+
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int N, V;
+    cin &gt;&gt; N &gt;&gt; V;
+    vector&lt;vector&lt;int&gt;&gt; f(2, vector&lt;int&gt;(V+1, 0));
+    int u = 0;
+    vector&lt;int&gt; q(V);
+    for (int i=1; i&lt;=N; i++) {
+        int v, w, s;
+        cin &gt;&gt; v &gt;&gt; w &gt;&gt; s;
+        for (int j=0; j&lt;v; j++) {
+            int l = 0, r = 0;
+            for (int k=j; k&lt;=V; k+=v) {
+                while (l&lt;r &amp;&amp; k-q[l] &gt; s*v) l++;
+                while (l&lt;r &amp;&amp; f[u][q[r-1]] + (k-q[r-1])/v*w &lt;= f[u][k]) r--; // 维护严格单调减小
+                q[r++] = k;
+                f[u^1][k] = f[u][q[l]] + (k-q[l])/v*w;
+            }
+        }
+        u ^= 1;
+    }
+    cout &lt;&lt; f[u][V] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<h1 id="混合背包"><a href="#混合背包" class="headerlink" title="混合背包"></a>混合背包</h1><p>有些物品只能选1次，有些能选无数次，有些只能选m次。</p>
+<p>判断每个物品所属背包种类，分类处理。</p>
+<pre><code class="cpp">// 对于费用为vi，价值为wi的01背包
+for (int j=v; j&gt;=vi; j--) {
+    f[j] = max(f[j], f[j-vi]+wi);
+}
+// 对于费用为vi，价值为wi的完全背包
+for (int j=vi; j&lt;=v; j++) {
+    f[j] = max(f[j], f[j-vi]+wi);
+}
+// 对于费用为vi，价值为wi，可选次数为si的多重背包，采用二进制压缩
+for (int b=1; b&lt;si; si-=b, b&lt;&lt;=1) {
+    for (int j=V; j&gt;=b*vi; j--) {
+        f[j] = max(f[j], f[j-b*vi]+b*wi);
+    }
+}
+for (int j=V; j&gt;=si*vi; j--) {
+    f[j] = max(f[j], f[j-si*vi]+si*wi);
+}
+</code></pre>
+<h1 id="分组背包"><a href="#分组背包" class="headerlink" title="分组背包"></a>分组背包</h1><p>有N件物品和一个容量为V的背包。第 <em>i</em> 件物品的费用是 $c_i$，价值是$w_i$。这些物品被划分为K组，每组中的物品互相冲突，最多选一件。求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大。</p>
+<p>设$f[k,v]$为前k组物品花费v费用能获得的最大价值。</p>
+<p>$f[k,v] = max{ f[k-1,v], f[k-1, v-c_i]+w_i | item \ i \in group \ k}$</p>
+<pre><code class="cpp">// https://www.acwing.com/problem/content/9/
+
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int N, V;
+    cin &gt;&gt; N &gt;&gt; V;
+    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; obj(N);
+    for (int i=0; i&lt;N; i++) {
+        int sz;
+        cin &gt;&gt; sz;
+        for (int j=0; j&lt;sz; j++) {
+            int v, w;
+            cin &gt;&gt; v &gt;&gt; w;
+            obj[i].emplace_back(v, w);
+        }
+    }
+    vector&lt;vector&lt;int&gt;&gt; f(N+1, vector&lt;int&gt;(V+1));
+    
+    for (int i=1; i&lt;=N; i++) {
+        for (int j=0; j&lt;=V; j++) {
+            f[i][j] = f[i-1][j];
+        }
+        for (int j=0; j&lt;=V; j++) {
+            for (auto [v, w]:obj[i-1]) {
+                if (v&lt;=j)
+                f[i][j] = max(f[i][j], f[i-1][j-v]+w);
+            }
+        }
+    }
+    cout &lt;&lt; f[N][V] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// 滚动数组
+
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int N, V;
+    cin &gt;&gt; N &gt;&gt; V;
+    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; obj(N);
+    for (int i=0; i&lt;N; i++) {
+        int sz;
+        cin &gt;&gt; sz;
+        for (int j=0; j&lt;sz; j++) {
+            int v, w;
+            cin &gt;&gt; v &gt;&gt; w;
+            obj[i].emplace_back(v, w);
+        }
+    }
+    vector&lt;int&gt; f(V+1);
+    
+    for (int i=1; i&lt;=N; i++) {
+        for (int j=V; j&gt;=0; j--) { // 注意逆向遍历。每类物品也是选与不选，只是选的方式有多种。
+            for (auto [v, w]:obj[i-1]) {
+                if (v&lt;=j)
+                    f[j] = max(f[j], f[j-v]+w);
+            }
+        }
+    }
+    cout &lt;&lt; f[V] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<h1 id="多维费用背包"><a href="#多维费用背包" class="headerlink" title="多维费用背包"></a>多维费用背包</h1><p>共有N件物品，对于每件物品，具有两种不同的费用$c_i,d_i$，选择这件物品必须同时付出这两种费用。这两种费用都有一个可付出的最大值（背包容量）$V,U$。问怎样选择物品可以得到最大的价值。</p>
+<p>费用加了一维，只需状态也加一维即可。设 $f[i, v, u]$ 表示前 i 件物品付出两种费用 分别为 v 和 u 时可获得的最大价值。状态转移方程就是： $f[i, v, u] = max{f[i-1, v,u], F[i-1, v-c_i, u-d_i] + w_i}$</p>
+<pre><code class="cpp">// https://www.acwing.com/problem/content/8/
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int N, V, M;
+    cin &gt;&gt; N &gt;&gt; V &gt;&gt; M;
+    int f[N+1][V+1][M+1];
+    memset(f, 0, sizeof(f));
+    for (int i=1; i&lt;=N; i++) {
+        int v, m, w;
+        cin &gt;&gt; v &gt;&gt; m &gt;&gt; w;
+        for (int j=0; j&lt;=V; j++) {
+            for (int k=0; k&lt;=M; k++) {
+                f[i][j][k] = f[i-1][j][k];
+            }
+        }
+        for (int j=v; j&lt;=V; j++) {
+            for (int k=m; k&lt;=M; k++) {
+                f[i][j][k] = max(f[i][j][k], f[i-1][j-v][k-m]+w);
+            }
+        }
+    }
+    cout &lt;&lt; f[N][V][M] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// 滚动压缩
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main() {
+    int N, V, M;
+    cin &gt;&gt; N &gt;&gt; V &gt;&gt; M;
+    int f[V+1][M+1];
+    memset(f, 0, sizeof(f));
+    for (int i=1; i&lt;=N; i++) {
+        int v, m, w;
+        cin &gt;&gt; v &gt;&gt; m &gt;&gt; w;
+        for (int j=V; j&gt;=v; j--) {
+            for (int k=M; k&gt;=m; k--) {
+                f[j][k] = max(f[j][k], f[j-v][k-m]+w);
+            }
+        }
+    }
+    cout &lt;&lt; f[V][M] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<h1 id="树型背包"><a href="#树型背包" class="headerlink" title="树型背包"></a>树型背包</h1>

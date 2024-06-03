@@ -1,0 +1,223 @@
+<hr>
+<p>title: “珂朵莉树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="珂朵莉树"><a href="#珂朵莉树" class="headerlink" title="珂朵莉树"></a>珂朵莉树</h1><h1 id="区间合并"><a href="#区间合并" class="headerlink" title="区间合并"></a>区间合并</h1><pre><code class="cpp">// from leetcode 2276. 统计区间中的整数数目
+map&lt;int, int&gt; mp;
+int cnt = 0;
+
+void add(int left, int right) {
+    for (auto it=mp.lower_bound(left); it!=mp.end() &amp;&amp; it-&gt;second&lt;=right; mp.erase(it++)) {
+        int l = it-&gt;second, r = it-&gt;first;
+        cnt -= r-l+1;
+        left = min(left, l);
+        right = max(right, r);
+&lt;!--more--&gt;    }
+    mp[right] = left;
+    cnt += right-left+1;
+}
+
+int count() {
+    return cnt;
+}
+</code></pre>
+<p>主要思想是<strong>对于新插入的区间，删掉所有它覆盖（含部分覆盖）的区间，然后再插入</strong>。</p>
+<p>区间的右边界作为键，左边界作为值。<br>由于map的特性，所有键都是有序的。<br>第一个大于等于left的键值对就是我们要删除的第一个区间。然后不断删除区间直到区间的左边界大于right为止。</p>
+<p><a href="https://codeforces.com/contest/1859/problem/D">https://codeforces.com/contest/1859/problem/D</a></p>
+<h1 id="珂朵莉树-1"><a href="#珂朵莉树-1" class="headerlink" title="珂朵莉树"></a>珂朵莉树</h1><pre><code class="cpp">struct Node_t {
+    int l, r;
+    mutable int v;
+
+    Node_t(const int &amp;il, const int &amp;ir, const int &amp;iv) : l(il), r(ir), v(iv) {}
+
+    bool operator&lt;(const Node_t &amp;o) const { return l &lt; o.l; }
+};
+
+set&lt;Node_t&gt; odt;
+// odt.insert(Node_t(0, 1e9+7, 0));
+
+// 二分找到x所在区间[l,r], 分裂为 [l,x-1] [x, r]
+auto split(int x) {
+    // if (x &gt; n) return odt.end();
+    auto it = --odt.upper_bound(Node_t{x, 0, 0});
+    if (it-&gt;l == x) return it;
+    int l = it-&gt;l, r = it-&gt;r, v = it-&gt;v;
+    odt.erase(it);
+    odt.insert(Node_t(l, x - 1, v));
+    return odt.insert(Node_t(x, r, v)).first;
+}
+// 二分找到l和r所在区间[a,b]与[c,d]并分裂，[a, l-1] [l, b] .... [c, r] [r+1, d]
+void assign(int l, int r, int v) {
+    auto itr = split(r + 1), itl = split(l);
+    // odt.erase(itl, itr);
+        while (itl != itr) {
+        // Perform Operations here
+                odt.erase(itl++);
+        }
+    odt.insert(Node_t(l, r, v));
+}
+
+void performance(int l, int r) {
+    auto itr = split(r + 1), itl = split(l);
+    for (; itl != itr; ++itl) {
+        // Perform Operations here
+    }
+}
+</code></pre>
+<ul>
+<li><a href="https://leetcode.cn/problems/range-module/"><strong>715. Range 模块</strong></a><pre><code class="cpp">class RangeModule {
+public:
+    struct Node_t {
+        int l, r;
+        mutable int v;
+
+        Node_t(const int &amp;il, const int &amp;ir, const int &amp;iv) : l(il), r(ir), v(iv) {}
+
+        bool operator&lt;(const Node_t &amp;o) const { return l &lt; o.l; }
+    };
+    
+    set&lt;Node_t&gt; odt;
+
+    auto split(int x) {
+        // if (x &gt; n) return odt.end();
+        auto it = --odt.upper_bound(Node_t{x, 0, 0});
+        if (it-&gt;l == x) return it;
+        int l = it-&gt;l, r = it-&gt;r, v = it-&gt;v;
+        odt.erase(it);
+        odt.insert(Node_t(l, x - 1, v));
+        return odt.insert(Node_t(x, r, v)).first;
+    }
+
+    RangeModule() {
+        odt.insert(Node_t(0, 1e9+7, 0));
+    }
+    
+    void addRange(int l, int r) {
+        auto itr = split(r), itl = split(l);
+        odt.erase(itl, itr);
+        odt.insert(Node_t(l, r-1, 1));
+    }
+    
+    bool queryRange(int l, int r) {
+        auto itr = split(r), itl = split(l);
+        for (; itl != itr; ++itl) {
+            // Perform Operations here
+            if (itl-&gt;v == 0) return false;
+        }
+        return true;
+    }
+    
+    void removeRange(int l, int r) {
+        auto itr = split(r), itl = split(l);
+        odt.erase(itl, itr);
+        odt.insert(Node_t(l, r-1, 0));
+    }
+};
+
+/**
+ * Your RangeModule object will be instantiated and called as such:
+ * RangeModule* obj = new RangeModule();
+ * obj-&gt;addRange(left,right);
+ * bool param_2 = obj-&gt;queryRange(left,right);
+ * obj-&gt;removeRange(left,right);
+ */
+</code></pre>
+</li>
+<li><a href="https://leetcode.cn/problems/falling-squares/"><strong>699. 掉落的方块</strong></a><pre><code class="cpp">class Solution {
+public:
+    struct Node_t {
+        int l, r, v;
+
+        Node_t(const int &amp;il, const int &amp;ir, const int &amp;iv) : l(il), r(ir), v(iv) {}
+
+        bool operator&lt;(const Node_t &amp;o) const { return l &lt; o.l; }
+    };
+    set&lt;Node_t&gt; odt;
+    // 二分找到x所在区间[l,r], 分裂为 [l,x-1] [x, r]
+    auto split(int x) {
+        // if (x &gt; n) return odt.end();
+        auto it = --odt.upper_bound(Node_t{x, 0, 0});
+        if (it-&gt;l == x) return it;
+        int l = it-&gt;l, r = it-&gt;r, v = it-&gt;v;
+        odt.erase(it);
+        odt.insert(Node_t(l, x - 1, v));
+        return odt.insert(Node_t(x, r, v)).first;
+    }
+    int assign(int l, int r, int v) {
+        auto itr = split(r+1), itl = split(l);
+        int mx = 0;
+        while (itl != itr) {
+            mx = max(mx, itl-&gt;v);
+            odt.erase(itl++);
+        }
+        // for (auto&amp; i:odt) {
+        //     cout &lt;&lt; &quot;[&quot; &lt;&lt; i.l &lt;&lt; &quot;,&quot; &lt;&lt; i.r &lt;&lt; &quot;,&quot; &lt;&lt; i.v &lt;&lt;  &quot;]&quot; &lt;&lt; endl;
+        // }
+        // cout&lt;&lt; endl;
+        odt.insert(Node_t(l, r, v+mx));
+        return v+mx;
+    }
+    vector&lt;int&gt; fallingSquares(vector&lt;vector&lt;int&gt;&gt;&amp; positions) {
+        odt.insert(Node_t(0, 1e9+7, 0));
+        int mx = 0;
+        vector&lt;int&gt; ans;
+        for (auto&amp; i:positions) {
+            mx = max(mx, assign(i[0], i[0]+i[1]-1, i[1]));
+            ans.push_back(mx);
+        }
+        return ans;
+    }
+};
+</code></pre>
+</li>
+<li><a href="https://leetcode.cn/problems/count-integers-in-intervals/"><strong>2276. 统计区间中的整数数目</strong></a><pre><code class="cpp">class CountIntervals {
+public:
+    struct Node_t {
+        int l, r;
+        mutable int v;
+
+        Node_t(const int &amp;il, const int &amp;ir, const int &amp;iv) : l(il), r(ir), v(iv) {}
+
+        bool operator&lt;(const Node_t &amp;o) const { return l &lt; o.l; }
+    };
+    int cnt = 0;
+    set&lt;Node_t&gt; odt;
+    // 二分找到x所在区间[l,r], 分裂为 [l,x-1] [x, r]
+    auto split(int x) {
+        // if (x &gt; n) return odt.end();
+        auto it = --odt.upper_bound(Node_t{x, 0, 0});
+        if (it-&gt;l == x) return it;
+        int l = it-&gt;l, r = it-&gt;r, v = it-&gt;v;
+        odt.erase(it);
+        odt.insert(Node_t(l, x-1, v));
+        return odt.insert(Node_t(x, r, v)).first;
+    }
+
+    CountIntervals() {
+        odt.insert(Node_t(0, 1e9+7, 0));
+    }
+    
+    void add(int l, int r) {
+        auto itr = split(r + 1), itl = split(l);
+        while (itl != itr) {
+            if (itl-&gt;v == 0) {
+                cnt += itl-&gt;r - itl-&gt;l + 1;
+            }
+            odt.erase(itl++);
+        }
+        odt.insert(Node_t(l, r, 1));
+    }
+    
+    int count() {
+        return cnt;
+    }
+};
+
+/**
+ * Your CountIntervals object will be instantiated and called as such:
+ * CountIntervals* obj = new CountIntervals();
+ * obj-&gt;add(left,right);
+ * int param_2 = obj-&gt;count();
+ */
+</code></pre>
+</li>
+</ul>

@@ -1,0 +1,126 @@
+<hr>
+<p>title: “虚树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 树与图, 树上问题]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="虚树"><a href="#虚树" class="headerlink" title="虚树"></a>虚树</h1><p>给出一个$n$个点的树，$q$次询问，第i次选择$k_i$个点，问关于这$k_i$个的点的问题。$\sum k_i &lt; n$</p>
+<p>暴力$O(nq)$，每次建立$k_i$个点的虚树，建立与处理都是$O(k_i)$，总复杂度$O(\sum k_i)$</p>
+<p>构成虚树的点是关键点，关键点=查询的k个点+查询点的两两之间的公共祖先+根节点</p>
+<p>如果两两之间的公共祖先都不同那么是不是就有$k^2$个祖先节点？好像最坏的情况是满二叉树的k个叶子，这样关键点也不过2k。</p>
+<p>{% asset_img ‘Untitled.png’ %}</p>
+<pre><code class="cpp">const int N = 200005, M = N * 2;
+int h[N], to[M], ne[M], tot;
+&lt;!--more--&gt;void add(int x, int y) {  // 连边
+    to[++tot] = y;
+    ne[tot] = h[x];
+    h[x] = tot;
+}
+
+// 遍历x所连的点
+vector&lt;int&gt; radiate(int x) {
+    vector&lt;int&gt; rt;
+    for (int i = h[x]; i; i = ne[i])
+        rt.push_back(to[i]);
+    return rt;
+}
+
+void clearTree() {
+    // for (int i = 1; i &lt;= n; i++) {
+    //     h[i] = 0;
+    // }
+    function&lt;void(int, int)&gt; cls = [&amp;](int x, int fa) {
+        for (int i = h[x]; i; i = ne[i]) {
+            int y = to[i];
+            if (y == fa)
+                continue;
+            cls(y, x);
+        }
+        h[x] = 0;
+    };
+    cls(1, 0);  // 含1连通块清空
+    tot = 0;
+}
+
+int dep[N], fa[N][20];
+int dfn[N], cnt;  // dfs序
+int s[N], top;    // 栈
+
+// 初始的树是双向边, dfs(1, 0),  dep, fa, dfn
+void dfs(int x, int f) {  // 树上倍增
+    dfn[x] = ++cnt;
+    dep[x] = dep[f] + 1;
+    fa[x][0] = f;
+    for (int i = 1; i &lt;= 19; i++)
+        fa[x][i] = fa[fa[x][i - 1]][i - 1];
+
+    for (int i = h[x]; i; i = ne[i]) {
+        int y = to[i];
+        if (y == f)
+            continue;
+        dfs(y, x);
+    }
+}
+int lca(int x, int y) {  // 求lca
+    if (dep[x] &lt; dep[y])
+        swap(x, y);
+    for (int i = 19; ~i; i--)
+        if (dep[fa[x][i]] &gt;= dep[y])
+            x = fa[x][i];
+    if (x == y)
+        return y;
+
+    for (int i = 19; ~i; i--)
+        if (fa[x][i] != fa[y][i])
+            x = fa[x][i], y = fa[y][i];
+    return fa[x][0];
+}
+int cmp(int a, int b) {
+    return dfn[a] &lt; dfn[b];
+}
+
+// 构建的虚树是单向边
+void build(vector&lt;int&gt;&amp; a) {  // 建虚树
+    int k = a.size();
+    sort(a.begin(), a.end(), cmp);  // 按dfs序排序
+    tot = 0;         // 清空前一颗树，注意各树节点x h[x]=0
+    s[top = 1] = 1;  // 根节点入栈
+    if (k &amp;&amp; a[0] != 1)
+        s[++top] = a[0];
+    for (int i = 1; i &lt; k; i++) {  // 枚举查询点
+        int l = lca(s[top], a[i]);
+        // 对当前链连边,top出栈
+        while (top &gt; 1 &amp;&amp; dep[s[top - 1]] &gt;= dep[l])
+            add(s[top - 1], s[top]), top--;
+        // 对lca和top连边,top出栈,lca入栈
+        if (l != s[top])
+            add(l, s[top]), s[top] = l;
+        // 查询点入栈
+        s[++top] = a[i];
+    }
+    while (top)  // 对最后一条链连边,top出栈
+        add(s[top - 1], s[top]), top--;
+}
+
+void printVtree(int x, int fa) {
+    cout &lt;&lt; x &lt;&lt; &quot;:&quot;;
+    for (int i = h[x]; i; i = ne[i]) {
+        if (to[i] == fa)
+            continue;
+        cout &lt;&lt; to[i] &lt;&lt; &quot; &quot;;
+    }
+    cout &lt;&lt; endl;
+    for (int i = h[x]; i; i = ne[i]) {
+        int y = to[i];
+        if (y == fa)
+            continue;
+        printVtree(y, x);
+    }
+}
+</code></pre>
+<p><a href="https://codeforces.com/contest/1923/problem/E">https://codeforces.com/contest/1923/problem/E</a></p>
+<p>给你一棵树，它由 $n$ 个顶点组成，编号从 1 到 n 。每个顶点都有某种颜色，用 1 到 n 之间的整数表示。</p>
+<p>如果符合以下条件，那么这棵树的一条简单路径就叫做美丽路径：</p>
+<ul>
+<li>至少由 2 个顶点组成；</li>
+<li>路径的第一个顶点和最后一个顶点的颜色相同；</li>
+<li>路径上没有其他顶点的颜色与第一个顶点相同。</li>
+</ul>
+<p>计算这棵树的美丽简单路径的数量。请注意，路径是不定向的(即从 x 到 y 的路径与从 y 到 x 的路径相同)。</p>

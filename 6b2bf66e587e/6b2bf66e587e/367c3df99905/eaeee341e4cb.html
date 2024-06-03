@@ -1,0 +1,19 @@
+<hr>
+<p>title: “字符串最小表示”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="字符串最小表示"><a href="#字符串最小表示" class="headerlink" title="字符串最小表示"></a>字符串最小表示</h1><pre><code class="cpp">string fun(string s) {   
+    int a=0, b=1, c=0, n=s.size();
+    while (a&lt;n &amp;&amp; b&lt;n &amp;&amp; c&lt;n) {
+        if (s[(a+c)%n] == s[(b+c)%n]) {
+            c++;
+        } else {
+            if (s[(a+c)%n] &gt; s[(b+c)%n]) a += c+1;
+            else b += c+1;
+            if (a == b) a++;
+            c=0;
+        }
+    }
+&lt;!--more--&gt;    a = min(a, b);
+    return s.substr(a)+s.substr(0, a);
+}
+</code></pre>

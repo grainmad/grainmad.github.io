@@ -1,0 +1,45 @@
+<hr>
+<p>title: “斜率优化”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 动态规划]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="斜率优化"><a href="#斜率优化" class="headerlink" title="斜率优化"></a>斜率优化</h1><p>形如 $dp_i = \min \limits_{j&lt;i} {dp_j + f_i\cdot g_j + h_i + v_j}$ 的状态转移方程。<br>可以使用斜率优化, 其中 $f_i, h_i$ 是i的函数, $g_j$, $v_j$是j的函数</p>
+<p>移项<br>$dp_i-h_i = \min \limits_{j&lt;i} {dp_j + v_j + f_i \cdot g_j}$</p>
+<p>令$b_i = dp_i-h_i, y_j = dp_j+v_j, x_j = g_j， k_i = -f_i$<br>得到 $b_i = \min \limits_{j&lt;i} {y_j - k_i \cdot x_j}$<br>对于每个确定的i，$b_i$和$k_i$是常量，$x_j$和$y_j$是变量。<br>我们需要让$b_i$最小，我们知道一次函数y=kx+b中b是截距，k是斜率。<br>对于已经确定斜率让截距最小就会让dp最小。<br>当$k_i$是单调的（假设是单调上升的）。我们求出$(x_j,y_j)$的下凸包，<br>让一根斜率为k_i的直线由下向上扫遇到第一个$(x_p,y_p)$就是最优的决策点。</p>
+<!--more-->最优决策点与之前的点连线斜率不会大于$k_i$，即$s<p, \frac{y_p-y_s}{x_p-x_s} \le k_i$;
+<p>最优决策点与之后的点连线斜率大于$k_i$，即$p&lt;e, \frac{y_p-y_e}{x_p-x_e} &gt; k_i$;<br>基于这两条特点可以维护一个斜率递增的单调队列<br>对于求$dp_i$，先移除队列中斜率小于$k_i$的点，那么队首就是最有决策点。<br>然后移除队尾不满足单调性的点再将当前决策点加入队列。</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define SINGLE_INPUT
+#define ll long long
+#define N 500005
+#define MOD 998224353
+using namespace std;
+//[HNOI2008]玩具装箱
+ll k; 
+ll b, e;
+ll s[N], dp[N], q[N];
+
+ll X(ll x) {return s[x];}
+ll Y(ll x) {return dp[x]+s[x]*s[x]+2*s[x]*k;}
+ll K(ll x) {return 2*s[x];}
+double slope(ll x, ll y) {return 1.0*(Y(x)-Y(y))/(X(x)-X(y));}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    int n, l;
+    cin &gt;&gt; n &gt;&gt; l;
+    k = l+1;
+    for (int i=1; i&lt;=n; i++) {
+        int x; cin &gt;&gt; x;
+        s[i] = s[i-1]+x+1;
+    }
+    for (int i=1; i&lt;=n; i++) {
+        while (b&lt;e &amp;&amp; slope(q[b], q[b+1]) &lt;= K(i)) b++;
+        dp[i] = dp[q[b]] + (s[i]-s[q[b]]-k)*(s[i]-s[q[b]]-k);
+        while (b&lt;e &amp;&amp; slope(q[e], q[e-1]) &gt;= slope(q[e], i)) e--;
+        q[++e] = i;
+    }
+    cout &lt;&lt; dp[n] &lt;&lt; endl;
+    return 0;
+}
+</code></pre>

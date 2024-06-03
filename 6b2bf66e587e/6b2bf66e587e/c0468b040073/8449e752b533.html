@@ -1,0 +1,318 @@
+<hr>
+<p>title: “线段树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><h2 id="结构体实现"><a href="#结构体实现" class="headerlink" title="结构体实现"></a>结构体实现</h2><p>区间修改，区间求和</p>
+<pre><code class="cpp">#define ll long long
+ll a[N];
+
+struct Seg{
+    int l, r;
+    ll val, tag;
+} seg[N&lt;&lt;2];
+
+&lt;!--more--&gt;void push_up(Seg&amp; u, const Seg&amp; l, const Seg&amp; r) {
+    u.val = l.val + r.val;
+}
+
+// 将当前区间的懒标记，作用到左右区间（改变区间值），并将标记传递给子区间（累加，子区间可能存在未传递的懒标记），删除当前区间的懒标记。
+void push_down(Seg&amp; u, Seg&amp; l, Seg&amp; r) {
+    l.val += u.tag*(l.r-l.l+1);
+    l.tag += u.tag;
+    r.val += u.tag*(r.r-r.l+1);
+    r.tag += u.tag;
+    u.tag = 0;
+}
+
+void seg_build(int id, int l, int r) {
+    seg[id].l = l; seg[id].r = r;
+    if (l == r) {
+        seg[id].val = a[l];
+        // cin &gt;&gt; seg[id].val;
+        return ;
+    }
+    int m = l+r&gt;&gt;1;
+    seg_build(id&lt;&lt;1, l, m);
+    seg_build(id&lt;&lt;1|1, m+1, r);
+    push_up(seg[id], seg[id&lt;&lt;1], seg[id&lt;&lt;1|1]);
+}
+
+void seg_update(int id, int l, int r, ll val) {
+    if (l &lt;= seg[id].l &amp;&amp; seg[id].r &lt;= r) {
+        seg[id].val += val*(seg[id].r-seg[id].l+1);
+        seg[id].tag += val;
+        return ;
+    }
+    push_down(seg[id], seg[id&lt;&lt;1], seg[id&lt;&lt;1|1]);
+    int m = seg[id].l + seg[id].r &gt;&gt; 1;
+    if (l &lt;= m) seg_update(id&lt;&lt;1, l, r, val);
+    if (m &lt; r) seg_update(id&lt;&lt;1|1, l, r, val);
+    push_up(seg[id], seg[id&lt;&lt;1], seg[id&lt;&lt;1|1]);
+}
+
+ll seg_query(int id, int l, int r) {
+    if (l &lt;= seg[id].l &amp;&amp; seg[id].r &lt;= r) {
+        return seg[id].val;
+    }
+    push_down(seg[id], seg[id&lt;&lt;1], seg[id&lt;&lt;1|1]);
+    ll rt = 0;
+    int m = seg[id].l + seg[id].r &gt;&gt; 1;
+    if (l &lt;= m) rt += seg_query(id&lt;&lt;1, l, r);
+    if (m &lt; r) rt += seg_query(id&lt;&lt;1|1, l, r);
+    return rt;
+}
+
+void seg_print() {
+    for (int i=1; i&lt;(N&lt;&lt;2); i++) {
+        if (seg[i].l != 0)
+        cout &lt;&lt; &quot;id:&quot; &lt;&lt; i &lt;&lt; &quot; [&quot; &lt;&lt; seg[i].l &lt;&lt; &quot;,&quot; &lt;&lt; seg[i].r &lt;&lt; &quot;] val:&quot; &lt;&lt; seg[i].val &lt;&lt; &quot; tag:&quot; &lt;&lt; seg[i].tag &lt;&lt; endl;
+    }
+}
+</code></pre>
+<p>动态开点线段树更耗空间，不过不用离散化处理。</p>
+<p>区间+1，区间最大值，动态开点，new对象耗时间，</p>
+<pre><code class="cpp">#define ll long long
+struct Node {
+    ll l, r, mx, tag;
+    Node* ls, *rs;
+    Node(ll _l, ll _r):l(_l), r(_r), mx(0), tag(0), ls(NULL), rs(NULL) {}
+} *root;
+root = new Node(0, 1e9);//初始化
+
+void push_up(Node* u) {
+      u-&gt;mx = max(u-&gt;ls-&gt;mx, u-&gt;rs-&gt;mx);
+}
+void push_down(Node* u) {
+    ll l = u-&gt;l, r = u-&gt;r, m = (r-l)/2+l;
+    if (u-&gt;ls == NULL) {
+        u-&gt;ls = new Node(l, m);
+    }
+    if (u-&gt;rs == NULL) {
+        u-&gt;rs = new Node(m+1, r);
+    }
+    if (u-&gt;tag) {
+        u-&gt;ls-&gt;mx += u-&gt;tag;
+        u-&gt;ls-&gt;tag += u-&gt;tag;
+        u-&gt;rs-&gt;mx += u-&gt;tag;
+        u-&gt;rs-&gt;tag += u-&gt;tag;
+        u-&gt;tag = 0;
+    }
+}
+
+void seg_update(Node* u, ll l, ll r) {
+    if (l &lt;= u-&gt;l &amp;&amp; u-&gt;r &lt;= r) {
+        u-&gt;mx++;
+        u-&gt;tag++;
+        return ;
+    }
+    push_down(u);
+    ll m = (u-&gt;r-u-&gt;l)/2+u-&gt;l;
+    if (l&lt;=m) seg_update(u-&gt;ls, l, r);
+    if (m&lt;r) seg_update(u-&gt;rs, l, r);
+    push_up(u);
+}
+ll seg_query(Node* u, ll l, ll r) {
+    if (l &lt;= u-&gt;l &amp;&amp; u-&gt;r &lt;= r) {
+        return u-&gt;mx;
+    }
+    push_down(u);
+    ll rt = 0;//非负
+    ll m = (u-&gt;r-u-&gt;l)/2+u-&gt;l;
+    if (l&lt;=m) rt = max(rt, seg_query(u-&gt;ls, l, r));
+    if (m&lt;r) rt = max(rt, seg_query(u-&gt;rs, l, r));
+    return rt;
+}
+</code></pre>
+<p>区间修改，区间求和，动态开点，结构体数组</p>
+<pre><code class="cpp">#define ll long long
+#define N 100005
+struct Seg {
+    ll l, r, val, tag, ls, rs;
+} seg[N&lt;&lt;2];
+int sz = 0;
+// root = newSeg(0, 1e9)
+int newSeg(ll l, ll r) {
+    seg[sz].l = l, seg[sz].r = r;
+    return sz++;
+}
+
+void push_up(int u) {
+      seg[u].val = seg[seg[u].ls].val + seg[seg[u].rs].val;
+}
+void push_down(int u) {
+    auto&amp; cur = seg[u];
+    ll l = cur.l, r = cur.r, m = (r-l)/2+l;
+    if (cur.ls == 0) {
+        cur.ls = newSeg(l, m);
+    }
+    if (cur.rs == 0) {
+        cur.rs = newSeg(m+1, r);
+    }
+    if (cur.tag) {
+        seg[cur.ls].val += cur.tag*(seg[cur.ls].r - seg[cur.ls].l + 1);
+        seg[cur.ls].tag += cur.tag;
+        seg[cur.rs].val += cur.tag*(seg[cur.rs].r - seg[cur.rs].l + 1);
+        seg[cur.rs].tag += cur.tag;
+        cur.tag = 0;
+    }
+}
+
+void seg_update(int u, ll l, ll r, ll val) {
+    if (l &lt;= seg[u].l &amp;&amp; seg[u].r &lt;= r) {
+        seg[u].val+=val*(seg[u].r - seg[u].l + 1);
+        seg[u].tag+=val;
+        return ;
+    }
+    push_down(u);
+    ll m = (seg[u].r-seg[u].l)/2+seg[u].l;
+    if (l&lt;=m) seg_update(seg[u].ls, l, r, val);
+    if (m&lt;r) seg_update(seg[u].rs, l, r, val);
+    push_up(u);
+}
+ll seg_query(int u, ll l, ll r) {
+    if (l &lt;= seg[u].l &amp;&amp; seg[u].r &lt;= r) {
+        return seg[u].val;
+    }
+    push_down(u);
+    ll rt = 0;
+    ll m = (seg[u].r-seg[u].l)/2+seg[u].l;
+    if (l&lt;=m) rt += seg_query(seg[u].ls, l, r);
+    if (m&lt;r) rt += seg_query(seg[u].rs, l, r);
+    return rt;
+}
+</code></pre>
+<h2 id="非结构体实现"><a href="#非结构体实现" class="headerlink" title="非结构体实现"></a>非结构体实现</h2><p>单点修改</p>
+<pre><code class="cpp">#define LS (id &lt;&lt; 1)
+#define RS (id &lt;&lt; 1 | 1)
+ll tag[4 * N], sum[4 * N];
+
+void push_up(int id) {
+    sum[id] = sum[LS] + sum[RS];
+}
+
+void push_down(int id) {
+    if (tag[id]) {
+        tag[LS] = tag[RS] = 1;
+        sum[LS] = sum[RS] = 0;
+        tag[id] = 0;
+    }
+}
+
+void build(int id, int l, int r, vector&lt;int&gt;&amp; a) {
+    tag[id] = sum[id] = 0;
+    if (l == r) {
+        sum[id] = a[l];
+        return;
+    }
+    int m = l + r &gt;&gt; 1;
+    build(LS, l, m, a);
+    build(RS, m + 1, r, a);
+    push_up(id);
+}
+// 单点增加v
+void add(int id, int l, int r, int q, ll v) {
+    if (l == r &amp;&amp; l == q) {
+        sum[id] += v;
+        return;
+    }
+    push_down(id);
+    int m = l + r &gt;&gt; 1;
+    if (q &lt;= m)
+        add(LS, l, m, q, v);
+    if (m &lt; q)
+        add(RS, m + 1, r, q, v);
+    push_up(id);
+}
+// 区间归零
+void zero(int id, int l, int r, int ql, int qr) {
+    if (ql &lt;= l &amp;&amp; r &lt;= qr) {
+        tag[id] = 1;
+        sum[id] = 0;
+        return;
+    }
+    push_down(id);
+    int m = l + r &gt;&gt; 1;
+    if (ql &lt;= m)
+        zero(LS, l, m, ql, qr);
+    if (m &lt; qr)
+        zero(RS, m + 1, r, ql, qr);
+    push_up(id);
+}
+// 区间查询和
+ll ask(int id, int l, int r, int ql, int qr) {
+    if (ql &lt;= l &amp;&amp; r &lt;= qr) {
+        return sum[id];
+    }
+    push_down(id);
+    int m = l + r &gt;&gt; 1;
+    ll rt = 0;
+    if (ql &lt;= m)
+        rt += ask(LS, l, m, ql, qr);
+    if (m &lt; qr)
+        rt += ask(RS, m + 1, r, ql, qr);
+    return rt;
+}
+// 叶子值为0或1,二分找第th个非0值的下标
+int bs(int id, int l, int r, int th) {
+    if (l == r) return l;
+    int m = l+r&gt;&gt;1;
+    if (sum[LS]&gt;=th) return bs(LS, l, m, th);
+    else return bs(RS, m+1, r, th-sum[LS]);
+}
+</code></pre>
+<h1 id="线段树上二分"><a href="#线段树上二分" class="headerlink" title="线段树上二分"></a>线段树上二分</h1><pre><code class="cpp">#define ls (id&lt;&lt;1)
+#define rs (id&lt;&lt;1|1)
+int hsz = heights.size();
+vector&lt;int&gt; mx(4*(hsz+5), 0);
+function&lt;void(int,int,int)&gt; build = [&amp;](int id, int l, int r) {
+    if (l==r) {
+        mx[id] = heights[l];
+        return ;
+    }
+    int m = l+r&gt;&gt;1;
+    build(ls, l, m);
+    build(rs, m+1, r);
+    mx[id] = max(mx[ls], mx[rs]);
+};
+build(1, 0, hsz-1);
+// 查询[ql, n)中大于v的最小下标，没有为-1
+function&lt;int(int,int,int,int,int)&gt; ask_suf = [&amp;](int id, int l, int r, int ql, int v) {
+    if (mx[id] &lt;= v) return -1; // 当前区间最大值不大于v，所以返回-1
+    if (l == r) return l; // 到达最小区间直接返回索引
+    int m = l+r&gt;&gt;1; 
+    if (ql &lt;= m) { // ql是落在左区间，左区间找不到则去右区间找
+        int lrt = ask_suf(ls, l, m, ql, v);
+        if (lrt != -1) return lrt;
+        return ask_suf(rs, m+1, r, ql, v);
+    } else { // 左区间不含大于等于ql的索引，只要遍历右区间
+        return ask_suf(rs, m+1, r, ql, v);
+    }
+};
+// 查询[0, qr]中大于v的最小下标，没有为-1
+function&lt;int(int,int,int,int,int)&gt; ask_pre = [&amp;](int id, int l, int r, int qr, int v) {
+    if (mx[id] &lt;= v) return -1; // 当前区间最大值不大于v，所以返回-1
+    if (l == r) return l; // 到达最小区间直接返回索引
+    int m = l+r&gt;&gt;1; 
+    if (m &lt; qr) { // qr是落在右区间，左区间找不到则去右区间找
+        int lrt = ask_pre(ls, l, m, qr, v);
+        if (lrt != -1) return lrt;
+        return ask_pre(rs, m+1, r, qr, v);
+    } else { // 右区间不含大于等于ql的索引，只要遍历左区间
+        return ask_pre(rs, m+1, r, qr, v);
+    }
+};
+// 查询[ql, qr]中大于v的最小下标，没有为-1
+function&lt;int(int,int,int,int,int,int)&gt; ask = [&amp;](int id, int l, int r, int ql, int qr, int v) {
+    if (mx[id] &lt;= v) return -1; // 当前区间最大值不大于v，所以返回-1
+    if (l == r) return l; // 到达最小区间直接返回索引
+    int m = l+r&gt;&gt;1; 
+    if (m &lt; ql) { // [ql, qr] 不含[l,m]区间，只含[m+1, r]区间
+        return ask(rs, m+1, r, ql, qr, v);
+    } else if (qr&lt;m+1) { // [ql, qr] 只含[l,m]区间，不含[m+1, r]区间
+        return ask(rs, l, m, ql, qr, v);
+    } else { // 确保最小下标，先找左区间，再找右区间
+        int lrt = ask(ls, l, m, ql, qr, v);
+        if (lrt != -1) return lrt;
+        return ask(rs, m+1, r, ql, qr, v);
+    }
+};
+</code></pre>

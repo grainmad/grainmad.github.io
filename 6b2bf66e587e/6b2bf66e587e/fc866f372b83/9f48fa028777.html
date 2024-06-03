@@ -1,0 +1,141 @@
+<hr>
+<p>title: “A 搜索算法”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 轮子]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="A-搜索算法"><a href="#A-搜索算法" class="headerlink" title="A* 搜索算法"></a>A* 搜索算法</h1><h1 id="A"><a href="#A" class="headerlink" title="A*"></a>A*</h1><p>Dijkstra算法保证能找到一条从初始点到目标点的最短路径，只要所有的边都有一个非负的代价值。</p>
+<p>{% asset_img ‘树与图 7e7bfac00b7e44ad8acdfb20d04c231d/最短路 634accc6b5454f73b001df29370933f7/Untitled.png’ %}</p>
+<p>最佳优先搜索不能保证找到一条最短路径。然而，它比Dijkstra算法快的多，因为它用了一个启发式函数（heuristic function）快速地导向目标结点。</p>
+<p>{% asset_img ‘树与图 7e7bfac00b7e44ad8acdfb20d04c231d/最短路 634accc6b5454f73b001df29370933f7/Untitled 1.png’ %}</p>
+<p>A* 把Dijkstra算法（靠近初始点的结点）和BFS算法（靠近目标点的结点）的信息块结合起来，形成一个评估函数 f(n) = g(n)+h(n)</p>
+<h2 id="A-的算法流程。"><a href="#A-的算法流程。" class="headerlink" title="A* 的算法流程。"></a>A* 的算法流程。</h2><!--more-->
+<p>A*算法有两个集合，OPEN集和CLOSED集。其中OPEN集保存待扩展的结点。CLOSED集保存已扩展过的结点。</p>
+<p>开始时，OPEN集只包含一个元素：初始结点。CLOSED集是空的。<br>在主循环中重复地从OPEN集中取出最好的结点n（评估函数f最小的结点）并检查之：</p>
+<ul>
+<li>如果n是目标结点，则我们的任务完成了。</li>
+<li>结点n被从OPEN集中删除并加入CLOSED集。然后检查它的邻居n’:<ul>
+<li>如果邻居n’在CLOSED集中，那么它是已经被检查过的，所以我们不需要考虑它；</li>
+<li>如果n’在OPEN集中，那么它是以后肯定会被检查的，所以我们现在不考虑它;</li>
+<li>否则，n’加入OPEN集，把它的父结点设为n。到达n’的路径的代价g(n’)。</li>
+</ul>
+</li>
+</ul>
+<h2 id="A-进一步优化"><a href="#A-进一步优化" class="headerlink" title="A* 进一步优化"></a>A* 进一步优化</h2><p>从图中看出存在相同的大量相同的f(x)，open集中选出的最小值不确定</p>
+<p>{% asset_img ‘树与图 7e7bfac00b7e44ad8acdfb20d04c231d/最短路 634accc6b5454f73b001df29370933f7/Untitled 2.png’ %}</p>
+<p>{% asset_img ‘树与图 7e7bfac00b7e44ad8acdfb20d04c231d/最短路 634accc6b5454f73b001df29370933f7/Untitled 3.png’ %}</p>
+<h3 id="添加附加值优化"><a href="#添加附加值优化" class="headerlink" title="添加附加值优化"></a>添加附加值优化</h3><p>为了解决这个问题，我们可以为启发函数添加一个附加值。附加值对于结点必须是确定性的（也就是说，不能是随机的数），而且它必须让f值体现区别。一种添加附加值的方式是稍微改变h的衡量单位。如果我们减少衡量单位，那么当我们朝着目标移动的时候f将逐渐增加。很不幸，这意味着A<em>倾向于扩展到靠近初始点的结点，而不是靠近目标的结点。我们可以增加衡量单位（甚至是0.1%），A</em>就会倾向于扩展到靠近目标的结点。</p>
+<p>{% asset_img ‘树与图 7e7bfac00b7e44ad8acdfb20d04c231d/最短路 634accc6b5454f73b001df29370933f7/Untitled 4.png’ %}</p>
+<p>{% asset_img ‘树与图 7e7bfac00b7e44ad8acdfb20d04c231d/最短路 634accc6b5454f73b001df29370933f7/Untitled 5.png’ %}</p>
+<h3 id="向量叉乘优化"><a href="#向量叉乘优化" class="headerlink" title="向量叉乘优化"></a>向量叉乘优化</h3><p>计算初始-目标向量（start to goal vector）和当前-目标向量（current point to goal vector）的向量叉积（vector cross-product）。<br>当向量的夹角比较大时，向量叉乘的绝对值会很大，我们选择较小的值作为扩展点。<br>最后搜索的路径会稍微倾向于从初始点到目标点的直线。</p>
+<p>{% asset_img ‘树与图 7e7bfac00b7e44ad8acdfb20d04c231d/最短路 634accc6b5454f73b001df29370933f7/Untitled 6.png’ %}</p>
+<p>{% asset_img ‘树与图 7e7bfac00b7e44ad8acdfb20d04c231d/最短路 634accc6b5454f73b001df29370933f7/Untitled 7.png’ %}</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define N 505
+using namespace std;
+
+pair&lt;int, int&gt; fa[N][N];  // fa[i][j] 为网格s[x][y]的父节点
+string s[N];              // s[x][y] 地x行y列的网格
+int n, m, b;              // n 行 m 列 b 个障碍
+int sx, sy, ex, ey;       // 开始位置(sx, sy) 目标位置(ex, ey)
+
+// 读入地图
+void init_map() {
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; b;
+    for (int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; s[i];
+        for (int j = 0; j &lt; m; j++) {
+            if (s[i][j] == &#39;S&#39;)
+                sx = i, sy = j;
+            if (s[i][j] == &#39;E&#39;)
+                ex = i, ey = j;
+        }
+    }
+}
+
+// 地图节点 重载&lt;运算符 实现节点的评估函数f比较
+struct Node {
+    int x, y, dis;
+    int g() const { return dis; }
+    double h() const { return (abs(x - ex) + abs(y - ey)) * 1.000; }
+    double abs_cross(int x, int y) const {
+        return abs((x - sx) * (ey - sy) - (y - sy) * (ex - sx)) * 0.001;
+    }
+    bool operator&lt;(const Node&amp; o) const {
+        if (g() + h() == o.g() + o.h()) {
+            return abs_cross(x, y) &gt; abs_cross(o.x, o.y);
+        }
+        return g() + h() &gt; o.g() + o.h();  // priority_queue 默认大根堆
+    }
+    Node(int _x, int _y, int _dis) : x(_x), y(_y), dis(_dis) {}
+};
+
+// 通过fa指针回溯找到搜索路径
+void setpath(int x, int y) {
+    if (x == sx &amp;&amp; y == sy)
+        return;
+    s[x][y] = &#39;*&#39;;
+    setpath(fa[x][y].first, fa[x][y].second);
+}
+
+// 0.2秒清空控制台输出一次
+void print() {
+    system(&quot;cls&quot;);
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; s[i] &lt;&lt; endl;
+    }
+    _sleep(200);
+}
+
+// 主函数
+// 我们用优先队列priory_queue&lt;Node&gt;维护open集合，优先从中选取最小的f的节点。
+int main() {
+    init_map();
+    print();
+    priority_queue&lt;Node&gt; q;
+    q.push({sx, sy, 0});
+    while (q.size()) {
+        auto node = q.top();
+        q.pop();
+        if (node.x == ex &amp;&amp; node.y == ey)
+            break;
+        if (node.x != sx &amp;&amp; node.y != sy)
+            s[node.x][node.y] = &#39;C&#39;;
+        print();
+        for (int i = 0; i &lt; 4; i++) {
+            int x = node.x + (i - 1) % 2, y = node.y + (i - 2) % 2;
+            if (x &lt; 0 || x &gt;= n || y &lt; 0 || y &gt;= m)
+                continue;
+            if (s[x][y] == &#39;E&#39;) {
+                setpath(node.x, node.y);
+                print();
+                return 0;
+            }
+            if (s[x][y] == &#39;.&#39;) {
+                q.emplace(x, y, node.dis + 1);
+                fa[x][y] = {node.x, node.y};
+                s[x][y] = &#39;O&#39;;
+                print();
+            }
+        }
+    }
+    return 0;
+}
+</code></pre>
+<pre><code class="python"># 地图生成
+from random import shuffle
+
+n, m, b = 20, 40, 0
+
+x = [&#39;.&#39; for i in range(n*m)]
+
+x[0] = &#39;S&#39;
+x[1] = &#39;E&#39;
+for i in range(2, b+2):
+    x[i] = &#39;#&#39;
+
+shuffle(x)
+with open(&quot;./template/astar/map.txt&quot;, &quot;w&quot;) as f:
+    print(n, m, b, file=f)
+    for i in range(n):
+        for j in range(m):
+            print(x[i*m+j], end=&#39;&#39;, file=f)
+        print(file=f)
+</code></pre>

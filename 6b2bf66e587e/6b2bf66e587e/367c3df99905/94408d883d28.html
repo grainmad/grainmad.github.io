@@ -1,0 +1,376 @@
+<hr>
+<p>title: “后缀数组”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="后缀数组"><a href="#后缀数组" class="headerlink" title="后缀数组"></a>后缀数组</h1><p>非常好用的模板</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+// 后缀数组，生成sa，rk，height数组
+// range应大于串的长度和串元素最大值。串中元素值应非负。
+template &lt;class T = string, int range = 128&gt;
+struct SuffixArray {
+    T s;
+    int n, bucketRange;
+    int sa[range], second[range], bucket[range], mem[range], rk_mem[range + 1],
+&lt;!--more--&gt;        rk2_mem[range + 1], height[range], *rk, *rk2;
+    SuffixArray(const T&amp; _s) : s(_s), n(s.size()), bucketRange(range) {
+        rk = rk_mem;
+        rk2 = rk2_mem;
+        rk[n] = rk2[n] = -1;
+        memset(bucket, 0, sizeof(bucket));
+        for (int i = 0; i &lt; n; i++)
+            bucket[rk[i] = s[i]]++;
+        for (int i = 1; i &lt; bucketRange; i++)
+            bucket[i] += bucket[i - 1];
+        for (int i = 0; i &lt; n; i++)
+            sa[--bucket[rk[i]]] = i;
+        for (int w = 1;; w &lt;&lt;= 1) {
+            int j = 0;
+            for (int i = n - w; i &lt; n; i++)
+                second[j++] = i;
+            for (int i = 0; i &lt; n; i++)
+                if (sa[i] &gt;= w)
+                    second[j++] = sa[i] - w;
+            memset(bucket, 0, sizeof(bucket));
+            for (int i = 0; i &lt; n; i++)
+                bucket[mem[i] = rk[second[i]]]++;
+            for (int i = 1; i &lt; bucketRange; i++)
+                bucket[i] += bucket[i - 1];
+            for (int i = n - 1; i &gt;= 0; i--)
+                sa[--bucket[mem[i]]] = second[i];
+            bucketRange = 0;
+            for (int i = 0; i &lt; n; i++) {
+                rk2[sa[i]] = !i || (rk[sa[i]] == rk[sa[i - 1]] &amp;&amp;
+                                    rk[sa[i] + w] == rk[sa[i - 1] + w])
+                                 ? bucketRange
+                                 : ++bucketRange;
+            }
+            swap(rk, rk2);
+            if (++bucketRange == n)
+                break;
+        }
+    }
+    // height[i] 为sa[i-1]与sa[i]的公共前缀长度。
+    void getHeight() {
+        memset(height, 0xff, sizeof(height));
+        for (int i = 0, h = 0; i &lt; n; i++) {
+            if (h)
+                h--;
+            if (rk[i])
+                while (sa[rk[i] - 1] + h &lt; n &amp;&amp;
+                       s[i + h] == s[sa[rk[i] - 1] + h])
+                    h++;
+            height[rk[i]] = h;
+        }
+    }
+    // 获取后缀x与任意后缀的最长公共前缀长度。x in [0,n-1]
+    vector&lt;int&gt; getLcp(int x) {  // 注意先要获取height
+        vector&lt;int&gt; lcp(n, n);
+        for (int i = rk[x], j = n; i &gt;= 1; i--) {
+            j = min(j, height[i]);
+            lcp[sa[i - 1]] = j;
+        }
+        for (int i = rk[x] + 1, j = n; i &lt; n; i++) {
+            j = min(j, height[i]);
+            lcp[sa[i]] = j;
+        }
+        return lcp;
+    }
+};
+template &lt;class T&gt;
+void suf(T&amp; x, int p) {
+    cout &lt;&lt; &quot;[&quot;;
+    while (p &lt; x.size()) {
+        cout &lt;&lt; x[p++] &lt;&lt; &quot;,&quot;[p == x.size()];
+    }
+    cout &lt;&lt; &quot;]&quot; &lt;&lt; endl;
+}
+int main() {
+    // string s = &quot;aabaaaab&quot;;
+    vector&lt;int&gt; s = {1, 1, 2, 1, 1, 1, 1, 2};
+    int n = s.size();
+    SuffixArray&lt;vector&lt;int&gt;, 8&gt; SA(s);
+    SA.getHeight();
+    auto sa = SA.sa, rank = SA.rk, height = SA.height;
+
+    cout &lt;&lt; &quot;sa&quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; &quot;排名:&quot; &lt;&lt; i &lt;&lt; &quot; 后缀:&quot; &lt;&lt; sa[i] &lt;&lt; &quot; &quot;;
+        suf(s, sa[i]);
+    }
+    cout &lt;&lt; &quot;rank&quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; &quot;排名:&quot; &lt;&lt; rank[i] &lt;&lt; &quot; 后缀 &quot; &lt;&lt; i &lt;&lt; &quot; &quot;;
+        suf(s, i);
+    }
+    cout &lt;&lt; &quot;height&quot; &lt;&lt; endl;
+    for (int i = 1; i &lt; n; i++) {
+        cout &lt;&lt; &quot;后缀&quot; &lt;&lt; sa[i - 1] &lt;&lt; &quot;与&quot; &lt;&lt; sa[i] &lt;&lt; &quot; lcp:&quot; &lt;&lt; height[i]
+             &lt;&lt; endl;
+    }
+
+    cout &lt;&lt; &quot;lcp for suffix 0&quot; &lt;&lt; endl;
+    auto lcp = SA.getLcp(0);
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; &quot;后缀:&quot; &lt;&lt; i &lt;&lt; &quot; lcp:&quot; &lt;&lt; lcp[i] &lt;&lt; endl;
+    }
+    cout &lt;&lt; &quot;lcp for suffix 3&quot; &lt;&lt; endl;
+    lcp = SA.getLcp(3);
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; &quot;后缀:&quot; &lt;&lt; i &lt;&lt; &quot; lcp:&quot; &lt;&lt; lcp[i] &lt;&lt; endl;
+    }
+    cout &lt;&lt; &quot;lcp for suffix 2&quot; &lt;&lt; endl;
+    lcp = SA.getLcp(2);
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; &quot;后缀:&quot; &lt;&lt; i &lt;&lt; &quot; lcp:&quot; &lt;&lt; lcp[i] &lt;&lt; endl;
+    }
+    return 0;
+}
+/*
+sa
+排名:0 后缀:3 [1,1,1,1,2]
+排名:1 后缀:4 [1,1,1,2]
+排名:2 后缀:5 [1,1,2]
+排名:3 后缀:0 [1,1,2,1,1,1,1,2]
+排名:4 后缀:6 [1,2]
+排名:5 后缀:1 [1,2,1,1,1,1,2]
+排名:6 后缀:7 [2]
+排名:7 后缀:2 [2,1,1,1,1,2]
+rank
+排名:3 后缀 0 [1,1,2,1,1,1,1,2]
+排名:5 后缀 1 [1,2,1,1,1,1,2]
+排名:7 后缀 2 [2,1,1,1,1,2]
+排名:0 后缀 3 [1,1,1,1,2]
+排名:1 后缀 4 [1,1,1,2]
+排名:2 后缀 5 [1,1,2]
+排名:4 后缀 6 [1,2]
+排名:6 后缀 7 [2]
+height
+后缀3与4 lcp:3
+后缀4与5 lcp:2
+后缀5与0 lcp:3
+后缀0与6 lcp:1
+后缀6与1 lcp:2
+后缀1与7 lcp:0
+后缀7与2 lcp:1
+lcp for suffix 0
+后缀:0 lcp:8
+后缀:1 lcp:1
+后缀:2 lcp:0
+后缀:3 lcp:2
+后缀:4 lcp:2
+后缀:5 lcp:3
+后缀:6 lcp:1
+后缀:7 lcp:0
+lcp for suffix 3
+后缀:0 lcp:2
+后缀:1 lcp:1
+后缀:2 lcp:0
+后缀:3 lcp:8
+后缀:4 lcp:3
+后缀:5 lcp:2
+后缀:6 lcp:1
+后缀:7 lcp:0
+lcp for suffix 2
+后缀:0 lcp:0
+后缀:1 lcp:0
+后缀:2 lcp:8
+后缀:3 lcp:0
+后缀:4 lcp:0
+后缀:5 lcp:0
+后缀:6 lcp:0
+后缀:7 lcp:1
+*/
+</code></pre>
+<p>不太好用的模板</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+vector&lt;int&gt; sortCharacters(const string &amp; text) {
+    int n = text.size();
+    vector&lt;int&gt; count(128), order(n);
+    for (auto c : text) {
+        count[c]++;
+    }    
+    for (int i = 1; i &lt; 128; i++) {
+        count[i] += count[i - 1];
+    }
+    for (int i = n - 1; i &gt;= 0; i--) {
+        count[text[i]]--;
+        order[count[text[i]]] = i;
+    }
+    return order;
+}
+
+vector&lt;int&gt; computeCharClasses(const string &amp; text, vector&lt;int&gt; &amp; order) {
+    int n = text.size();
+    vector&lt;int&gt; res(n, 0);
+    res[order[0]] = 0;
+    for (int i = 1; i &lt; n; i++) {
+        if (text[order[i]] != text[order[i - 1]]) {
+            res[order[i]] = res[order[i - 1]] + 1;
+        } else {
+            res[order[i]] = res[order[i - 1]];
+        }
+    }
+    return res;
+}
+
+vector&lt;int&gt; sortDoubled(const string &amp; text, int len, vector&lt;int&gt; &amp; order, vector&lt;int&gt; &amp; classfiy) {
+    int n = text.size();
+    vector&lt;int&gt; count(n), newOrder(n);
+    for (int i = 0; i &lt; n; i++) {
+        count[classfiy[i]]++;
+    }
+    for (int i = 1; i &lt; n; i++) {
+        count[i] += count[i - 1];
+    }
+    for (int i = n - 1; i &gt;= 0; i--) {
+        int start = (order[i] - len + n) % n;
+        int cl = classfiy[start];
+        count[cl]--;
+        newOrder[count[cl]] = start;
+    }
+    return newOrder;
+}
+
+vector&lt;int&gt; updateClasses(vector&lt;int&gt; &amp; newOrder, vector&lt;int&gt; &amp; classfiy, int len) {
+    int n = newOrder.size();
+    vector&lt;int&gt; newClassfiy(n, 0);
+    newClassfiy[newOrder[0]] = 0;
+    for (int i = 1; i &lt; n; i++) {
+        int curr = newOrder[i];
+        int prev = newOrder[i - 1];
+        int mid = curr + len;
+        int midPrev = (prev + len) % n;
+        if (classfiy[curr] != classfiy[prev] || classfiy[mid] != classfiy[midPrev]) {
+             newClassfiy[curr] = newClassfiy[prev] + 1;
+        } else {
+             newClassfiy[curr] = newClassfiy[prev];
+        }
+    }
+    return newClassfiy;
+}
+
+// sa[i]表示将所有后缀排序后第i小的后缀的编号
+vector&lt;int&gt; buildSuffixArray(const string&amp; text) {
+    vector&lt;int&gt; order = sortCharacters(text);
+    vector&lt;int&gt; classfiy = computeCharClasses(text, order);
+    int len = 1;
+    int n = text.size();
+    for (int i = 1; i &lt; n; i &lt;&lt;= 1) {
+        order = sortDoubled(text, i, order, classfiy);
+        classfiy = updateClasses(order, classfiy, i);
+    }
+    return order;
+}
+// rank[i]表示后缀i的排名。 sa[rank[i]] = rank[sa[i]] = i;
+vector&lt;int&gt; buildRank(vector&lt;int&gt;&amp; sa) {
+    vector&lt;int&gt; rank(sa.size());
+    for (int i = 0; i &lt; sa.size(); i++) {
+        rank[sa[i]] = i;
+    }
+    return rank;
+}
+// height[i] = lcp(sa[i-1], sa[i])
+vector&lt;int&gt; buildHeight(const string&amp; text, vector&lt;int&gt;&amp; sa, vector&lt;int&gt;&amp; rank) {
+    int n = sa.size();
+    vector&lt;int&gt; height(n); 
+    for (int i=0, k=0; i&lt;n-1; i++) {
+        if (k&gt;0) k--;
+        int j = sa[rank[i]-1];
+        while (text[i+k] == text[j+k]) k++;
+        height[rank[i]] = k;
+    }
+    return height;
+}
+
+int main()
+{
+    string s = &quot;aabaaaab*&quot;;
+    int n = s.size();
+    auto sa = buildSuffixArray(s);
+    cout &lt;&lt; &quot;sa&quot; &lt;&lt; endl;
+    for (int i=0; i&lt;n; i++) {
+        cout &lt;&lt; &quot;后缀&quot; &lt;&lt; sa[i] &lt;&lt; &quot;: &quot; &lt;&lt; s.substr(sa[i]) &lt;&lt; &quot; 排名:&quot; &lt;&lt; i &lt;&lt; endl;
+    }
+    auto rank = buildRank(sa);
+    cout &lt;&lt; &quot;rank&quot; &lt;&lt; endl;
+    for (int i=0; i&lt;n; i++) {
+        cout &lt;&lt; &quot;后缀&quot; &lt;&lt; i &lt;&lt; &quot;: &quot; &lt;&lt; s.substr(i) &lt;&lt; &quot; 排名:&quot; &lt;&lt; rank[i] &lt;&lt; endl;
+    }
+    auto height = buildHeight(s, sa, rank);
+    cout &lt;&lt; &quot;height&quot; &lt;&lt; endl;
+    for (int i=1; i&lt;n; i++) {
+        cout &lt;&lt; &quot;后缀&quot; &lt;&lt; (sa[i-1]) &lt;&lt; &quot;与&quot; &lt;&lt; sa[i] &lt;&lt; &quot; lcp:&quot;&lt;&lt; height[i] &lt;&lt; endl;
+    }
+    return 0;
+}
+/*
+sa
+后缀8: * 排名:0
+后缀3: aaaab* 排名:1
+后缀4: aaab* 排名:2
+后缀5: aab* 排名:3
+后缀0: aabaaaab* 排名:4
+后缀6: ab* 排名:5
+后缀1: abaaaab* 排名:6
+后缀7: b* 排名:7
+后缀2: baaaab* 排名:8
+rank
+后缀0: aabaaaab* 排名:4
+后缀1: abaaaab* 排名:6
+后缀2: baaaab* 排名:8
+后缀3: aaaab* 排名:1
+后缀4: aaab* 排名:2
+后缀5: aab* 排名:3
+后缀6: ab* 排名:5
+后缀7: b* 排名:7
+后缀8: * 排名:0
+height
+后缀8与3 lcp:0
+后缀3与4 lcp:3
+后缀4与5 lcp:2
+后缀5与0 lcp:3
+后缀0与6 lcp:1
+后缀6与1 lcp:2
+后缀1与7 lcp:0
+后缀7与2 lcp:1
+*/
+</code></pre>
+<p>字符串末尾需要添加一字符，该字符字典序小于所有字符。</p>
+<p>ascii码表</p>
+<pre><code>Dec  Char                           Dec  Char     Dec  Char     Dec  Char
+---------                           ---------     ---------     ----------
+  0  NUL (null)                      32  SPACE     64  @         96  `
+  1  SOH (start of heading)          33  !         65  A         97  a
+  2  STX (start of text)             34  &quot;         66  B         98  b
+  3  ETX (end of text)               35  #         67  C         99  c
+  4  EOT (end of transmission)       36  $         68  D        100  d
+  5  ENQ (enquiry)                   37  %         69  E        101  e
+  6  ACK (acknowledge)               38  &amp;         70  F        102  f
+  7  BEL (bell)                      39  &#39;         71  G        103  g
+  8  BS  (backspace)                 40  (         72  H        104  h
+  9  TAB (horizontal tab)            41  )         73  I        105  i
+ 10  LF  (NL line feed, new line)    42  *         74  J        106  j
+ 11  VT  (vertical tab)              43  +         75  K        107  k
+ 12  FF  (NP form feed, new page)    44  ,         76  L        108  l
+ 13  CR  (carriage return)           45  -         77  M        109  m
+ 14  SO  (shift out)                 46  .         78  N        110  n
+ 15  SI  (shift in)                  47  /         79  O        111  o
+ 16  DLE (data link escape)          48  0         80  P        112  p
+ 17  DC1 (device control 1)          49  1         81  Q        113  q
+ 18  DC2 (device control 2)          50  2         82  R        114  r
+ 19  DC3 (device control 3)          51  3         83  S        115  s
+ 20  DC4 (device control 4)          52  4         84  T        116  t
+ 21  NAK (negative acknowledge)      53  5         85  U        117  u
+ 22  SYN (synchronous idle)          54  6         86  V        118  v
+ 23  ETB (end of trans. block)       55  7         87  W        119  w
+ 24  CAN (cancel)                    56  8         88  X        120  x
+ 25  EM  (end of medium)             57  9         89  Y        121  y
+ 26  SUB (substitute)                58  :         90  Z        122  z
+ 27  ESC (escape)                    59  ;         91  [        123  {
+ 28  FS  (file separator)            60  &lt;         92  \        124  |
+ 29  GS  (group separator)           61  =         93  ]        125  }
+ 30  RS  (record separator)          62  &gt;         94  ^        126  ~
+ 31  US  (unit separator)            63  ?         95  _        127  DEL
+</code></pre>

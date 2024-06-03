@@ -1,0 +1,103 @@
+<hr>
+<p>title: “模数类”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="模数类"><a href="#模数类" class="headerlink" title="模数类"></a>模数类</h1><pre><code class="cpp">//#define MOD 1000000007
+#define MOD 998244353
+#define mint Modint&lt;MOD&gt;
+template &lt;const int _MOD&gt;
+struct Modint {
+    int v;
+    Modint() { v = 0; }
+    Modint(long long o) { v = o % _MOD; }
+    int val() { return v; }
+    int pow(long long o) {
+        int ret = 1, tmp = v;
+        while (o) {
+&lt;!--more--&gt;            if (o &amp; 1)
+                ret = ((long long)ret * tmp) % _MOD;
+            o &gt;&gt;= 1;
+            tmp = ((long long)tmp * tmp) % _MOD;
+        }
+        return ret;
+    }
+    void operator=(long long o) { v = o % _MOD; }
+    bool operator==(long long o) const { return v == o; }
+    bool operator==(Modint o) const { return v == o.v; }
+    bool operator!=(long long o) const { return v != o; }
+    bool operator!=(Modint o) const { return v != o.v; }
+    bool operator&lt;(long long o) const { return v &lt; o; }
+    bool operator&lt;(Modint o) const { return v &lt; o.v; }
+    bool operator&gt;(long long o) const { return v &gt; o; }
+    bool operator&gt;(Modint o) const { return v &gt; o.v; }
+    bool operator&lt;=(long long o) const { return v &lt;= o; }
+    bool operator&lt;=(Modint o) const { return v &lt;= o.v; }
+    bool operator&gt;=(long long o) const { return v &gt;= o; }
+    bool operator&gt;=(Modint o) const { return v &gt;= o.v; }
+
+    Modint operator+(long long o) const { return *this + Modint(o); }
+    Modint operator+(Modint o) const { return ((long long)v + o.v) % _MOD; }
+    Modint operator*(long long o) const { return *this * Modint(o); }
+    Modint operator*(Modint o) const { return (long long)v * o.v % _MOD; }
+
+    Modint operator-(long long o) const { return *this - Modint(o); }
+    Modint operator-(Modint o) const {
+        return ((long long)v - o.v + _MOD) % _MOD;
+    }
+
+    Modint operator/(long long o) const { return *this / Modint(o); }
+    Modint operator/(Modint o) const {
+        return ((long long)v * o.pow(_MOD - 2)) % _MOD;
+    }
+    void operator+=(long long o) { *this = *this + o; }
+    void operator+=(Modint o) { *this = *this + o; }
+    void operator*=(long long o) { *this = *this * o; }
+    void operator*=(Modint o) { *this = *this * o; }
+    void operator-=(long long o) { *this = *this - o; }
+    void operator-=(Modint o) { *this = *this - o; }
+    void operator/=(long long o) { *this = *this / o; }
+    void operator/=(Modint o) { *this = *this / o; }
+
+    Modint operator^(long long o) { return Modint(pow(o)); }
+    Modint operator^(Modint o) { return Modint(pow(o.v)); }
+
+    template &lt;class T&gt;
+    friend bool operator==(T o, Modint u) {
+        return u == o;
+    }
+    template &lt;class T&gt;
+    friend Modint operator+(T o, Modint u) {
+        return u + o;
+    }
+    template &lt;class T&gt;
+    friend Modint operator*(T o, Modint u) {
+        return u * o;
+    }
+    template &lt;class T&gt;
+    friend Modint operator-(T o, Modint u) {
+        return Modint(o) - u;
+    }
+    template &lt;class T&gt;
+    friend Modint operator/(T o, Modint u) {
+        return Modint(o) / u;
+    }
+
+    void operator++() { *this = *this + 1; }
+    void operator--() { *this = *this - 1; }
+    void operator++(int k) { *this = *this + 1; }
+    void operator--(int k) { *this = *this - 1; }
+
+    template &lt;const int T&gt;
+    friend std::istream&amp; operator&gt;&gt;(std::istream&amp; in, Modint&lt;T&gt;&amp; modint) {
+        ll x;
+        in &gt;&gt; x;
+        modint = Modint&lt;T&gt;(x);
+        return in;
+    }
+
+    template &lt;const int T&gt;
+    friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const Modint&lt;T&gt;&amp; modint) {
+        os &lt;&lt; modint.v;
+        return os;
+    }
+};
+</code></pre>

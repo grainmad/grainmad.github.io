@@ -1,0 +1,298 @@
+<hr>
+<p>title: “RSA”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 轮子]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h1><h1 id="RSA加密系统"><a href="#RSA加密系统" class="headerlink" title="RSA加密系统"></a>RSA加密系统</h1><p>RSA公钥加密系统中，公钥和密钥的产生：</p>
+<ol>
+<li>随机选取两个大质数p和q，使得p ≠ q。</li>
+<li>计算n=pq。</li>
+<li>选取一个与$\phi (n)$互质的小奇数e，其中$\phi (n)=(p-1)(q-1)$</li>
+<li>对模$\phi (n)$，计算出e的乘法逆元d的值。即$ed\equiv 1\pmod {\phi(n)}$</li>
+<li>将$p=(e,n)$公开作为RSA公钥</li>
+<li>将$s=(d,n)$公开作为RSA密钥</li>
+</ol>
+<p>假设密文为 c ，明文为 m</p>
+<!--more-->RSA的加密过程为：$c = m^e\pmod n$
+
+<p>RSA的解密过程为：$m = c^d\pmod n$</p>
+<p>这里是公钥加密，私钥解密。</p>
+<p>如果用于<strong>数字签名</strong>，则与之相反，即私钥加密公钥解密。</p>
+<h1 id="如何获取大质数"><a href="#如何获取大质数" class="headerlink" title="如何获取大质数"></a>如何获取大质数</h1><p>素数分布函数$\pi(n)$描述了小于或等于n的素数的数目。例如$\pi(n) = 4$，分别为$2,3,5,7$</p>
+<p>素数定理 </p>
+<p>$\lim \limits_{n \rightarrow \infty}\frac{\pi(n)}{n/\ln n} = 1$</p>
+<p>对于较小的n，近似式$n/\ln n$能精确的给出$\pi(n)$的估计值，如：$n=10^9$，误差不超过6%</p>
+<p>为了找一个长度与n相同的质数大概需要在n的附近找大约$\ln n$个数，如找一个1024位长度的质数，大约需要测试$\ln 2^{1024} \approx 710$个随机选取的长度为1024位长的整数素性。</p>
+<pre><code class="cpp">// rand big prime in 2^15
+ll rand_prime(ll rd) {
+    ll prime = time(NULL) * rd % (2LL &lt;&lt; 15);
+    while (!miller_rabin(prime, 10)) {
+        prime++;
+        // cout &lt;&lt; prime &lt;&lt; endl;
+    }
+    return prime;
+}
+</code></pre>
+<h1 id="素数的测试"><a href="#素数的测试" class="headerlink" title="素数的测试"></a>素数的测试</h1><p>简单的方法是<strong>试除。</strong>最坏时间复杂度为$O(\sqrt n)$。</p>
+<p>费马小定理</p>
+<p>如果p是质数，则$a^{p-1}\equiv 1\pmod {p}$，其中$a = 1, 2, \cdots, p-1$</p>
+<p>如果能找到任意的$a \in \bold z^{+}_{n}$，使得n不满足$a^{n-1}\equiv 1\pmod {n}$，那么n就是合数。</p>
+<p>令人惊讶的是它的逆否命题几乎成立。</p>
+<pre><code class="cpp">// is a^(n-1) = 1 (mod n)
+bool witness(ll a, ll n) {
+    ll u = n - 1, t = 0;
+    while (u &amp; 1 == 0)
+        u &gt;&gt;= 1, t++;
+    // n - 1 = 2^t * u
+
+    ll x = modular_exponentiation(a, u, n);
+    // 二次探测定理
+    // 如果一个数p是质数，对于一个x∈(0,p)且x∈Z，方程x^2≡1(modp)的解有且只有两个：x=1或x=p−1。
+    for (int i = 0; i &lt; t; i++) {
+        int xp = x;
+        x = x * x % n;
+        if (x == 1 &amp;&amp; xp != 1 &amp;&amp; xp != n - 1)
+            return true;
+    }
+    if (x != 1)
+        return true;
+    return false;
+}
+
+// test n times a^(n-1) = 1 (mod n), rand a
+bool miller_rabin(ll n, ll s) {
+    for (int i = 0; i &lt; s; i++) {
+        ll a = time(NULL) * (ll)rand() % (n - 1) + 1;
+        // cout &lt;&lt; &quot;a &quot; &lt;&lt; a &lt;&lt; &quot;n &quot; &lt;&lt; n &lt;&lt; endl;
+        if (witness(a, n))
+            return false;
+    }
+    return true;
+}
+</code></pre>
+<h1 id="反复平方法求数的幂"><a href="#反复平方法求数的幂" class="headerlink" title="反复平方法求数的幂"></a>反复平方法求数的幂</h1><p>求$a^{b}\pmod {n}$的高效算法，时间复杂度$O(logb)$</p>
+<pre><code class="cpp">ll modular_exponentiation(ll a, ll b, ll n) {
+    ll rt = 1;
+    while (b) {
+        if (b &amp; 1)
+            rt = rt * a % n;
+        a = a * a % n;
+        b &gt;&gt;= 1;
+    }
+    return rt;
+}
+</code></pre>
+<p>比如$a=3,b=13 = 1101_2$</p>
+<p>如果直接for循环则需要13次。</p>
+<p>但是可以预处理出$a,a^2,a^4,a^8\cdots$，然后根据b的二进制位进行选择。</p>
+<p>$a^{13} = a^{1101_2} = a^{1000_2}a^{100_2}a^{1_2} = a^{8}a^{4}a^1$</p>
+<h1 id="拓展欧几里得算法求解模线性方程"><a href="#拓展欧几里得算法求解模线性方程" class="headerlink" title="拓展欧几里得算法求解模线性方程"></a>拓展欧几里得算法求解模线性方程</h1><p>已知a，b，n求解x，满足$ax\equiv b\pmod {n}$，这样的方程可能没有解，可能有一个或多个解。</p>
+<p>该式子实际上可以转化为$ax+kn=b$，如果$b$是$gcd(a,b)$的倍数就有解，解的个数是$\frac{b}{gcd(a,b)}$</p>
+<p>而对于已知的a，b，拓展欧几里得可以计算出满足$d = gcd(a,b) = ax+by$</p>
+<pre><code class="cpp">// extend eculid , d = gcd(a,b) = ax+by
+void ex_gcd(ll a, ll b, ll* d, ll* x, ll* y) {
+    if (b == 0) {
+        *d = a;
+        *x = 1;
+        *y = 0;
+    } else {
+        ex_gcd(b, a % b, d, x, y);
+        ll t = *x;
+        *x = *y;
+        *y = t - (a / b) * (*y);
+    }
+}
+</code></pre>
+<p>在RSA密钥生成过程中</p>
+<ul>
+<li>选取一个与$\phi (n)$互质的小奇数e，其中$\phi (n)=(p-1)(q-1)$</li>
+<li>对模$\phi (n)$，计算出e的乘法逆元d的值。即$ed\equiv 1\pmod {\phi(n)}$</li>
+</ul>
+<p>$ed + k\phi(n) = gcd(e, \phi(n)) = 1$</p>
+<p>有唯一解</p>
+<pre><code class="cpp">// e*d = 1 (mod phi_n)  =&gt; e*d +k*phi_n = 1
+//  rsa private key
+ll private_key(ll e, ll phi_n) {
+    ll d, x, y;
+    ex_gcd(e, phi_n, &amp;d, &amp;x, &amp;y);
+    return (x + phi_n) % phi_n;
+}
+</code></pre>
+<h1 id="RSA实现代码"><a href="#RSA实现代码" class="headerlink" title="RSA实现代码"></a>RSA实现代码</h1><pre><code class="cpp">#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;ctime&gt;
+#include &lt;iostream&gt;
+#define ll long long
+using namespace std;
+#define print(a, b) cout &lt;&lt; a &lt;&lt; &quot;: &quot; &lt;&lt; b &lt;&lt; endl
+
+// extend eculid , d = gcd(a,b) = ax+by
+void ex_gcd(ll a, ll b, ll* d, ll* x, ll* y) {
+    if (b == 0) {
+        *d = a;
+        *x = 1;
+        *y = 0;
+    } else {
+        ex_gcd(b, a % b, d, x, y);
+        ll t = *x;
+        *x = *y;
+        *y = t - (a / b) * (*y);
+    }
+}
+
+// a^b%n
+////a&lt;n a*n &lt; MAX  n*n &lt; MAX
+ll modular_exponentiation(ll a, ll b, ll n) {
+    ll rt = 1;
+    while (b) {
+        if (b &amp; 1)
+            rt = rt * a % n;
+        a = a * a % n;
+        b &gt;&gt;= 1;
+    }
+    return rt;
+}
+
+// is a^(n-1) = 1 (mod n)
+bool witness(ll a, ll n) {
+    ll u = n - 1, t = 0;
+    while (u &amp; 1 == 0)
+        u &gt;&gt;= 1, t++;
+    // n - 1 = 2^t * u
+
+    ll x = modular_exponentiation(a, u, n);
+    // 二次探测定理
+    // 如果一个数p是质数，对于一个x∈(0,p)且x∈Z，方程x^2≡1(modp)的解有且只有两个：x=1或x=p−1。
+    for (int i = 0; i &lt; t; i++) {
+        int xp = x;
+        x = x * x % n;
+        if (x == 1 &amp;&amp; xp != 1 &amp;&amp; xp != n - 1)
+            return true;
+    }
+    if (x != 1)
+        return true;
+    return false;
+}
+
+// test n times a^(n-1) = 1 (mod n), rand a
+bool miller_rabin(ll n, ll s) {
+    for (int i = 0; i &lt; s; i++) {
+        ll a = time(NULL) * (ll)rand() % (n - 1) + 1;
+        // cout &lt;&lt; &quot;a &quot; &lt;&lt; a &lt;&lt; &quot;n &quot; &lt;&lt; n &lt;&lt; endl;
+        if (witness(a, n))
+            return false;
+    }
+    return true;
+}
+
+// rand big prime in 2^15
+ll rand_prime(ll rd) {
+    ll prime = time(NULL) * rd % (2LL &lt;&lt; 15);
+    while (!miller_rabin(prime, 10)) {
+        prime++;
+        // cout &lt;&lt; prime &lt;&lt; endl;
+    }
+    return prime;
+}
+
+// e*d = 1 (mod phi_n)  =&gt; e*d +k*phi_n = 1
+//  rsa private key
+ll private_key(ll e, ll phi_n) {
+    ll d, x, y;
+    ex_gcd(e, phi_n, &amp;d, &amp;x, &amp;y);
+    return (x + phi_n) % phi_n;
+}
+
+// rsa public key
+ll public_key(ll phi_n) {
+    ll e = rand();
+    while (gcd(e, phi_n) != 1)
+        e++;
+    return e;
+}
+
+void test() {
+    srand((unsigned int)time(NULL));
+    ll p = rand_prime(rand());
+    ll q = rand_prime(rand());
+    ll e = rand_prime(rand());
+    // public_key e&gt;max(p,q)  so gcd(e, phi_n=(p-1)(q-1)) = 1
+    if (p &gt; e)
+        swap(e, p);
+    if (q &gt; e)
+        swap(e, q);
+    ll n = p * q;
+    ll phi_n = (p - 1) * (q - 1);
+    // ll e = public_key(phi_n);
+    ll d = private_key(e, phi_n);
+    print(&quot;p&quot;, p);
+    print(&quot;q&quot;, q);
+    print(&quot;n&quot;, n);
+    print(&quot;phi_n&quot;, phi_n);
+    print(&quot;e&quot;, e);
+    print(&quot;d&quot;, d);
+    ll msg = 1314;
+    ll code_msg = modular_exponentiation(msg, e, n);
+    ll decode_msg = modular_exponentiation(code_msg, d, n);
+    print(&quot;code_msg&quot;, code_msg);
+    print(&quot;decode_msg&quot;, decode_msg);
+
+    /*
+        e*d = 1 (mod phi_n)
+        m^e = c
+        c^d = m
+        m^{e*d} = m (mod n)
+    */
+
+}
+
+int main() {
+    //    cout &lt;&lt; pow_mod(2, 10, 2000);
+    test();
+
+    return 0;
+}
+</code></pre>
+<pre><code class="cpp">p: 16649
+q: 32831
+n: 546603319
+phi_n: 546553840
+e: 59809
+d: 136453409
+code_msg: 365022407
+decode_msg: 1314
+
+p: 17519
+q: 18047
+n: 316165393
+phi_n: 316129828
+e: 63211
+d: 294359675
+code_msg: 15110090
+decode_msg: 1314
+
+p: 22073
+q: 4441
+n: 98026193
+phi_n: 97999680
+e: 27647
+d: 86011583
+code_msg: 17550476
+decode_msg: 1314
+</code></pre>
+<h1 id="RSA的正确性"><a href="#RSA的正确性" class="headerlink" title="RSA的正确性"></a>RSA的正确性</h1><p>设密文为 c ，明文为 m，$c = m^e\pmod n$，$m = c^d\pmod n$</p>
+<p>所以有$m\equiv m^{ed}\pmod {n}$</p>
+<p>由于$ed\equiv 1\pmod {\phi(n)}$，其中$\phi(n) = (p-1)(q-1)$，所以$ed = 1+k(p-1)(q-1)$$\begin{array}{llllc}<br>m^{ed} &amp; \equiv &amp; m(m^{p-1})^{k(q-1)} &amp; \pmod p &amp; \<br>&amp; \equiv &amp; m((m \mod p))^{p-1})^{k(q-1)} &amp; \pmod p &amp; \<br>&amp; \equiv &amp; m(1)^{k(q-1)} &amp; \pmod p &amp; 费马小定理\<br>&amp; \equiv &amp; m &amp; \pmod p &amp; \<br>\end{array}$</p>
+<p>类似地，有$m^{ed} \equiv m \pmod q$</p>
+<p>根据中国剩余定理，$m^{ed} \equiv m \pmod n$</p>
+<h1 id="RSA的安全性"><a href="#RSA的安全性" class="headerlink" title="RSA的安全性"></a>RSA的安全性</h1><p>对外公开公钥$p=(e,n)$，已知n是两个质数p和q的乘积，如果能分解找到p和q。那么便可以通过拓展欧几里得算法求出$ed\equiv 1\pmod {(p-1)(q-1)}$的d。从而可以得到密钥$s=(d,n)$</p>
+<p>RSA的加密系统的安全性主要来源于对于大整数进行因式分解的困难性。如果对方能够对公钥中的模n进行分解，就可以更具公钥推出密钥，这是因为对方和公钥创建者以相同的方法使用因子p和q。因此，如果能够轻易分解大整数，也就能轻易打破RSA加密系统。</p>
+<p>经过20多年的研究，人们还没有发现比分解模n更容易的方法来打破RSA加密系统。</p>
+<p>通过随机选取两个1024为的质数并求它们的积，就可以创造无法用可行技术可行时间内破解的公钥。所以在数论算法的设计方法还缺乏根本突破的情况下，RSA算法加密系统可以为实际应用提供高度的安全性。</p>
+<h1 id="RSA的局限性"><a href="#RSA的局限性" class="headerlink" title="RSA的局限性"></a>RSA的局限性</h1><p>RSA从提出到至今，经历了各种攻击的考验，逐渐为人们接受，普遍认为是目前最优秀的公钥方案之一。</p>
+<p>但RSA算法也是有缺点的。</p>
+<ul>
+<li>第一，RSA的安全性目前并没有理论上的证明；</li>
+<li>第二，密钥的生成过程比较麻烦，受素数产生技术的限制，难以做到一次一密；</li>
+<li>第三，就是RSA的运算速度，速度是RSA目前最大的缺陷，相同的安全级别下，RSA的速度比相应的对称加密算法慢大约1000倍。</li>
+</ul>
+<p>因此，RSA通常只用于<strong>少量数据加密</strong>。实际应用中一般用来加密对称算法的密钥，而密文多用对称加密算法加密传输。</p>

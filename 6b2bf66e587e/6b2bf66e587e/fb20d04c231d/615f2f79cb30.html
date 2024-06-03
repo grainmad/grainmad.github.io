@@ -1,0 +1,76 @@
+<hr>
+<p>title: “网络流”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="网络流"><a href="#网络流" class="headerlink" title="网络流"></a>网络流</h1><p>最小费用最大流</p>
+<pre><code class="cpp">#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+
+const int N = 5e3 + 5, M = 1e5 + 5;
+const int INF = 0x3f3f3f3f;
+int n, m, tot = 1, lnk[N], cur[N], ter[M], nxt[M], cap[M], cost[M], dis[N], ret;
+bool vis[N];
+
+&lt;!--more--&gt;void add(int u, int v, int w, int c) {
+  ter[++tot] = v, nxt[tot] = lnk[u], lnk[u] = tot, cap[tot] = w, cost[tot] = c;
+}
+
+void addedge(int u, int v, int w, int c) { add(u, v, w, c), add(v, u, 0, -c); }
+
+bool spfa(int s, int t) {
+  memset(dis, 0x3f, sizeof(dis));
+  memcpy(cur, lnk, sizeof(lnk));
+  std::queue&lt;int&gt; q;
+  q.push(s), dis[s] = 0, vis[s] = 1;
+  while (!q.empty()) {
+    int u = q.front();
+    q.pop(), vis[u] = 0;
+    for (int i = lnk[u]; i; i = nxt[i]) {
+      int v = ter[i];
+      if (cap[i] &amp;&amp; dis[v] &gt; dis[u] + cost[i]) {
+        dis[v] = dis[u] + cost[i];
+        if (!vis[v]) q.push(v), vis[v] = 1;
+      }
+    }
+  }
+  return dis[t] != INF;
+}
+
+int dfs(int u, int t, int flow) {
+  if (u == t) return flow;
+  vis[u] = 1;
+  int ans = 0;
+  for (int &amp;i = cur[u]; i &amp;&amp; ans &lt; flow; i = nxt[i]) {
+    int v = ter[i];
+    if (!vis[v] &amp;&amp; cap[i] &amp;&amp; dis[v] == dis[u] + cost[i]) {
+      int x = dfs(v, t, std::min(cap[i], flow - ans));
+      if (x) ret += x * cost[i], cap[i] -= x, cap[i ^ 1] += x, ans += x;
+    }
+  }
+  vis[u] = 0;
+  return ans;
+}
+
+int mcmf(int s, int t) {
+  int ans = 0;
+  while (spfa(s, t)) {
+    int x;
+    while ((x = dfs(s, t, INF))) ans += x;
+  }
+  return ans;
+}
+
+int main() {
+  int s, t;
+  scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;s, &amp;t);
+  while (m--) {
+    int u, v, w, c;
+    scanf(&quot;%d%d%d%d&quot;, &amp;u, &amp;v, &amp;w, &amp;c);
+    addedge(u, v, w, c);
+  }
+  int ans = mcmf(s, t);
+  printf(&quot;%d %d\n&quot;, ans, ret); // ans最大流， ret费用
+  return 0;
+}
+</code></pre>

@@ -1,0 +1,324 @@
+<hr>
+<p>title: “单调栈 队列”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="单调栈-队列"><a href="#单调栈-队列" class="headerlink" title="单调栈/队列"></a>单调栈/队列</h1><h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><p>单调栈的”一栈两用“。<br>对数组<strong>从左至右</strong>维护<strong>严格单调递增</strong>栈需要不断移除栈顶元素直到栈顶元素小于待入栈元素。在这个过程中待入栈元素是移除元素右侧第一个小于等于自身的元素。在移除过程结束后，栈顶元素是待入栈元素的左侧第一个小于自身的元素。这样一个<strong>从左至右严格单调递增栈</strong>可以获得每个元素左侧第一个小于自身的元素以及每个元素右侧第一个小于等于自身的元素。</p>
+<p><strong>从左至右严格单调递增栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>小于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>小于等于</strong>自身的元素。<br><strong>从左至右单调非减栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>小于等于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>小于</strong>自身的元素。<br><strong>从左至右严格单调递减栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>大于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>大于等于</strong>自身的元素。<br><strong>从左至右单调非增栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>大于等于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>大于</strong>自身的元素。</p>
+<p>从左至右维护单调栈可以解决所有需求，然后跟增有关的栈得到左右小于或小于等于自身的值，而减有关的栈得到左右大于/大于等于自身的值。总之在从左至右前提下，<strong>增小减大</strong>。</p>
+<pre><code class="cpp">&lt;!--more--&gt;int main() {
+    vector&lt;int&gt; v{1,1,2,3,3,2,1,1,2,2,3};
+    int n = v.size();
+    cout &lt;&lt; &quot;index &quot;; for (int i=0; i&lt;n; i++) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;val &quot;; for (int i:v) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
+    vector&lt;int&gt; st;
+    vector&lt;int&gt; l_g(n, -1), r_ge(n, n);
+    for (int i=0; i&lt;n; i++) {
+        while (st.size() &amp;&amp; v[st.back()] &lt;= v[i]) {//严减
+            r_ge[st.back()] = i;
+            st.pop_back();
+        }
+        if(st.size()) l_g[i] = st.back();
+        st.push_back(i);
+    }
+    cout &lt;&lt; &quot;l_g &quot;; for (int i:l_g) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;r_ge &quot;; for (int i:r_ge) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
+    
+    st.clear();
+    vector&lt;int&gt; l_ge(n, -1), r_g(n, n);
+    for (int i=0; i&lt;n; i++) {
+        while (st.size() &amp;&amp; v[st.back()] &lt; v[i]) {//非增
+            r_g[st.back()] = i;
+            st.pop_back();
+        }
+        if(st.size()) l_ge[i] = st.back();
+        st.push_back(i);
+    }
+    cout &lt;&lt; &quot;l_ge &quot;; for (int i:l_ge) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;r_g &quot;; for (int i:r_g) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
+    
+    st.clear();
+    vector&lt;int&gt; l_l(n, -1), r_le(n, n);
+    for (int i=0; i&lt;n; i++) {
+        while (st.size() &amp;&amp; v[st.back()] &gt;= v[i]) {//严增
+            r_le[st.back()] = i;
+            st.pop_back();
+        }
+        if(st.size()) l_l[i] = st.back();
+        st.push_back(i);
+    }
+    cout &lt;&lt; &quot;l_l &quot;; for (int i:l_l) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;r_le &quot;; for (int i:r_le) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
+    
+    st.clear();
+    vector&lt;int&gt; l_le(n, -1), r_l(n, n);
+    for (int i=0; i&lt;n; i++) {
+        while (st.size() &amp;&amp; v[st.back()] &gt; v[i]) {//非减
+            r_l[st.back()] = i;
+            st.pop_back();
+        }
+        if(st.size()) l_le[i] = st.back();
+        st.push_back(i);
+    }
+    cout &lt;&lt; &quot;l_le &quot;; for (int i:l_le) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;r_l &quot;; for (int i:r_l) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
+    return 0;          
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>val</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>l_g</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>r_ge</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>10</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr>
+<td>l_ge</td>
+<td>-1</td>
+<td>0</td>
+<td>-1</td>
+<td>-1</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>5</td>
+<td>8</td>
+<td>4</td>
+</tr>
+<tr>
+<td>r_g</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>11</td>
+<td>11</td>
+<td>10</td>
+<td>8</td>
+<td>8</td>
+<td>10</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr>
+<td>l_l</td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td>7</td>
+<td>7</td>
+<td>9</td>
+</tr>
+<tr>
+<td>r_le</td>
+<td>1</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>11</td>
+<td>9</td>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<td>l_le</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>r_l</td>
+<td>11</td>
+<td>11</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>6</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+</tr>
+</tbody></table>
+<h1 id="单调队列模板"><a href="#单调队列模板" class="headerlink" title="单调队列模板"></a>单调队列模板</h1><pre><code class="cpp">//leetcode 1696. 跳跃游戏 VI
+for (int i=0; i&lt;n; i++) {
+    while (que.size() &amp;&amp; que.front()+k&lt;i) que.pop_front();
+    dp[i] = nums[i];
+    if (que.size()) dp[i] += dp[que.front()];
+    while (que.size() &amp;&amp; dp[que.back()]&lt;dp[i]) que.pop_back();
+    que.push_back(i);
+}
+</code></pre>
+<p>第一个while 保证队列内元素与当前位置距离小于等于k</p>
+<p>第二个while移除小于当前待入栈元素保证队列单调非增</p>
+<h1 id="关于静态区间的最值问题"><a href="#关于静态区间的最值问题" class="headerlink" title="关于静态区间的最值问题"></a>关于静态区间的最值问题</h1><p>如果我们离线处理，发现每个区间$[l,r]$的下一个区间$[l’,r’]$</p>
+<ul>
+<li>满足$l\le l’, r \le r’$。那么可以通过单调队列求出最值。  <a href="https://leetcode.cn/problems/sliding-window-maximum/">239. 滑动窗口最大值</a><pre><code class="cpp">class Solution {
+public:
+    vector&lt;int&gt; maxSlidingWindow(vector&lt;int&gt;&amp; nums, int k) {
+        int n = nums.size();
+        vector&lt;int&gt; q(n, 0), ans;
+        int s = 0, e = 0;
+        for (int i=0; i&lt;nums.size(); i++) {
+            while (s&lt;e &amp;&amp; nums[q[e-1]] &lt; nums[i]) e--;//维护单调递减
+            q[e++] = i;
+            while (s&lt;e &amp;&amp; k&lt;q[e-1]-q[s]+1) s++; //移除超出范围值。
+            if (i&gt;=k-1) ans.push_back(nums[q[s]]);
+        }
+        return ans;
+    }
+};
+</code></pre>
+</li>
+<li>满足$r \le r’$。那么可以通过单调栈上二分求出最值。<br><a href="https://www.luogu.com.cn/problem/P3865">P3865 【模板】ST 表</a><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define SINGLE_INPUT
+#define ull unsigned long long
+#define ll long long
+#define N 500005
+#define MOD 998244353
+using namespace std;
+
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const pair&lt;t,u&gt;&amp; p) {
+    return os&lt;&lt;&#39;[&#39;&lt;&lt;p.first&lt;&lt;&quot;, &quot;&lt;&lt;p.second&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const vector&lt;t&gt;&amp; v) {
+    os&lt;&lt;&#39;[&#39;; int s = 1;
+    for(auto e:v) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os &lt;&lt; e; }
+    return os&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const map&lt;t,u&gt;&amp; mp){
+    os&lt;&lt;&#39;{&#39;; int s = 1;
+    for(auto [x,y]:mp) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os&lt;&lt;x&lt;&lt;&quot;: &quot;&lt;&lt;y; }
+    return os&lt;&lt;&#39;}&#39;;
+}
+
+void sol() {
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    vector&lt;int&gt; a(n);
+    for (auto&amp; i:a) cin &gt;&gt; i;
+    vector&lt;pair&lt;int,int&gt;&gt; p(m);
+    for (auto&amp; [i,j]:p) {
+        cin &gt;&gt; i &gt;&gt; j;
+        i--,j--;
+    }
+    // cout &lt;&lt; n &lt;&lt; &quot; &quot; &lt;&lt; m &lt;&lt; endl;
+    // cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; p  &lt;&lt; endl;
+    vector&lt;int&gt; idx(m);
+    iota(idx.begin(), idx.end(), 0);
+    sort(idx.begin(), idx.end(), [&amp;](int x, int y) {
+        return p[x].second &lt; p[y].second;
+    });
+    // cout &lt;&lt; idx &lt;&lt; endl;
+    
+    vector&lt;int&gt; ans(m), st;
+    int u = 0;
+    for (auto i:idx) {
+        auto [l,r] = p[i];
+        while (u&lt;=r) {
+            while (st.size() &amp;&amp; a[st.back()] &lt; a[u]) st.pop_back();
+            st.push_back(u);
+            u++;
+        }
+        int L = 0, R = st.size();
+        while (L &lt; R) {
+            int m = L+R&gt;&gt;1;
+            if (st[m] &gt;= l) R = m;
+            else L = m+1;
+        }
+        ans[i] = a[st[L]];
+        // cout &lt;&lt; l &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; &quot; &quot; &lt;&lt; st &lt;&lt; &quot; &quot; &lt;&lt; ans[i] &lt;&lt; endl;
+
+    }
+    for (auto i:ans) {
+        cout &lt;&lt; i &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+int main() {
+    cout &lt;&lt; setprecision(15) &lt;&lt; fixed;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+#ifndef SINGLE_INPUT
+    int t;
+    cin &gt;&gt; t;
+    while (t--) {
+        sol();
+    }
+#else
+    sol();
+#endif
+    return 0;
+}
+  ****
+</code></pre>
+</li>
+</ul>

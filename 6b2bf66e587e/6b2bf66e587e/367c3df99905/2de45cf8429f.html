@@ -1,0 +1,569 @@
+<hr>
+<p>title: “子串值去重模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="子串值去重模板"><a href="#子串值去重模板" class="headerlink" title="子串值去重模板"></a>子串值去重模板</h1><p>求子数组 <code>and or gcd lcm</code>等。固定子数组右端点，子数组长度变大，子数组内元素运算值具有单调性，且存在<strong>大量相邻项重复</strong>，不重复的个数只有log(n)个。设具有这些性质的运算符为$\oplus$</p>
+<p>设$S_i$是$a_1\oplus a_2 \oplus \dots \oplus a_i, \ \ a_2 \oplus \dots \oplus a_i,\ \  a_3 \oplus \dots \oplus a_i,\ \ \cdots, \ \ a_{i-1}\oplus a_i,\ \ a_i$的集合, 看似存在$i$种值，但是实际上由于集合去重，最后不重复的值只有不超过$logU$个。所以$S_i$可以由$S_{i-1}$暴力转移 $S_i = S_{i-1}\oplus a_i$，我们可以维护每种值的状态，如：最左端，最右端，出现个数等。</p>
+<ul>
+<li>灵茶山艾府模板<pre><code class="cpp">//2411. 按位或最大的最小子数组长度
+class Solution {
+public:
+    vector&lt;int&gt; smallestSubarrays(vector&lt;int&gt; &amp;nums) {
+        int n = nums.size();
+        vector&lt;int&gt; ans(n);
+&lt;!--more--&gt;            vector&lt;pair&lt;int, int&gt;&gt; ors; // 按位或的值 + 对应子数组的右端点的最小值
+        for (int i = n - 1; i &gt;= 0; --i) { 
+            ors.emplace_back(0, i);
+            ors[0].first |= nums[i];
+            int k = 0;
+            for (int j = 1; j &lt; ors.size(); ++j) {
+                ors[j].first |= nums[i];
+                if (ors[k].first == ors[j].first)
+                    ors[k].second = ors[j].second; // 合并相同值，下标取最小的
+                else ors[++k] = ors[j];
+            }
+            ors.resize(k + 1);
+            // 本题只用到了 ors[0]，如果题目改成任意给定数字，可以在 ors 中查找
+            ans[i] = ors[0].second - i + 1;
+        }
+        return ans;
+    }
+};
+//2411. 按位或最大的最小子数组长度（改），求以i为结尾的最大异或值的长度
+vector&lt;int&gt; smallestSubarrays(vector&lt;int&gt; &amp;nums) {
+    int n = nums.size();
+    vector&lt;int&gt; ans(n);
+    vector&lt;pair&lt;int, int&gt;&gt; ors; // 按位或的值 + 对应子数组的右端点的最小值
+    for (int i = 0; i &lt; n; ++i) { 
+        ors.emplace_back(0, i);
+        ors[0].first |= nums[i];
+        int k = 0;
+        for (int j = 1; j &lt; ors.size(); ++j) {
+            ors[j].first |= nums[i];
+            if (ors[k].first == ors[j].first)
+                ors[k].second = ors[j].second; // 合并相同值，下标取最大的
+            else ors[++k] = ors[j];
+        }
+        ors.resize(k + 1);
+        ans[i] = i - ors[0].second + 1;
+    }
+    return ans;
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="更好实现与理解的map版本"><a href="#更好实现与理解的map版本" class="headerlink" title="更好实现与理解的map版本"></a>更好实现与理解的map版本</h2><pre><code class="cpp">template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const map&lt;t,u&gt;&amp; mp){
+    os&lt;&lt;&#39;{&#39;; int s = 1;
+    for(auto [x,y]:mp) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os&lt;&lt;x&lt;&lt;&quot;: &quot;&lt;&lt;y; }
+    return os&lt;&lt;&#39;}&#39;;
+}
+
+enum MODE { OR, AND, GCD, LCM };
+enum BOUND { L, R };
+
+void logtrick(vector&lt;int&gt;&amp; a, MODE mode, BOUND bound) {
+    int n = a.size();
+    auto opt = [&amp;](int x, int y) {
+        if (mode == OR) return x|y;
+        if (mode == AND) return x&amp;y;
+        if (mode == GCD) return gcd(x, y);
+        if (mode == LCM) return lcm(x, y);
+        return -1;
+    };
+    auto extremum = [&amp;](int x, int y) {
+        if (bound == L) return min(x, y);
+        if (bound == R) return max(x, y);
+        return -1;
+    };
+    map&lt;int,int&gt; mp;
+    for (int i=0; i&lt;n; i++) {
+        map&lt;int,int&gt; t;
+        t[a[i]] = i;
+        for (auto [x, y]:mp) {
+            int v = opt(a[i], x);
+            if (t.count(v)) t[v] = extremum(t[v], y);
+            else t[v] = y;
+        }
+        mp = t;
+        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; mp &lt;&lt; endl;
+    }
+}
+
+void logtrick(vector&lt;int&gt;&amp; a, MODE mode) {
+    int n = a.size();
+    auto opt = [&amp;](int x, int y) {
+        if (mode == OR) return x|y;
+        if (mode == AND) return x&amp;y;
+        if (mode == GCD) return gcd(x, y);
+        if (mode == LCM) return lcm(x, y);
+        return -1;
+    };
+    map&lt;int,pair&lt;int,int&gt;&gt; mp;
+    for (int i=0; i&lt;n; i++) {
+        map&lt;int,pair&lt;int,int&gt;&gt; t;
+        t[a[i]] = {i,i};
+        for (auto [x, y]:mp) {
+            int v = opt(a[i], x);
+            if (t.count(v)) {
+                t[v].first = min(t[v].first, y.first);
+                t[v].second = max(t[v].second, y.second);
+            } else {
+                t[v] = y;
+            }
+        }
+        mp = t;
+        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; mp &lt;&lt; endl;
+    }
+}
+</code></pre>
+<ul>
+<li>demo<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define ull unsigned long long
+#define ll long long
+using namespace std;
+
+random_device seed;
+ranlux48 engine(seed());
+int random(int l, int r) {
+    uniform_int_distribution&lt;&gt; distrib(l, r);
+    return distrib(engine);
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const pair&lt;t,u&gt;&amp; p) {
+    return os&lt;&lt;&#39;[&#39;&lt;&lt;p.first&lt;&lt;&quot;, &quot;&lt;&lt;p.second&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const vector&lt;t&gt;&amp; v) {
+    os&lt;&lt;&#39;[&#39;; int s = 1;
+    for(auto e:v) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os &lt;&lt; e; }
+    return os&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const map&lt;t,u&gt;&amp; mp){
+    os&lt;&lt;&#39;{&#39;; int s = 1;
+    for(auto [x,y]:mp) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os&lt;&lt;x&lt;&lt;&quot;: &quot;&lt;&lt;y; }
+    return os&lt;&lt;&#39;}&#39;;
+}
+
+enum MODE { OR, AND, GCD, LCM };
+enum BOUND { L, R };
+
+void logtrick(vector&lt;int&gt;&amp; a, MODE mode, BOUND bound) {
+    int n = a.size();
+    auto opt = [&amp;](int x, int y) {
+        if (mode == OR) return x|y;
+        if (mode == AND) return x&amp;y;
+        if (mode == GCD) return gcd(x, y);
+        if (mode == LCM) return lcm(x, y);
+        return -1;
+    };
+    auto extremum = [&amp;](int x, int y) {
+        if (bound == L) return min(x, y);
+        if (bound == R) return max(x, y);
+        return -1;
+    };
+    map&lt;int,int&gt; mp;
+    for (int i=0; i&lt;n; i++) {
+        map&lt;int,int&gt; t;
+        t[a[i]] = i;
+        for (auto [x, y]:mp) {
+            int v = opt(a[i], x);
+            if (t.count(v)) t[v] = extremum(t[v], y);
+            else t[v] = y;
+        }
+        mp = t;
+        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; mp &lt;&lt; endl;
+    }
+}
+
+void logtrick(vector&lt;int&gt;&amp; a, MODE mode) {
+    int n = a.size();
+    auto opt = [&amp;](int x, int y) {
+        if (mode == OR) return x|y;
+        if (mode == AND) return x&amp;y;
+        if (mode == GCD) return gcd(x, y);
+        if (mode == LCM) return lcm(x, y);
+        return -1;
+    };
+    map&lt;int,pair&lt;int,int&gt;&gt; mp;
+    for (int i=0; i&lt;n; i++) {
+        map&lt;int,pair&lt;int,int&gt;&gt; t;
+        t[a[i]] = {i,i};
+        for (auto [x, y]:mp) {
+            int v = opt(a[i], x);
+            if (t.count(v)) {
+                t[v].first = min(t[v].first, y.first);
+                t[v].second = max(t[v].second, y.second);
+            } else {
+                t[v] = y;
+            }
+        }
+        mp = t;
+        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; mp &lt;&lt; endl;
+    }
+}
+
+int main() {
+    vector&lt;int&gt; a = {3, 6, 9, 2, 2, 3, 7};
+    int n = a.size();
+    map&lt;int,int&gt; or_l; 
+    // or_l[x] 当前所遍历的前缀串,不妨为a[0...i], 以a[i]结尾的子串 且 “或和”为x的最左端点。
+    // 根据性质or_l中最多只有logU个元素
+    for (int i=0; i&lt;n; i++) {
+        map&lt;int,int&gt; t;
+        t[a[i]] = i;
+        for (auto [x, y]:or_l) {
+            if (t.count(x|a[i])) t[x|a[i]] = min(t[x|a[i]], y);
+            else t[x|a[i]] = y;
+        }
+        or_l = t;
+        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; or_l &lt;&lt; endl;
+    }
+    map&lt;int,int&gt; or_r; 
+    // or_r[x] 当前所遍历的前缀串,不妨为a[0...i], 以a[i]结尾的子串 且 “或和”为x的最右端点。
+    // 根据性质or_r中最多只有logU个元素
+    for (int i=0; i&lt;n; i++) {
+        map&lt;int,int&gt; t;
+        t[a[i]] = i;
+        for (auto [x, y]:or_r) {
+            if (t.count(x|a[i])) t[x|a[i]] = max(t[x|a[i]], y);
+            else t[x|a[i]] = y;
+        }
+        or_r = t;
+        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; or_r &lt;&lt; endl;
+    }
+    map&lt;int,int&gt; and_l; 
+    // and_l[x] 当前所遍历的前缀串,不妨为a[0...i], 以a[i]结尾的子串 且 “或和”为x的最左端点。
+    // 根据性质and_l中最多只有logU个元素
+    for (int i=0; i&lt;n; i++) {
+        map&lt;int,int&gt; t;
+        t[a[i]] = i;
+        for (auto [x, y]:and_l) {
+            if (t.count(x&amp;a[i])) t[x&amp;a[i]] = min(t[x&amp;a[i]], y);
+            else t[x&amp;a[i]] = y;
+        }
+        and_l = t;
+        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; and_l &lt;&lt; endl;
+    }
+    map&lt;int,int&gt; and_r; 
+    // and_r[x] 当前所遍历的前缀串,不妨为a[0...i], 以a[i]结尾的子串 且 “与和”为x的最右端点。
+    // 根据性质and_r中最多只有logU个元素
+    for (int i=0; i&lt;n; i++) {
+        map&lt;int,int&gt; t;
+        t[a[i]] = i;
+        for (auto [x, y]:and_r) {
+            if (t.count(x&amp;a[i])) t[x&amp;a[i]] = max(t[x&amp;a[i]], y);
+            else t[x&amp;a[i]] = y;
+        }
+        and_r = t;
+        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; and_r &lt;&lt; endl;
+    }
+    map&lt;int,int&gt; gcd_r; 
+    // gcd_r[x] 当前所遍历的前缀串,不妨为a[0...i], 以a[i]结尾的子串 且 “区间gcd”为x的最右端点。
+    // 根据性质gcd_r中最多只有logU个元素
+    for (int i=0; i&lt;n; i++) {
+        map&lt;int,int&gt; t;
+        t[a[i]] = i;
+        for (auto [x, y]:gcd_r) {
+            if (t.count(gcd(x, a[i]))) t[gcd(x, a[i])] = max(t[gcd(x, a[i])], y);
+            else t[gcd(x, a[i])] = y;
+        }
+        gcd_r = t;
+        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; gcd_r &lt;&lt; endl;
+    }
+    logtrick(a, GCD, L);
+    logtrick(a, LCM, L);
+    logtrick(a, LCM, R);
+    return 0;
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="一些习题"><a href="#一些习题" class="headerlink" title="一些习题"></a>一些习题</h3><ul>
+<li><a href="https://leetcode.cn/problems/bitwise-ors-of-subarrays/"><strong>898. 子数组按位或操作</strong></a><pre><code class="cpp">template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const map&lt;t,u&gt;&amp; mp){
+    os&lt;&lt;&#39;{&#39;; int s = 1;
+    for(auto [x,y]:mp) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os&lt;&lt;x&lt;&lt;&quot;: &quot;&lt;&lt;y; }
+    return os&lt;&lt;&#39;}&#39;;
+}
+class Solution {
+public:
+
+    enum MODE { OR, AND, GCD, LCM };
+    enum BOUND { L, R };
+
+    int logtrick(vector&lt;int&gt;&amp; a, MODE mode, BOUND bound) {
+        int n = a.size();
+        auto opt = [&amp;](int x, int y) {
+            if (mode == OR) return x|y;
+            if (mode == AND) return x&amp;y;
+            if (mode == GCD) return gcd(x, y);
+            if (mode == LCM) return lcm(x, y);
+            return -1;
+        };
+        auto extremum = [&amp;](int x, int y) {
+            if (bound == L) return min(x, y);
+            if (bound == R) return max(x, y);
+            return -1;
+        };
+        set&lt;int&gt; ans;
+        map&lt;int,int&gt; mp;
+        for (int i=0; i&lt;n; i++) {
+            map&lt;int,int&gt; t;
+            t[a[i]] = i;
+            for (auto [x, y]:mp) {
+                int v = opt(a[i], x);
+                if (t.count(v)) t[v] = extremum(t[v], y);
+                else t[v] = y;
+            }
+            mp = t;
+            for (auto [x,y]:mp) {
+                ans.insert(x);
+            }
+            // cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; mp &lt;&lt; endl;
+        }
+        return ans.size();
+    }
+    int subarrayBitwiseORs(vector&lt;int&gt;&amp; arr) {
+        return logtrick(arr, OR, L);
+    }
+};
+</code></pre>
+</li>
+<li><a href="https://leetcode.cn/problems/number-of-subarrays-with-gcd-equal-to-k/"><strong>2447. 最大公因数等于 K 的子数组数目</strong></a><pre><code class="cpp">class Solution {
+public:
+
+    enum MODE { OR, AND, GCD, LCM };
+    enum BOUND { L, R };
+
+    int logtrick(vector&lt;int&gt;&amp; a, int gc, MODE mode, BOUND bound) {
+        int n = a.size();
+        auto opt = [&amp;](int x, int y) {
+            if (mode == OR) return x|y;
+            if (mode == AND) return x&amp;y;
+            if (mode == GCD) return gcd(x, y);
+            if (mode == LCM) return lcm(x, y);
+            return -1;
+        };
+        auto extremum = [&amp;](int x, int y) {
+            if (bound == L) return min(x, y);
+            if (bound == R) return max(x, y);
+            return -1;
+        };
+        int ans = 0;
+        map&lt;int,int&gt; mp;
+        for (int i=0; i&lt;n; i++) {
+            map&lt;int,int&gt; t;
+            t[a[i]] = i;
+            for (auto [x, y]:mp) {
+                int v = opt(a[i], x);
+                if (t.count(v)) t[v] = extremum(t[v], y);
+                else t[v] = y;
+            }
+            mp = t;
+            int pre = -1;
+            for (auto [x,y]: mp){
+                if (x == gc) ans += y-pre;
+                pre = y;
+            }
+            // cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; mp &lt;&lt; endl;
+        }
+        return ans;
+    }
+    int subarrayGCD(vector&lt;int&gt;&amp; nums, int k) {
+        return logtrick(nums, k, GCD, R);
+    }
+};
+</code></pre>
+</li>
+<li><a href="https://leetcode.cn/problems/smallest-subarrays-with-maximum-bitwise-or/"><strong>2411. 按位或最大的最小子数组长度</strong></a><pre><code class="cpp">
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const map&lt;t,u&gt;&amp; mp){
+    os&lt;&lt;&#39;{&#39;; int s = 1;
+    for(auto [x,y]:mp) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os&lt;&lt;x&lt;&lt;&quot;: &quot;&lt;&lt;y; }
+    return os&lt;&lt;&#39;}&#39;;
+}
+enum MODE { OR, AND, GCD, LCM };
+enum BOUND { L, R };
+
+class Solution {
+public:
+    vector&lt;int&gt; logtrick(vector&lt;int&gt;&amp; a, MODE mode, BOUND bound) {
+        int n = a.size();
+        auto opt = [&amp;](int x, int y) {
+            if (mode == OR) return x|y;
+            if (mode == AND) return x&amp;y;
+            if (mode == GCD) return gcd(x, y);
+            if (mode == LCM) return lcm(x, y);
+            return -1;
+        };
+        auto extremum = [&amp;](int x, int y) {
+            if (bound == L) return min(x, y);
+            if (bound == R) return max(x, y);
+            return -1;
+        };
+        vector&lt;int&gt; ans(n);
+        map&lt;int,int&gt; mp;
+        for (int i=0; i&lt;n; i++) {
+            map&lt;int,int&gt; t;
+            t[a[i]] = i;
+            for (auto [x, y]:mp) {
+                int v = opt(a[i], x);
+                if (t.count(v)) t[v] = extremum(t[v], y);
+                else t[v] = y;
+            }
+            mp = t;
+            ans[i] = i-mp.rbegin()-&gt;second+1;
+            // cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; mp &lt;&lt; endl;
+        }
+        return ans;
+    }
+    vector&lt;int&gt; smallestSubarrays(vector&lt;int&gt;&amp; nums) {
+        int n = nums.size();
+        reverse(nums.begin(), nums.end());
+        vector&lt;int&gt; ans = logtrick(nums, OR, R);
+        reverse(ans.begin(), ans.end());
+        return ans;
+
+    }
+};
+</code></pre>
+</li>
+<li><a href="https://leetcode.cn/problems/find-a-value-of-a-mysterious-function-closest-to-target/"><strong>1521. 找到最接近目标值的函数值</strong></a><pre><code class="cpp">enum MODE { OR, AND, GCD, LCM };
+enum BOUND { L, R };
+class Solution {
+public:
+    int logtrick(vector&lt;int&gt;&amp; a, int target, MODE mode, BOUND bound) {
+        int n = a.size();
+        auto opt = [&amp;](int x, int y) {
+            if (mode == OR) return x|y;
+            if (mode == AND) return x&amp;y;
+            if (mode == GCD) return gcd(x, y);
+            if (mode == LCM) return lcm(x, y);
+            return -1;
+        };
+        auto extremum = [&amp;](int x, int y) {
+            if (bound == L) return min(x, y);
+            if (bound == R) return max(x, y);
+            return -1;
+        };
+        int ans = 1e9;
+        map&lt;int,int&gt; mp;
+        for (int i=0; i&lt;n; i++) {
+            map&lt;int,int&gt; t;
+            t[a[i]] = i;
+            for (auto [x, y]:mp) {
+                int v = opt(a[i], x);
+                if (t.count(v)) t[v] = extremum(t[v], y);
+                else t[v] = y;
+            }
+            mp = t;
+            for (auto [x, y]:mp) {
+                ans = min(ans, abs(x-target));
+            }
+            // cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; mp &lt;&lt; endl;
+        }
+        return ans;
+    }
+    int closestToTarget(vector&lt;int&gt;&amp; arr, int target) {
+        return logtrick(arr, target, AND, R);
+    }
+};
+</code></pre>
+</li>
+<li><a href="https://codeforces.com/problemset/problem/475/D">https://codeforces.com/problemset/problem/475/D</a><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define SINGLE_INPUT
+#define ull unsigned long long
+#define ll long long
+#define N 500005
+#define MOD 998244353
+using namespace std;
+
+random_device seed;
+ranlux48 engine(seed());
+int random(int l, int r) {
+    uniform_int_distribution&lt;&gt; distrib(l, r);
+    return distrib(engine);
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const pair&lt;t,u&gt;&amp; p) {
+    return os&lt;&lt;&#39;[&#39;&lt;&lt;p.first&lt;&lt;&quot;, &quot;&lt;&lt;p.second&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const vector&lt;t&gt;&amp; v) {
+    os&lt;&lt;&#39;[&#39;; int s = 1;
+    for(auto e:v) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os &lt;&lt; e; }
+    return os&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const map&lt;t,u&gt;&amp; mp){
+    os&lt;&lt;&#39;{&#39;; int s = 1;
+    for(auto [x,y]:mp) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os&lt;&lt;x&lt;&lt;&quot;: &quot;&lt;&lt;y; }
+    return os&lt;&lt;&#39;}&#39;;
+}
+
+enum MODE { OR, AND, GCD, LCM };
+enum BOUND { L, R };
+
+void logtrick(vector&lt;int&gt;&amp; a, map&lt;int,ll&gt;&amp; gc, MODE mode, BOUND bound) {
+    int n = a.size();
+    auto opt = [&amp;](int x, int y) {
+        if (mode == OR) return x|y;
+        if (mode == AND) return x&amp;y;
+        if (mode == GCD) return gcd(x, y);
+        if (mode == LCM) return lcm(x, y);
+        return -1;
+    };
+    auto extremum = [&amp;](int x, int y) {
+        if (bound == L) return min(x, y);
+        if (bound == R) return max(x, y);
+        return -1;
+    };
+    map&lt;int,int&gt; mp;
+    for (int i=0; i&lt;n; i++) {
+        map&lt;int,int&gt; t;
+        t[a[i]] = i;
+        for (auto [x, y]:mp) {
+            int v = opt(a[i], x);
+            if (t.count(v)) t[v] = extremum(t[v], y);
+            else t[v] = y;
+        }
+        mp = t;
+        int pre = -1;
+        for (auto [x,y]:mp) {
+            if (gc.count(x)) gc[x] += y-pre;
+            pre = y;
+        }
+        // cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; mp &lt;&lt; endl;
+    }
+}
+
+void sol() {
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;int&gt; a(n);
+    for (auto&amp; i:a) cin &gt;&gt; i;
+    map&lt;int,ll&gt; mp;
+    int m;
+    cin &gt;&gt; m;
+    vector&lt;int&gt; b(m);
+    for (auto&amp; i:b) {
+        cin &gt;&gt; i;
+        mp[i];
+    }
+    logtrick(a, mp, GCD, R);
+    for (int i:b) {
+        cout &lt;&lt; mp[i] &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+int main() {
+    cout &lt;&lt; setprecision(15) &lt;&lt; fixed;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+#ifndef SINGLE_INPUT
+    int t;
+    cin &gt;&gt; t;
+    while (t--) {
+        sol();
+    }
+#else
+    sol();
+#endif
+    return 0;
+}
+</code></pre>
+</li>
+</ul>

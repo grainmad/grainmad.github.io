@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">88</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">484</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">99</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">549</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,18 +153,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">484</span>
+          <span class="site-state-item-count">549</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-count">99</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1709C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1709C/" class="post-title-link" itemprop="url">1709C Recover an RBS</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/" class="post-title-link" itemprop="url">平衡树</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,7 +239,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -247,7 +247,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -261,10 +261,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>有个**合法括号序列**，部分字符被 `?` 替换了，问是否存在**唯一的一种**填 `?` 的方案，使得括号序列合法，即判断填 `?` 使得括号序列合法的方案数**是否等于1**。存在唯一方案输出 `YES`，方案不唯一输出 `NO`<br>序列长度 $\sum n\le 2\times 10^5$，测试点数 $T\leq 5\times 10^4$<br>第一行输出测试点总数 $T$。<br>之后每一行一个字符串 $s$ 表示替换掉部分字符后的**合法括号序列**。</p>
+          <h1 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h1><h1 id="splay"><a href="#splay" class="headerlink" title="splay"></a>splay</h1><p>伸展树特点就是每次操作完一个节点，将其旋转至根，保证BST性质的同时保持平衡不至于退化成链。对于一条长链，底端的节点旋转至顶会让这条链被压缩。</p>
+<p>旋转rotate操作，分为左旋与右旋</p>
+<img data-src="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/Untitled.png" class="">
+
+<p>伸展splay操作是旋转的组合，将某子树内节点x变为根节点。</p>
+<ul>
+<li>当x已经成为根的子节点时，做单次旋转</li>
+<li>否则存在x的父节点y，爷节点z<ul>
+<li>x-y-z处于一条“直链”，则先旋转y再旋转x
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1709C/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -295,7 +303,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1714F/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/df29370933f7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -313,7 +321,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1714F/" class="post-title-link" itemprop="url">1714F Build a Tree and That Is It</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/df29370933f7/" class="post-title-link" itemprop="url">最短路</a>
         </h2>
 
         <div class="post-meta-container">
@@ -324,7 +332,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -332,7 +340,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -346,10 +354,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>树是一个没有环的无向连通图，**注意**，在本题中，我们讨论的是无根树<br>现有四个整数 $ n, d_{12}, d_{23} $ 和 $ d_{31} $ . 构建一颗满足以下条件的树:<br>- 包含从 $ 1 $ 到 $ n $ 的 $n$ 个节点,<br>- 从节点 $ 1 $ 到节点 $ 2 $ 的距离（最短路的长度）为 $ d_{12} $ ,<br>- 从节点 $ 2 $ 到节点 $ 3 $ 的距离为 $ d_{23} $ ,<br>- 从节点 $ 3 $ 到节点 $ 1 $ 的距离为 $ d_{31} $ .<br>输出满足条件的任意一棵树；若不存在，请~~证明~~.<br>输入<br>第一行包含一个整数 $ t $ ( $ 1 \le t \le 10^4 $ ) 表示测试组数.<br>接下来 $ t $ 组, 每组一行数据包含 $4$ 个整数 $ n, d_{12}, d_{23} $ and $ d_{31} $ ( $ 3 \le n \le 2\cdot10^5; 1 \le d_{12}, d_{23}, d_{31} \le n-1 $ ).<br>输入数据保证所有 $ n $ 不超过 $ 2\cdot10^5 $ .<br>输出<br>对于每一组数据，若存在这种树，输出`YES`；若不存在，输出`NO`.<br>对于存在的情况，额外输出 $ n-1 $ 行来描述这棵树的边（一对正整数 $ x_i, y_i $ 表示第 $ i $ 条边连接第 $ x_i $ 号节点和第 $ y_i $ 号节点.<br>你可以按照任何顺序输出这些边及其顶点，若有多种解，输出其中一种即可.</p>
+          <h1 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h1><h1 id="Dijkstra-算法"><a href="#Dijkstra-算法" class="headerlink" title="Dijkstra 算法"></a><strong>Dijkstra 算法</strong></h1><p>将结点分成两个集合：已确定最短路长度的点集（记为$S$ 集合）的和未确定最短路长度的点集（记为$T$ 集合）。一开始所有的点都属于$T$集合。初始化$dis(s) = 0$，其他点的均为$INF$。</p>
+<p>然后重复这些操作：</p>
+<ol>
+<li>从 $T$ 集合中，选取一个最短路长度最小的结点，移到 $S$ 集合中。</li>
+<li>对那些刚刚被加入 $S$ 集合的结点的所有出边执行松弛操作。</li>
+</ol>
+<p>直到 $T$ 集合为空，算法结束。</p>
+<p>暴力：</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1714F/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/df29370933f7/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -380,7 +395,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1801D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/efe04f1c6444/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -398,7 +413,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1801D/" class="post-title-link" itemprop="url">1801D The way home</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/efe04f1c6444/" class="post-title-link" itemprop="url">DFS序与欧拉序</a>
         </h2>
 
         <div class="post-meta-container">
@@ -409,7 +424,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -417,7 +432,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -431,10 +446,106 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>一个人在一张有向图的 $1$ 号结点，他要去到 $n$ 结点。每条边 $(a_i,b_i)$ 有边权 $s_i$，表示走过这条边需要花 $s_i$ 元。这个人一开始有 $p$ 元，到了一个点 $u$，他可以进行若干次演出，每次演出收获 $w_u$ 元。问到达 $n$ 的最小演出次数，若无解输出 ```-1```。</p>
+          <h1 id="DFS序与欧拉序"><a href="#DFS序与欧拉序" class="headerlink" title="DFS序与欧拉序"></a>DFS序与欧拉序</h1><h1 id="dfs序（子树转子区间）"><a href="#dfs序（子树转子区间）" class="headerlink" title="dfs序（子树转子区间）"></a>dfs序（子树转子区间）</h1><p>问题特点，对一颗树的子树内所有节点集体操作。可以将树上问题转为区间问题。</p>
+<p>通过dfs，求出每个节点<code>x</code>第一次到达的时间<code>a</code>和最后一次到达的时间<code>b</code>，显然它以及它的后代节点所经过的时间范围在<code>[a,b)</code> ，这样操作一个子树就是相当于操作一个连续区间。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">g</span>(n+<span class="number">1</span>); <span class="comment">// 树g，g[i]代表i的子节点集合。</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">l</span><span class="params">(n+<span class="number">1</span>)</span>, <span class="title">r</span><span class="params">(n+<span class="number">1</span>)</span></span>; <span class="comment">// 节点x所代表的闭区间[ l[x], r[x] ]</span></span><br><span class="line"><span class="type">int</span> clk = <span class="number">0</span>;</span><br><span class="line">function&lt;<span class="type">void</span>(<span class="type">int</span>)&gt; dfs = [&amp;](<span class="type">int</span> u) &#123;</span><br><span class="line">    l[u] = ++clk;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> v:g[u]) &#123;</span><br><span class="line">&lt;!--more--&gt;        <span class="built_in">dfs</span>(v);</span><br><span class="line">    &#125;</span><br><span class="line">    r[u] = clk;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">dfs</span>(<span class="number">1</span>);</span><br><span class="line"><span class="comment">/* ******************************************************* */</span></span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">g</span>(n+<span class="number">1</span>); <span class="comment">// 树g，g[i]代表i的子节点集合。</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">l</span><span class="params">(n+<span class="number">1</span>)</span>, <span class="title">r</span><span class="params">(n+<span class="number">1</span>)</span></span>; <span class="comment">// 节点x所代表的左闭右开区间[ l[x], r[x] )</span></span><br><span class="line"><span class="type">int</span> clk = <span class="number">1</span>;</span><br><span class="line">function&lt;<span class="type">void</span>(<span class="type">int</span>)&gt; dfs = [&amp;](<span class="type">int</span> u) &#123;</span><br><span class="line">    l[u] = clk++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> v:g[u]) &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(v);</span><br><span class="line">    &#125;</span><br><span class="line">    r[u] = clk;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">dfs</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/coin-bonus/">**LCP 05. 发 LeetCoin</a> 模板题**</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 1000000007</span></span><br><span class="line"><span class="comment">// #define MOD 998244353</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mint Modint<span class="string">&lt;MOD&gt;</span></span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="type">const</span> <span class="type">int</span> _MOD&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Modint</span> &#123;</span><br><span class="line">    <span class="type">int</span> v;</span><br><span class="line">    <span class="built_in">Modint</span>() &#123; v = <span class="number">0</span>; &#125;</span><br><span class="line">    <span class="built_in">Modint</span>(<span class="type">long</span> <span class="type">long</span> o) &#123; v = o % _MOD; &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">val</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> v; &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">pow</span><span class="params">(<span class="type">long</span> <span class="type">long</span> o)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> ret = <span class="number">1</span>, tmp = v;</span><br><span class="line">        <span class="keyword">while</span> (o) &#123;</span><br><span class="line">            <span class="keyword">if</span> (o &amp; <span class="number">1</span>)</span><br><span class="line">                ret = ((<span class="type">long</span> <span class="type">long</span>)ret * tmp) % _MOD;</span><br><span class="line">            o &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">            tmp = ((<span class="type">long</span> <span class="type">long</span>)tmp * tmp) % _MOD;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>=(<span class="type">long</span> <span class="type">long</span> o) &#123; v = o % _MOD; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">long</span> <span class="type">long</span> o) <span class="type">const</span> &#123; <span class="keyword">return</span> v == o; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>==(Modint o) <span class="type">const</span> &#123; <span class="keyword">return</span> v == o.v; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>!=(<span class="type">long</span> <span class="type">long</span> o) <span class="type">const</span> &#123; <span class="keyword">return</span> v != o; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>!=(Modint o) <span class="type">const</span> &#123; <span class="keyword">return</span> v != o.v; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&lt;(<span class="type">long</span> <span class="type">long</span> o) <span class="type">const</span> &#123; <span class="keyword">return</span> v &lt; o; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&lt;(Modint o) <span class="type">const</span> &#123; <span class="keyword">return</span> v &lt; o.v; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&gt;(<span class="type">long</span> <span class="type">long</span> o) <span class="type">const</span> &#123; <span class="keyword">return</span> v &gt; o; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&gt;(Modint o) <span class="type">const</span> &#123; <span class="keyword">return</span> v &gt; o.v; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&lt;=(<span class="type">long</span> <span class="type">long</span> o) <span class="type">const</span> &#123; <span class="keyword">return</span> v &lt;= o; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&lt;=(Modint o) <span class="type">const</span> &#123; <span class="keyword">return</span> v &lt;= o.v; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&gt;=(<span class="type">long</span> <span class="type">long</span> o) <span class="type">const</span> &#123; <span class="keyword">return</span> v &gt;= o; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&gt;=(Modint o) <span class="type">const</span> &#123; <span class="keyword">return</span> v &gt;= o.v; &#125;</span><br><span class="line"></span><br><span class="line">    Modint <span class="keyword">operator</span>+(<span class="type">long</span> <span class="type">long</span> o) <span class="type">const</span> &#123; <span class="keyword">return</span> *<span class="keyword">this</span> + <span class="built_in">Modint</span>(o); &#125;</span><br><span class="line">    Modint <span class="keyword">operator</span>+(Modint o) <span class="type">const</span> &#123; <span class="keyword">return</span> ((<span class="type">long</span> <span class="type">long</span>)v + o.v) % _MOD; &#125;</span><br><span class="line">    Modint <span class="keyword">operator</span>*(<span class="type">long</span> <span class="type">long</span> o) <span class="type">const</span> &#123; <span class="keyword">return</span> *<span class="keyword">this</span> * <span class="built_in">Modint</span>(o); &#125;</span><br><span class="line">    Modint <span class="keyword">operator</span>*(Modint o) <span class="type">const</span> &#123; <span class="keyword">return</span> (<span class="type">long</span> <span class="type">long</span>)v * o.v % _MOD; &#125;</span><br><span class="line"></span><br><span class="line">    Modint <span class="keyword">operator</span>-(<span class="type">long</span> <span class="type">long</span> o) <span class="type">const</span> &#123; <span class="keyword">return</span> *<span class="keyword">this</span> - <span class="built_in">Modint</span>(o); &#125;</span><br><span class="line">    Modint <span class="keyword">operator</span>-(Modint o) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> ((<span class="type">long</span> <span class="type">long</span>)v - o.v + _MOD) % _MOD;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Modint <span class="keyword">operator</span>/(<span class="type">long</span> <span class="type">long</span> o) <span class="type">const</span> &#123; <span class="keyword">return</span> *<span class="keyword">this</span> / <span class="built_in">Modint</span>(o); &#125;</span><br><span class="line">    Modint <span class="keyword">operator</span>/(Modint o) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> ((<span class="type">long</span> <span class="type">long</span>)v * o.<span class="built_in">pow</span>(_MOD - <span class="number">2</span>)) % _MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>+=(<span class="type">long</span> <span class="type">long</span> o) &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> + o; &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>+=(Modint o) &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> + o; &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>*=(<span class="type">long</span> <span class="type">long</span> o) &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> * o; &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>*=(Modint o) &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> * o; &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>-=(<span class="type">long</span> <span class="type">long</span> o) &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> - o; &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>-=(Modint o) &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> - o; &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>/=(<span class="type">long</span> <span class="type">long</span> o) &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> / o; &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>/=(Modint o) &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> / o; &#125;</span><br><span class="line"></span><br><span class="line">    Modint <span class="keyword">operator</span>^(<span class="type">long</span> <span class="type">long</span> o) &#123; <span class="keyword">return</span> <span class="built_in">Modint</span>(<span class="built_in">pow</span>(o)); &#125;</span><br><span class="line">    Modint <span class="keyword">operator</span>^(Modint o) &#123; <span class="keyword">return</span> <span class="built_in">Modint</span>(<span class="built_in">pow</span>(o.v)); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line">    <span class="keyword">friend</span> <span class="type">bool</span> <span class="keyword">operator</span>==(T o, Modint u) &#123;</span><br><span class="line">        <span class="keyword">return</span> u == o;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line">    <span class="keyword">friend</span> Modint <span class="keyword">operator</span>+(T o, Modint u) &#123;</span><br><span class="line">        <span class="keyword">return</span> u + o;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line">    <span class="keyword">friend</span> Modint <span class="keyword">operator</span>*(T o, Modint u) &#123;</span><br><span class="line">        <span class="keyword">return</span> u * o;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line">    <span class="keyword">friend</span> Modint <span class="keyword">operator</span>-(T o, Modint u) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Modint</span>(o) - u;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line">    <span class="keyword">friend</span> Modint <span class="keyword">operator</span>/(T o, Modint u) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Modint</span>(o) / u;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>++() &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> + <span class="number">1</span>; &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>--() &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> - <span class="number">1</span>; &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>++(<span class="type">int</span> k) &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> + <span class="number">1</span>; &#125;</span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>--(<span class="type">int</span> k) &#123; *<span class="keyword">this</span> = *<span class="keyword">this</span> - <span class="number">1</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="type">const</span> <span class="type">int</span> T&gt;</span><br><span class="line">    <span class="keyword">friend</span> std::istream&amp; <span class="keyword">operator</span>&gt;&gt;(std::istream&amp; in, Modint&lt;T&gt;&amp; modint) &#123;</span><br><span class="line">        ll x;</span><br><span class="line">        in &gt;&gt; x;</span><br><span class="line">        modint = <span class="built_in">Modint</span>&lt;T&gt;(x);</span><br><span class="line">        <span class="keyword">return</span> in;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="type">const</span> <span class="type">int</span> T&gt;</span><br><span class="line">    <span class="keyword">friend</span> std::ostream&amp; <span class="keyword">operator</span>&lt;&lt;(std::ostream&amp; os, <span class="type">const</span> Modint&lt;T&gt;&amp; modint) &#123;</span><br><span class="line">        os &lt;&lt; modint.v;</span><br><span class="line">        <span class="keyword">return</span> os;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> N 50005</span></span><br><span class="line">    mint a[N];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Seg</span>&#123;</span><br><span class="line">        <span class="type">int</span> l, r;</span><br><span class="line">        mint val, tag;</span><br><span class="line">    &#125; seg[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push_up</span><span class="params">(Seg&amp; u, <span class="type">const</span> Seg&amp; l, <span class="type">const</span> Seg&amp; r)</span> </span>&#123;</span><br><span class="line">        u.val = l.val + r.val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push_down</span><span class="params">(Seg&amp; u, Seg&amp; l, Seg&amp; r)</span> </span>&#123;</span><br><span class="line">        l.val += u.tag*(l.r-l.l+<span class="number">1</span>);</span><br><span class="line">        l.tag += u.tag;</span><br><span class="line">        r.val += u.tag*(r.r-r.l+<span class="number">1</span>);</span><br><span class="line">        r.tag += u.tag;</span><br><span class="line">        u.tag = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">seg_build</span><span class="params">(<span class="type">int</span> id, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">        seg[id].l = l; seg[id].r = r;</span><br><span class="line">        <span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">            seg[id].val = a[l];</span><br><span class="line">            <span class="comment">// cin &gt;&gt; seg[id].val;</span></span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> m = l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">seg_build</span>(id&lt;&lt;<span class="number">1</span>, l, m);</span><br><span class="line">        <span class="built_in">seg_build</span>(id&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, m+<span class="number">1</span>, r);</span><br><span class="line">        <span class="built_in">push_up</span>(seg[id], seg[id&lt;&lt;<span class="number">1</span>], seg[id&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">seg_update</span><span class="params">(<span class="type">int</span> id, <span class="type">int</span> l, <span class="type">int</span> r, mint val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l &lt;= seg[id].l &amp;&amp; seg[id].r &lt;= r) &#123;</span><br><span class="line">            seg[id].val += val*(seg[id].r-seg[id].l+<span class="number">1</span>);</span><br><span class="line">            seg[id].tag += val;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">push_down</span>(seg[id], seg[id&lt;&lt;<span class="number">1</span>], seg[id&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">        <span class="type">int</span> m = seg[id].l + seg[id].r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (l &lt;= m) <span class="built_in">seg_update</span>(id&lt;&lt;<span class="number">1</span>, l, r, val);</span><br><span class="line">        <span class="keyword">if</span> (m &lt; r) <span class="built_in">seg_update</span>(id&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, l, r, val);</span><br><span class="line">        <span class="built_in">push_up</span>(seg[id], seg[id&lt;&lt;<span class="number">1</span>], seg[id&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">mint <span class="title">seg_query</span><span class="params">(<span class="type">int</span> id, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l &lt;= seg[id].l &amp;&amp; seg[id].r &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">return</span> seg[id].val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">push_down</span>(seg[id], seg[id&lt;&lt;<span class="number">1</span>], seg[id&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">        mint rt = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> m = seg[id].l + seg[id].r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (l &lt;= m) rt += <span class="built_in">seg_query</span>(id&lt;&lt;<span class="number">1</span>, l, r);</span><br><span class="line">        <span class="keyword">if</span> (m &lt; r) rt += <span class="built_in">seg_query</span>(id&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, l, r);</span><br><span class="line">        <span class="keyword">return</span> rt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">bonus</span><span class="params">(<span class="type">int</span> n, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; leadership, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; operations)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">g</span>(n+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i:leadership) &#123;</span><br><span class="line">            g[i[<span class="number">0</span>]].<span class="built_in">push_back</span>(i[<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">l</span><span class="params">(n+<span class="number">1</span>)</span>, <span class="title">r</span><span class="params">(n+<span class="number">1</span>)</span></span>;</span><br><span class="line">        <span class="type">int</span> clk = <span class="number">0</span>;</span><br><span class="line">        function&lt;<span class="type">void</span>(<span class="type">int</span>)&gt; dfs = [&amp;](<span class="type">int</span> u) &#123;</span><br><span class="line">            l[u] = ++clk;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> v:g[u]) &#123;</span><br><span class="line">                <span class="built_in">dfs</span>(v);</span><br><span class="line">            &#125;</span><br><span class="line">            r[u] = clk;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="built_in">dfs</span>(<span class="number">1</span>);</span><br><span class="line">        <span class="comment">// for (int i=1; i&lt;=n; i++) &#123;</span></span><br><span class="line">        <span class="comment">//     cout &lt;&lt; l[i] &lt;&lt; &quot; &quot; &lt;&lt; r[i] &lt;&lt; endl;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="built_in">seg_build</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i:operations) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i[<span class="number">0</span>] == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="built_in">seg_update</span>(<span class="number">1</span>, l[i[<span class="number">1</span>]], l[i[<span class="number">1</span>]], i[<span class="number">2</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (i[<span class="number">0</span>] == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="built_in">seg_update</span>(<span class="number">1</span>, l[i[<span class="number">1</span>]], r[i[<span class="number">1</span>]], i[<span class="number">2</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (i[<span class="number">0</span>] == <span class="number">3</span>) &#123;</span><br><span class="line">                ans.<span class="built_in">push_back</span>(<span class="built_in">seg_query</span>(<span class="number">1</span>, l[i[<span class="number">1</span>]], r[i[<span class="number">1</span>]]).v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="欧拉序"><a href="#欧拉序" class="headerlink" title="欧拉序"></a>欧拉序</h1><p>通过求出树的欧拉序，可以将树上最近公共祖先问题转化为区间问题。</p>
+<p>求lca的rmq方法，先求树的欧拉序，并预处理出每个节点的深度。然后记录每个点<code>x</code>在欧拉序中的第一个位置<code>p[x]</code>。求两个点<code>x</code>和<code>y</code>的lca实际上就是欧拉序中的子区间<code>[p[x], p[y]]</code>中深度最小的点。</p>
+<p>感觉单纯的求lca可以用，如果还有路径上的值需要维护，还得倍增。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; eulerTour, <span class="built_in">fc</span>(n+<span class="number">1</span>), <span class="built_in">dep</span>(n+<span class="number">1</span>); <span class="comment">// 节点编号从1开始</span></span><br><span class="line">function&lt;<span class="type">void</span>(<span class="type">int</span>,<span class="type">int</span>,<span class="type">int</span>)&gt; dfs = [&amp;](<span class="type">int</span> u, <span class="type">int</span> fno) &#123;</span><br><span class="line">    dep[u] = dep[fa[u][<span class="number">0</span>]] + <span class="number">1</span>; <span class="comment">// 每个节点的深度</span></span><br><span class="line">    <span class="comment">// 每个节点欧拉序中第一次出现的位置</span></span><br><span class="line">    fc[u] = eulerTour.<span class="built_in">size</span>(); <span class="comment">// 每个节点第一次在欧拉序中出现的位置</span></span><br><span class="line">    eulerTour.<span class="built_in">push_back</span>(u); <span class="comment">// 欧拉序</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> [v, e] : g[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == fno)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(v, e, u);</span><br><span class="line">        eulerTour.<span class="built_in">push_back</span>(u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">dfs</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 用st表维护欧拉序区间最小值，按照深度比较</span></span><br><span class="line"><span class="type">int</span> st[eulerTour.<span class="built_in">size</span>()][<span class="number">30</span>]; <span class="comment">//st[i][j] 代表区间[i, i+2^j)最小值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> ST = [&amp;](<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; a) &#123;</span><br><span class="line">    <span class="type">int</span> sz = a.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;sz; i++) st[i][<span class="number">0</span>] = a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>; (<span class="number">1</span>&lt;&lt;j)&lt;=sz; j++) &#123;<span class="comment">//区间大小 </span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i+(<span class="number">1</span>&lt;&lt;j)<span class="number">-1</span>&lt;sz; i++) &#123;<span class="comment">//区间下限 </span></span><br><span class="line">            <span class="type">int</span> x = st[i][j<span class="number">-1</span>], y = st[i+(<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))][j<span class="number">-1</span>];</span><br><span class="line">            st[i][j] = dep[x] &lt; dep[y] ? x : y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">ST</span>(eulerTour);</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> ask = [&amp;](<span class="type">int</span> l, <span class="type">int</span> r) &#123;</span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ((<span class="number">1</span>&lt;&lt;(k+<span class="number">1</span>))&lt;=r-l+<span class="number">1</span>) k++;</span><br><span class="line">    <span class="type">int</span> x = st[l][k], y = st[r-(<span class="number">1</span>&lt;&lt;k)+<span class="number">1</span>][k];</span><br><span class="line">    <span class="keyword">return</span>  dep[x] &lt; dep[y] ? x : y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 获取x和y的lca </span></span><br><span class="line"><span class="built_in">ask</span>(<span class="built_in">min</span>(fc[x], fc[y]), <span class="built_in">max</span>(fc[x], fc[y]));</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fc866f372b83/236bf1d66f72/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/236bf1d66f72/" class="post-title-link" itemprop="url">RSA</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h1><h1 id="RSA加密系统"><a href="#RSA加密系统" class="headerlink" title="RSA加密系统"></a>RSA加密系统</h1><p>RSA公钥加密系统中，公钥和密钥的产生：</p>
+<ol>
+<li>随机选取两个大质数p和q，使得p ≠ q。</li>
+<li>计算n=pq。</li>
+<li>选取一个与$\phi (n)$互质的小奇数e，其中$\phi (n)=(p-1)(q-1)$</li>
+<li>对模$\phi (n)$，计算出e的乘法逆元d的值。即$ed\equiv 1\pmod {\phi(n)}$</li>
+<li>将$p=(e,n)$公开作为RSA公钥</li>
+<li>将$s=(d,n)$公开作为RSA密钥</li>
+</ol>
+<p>假设密文为 c ，明文为 m</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1801D/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/236bf1d66f72/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -465,7 +576,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1883G2/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fc866f372b83/55bae4adebc6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -483,7 +594,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1883G2/" class="post-title-link" itemprop="url">1883G2 Dances (Hard Version)</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/55bae4adebc6/" class="post-title-link" itemprop="url">排序</a>
         </h2>
 
         <div class="post-meta-container">
@@ -494,7 +605,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -502,7 +613,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -516,10 +627,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>对于每组数据，给定 $n$ ， $m$ 与数组 $a$ 的第 $2$ 到 $n$ 项和数组 $b$ 的第 $1$ 到 $n$ 项。你需要根据 $a$ 数组求出 $m$ 个 $c$ 数组的值，具体地：<br>- $c[i]_1 = i$<br>- $c[i]_j = a_j (2 \le j \le n)$<br>对于每一个独立的 $c[i]$ 数组与互不影响的 $b$ ，你可以将 $b$ 、 $c[i]$ 数组中的数字随意排序，再随意删除 $c[i]$ 与 $b$ 中的 $k$ 个数，对于每一个 $c[i]$ 数组，求最小的 $k[i]$ 使得 $ \forall 1\le j \le n, c[i]_j < b_j$，输出所有 $c[i]$ 的删除数 $k[i]$ 的和。</p>
+          <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>对于子数组<code>nums[left…right],</code>我们将<code>nums[left]</code>排到正确的位置上</p>
+<p>每次排好一个元素,然后以这个元素作为分割,递归解决子问题</p>
+<h3 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h3><ul>
+<li>对于右指针向左寻找第一个小于等于<code>nums[left]</code>的元素</li>
+<li>对于左指针向右寻找第一个大于<code>nums[left]</code>的元素</li>
+<li>将两个指针所指向的元素进行交换</li>
+</ul>
+<p>注意到<strong>左指针自始至终满足小于等于<code>nums[left]</code></strong> ,也就是说当指针相遇<code>l=r</code>时,都满足<code>nums[left…l] ≤ nums[left]</code>,我们可以让<code>nums[left]</code>和<code>nums[l]</code>交换,也就排好<code>nums[left]</code>这个元素,然后递归处理子数组nums[left…l-1]和<code>nums[l+1,right]</code></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1883G2/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/55bae4adebc6/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -550,7 +668,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/%E6%9C%80%E5%B0%8F%E5%8C%96%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fc866f372b83/9f48fa028777/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -568,7 +686,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/%E6%9C%80%E5%B0%8F%E5%8C%96%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB/" class="post-title-link" itemprop="url">最小化曼哈顿距离</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/9f48fa028777/" class="post-title-link" itemprop="url">A 搜索算法</a>
         </h2>
 
         <div class="post-meta-container">
@@ -579,7 +697,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -587,7 +705,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -601,10 +719,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>leetcode<br>数学<br>几何</p>
+          <h1 id="A-搜索算法"><a href="#A-搜索算法" class="headerlink" title="A* 搜索算法"></a>A* 搜索算法</h1><h1 id="A"><a href="#A" class="headerlink" title="A*"></a>A*</h1><p>Dijkstra算法保证能找到一条从初始点到目标点的最短路径，只要所有的边都有一个非负的代价值。</p>
+
+
+<p>最佳优先搜索不能保证找到一条最短路径。然而，它比Dijkstra算法快的多，因为它用了一个启发式函数（heuristic function）快速地导向目标结点。</p>
+
+
+<p>A* 把Dijkstra算法（靠近初始点的结点）和BFS算法（靠近目标点的结点）的信息块结合起来，形成一个评估函数 f(n) = g(n)+h(n)</p>
+<h2 id="A-的算法流程。"><a href="#A-的算法流程。" class="headerlink" title="A* 的算法流程。"></a>A* 的算法流程。</h2>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E6%9C%80%E5%B0%8F%E5%8C%96%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/9f48fa028777/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -635,7 +760,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/%E6%B1%82%E5%87%BA%E6%89%80%E6%9C%89%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E8%83%BD%E9%87%8F%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fc866f372b83/f88597fb9ee9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -653,7 +778,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/%E6%B1%82%E5%87%BA%E6%89%80%E6%9C%89%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E8%83%BD%E9%87%8F%E5%92%8C/" class="post-title-link" itemprop="url">求出所有子序列的能量和</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/f88597fb9ee9/" class="post-title-link" itemprop="url">快速平方根倒数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -664,7 +789,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -672,7 +797,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -686,10 +811,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>leetcode<br>dp</p>
+          <h1 id="快速平方根倒数"><a href="#快速平方根倒数" class="headerlink" title="快速平方根倒数"></a>快速平方根倒数</h1><p>如何求一个正数$n$的平方根倒数$\frac{1}{\sqrt n}$</p>
+<blockquote>
+<p>牛顿迭代法它是一种在实数域和复数域上近似求解方程的方法。方法使用函数$f(x)$的泰勒级数前面几项来寻找方程$f(x)=0$的根。</p>
+<p>首先，选择一个接近函数$f(x)$零点的$x_{0}$，计算相应的$f(x_{0})$和切线斜率$f’(x_{0})$（这里$f’$表示函数$f$的导数）。然后我们计算穿过点$(x_{0},f(x_{0}))$并且斜率为$f’(x_{0})$的直线和$x$轴的交点的$x$坐标，也就是方程$0=(x-x_{0})\cdot f’(x_{0})+f(x_{0})$的解。</p>
+<p>我们将新求得的点的$x$坐标命名为$x_{1}$，通常$x_{1}$会比$x_{0}$更接近方程$f(x)=0$的解。因此我们现在可以利用$x_{1}$开始下一轮迭代。迭代公式可化简为$x_{n+1}=x_{n}-{\frac {f(x_{n})}{f’(x_{n})}}$</p>
+</blockquote>
+<p>若$\frac{1}{\sqrt n}$为函数$f(x)$的根，$x=\frac{1}{\sqrt n} \Rightarrow n = \frac{1}{x^2} \Rightarrow f(x) = \frac{1}{x^2}-N$</p>
+<p>通过已知的$f(x)$得到具体迭代公式为$x_{t+1} = x_t - \frac{x^{-2}-n}{-2x^{-3}} = \frac{3}{2}x_{t}-\frac{n}{2}x_t^3$</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E6%B1%82%E5%87%BA%E6%89%80%E6%9C%89%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E8%83%BD%E9%87%8F%E5%92%8C/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/f88597fb9ee9/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -720,7 +852,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1396B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/31a83ab3ff47/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -738,7 +870,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1396B/" class="post-title-link" itemprop="url">1396B Stoned Game</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/31a83ab3ff47/" class="post-title-link" itemprop="url">虚树</a>
         </h2>
 
         <div class="post-meta-container">
@@ -749,7 +881,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-26 19:00:02" itemprop="dateCreated datePublished" datetime="2024-03-26T19:00:02+00:00">2024-03-26</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -757,7 +889,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -771,15 +903,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>有n堆石子，每堆分别有$a_i$个石子。<br>两者轮流取其中一个石子。但不能取上次对手取过的那一堆。特殊的，第一次取可以取任何一堆的石子。<br>当前先手取完要取的石子之后使对手无路可走时，先手获胜。<br>t组数据，每组数据给出n和a，输出谁必会胜利。若先手胜利输出“T”，若后者胜利输出“HL”。无引号。<br>数据范围请参考原题。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1396B/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="虚树"><a href="#虚树" class="headerlink" title="虚树"></a>虚树</h1><p>给出一个$n$个点的树，$q$次询问，第i次选择$k_i$个点，问关于这$k_i$个的点的问题。$\sum k_i &lt; n$</p>
+<p>暴力$O(nq)$，每次建立$k_i$个点的虚树，建立与处理都是$O(k_i)$，总复杂度$O(\sum k_i)$</p>
+<p>构成虚树的点是关键点，关键点=查询的k个点+查询点的两两之间的公共祖先+根节点</p>
+<p>如果两两之间的公共祖先都不同那么是不是就有$k^2$个祖先节点？好像最坏的情况是满二叉树的k个叶子，这样关键点也不过2k。</p>
+<img data-src="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/31a83ab3ff47/Untitled.png" class="">
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">200005</span>, M = N * <span class="number">2</span>;</span><br><span class="line"><span class="type">int</span> h[N], to[M], ne[M], tot;</span><br><span class="line">&lt;!--more--&gt;<span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;  <span class="comment">// 连边</span></span><br><span class="line">    to[++tot] = y;</span><br><span class="line">    ne[tot] = h[x];</span><br><span class="line">    h[x] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历x所连的点</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">radiate</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; rt;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = h[x]; i; i = ne[i])</span><br><span class="line">        rt.<span class="built_in">push_back</span>(to[i]);</span><br><span class="line">    <span class="keyword">return</span> rt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">clearTree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// for (int i = 1; i &lt;= n; i++) &#123;</span></span><br><span class="line">    <span class="comment">//     h[i] = 0;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    function&lt;<span class="type">void</span>(<span class="type">int</span>, <span class="type">int</span>)&gt; cls = [&amp;](<span class="type">int</span> x, <span class="type">int</span> fa) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = h[x]; i; i = ne[i]) &#123;</span><br><span class="line">            <span class="type">int</span> y = to[i];</span><br><span class="line">            <span class="keyword">if</span> (y == fa)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="built_in">cls</span>(y, x);</span><br><span class="line">        &#125;</span><br><span class="line">        h[x] = <span class="number">0</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">cls</span>(<span class="number">1</span>, <span class="number">0</span>);  <span class="comment">// 含1连通块清空</span></span><br><span class="line">    tot = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> dep[N], fa[N][<span class="number">20</span>];</span><br><span class="line"><span class="type">int</span> dfn[N], cnt;  <span class="comment">// dfs序</span></span><br><span class="line"><span class="type">int</span> s[N], top;    <span class="comment">// 栈</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始的树是双向边, dfs(1, 0),  dep, fa, dfn</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> f)</span> </span>&#123;  <span class="comment">// 树上倍增</span></span><br><span class="line">    dfn[x] = ++cnt;</span><br><span class="line">    dep[x] = dep[f] + <span class="number">1</span>;</span><br><span class="line">    fa[x][<span class="number">0</span>] = f;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">19</span>; i++)</span><br><span class="line">        fa[x][i] = fa[fa[x][i - <span class="number">1</span>]][i - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = h[x]; i; i = ne[i]) &#123;</span><br><span class="line">        <span class="type">int</span> y = to[i];</span><br><span class="line">        <span class="keyword">if</span> (y == f)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(y, x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lca</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;  <span class="comment">// 求lca</span></span><br><span class="line">    <span class="keyword">if</span> (dep[x] &lt; dep[y])</span><br><span class="line">        <span class="built_in">swap</span>(x, y);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">19</span>; ~i; i--)</span><br><span class="line">        <span class="keyword">if</span> (dep[fa[x][i]] &gt;= dep[y])</span><br><span class="line">            x = fa[x][i];</span><br><span class="line">    <span class="keyword">if</span> (x == y)</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">19</span>; ~i; i--)</span><br><span class="line">        <span class="keyword">if</span> (fa[x][i] != fa[y][i])</span><br><span class="line">            x = fa[x][i], y = fa[y][i];</span><br><span class="line">    <span class="keyword">return</span> fa[x][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cmp</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> dfn[a] &lt; dfn[b];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构建的虚树是单向边</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; a)</span> </span>&#123;  <span class="comment">// 建虚树</span></span><br><span class="line">    <span class="type">int</span> k = a.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">sort</span>(a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>(), cmp);  <span class="comment">// 按dfs序排序</span></span><br><span class="line">    tot = <span class="number">0</span>;         <span class="comment">// 清空前一颗树，注意各树节点x h[x]=0</span></span><br><span class="line">    s[top = <span class="number">1</span>] = <span class="number">1</span>;  <span class="comment">// 根节点入栈</span></span><br><span class="line">    <span class="keyword">if</span> (k &amp;&amp; a[<span class="number">0</span>] != <span class="number">1</span>)</span><br><span class="line">        s[++top] = a[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; k; i++) &#123;  <span class="comment">// 枚举查询点</span></span><br><span class="line">        <span class="type">int</span> l = <span class="built_in">lca</span>(s[top], a[i]);</span><br><span class="line">        <span class="comment">// 对当前链连边,top出栈</span></span><br><span class="line">        <span class="keyword">while</span> (top &gt; <span class="number">1</span> &amp;&amp; dep[s[top - <span class="number">1</span>]] &gt;= dep[l])</span><br><span class="line">            <span class="built_in">add</span>(s[top - <span class="number">1</span>], s[top]), top--;</span><br><span class="line">        <span class="comment">// 对lca和top连边,top出栈,lca入栈</span></span><br><span class="line">        <span class="keyword">if</span> (l != s[top])</span><br><span class="line">            <span class="built_in">add</span>(l, s[top]), s[top] = l;</span><br><span class="line">        <span class="comment">// 查询点入栈</span></span><br><span class="line">        s[++top] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (top)  <span class="comment">// 对最后一条链连边,top出栈</span></span><br><span class="line">        <span class="built_in">add</span>(s[top - <span class="number">1</span>], s[top]), top--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printVtree</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> fa)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; x &lt;&lt; <span class="string">&quot;:&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = h[x]; i; i = ne[i]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (to[i] == fa)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        cout &lt;&lt; to[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = h[x]; i; i = ne[i]) &#123;</span><br><span class="line">        <span class="type">int</span> y = to[i];</span><br><span class="line">        <span class="keyword">if</span> (y == fa)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">printVtree</span>(y, x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1923/problem/E">https://codeforces.com/contest/1923/problem/E</a></p>
+<p>给你一棵树，它由 $n$ 个顶点组成，编号从 1 到 n 。每个顶点都有某种颜色，用 1 到 n 之间的整数表示。</p>
+<p>如果符合以下条件，那么这棵树的一条简单路径就叫做美丽路径：</p>
+<ul>
+<li>至少由 2 个顶点组成；</li>
+<li>路径的第一个顶点和最后一个顶点的颜色相同；</li>
+<li>路径上没有其他顶点的颜色与第一个顶点相同。</li>
+</ul>
+<p>计算这棵树的美丽简单路径的数量。请注意，路径是不定向的(即从 x 到 y 的路径与从 y 到 x 的路径相同)。</p>
+
       
     </div>
 
@@ -805,7 +946,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1725M/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/6537c15aaaae/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -823,7 +964,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1725M/" class="post-title-link" itemprop="url">1725M Moving Both Hands</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/6537c15aaaae/" class="post-title-link" itemprop="url">树的直径与中心</a>
         </h2>
 
         <div class="post-meta-container">
@@ -834,7 +975,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-26 19:00:02" itemprop="dateCreated datePublished" datetime="2024-03-26T19:00:02+00:00">2024-03-26</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -842,7 +983,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -856,15 +997,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>**题目描述**<br>Alice 在进行一个有向图上做游戏。有向图上共有 $n$ 个节点，$m$ 条有向边。Alice的手上有<br>一个红色球和一个蓝色球。<br>游戏开始时，Alice将红色球放在 $1$ 号节点上，将蓝色球放在 $i$ 号节点上。<br>长度为 $w$<br>的有向边表示可以通过一次操作将在 $v$ 的点转移<br>到 $u$<br>花费 $w$时间。<br>每局游戏中，Alice 要通过尽可能少的时间将两个球共同转移到任意同一个节点上。Alice 同一时间只能操作一个球。现在 Alice 想知道对于每个点 $2\le i \le n$<br>，每局游戏完成的最小时间是<br>多少。<br>**输入格式**<br>输入第一行是两个整数 $n$ ，$m$。<br>接下来 $m$行，每行三个整数 $u$，$v$，$w$，表示图上有一条从 $u$ 指向 $v$ 长为 $w$ 的有向边。<br>**输出格式**<br>输出 $n$ 行，每行一个整数，第 $i$ 行的整数表示蓝色球开始时在 $i$ 号点上时游戏的<br>最小完成时间。如果不能完成游戏，输出 -1 。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1725M/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="树的直径与中心"><a href="#树的直径与中心" class="headerlink" title="树的直径与中心"></a>树的直径与中心</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line">cin &gt;&gt; n;</span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">g</span>(n+<span class="number">1</span>);</span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">d</span>(<span class="number">3</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n+<span class="number">1</span>));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;n; i++) &#123;</span><br><span class="line">    <span class="type">int</span> u, v;</span><br><span class="line">    cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">    g[u].<span class="built_in">push_back</span>(v);</span><br><span class="line">    g[v].<span class="built_in">push_back</span>(u);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> c = <span class="number">0</span>;</span><br><span class="line">function&lt;<span class="type">void</span>(<span class="type">int</span>,<span class="type">int</span>,<span class="type">int</span>)&gt; dfs = [&amp;](<span class="type">int</span> u, <span class="type">int</span> fa, <span class="type">int</span> o) &#123;</span><br><span class="line">&lt;!--more--&gt;    <span class="keyword">for</span> (<span class="type">int</span> v : g[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == fa) <span class="keyword">continue</span>;</span><br><span class="line">        d[o][v] = d[o][u] + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (d[o][v] &gt; d[o][c]) c = v;</span><br><span class="line">        <span class="built_in">dfs</span>(v, u, o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">dfs</span>(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"><span class="built_in">dfs</span>(c, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line"><span class="built_in">dfs</span>(c, <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// cout &lt;&lt; d &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">// d[2][c] 直径</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; h; <span class="comment">// 某条直径上的中心点,直径奇数一个,偶数两个</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (d[<span class="number">1</span>][i]+d[<span class="number">2</span>][i] == d[<span class="number">2</span>][c] &amp;&amp; <span class="built_in">abs</span>(d[<span class="number">1</span>][i]-d[<span class="number">2</span>][i]) == d[<span class="number">2</span>][c]%<span class="number">2</span>) h.<span class="built_in">push_back</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -890,7 +1023,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1726D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/ab6be601d180/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -908,7 +1041,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/1726D/" class="post-title-link" itemprop="url">1726D Edge Split</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/ab6be601d180/" class="post-title-link" itemprop="url">树链剖分</a>
         </h2>
 
         <div class="post-meta-container">
@@ -919,7 +1052,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-26 19:00:02" itemprop="dateCreated datePublished" datetime="2024-03-26T19:00:02+00:00">2024-03-26</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -927,7 +1060,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -941,95 +1074,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>给定一个含有 $n$ 个点 $m$ 条边的无向简单图。<br>对这张简单图的所有边进行红蓝染色。其中**仅由红边**组成的无向图连通块数为 $c_1$，**仅由蓝边**组成的无向图连通块数为 $c_2$。<br>请构造一种染色方案使得 $c_1 + c_2$ 最小。如果有多种构造方案，任意输出一种即可。<br>输入格式<br>第一行包含一个整数 $T \; (1 \leqslant T \leqslant 10^5)$ 表示测试样例组数。<br>对于每组测试样例，第一行包含两个整数 $n \; (2 \leqslant n \leqslant 2 \cdot 10^5 )$ 和 $m \; (n - 1 \leqslant m \leqslant \min(n + 2, \frac{n \cdot (n - 1)}{2}))$ 表示该简单图的点数和边数。<br>接下来的 m 行，含有两个数 $u_i$ 和 $v_i \; (1 \leqslant u_i,v_i \leqslant n, \; u_i \neq v_i)$ 表示点 $u_i$ 和点 $v_i$ 间存在一条有向边。数据满足图联通且不存在重边和自环。<br>数据满足 $\sum n \leqslant 10^6, \; \sum m \leqslant 2 \cdot 10^6$<br>输出格式<br>对于每组测试样例，包含一行一个长度为 $m$ 的 $01$串 $s$ 表示其中一种满足题目条件的染色方案。其中 $s_i = 0$ 表示边 $(u_i, v_i)$ 被染成的红色，否则表示被染成了蓝色。<br>$Translated \; by \; Zigh$</p>
+          <p><ul style='text-align: left;'><li>树链剖分<ul><li>实链剖分</li><li>长链剖分</li><li>重链剖分</li></ul></li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1726D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1944/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/1944/" class="post-title-link" itemprop="url">Codeforces Round 934 (Div. 2)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-03-26 19:00:02" itemprop="dateCreated datePublished" datetime="2024-03-26T19:00:02+00:00">2024-03-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>[A. Destroying Bridges](https://codeforces.com/contest/1944/problem/A)<br>[B. Equal XOR](https://codeforces.com/contest/1944/problem/B)<br>[C. MEX Game 1](https://codeforces.com/contest/1944/problem/C)<br>[D. Non-Palindromic Substring](https://codeforces.com/contest/1944/problem/D)<br>[E. Tree Compass](https://codeforces.com/contest/1944/problem/E)<br>[F1. Counting Is Fun (Easy Version)](https://codeforces.com/contest/1944/problem/F1)<br>[F2. Counting Is Fun (Hard Version)](https://codeforces.com/contest/1944/problem/F2)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1944/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/ab6be601d180/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1053,7 +1101,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

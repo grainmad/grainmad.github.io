@@ -1,0 +1,140 @@
+<hr>
+<p>title: “滑动窗口”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><h1 id="滑窗第k小，multiset"><a href="#滑窗第k小，multiset" class="headerlink" title="滑窗第k小，multiset"></a>滑窗第k小，multiset</h1><p>用multiset维护两个多重集合A和B，A维护着区间中k个最小值，B维护着区间中剩余的值</p>
+<p>无论是插入还是删除x，首先判断x所属集合。然后从所属集合中添加或删除。再判断A集合大小是否为k：大于k则移动一个最大值到B中，小于k则移动B中的最小值到A中。</p>
+<pre><code class="cpp">struct Kmin {
+    int K;
+    // st1 保存前 K 小值，st2 保存其它值
+    multiset&lt;long long&gt; st1, st2;
+
+    Kmin(int K): K(K){}
+&lt;!--more--&gt;
+    void adjust() {
+        while (st1.size() &lt; K &amp;&amp; st2.size() &gt; 0) {
+            long long t = *(st2.begin());
+            st1.insert(t);
+            st2.erase(st2.begin());
+        }
+        while (st1.size() &gt; K) {
+            long long t = *st1.rbegin();
+            st2.insert(t);
+            st1.erase(st1.find(t));
+        }
+    }
+
+    // 插入元素 x
+    void add(long long x) {
+        // x大于k，放第二个集合
+        if (!st2.empty() &amp;&amp; x &gt;= *(st2.begin())) st2.insert(x);
+        // x小于k，放第一个集合
+        else st1.insert(x);
+        adjust();
+        
+    }
+
+    // 删除元素 x
+    void del(long long x) {
+        auto it = st1.find(x);
+        if (it != st1.end()) st1.erase(it);
+        else st2.erase(st2.find(x));
+        adjust();
+    }
+    long long getK() {
+        return *st1.rbegin();
+    }
+};
+</code></pre>
+<h1 id="滑窗第k小，二叉堆"><a href="#滑窗第k小，二叉堆" class="headerlink" title="滑窗第k小，二叉堆"></a>滑窗第k小，二叉堆</h1><p>用二叉堆维护一个大根堆A和小根堆B，A维护着区间中k个最小值，B维护着区间中剩余的值。</p>
+<p>堆无法删除，我们采用延时删除，记录需要延时删除的数x需要删除的次数cnt[x]。</p>
+<p>记录A和B中清除无用数据后的大小sz1, sz2。</p>
+<p>每次获取堆顶前，清除堆顶的无用数据。</p>
+<p>无论是插入还是删除x，首先判断x所属集合。然后从所属集合中添加或删除。再判断A集合大小是否为k：大于k则移动一个最大值到B中，小于k则移动B中的最小值到A中。</p>
+<p>值得注意的是删除x，不能再cnt[x]++后立刻清除无用数据x，因为还需要判断x所处集合，并让对于集合大小减少1，如果直接删除，那么无法确定x在原来的集合。</p>
+<pre><code class="cpp">struct Kmin {
+    // 第K小, 集合大小（有效数据）
+    int K, sz1, sz2;
+    // st1 保存前 K 小值，st2 保存其它值
+    priority_queue&lt;long long&gt; st1;
+    priority_queue&lt;long long, vector&lt;long long&gt;, greater&lt;&gt;&gt; st2;
+    // 待删除的数x的次数cnt[x]，堆顶为x且cnt[x]存在则删除
+    map&lt;long long, int&gt; cnt;
+
+    Kmin(int K): K(K), sz1(0), sz2(0){}
+
+    void clear() {
+        // 优先删除非k小的，避免调整
+        while (st2.size() &amp;&amp; cnt.count(st2.top())) {
+            if (--cnt[st2.top()] == 0) cnt.erase(st2.top());
+            st2.pop(); 
+        }
+        while (st1.size() &amp;&amp; cnt.count(st1.top())) {
+            if (--cnt[st1.top()] == 0) cnt.erase(st1.top());
+            st1.pop(); 
+        }
+    }
+    void adjust() {
+        clear();
+        while (sz1 &lt; K &amp;&amp; sz2 &gt; 0) {
+            st1.emplace(st2.top());
+            st2.pop();
+            sz1++;
+            sz2--;
+        }
+        while (sz1 &gt; K) {
+            st2.emplace(st1.top());
+            st1.pop();
+            sz1--;
+            sz2++;
+        }
+    }
+
+    // 插入元素 x
+    void add(long long x) {
+        clear();
+        if (sz2&gt;0 &amp;&amp; x &gt;= st2.top()) {
+            st2.emplace(x);
+            sz2++;
+        } else {
+            st1.emplace(x);
+            sz1++;
+        }
+        adjust();
+    }
+
+    // 删除元素 x
+    void del(long long x) {
+        clear();
+        cnt[x]++; // 不能清理x，无法判断x所属集合
+        if (sz2&gt;0 &amp;&amp; x &gt;= st2.top()) {
+            sz2--;
+        } else {
+            sz1--;
+        }
+        adjust();
+    }
+    long long getK() {
+        clear();
+        return st1.top();
+    }
+};
+</code></pre>
+<h1 id="滑窗最大值，延迟删除堆"><a href="#滑窗最大值，延迟删除堆" class="headerlink" title="滑窗最大值，延迟删除堆"></a>滑窗最大值，延迟删除堆</h1><p>相比multiset常数小</p>
+<pre><code class="python">template &lt;typename T&gt;
+struct Heap {
+    std::priority_queue&lt;T&gt; p, q;
+    int size() { return p.size() - q.size(); }
+    void push(T x) { p.push(x); }
+    int top() {
+        while (q.size() &amp;&amp; p.top() == q.top())
+            p.pop(), q.pop();
+        return p.top();
+    }
+    void pop() {
+        while (q.size() &amp;&amp; p.top() == q.top())
+            p.pop(), q.pop();
+        p.pop();
+    }
+    void erase(T x) { q.push(x); }
+};
+</code></pre>

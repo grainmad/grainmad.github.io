@@ -1,0 +1,267 @@
+<hr>
+<p>title: “DFS序与欧拉序”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="DFS序与欧拉序"><a href="#DFS序与欧拉序" class="headerlink" title="DFS序与欧拉序"></a>DFS序与欧拉序</h1><h1 id="dfs序（子树转子区间）"><a href="#dfs序（子树转子区间）" class="headerlink" title="dfs序（子树转子区间）"></a>dfs序（子树转子区间）</h1><p>问题特点，对一颗树的子树内所有节点集体操作。可以将树上问题转为区间问题。</p>
+<p>通过dfs，求出每个节点<code>x</code>第一次到达的时间<code>a</code>和最后一次到达的时间<code>b</code>，显然它以及它的后代节点所经过的时间范围在<code>[a,b)</code> ，这样操作一个子树就是相当于操作一个连续区间。</p>
+<pre><code class="cpp">vector&lt;vector&lt;int&gt;&gt; g(n+1); // 树g，g[i]代表i的子节点集合。
+vector&lt;int&gt; l(n+1), r(n+1); // 节点x所代表的闭区间[ l[x], r[x] ]
+int clk = 0;
+function&lt;void(int)&gt; dfs = [&amp;](int u) {
+    l[u] = ++clk;
+    for (int v:g[u]) {
+&lt;!--more--&gt;        dfs(v);
+    }
+    r[u] = clk;
+};
+dfs(1);
+/* ******************************************************* */
+vector&lt;vector&lt;int&gt;&gt; g(n+1); // 树g，g[i]代表i的子节点集合。
+vector&lt;int&gt; l(n+1), r(n+1); // 节点x所代表的左闭右开区间[ l[x], r[x] )
+int clk = 1;
+function&lt;void(int)&gt; dfs = [&amp;](int u) {
+    l[u] = clk++;
+    for (int v:g[u]) {
+        dfs(v);
+    }
+    r[u] = clk;
+};
+dfs(1);
+</code></pre>
+<p><a href="https://leetcode.cn/problems/coin-bonus/">**LCP 05. 发 LeetCoin</a> 模板题**</p>
+<pre><code class="cpp">#define MOD 1000000007
+// #define MOD 998244353
+#define ll long long
+#define mint Modint&lt;MOD&gt;
+template &lt;const int _MOD&gt;
+struct Modint {
+    int v;
+    Modint() { v = 0; }
+    Modint(long long o) { v = o % _MOD; }
+    int val() { return v; }
+    int pow(long long o) {
+        int ret = 1, tmp = v;
+        while (o) {
+            if (o &amp; 1)
+                ret = ((long long)ret * tmp) % _MOD;
+            o &gt;&gt;= 1;
+            tmp = ((long long)tmp * tmp) % _MOD;
+        }
+        return ret;
+    }
+    void operator=(long long o) { v = o % _MOD; }
+    bool operator==(long long o) const { return v == o; }
+    bool operator==(Modint o) const { return v == o.v; }
+    bool operator!=(long long o) const { return v != o; }
+    bool operator!=(Modint o) const { return v != o.v; }
+    bool operator&lt;(long long o) const { return v &lt; o; }
+    bool operator&lt;(Modint o) const { return v &lt; o.v; }
+    bool operator&gt;(long long o) const { return v &gt; o; }
+    bool operator&gt;(Modint o) const { return v &gt; o.v; }
+    bool operator&lt;=(long long o) const { return v &lt;= o; }
+    bool operator&lt;=(Modint o) const { return v &lt;= o.v; }
+    bool operator&gt;=(long long o) const { return v &gt;= o; }
+    bool operator&gt;=(Modint o) const { return v &gt;= o.v; }
+
+    Modint operator+(long long o) const { return *this + Modint(o); }
+    Modint operator+(Modint o) const { return ((long long)v + o.v) % _MOD; }
+    Modint operator*(long long o) const { return *this * Modint(o); }
+    Modint operator*(Modint o) const { return (long long)v * o.v % _MOD; }
+
+    Modint operator-(long long o) const { return *this - Modint(o); }
+    Modint operator-(Modint o) const {
+        return ((long long)v - o.v + _MOD) % _MOD;
+    }
+
+    Modint operator/(long long o) const { return *this / Modint(o); }
+    Modint operator/(Modint o) const {
+        return ((long long)v * o.pow(_MOD - 2)) % _MOD;
+    }
+    void operator+=(long long o) { *this = *this + o; }
+    void operator+=(Modint o) { *this = *this + o; }
+    void operator*=(long long o) { *this = *this * o; }
+    void operator*=(Modint o) { *this = *this * o; }
+    void operator-=(long long o) { *this = *this - o; }
+    void operator-=(Modint o) { *this = *this - o; }
+    void operator/=(long long o) { *this = *this / o; }
+    void operator/=(Modint o) { *this = *this / o; }
+
+    Modint operator^(long long o) { return Modint(pow(o)); }
+    Modint operator^(Modint o) { return Modint(pow(o.v)); }
+
+    template &lt;class T&gt;
+    friend bool operator==(T o, Modint u) {
+        return u == o;
+    }
+    template &lt;class T&gt;
+    friend Modint operator+(T o, Modint u) {
+        return u + o;
+    }
+    template &lt;class T&gt;
+    friend Modint operator*(T o, Modint u) {
+        return u * o;
+    }
+    template &lt;class T&gt;
+    friend Modint operator-(T o, Modint u) {
+        return Modint(o) - u;
+    }
+    template &lt;class T&gt;
+    friend Modint operator/(T o, Modint u) {
+        return Modint(o) / u;
+    }
+
+    void operator++() { *this = *this + 1; }
+    void operator--() { *this = *this - 1; }
+    void operator++(int k) { *this = *this + 1; }
+    void operator--(int k) { *this = *this - 1; }
+
+    template &lt;const int T&gt;
+    friend std::istream&amp; operator&gt;&gt;(std::istream&amp; in, Modint&lt;T&gt;&amp; modint) {
+        ll x;
+        in &gt;&gt; x;
+        modint = Modint&lt;T&gt;(x);
+        return in;
+    }
+
+    template &lt;const int T&gt;
+    friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const Modint&lt;T&gt;&amp; modint) {
+        os &lt;&lt; modint.v;
+        return os;
+    }
+};
+class Solution {
+public:
+    #define N 50005
+    mint a[N];
+
+    struct Seg{
+        int l, r;
+        mint val, tag;
+    } seg[N&lt;&lt;2];
+
+    void push_up(Seg&amp; u, const Seg&amp; l, const Seg&amp; r) {
+        u.val = l.val + r.val;
+    }
+
+    void push_down(Seg&amp; u, Seg&amp; l, Seg&amp; r) {
+        l.val += u.tag*(l.r-l.l+1);
+        l.tag += u.tag;
+        r.val += u.tag*(r.r-r.l+1);
+        r.tag += u.tag;
+        u.tag = 0;
+    }
+
+    void seg_build(int id, int l, int r) {
+        seg[id].l = l; seg[id].r = r;
+        if (l == r) {
+            seg[id].val = a[l];
+            // cin &gt;&gt; seg[id].val;
+            return ;
+        }
+        int m = l+r&gt;&gt;1;
+        seg_build(id&lt;&lt;1, l, m);
+        seg_build(id&lt;&lt;1|1, m+1, r);
+        push_up(seg[id], seg[id&lt;&lt;1], seg[id&lt;&lt;1|1]);
+    }
+
+    void seg_update(int id, int l, int r, mint val) {
+        if (l &lt;= seg[id].l &amp;&amp; seg[id].r &lt;= r) {
+            seg[id].val += val*(seg[id].r-seg[id].l+1);
+            seg[id].tag += val;
+            return ;
+        }
+        push_down(seg[id], seg[id&lt;&lt;1], seg[id&lt;&lt;1|1]);
+        int m = seg[id].l + seg[id].r &gt;&gt; 1;
+        if (l &lt;= m) seg_update(id&lt;&lt;1, l, r, val);
+        if (m &lt; r) seg_update(id&lt;&lt;1|1, l, r, val);
+        push_up(seg[id], seg[id&lt;&lt;1], seg[id&lt;&lt;1|1]);
+    }
+
+    mint seg_query(int id, int l, int r) {
+        if (l &lt;= seg[id].l &amp;&amp; seg[id].r &lt;= r) {
+            return seg[id].val;
+        }
+        push_down(seg[id], seg[id&lt;&lt;1], seg[id&lt;&lt;1|1]);
+        mint rt = 0;
+        int m = seg[id].l + seg[id].r &gt;&gt; 1;
+        if (l &lt;= m) rt += seg_query(id&lt;&lt;1, l, r);
+        if (m &lt; r) rt += seg_query(id&lt;&lt;1|1, l, r);
+        return rt;
+    }
+
+    vector&lt;int&gt; bonus(int n, vector&lt;vector&lt;int&gt;&gt;&amp; leadership, vector&lt;vector&lt;int&gt;&gt;&amp; operations) {
+        vector&lt;vector&lt;int&gt;&gt; g(n+1);
+        for (auto&amp; i:leadership) {
+            g[i[0]].push_back(i[1]);
+        }
+        vector&lt;int&gt; l(n+1), r(n+1);
+        int clk = 0;
+        function&lt;void(int)&gt; dfs = [&amp;](int u) {
+            l[u] = ++clk;
+            for (int v:g[u]) {
+                dfs(v);
+            }
+            r[u] = clk;
+        };
+        dfs(1);
+        // for (int i=1; i&lt;=n; i++) {
+        //     cout &lt;&lt; l[i] &lt;&lt; &quot; &quot; &lt;&lt; r[i] &lt;&lt; endl;
+        // }
+        seg_build(1, 1, n);
+        vector&lt;int&gt; ans;
+        for (auto&amp; i:operations) {
+            if (i[0] == 1) {
+                seg_update(1, l[i[1]], l[i[1]], i[2]);
+            }
+            if (i[0] == 2) {
+                seg_update(1, l[i[1]], r[i[1]], i[2]);
+            }
+            if (i[0] == 3) {
+                ans.push_back(seg_query(1, l[i[1]], r[i[1]]).v);
+            }
+        }
+        return ans;
+    }
+};
+</code></pre>
+<h1 id="欧拉序"><a href="#欧拉序" class="headerlink" title="欧拉序"></a>欧拉序</h1><p>通过求出树的欧拉序，可以将树上最近公共祖先问题转化为区间问题。</p>
+<p>求lca的rmq方法，先求树的欧拉序，并预处理出每个节点的深度。然后记录每个点<code>x</code>在欧拉序中的第一个位置<code>p[x]</code>。求两个点<code>x</code>和<code>y</code>的lca实际上就是欧拉序中的子区间<code>[p[x], p[y]]</code>中深度最小的点。</p>
+<p>感觉单纯的求lca可以用，如果还有路径上的值需要维护，还得倍增。</p>
+<pre><code class="cpp">vector&lt;int&gt; eulerTour, fc(n+1), dep(n+1); // 节点编号从1开始
+function&lt;void(int,int,int)&gt; dfs = [&amp;](int u, int fno) {
+    dep[u] = dep[fa[u][0]] + 1; // 每个节点的深度
+    // 每个节点欧拉序中第一次出现的位置
+    fc[u] = eulerTour.size(); // 每个节点第一次在欧拉序中出现的位置
+    eulerTour.push_back(u); // 欧拉序
+
+    for (auto [v, e] : g[u]) {
+        if (v == fno)
+            continue;
+        dfs(v, e, u);
+        eulerTour.push_back(u);
+    }
+};
+dfs(1,0);
+// 用st表维护欧拉序区间最小值，按照深度比较
+int st[eulerTour.size()][30]; //st[i][j] 代表区间[i, i+2^j)最小值
+
+auto ST = [&amp;](const vector&lt;int&gt;&amp; a) {
+    int sz = a.size();
+    for (int i=0; i&lt;sz; i++) st[i][0] = a[i];
+    for (int j=1; (1&lt;&lt;j)&lt;=sz; j++) {//区间大小 
+        for (int i=0; i+(1&lt;&lt;j)-1&lt;sz; i++) {//区间下限 
+            int x = st[i][j-1], y = st[i+(1&lt;&lt;(j-1))][j-1];
+            st[i][j] = dep[x] &lt; dep[y] ? x : y;
+        }
+    }
+};
+ST(eulerTour);
+
+auto ask = [&amp;](int l, int r) {
+    int k = 0;
+    while ((1&lt;&lt;(k+1))&lt;=r-l+1) k++;
+    int x = st[l][k], y = st[r-(1&lt;&lt;k)+1][k];
+    return  dep[x] &lt; dep[y] ? x : y;
+};
+// 获取x和y的lca 
+ask(min(fc[x], fc[y]), max(fc[x], fc[y]));
+</code></pre>

@@ -1,0 +1,334 @@
+<hr>
+<p>title: “最短路”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h1><h1 id="Dijkstra-算法"><a href="#Dijkstra-算法" class="headerlink" title="Dijkstra 算法"></a><strong>Dijkstra 算法</strong></h1><p>将结点分成两个集合：已确定最短路长度的点集（记为$S$ 集合）的和未确定最短路长度的点集（记为$T$ 集合）。一开始所有的点都属于$T$集合。初始化$dis(s) = 0$，其他点的均为$INF$。</p>
+<p>然后重复这些操作：</p>
+<ol>
+<li>从 $T$ 集合中，选取一个最短路长度最小的结点，移到 $S$ 集合中。</li>
+<li>对那些刚刚被加入 $S$ 集合的结点的所有出边执行松弛操作。</li>
+</ol>
+<p>直到 $T$ 集合为空，算法结束。</p>
+<p>暴力：</p>
+<!--more-->不使用任何数据结构进行维护，每次 2 操作执行完毕后，直接在 $T$ 集合中暴力寻找最短路长度最小的结点。2 操作**总时间复杂度**为$O(m)$ ，1 操作总时间复杂度为$O(n^2)$ ，全过程的时间复杂度为 $O(n^2)$。
+
+<pre><code class="cpp">struct edge {
+    int v, w;
+};
+
+vector&lt;edge&gt; e[maxn];
+int dis[maxn], vis[maxn];
+
+void dijkstra(int n, int s) {
+    memset(dis, 0x3f, sizeof(dis));
+    dis[s] = 0;
+    for (int i = 1; i &lt;= n; i++) {
+        int u = 0, mind = 0x3f3f3f3f;
+        for (int j = 1; j &lt;= n; j++)
+            if (!vis[j] &amp;&amp; dis[j] &lt; mind)
+                u = j, mind = dis[j];
+        vis[u] = true;
+        for (auto ed : e[u]) {
+            int v = ed.v, w = ed.w;
+            if (dis[v] &gt; dis[u] + w)
+                dis[v] = dis[u] + w;
+        }
+    }
+}
+// 邻接矩阵
+#define N 505
+#define INF 0x3f3f3f3f
+int g[N][N]; // memset(g, 0x3f, sizeof(g));
+int dis[N], vis[N];
+void dijkstra(int n, int s) {
+    memset(dis, 0x3f, sizeof(dis));
+    memset(vis, 0, sizeof(vis));
+    dis[s] = 0;
+    for (int i = 0; i &lt; n; i++) {
+        int u = 0, mind = INF;
+        for (int j = 0; j &lt; n; j++)
+            if (!vis[j] &amp;&amp; dis[j] &lt; mind)
+                u = j, mind = dis[j];
+        vis[u] = 1;
+        for (int v = 0; v &lt; n; v++) {
+            if (v == u) continue;
+            if (dis[v] &gt; dis[u] + g[u][v])
+                dis[v] = dis[u] + g[u][v];
+        }
+    }
+}
+</code></pre>
+<p>优先队列：</p>
+<p>和二叉堆类似，但使用优先队列时，如果同一个点的最短路被更新多次，因为先前更新时插入的元素不能被删除，也不能被修改，只能留在优先队列中，故优先队列内的元素个数是 $O(m)$ 的，时间复杂度为 $O(mlogm)$。</p>
+<pre><code class="cpp">struct edge {
+    int v, w;
+};
+
+struct Node {
+    int dis, u;
+    bool operator&lt;(const Node&amp; o) const { return dis &gt; o.dis; }
+};
+
+vector&lt;edge&gt; e[maxn];
+int dis[maxn], vis[maxn];
+priority_queue&lt;Node&gt; q;
+
+void dijkstra(int n, int s) {
+    memset(dis, 63, sizeof(dis));
+    dis[s] = 0;
+    q.push({0, s});
+    while (!q.empty()) {
+        int u = q.top().u;
+        q.pop();
+        if (vis[u])
+            continue;
+        vis[u] = 1;
+        for (auto ed : e[u]) {
+            int v = ed.v, w = ed.w;
+            if (dis[v] &gt; dis[u] + w) {
+                dis[v] = dis[u] + w;
+                q.push({dis[v], v});
+            }
+        }
+    }
+}
+</code></pre>
+<h1 id="Floyd-算法"><a href="#Floyd-算法" class="headerlink" title="Floyd 算法"></a><strong>Floyd 算法</strong></h1><p>多源最短路，求任意两个结点之间的最短路。时间复杂度$O(n^3)$，常数小。</p>
+<p>其思想是动态规划。</p>
+<p>设图中共n个节点，节点编号从0到n-1。</p>
+<p>定义<code>f[k][x][y]</code>，表示只允许经过节点 0 到 k-1，节点 x 到节点 y 的最短路长度。</p>
+<p>初始化<code>f[0][][]</code>：</p>
+<ul>
+<li>若节点u和v之间存在边权为e的有向边，则<code>f[0][u][v] = e</code></li>
+<li>对角线初始化为0，<code>f[0][i][i] = 0</code></li>
+<li>其余初始化为无穷，<code>f[0][i][j] = INF, i != j</code></li>
+</ul>
+<p>状态转移</p>
+<p><code>f[k][x][y] = min(f[k-1][x][y], f[k-1][x][k]+f[k-1][k][y])</code> </p>
+<p>经过k的最短路径 和 不经过k的最短路径 选择最小的一条。</p>
+<pre><code class="cpp">memset(f, 0x3f, sizeof(f));
+for (int i=0; i&lt;n; i++) f[i][i] = 0;
+
+for (auto&amp; i:edges) {
+    f[i[0]][i[1]] = i[2];
+}
+for (int k=0; k&lt;n; k++) {
+    for (int i=0; i&lt;n; i++) {
+        for (int j=0; j&lt;n; j++) {
+            f[i][j] = min(f[i][j], f[i][k]+f[k][j]);
+        }
+    }
+}
+</code></pre>
+<h1 id="Bellman-Ford-算法"><a href="#Bellman-Ford-算法" class="headerlink" title="Bellman-Ford 算法"></a><strong>Bellman-Ford 算法</strong></h1><p>在最短路存在的情况下，由于一次松弛操作会使最短路的边数至少 +1，而最短路的边数最多为 n-1，因此整个算法最多执行 n-1 轮松弛操作。故总时间复杂度为 O(nm)。</p>
+<p><strong>可判断负环</strong>，如果第 n 轮循环时仍然存在能松弛的边，说明从源点出发，能够抵达一个负环。</p>
+<pre><code class="cpp">struct edge {
+    int v, w;
+};
+
+vector&lt;edge&gt; e[maxn];
+int dis[maxn];
+const int inf = 0x3f3f3f3f;
+
+bool bellmanford(int n, int s) {
+    memset(dis, 63, sizeof(dis));
+    dis[s] = 0;
+    bool flag;  // 判断一轮循环过程中是否发生松弛操作
+    for (int i = 1; i &lt;= n; i++) {
+        flag = false;
+        for (int u = 1; u &lt;= n; u++) {
+            if (dis[u] == inf)
+                continue;
+            // 无穷大与常数加减仍然为无穷大
+            // 因此最短路长度为 inf 的点引出的边不可能发生松弛操作
+            for (auto ed : e[u]) {
+                int v = ed.v, w = ed.w;
+                if (dis[v] &gt; dis[u] + w) {
+                    dis[v] = dis[u] + w;
+                    flag = true;
+                }
+            }
+        }
+        // 没有可以松弛的边时就停止算法
+        if (!flag)
+            break;
+    }
+    // 第 n 轮循环仍然可以松弛时说明 s 点可以抵达一个负环
+    return flag;
+}
+</code></pre>
+<h2 id="SPFA"><a href="#SPFA" class="headerlink" title="SPFA"></a>SPFA</h2><p>队列优化：SPFA, 即 Shortest Path Faster Algorithm。</p>
+<p>很多时候我们并不需要那么多无用的松弛操作。</p>
+<p>很显然，只有上一次被松弛的结点，所连接的边，才有可能引起下一次的松弛操作。</p>
+<p>那么我们用队列来维护「哪些结点可能会引起松弛操作」，就能只访问必要的边了。</p>
+<p>SPFA 也可以用于判断否能抵达一个负环，只需记录最短路经过了多少条边，当经过了至少n条边时，说明源点可以抵达一个负环。</p>
+<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
+<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
+<pre><code class="cpp">struct edge {
+    int v, w;
+};
+
+vector&lt;edge&gt; e[maxn];
+int dis[maxn], cnt[maxn], vis[maxn];
+queue&lt;int&gt; q;
+
+bool spfa(int n, int s) {
+    memset(dis, 63, sizeof(dis));
+    dis[s] = 0, vis[s] = 1;
+    q.push(s);
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop(), vis[u] = 0;
+        for (auto ed : e[u]) {
+            int v = ed.v, w = ed.w;
+            if (dis[v] &gt; dis[u] + w) {
+                dis[v] = dis[u] + w;
+                cnt[v] = cnt[u] + 1;  // 记录最短路经过的边数
+                if (cnt[v] &gt;= n)
+                    return false;
+                // 在不经过负环的情况下，最短路至多经过 n - 1 条边
+                // 因此如果经过了多于 n 条边，一定说明经过了负环
+                if (!vis[v])
+                    q.push(v), vis[v] = 1;
+            }
+        }
+    }
+    return true;
+}
+</code></pre>
+<h1 id="A"><a href="#A" class="headerlink" title="A*"></a>A*</h1><p>Dijkstra算法保证能找到一条从初始点到目标点的最短路径，只要所有的边都有一个非负的代价值。</p>
+<p>{% asset_img ‘Untitled.png’ %}</p>
+<p>最佳优先搜索不能保证找到一条最短路径。然而，它比Dijkstra算法快的多，因为它用了一个启发式函数（heuristic function）快速地导向目标结点。</p>
+<p>{% asset_img ‘Untitled 1.png’ %}</p>
+<p>A* 把Dijkstra算法（靠近初始点的结点）和BFS算法（靠近目标点的结点）的信息块结合起来，形成一个评估函数 f(n) = g(n)+h(n)</p>
+<h2 id="A-的算法流程。"><a href="#A-的算法流程。" class="headerlink" title="A* 的算法流程。"></a>A* 的算法流程。</h2><p>A*算法有两个集合，OPEN集和CLOSED集。其中OPEN集保存待扩展的结点。CLOSED集保存已扩展过的结点。</p>
+<p>开始时，OPEN集只包含一个元素：初始结点。CLOSED集是空的。<br>在主循环中重复地从OPEN集中取出最好的结点n（评估函数f最小的结点）并检查之：</p>
+<ul>
+<li>如果n是目标结点，则我们的任务完成了。</li>
+<li>结点n被从OPEN集中删除并加入CLOSED集。然后检查它的邻居n’:<ul>
+<li>如果邻居n’在CLOSED集中，那么它是已经被检查过的，所以我们不需要考虑它；</li>
+<li>如果n’在OPEN集中，那么它是以后肯定会被检查的，所以我们现在不考虑它;</li>
+<li>否则，n’加入OPEN集，把它的父结点设为n。到达n’的路径的代价g(n’)。</li>
+</ul>
+</li>
+</ul>
+<h2 id="A-进一步优化"><a href="#A-进一步优化" class="headerlink" title="A* 进一步优化"></a>A* 进一步优化</h2><p>从图中看出存在相同的大量相同的f(x)，open集中选出的最小值不确定</p>
+<p>{% asset_img ‘Untitled 2.png’ %}</p>
+<p>{% asset_img ‘Untitled 3.png’ %}</p>
+<h3 id="添加附加值优化"><a href="#添加附加值优化" class="headerlink" title="添加附加值优化"></a>添加附加值优化</h3><p>为了解决这个问题，我们可以为启发函数添加一个附加值。附加值对于结点必须是确定性的（也就是说，不能是随机的数），而且它必须让f值体现区别。一种添加附加值的方式是稍微改变h的衡量单位。如果我们减少衡量单位，那么当我们朝着目标移动的时候f将逐渐增加。很不幸，这意味着A<em>倾向于扩展到靠近初始点的结点，而不是靠近目标的结点。我们可以增加衡量单位（甚至是0.1%），A</em>就会倾向于扩展到靠近目标的结点。</p>
+<p>{% asset_img ‘Untitled 4.png’ %}</p>
+<p>{% asset_img ‘Untitled 5.png’ %}</p>
+<h3 id="向量叉乘优化"><a href="#向量叉乘优化" class="headerlink" title="向量叉乘优化"></a>向量叉乘优化</h3><p>计算初始-目标向量（start to goal vector）和当前-目标向量（current point to goal vector）的向量叉积（vector cross-product）。<br>当向量的夹角比较大时，向量叉乘的绝对值会很大，我们选择较小的值作为扩展点。<br>最后搜索的路径会稍微倾向于从初始点到目标点的直线。</p>
+<p>{% asset_img ‘Untitled 6.png’ %}</p>
+<p>{% asset_img ‘Untitled 7.png’ %}</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define N 505
+using namespace std;
+
+pair&lt;int, int&gt; fa[N][N];  // fa[i][j] 为网格s[x][y]的父节点
+string s[N];              // s[x][y] 地x行y列的网格
+int n, m, b;              // n 行 m 列 b 个障碍
+int sx, sy, ex, ey;       // 开始位置(sx, sy) 目标位置(ex, ey)
+
+// 读入地图
+void init_map() {
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; b;
+    for (int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; s[i];
+        for (int j = 0; j &lt; m; j++) {
+            if (s[i][j] == &#39;S&#39;)
+                sx = i, sy = j;
+            if (s[i][j] == &#39;E&#39;)
+                ex = i, ey = j;
+        }
+    }
+}
+
+// 地图节点 重载&lt;运算符 实现节点的评估函数f比较
+struct Node {
+    int x, y, dis;
+    int g() const { return dis; }
+    double h() const { return (abs(x - ex) + abs(y - ey)) * 1.000; }
+    double abs_cross(int x, int y) const {
+        return abs((x - sx) * (ey - sy) - (y - sy) * (ex - sx)) * 0.001;
+    }
+    bool operator&lt;(const Node&amp; o) const {
+        if (g() + h() == o.g() + o.h()) {
+            return abs_cross(x, y) &gt; abs_cross(o.x, o.y);
+        }
+        return g() + h() &gt; o.g() + o.h();  // priority_queue 默认大根堆
+    }
+    Node(int _x, int _y, int _dis) : x(_x), y(_y), dis(_dis) {}
+};
+
+// 通过fa指针回溯找到搜索路径
+void setpath(int x, int y) {
+    if (x == sx &amp;&amp; y == sy)
+        return;
+    s[x][y] = &#39;*&#39;;
+    setpath(fa[x][y].first, fa[x][y].second);
+}
+
+// 0.2秒清空控制台输出一次
+void print() {
+    system(&quot;cls&quot;);
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; s[i] &lt;&lt; endl;
+    }
+    _sleep(200);
+}
+
+// 主函数
+// 我们用优先队列priory_queue&lt;Node&gt;维护open集合，优先从中选取最小的f的节点。
+int main() {
+    init_map();
+    print();
+    priority_queue&lt;Node&gt; q;
+    q.push({sx, sy, 0});
+    while (q.size()) {
+        auto node = q.top();
+        q.pop();
+        if (node.x == ex &amp;&amp; node.y == ey)
+            break;
+        if (node.x != sx &amp;&amp; node.y != sy)
+            s[node.x][node.y] = &#39;C&#39;;
+        print();
+        for (int i = 0; i &lt; 4; i++) {
+            int x = node.x + (i - 1) % 2, y = node.y + (i - 2) % 2;
+            if (x &lt; 0 || x &gt;= n || y &lt; 0 || y &gt;= m)
+                continue;
+            if (s[x][y] == &#39;E&#39;) {
+                setpath(node.x, node.y);
+                print();
+                return 0;
+            }
+            if (s[x][y] == &#39;.&#39;) {
+                q.emplace(x, y, node.dis + 1);
+                fa[x][y] = {node.x, node.y};
+                s[x][y] = &#39;O&#39;;
+                print();
+            }
+        }
+    }
+    return 0;
+}
+</code></pre>
+<pre><code class="python"># 地图生成
+from random import shuffle
+
+n, m, b = 20, 40, 0
+
+x = [&#39;.&#39; for i in range(n*m)]
+
+x[0] = &#39;S&#39;
+x[1] = &#39;E&#39;
+for i in range(2, b+2):
+    x[i] = &#39;#&#39;
+
+shuffle(x)
+with open(&quot;./template/astar/map.txt&quot;, &quot;w&quot;) as f:
+    print(n, m, b, file=f)
+    for i in range(n):
+        for j in range(m):
+            print(x[i*m+j], end=&#39;&#39;, file=f)
+        print(file=f)
+</code></pre>

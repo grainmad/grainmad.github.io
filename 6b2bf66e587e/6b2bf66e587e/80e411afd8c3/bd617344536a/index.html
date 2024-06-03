@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"grainmad.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="背包dp01背包给出背包容量$V$，$n$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品只能选1次或不选，选取物品总体积不超过$V$的情况下，最大总价值是多少？ 定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。 $$f[i,v]&#x3D;max{f[i-1, v],f[i-1, v-c_i]+w_i}$$ 123456789101">
+<meta property="og:type" content="article">
+<meta property="og:title" content="背包dp">
+<meta property="og:url" content="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/80e411afd8c3/bd617344536a/index.html">
+<meta property="og:site_name" content="代码如诗">
+<meta property="og:description" content="背包dp01背包给出背包容量$V$，$n$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品只能选1次或不选，选取物品总体积不超过$V$的情况下，最大总价值是多少？ 定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。 $$f[i,v]&#x3D;max{f[i-1, v],f[i-1, v-c_i]+w_i}$$ 123456789101">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-03T10:42:02.000Z">
+<meta property="article:modified_time" content="2024-06-03T10:42:02.000Z">
+<meta property="article:author" content="GrainMad">
+<meta property="article:tag" content="notion">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/80e411afd8c3/bd617344536a/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/80e411afd8c3/bd617344536a/","path":"6b2bf66e587e/6b2bf66e587e/80e411afd8c3/bd617344536a/","title":"背包dp"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>背包dp | 代码如诗</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">代码如诗</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">99</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">549</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E5%8C%85dp"><span class="nav-number">1.</span> <span class="nav-text">背包dp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#01%E8%83%8C%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">01背包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">完全背包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="nav-number">4.</span> <span class="nav-text">多重背包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E8%83%8C%E5%8C%85"><span class="nav-number">5.</span> <span class="nav-text">混合背包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85"><span class="nav-number">6.</span> <span class="nav-text">分组背包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E8%B4%B9%E7%94%A8%E8%83%8C%E5%8C%85"><span class="nav-number">7.</span> <span class="nav-text">多维费用背包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91%E5%9E%8B%E8%83%8C%E5%8C%85"><span class="nav-number">8.</span> <span class="nav-text">树型背包</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GrainMad"
+      src="/images/mona-loading-dimmed-5da225352fd7.gif">
+  <p class="site-author-name" itemprop="name">GrainMad</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">549</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">99</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/grainmad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;grainmad" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/grainmad" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/80e411afd8c3/bd617344536a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="背包dp | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          背包dp
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="背包dp"><a href="#背包dp" class="headerlink" title="背包dp"></a>背包dp</h1><h1 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h1><p>给出背包容量$V$，$n$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品只能选1次或不选，选取物品总体积不超过$V$的情况下，最大总价值是多少？</p>
+<p>定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。</p>
+<p>$$<br>f[i,v]=max{f[i-1, v],f[i-1, v-c_i]+w_i}<br>$$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// [https://www.acwing.com/problem/content/2/](https://www.acwing.com/problem/content/2/)</span></span><br><span class="line"><span class="comment">// WA，j&lt;vi时没有转移</span></span><br><span class="line">&lt;!--more--&gt;<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, v;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; v;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">f</span>(n+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(v+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=vi; j&lt;=v; j++) &#123;</span><br><span class="line">            f[i][j] = <span class="built_in">max</span>(f[i<span class="number">-1</span>][j], f[i<span class="number">-1</span>][j-vi]+wi);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[n][v] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AC</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, v;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; v;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">f</span>(n+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(v+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;=v; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j&gt;=vi) f[i][j] = <span class="built_in">max</span>(f[i<span class="number">-1</span>][j], f[i<span class="number">-1</span>][j-vi]+wi);</span><br><span class="line">            <span class="keyword">else</span> f[i][j] = f[i<span class="number">-1</span>][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[n][v] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AC</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, v;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; v;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">f</span>(n+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(v+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;vi; j++) &#123;</span><br><span class="line">            f[i][j] = f[i<span class="number">-1</span>][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=vi; j&lt;=v; j++) &#123;</span><br><span class="line">            f[i][j] = <span class="built_in">max</span>(f[i<span class="number">-1</span>][j], f[i<span class="number">-1</span>][j-vi]+wi);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[n][v] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优化空间复杂度，使用滚动数组，自动将<code>f[i-1][] → f[i][]</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// [https://www.acwing.com/problem/content/2/](https://www.acwing.com/problem/content/2/)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, v;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; v;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(v+<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=v; j&gt;=vi; j--) &#123;</span><br><span class="line">            f[j] = <span class="built_in">max</span>(f[j], f[j-vi]+wi);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[v] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>初始化的问题</strong>，有的题目要求<strong>恰好装满背包</strong>，有的则<strong>不需要背包装满</strong>。</p>
+<p>要求恰好装满背包,那么在初始化时除了 $f[0]$ 为 0,其它 $f[1…V]$ 均设为负无穷，这样就可以保证最终得到的$f[V]$是一种恰好装满背包的最优解。 </p>
+<p>如果并没有要求必须把背包装满，而是只希望价格尽量大，初始化时应该将$f[0…v]$全部设为 0。</p>
+<h1 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h1><p>给出背包容量$V$，$N$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品能选无数次或不选，选取物品总体积不超过$V$的情况下，最大总价值是多少？</p>
+<p>定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。</p>
+<p>$$<br>f[i,v]=max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v}<br>$$</p>
+<p>状态$f[i,v]$的求解时间是$O(\frac{v}{c_i})$，总求解时间复杂度为$O(NV\sum \frac{V}{c_i})$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.acwing.com/problem/content/3/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// TLE</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, v;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; v;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">f</span>(n+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(v+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi;</span><br><span class="line">        <span class="comment">// for (int j=0; j&lt;=v; j++) &#123;</span></span><br><span class="line">        <span class="comment">//     f[i][j] = f[i-1][j];</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;=v; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">0</span>; k*vi&lt;=j; k++) &#123;</span><br><span class="line">                f[i][j] = <span class="built_in">max</span>(f[i][j], f[i<span class="number">-1</span>][j-k*vi]+k*wi);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[n][v] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优化</strong></p>
+<p>$\begin{array}{lll}<br>f[i,v]&amp; = &amp; max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v} \<br> &amp; = &amp; max{f[i-1, v], f[i-1, v- c_i]+w_i, \cdots, f[i-1, v-\lfloor \frac{v}{c_i} \rfloor \cdot c_i]+\lfloor \frac{v}{c_i} \rfloor\cdot w_i} \<br>\end{array}$</p>
+<p>$\begin{array}{lll}<br>f[i,v-c_i]&amp; = &amp; max{f[i-1, v-c_i-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v-c_i} \<br>&amp; = &amp; max{f[i-1, v-c_i], f[i-1, v- 2c_i]+w_i, \cdots, f[i-1, v-c_i-(\lfloor \frac{v}{c_i} \rfloor-1) \cdot c_i]+(\lfloor \frac{v}{c_i} \rfloor-1)\cdot w_i} \<br>\end{array}$</p>
+<p>$$<br>f[i,v]=max{f[i-1, v], f[i, v-c_i]+w_i}<br>$$</p>
+<p>时间复杂度$O(NV)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.acwing.com/problem/content/3/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// AC</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, v;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; v;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">f</span>(n+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(v+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;vi; j++) &#123;</span><br><span class="line">            f[i][j] = f[i<span class="number">-1</span>][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=vi; j&lt;=v; j++) &#123;</span><br><span class="line">            f[i][j] = <span class="built_in">max</span>(f[i<span class="number">-1</span>][j], f[i][j-vi]+wi);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[n][v] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AC 滚动数组</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, v;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; v;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(v+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=vi; j&lt;=v; j++) &#123;</span><br><span class="line">            f[j] = <span class="built_in">max</span>(f[j], f[j-vi]+wi);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[v] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h1><p>给出背包容量$V$，$n$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品最多能选$m_i$次，选取物品总体积不超过$V$的情况下，最大总价值是多少？</p>
+<p>定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。</p>
+<p>$$<br>f[i,v]=max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k \le m_i}<br>$$</p>
+<p>复杂度$O(V\sum m_i)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.acwing.com/problem/content/4/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// AC</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, v;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; v;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">f</span>(n+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(v+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi, si;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;=v; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">0</span>; k&lt;=si &amp;&amp; k*vi&lt;=j; k++) &#123;</span><br><span class="line">                f[i][j] = <span class="built_in">max</span>(f[i][j], f[i<span class="number">-1</span>][j-k*vi]+k*wi);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[n][v] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// WA，先遍历每件物品的数目不行</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, v;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; v;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">f</span>(n+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(v+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi, si;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">0</span>; k&lt;=si; k++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=k*si; j&lt;=v; j++) &#123;</span><br><span class="line">                f[i][j] = <span class="built_in">max</span>(f[i][j], f[i<span class="number">-1</span>][j-k*vi]+k*wi);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[n][v] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>二进制优化</strong>，对于一个物品最多选$m_i$次，我们可以构造$1, 2, 2^2, 2^{k-1}, m_i-(2^k-1)$，共$O(log(m_i))$个物品，这些物品选与不选可以构造出选0到$m_i$个物品。$O(V\sum m_i)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.acwing.com/problem/content/5/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// AC</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> N, V;</span><br><span class="line">    cin &gt;&gt; N &gt;&gt; V;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v, w;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi, si;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;</span><br><span class="line">        <span class="type">int</span> t = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (t &lt;= si) &#123;</span><br><span class="line">            v.<span class="built_in">push_back</span>(vi*t);</span><br><span class="line">            w.<span class="built_in">push_back</span>(wi*t);</span><br><span class="line">            si -= t;</span><br><span class="line">            t *= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (si&gt;<span class="number">0</span>) &#123;</span><br><span class="line">            v.<span class="built_in">push_back</span>(vi*si);</span><br><span class="line">            w.<span class="built_in">push_back</span>(wi*si);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> sz = v.<span class="built_in">size</span>();</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(V+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=sz; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=V; j&gt;=v[i<span class="number">-1</span>]; j--) &#123;</span><br><span class="line">            f[j] = <span class="built_in">max</span>(f[j], f[j-v[i<span class="number">-1</span>]]+w[i<span class="number">-1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[V] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AC</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> N, V;</span><br><span class="line">    cin &gt;&gt; N &gt;&gt; V;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v, w;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi, si;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;</span><br><span class="line">        <span class="type">int</span> t = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (t &lt; si) &#123;</span><br><span class="line">            v.<span class="built_in">push_back</span>(vi*t);</span><br><span class="line">            w.<span class="built_in">push_back</span>(wi*t);</span><br><span class="line">            si -= t;</span><br><span class="line">            t *= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        v.<span class="built_in">push_back</span>(vi*si);</span><br><span class="line">        w.<span class="built_in">push_back</span>(wi*si);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> sz = v.<span class="built_in">size</span>();</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(V+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=sz; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=V; j&gt;=v[i<span class="number">-1</span>]; j--) &#123;</span><br><span class="line">            f[j] = <span class="built_in">max</span>(f[j], f[j-v[i<span class="number">-1</span>]]+w[i<span class="number">-1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[V] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AC</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> N, V;</span><br><span class="line">    cin &gt;&gt; N &gt;&gt; V;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(V+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi, si;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;</span><br><span class="line">        <span class="type">int</span> t = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (t &lt; si) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=V; j&gt;=t*vi; j--) &#123;</span><br><span class="line">                f[j] = <span class="built_in">max</span>(f[j], f[j-t*vi]+t*wi);</span><br><span class="line">            &#125;</span><br><span class="line">            si -= t;</span><br><span class="line">            t *= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=V; j&gt;=si*vi; j--) &#123;</span><br><span class="line">            f[j] = <span class="built_in">max</span>(f[j], f[j-si*vi]+si*wi);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[V] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AC</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> N, V;</span><br><span class="line">    cin &gt;&gt; N &gt;&gt; V;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(V+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> vi, wi, si;</span><br><span class="line">        cin &gt;&gt; vi &gt;&gt; wi &gt;&gt; si;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> b=<span class="number">1</span>; b&lt;si; si-=b, b&lt;&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=V; j&gt;=b*vi; j--) &#123;</span><br><span class="line">                f[j] = <span class="built_in">max</span>(f[j], f[j-b*vi]+b*wi);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=V; j&gt;=si*vi; j--) &#123;</span><br><span class="line">            f[j] = <span class="built_in">max</span>(f[j], f[j-si*vi]+si*wi);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[V] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>单调队列优化</strong></p>
+<p>$f[i,v]=max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k \le m_i}$</p>
+<p>$f[i-1, v], f[i-1, v-c_i] + w_i,f[i-1, v-2c_i] + 2w_i, \cdots, f[i-1, v-m_ic_i] + m_iw_i$</p>
+<p>$f[i,v-c_i]=max{F[i-1, v-c_i-k\cdot c_i]+k\cdot w_i|0\le k \le m_i}$</p>
+<p>$f[i-1, v-c_i], f[i-1, v-2c_i] + w_i,f[i-1, v-3c_i] + 2w_i, \cdots, f[i-1, v-(m_i+1)c_i] + m_iw_i$</p>
+<p>在不看$+kc_i$的情况下，$f[i,v]$和$f[i, v-c_i]$分别展开后，我们可以认为$f[i,v]$比$f[i, v-c_i]$多了$f[i-1, v]$这一项，少了$f[i-1, v-(m_i+1)c_i]$这一项。</p>
+<p>对于第i件物品其体积为v，价值为w，最多可选次数为s。</p>
+<p>$f[i][]$的求解可以分为v组进行，这v组中第r组($0\le r &lt; v$)为$f[i-1][r], f[i-1][v+r], f[i-1][2v+r], \cdots, f[i-1][g\cdot v + r], (g=\lfloor \frac{V}{v} \rfloor)$</p>
+<p>对于可选次数为3，求解$f[i][4v+r]$，实际上为$max { f[i-1][4v+r], f[i-1][3v+r]+w, f[i-1][2v+r]+2w, f[i-1][v+r]+3w}$</p>
+<p>用单调队列维护$r, r+v, r+2v, r+3v, \cdots, r+gv$。</p>
+<ul>
+<li>保证队首队尾相差不超过$sv$</li>
+<li>对于队列中的任意两个元素$r+iv$和$r+jv$，$i&lt;j$。确保$f[i-1][r+iv]+(j-i)w &gt; f[i-1][r+jv]$</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.acwing.com/problem/content/description/6/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> N, V;</span><br><span class="line">    cin &gt;&gt; N &gt;&gt; V;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">f</span>(N+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(V+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">q</span><span class="params">(V)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> v, w, s;</span><br><span class="line">        cin &gt;&gt; v &gt;&gt; w &gt;&gt; s;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;v; j++) &#123;</span><br><span class="line">            <span class="type">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k=j; k&lt;=V; k+=v) &#123;</span><br><span class="line">                <span class="keyword">while</span> (l&lt;r &amp;&amp; k-q[l] &gt; s*v) l++;</span><br><span class="line">                <span class="keyword">while</span> (l&lt;r &amp;&amp; f[i<span class="number">-1</span>][q[r<span class="number">-1</span>]] + (k-q[r<span class="number">-1</span>])/v*w &lt;= f[i<span class="number">-1</span>][k]) r--; <span class="comment">// 维护严格单调减小</span></span><br><span class="line">                q[r++] = k;</span><br><span class="line">                f[i][k] = f[i<span class="number">-1</span>][q[l]] + (k-q[l])/v*w;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[N][V] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// f[i][] 依赖 f[i-1][]，用两个数组交替滚动覆盖。</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> N, V;</span><br><span class="line">    cin &gt;&gt; N &gt;&gt; V;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">f</span>(<span class="number">2</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(V+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="type">int</span> u = <span class="number">0</span>;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">q</span><span class="params">(V)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> v, w, s;</span><br><span class="line">        cin &gt;&gt; v &gt;&gt; w &gt;&gt; s;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;v; j++) &#123;</span><br><span class="line">            <span class="type">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k=j; k&lt;=V; k+=v) &#123;</span><br><span class="line">                <span class="keyword">while</span> (l&lt;r &amp;&amp; k-q[l] &gt; s*v) l++;</span><br><span class="line">                <span class="keyword">while</span> (l&lt;r &amp;&amp; f[u][q[r<span class="number">-1</span>]] + (k-q[r<span class="number">-1</span>])/v*w &lt;= f[u][k]) r--; <span class="comment">// 维护严格单调减小</span></span><br><span class="line">                q[r++] = k;</span><br><span class="line">                f[u^<span class="number">1</span>][k] = f[u][q[l]] + (k-q[l])/v*w;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        u ^= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[u][V] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="混合背包"><a href="#混合背包" class="headerlink" title="混合背包"></a>混合背包</h1><p>有些物品只能选1次，有些能选无数次，有些只能选m次。</p>
+<p>判断每个物品所属背包种类，分类处理。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对于费用为vi，价值为wi的01背包</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j=v; j&gt;=vi; j--) &#123;</span><br><span class="line">    f[j] = <span class="built_in">max</span>(f[j], f[j-vi]+wi);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 对于费用为vi，价值为wi的完全背包</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j=vi; j&lt;=v; j++) &#123;</span><br><span class="line">    f[j] = <span class="built_in">max</span>(f[j], f[j-vi]+wi);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 对于费用为vi，价值为wi，可选次数为si的多重背包，采用二进制压缩</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> b=<span class="number">1</span>; b&lt;si; si-=b, b&lt;&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j=V; j&gt;=b*vi; j--) &#123;</span><br><span class="line">        f[j] = <span class="built_in">max</span>(f[j], f[j-b*vi]+b*wi);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j=V; j&gt;=si*vi; j--) &#123;</span><br><span class="line">    f[j] = <span class="built_in">max</span>(f[j], f[j-si*vi]+si*wi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="分组背包"><a href="#分组背包" class="headerlink" title="分组背包"></a>分组背包</h1><p>有N件物品和一个容量为V的背包。第 <em>i</em> 件物品的费用是 $c_i$，价值是$w_i$。这些物品被划分为K组，每组中的物品互相冲突，最多选一件。求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大。</p>
+<p>设$f[k,v]$为前k组物品花费v费用能获得的最大价值。</p>
+<p>$f[k,v] = max{ f[k-1,v], f[k-1, v-c_i]+w_i | item \ i \in group \ k}$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.acwing.com/problem/content/9/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> N, V;</span><br><span class="line">    cin &gt;&gt; N &gt;&gt; V;</span><br><span class="line">    vector&lt;vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt;&gt; <span class="built_in">obj</span>(N);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> sz;</span><br><span class="line">        cin &gt;&gt; sz;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;sz; j++) &#123;</span><br><span class="line">            <span class="type">int</span> v, w;</span><br><span class="line">            cin &gt;&gt; v &gt;&gt; w;</span><br><span class="line">            obj[i].<span class="built_in">emplace_back</span>(v, w);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">f</span>(N+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(V+<span class="number">1</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=N; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;=V; j++) &#123;</span><br><span class="line">            f[i][j] = f[i<span class="number">-1</span>][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;=V; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> [v, w]:obj[i<span class="number">-1</span>]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (v&lt;=j)</span><br><span class="line">                f[i][j] = <span class="built_in">max</span>(f[i][j], f[i<span class="number">-1</span>][j-v]+w);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[N][V] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 滚动数组</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> N, V;</span><br><span class="line">    cin &gt;&gt; N &gt;&gt; V;</span><br><span class="line">    vector&lt;vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt;&gt; <span class="built_in">obj</span>(N);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> sz;</span><br><span class="line">        cin &gt;&gt; sz;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;sz; j++) &#123;</span><br><span class="line">            <span class="type">int</span> v, w;</span><br><span class="line">            cin &gt;&gt; v &gt;&gt; w;</span><br><span class="line">            obj[i].<span class="built_in">emplace_back</span>(v, w);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(V+<span class="number">1</span>)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=N; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=V; j&gt;=<span class="number">0</span>; j--) &#123; <span class="comment">// 注意逆向遍历。每类物品也是选与不选，只是选的方式有多种。</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> [v, w]:obj[i<span class="number">-1</span>]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (v&lt;=j)</span><br><span class="line">                    f[j] = <span class="built_in">max</span>(f[j], f[j-v]+w);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[V] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="多维费用背包"><a href="#多维费用背包" class="headerlink" title="多维费用背包"></a>多维费用背包</h1><p>共有N件物品，对于每件物品，具有两种不同的费用$c_i,d_i$，选择这件物品必须同时付出这两种费用。这两种费用都有一个可付出的最大值（背包容量）$V,U$。问怎样选择物品可以得到最大的价值。</p>
+<p>费用加了一维，只需状态也加一维即可。设 $f[i, v, u]$ 表示前 i 件物品付出两种费用 分别为 v 和 u 时可获得的最大价值。状态转移方程就是： $f[i, v, u] = max{f[i-1, v,u], F[i-1, v-c_i, u-d_i] + w_i}$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.acwing.com/problem/content/8/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> N, V, M;</span><br><span class="line">    cin &gt;&gt; N &gt;&gt; V &gt;&gt; M;</span><br><span class="line">    <span class="type">int</span> f[N+<span class="number">1</span>][V+<span class="number">1</span>][M+<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="built_in">sizeof</span>(f));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> v, m, w;</span><br><span class="line">        cin &gt;&gt; v &gt;&gt; m &gt;&gt; w;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;=V; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">0</span>; k&lt;=M; k++) &#123;</span><br><span class="line">                f[i][j][k] = f[i<span class="number">-1</span>][j][k];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=v; j&lt;=V; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k=m; k&lt;=M; k++) &#123;</span><br><span class="line">                f[i][j][k] = <span class="built_in">max</span>(f[i][j][k], f[i<span class="number">-1</span>][j-v][k-m]+w);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[N][V][M] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 滚动压缩</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> N, V, M;</span><br><span class="line">    cin &gt;&gt; N &gt;&gt; V &gt;&gt; M;</span><br><span class="line">    <span class="type">int</span> f[V+<span class="number">1</span>][M+<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="built_in">sizeof</span>(f));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> v, m, w;</span><br><span class="line">        cin &gt;&gt; v &gt;&gt; m &gt;&gt; w;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=V; j&gt;=v; j--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k=M; k&gt;=m; k--) &#123;</span><br><span class="line">                f[j][k] = <span class="built_in">max</span>(f[j][k], f[j-v][k-m]+w);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[V][M] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="树型背包"><a href="#树型背包" class="headerlink" title="树型背包"></a>树型背包</h1>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/notion/" rel="tag"><i class="fa fa-tag"></i> notion</a>
+              <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"><i class="fa fa-tag"></i> 动态规划</a>
+          </div>
+          <script type="text/javascript">
+            var tagsall=document.getElementsByClassName("post-tags")
+            for (var i = tagsall.length - 1; i >= 0; i--){
+                var tags=tagsall[i].getElementsByTagName("a");
+                for (var j = tags.length - 1; j >= 0; j--) {
+                    var golden_ratio = 0.618033988749895;
+                    var s = 0.5;
+                    var v = 0.999;
+                    var h = golden_ratio + Math.random()*0.8 - 0.5;
+                    var h_i = parseInt(h * 6);
+                    var f = h * 6 - h_i;
+                    var p = v * (1 - s);
+                    var q = v * (1 - f * s);
+                    var t = v * (1 - (1 - f) * s);
+                    var r, g, b;
+                    switch (h_i) {
+                        case 0:
+                            r = v;
+                            g = t;
+                            b = p;
+                            break;
+                        case 1:
+                            r = q;
+                            g = v;
+                            b = p;
+                            break;
+                        case 2:
+                            r = p;
+                            g = v;
+                            b = t;
+                            break;
+                        case 3 :
+                            r = p;
+                            g = q;
+                            b = v;
+                            break;
+                        case 4:
+                            r = t;
+                            g = p;
+                            b = v;
+                            break;
+                        case 5:
+                            r = v;
+                            g = p;
+                            b = q;
+                            break;
+                        default:
+                            r = 1;
+                            g = 1;
+                            b = 1;
+                      }
+                    tags[j].style.background = "rgba("+parseInt(r*255)+","+parseInt(g*255)+","+parseInt(b*255)+","+0.7+")";
+                }
+            }
+          </script>
+          <style>
+          .post-tags a {
+              display: inline-block;
+              font-size: 0.8em;
+              padding: 0px 10px;
+              border-radius: 8px;
+              color: rgb(85, 85, 85);
+              border: 0px;
+          }
+          .post-tags a:hover{
+              box-shadow: 0px 5px 15px 0px rgba(0,0,0,.4);
+              transform: scale(1.1);
+              transition-duration: 0.15s;
+          }
+          </style>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/6b2bf66e587e/6b2bf66e587e/9b63504f83c3/0f50eb263d93/" rel="prev" title="乘法逆元">
+                  <i class="fa fa-chevron-left"></i> 乘法逆元
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/6b2bf66e587e/6b2bf66e587e/80e411afd8c3/4ccd1eebc051/" rel="next" title="数位dp模板">
+                  数位dp模板 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GrainMad</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.7/mermaid.min.js","integrity":"sha256-G58AID1YoX5YaEtWfXSI0VLrZ6N4kvNvwg0BI8zUFxE="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#606863',
+  buttonColorLight: '#dcdee3',
+  saveInCookies: true,
+  label: '🌗',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"grainmad/grainmad.github.io","issue_term":"pathname","theme":"github-dark-orange"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":450},"mobile":{"show":false,"scale":0.5},"react":{"opacity":0.7}});</script></body>
+</html>

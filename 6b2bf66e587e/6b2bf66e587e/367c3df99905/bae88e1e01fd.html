@@ -1,0 +1,272 @@
+<hr>
+<p>title: “字符串哈希”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="字符串哈希"><a href="#字符串哈希" class="headerlink" title="字符串哈希"></a>字符串哈希</h1><p><del>缺点：多重哈希容易卡常，单哈希容易被hack</del></p>
+<pre><code class="cpp">#define ll long long
+const ll MOD = 998244353, BASE = 171;
+int n = s.size();
+vector&lt;ll&gt; H(n+1, 0), B(n+1, 1);
+// string s[] index from 0 to n-1
+// B[i] = BASE^i
+// s[i...j] = s[0...j] - s[0...i-1]
+// hash s[0...i-1] = H[i] = s[0]*B[i-1]+s[1]*B[i-2]+...+s[i-1]*B[0]
+// hash s[0...j] = H[j+1] = s[0]*B[j]+s[1]*B[j-1]+...+s[j]*B[0]
+// hash s[i...j] = H[j+1] - H[i]*B[j-i+1]
+&lt;!--more--&gt;// hash s[i...j-1] = H[j] - H[i]*B[j-i]
+for (int i=1; i&lt;=n; i++) {
+    H[i] = (H[i-1]*BASE%MOD + s[i-1])%MOD;
+}
+for (int i=1; i&lt;=n; i++) {
+    B[i] = B[i-1]*BASE%MOD;
+}
+auto hash = [&amp;](int l, int r) {  // hash of s[l...r-1]
+    return (H[r] - H[l] * B[r - l] % MOD + MOD) % MOD;
+};
+</code></pre>
+<p>对于长度为n的字符串s，<strong>下标从0开始</strong>。</p>
+<p>令$B[i] = BASE^i$</p>
+<p>长度为i的前缀子串<code>s[0…i-1]</code>的哈希值, $H[i] = \sum \limits_{j=0}^{i-1} s[j]*B[i-1-j]$</p>
+<p>长度为len的子串<code>s[i…j]</code>的哈希值<code>H[j+1] - H[i]*B[j-i+1]</code> 注意取模。</p>
+<hr>
+<p><del>毒瘤写法</del>，自然溢出</p>
+<pre><code class="cpp">#define ull unsigned long long
+#define BASE 131
+int main() {
+    string s = &quot;abcdabcdab&quot;;
+    int n = s.size();//n=10
+    vector&lt;ull&gt; H(n+1, 0), B(n+1, 1);
+    for (int i=1; i&lt;=n; i++) {
+        H[i] = H[i-1]*BASE+s[i-1];
+        B[i] = B[i-1]*BASE;
+    }
+        // string s[] index from 0 to n-1
+    // H[i] 前i个字符的前缀串哈希值, H[0] = 0。
+        // B[i] = BASE^i
+    // H[r]-H[l]*B[r-l] = s[l...r-1]
+    // s[l...r] = H[r+1] - H[l]*B[r-l+1]
+    auto hash = [&amp;](int l, int r) {  // hash of s[l...r-1]
+        return H[r] - H[l] * B[r - l];
+    };
+        cout &lt;&lt; H[3] - H[0]*B[3] &lt;&lt; &quot; &quot; &lt;&lt; H[7] - H[4]*B[3] &lt;&lt; endl; // abc abc
+    cout &lt;&lt; H[4] - H[0]*B[4] &lt;&lt; &quot; &quot; &lt;&lt; H[8] - H[4]*B[4] &lt;&lt; endl; // abcd abcd
+    cout &lt;&lt; H[2] - H[0]*B[2] &lt;&lt; &quot; &quot; &lt;&lt; H[6] - H[4]*B[2] &lt;&lt; &quot; &quot; &lt;&lt; H[10]-H[8]*B[2] &lt;&lt; endl; // abcd abcd
+    return 0;
+}
+/*
+1677554 1677554
+219759674 219759674
+12805 12805 12805
+*/
+</code></pre>
+<hr>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="多重哈希"><a href="#多重哈希" class="headerlink" title="多重哈希"></a>多重哈希</h2><pre><code class="cpp">// 单哈希容易被卡，封装用多重哈希
+// 两个串的哈希相等，说明串大概率相等。
+struct SHash {
+#define ll unsigned long long
+    // string s[] index from 0 to n-1
+    // B[i] = BASE^i
+    // s[i...j] = s[0...j] - s[0...i-1]
+    // hash s[0...i-1] = H[i] = s[0]*B[i-1]+s[1]*B[i-2]+...+s[i-1]*B[0]
+    // hash s[0...j] = H[j+1] = s[0]*B[j]+s[1]*B[j-1]+...+s[j]*B[0]
+    // hash s[i...j] = H[j+1] - H[i]*B[j-i+1]
+    // hash s[i...j-1] = H[j] - H[i]*B[j-i]
+    vector&lt;ll&gt; H, B;
+    ll len, base, mod;
+    SHash(string&amp; s, ll base = 171, ll mod = 998244353)
+        : H(s.size() + 1, 0),
+          B(s.size() + 1, 1),
+          len(s.size()),
+          base(base),
+          mod(mod) {
+        for (int i = 1; i &lt;= len; i++) {
+            H[i] = (H[i - 1] * base % mod + s[i - 1]) % mod;
+            B[i] = B[i - 1] * base % mod;
+        }
+    }
+    ll hash(int l, int r) {  // hash of s[l...r-1]
+        return (H[r] - H[l] * B[r - l] % mod + mod) % mod;
+    };
+};
+// 167772161,469762049,754974721,998244353,1045430273,1051721729,1053818881,1000000007
+struct MSHash{
+    vector&lt;SHash&gt; h;
+    MSHash(string&amp; s) {
+        // MOD 太大会溢出
+        vector&lt;pair&lt;ll, ll&gt;&gt; param = {{137, 167772161},
+                                                                                {139, 469762049},
+                                                                                {149, 754974721},
+                                                                                {167, 998244353},
+                                                                                {151, 1045430273},
+                                                                                {157, 1051721729},
+                                                                                {163, 1053818881},
+                                                                                {173, 1000000007}};
+        for (auto [i, j] : param) {
+            h.emplace_back(s, i, j);
+        }
+    }
+    // is s[l1...r1-1] == s[l2...r2-1] ? s[] index from 0
+    bool check(int l1, int r1, int l2, int r2) {
+        for (auto&amp; i : h) {
+            if (i.hash(l1, r1) != i.hash(l2, r2))
+                return false;
+        }
+        return true;
+    }
+};
+</code></pre>
+<p>实际解题时封装太多层还是容易超时，建议用两个哈希</p>
+<pre><code class="cpp">SHash h1(s), h2(s, 173, 1000000007);
+// 检测 s[a,b) == s[c,d)
+h1.hash(a, b) == h1.hash(c, d) &amp;&amp; h2.hash(a, b) == h2.hash(c, d)
+</code></pre>
+<p><del>实战还是别用结构体封装，太容易卡常了</del></p>
+<p>再写一个<strong>常数较小</strong>的双重哈希</p>
+<pre><code class="cpp">#define N 500005
+#define ll long long
+const ll MOD1 = 998244353, BASE1 = 251;
+const ll MOD2 = 1073676287, BASE2 = 211;
+ll H1[N], H2[N], B1[N], B2[N];
+
+void init(string&amp; s) {
+    int n = s.size();
+    H1[0] = H2[0] = 0;
+    B1[0] = B2[0] = 1;
+    for (int i=1; i&lt;=n; i++) {
+        H1[i] = (H1[i-1]*BASE1%MOD1 + s[i-1])%MOD1;
+        B1[i] = B1[i-1]*BASE1%MOD1;
+        H2[i] = (H2[i-1]*BASE2%MOD2 + s[i-1])%MOD2;
+        B2[i] = B2[i-1]*BASE2%MOD2;
+    }
+}
+ll hash1(int l, int r) {  // hash of s[l...r-1]
+    return (H1[r] - H1[l] * B1[r - l] % MOD1 + MOD1) % MOD1;
+};
+ll hash2(int l, int r) {  // hash of s[l...r-1]
+    return (H2[r] - H2[l] * B2[r - l] % MOD2 + MOD2) % MOD2;
+};
+bool check(int l1, int r1, int l2, int r2) {
+    return hash1(l1, r1) == hash1(l2, r2) &amp;&amp; hash2(l1, r1) == hash2(l2, r2);
+}
+</code></pre>
+<h2 id="滚动哈希"><a href="#滚动哈希" class="headerlink" title="滚动哈希"></a>滚动哈希</h2><pre><code class="cpp">#define ll long long
+
+/*
+    滚动哈希,窗口大小为n
+    当前字符串长度为len, hash = s[0]*BASE^{len-1} + s[1]*BASE^{len-2} + ... + s[len-1]*BASE^{0}
+    左边移除s[0], hash -= s[0]*BASE^{len-1}
+    右边添加ch, hash =  hash*BASE + ch
+*/ 
+template&lt;typename T&gt;
+struct SlideStr {
+    ll hash = 0, n, mod, base;
+    queue&lt;T&gt; q;
+    vector&lt;ll&gt; B;
+    SlideStr(ll n, ll mod = 998244353, ll base = 173): n(n), mod(mod), base(base), B(n+1) {
+        B[0] = 1;
+        for (int i = 1; i &lt;= n; i++) 
+            B[i] = B[i - 1] * base % mod;
+    }
+    bool del_l() {
+        int len = q.size();
+        if (len == 0) return false;
+        hash = (hash - q.front()*B[len-1]%mod + mod)%mod;
+        q.pop();
+        return true;
+    }
+    bool add_r(T ch) {
+        if (q.size() == n) return false;
+        q.push(ch);
+        hash = (hash*base%mod+ch)%mod;
+        return true;
+    }
+    ll get_hash() {
+        return hash;
+    }
+};
+</code></pre>
+<h2 id="字符串匹配的位置"><a href="#字符串匹配的位置" class="headerlink" title="字符串匹配的位置"></a>字符串匹配的位置</h2><pre><code class="cpp">using ll = long long;
+int Search(string&amp; pat, string&amp; txt) {
+    int n = pat.size(), m = txt.size();
+    const ll MOD = 998244353, BASE = 171;
+    ll M = 0, H = 0, B = 1;
+    for (int i=0; i&lt;n; i++) {
+        B = B*BASE%MOD;
+        M = (M*BASE%MOD+pat[i])%MOD;
+    }
+    int cnt = 0;
+    for (int i=0; i&lt;=m; i++) {
+        if(i &lt; m) H = (H*BASE%MOD + txt[i])%MOD;
+        if (i&gt;=n) {
+            H = (H-B*txt[i-n]%MOD+MOD)%MOD;
+        }
+        if (H == M) {
+            // cout &lt;&lt; i-n+1 &lt;&lt; &quot;匹配成功\n&quot;;
+            cnt++;
+        }
+    }
+    return cnt;
+}
+</code></pre>
+<h2 id="判断回文串"><a href="#判断回文串" class="headerlink" title="判断回文串"></a>判断回文串</h2><pre><code class="cpp">using ll = long long;
+const ll BASE = 131;
+int n = s.size();
+vector&lt;ll&gt;P(n+1, 0),S(n+1, 0), B(n+1, 1);
+for (int i=1; i&lt;=n; i++) {
+    P[i] = P[i-1]*BASE+s[i-1];
+    B[i] = B[i-1]*BASE;
+}
+for (int i=n-1; i&gt;=0; i--) {
+    S[i] = S[i+1]*BASE+s[i];
+}
+auto ok = [&amp;](int l, int r) { //[l,r) 0&lt;=l,r&lt;n
+    return P[r]-P[l]*B[r-l] == S[l]-S[r]*B[r-l];
+};
+
+struct SHash {
+#define ll unsigned long long
+    vector&lt;ll&gt; H, B, S;
+    ll len, base, mod;
+    SHash(string&amp; s, ll base = 171, ll mod = 998244353)
+        : H(s.size() + 1, 0),
+          S(s.size()+1, 0),
+          B(s.size() + 1, 1),
+          len(s.size()),
+          base(base),
+          mod(mod) {
+        for (int i = 1; i &lt;= len; i++) {
+            H[i] = (H[i - 1] * base % mod + s[i - 1]) % mod;
+            B[i] = B[i - 1] * base % mod;
+        }
+        for (int i=len-1; i&gt;=0; i--) {
+            S[i] = (S[i+1]*base%mod+s[i])%mod;
+        }
+    }
+    bool ok(int l, int r) {
+        return (H[r]-H[l]*B[r-l]%mod+mod)%mod == (S[l]-S[r]*B[r-l]%mod+mod)%mod;
+    }
+};
+// 167772161,469762049,754974721,998244353,1045430273,1051721729,1053818881,1000000007
+struct MSHash{
+    vector&lt;SHash&gt; h;
+    MSHash(string&amp; s) {
+        vector&lt;pair&lt;ll, ll&gt;&gt; param = {{191, 998244353}, {173, 1000000007}};
+        for (auto [i, j] : param) {
+            h.emplace_back(s, i, j);
+        }
+    }
+    bool ok(int l, int r) {
+        for (auto&amp; i : h) {
+            if (!i.ok(l, r))
+                return false;
+        }
+        return true;
+    }
+};
+</code></pre>
+<p><a href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/"><strong>28. 找出字符串中第一个匹配项的下标</strong></a></p>
+<p><a href="https://leetcode-cn.com/problems/rotate-string/"><strong>796. 旋转字符串</strong></a></p>
+<p><a href="https://leetcode-cn.com/problems/shortest-palindrome/"><strong>214. 最短回文串</strong></a></p>
+<p><a href="https://leetcode-cn.com/problems/longest-duplicate-substring/"><strong>1044. 最长重复子串</strong></a></p>
+<p><a href="https://leetcode-cn.com/problems/distinct-echo-substrings/"><strong>1316. 不同的循环子字符串</strong></a></p>
+<p><a href="https://leetcode-cn.com/problems/longest-happy-prefix/"><strong>1392. 最长快乐前缀</strong></a></p>
+<p><a href="https://leetcode-cn.com/problems/sum-of-scores-of-built-strings/"><strong>2223. 构造字符串的总得分和</strong></a></p>
