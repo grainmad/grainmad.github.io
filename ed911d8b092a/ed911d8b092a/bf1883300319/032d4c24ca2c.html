@@ -1,0 +1,64 @@
+<hr>
+<p>title: “容斥与鸽巢”<br>date: 2024-06-04 18:22:26<br>updated: 2024-06-04 18:22:26<br>tag: [notion, math, Combinatorics]<br>categories: math<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="容斥与鸽巢"><a href="#容斥与鸽巢" class="headerlink" title="容斥与鸽巢"></a>容斥与鸽巢</h1><h1 id="容斥原理"><a href="#容斥原理" class="headerlink" title="容斥原理"></a>容斥原理</h1><p>$|A_1\cup A_2 \cup A_3 \cdots \cup A_n| = \sum \limits_{i=1}^{n} |A_i| - \sum \limits_{i=1}^{n} \sum \limits_{i&lt;j}|A_i\cap A_j|+\sum \limits_{i=1}^{n} \sum \limits_{i&lt;j}\sum \limits_{j&lt;k}|A_i\cap A_j \cap A_k|-\cdots\pm|A_1\cap A_2 \cap A_3 \cap \cdots \cap A_n|$</p>
+<p>$|\bar{A_1} \cap \bar A_2 \cap \bar A_3 \cdots \cap \bar A_n| =A - |A_1\cup A_2 \cup A_3 \cdots \cup A_n|=A- \sum \limits_{i=1}^{n} |A_i| + \sum \limits_{i=1}^{n} \sum \limits_{i&lt;j}|A_i\cap A_j|-\sum \limits_{i=1}^{n} \sum \limits_{i&lt;j}\sum \limits_{j&lt;k}|A_i\cap A_j \cap A_k|+\cdots \mp |A_1\cap A_2 \cap A_3 \cap \cdots \cap A_n|$</p>
+<h2 id="容斥原理的引用"><a href="#容斥原理的引用" class="headerlink" title="容斥原理的引用"></a>容斥原理的引用</h2><p>求1到500内的整数中能被3或5整除的数的个数。</p>
+<p>A = 1到500内的整数能被3整除的个数， $A=\lfloor \frac{500}{3}\rfloor = 166$</p>
+<p>B = 1到500内的整数能被5整除的个数， $B=\lfloor \frac{500}{5}\rfloor = 100$</p>
+<p>$A\cap B = \lfloor \frac{500}{15}\rfloor = 33$</p>
+<p>$|A\cup B| = |A|+|B|-|A\cap B| = 166+100-33 = 233$</p>
+<hr>
+<p>a，b，c，d四个字母构成n位的字符串中，a，b，c至少都出现1次的串数目</p>
+<p>所有方案数为$N=4^n$</p>
+<p>a没有出现过的方案数$A=3^n$</p>
+<p>b没有出现过的方案数$B=3^n$</p>
+<p>c没有出现过的方案数$C=3^n$</p>
+<p>a,b都没有出现过的方案数$|A\cap B| = 2^n$</p>
+<p>a,c都没有出现过的方案数$|A\cap C| = 2^n$</p>
+<p>b,c都没有出现过的方案数$|B\cap C| = 2^n$</p>
+<p>a,b,c都没有出现过的方案数$|A\cap B\cap C| = 1$</p>
+<p>$|\bar A \cap \bar B \cap \bar C| = N - |A \cup B \cup C | = N - A - B - C + |A \cap B| + |B\cap C| + |A \cap C| - |A\cap B \cap C|$ </p>
+<hr>
+<p>不超过120的素数有多少个？</p>
+<p>不超过120的合数一定是2，3，5，7的倍数。</p>
+<p>利用容斥原理算出所有不重复的能被2，3，5，7整除的数。用120减去他们，加上4个素数（2，3，5，7），再减去特殊的1便是答案。</p>
+<hr>
+<p>欧拉函数$\Phi(n)$是求小于n且与n互素的数的个数。</p>
+<p>分解n为不同素数的乘积 $n = p_1^{a_1}p_2^{a_2}\cdots p_1k^{a_k}$</p>
+<p>设1到n的个数中$p_i$的倍数集合是$A_i$</p>
+<p>$|A_i| = \lfloor \frac{n}{p_i} \rfloor$</p>
+<p>$p_i$与$p_j$的倍数$|A_i \cap A_j| = \lfloor \frac{n}{p_ip_j} \rfloor$</p>
+<p>$|\bar A_1 \cap \bar A_2 \cap\bar A_3 \cap \cdots \cap A_k| = n - |A_1 \cup A_2  \cup A_3 \cup \cdots \cup A_k| = n\prod(1-\frac{1}{p_i})$</p>
+<hr>
+<p>求不定方程$x_1+x_2+x_3=15$的非负整数数目，其中$0≤x_1≤5,0≤x_2≤6,0≤x_3≤7$。</p>
+<p>如果约束条件都是$x_i≥0$，那么答案就是有序拆分数。</p>
+<p>作等价替换，例如令$y=x_1+6$，这样$y+x_2+x_3 = 9$的非负整数数目就是不满足约束$0≤x_1≤5$的数目。</p>
+<p>令$A_i$为不满足$x_i$的约束的数目，那么答案是$|\bar A_1 \cap \bar A_2 \cap \bar A_3|$，利用容斥原理即可。</p>
+<hr>
+<p>格路问题</p>
+<p>{% asset_img ‘Untitled.png’ %}</p>
+<p>不经过障碍的条数。</p>
+<p>利用容斥思想，求出经过障碍的条数。</p>
+<p>设经过障碍AB的集合为$A_1$，经过障碍CD的集合为$A_2$，经过障碍EF的集合为$A_3$，经过障碍HG的集合为$A_4$。答案是$|\bar A_1 \cap \bar A_2 \cap \bar A_3 \cap \bar A_4|$</p>
+<hr>
+<p>将n个有区别的球放到m个有区别的盒子，且不能空盒的方案数。</p>
+<p>设$A_i$为不选第$i$个盒子的集合。</p>
+<p>设$N$为可以有空盒的情况（至少0个空盒），有$m^n$种方案；|$A_i$|为至少一个空盒的方案数，有$C_m^1(m-1)^n$种（盒子有区别，有m种选法）；$|A_i \cap A_j|$为至少两个空盒的方案数，有$C_m^2(m-2)^n$种；……；</p>
+<p>无空盒的方案数是$|\bar A_1 \cap \bar A_2 \cap \cdots \cap \bar A_m| = \sum \limits_{i=0}^{m}(-1)^iC_m^i(m-i)^n$</p>
+<hr>
+<p>错排问题，求n个元素都不在自己原来位置的排列数。</p>
+<p>设$A_i$为第$i$位在原来位置上的排列。</p>
+<p>$|A_i| = (n-1)!$</p>
+<p>$|A_i \cap A_j| = (n-2)!$</p>
+<p>$|\bar A_1 \cap \bar A_2 \cap \cdots \cap \bar A_n| = \sum \limits_{i=0}^{n} (-1)^iC_{n}^{i}(n-i)!= \sum \limits_{i=0}^{n} (-1)^i\frac{n!}{i!}$</p>
+<h1 id="鸽巢原理"><a href="#鸽巢原理" class="headerlink" title="鸽巢原理"></a>鸽巢原理</h1><p>如果要把$n$个对象分配到$m$个容器中，必有至少一个容器容纳至少$\lceil \frac {n}{m}\rceil$个对象。</p>
+<h2 id="鸽巢原理的应用"><a href="#鸽巢原理的应用" class="headerlink" title="鸽巢原理的应用"></a>鸽巢原理的应用</h2><ul>
+<li>有n+1个正整数，全部小于或等于2n，证明一定有两个数是互质的。  将2n个数分成n组，2i+1与2i+2在一组中，显然在一组中的数是互质的，现在选出n+1个数，一定会选到某一组互质的数。</li>
+<li>1到2n的正整数任取n+1个，则n+1个数中至少有一对数其中一个是另一个的倍数。  将所有的数的2因子去除，最后一定成为奇数，而2n内只有n个奇数，所以取出n+1个数必有两个相同的奇数，这两个相同的奇数各自乘以任意个数的2，依然成倍数关系。</li>
+<li>有$a_1,a_2,\cdots,a_{100}$，是由1和2组成的序列，已知任意一个数开始的顺序10个数之和不超过16，即$a_i+a_{i+1}+a_{i+2}+\cdots+a_{i+9} \le 16, 1\le i \le91$，证明存在h与k，k&gt;h，使得$a_{h+1}+\cdots+a_{k} = 39$  令$S_n = \sum \limits_{i=1}^{n} a_i$，构造序列$S_1,S_2,…,S_{100},S_1+39,S_2+39,…,S_{100}+39$，共计200项，最大值$S_{100}+39 = 199$，这200项中有两项相等，前n项互不相同，后n项互不相同，所以$S_k = S_h+39$，$S_i$单调增所以$h&lt;k$。</li>
+<li>有20件衣服，4件蓝色，7件灰色，9件红色，任取多少件保证有4件同色?  每种颜色都取3件共9件，再取1件就可以有4件同色。至多取10件。</li>
+<li>有20件衣服，4件蓝色，7件灰色，9件红色，任取多少件保证有5件同色?  由于蓝色只有4件，最坏的情况将蓝色取完，然后剩余两种颜色各取4件后再任取一件就会有5件同色，至多13件。</li>
+<li>求最小非负整数$x$，使得$x=3a+2, x = 5b+3, x = 7c+2$，  构造法<br>  考虑5和7的某个公倍数t1除以3余2。5<em>7 = 35，35%3 = 2，选择t1 = 35<br>  考虑3和7的某个公倍数t2除以5余3。3</em>7 = 21，21%5 = 1, 21<em>3%5 = 3，选择t2 = 63<br>  考虑3和5的某个公倍数t3除以7余2。3</em>5 = 15，15%7 = 1, 15<em>2%7 = 2，选择t3 = 30<br>  此时x+k</em>lcm(3,5,7)=t1+t2+t3。</li>
+<li>中国剩余定理（Chinese Remainder Theorem），m和n是互质的正整数，对于任意非负整数$a$与$b(a&lt;m，b&lt;n)$。必定存在正整数$x$使得联立的同余方程组有公共解  $\left{ \begin{array}{l}<br>  x = pm+a \<br>  x = qn+b<br>  \end{array}\right.$$p,q$为非负整数  考虑n个数$a, m+a, 2m+a, 3m+a, … , (n-1)m+a$ 均满足除以$m$余$a$  这n个数除以n的余数是互不相同的。  如果相同则有$im+a = q_in+r, jm + a = q_jm+r$，相减得到$(j-i)m = (q_j-q_i)n$，n和m是互质的，j-i&lt;n所以矛盾。  由于除以n的余数只有n个，所以0到n-1一定有一个数b满足$x=qn+b$</li>
+</ul>

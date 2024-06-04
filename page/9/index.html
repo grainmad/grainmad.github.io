@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">99</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">549</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">100</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">10</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">556</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,18 +153,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">549</span>
+          <span class="site-state-item-count">556</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">99</span>
+        <span class="site-state-item-count">100</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -201,6 +201,601 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1141G/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/1141G/" class="post-title-link" itemprop="url">1141G Privatization of Roads in Treeland</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Treeland包含n个城市和n-1条道路。每条道路都是双向的，连接两个不同的城市。从任何一个城市你都可以通过公路到达任何其他城市。是的，你是对的——这个国家的拓扑结构是一棵没有方向的树。<br>在Treeland有一些私人道路公司。政府决定向这些公司出售道路。每条路都属于一家公司，一家公司可以拥有多条道路。<br>政府害怕看上去不公平。他们认为，如果有一家公司拥有两条或两条以上的进入这个城市的道路，那么这个城市里的人就会认为这是不公平的。政府希望这样不公平的城市数量不超过k，那么最少需要多少个不同的公司来参与投资？<br>选择公司的数量r，这样就可以将每条道路分配给某家公司，这样一家公司拥有两条或两条以上到达同一个城市道路的城市数量最多为k。（译者注：这里是有一点费脑子，大家多想想）换句话说，如果对一个城市来说，所有的到达这座城市的道路都属于不同的公司，那么这个城市就是好的。你的任务是找到最小的r，然后分配所有道路，使得不太好的城市的数量不超过k。<br>![](https://cdn.luogu.org/upload/vjudge_pic/CF1141G/7d36299fe9125bdd92ab603e16bc3fe180559f7f.png)<br>图为第一个例子(n=6，k=2)。答案r=2。边上的数字表示边的编号。边的颜色表示公司：红色为第一个公司，蓝色为第二个公司。灰色顶点(3号)不好。这类顶点的数目(只有一个)不超过k（k=2）。如果有一家公司，在分配合理的情况下，不可能有2个不好的城市。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/1141G/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1270D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/1270D/" class="post-title-link" itemprop="url">1270D Strange Device</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>有一个长为 $n$ 数列 $a$，值已确定且值互不相等，但是你不知道。<br>现在有个设备，你可以输入长为 $k$ 的上升序列 $p_1,p_2 \dots p_k$，进行询问，它会回答 $a_{p_1},a_{p_2} \dots a_{p_k}$ 中第 $m$ 小的数在原数列的坐标和这个数的值。现在给你 $n$ 和 $k$，让你在最多询问 $n$ 次后回答 $m$ 的大小。保证一定可以构造出方案。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/1270D/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1328D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/1328D/" class="post-title-link" itemprop="url">1328D Carousel</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>有$q$组询问,每组询问如下:<br>已知一个有$n(3\le n\le 2*10^5)$个点的**环**,点$i$的类型为$a_i$,现在需要给每个点进行染色,要求**相邻**不同类型的点的颜色不同且所用颜色数最小.输出颜色数及一种染色方案即可.(颜色从1开始)<br>注意:($\sum n)\le 2*10^5$.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/1328D/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1833G/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/1833G/" class="post-title-link" itemprop="url">1833G Ksyusha and Chinchilla</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在一棵树上删去一些边，使得形成的几个连通块，都**有且仅有** $3$ 个结点。<br>第一行是数据组数，接下来：<br>对于每组数据：<br>- 第一行一个正整数 $n$，表示结点数量。<br>- 接下来 $n-1$ 行，每行两个正整数 $u,v$，表示 $u,v$ 间有一条边。<br>对于每组数据：<br>- 若不存在任何一种删边方式满足条件，则输出：`-1`。<br>- 若存在满足条件的删边方式：<br>- 第一行，一个正整数，删掉的边数。<br>- 第二行，所有删掉的边的编号，若不用删除任何边，则输出一个空行。<br>by @[gty314159](/user/768612)</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/1833G/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1906E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/1906E/" class="post-title-link" itemprop="url">1906E Merge Not Sort</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>已知对两个长度为 $N$ 的、**可能未排序的**数组 $A$ 和 $B$ 执行如下的归并操作，生成的数组是一个长度为 $2N$ 的、给定的**排列**（即 $[1,2N]$ 中每个整数都正好出现一遍的数组）$C$：<br>```<br>Merge(A[1..N], B[1..N]):<br>C = []<br>i = 1<br>j = 1<br>while i <= N AND j <= N:<br>if A[i] < B[j]:<br>append A[i] to C<br>i = i + 1<br>else:<br>append B[j] to C<br>j = j + 1<br>while i <= N:<br>append A[i] to C<br>i = i + 1<br>while j <= N:<br>append B[j] to C<br>j = j + 1<br>return C<br>```<br>构造出任意一组符合条件的 $A,B$；如果无解输出 `-1`。<br>翻译自 @[zyc212303](https://www.luogu.com.cn/user/556366)。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/1906E/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1129B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/1129B/" class="post-title-link" itemprop="url">1129B Wrong Answer</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Alice做到了这样一道题：<br>> 给定一个序列$a$，有$n$个元素，编号从$0$到$n-1$。求$\max\limits_{0 \leq l \leq r \leq n-1} \sum\limits_{l \leq i \leq r} (r-l+1) \cdot a_i$。<br>><br>> $|a_i| \leq 10^6,n \leq 2000$<br>Alice觉得这题太水了，很快就给出了解法：<br>```<br>function find_answer(n, a)<br># Assumes n is an integer between 1 and 2000, inclusive<br># Assumes a is a list containing n integers: a[0], a[1], ..., a[n-1]<br>res = 0<br>cur = 0<br>k = -1<br>for i = 0 to i = n-1<br>cur = cur + a[i]<br>if cur < 0<br>cur = 0<br>k = i<br>res = max(res, (i-k)*cur)<br>return res<br>```<br>聪明的你一定发现了，Alice的解法是错误的。例如对于序列$a = [6, -8, 7, -42]$，Alice的程序得出的结果是$7$，而正确答案应该是$3 \cdot (6-8+7) = 15$。<br>于是你决定HACK掉Alice的解法。<br>请给出一组数据，使得正确答案-Alice的答案=$k$，你的数据必须满足$n \leq 2000,|a_i| \leq 10^6$。<br>$k \leq 10^9$</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/1129B/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1179B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/1179B/" class="post-title-link" itemprop="url">1179B Tolik and His Uncle</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>有一天，_rqy想出来了一道构造题，出给了wqy去做。然而wqy不会做，于是就来找你。<br>你有一个$n$行$m$列的棋盘，其中第$i$行第$j$列的格子标号为$(i,j)$。你需要从$(1,1)$开始遍历这个棋盘。每一次，如果你在$(x,y)$，你可以选择一个向量$(\text{d}x,\text{d}y)$，并且移动到$(x+\text{d}x,y+\text{d}y)$这个格子上。<br>你不能离开这个棋盘，同时每一个向量只能使用一次。你的任务是合理安排自己的行走路线，使得每一个格子都只被经过一次。输出这个方案。<br>wqy翻译了那么多题面，你一定要帮他解出来！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/1179B/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -457,603 +1052,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1329A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/1329A/" class="post-title-link" itemprop="url">1329A Dreamoon Likes Coloring</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>给定长为 $n$ 的格子和 $m$ 种颜色。<br>Dreamoon 会**依次**刷这 $m$ 种颜色，对于第 $i$ 种颜色，他会从第 $p_i$ 格开始刷到第 $p_i+l_i-1$ 格。$p_i$ 不能超过 $n-l_i+1$ 或小于 $1$，这样会超出格子。<br>您的任务是找出一组 $p_i$，使得 Dreamoon 刷完所有颜色之后每种颜色至少出现了一次，且每个格子都被刷上了颜色。<br>$1 \leq m \leq n \leq 10^5$，$1 \leq l_i \leq n$<br>翻译 by Meatherm</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1329A/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1380D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/1380D/" class="post-title-link" itemprop="url">1380D Berserk And Fireball</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>有 $n$ 个战士站成一排，第 $i$ 个战士的战力是 $a_i$。所有战士的战力都是两两不同的。<br>你可以使用两种类型的咒语：<br>1. 火球术：你可以消耗 $x$ 点法力值来干掉连续的 $k$ 个战士（你必须干掉正好 $k$ 个，而不能干掉 $\le k$ 个）。<br>2. 狂暴术：你可以消耗 $y$ 点法力值，选择站在一起的两个战士使他们展开决斗，战力较弱的那个战士将会被干掉。<br>我们来举个例子，假设有 $7$ 个战士，其战力分别为 $[2,3,7,8,11,5,4]$，且此时的$k=3$（$k$ 的定义详见火球术）。如果你对战力为 $8$ 与 $11$ 的两个战士施加狂暴术，剩下战士的战力将会变成 $[2,3,7,11,5,4]$（战力为 $8$ 的战士在决斗中战死）。然后如果我们对战力为 $[7,11,5]$ 的战士施加火球术，剩下战士的战力将会变成 $[2,3,4]$。<br>你想要组建一支军队，因此你想要将所有战士战力的序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$。试计算你所需的最少法力值。<br>输入格式<br>第一行两个整数 $n,m (1\le n,m\le 2\cdot 10^5)$ ——序列 $a$ 的长度和序列 $b$ 的长度。<br>第二行三个整数 $x,k,y (1\le x,y\le 10^9,1\le k\le n)$ ——火球术消耗的法力值，火球术的范围和狂暴术消耗的法力值。<br>第三行 $n$ 个整数 $a_1,a_2,…,a_n (1\le a_i\le n)$。保证 $a_i$ 是两两不同的。<br>第四行 $m$ 个整数 $b_1,b_2,…,b_m(1\le b_i\le n)$。保证 $b_i$ 是两两不同的。<br>输出格式<br>一行一个整数，即将序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$所需的最少法力值。如果无法完成变换，则输出$-1$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1380D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1416B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/1416B/" class="post-title-link" itemprop="url">1416B Make Them Equal</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>- 给出一个序列 $a$，求出一个长度不超过 $3n$ 的操作序列，使序列 $a$ 中每个元素相等。<br>- 定义一次操作为：选出 $(i,j,x)$ 三元组，满足 $i,j$ 为序列合法下标，$x$ 为 $10^9$ 以内非负整数，令 $a_i:= a_i-x\cdot i,a_j:=a_j+x\cdot i$。<br>- 必须保证操作过程中的任意时刻序列 $a$ 中每个元素都非负。<br>- 输出时先输出操作次数 $k$，然后输出 $k$ 行操作序列。<br>- 数据组数 $t\le10^4$，序列长度 $n\le10^4$，元素大小 $1\le a_i\le10^5$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1416B/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1428D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/1428D/" class="post-title-link" itemprop="url">1428D Bouncing Boomerangs</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在$n\times n$的网格上，有若干目标。从最低下扔回旋镖，碰到目标会右转。每行、每列不超过两个目标。现在已知从每一列扔出去会撞到$a_i$个障碍($a_i\le 3$)，请求出一种合法方案。<br>翻译 by jun头吉吉</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1428D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1438C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/1438C/" class="post-title-link" itemprop="url">1438C Engineer Artem</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>给出一个 $n\times m$ 的矩阵 $a$（$1\le n,m\le 100$），其中 $1\le a_{i,j}\le 10^9$。<br>定义一个矩阵是合法的当且仅当没有任何两个相邻的元素是相等的（上下左右为相邻）。<br>你可以将矩阵中若干个元素加一，使其合法，输出最终矩阵。<br>形式化地，对于每个 $(i,j)$，$b_{i,j}=a_{i,j}$ 或者 $b_{i,j}=a_{i,j}+1$，输出合法的 $b$ 矩阵。<br>$t$ 组数据（$t\le 10$）。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1438C/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1491D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/1491D/" class="post-title-link" itemprop="url">1491D Zookeeper and The Infinite Zoo</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>有一个无限图，其中有无数个节点，从 $1$ 开始标号。有一条从 $u$ 到 $u+v$ 的单向边，当且仅当 $u \&  v = v$ (这里的 $\&$ 指 [按位与](https://zh.wikipedia.org/wiki/位操作#按位与（AND）) 。除此以外没有其它边。<br>有 $q$ 个询问，询问是否存在一条从 $u$ 到 $v$ 的路径。<br>输入格式<br>第一行一个整数 $q$ （$1\le q\le10^5 $） —— 询问的个数<br>接下来 $q$ 行中，每行有两个整数 $u,v$ ($1 \leq u,v < 2^{30}$)，意义如上<br>输出格式<br>对于每个询问，输出一行 `YES` 来表示存在从 $u$ 到 $v$ 的一条路径，或输出一行 `NO` 表示不存在这样一条路径。(你可以以任意大小写形式来输出 `YES` 或 `NO`)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1491D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/1508A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/1508A/" class="post-title-link" itemprop="url">1508A Binary Literature</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/cf/" itemprop="url" rel="index"><span itemprop="name">cf</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>给你一个正整数 $n$ 和三个长度为 $2\times n$ 的 01 字符串 $s_1,s_2,s_3$。你需要构造一个 01 字符串 $S$，使得：<br>- 字符串 $S$ 的长度不能超过 $3\times n$。<br>- $s_1,s_2,s_3$ 当中至少有两个字符串是 $S$ 的子序列。<br>可以证明一定有解，有多种解时输出任意一种即可。$T$ 组数据。<br>$1\leq T\leq10^4;1\leq n,\sum n\leq10^5;$</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1508A/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

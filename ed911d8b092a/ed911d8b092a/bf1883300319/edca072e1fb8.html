@@ -1,0 +1,58 @@
+<hr>
+<p>title: “排列组合”<br>date: 2024-06-04 18:22:26<br>updated: 2024-06-04 18:22:26<br>tag: [notion, math, Combinatorics]<br>categories: math<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="排列组合"><a href="#排列组合" class="headerlink" title="排列组合"></a>排列组合</h1><h1 id="计数基本法则"><a href="#计数基本法则" class="headerlink" title="计数基本法则"></a>计数基本法则</h1><p>加法法则</p>
+<p>事件A有m中产生方式，事件B有n中产生方式，事件A<strong>或</strong>B有m+n种产生方式</p>
+<p>乘法法则</p>
+<p>事件A有m中产生方式，事件B有n中产生方式，事件A<strong>与</strong>B有m*n种产生方式</p>
+<p>加法法则和乘法法则运用时要注意事件的独立性</p>
+<p>减法法则</p>
+<p>$A = U - \overline{A}$ </p>
+<p>除法法则</p>
+<h1 id="排列permutation"><a href="#排列permutation" class="headerlink" title="排列permutation"></a>排列permutation</h1><p>从$n$个<strong>不同</strong>的元素中，取$r$个<strong>不重复</strong>的元素，按<strong>次序</strong>排列，称为从$n$个中取$r$个的无重排列，排列个数用$P(n,r)$表示，或者$P_n^r$。一般不说可重即无重。$(n≥r)$</p>
+<p>$p(n,r) = n\times (n-1) \times \cdots \times (n-k+1) = \frac{n!}{(n-r)!}$</p>
+<h2 id="递推关系"><a href="#递推关系" class="headerlink" title="递推关系"></a><strong>递推关系</strong></h2><p>分步递推，n个球放入r个<strong>有区别</strong>盒子，<strong>考虑第一个盒子有多少种放球方式</strong>，第一个盒子可以放的球有n种方式，当放完第一个盒子后面临着n-1个球放入r-1个盒子。<br>所以$P(n,r) = n*P(n-1,r-1)$，</p>
+<p>分类递推，n个球放入r个<strong>有区别</strong>盒子，<strong>考虑第一个球是否选择放入盒子</strong>，如果选择不放入那么面临着n-1个球放入r个盒子，即$P(n-1,r)$；如果第一个球选择放入盒子则有r种放入方式，放完后面临着n-1个球放入r-1个盒子，即$r<em>P(n-1,r-1)$。<br>所以$P(n,r) = P(n-1,r)+r</em>P(n-1, r-1)$</p>
+<h2 id="圆排列与项链排列"><a href="#圆排列与项链排列" class="headerlink" title="圆排列与项链排列"></a><strong>圆排列与项链排列</strong></h2><p>n个元素中选r个的圆排列种数有$\frac{P(n,r)}{r}$，圆排列有r种剪断方式变为线排列，$2≤r≤n$</p>
+<p>y项链排列与圆排列的区别在于项链排列可以反转，反转后仍然算作同一种排列。所以n个元素中选r个的项链排列种数有$\frac{P(n,r)}{2*r}$</p>
+<h1 id="组合combination"><a href="#组合combination" class="headerlink" title="组合combination"></a>组合combination</h1><p>从$n$个<strong>不同</strong>的元素中，取$r$个<strong>不重复</strong>的元素，组成一个子集，不考虑顺序，称为从$n$个中取$r$个的无重组合，排列个数用$C(n,r)$表示，或者$C_n^r$。一般不说可重即无重。$(n≥r)$</p>
+<p>r个<strong>无区别</strong>的盒子与r个<strong>有区别</strong>的盒子的差异在于有区别的盒子有r!种排列方式。<br>所以$C(n,r) = \frac{P(n,r)}{r!} = \frac{n!}{r!(n-r)!}$</p>
+<h2 id="组合恒等式"><a href="#组合恒等式" class="headerlink" title="组合恒等式"></a>组合恒等式</h2><p>$C(n,r) = C(n,n-r)$，n个球选出r个的组合数正好对应剩余的n-r个球的组合数。</p>
+<p>$C(n,l)C(l,r) = C(n,r)C(n-r,l-r)$，现有n个人组成的班级选班干部，共选l人，已选的l人中再选出r人作为核心班干部，那么选取核心班干部的方式有$C(n,l)C(l,r)$种。换一种思路如果直接从n个人中选出核心班干部，剩余的n-r人中应该还要再选出l-r个非核心的班干部，所以有$C(n,r)C(l-r,n-r)$种方式</p>
+<p>$C(n,r) = C(n-1,r-1)+C(n-1,r)$，（杨辉三角），格路模型证明<br><strong>格路模型</strong>：如果有一个m行n列个网格从左上角到右下角每次只能向右或向下走一格，有多少种走法。可以将路径看作一个长度为m+n的字符串，字符x代表向右，共有n个x；字符y代表向下，共有m个y。那么走到终点可以认为是m+n个位置中方放置x的方式，即$C(m+n,n)$。也可认为是多重全排列$P(m+n;n,m)$<br>走到终点有两种方式从点$(m-1,n)$或$(m,n-1)$到达$(m,n)$。这时会有$C(m+n-1,n)+ C(m+n-1,n-1)=C(m+n,n)$</p>
+<p>$C(n+m,r) = C(n,0)C(m,r)+ C(n,1)C(m,r-1) +\cdots + C(n,r)C(m,0)$，设有n个红球和m个蓝球，选取r个球的组合数，可以从红球种选k个剩余的r-k个可以从蓝球中选取。</p>
+<h1 id="多重全排列"><a href="#多重全排列" class="headerlink" title="多重全排列"></a>多重全排列</h1><p>有$n$个元素，总共有$t$类，第$i$类元素有$r_i$个，全排列记为$P(n;r_1,r_2,\cdots,r_t)$</p>
+<p>二项式定理的系数似乎就是一个多重全排列</p>
+<p>$(a+b)^n = \sum \limits_{k=0}^{n} \frac{n!}{k!(n-k)!}a^{k}b^{n-k} =  \sum \limits_{k=0}^{n} P(n;k,k-1)a^{k}b^{n-k} =  \sum \limits_{k=0}^{n} C(n, k) a^{k}b^{n-k}$ </p>
+<p>多项式定理</p>
+<p>$(a_1+a_2+\cdots+a_t)^n = \sum \frac{n!}{r_1!r_2!\cdots r_t!}a^{r_1}_1a^{r_2}_2\cdots a^{r_t}_t, \sum r_i = n$</p>
+<h1 id="可重排列"><a href="#可重排列" class="headerlink" title="可重排列"></a>可重排列</h1><p>n<strong>种</strong>元素中<strong>有顺序地</strong>取r个可以重复的元素，共有$n^k$种</p>
+<h1 id="可重组合"><a href="#可重组合" class="headerlink" title="可重组合"></a>可重组合</h1><p>n<strong>种</strong>元素中取r个可以重复的元素，记$\overline{C}(n,r)$</p>
+<p>相当于将r个无区别元素分成n个区域，加入n-1个无区别的隔板，根据多重排列$P(n+r-1;r,n-1) = C(n+r-1,r)$</p>
+<p>$x_1+x_2+\cdots+x_n = b$有多少个非负整数解？</p>
+<p>相当于n个可重复元素中选b个，相当于将b分到n个区间中，相当于b个无区别元素加入n-1个无区别隔板的多重全排列。</p>
+<h1 id="不相邻组合"><a href="#不相邻组合" class="headerlink" title="不相邻组合"></a>不相邻组合</h1><p>n<strong>种</strong>不同的元素选r个<strong>不相邻可重复</strong>的元素。</p>
+<p>设选取的不相邻组合为$B={b_0, b_1, \cdots , b_{r-1}}$，且$B$是升序排序的。</p>
+<p>我们通过$B$中<strong>每个元素减去对应下标</strong>来构造一个组合$C={b_0, b_1-1, \cdots, b_{r-1}-r+1}$</p>
+<p>由于B是不相邻组合，所以每个相邻元素满足$b_i &lt; b_{i+1}-1$，为不等式两边都减去$i$得$b_i-i &lt; b_{i+1}-(i+1)$，即$C_i&lt;C_{i+1}$。因此C是不重复的。</p>
+<p>C的最大取值为$n-r+1$，n种元素中选r个不相邻的数的种数对应无重组合数$C(n-r+1，r)$</p>
+<h1 id="捆绑法与隔板法"><a href="#捆绑法与隔板法" class="headerlink" title="捆绑法与隔板法"></a>捆绑法与隔板法</h1><p>对于相邻问题用捆绑，对于分区域用隔板</p>
+<p><strong>捆绑法</strong></p>
+<p>26个英文字母能组成多少个4位数相邻不同字符串，其中b和d不相邻</p>
+<p>我们将b和d捆绑在一起，运用减法法则：4位不相邻不重复的种数-4位不相邻不重复且b和d不相邻的种数。</p>
+<p>4位不相邻不重复的种数$P(26,4)$</p>
+<p>4位不相邻不重复且b和d不相邻的种数，我们可以在非b和d的字母中选出长度为2的排列，然后将捆绑的bd插入到这个排列中，总共有三种插入法且bd位置可互换。所以种数为$P(24,2)<em>3</em>2$</p>
+<p>答案为$P(26,4)-P(24,2)*6$</p>
+<p><strong>隔板法</strong></p>
+<p>共有6个洞，每个洞只能进入一个球，编号为1到9的球进洞的方案有多少？</p>
+<p>进洞顺序不同也算不同的方案。我们认为有5个隔板插入到这9个球中，然后求全排列，由于隔板是无差别的，根据多重全排列可以除以隔板个数的全排列。所以答案是$\frac{15!}{5!}$</p>
+<h1 id="枚举排列"><a href="#枚举排列" class="headerlink" title="枚举排列"></a>枚举排列</h1><p><strong>字典序法求下一个排列</strong></p>
+<p>从右至左找到第一个下降的位置，然后与后面大于它的最小值交换。</p>
+<p><strong>SJT算法</strong></p>
+<p>设[a1,a2 … aN] 每一项都有向左或向右两个移动方向。</p>
+<ol>
+<li>初始化所有移动方向向左；</li>
+<li>如果移动方向的值比自己小，就可移动；</li>
+<li>移动最大的可以动项，在上面例子中就是数字3；</li>
+<li>将所有比移动项大的项方向反转，重复第三步，直到不能移动为止。</li>
+</ol>

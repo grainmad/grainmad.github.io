@@ -1,0 +1,190 @@
+<hr>
+<p>title: “母函数”<br>date: 2024-06-04 18:22:26<br>updated: 2024-06-04 18:22:26<br>tag: [notion, math, Combinatorics]<br>categories: math<br>mathjax: true<br>comments: true<br>description: </p>
+<hr>
+<h1 id="母函数"><a href="#母函数" class="headerlink" title="母函数"></a>母函数</h1><h1 id="母函数-1"><a href="#母函数-1" class="headerlink" title="母函数"></a>母函数</h1><p>在数学中，某个序列${\displaystyle (a_{n}){n\in \mathbb {N} }}(a{n})_{n\in \mathbb {N} }$ 的母函数（又称生成函数，英语：Generating function）是一种形式幂级数，其每一项的系数可以提供关于这个序列的信息。</p>
+<p>母函数就是一列用来展示一串数字序列的挂衣架。</p>
+<p>定义：对于$c_0,c_1,c_2,\dots$ 构造函数$G(x) = c_0+c_1x+c_2x^2+\dots$ 称$G(x)$为序列$c_0,c_1,c_2,\dots$ 的母函数</p>
+<hr>
+<p>投掷m粒骰子时，加起来点数等于n的方式的数目？</p>
+<p>等价于求$G(x) = (x+x^2+x^3+x^4+x^5+x^6)^m$的$x^n$的系数。</p>
+<hr>
+<p>有1g，2g，3g，4g的砝码，问有多少种重量组合方案。</p>
+<p>对于1g砝码有选与不选两种选择，所以可以表示为$x^0+x^1$，以此类推有$x^0+x^2$，$x^0+x^3$，$x^0+x^4$</p>
+<p>母函数G(x) =$(1+x)(1+x^2)(1+x^3)(1+x^4)$，展开后不同幂次代表不同重量，系数代表该重量的方案数。</p>
+<hr>
+<p>将整数n拆分成1，2，… , m的和。求母函数</p>
+<p>每个数代表幂次，每个数出现的次数可以是0次，1次，… ，无限次。</p>
+<p>$G(x) = (1+x+x^2+x^3+\cdots)(1+x^2+x^4+x^6+\cdots)\cdots(1+x^m+x^{2m}+x^{3m}+\cdots)$</p>
+<h1 id="整数拆分"><a href="#整数拆分" class="headerlink" title="整数拆分"></a>整数拆分</h1><p>将一个正整数拆分成若干个<strong>正整数</strong>之和。</p>
+<h2 id="有序拆分"><a href="#有序拆分" class="headerlink" title="有序拆分"></a><strong>有序拆分</strong></h2><p>各个部分之间考虑顺序叫做有序拆分（Composition）</p>
+<p>数字n拆分成r个正整数之和，有多少种拆分方案？</p>
+<p>相当于将n个<strong>无差别</strong>的球放入r个<strong>有标志</strong>区域，每个区域至少一个球。</p>
+<p>用隔板法需要r-1个隔板，且隔板应该放入每个球的间隙之间，隔板是无差别的所以应该是$C(n-1,r-1)$</p>
+<h2 id="无序拆分"><a href="#无序拆分" class="headerlink" title="无序拆分"></a><strong>无序拆分</strong></h2><p>各个部分不考虑顺序的拆分叫无序拆分（Partition）</p>
+<p>把n个无区别的球放到r个无标志的盒子，盒子可以是空的。</p>
+<p>$G(x) = (1+x+x^2+x^3+\cdots)(1+x^2+x^4+x^6+\cdots)\cdots(1+x^r+x^{2r}+x^{3r}+\cdots)$，n的拆分个数就是$x^n$的系数。</p>
+<p>1出现的母函数$(1+x+x^2+x^3+\cdots)$</p>
+<p>2出现的母函数$(1+x^2+x^4+x^6+\cdots)$</p>
+<pre><code class="python">x = int(input())
+cnt = [1]*(x+1);
+for i in range(2, x+1):
+    c = [0]*(x+1);
+    for j in range(0, x+1, i):
+        for k in range(j, x+1):
+            # print(i+1, j, k)
+            c[k]+=cnt[k-j];
+    cnt = c
+    # for i, j in enumerate(cnt):
+    #     print(&quot;cnt[{}]={}&quot;.format(i, j), end= &#39; &#39;)
+print(&quot;{}可拆分方案数为{}&quot;.format(x, cnt[x]))
+</code></pre>
+<h2 id="Ferrers图像"><a href="#Ferrers图像" class="headerlink" title="Ferrers图像"></a><strong>Ferrers图像</strong></h2><p>整数n拆分成最大数为k的拆分数，和数n拆分成k个数的和的拆分数相等。</p>
+<p>整数n拆分成最多不超过m个数的和的拆分数，和数n拆分最大不超过的拆分数相等。</p>
+<p>奇数个拆分只有一种图像</p>
+<h1 id="汉诺塔"><a href="#汉诺塔" class="headerlink" title="汉诺塔"></a>汉诺塔</h1><p>母函数可作为<strong>递推公式</strong>和<strong>通项公式</strong>的<strong>桥梁</strong></p>
+<p>现有编号$A$、$B$和$C$三根柱子，有$n$个中空盘子在$A$柱子上，盘子大小互不相同从小到大依次排列，每次只能移动最上面的盘子且移动后要保证小盘子在大盘子上。</p>
+<p>现在需要将$A$柱子上的$n$个盘子移动到$C$上，三步走，首先移动$n-1$个盘到$B$柱子上，然后将最后一个盘子移动到$C$上，最后将$B$上的$n-1$个盘子移动到$C$上。</p>
+<p>我们设移动$n$个盘子到另一根柱子上需要$f(n)$步，根据三步走有递推公式$f(i) = 2 * f(i-1) + 1,f(0) = 0$。</p>
+<p>构造母函数$G(x) = f(0) + f(1)x + f(2)x^2 + f(3)x^3 + \cdots$</p>
+<p>这时候我们要$f(n)$就只要求出$x^n$的系数即可。</p>
+<p>将递推公式带入$G(x)$可得</p>
+<p>$G(x) = (2f(0)+1)x+(2f(1)+1)x^2+(2f(2)+1)x^3+\cdots$</p>
+<p>$G(x) = 2x(f(0)+f(1)x+f(2)x^2+\cdots) + x + x^2 + x^3 + \cdots$</p>
+<p>$G(x) = 2xG(x) + x+ x^2 + x^3 + \cdots$</p>
+<p>根据泰勒公式</p>
+<p>$G(x) = 2xG(x) + \frac{1}{1-x}-1$</p>
+<p>$G(x) = \frac{x}{(1-2x)(1-x)} = \frac{1}{1-2x} - \frac{1}{1-x} = (1+2x+ 2^2x^2 + 2^3x^3 + \cdots)-(1+x+ x^2 + x^3 + \cdots)=\sum \limits_{i=0}^{\infty} (2^i-1)x^i$</p>
+<h1 id="出现偶数次数5的n位10进制数"><a href="#出现偶数次数5的n位10进制数" class="headerlink" title="出现偶数次数5的n位10进制数"></a>出现偶数次数5的n位10进制数</h1><p>给出一个长度位n的10进制数，问出现5的次数是偶数的个数有多少?不能有前导零。</p>
+<p>用动态规划的思想寻找子问题。</p>
+<p>考虑前i个数以5结尾和非5结尾的个数有多少个。</p>
+<p>设$a_i$前$i$位偶数个5的个数，$b_i$前$i$位奇数个5的个数。</p>
+<p>从显然对于长度为1的偶数个5的情况是不包含5，但也不能是前导0，所以$a_1 = 8$，对于长度为1的奇数个5的情况就是选择5，$b_i = 1$</p>
+<p>对于$a_i$的求解考虑第i位是否为5，如果是5那么前i-1为应该为奇数个5；如果不是5那么前i-1位应该为偶数个5，即$a_i = 9*a_{i-1}+b_{i-1}$</p>
+<p>对于$b_i$同理可得$b_i = 9*b_{i-1}+a_{i-1}$</p>
+<p>我们得到了两个相互依赖的递推式</p>
+<p>设母函数</p>
+<p>$A(x) = a_1+a_2x+a_3x^2+\cdots$</p>
+<p>$B(x) = b_1+b_2x+b_3x^2+\cdots$</p>
+<p>对于每个系数$a_i,b_i,i&gt;1$都带入递推式，整理后得到</p>
+<p>$A(x) = 8 + x(9A(x) + B(x))$</p>
+<p>$B(x) = 1 + x(9B(x) + A(x))$</p>
+<p>联立方程组求得$A(x) = \frac{8-71x}{(1-10x)(1-8x)} = \frac{1}{2}(\frac{9}{1-10x}+\frac{7}{1-8x}) = \sum \limits_{i=0}^{\infty}(\frac{9\cdot10^i+7\cdot8^i}{2})x^{i}$</p>
+<p>$a_i = \frac{9\cdot10^{i-1}+7\cdot8^{i-1}}{2}$</p>
+<h1 id="Fibonacci"><a href="#Fibonacci" class="headerlink" title="Fibonacci"></a>Fibonacci</h1><p>$F_i = F_{i-1} + F_{i-2} , i&gt;2$</p>
+<p>$F_1 = F_2 = 1$</p>
+<p>a母函数法求$F_i$，构造母函数$G(x) = F_1x+F_2x^2+\cdots+F_ix^i+\cdots$</p>
+<p>$G(x) = x + xG(x)+x^2G(x)$</p>
+<p>$G(x) = \frac{x}{1-x-x^2}$</p>
+<p>由于需要利用$\frac{1}{1-x}$的泰勒展开，我们将分母因式分解为形如$(1-ax)(1-bx)$的形式。</p>
+<p>$1^2-x+\frac{x^2}{4}-\frac{5x^2}{4}=(1-\frac{x}{2})^2-(\frac{\sqrt5x}{2})^2=(1-\frac{1+\sqrt5}{2}x)(1-\frac{1-\sqrt5}{2}x)$</p>
+<p>因此$G(x) = \frac{x}{(1-\frac{1+\sqrt5}{2}x)(1-\frac{1-\sqrt5}{2}x)}$</p>
+<p>设$a = \frac{1+\sqrt5}{2}$，$b=\frac{1-\sqrt5}{2}$</p>
+<p>y用待定系数法将$G(x)$拆为两项$G(x) = \frac{x}{(1-ax)(1-bx)} = \frac{A}{1-ax} + \frac{B}{1-bx} = \frac{A(1-bx)+B(1-ax)}{(1-ax)(1-bx)} = \frac{-(Ab+Ba)x+A+B}{(1-ax)(1-bx)}$，可知$-(Ab+Ba) = 1, A+B = 0$，解得$A=\frac{1}{\sqrt5}, B = -\frac{1}{\sqrt5}$</p>
+<p>$G(x) = \frac{1}{\sqrt5}(\frac{1}{1-ax}-\frac{1}{1-bx})=\sum \limits_{i=0}^{\infty} \frac{1}{\sqrt5}(a^i-b^i)x^i=\sum \limits_{i=0}^{\infty} \frac{1}{\sqrt5}((\frac{1+\sqrt5}{2})^i-(\frac{1-\sqrt5}{2})^i)x^i$</p>
+<p>so $F_i = \frac{1}{\sqrt5}((\frac{1+\sqrt5}{2})^i-(\frac{1-\sqrt5}{2})^i)$</p>
+<p>Fibonacci<strong>恒等式</strong></p>
+<p>$F_1^2+F_2^2+F_3^2+\cdots+F_n^2 = F_nF_{n+1}$</p>
+<p>右侧有$F_{n+1}$，左侧没有需要凑出一个$F_{n+1}$且是正数</p>
+<p>对每一项$F_i$替换为$F_{i+1}-F_{i-1}$，得到：</p>
+<p>$F_1^2+F_2(F_3-F_1)+\cdots+F_n(F_{n+1}-F_{n-1})=F_nF_{n+1}$</p>
+<hr>
+<p>$F_1+F_2+F_3+\cdots+F_n = F_{n+2}-1$</p>
+<p>右侧有$F_{n+2}$，将$F_n$替换为$F_{n+2}-F_{n+1}$</p>
+<hr>
+<h1 id="线性常系数齐次递推关系"><a href="#线性常系数齐次递推关系" class="headerlink" title="线性常系数齐次递推关系"></a>线性常系数齐次递推关系</h1><p>若序列${a_n}$满足</p>
+<p>$a_n + c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} = 0$</p>
+<p>$a_i = d_i, 0≤i&lt;k,$ $d_i$为常数</p>
+<p>则${a_n}$为<strong>k阶线性常系数齐次</strong>递推关系。</p>
+<h1 id="特征多项式求解递推关系"><a href="#特征多项式求解递推关系" class="headerlink" title="特征多项式求解递推关系"></a>特征多项式求解递推关系</h1><p>${a_n}$为k阶线性常系数齐次递推关系</p>
+<p>$a_n + c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} = 0$</p>
+<p>特征多项式为$C(x) = x^k+c_1x^{k-1}+c_2x^{k-2}+\cdots+c_k=(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_k)=0$</p>
+<p><strong>当$C(x)$无重根</strong></p>
+<p>$G(x)$可化为$G(x) = \frac{l_1}{1-\alpha_1x} + \frac{l_2}{1-\alpha_2x} + \cdots + \frac{l_k}{1-\alpha_kx}=\sum \limits ^{k}_{i=1} \frac{l_i}{1-\alpha_i x}$，$l_i$是待定系数</p>
+<p>通过泰勒公式展开，$x^n$的系数就是我们要求的$a_n$，即 $a_n = \sum \limits_{i=1}^{k} l_i\alpha_i^n$</p>
+<p>已知${a_n}$的前k项初始值，就可以形成k个方程求解k个待定系数$l_1,l_2,\dots,l_k$</p>
+<p>eg：用特征多项式求解Fibonacci</p>
+<p>$F_i - F_{i-1} + F_{i-2}=0,F_1 = F_2 = 1$</p>
+<p>特征多项式$x^2-x-1=(x-\frac{1+\sqrt5}{2})(x-\frac{1-\sqrt5}{2})$</p>
+<p>令$\alpha_1 =\frac{1+\sqrt5}{2}, \alpha_2 = \frac{1-\sqrt5}{2}$</p>
+<p>由$a_n = \sum \limits_{i=1}^{2} l_i\alpha_i^n$联立方程组</p>
+<p>$\left{ \begin{array}{l}<br>f_1 = l_1\alpha_1+l_2\alpha_2 = 1 \<br>f_2 = l_1\alpha_1^2+l_2\alpha_2^2  = 1<br>\end{array}\right.$</p>
+<p>解得$l_1=\frac{1}{\sqrt5}, l_2 = -\frac{1}{\sqrt5}$</p>
+<p>$a_n =  \frac{1}{\sqrt5} (\frac{1+\sqrt5}{2})^n - \frac{1}{\sqrt5} (\frac{1-\sqrt5}{2})^n$</p>
+<p><strong>当$C(x)$有重根</strong></p>
+<p>有时候特征方程有k重根$\alpha$，组成母函数的部分分式$A(x) = \frac{l_1}{1-\alpha_1x} + \frac{l_2}{(1-\alpha_2x)^2} + \cdots + \frac{l_k}{(1-\alpha_kx)^k}=\sum \limits ^{k}_{i=1} \frac{l_i}{(1-\alpha_i x)^i}$</p>
+<p>$x^n$的系数$a_n = \sum \limits_{i=1}^{k}l_iC_{n+i-1}^{i-1}\alpha^n$，</p>
+<p>这个组合数是n的i-1次多项式，可以将递推关系的解对应$(A_0+A_1n+\cdots+A_{k-1}n^{k-1})\alpha^n$，只需要求出$A_0,A_1,\dots,A_{k-1}$这k个待定系数即可。</p>
+<p><strong>当$C(x)$有虚数根</strong></p>
+<p>略</p>
+<h1 id="Catalan数"><a href="#Catalan数" class="headerlink" title="Catalan数"></a>Catalan数</h1><p>一个无穷大的栈的进站序列为$1,2,\cdots,n$有多少个不同的出栈序列？</p>
+<p>若栈第二次为空时面临着第$i+1$个元素入栈，那么最后一个从栈里拿出的就是第一个元素，实际上问题就被拆解为$i-1$个元素的出栈顺序数和$n-i$个元素的出栈顺序数的乘积。</p>
+<p>因此得到递推关系$C(n) = C(n-1)*C(0) + C(n-2)*C(1) + \cdots + C(1)*C(n-2)+C(0)*C(n-1)$</p>
+<p><strong>母函数证明</strong></p>
+<p>设母函数为$c(x) = \sum \limits _{i=0}^{\infty}C(i)x^n$</p>
+<p>$c(x)^2 = C(0)C(0) + (C(1)C(0)+C(0)C(1))x+(C(2)C(0)+C(1)C(1)+C(0)C(2))x^2+\cdots$</p>
+<p>$c(x)^2 = C(1)+C(2)x+C(3)x^2+ \cdots$</p>
+<p>$c(x) = 1+xc(x)^2$</p>
+<p>$c(x) = \frac{1-\sqrt{1-4x}}{2x}, \lim \limits_{x\rightarrow 0^+} = C(0) = 1$</p>
+<p>$(1+x)^{\alpha} = 1+\sum \limits_{i=1}^{\infty}C_{\alpha}^ix^i$</p>
+<p>$\sqrt{1-4x} = 1 + \sum \limits_{i=1}^{\infty}C_{\frac{1}{2}}^i(-4x)^i$</p>
+<p>$C_{\frac{1}{2}}^i = \frac{1}{2}(\frac{1}{2}-1)(\frac{1}{2}-2)\cdots(\frac{1}{2}-i+1)/i! = (-1)^{i-1}\frac{(2i-3)!!}{2^ii!}$</p>
+<p>$\sqrt{1-4x} =1+\sum \limits_{i=1}^{\infty}C_{\frac{1}{2}}^i(-4x)^i = 1+\sum \limits_{i=1}^{\infty}(-1)^{i-1}\frac{(2i-3)!!}{2^ii!}(-4x)^i = 1-\sum \limits_{i=1}^{\infty}\frac{(2i-3)!!}{i!}(2x)^i$</p>
+<p>$c(x) = \frac{1-\sqrt{1-4x}}{2x}=\sum \limits_{i=1}^{\infty}\frac{(2i-3)!!}{i!}(2x)^{i-1}$</p>
+<p>$(2i-2)!! = 2^i(i-1)!$</p>
+<p>$c(x) = \frac{1-\sqrt{1-4x}}{2x}=\sum \limits_{i=1}^{\infty}\frac{(2i-3)!!}{n!}(2x)^{i-1}=\sum \limits_{i=1}^{\infty}\frac{(2i-3)!!(2i-2)!!}{i!(i-1)!}x^{i-1}=\sum \limits_{i=1}^{\infty}\frac{(2i-2)!}{i!(i-1)!}x^{i-1} = \sum \limits_{i=0}^{\infty}\frac{(2i)!}{i!(i+1)!}x^{i} = \sum \limits_{i=0}^{\infty}\frac{C_{2i}^i}{i+1}x^{i}$</p>
+<p>$C(i) = \frac{C_{2i}^{i}}{i+1}$</p>
+<p><strong>格路模型</strong></p>
+<p>{% asset_img ‘yOcut.png’ %}</p>
+<p>一个$n*n$的网格，问从左下角顶点$(0,0)$到右上角顶点$(n,n)$每次只能向右或向上走一个单位，且不能越过$y=x$这条对角线到达上半区域的路径数。我们可以先求出可越过对角线的所有路径，然后减去不合法路径。其实不合法路径一定会经过$y=x+1$这条线，从$(-1,1)$到$(n,n)$一定越过了$y=x+1$，由对称性$(-1,1)$到$(n,n)$的每一条路径都对应着$(0,0)$到$(n,n)$的不合法路径，所以合法路径数是$C_{2n}^{n}-C_{2n}^{n-1} = \frac{C_{2n}^{n}}{n+1}$</p>
+<h1 id="指数型母函数"><a href="#指数型母函数" class="headerlink" title="指数型母函数"></a>指数型母函数</h1><p>普通母函数定义：对于$c_0,c_1,c_2,\dots$ 构造函数$G(x) = c_0+c_1x+c_2x^2+\dots$ 称$G(x)$为序列$c_0,c_1,c_2,\dots$ 的母函数，普通母函数可用于求<strong>多重组合数</strong></p>
+<p>eg: 3个a，2个b，3个c取4个数进行组合。</p>
+<p>构造母函数$G(x) = (1+x+x^2+x^3)(1+x+x^2)(1+x+x^2+x^3)$求出$x^4$的系数即可。</p>
+<p>指数型母函数定义：对于$c_0,c_1,c_2,\dots$ 构造函数$G(x) = c_0+\frac{c1}{1!}x\frac{c_2}{2!}x^2+\dots$ 称$G(x)$为序列$c_0,c_1,c_2,\dots$ 的指数型母函数，指数型母函数可用于求<strong>多重排列数</strong></p>
+<p>eg:数字1出现次数不超过2次，不能不出现；2出现次数不超过1次；3出现次数可达3次，可以不出现；4出现次数为偶数，满足条件的n位数有多少种？</p>
+<p>构造母函数$G(x) = (\frac{x}{1!}+\frac{x^2}{2!})(1+x)(1+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!})(1+\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots)$求出$x^n$的系数就是满足条件的n位数的方案数。</p>
+<h1 id="错位排列"><a href="#错位排列" class="headerlink" title="错位排列"></a>错位排列</h1><p>有n对男女跳舞，跳完后必须交换舞伴。有多少种方案？</p>
+<p>设D(n)为n对男女的交换方案数</p>
+<p>显然D(1) = 0, D(2) = 1</p>
+<p>对于D(n), n&gt;2，分两种情况:</p>
+<ol>
+<li><p>考虑第n对男女与前n-1对男女中的一对进行交换，剩余的n-2相互交换有D(n-2)种方式，这时有(n-1)*D(n-2)种方案</p>
+</li>
+<li><p>考虑在n-1对男女交换完毕后，第n对男女再与前n-1对中的一对进行交换。这时有(n-1)*D(n-1)种。</p>
+</li>
+</ol>
+<p>这两种情况不会重复，因为在第一种情况中第n个人交换是两对男女的错位，第二种情况中至少是3对男女的错位。</p>
+<p>由此错排的递推式 $D(n) = (n-1)(D(n-1)+D(n-2))，D(1) = 0, D(2) = 1;$</p>
+<p>求D(n)的通项公式</p>
+<p>$D(n) = (n-1)(D(n-1)+D(n-2)), D(1) = 0, D(2) = 1$</p>
+<p>$D(n) - nD(n-1) = -(D(n-1) - (n-1)D(n-2))$</p>
+<p>$D(n) - nD(n-1) = (-1)^(n-2) = (-1)^n$</p>
+<p>$D(1) - D(0) = -1, D(0) = 1$</p>
+<p>设指数型母函数$G(x) = D(0) + D(1)x+\frac{D(2)}{2!}x^2+\frac{D(3)}{3!}x^3+\cdots$</p>
+<p>$G(x) = e^{-1} + G(x)*x$</p>
+<p>$G(x) = \frac{e^{-1}}{1-x} = (1-x+\frac{x^2}{2!}-\cdots)(1+x+x^2+\cdots) = \sum \limits_{k=0}^{n}(-1)^kC_n^k(n-k)!$</p>
+<h1 id="Stirling数"><a href="#Stirling数" class="headerlink" title="Stirling数"></a>Stirling数</h1><h2 id="第一类Stirling数"><a href="#第一类Stirling数" class="headerlink" title="第一类Stirling数"></a>第一类Stirling数</h2><p><strong>Unsigned Stirling numbers of the first kind</strong></p>
+<p>n个元素分成m个圆环的方法数目。</p>
+<p>$s(n,m)=s(n-1,m-1) + ns(n-1,m),s(n,0)=0,s(1,1) = 1$</p>
+<p><strong>Rising factorial</strong></p>
+<p>$x(x+1)(x+2)\cdots(x+n-1)=s(n,0) + s(n,1)x + s(n,2)x^2 + \cdots + s(n,n)x^n$</p>
+<hr>
+<p><strong>Singed Stirling numbers of the first kind</strong></p>
+<p>$s(n,k)=s(n-1,k-1)-ns(n-1,k)$</p>
+<p><strong>Falling factorial</strong></p>
+<p>$x(x-1)(x-2)\cdots(x-n+1)=s(n,0) + s(n,1)x + s(n,2)x^2 + \cdots + s(n,n)x^n$</p>
+<p>$x(x-1)(x-2)\cdots(x-n+1)(x-n)=(s(n,0) + s(n,1)x + s(n,2)x^2 + \cdots + s(n,n)x^n)(x-n)=s(n,0)+(s(n,0)-ns(n,1))x+(s(n,1)-ns(n,2))x+(s(n,2)-ns(n,3))x+\cdots+(s(n,n-1)-ns(n,n))x = s(n+1,0)+s(n+1,1)x+s(n+1,x^2)^2+s(n+1,3)x^3+\cdots+s(n+1,n+1)x^{n+1}$</p>
+<h2 id="第二类Stirling数"><a href="#第二类Stirling数" class="headerlink" title="第二类Stirling数"></a>第二类Stirling数</h2><p>n个有区别的球放到m个相同的盒子中，要求无一空盒。</p>
+<p>$S(n,0) = 0, S(n,1) = 1$</p>
+<p>$S(n,m) = S(n-1,m-1) + mS(n-1,m)$</p>
+<p>寻找子问题，考虑最后一个球是否独占一个盒子</p>
+<h1 id="八种放球模型"><a href="#八种放球模型" class="headerlink" title="八种放球模型"></a>八种放球模型</h1><ul>
+<li>$n$个无区别的球放到$r$个有区别的盒子，盒子可以为空，有多少种方案数？  相当于整数有序拆分，可拆分出0  <strong>隔板法</strong>  将$n$个球排成一行分成连续的$r$个区间，这$r$个连续的区间就代表着有区别的盒子。将r个盒子看作$r-1$个无区别的隔板，盒子为空说明隔板位置不限。直接用多重全排列，有$2$种球$1$种出现$n$个，$1$种出现$r-1$个。答案即为$\frac{(n+r-1)!}{n!(r-1)!}$，这不是$n+r-1$个里面选$r-1$个的组合数$C_{n+r-1}^{r-1}$吗? 所以也有了另一种思路在$n+r-1$个位置中选$r-1$个放隔板，剩余的放球就行了.  <strong>母函数</strong>  $G(x) = (1+x+x^2+x^3+\cdots)^r = (1-x)^{-r}=\sum \limits_{n=0}^{\infty}C_{n+r-1}^{r-1}x^n$</li>
+<li>$n$个无区别的球放到$r$个有区别的盒子，盒子不能为空，有多少种方案数？  相当于整数有序拆分，不可拆分出0  <strong>隔板法</strong>  将$n$个球排成一行分成连续的$r$个区间，这$r$个连续的区间就代表着有区别的盒子。盒子不能为空那r-1个隔板就只能放n个球的n-1间隙，直接在n-1个间隙中选r-1个位置的组合数就行，相比有区别就是少乘了有区别的球的排列，答案$C_{n-1}^{r-1}$  <strong>母函数</strong>  $G(x) = (1+x+x^2+x^3+\cdots)^r$</li>
+<li>$n$个无区别的球放到$r$个无区别的盒子，盒子可以为空，有多少种方案数？  相当于整数无序拆分，可拆分出0  <strong>母函数</strong>  $G(x) = (1+x+x^2+x^3+\cdots)(1+x^2+x^4+x^6+\cdots)\cdots(1+x^r+x^{2r}+x^{3r}+\cdots)$  方案数是$x^n$的系数</li>
+<li>$n$个无区别的球放到$r$个无区别的盒子，盒子不能为空，有多少种方案数？  相当于整数无序拆分，不可拆分出0  <strong>母函数</strong>  $G(x) = (x+x^2+x^3+\cdots)(x^2+x^4+x^6+\cdots)\cdots(x^r+x^{2r}+x^{3r}+\cdots)$  方案数是$x^n$的系数</li>
+<li>$n$个有区别的球放到$r$个有区别的盒子，盒子可以为空，有多少种方案数？  相当于r种元素，每种元素可选0次或任意次，从中选n个的排列数。  所以答案就是$r^n$种。  <strong>母函数</strong>  $G_e(x) = (1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots)^r = (e^x)^r=1+\frac{r}{1!}x+\frac{r^2}{2!}x^2+\frac{r^3}{3!}x^3+\cdots=\sum \limits_{n=0}^{\infty} \frac{r^n}{n!}x^n$  方案数为$r^n$</li>
+<li>$n$个有区别的球放到$r$个有区别的盒子，盒子不能为空，有多少种方案数？  相当于第二类Stirling数乘以盒子的全排列，即$r!S(n,r)$  当于r个有标志的元素取n个作允许重复的排列，r种元素至少每个选一个。  <strong>母函数</strong>  $G_e(x) = (x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots)^r = (e^x-1)^r =\sum \limits_{h=0}^{r} C_{r}^h(-1)^he^{(r-h)x}$  $e^{(r-h)x} = 1+\frac{r-h}{1!}x+\frac{(r-h)^2}{2!}x^2+\frac{(r-h)^3}{3!}x^3+\cdots=\sum \limits_{n=0}^{\infty} \frac{(r-h)^n}{n!}x^n$  $G_e(x) = \sum \limits_{h=0}^{r}C_{r}^h(-1)^h\sum \limits_{n=0}^{\infty} \frac{(r-h)^n}{n!}x^n= \sum \limits_{n=0}^{\infty} \frac{x^n}{n!}\sum \limits_{h=0}^{r}C_{r}^h(-1)^h(r-h)^n$  方案数为$\sum \limits_{h=0}^{r}C_{r}^h(-1)^h(r-h)^n$</li>
+<li>$n$个有区别的球放到$r$个无区别的盒子，盒子可以为空，有多少种方案数？  利用第二类Stirling数，枚举盒子为空的个数，没有盒子为空有S(n,r)种，有一个盒子为空有S(n,r-1)种，两个盒子为空有S(n,r-2)种，……，r-1个盒子为空有S(n,1)。不存在所有盒子都为空。</li>
+<li>$n$个有区别的球放到$r$个无区别的盒子，盒子不能为空，有多少种方案数？  相当于第二类Stirling数  <strong>母函数</strong>  通过**$n$个有区别的球放到$r$个有区别的盒子，盒子不能为空**的母函数可知$r!S(n,r) = \sum \limits_{h=0}^{r}C_{r}^h(-1)^h(r-h)^n$  $S(n,r) = \frac{1}{r!}\sum \limits_{h=0}^{r}C_{r}^h(-1)^h(r-h)^n$  <strong>递推式</strong>  动态规划寻找子问题，考虑最后一个球是否独占一个盒子  $S(n,0) = 0, S(n,1) = 1$  $S(n,m) = S(n-1,m-1) + mS(n-1,m)$</li>
+</ul>
+<p><a href="https://fightinggg.github.io/ACM/stencil/math/%E7%90%83%E7%9B%92%E6%A8%A1%E5%9E%8B.html">https://fightinggg.github.io/ACM/stencil/math/球盒模型.html</a></p>
