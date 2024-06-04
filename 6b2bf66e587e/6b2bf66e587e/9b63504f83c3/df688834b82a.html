@@ -1,5 +1,5 @@
 <hr>
-<p>title: “离散期望”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “离散期望”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="离散期望"><a href="#离散期望" class="headerlink" title="离散期望"></a>离散期望</h1><ul>
 <li><strong>数学期望</strong> : 随机试验中每次可能结果的概率乘以其结果的总和，反映随机变量平均取值的大小。</li>
@@ -9,8 +9,7 @@
 <p>假设你初始位置在1号点，现在需要走向3号点。每一步都会等概率的从当前点选择一条出边并走向指向的点。问从1号走到3号点的期望步数是多少？</p>
 <p>设$E_{1 \rightarrow 3}$为从1走向3的期望步数</p>
 <p>$E_{1 \rightarrow 2} = \frac{1}{2} \times 1 + \frac{1}{2} \times (E_{1 \rightarrow 2} + 1) \Rightarrow E_{1 \rightarrow 2} = 2$</p>
-<!--more-->$E_{2 \rightarrow 3} = \frac{1}{3} \times 1 + \frac{1}{3} \times (E_{2 \rightarrow 3} + 1) + \frac{1}{3} \times (E_{1 \rightarrow 3} + 1)$ 
-
+<p>$E_{2 \rightarrow 3} = \frac{1}{3} \times 1 + \frac{1}{3} \times (E_{2 \rightarrow 3} + 1) + \frac{1}{3} \times (E_{1 \rightarrow 3} + 1)$ </p>
 <p>由期望的线性性，$E_{1 \rightarrow 3} = E_{1 \rightarrow 2} + E_{2 \rightarrow 3}$</p>
 <p>$E_{2 \rightarrow 3} = \frac{1}{3} \times 1 + \frac{1}{3} \times (E_{2 \rightarrow 3} + 1) + \frac{1}{3} \times (E_{1 \rightarrow 2}+E_{2 \rightarrow 3} + 1) \Rightarrow E_{2 \rightarrow 3} = 5$</p>
 <p>$E_{1 \rightarrow 3} = E_{1 \rightarrow 2} + E_{2 \rightarrow 3} = 2 + 5 = 7$</p>

@@ -1,5 +1,5 @@
 <hr>
-<p>title: “滑动窗口”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “滑动窗口”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><h1 id="滑窗第k小，multiset"><a href="#滑窗第k小，multiset" class="headerlink" title="滑窗第k小，multiset"></a>滑窗第k小，multiset</h1><p>用multiset维护两个多重集合A和B，A维护着区间中k个最小值，B维护着区间中剩余的值</p>
 <p>无论是插入还是删除x，首先判断x所属集合。然后从所属集合中添加或删除。再判断A集合大小是否为k：大于k则移动一个最大值到B中，小于k则移动B中的最小值到A中。</p>
@@ -9,7 +9,7 @@
     multiset&lt;long long&gt; st1, st2;
 
     Kmin(int K): K(K){}
-&lt;!--more--&gt;
+
     void adjust() {
         while (st1.size() &lt; K &amp;&amp; st2.size() &gt; 0) {
             long long t = *(st2.begin());

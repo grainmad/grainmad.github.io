@@ -1,5 +1,5 @@
 <hr>
-<p>title: “大数运算”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “大数运算”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="大数运算"><a href="#大数运算" class="headerlink" title="大数运算"></a>大数运算</h1><pre><code class="cpp">/*
 大数加,减,乘,除,比较大小
@@ -13,7 +13,7 @@ string add(string a, string b) {
     reverse(b.begin(), b.end());
     while (a.size() &lt; b.size()) a.push_back(&#39;0&#39;);
     while (b.size() &lt; a.size()) b.push_back(&#39;0&#39;);
-&lt;!--more--&gt;    string ans;
+    string ans;
     int c = 0;
     for (int i=0; i&lt;a.size(); i++) {
         int num = (a[i]-&#39;0&#39;)+(b[i]-&#39;0&#39;)+c;

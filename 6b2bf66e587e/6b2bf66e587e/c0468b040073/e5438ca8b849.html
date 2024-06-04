@@ -1,5 +1,5 @@
 <hr>
-<p>title: “分块算法”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “分块算法”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="分块算法"><a href="#分块算法" class="headerlink" title="分块算法"></a>分块算法</h1><pre><code class="cpp">int n;
 ll a[N];
@@ -13,7 +13,7 @@ void init() {
         B[i] = (i-1)/s+1;
         sum[B[i]] += a[i];
     }
-&lt;!--more--&gt;    for (int i=1; i&lt;=sz; i++) {
+    for (int i=1; i&lt;=sz; i++) {
         L[i] = (i-1)*s+1;
         R[i] = min(n, i*s);
     }

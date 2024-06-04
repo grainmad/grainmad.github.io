@@ -1,5 +1,5 @@
 <hr>
-<p>title: “Z函数”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “Z函数”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="Z函数"><a href="#Z函数" class="headerlink" title="Z函数"></a>Z函数</h1><p>对于一个长度为 $n$ 的字符串 $s$，定义函数 $z[i]$ 表示 $s$ 和 $s[i,n-1]$（即以 $s[i]$ 开头的后缀）的最长公共前缀（LCP）的长度，则 $z$ 被称为 $s$ 的 <strong>Z 函数</strong>。特别地，$z[0] = 0$。</p>
 <pre><code class="cpp">vector&lt;int&gt; z_function(string s) {
@@ -12,7 +12,7 @@
       z[i] = max(0, r - i + 1);
       while (i + z[i] &lt; n &amp;&amp; s[z[i]] == s[i + z[i]]) ++z[i];
     }
-&lt;!--more--&gt;    if (i + z[i] - 1 &gt; r) l = i, r = i + z[i] - 1;
+    if (i + z[i] - 1 &gt; r) l = i, r = i + z[i] - 1;
   }
   return z;
 }

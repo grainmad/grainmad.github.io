@@ -1,5 +1,5 @@
 <hr>
-<p>title: “乘法逆元”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “乘法逆元”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h1><blockquote>
 <p>若$a * x \equiv  1 \pmod b$，且$a$与$b$互质，那么我们就能定义: $x$ 为 $a$ 的逆元，记为$a^{-1}$，所以我们也可以称 $x$ 为 $a$ 在$\mod b$ 意义下的倒数，</p>
@@ -9,7 +9,7 @@
 </blockquote>
 <h1 id="求解逆元"><a href="#求解逆元" class="headerlink" title="求解逆元"></a>求解逆元</h1><h2 id="拓展欧几里得"><a href="#拓展欧几里得" class="headerlink" title="拓展欧几里得"></a>拓展欧几里得</h2><pre><code class="cpp">// a*x+b*y = d
 void ex_gcd(ll a, ll b, ll* d, ll* x, ll* y) {
-&lt;!--more--&gt;    if (b == 0) {
+    if (b == 0) {
         *d = a;
         *x = 1;
         *y = 0;

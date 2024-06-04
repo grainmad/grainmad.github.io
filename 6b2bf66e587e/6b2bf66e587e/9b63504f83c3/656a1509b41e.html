@@ -1,5 +1,5 @@
 <hr>
-<p>title: “数论算法模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “数论算法模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="数论算法模板"><a href="#数论算法模板" class="headerlink" title="数论算法模板"></a>数论算法模板</h1><h3 id="素数打表"><a href="#素数打表" class="headerlink" title="素数打表"></a>素数打表</h3><p>获取MAXN内的所有质数, 百万数量级内有效</p>
 <pre><code class="cpp">bool nprime[MAXN];
@@ -10,7 +10,7 @@ void get_prime() {
     nprime[1] = 1;
     for (int i=2; i*i&lt;MAXN; i++) {
         if (!nprime[i]) {
-&lt;!--more--&gt;            for (int j=i*i; j&lt;MAXN; j+=i) {
+            for (int j=i*i; j&lt;MAXN; j+=i) {
                 nprime[j] = true;
             }
         }

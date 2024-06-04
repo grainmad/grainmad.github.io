@@ -1,10 +1,10 @@
 <hr>
-<p>title: “单调栈 队列”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “单调栈 队列”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="单调栈-队列"><a href="#单调栈-队列" class="headerlink" title="单调栈/队列"></a>单调栈/队列</h1><h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><p>单调栈的”一栈两用“。<br>对数组<strong>从左至右</strong>维护<strong>严格单调递增</strong>栈需要不断移除栈顶元素直到栈顶元素小于待入栈元素。在这个过程中待入栈元素是移除元素右侧第一个小于等于自身的元素。在移除过程结束后，栈顶元素是待入栈元素的左侧第一个小于自身的元素。这样一个<strong>从左至右严格单调递增栈</strong>可以获得每个元素左侧第一个小于自身的元素以及每个元素右侧第一个小于等于自身的元素。</p>
 <p><strong>从左至右严格单调递增栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>小于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>小于等于</strong>自身的元素。<br><strong>从左至右单调非减栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>小于等于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>小于</strong>自身的元素。<br><strong>从左至右严格单调递减栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>大于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>大于等于</strong>自身的元素。<br><strong>从左至右单调非增栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>大于等于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>大于</strong>自身的元素。</p>
 <p>从左至右维护单调栈可以解决所有需求，然后跟增有关的栈得到左右小于或小于等于自身的值，而减有关的栈得到左右大于/大于等于自身的值。总之在从左至右前提下，<strong>增小减大</strong>。</p>
-<pre><code class="cpp">&lt;!--more--&gt;int main() {
+<pre><code class="cpp">int main() {
     vector&lt;int&gt; v{1,1,2,3,3,2,1,1,2,2,3};
     int n = v.size();
     cout &lt;&lt; &quot;index &quot;; for (int i=0; i&lt;n; i++) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;

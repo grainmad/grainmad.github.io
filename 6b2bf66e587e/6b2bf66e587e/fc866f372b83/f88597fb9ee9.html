@@ -1,5 +1,5 @@
 <hr>
-<p>title: “快速平方根倒数”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 轮子]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “快速平方根倒数”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 轮子]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="快速平方根倒数"><a href="#快速平方根倒数" class="headerlink" title="快速平方根倒数"></a>快速平方根倒数</h1><p>如何求一个正数$n$的平方根倒数$\frac{1}{\sqrt n}$</p>
 <blockquote>
@@ -9,7 +9,6 @@
 </blockquote>
 <p>若$\frac{1}{\sqrt n}$为函数$f(x)$的根，$x=\frac{1}{\sqrt n} \Rightarrow n = \frac{1}{x^2} \Rightarrow f(x) = \frac{1}{x^2}-N$</p>
 <p>通过已知的$f(x)$得到具体迭代公式为$x_{t+1} = x_t - \frac{x^{-2}-n}{-2x^{-3}} = \frac{3}{2}x_{t}-\frac{n}{2}x_t^3$</p>
-<!--more-->
 <p>为了减少迭代次数，初始时找到选择一个接近函数$f(x)$零点的$x_{0}$尤为重要。</p>
 <blockquote>
 <p>一个浮点数 (Value) 的表示其实可以这样表示：</p>

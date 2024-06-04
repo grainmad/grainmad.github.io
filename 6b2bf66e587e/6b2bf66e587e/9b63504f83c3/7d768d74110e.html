@@ -1,5 +1,5 @@
 <hr>
-<p>title: “求组合数”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “求组合数”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="求组合数"><a href="#求组合数" class="headerlink" title="求组合数"></a>求组合数</h1><h1 id="非取模的组合数"><a href="#非取模的组合数" class="headerlink" title="非取模的组合数"></a>非取模的组合数</h1><h2 id="基于公式-binom-n-m-frac-n-m-n-m"><a href="#基于公式-binom-n-m-frac-n-m-n-m" class="headerlink" title="基于公式$\binom{n}{m}=\frac{n!}{m!(n-m)!}$"></a>基于公式$\binom{n}{m}=\frac{n!}{m!(n-m)!}$</h2><p>时间复杂度$O(m)$，当计算$\binom{30}{15}=155117520$<br>时，正溢出了long long型，所以答案计算不正确</p>
 <pre><code class="cpp">using ll = long long;
@@ -7,7 +7,7 @@ ll comb(ll n, ll m) {
     ll a = 1, b = 1;
     for (ll i=n,j=1; i&gt;n-m; i--,j++) {
         a *= i;
-&lt;!--more--&gt;        b *= j;
+        b *= j;
     }
     return a/b;
 }

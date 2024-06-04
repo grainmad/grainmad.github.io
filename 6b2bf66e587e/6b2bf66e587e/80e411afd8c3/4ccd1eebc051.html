@@ -1,5 +1,5 @@
 <hr>
-<p>title: “数位dp模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 动态规划]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “数位dp模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 动态规划]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="数位dp模板"><a href="#数位dp模板" class="headerlink" title="数位dp模板"></a>数位dp模板</h1><pre><code class="cpp">// leetcode 2376. 统计特殊整数
 //大范围内每一位都不同的数字个数
@@ -13,7 +13,7 @@ int dp[10][1&lt;&lt;10][2][2];
 int dfs(int p, int mask, int limit, int zero) {
     if (p == s.size()) return 1-zero;//全是前导零则不算答案。
     if (dp[p][mask][limit][zero] != -1) return dp[p][mask][limit][zero]; //遇到计算过的状态直接返回
-&lt;!--more--&gt;    int res = 0;
+    int res = 0;
     // 累计前导零的方案数
     // limit=1,由于之前是存在前导零，所以构造的位数必定小于n的位数，第p+1位最多能取到9; 
     // zero=1，之前是前导零，现在也是填充0，所以第p+1位的zero=1

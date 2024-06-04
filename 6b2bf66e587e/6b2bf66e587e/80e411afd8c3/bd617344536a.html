@@ -1,12 +1,12 @@
 <hr>
-<p>title: “背包dp”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 动态规划]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “背包dp”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 动态规划]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="背包dp"><a href="#背包dp" class="headerlink" title="背包dp"></a>背包dp</h1><h1 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h1><p>给出背包容量$V$，$n$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品只能选1次或不选，选取物品总体积不超过$V$的情况下，最大总价值是多少？</p>
 <p>定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。</p>
 <p>$$<br>f[i,v]=max{f[i-1, v],f[i-1, v-c_i]+w_i}<br>$$</p>
 <pre><code class="cpp">// [https://www.acwing.com/problem/content/2/](https://www.acwing.com/problem/content/2/)
 // WA，j&lt;vi时没有转移
-&lt;!--more--&gt;#include &lt;bits/stdc++.h&gt;
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {

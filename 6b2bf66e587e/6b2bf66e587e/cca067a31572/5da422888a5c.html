@@ -1,5 +1,5 @@
 <hr>
-<p>title: “可持久化并查集”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 可持久化数据结构]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “可持久化并查集”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 可持久化数据结构]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="可持久化并查集"><a href="#可持久化并查集" class="headerlink" title="可持久化并查集"></a>可持久化并查集</h1><p>并查集的优化不再使用路径压缩，而是按秩归并</p>
 <p>并查集的合并与查找是基于数组实现的</p>
@@ -9,7 +9,7 @@
 using namespace std;
 
 struct SegmentTree {
-&lt;!--more--&gt;    int lc, rc, val, rnk;
+    int lc, rc, val, rnk;
 };
 
 const int MAXN = 100000 + 5;

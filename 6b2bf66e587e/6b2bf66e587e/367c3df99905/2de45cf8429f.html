@@ -1,5 +1,5 @@
 <hr>
-<p>title: “子串值去重模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “子串值去重模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="子串值去重模板"><a href="#子串值去重模板" class="headerlink" title="子串值去重模板"></a>子串值去重模板</h1><p>求子数组 <code>and or gcd lcm</code>等。固定子数组右端点，子数组长度变大，子数组内元素运算值具有单调性，且存在<strong>大量相邻项重复</strong>，不重复的个数只有log(n)个。设具有这些性质的运算符为$\oplus$</p>
 <p>设$S_i$是$a_1\oplus a_2 \oplus \dots \oplus a_i, \ \ a_2 \oplus \dots \oplus a_i,\ \  a_3 \oplus \dots \oplus a_i,\ \ \cdots, \ \ a_{i-1}\oplus a_i,\ \ a_i$的集合, 看似存在$i$种值，但是实际上由于集合去重，最后不重复的值只有不超过$logU$个。所以$S_i$可以由$S_{i-1}$暴力转移 $S_i = S_{i-1}\oplus a_i$，我们可以维护每种值的状态，如：最左端，最右端，出现个数等。</p>
@@ -10,7 +10,7 @@ public:
     vector&lt;int&gt; smallestSubarrays(vector&lt;int&gt; &amp;nums) {
         int n = nums.size();
         vector&lt;int&gt; ans(n);
-&lt;!--more--&gt;            vector&lt;pair&lt;int, int&gt;&gt; ors; // 按位或的值 + 对应子数组的右端点的最小值
+        vector&lt;pair&lt;int, int&gt;&gt; ors; // 按位或的值 + 对应子数组的右端点的最小值
         for (int i = n - 1; i &gt;= 0; --i) { 
             ors.emplace_back(0, i);
             ors[0].first |= nums[i];

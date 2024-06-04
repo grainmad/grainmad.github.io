@@ -1,5 +1,5 @@
 <hr>
-<p>title: “平衡树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “平衡树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h1><h1 id="splay"><a href="#splay" class="headerlink" title="splay"></a>splay</h1><p>伸展树特点就是每次操作完一个节点，将其旋转至根，保证BST性质的同时保持平衡不至于退化成链。对于一条长链，底端的节点旋转至顶会让这条链被压缩。</p>
 <p>旋转rotate操作，分为左旋与右旋</p>
@@ -8,7 +8,8 @@
 <ul>
 <li>当x已经成为根的子节点时，做单次旋转</li>
 <li>否则存在x的父节点y，爷节点z<ul>
-<li>x-y-z处于一条“直链”，则先旋转y再旋转x<!--more-->    - x-y-z处于一条“折链”，则先旋转x再旋转x</li>
+<li>x-y-z处于一条“直链”，则先旋转y再旋转x</li>
+<li>x-y-z处于一条“折链”，则先旋转x再旋转x</li>
 </ul>
 </li>
 </ul>

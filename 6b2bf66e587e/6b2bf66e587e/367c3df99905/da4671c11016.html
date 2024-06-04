@@ -1,13 +1,12 @@
 <hr>
-<p>title: “manacher最长回文串”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “manacher最长回文串”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="manacher最长回文串"><a href="#manacher最长回文串" class="headerlink" title="manacher最长回文串"></a>manacher最长回文串</h1><p><strong>求所有以s[i]为中心的奇数回文串</strong></p>
 <p>manacher 算法求最长回文子串。时间复杂度<code>O(n)</code></p>
 <p>预处理+运用dp思想。</p>
 <p><strong>预处理：</strong><br>回文串有奇数长度有偶数长度，如果用相同的字符插入每个字符之间及首尾，那么所有的回文串长度都会是奇数。</p>
 <p>例如: <code>abcbcba</code><br>用<code>|</code>分割得 <code>|a|b|c|b|c|b|a|</code><br>以回文串的中心字符作为分割点，左右两个子串的长度是相同的，称他们的长度为回文半径。</p>
-<!--more-->**dp：**
-
+<p><strong>dp：</strong></p>
 <p>设$dp_i$为以i为中心的回文半径。在可以让我们知道所有以i为中心的奇数长度回文串。这个回文半径不包含中心，也就是说”abcba“，‘c’的回文半径是2。</p>
 <p>$d$为遍历到当前回文串最远覆盖的下标，即$d = max(dp_j+j), j \in [0, i-1]$。</p>
 <p>设$c$为满足$d = max(dp_j+j), j \in [0, i-1]$的$j$。<br>在求$dp_i$时，$dp_j,j&lt;i$已经全部求出，对于求$dp_i$：</p>

@@ -1,5 +1,5 @@
 <hr>
-<p>title: “树状数组”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “树状数组”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h1><pre><code class="cpp">ll BIT[N];
 // ll xBIT[N];
@@ -13,7 +13,7 @@ void bit_add(int x, ll val) {
 }
 
 ll bit_ps(int x) {
-&lt;!--more--&gt;    ll rt = 0;
+    ll rt = 0;
     for (int i=x; i&gt;0; i-=i&amp;-i) {
         rt += BIT[i];
         // rt += x*BIT[i]-xBIT[i];

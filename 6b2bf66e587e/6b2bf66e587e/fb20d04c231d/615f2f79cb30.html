@@ -1,5 +1,5 @@
 <hr>
-<p>title: “网络流”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “网络流”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="网络流"><a href="#网络流" class="headerlink" title="网络流"></a>网络流</h1><p>最小费用最大流</p>
 <pre><code class="cpp">#include &lt;algorithm&gt;
@@ -12,7 +12,7 @@ const int INF = 0x3f3f3f3f;
 int n, m, tot = 1, lnk[N], cur[N], ter[M], nxt[M], cap[M], cost[M], dis[N], ret;
 bool vis[N];
 
-&lt;!--more--&gt;void add(int u, int v, int w, int c) {
+void add(int u, int v, int w, int c) {
   ter[++tot] = v, nxt[tot] = lnk[u], lnk[u] = tot, cap[tot] = w, cost[tot] = c;
 }
 

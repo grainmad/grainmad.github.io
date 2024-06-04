@@ -1,10 +1,9 @@
 <hr>
-<p>title: “字典树和AC自动机”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-03 10:42:02<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “字典树和AC自动机”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="字典树和AC自动机"><a href="#字典树和AC自动机" class="headerlink" title="字典树和AC自动机"></a>字典树和AC自动机</h1><h3 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h3><p>Trie树，又叫字典树、前缀树（Prefix Tree）、单词查找树 或 键树，是一种多叉树结构。</p>
 <p>{% asset_img ‘1115_1.gif’ %}</p>
 <p>此图是一棵Trie树，表示了关键字集合{“hers”, “his”, “she”, “i”, “he”} 。从图中可以看出：<br>从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串。<br>从根节点到标记呈橙色节点路径上字符组成的字符串是一个关键字。图中橙色节点就是关键字节点。<br>有共同前缀关键字有共同路径。<br><strong>构建字典树</strong><br>如果我们以英文小写字母作为字符集，那么每个节点都有26个分支子节点。由于有些节点是标志着一个插入字符串的结尾，所以需要有一个标记位判断是否是一个关键字。<br>我们定义根节点的结构如下：</p>
-<!--more-->
 <pre><code class="cpp">struct Node
 {
     bool isKey;   // 标记该节点是否代表一个关键字
