@@ -19,18 +19,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"grainmad.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="泰勒展开$f(x) &#x3D; f(x)+f’(x)x+\frac{f’’(x)}{2!}x^2+\frac{f’’’(x)}{3!}x^3+\dots++\frac{f^{(n)}(x)}{n!}x^n &#x3D; \sum \limits_{k&#x3D;0}^{n}\frac{f^{(k)}(x)}{k!}x^k$ $\sin(x)$    $f^n(x)$ $f^n(0)$ $a_n&#x3D;\frac{f^n(0)}{n">
+    <meta name="description" content="Taylor series">
 <meta property="og:type" content="article">
-<meta property="og:title" content="泰勒展开">
+<meta property="og:title" content="Taylor series">
 <meta property="og:url" content="https://grainmad.github.io/ed911d8b092a/ed911d8b092a/5317a6671952/index.html">
 <meta property="og:site_name" content="代码如诗">
-<meta property="og:description" content="泰勒展开$f(x) &#x3D; f(x)+f’(x)x+\frac{f’’(x)}{2!}x^2+\frac{f’’’(x)}{3!}x^3+\dots++\frac{f^{(n)}(x)}{n!}x^n &#x3D; \sum \limits_{k&#x3D;0}^{n}\frac{f^{(k)}(x)}{k!}x^k$ $\sin(x)$    $f^n(x)$ $f^n(0)$ $a_n&#x3D;\frac{f^n(0)}{n">
+<meta property="og:description" content="Taylor series">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-04T18:22:26.000Z">
-<meta property="article:modified_time" content="2024-06-04T18:22:26.000Z">
+<meta property="article:modified_time" content="2024-06-05T08:15:15.000Z">
 <meta property="article:author" content="GrainMad">
-<meta property="article:tag" content="math">
 <meta property="article:tag" content="notion">
+<meta property="article:tag" content="Math">
 <meta name="twitter:card" content="summary">
 
 
@@ -38,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/ed911d8b092a/ed911d8b092a/5317a6671952/","path":"ed911d8b092a/ed911d8b092a/5317a6671952/","title":"泰勒展开"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/ed911d8b092a/ed911d8b092a/5317a6671952/","path":"ed911d8b092a/ed911d8b092a/5317a6671952/","title":"Taylor series"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>泰勒展开 | 代码如诗</title>
+<title>Taylor series | 代码如诗</title>
   
 
 
@@ -88,7 +88,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">100</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">10</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">556</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">101</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">10</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">556</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -145,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80"><span class="nav-number">1.</span> <span class="nav-text">泰勒展开</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sin-x"><span class="nav-number">2.</span> <span class="nav-text">$\sin(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cos-x"><span class="nav-number">3.</span> <span class="nav-text">$\cos(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tan-x"><span class="nav-number">4.</span> <span class="nav-text">$\tan(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arcsin-x"><span class="nav-number">5.</span> <span class="nav-text">$\arcsin(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arccos-x"><span class="nav-number">6.</span> <span class="nav-text">$\arccos(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arctan-x"><span class="nav-number">7.</span> <span class="nav-text">$\arctan(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#a-x"><span class="nav-number">8.</span> <span class="nav-text">$a^x$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#e-x"><span class="nav-number">9.</span> <span class="nav-text">$e^x$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#e-xi"><span class="nav-number">10.</span> <span class="nav-text">$e^{xi}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-x-a"><span class="nav-number">11.</span> <span class="nav-text">$(1+x)^a$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-x-a-1"><span class="nav-number">12.</span> <span class="nav-text">$(1-x)^a$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#frac-1-1-x"><span class="nav-number">13.</span> <span class="nav-text">$\frac{1}{1-x}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#frac-1-1-x-1"><span class="nav-number">14.</span> <span class="nav-text">$\frac{1}{1+x}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ln-1-x"><span class="nav-number">15.</span> <span class="nav-text">$\ln(1-x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ln-1-x-1"><span class="nav-number">16.</span> <span class="nav-text">$\ln(1+x)$</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Taylor-series"><span class="nav-number">1.</span> <span class="nav-text">Taylor series</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sin-x"><span class="nav-number">2.</span> <span class="nav-text">$\sin(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cos-x"><span class="nav-number">3.</span> <span class="nav-text">$\cos(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tan-x"><span class="nav-number">4.</span> <span class="nav-text">$\tan(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arcsin-x"><span class="nav-number">5.</span> <span class="nav-text">$\arcsin(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arccos-x"><span class="nav-number">6.</span> <span class="nav-text">$\arccos(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arctan-x"><span class="nav-number">7.</span> <span class="nav-text">$\arctan(x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#a-x"><span class="nav-number">8.</span> <span class="nav-text">$a^x$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#e-x"><span class="nav-number">9.</span> <span class="nav-text">$e^x$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#e-xi"><span class="nav-number">10.</span> <span class="nav-text">$e^{xi}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-x-a"><span class="nav-number">11.</span> <span class="nav-text">$(1+x)^a$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-x-a-1"><span class="nav-number">12.</span> <span class="nav-text">$(1-x)^a$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#frac-1-1-x"><span class="nav-number">13.</span> <span class="nav-text">$\frac{1}{1-x}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#frac-1-1-x-1"><span class="nav-number">14.</span> <span class="nav-text">$\frac{1}{1+x}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ln-1-x"><span class="nav-number">15.</span> <span class="nav-text">$\ln(1-x)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ln-1-x-1"><span class="nav-number">16.</span> <span class="nav-text">$\ln(1+x)$</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -171,7 +171,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">100</span>
+        <span class="site-state-item-count">101</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -231,12 +231,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="泰勒展开 | 代码如诗">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="Taylor series | 代码如诗">
+      <meta itemprop="description" content="<ul style='text-align: left;'><li>Taylor series</li></ul>">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          泰勒展开
+          Taylor series
         </h1>
 
         <div class="post-meta-container">
@@ -251,17 +251,25 @@
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 08:15:15" itemprop="dateModified" datetime="2024-06-05T08:15:15+00:00">2024-06-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/math/" itemprop="url" rel="index"><span itemprop="name">math</span></a>
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
         </span>
     </span>
 
   
 </div>
 
+            <div class="post-description"><ul style='text-align: left;'><li>Taylor series</li></ul></div>
         </div>
       </header>
 
@@ -269,7 +277,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="泰勒展开"><a href="#泰勒展开" class="headerlink" title="泰勒展开"></a>泰勒展开</h1><p>$f(x) = f(x)+f’(x)x+\frac{f’’(x)}{2!}x^2+\frac{f’’’(x)}{3!}x^3+\dots++\frac{f^{(n)}(x)}{n!}x^n = \sum \limits_{k=0}^{n}\frac{f^{(k)}(x)}{k!}x^k$</p>
+        <h1 id="Taylor-series"><a href="#Taylor-series" class="headerlink" title="Taylor series"></a>Taylor series</h1><p>$f(x) = f(x)+f’(x)x+\frac{f’’(x)}{2!}x^2+\frac{f’’’(x)}{3!}x^3+\dots++\frac{f^{(n)}(x)}{n!}x^n = \sum \limits_{k=0}^{n}\frac{f^{(k)}(x)}{k!}x^k$</p>
 <h1 id="sin-x"><a href="#sin-x" class="headerlink" title="$\sin(x)$"></a>$\sin(x)$</h1><table>
 <thead>
 <tr>
@@ -749,8 +757,8 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/math/" rel="tag"><i class="fa fa-tag"></i> math</a>
               <a href="/tags/notion/" rel="tag"><i class="fa fa-tag"></i> notion</a>
+              <a href="/tags/Math/" rel="tag"><i class="fa fa-tag"></i> Math</a>
           </div>
           <script type="text/javascript">
             var tagsall=document.getElementsByClassName("post-tags")
@@ -832,8 +840,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/ed911d8b092a/ed911d8b092a/" rel="next" title="math">
-                  math <i class="fa fa-chevron-right"></i>
+                <a href="/ed911d8b092a/ed911d8b092a/" rel="next" title="Math">
+                  Math <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
