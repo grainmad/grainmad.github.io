@@ -1,5 +1,5 @@
 <hr>
-<p>title: “树的直径与中心”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 树与图, 树上问题]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “树的直径与中心”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 树与图, 树上问题]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="树的直径与中心"><a href="#树的直径与中心" class="headerlink" title="树的直径与中心"></a>树的直径与中心</h1><pre><code class="cpp">int n;
 cin &gt;&gt; n;
@@ -29,4 +29,5 @@ vector&lt;int&gt; h; // 某条直径上的中心点,直径奇数一个,偶数两
 for (int i=1; i&lt;=n; i++) {
     if (d[1][i]+d[2][i] == d[2][c] &amp;&amp; abs(d[1][i]-d[2][i]) == d[2][c]%2) h.push_back(i);
 }
+``&lt;!--more--&gt;
 </code></pre>

@@ -1,5 +1,5 @@
 <hr>
-<p>title: “滑动窗口”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “滑动窗口”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><h1 id="滑窗第k小，multiset"><a href="#滑窗第k小，multiset" class="headerlink" title="滑窗第k小，multiset"></a>滑窗第k小，multiset</h1><p>用multiset维护两个多重集合A和B，A维护着区间中k个最小值，B维护着区间中剩余的值</p>
 <p>无论是插入还是删除x，首先判断x所属集合。然后从所属集合中添加或删除。再判断A集合大小是否为k：大于k则移动一个最大值到B中，小于k则移动B中的最小值到A中。</p>
@@ -44,14 +44,24 @@
         return *st1.rbegin();
     }
 };
-</code></pre>
-<h1 id="滑窗第k小，二叉堆"><a href="#滑窗第k小，二叉堆" class="headerlink" title="滑窗第k小，二叉堆"></a>滑窗第k小，二叉堆</h1><p>用二叉堆维护一个大根堆A和小根堆B，A维护着区间中k个最小值，B维护着区间中剩余的值。</p>
-<p>堆无法删除，我们采用延时删除，记录需要延时删除的数x需要删除的次数cnt[x]。</p>
-<p>记录A和B中清除无用数据后的大小sz1, sz2。</p>
-<p>每次获取堆顶前，清除堆顶的无用数据。</p>
-<p>无论是插入还是删除x，首先判断x所属集合。然后从所属集合中添加或删除。再判断A集合大小是否为k：大于k则移动一个最大值到B中，小于k则移动B中的最小值到A中。</p>
-<p>值得注意的是删除x，不能再cnt[x]++后立刻清除无用数据x，因为还需要判断x所处集合，并让对于集合大小减少1，如果直接删除，那么无法确定x在原来的集合。</p>
-<pre><code class="cpp">struct Kmin {
+```&lt;!--more--&gt;
+
+# 滑窗第k小，二叉堆
+
+用二叉堆维护一个大根堆A和小根堆B，A维护着区间中k个最小值，B维护着区间中剩余的值。
+
+堆无法删除，我们采用延时删除，记录需要延时删除的数x需要删除的次数cnt[x]。
+
+记录A和B中清除无用数据后的大小sz1, sz2。
+
+每次获取堆顶前，清除堆顶的无用数据。
+
+无论是插入还是删除x，首先判断x所属集合。然后从所属集合中添加或删除。再判断A集合大小是否为k：大于k则移动一个最大值到B中，小于k则移动B中的最小值到A中。
+
+值得注意的是删除x，不能再cnt[x]++后立刻清除无用数据x，因为还需要判断x所处集合，并让对于集合大小减少1，如果直接删除，那么无法确定x在原来的集合。
+
+```cpp
+struct Kmin {
     // 第K小, 集合大小（有效数据）
     int K, sz1, sz2;
     // st1 保存前 K 小值，st2 保存其它值

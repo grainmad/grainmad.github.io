@@ -1,5 +1,5 @@
 <hr>
-<p>title: “字典树和AC自动机”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “字典树和AC自动机”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="字典树和AC自动机"><a href="#字典树和AC自动机" class="headerlink" title="字典树和AC自动机"></a>字典树和AC自动机</h1><h3 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h3><p>Trie树，又叫字典树、前缀树（Prefix Tree）、单词查找树 或 键树，是一种多叉树结构。</p>
 <p>{% asset_img ‘1115_1.gif’ %}</p>
@@ -9,9 +9,12 @@
     bool isKey;   // 标记该节点是否代表一个关键字
     Node * children[26]; // 各个子节点
 };
-</code></pre>
-<p>刚开始字典树是只有一个根节点的。</p>
-<pre><code class="cpp">Node* root = new Node();
+```&lt;!--more--&gt;
+
+刚开始字典树是只有一个根节点的。
+
+```cpp
+Node* root = new Node();
 </code></pre>
 <p>我们需要通过一条一条加入字符串构建字典树。<br>插入一条字符串的过程：</p>
 <pre><code class="cpp">void insert(string word) {

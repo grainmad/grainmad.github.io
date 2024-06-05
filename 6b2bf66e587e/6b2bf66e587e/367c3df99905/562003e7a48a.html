@@ -1,5 +1,5 @@
 <hr>
-<p>title: “枚举回文串”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “枚举回文串”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="枚举回文串"><a href="#枚举回文串" class="headerlink" title="枚举回文串"></a>枚举回文串</h1><p>按由小到大顺序枚举长度不超过2*i的回文串。</p>
 <pre><code class="cpp">using ll = long long;
@@ -30,9 +30,12 @@ void fun() {
         cout &lt;&lt; i &lt;&lt; endl;
     }
 }
-</code></pre>
-<p>判断k进制下x是否回文</p>
-<pre><code class="cpp">bool ok(ll x, int k) {
+```&lt;!--more--&gt;
+
+判断k进制下x是否回文
+
+```cpp
+bool ok(ll x, int k) {
         ll y = 0, p = x;
         while (x) {
             y = y*k + x%k;

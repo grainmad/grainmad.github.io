@@ -1,5 +1,5 @@
 <hr>
-<p>title: “排序”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 轮子]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “排序”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 轮子]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>对于子数组<code>nums[left…right],</code>我们将<code>nums[left]</code>排到正确的位置上</p>
 <p>每次排好一个元素,然后以这个元素作为分割,递归解决子问题</p>
@@ -11,6 +11,7 @@
 <p>注意到<strong>左指针自始至终满足小于等于<code>nums[left]</code></strong> ,也就是说当指针相遇<code>l=r</code>时,都满足<code>nums[left…l] ≤ nums[left]</code>,我们可以让<code>nums[left]</code>和<code>nums[l]</code>交换,也就排好<code>nums[left]</code>这个元素,然后递归处理子数组nums[left…l-1]和<code>nums[l+1,right]</code></p>
 <p>为什么是右指针先移动?</p>
 <p>确保了指针相遇时指针以及指针左侧的元素都小于<code>nums[left]</code></p>
+<!--more-->
 <ul>
 <li>如果右指针向左移动遇到了左指针,左指针再次之前必定是小于等于<code>nums[left]</code> 的</li>
 <li>如果左指针向右移动遇到了右指针,右指针再次之前必定是小于等于<code>nums[left]</code> 的</li>

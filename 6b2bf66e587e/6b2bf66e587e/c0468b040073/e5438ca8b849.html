@@ -1,67 +1,10 @@
 <hr>
-<p>title: “分块算法”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “分块算法”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
-<h1 id="分块算法"><a href="#分块算法" class="headerlink" title="分块算法"></a>分块算法</h1><pre><code class="cpp">int n;
-ll a[N];
-int L[M], R[M], B[N];
-ll sum[M], tag[M];
-int s, sz;
-void init() {
-    s = sqrt(n);
-    sz = (n+s-1)/s;
-    for (int i=1; i&lt;=n; i++) {
-        B[i] = (i-1)/s+1;
-        sum[B[i]] += a[i];
-    }
-    for (int i=1; i&lt;=sz; i++) {
-        L[i] = (i-1)*s+1;
-        R[i] = min(n, i*s);
-    }
-}
-
-void add(int l, int r, ll val) {
-    int x = B[l], y = B[r];
-    if (x == y) {
-        for (int i=l; i&lt;=r; i++) {
-            a[i] += val;
-            sum[x] += val;
-        }
-    } else {
-        for (int i=l; i&lt;=R[x]; i++) {
-            a[i] += val;
-            sum[x] += val;
-        }
-        for (int i=L[y]; i&lt;=r; i++) {
-            a[i] += val;
-            sum[y] += val;
-        }
-        for (int i=x+1; i&lt;y; i++) {
-            tag[i] += val;
-        }
-    }
-}
-
-ll ask(int l, int r, ll c) {
-    int x = B[l], y = B[r];
-    ll rt = 0;
-    if (x == y) {
-        for (int i=l; i&lt;=r; i++) {
-            rt += a[i] + tag[x];
-        }
-    } else {
-        for (int i=l; i&lt;=R[x]; i++) {
-            rt += a[i] + tag[x];
-        }
-        for (int i=L[y]; i&lt;=r; i++) {
-            rt += a[i] + tag[y];
-        }
-        for (int i=x+1; i&lt;y; i++) {
-            rt += sum[i] + tag[i]*s;
-        }
-    }
-    return rt%c;
-}
-</code></pre>
+<h1 id="分块算法"><a href="#分块算法" class="headerlink" title="分块算法"></a>分块算法</h1><p>```cpp<br>int n;<br>ll a[N];<br>int L[M], R[M], B[N];<br>ll sum[M], tag[M];<br>int s, sz;<br>void init() {<br>    s = sqrt(n);<br>    sz = (n+s-1)/s;<br>    for (int i=1; i&lt;=n; i++) {<br>        B[i] = (i-1)/s+1;<br>        sum[B[i]] += a[i];<br>    }<br>    for (int i=1; i&lt;=sz; i++) {<br>        L[i] = (i-1)<em>s+1;<br>        R[i] = min(n, i</em>s);<br>    }<br>}</p>
+<p>void add(int l, int r, ll val) {<br>    int x = B[l], y = B[r];<br>    if (x == y) {<br>        for (int i=l; i&lt;=r; i++) {<br>            a[i] += val;<br>            sum[x] += val;<br>        }<br>    } else {<br>        for (int i=l; i&lt;=R[x]; i++) {<br>            a[i] += val;<br>            sum[x] += val;<br>        }<br>        for (int i=L[y]; i&lt;=r; i++) {<br>            a[i] += val;<br>            sum[y] += val;<br>        }<br>        for (int i=x+1; i&lt;y; i++) {<br>            tag[i] += val;<br>        }<br>    }<br>}</p>
+<p>ll ask(int l, int r, ll c) {<br>    int x = B[l], y = B[r];<br>    ll rt = 0;<br>    if (x == y) {<br>        for (int i=l; i&lt;=r; i++) {<br>            rt += a[i] + tag[x];<br>        }<br>    } else {<br>        for (int i=l; i&lt;=R[x]; i++) {<br>            rt += a[i] + tag[x];<br>        }<br>        for (int i=L[y]; i&lt;=r; i++) {<br>            rt += a[i] + tag[y];<br>        }<br>        for (int i=x+1; i&lt;y; i++) {<br>            rt += sum[i] + tag[i]*s;<br>        }<br>    }<br>    return rt%c;<br>}</p>
+<p>```<!--more--></p>
 <p>分块算法主要思想</p>
 <p>将长度为n的序列分为$\sqrt{n}$，对于区间的更新和查询都将对最多两个非完整块和$\sqrt{n}$个块操作</p>
 <p>对非完整块可以直接暴力那么最多只需要$O(\sqrt{n})$时间复杂度，对单个完整块操作需要保证$O(1)$$O(log(\sqrt{n}))$时间复杂度，这样$\sqrt{n}$个块的时间复杂度在$\sqrt{n}$ 或 $\frac{\sqrt{n}}{2}log(n)$，当然其实对所有完整块可以直接暴力但是要保证暴力的次数很少。</p>

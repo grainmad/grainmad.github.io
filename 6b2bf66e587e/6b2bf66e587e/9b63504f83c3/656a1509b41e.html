@@ -1,5 +1,5 @@
 <hr>
-<p>title: “数论算法模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “数论算法模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="数论算法模板"><a href="#数论算法模板" class="headerlink" title="数论算法模板"></a>数论算法模板</h1><h3 id="素数打表"><a href="#素数打表" class="headerlink" title="素数打表"></a>素数打表</h3><p>获取MAXN内的所有质数, 百万数量级内有效</p>
 <pre><code class="cpp">bool nprime[MAXN];
@@ -22,8 +22,13 @@ void get_prime() {
         }
     }
 }
-</code></pre>
-<h3 id="快速分解质因数n，-O-logn"><a href="#快速分解质因数n，-O-logn" class="headerlink" title="快速分解质因数n，$O(logn)$"></a>快速分解质因数n，$O(logn)$</h3><pre><code class="cpp">
+
+```&lt;!--more--&gt;
+
+### 快速分解质因数n，$O(logn)$
+
+```cpp
+
 int mpf[N];//mpf[i] i的 min prime factor
 void getmpf() {//获取N以内所有数的最小质因子
     memset(mpf, 0, sizeof(mpf));

@@ -1,5 +1,5 @@
 <hr>
-<p>title: “tarjan 桥与割点”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “tarjan 桥与割点”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="tarjan-桥与割点"><a href="#tarjan-桥与割点" class="headerlink" title="tarjan 桥与割点"></a>tarjan 桥与割点</h1><p>DFN(u)为节点u 搜索的次序编号(时间戳);</p>
 <p>LOW(u)为u 或 u的子树能够追溯到的最早的栈中节点的次序号;</p>
@@ -35,11 +35,16 @@ public:
         return ans;
     }
 };
-</code></pre>
-<p>在dfs树中，如果v节点的父节点时u，且low[v]&gt;dfn[u]，说明v子树中没有其他路径通往u及祖先，所以(u,v)是桥，移除后会让连通分量增加。</p>
-<hr>
-<p>割点</p>
-<pre><code class="cpp">// p3388 logu
+```&lt;!--more--&gt;
+
+在dfs树中，如果v节点的父节点时u，且low[v]&gt;dfn[u]，说明v子树中没有其他路径通往u及祖先，所以(u,v)是桥，移除后会让连通分量增加。
+
+---
+
+割点
+
+```cpp
+// p3388 logu
 #include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int N = 100010;

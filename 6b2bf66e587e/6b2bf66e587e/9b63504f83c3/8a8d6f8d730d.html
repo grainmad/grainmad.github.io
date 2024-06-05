@@ -1,5 +1,5 @@
 <hr>
-<p>title: “矩阵快速幂”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “矩阵快速幂”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
 <hr>
 <h1 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h1><h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><pre><code class="cpp">struct Matrix {
     ll mat[N][N];
@@ -35,10 +35,14 @@ Matrix pow_matrix(Matrix a, ll p, int n, ll m) {
     }
     return res;
 }
-</code></pre>
-<p>大矩阵作为函数参数且以值传递会发生段错误。</p>
-<p>一种大矩阵不会段错误的实现方式。</p>
-<pre><code class="cpp">#define N 505
+```&lt;!--more--&gt;
+
+大矩阵作为函数参数且以值传递会发生段错误。
+
+一种大矩阵不会段错误的实现方式。
+
+```cpp
+#define N 505
 #define MOD 998244353
 
 struct Matrix {
