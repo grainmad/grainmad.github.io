@@ -1,5 +1,5 @@
 <hr>
-<p>title: “三分法”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “三分法”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>三分法</li></ul>“</p>
 <hr>
 <h1 id="三分法"><a href="#三分法" class="headerlink" title="三分法"></a>三分法</h1><p>整数</p>
 <pre><code class="cpp">using ll = long long;
@@ -21,12 +21,9 @@ while(l &lt; r) {
 cout &lt;&lt; min(lans,rans) &lt;&lt; endl;
 // 求凸函数的极大值
 cout &lt;&lt; max(lans,rans) &lt;&lt; endl;
-```&lt;!--more--&gt;
-
-浮点数
-
-```cpp
-const double EPS = 1e-9;
+</code></pre>
+<p>浮点数</p>
+<pre><code class="cpp">const double EPS = 1e-9;
 double l = 0, r = 1e18, lans, rans;
 while(r - l &gt; EPS) {
     double lmid = l + (r - l) / 3;

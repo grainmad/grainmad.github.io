@@ -1,5 +1,5 @@
 <hr>
-<p>title: “单调栈 队列”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “单调栈 队列”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 数组字符串]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>单调栈 队列</li></ul>“</p>
 <hr>
 <h1 id="单调栈-队列"><a href="#单调栈-队列" class="headerlink" title="单调栈/队列"></a>单调栈/队列</h1><h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><p>单调栈的”一栈两用“。<br>对数组<strong>从左至右</strong>维护<strong>严格单调递增</strong>栈需要不断移除栈顶元素直到栈顶元素小于待入栈元素。在这个过程中待入栈元素是移除元素右侧第一个小于等于自身的元素。在移除过程结束后，栈顶元素是待入栈元素的左侧第一个小于自身的元素。这样一个<strong>从左至右严格单调递增栈</strong>可以获得每个元素左侧第一个小于自身的元素以及每个元素右侧第一个小于等于自身的元素。</p>
 <p><strong>从左至右严格单调递增栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>小于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>小于等于</strong>自身的元素。<br><strong>从左至右单调非减栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>小于等于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>小于</strong>自身的元素。<br><strong>从左至右严格单调递减栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>大于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>大于等于</strong>自身的元素。<br><strong>从左至右单调非增栈</strong>可以获得每个元素<strong>左侧</strong>第一个<strong>大于等于</strong>自身的元素以及每个元素<strong>右侧</strong>第一个<strong>大于</strong>自身的元素。</p>
@@ -62,24 +62,152 @@
     cout &lt;&lt; &quot;r_l &quot;; for (int i:r_l) cout &lt;&lt; i &lt;&lt; &quot; &quot;; cout &lt;&lt; endl;
     return 0;          
 }
-```&lt;!--more--&gt;
-
-| index | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| val | 1 | 1 | 2 | 3 | 3 | 2 | 1 | 1 | 2 | 2 | 3 |
-| l_g | -1 | -1 | -1 | -1 | -1 | 4 | 5 | 5 | 4 | 4 | -1 |
-| r_ge | 1 | 2 | 3 | 4 | 10 | 8 | 7 | 8 | 9 | 10 | 11 |
-| l_ge | -1 | 0 | -1 | -1 | 3 | 4 | 5 | 6 | 5 | 8 | 4 |
-| r_g | 2 | 2 | 3 | 11 | 11 | 10 | 8 | 8 | 10 | 10 | 11 |
-| l_l | -1 | -1 | 1 | 2 | 2 | 1 | -1 | -1 | 7 | 7 | 9 |
-| r_le | 1 | 6 | 5 | 4 | 5 | 6 | 7 | 11 | 9 | 11 | 11 |
-| l_le | -1 | 0 | 1 | 2 | 3 | 2 | 1 | 6 | 7 | 8 | 9 |
-| r_l | 11 | 11 | 6 | 5 | 5 | 6 | 11 | 11 | 11 | 11 | 11 |
-
-# 单调队列模板
-
-```cpp
-//leetcode 1696. 跳跃游戏 VI
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>val</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>l_g</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>r_ge</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>10</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr>
+<td>l_ge</td>
+<td>-1</td>
+<td>0</td>
+<td>-1</td>
+<td>-1</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>5</td>
+<td>8</td>
+<td>4</td>
+</tr>
+<tr>
+<td>r_g</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>11</td>
+<td>11</td>
+<td>10</td>
+<td>8</td>
+<td>8</td>
+<td>10</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr>
+<td>l_l</td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td>7</td>
+<td>7</td>
+<td>9</td>
+</tr>
+<tr>
+<td>r_le</td>
+<td>1</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>11</td>
+<td>9</td>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<td>l_le</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>r_l</td>
+<td>11</td>
+<td>11</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>6</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+</tr>
+</tbody></table>
+<h1 id="单调队列模板"><a href="#单调队列模板" class="headerlink" title="单调队列模板"></a>单调队列模板</h1><pre><code class="cpp">//leetcode 1696. 跳跃游戏 VI
 for (int i=0; i&lt;n; i++) {
     while (que.size() &amp;&amp; que.front()+k&lt;i) que.pop_front();
     dp[i] = nums[i];

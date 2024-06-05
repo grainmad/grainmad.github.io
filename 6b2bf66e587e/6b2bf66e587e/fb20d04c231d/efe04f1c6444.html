@@ -1,5 +1,5 @@
 <hr>
-<p>title: “DFS序与欧拉序”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “DFS序与欧拉序”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>DFS序与欧拉序</li></ul>“</p>
 <hr>
 <h1 id="DFS序与欧拉序"><a href="#DFS序与欧拉序" class="headerlink" title="DFS序与欧拉序"></a>DFS序与欧拉序</h1><h1 id="dfs序（子树转子区间）"><a href="#dfs序（子树转子区间）" class="headerlink" title="dfs序（子树转子区间）"></a>dfs序（子树转子区间）</h1><p>问题特点，对一颗树的子树内所有节点集体操作。可以将树上问题转为区间问题。</p>
 <p>通过dfs，求出每个节点<code>x</code>第一次到达的时间<code>a</code>和最后一次到达的时间<code>b</code>，显然它以及它的后代节点所经过的时间范围在<code>[a,b)</code> ，这样操作一个子树就是相当于操作一个连续区间。</p>
@@ -26,12 +26,9 @@ function&lt;void(int)&gt; dfs = [&amp;](int u) {
     r[u] = clk;
 };
 dfs(1);
-```&lt;!--more--&gt;
-
-[**LCP 05. 发 LeetCoin](https://leetcode.cn/problems/coin-bonus/) 模板题**
-
-```cpp
-#define MOD 1000000007
+</code></pre>
+<p><a href="https://leetcode.cn/problems/coin-bonus/">**LCP 05. 发 LeetCoin</a> 模板题**</p>
+<pre><code class="cpp">#define MOD 1000000007
 // #define MOD 998244353
 #define ll long long
 #define mint Modint&lt;MOD&gt;

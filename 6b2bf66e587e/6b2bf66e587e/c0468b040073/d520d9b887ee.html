@@ -1,5 +1,5 @@
 <hr>
-<p>title: “普通莫队”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “普通莫队”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>普通莫队</li></ul>“</p>
 <hr>
 <h1 id="普通莫队"><a href="#普通莫队" class="headerlink" title="普通莫队"></a>普通莫队</h1><p>满足无区间修改，可离线，可$O(1)$得到相邻区间的计数，即可$O(qlogq+n^{\frac{3}{2}})$求出q个查询$[l,r],1≤l≤r≤n$</p>
 <p>算法流程</p>
@@ -10,7 +10,6 @@
 <p>我们分别考虑左右指针的移动次数。</p>
 <p>对于右指针，在区间左端点所属同一块的区间右端点移动时间复杂度为$O(n)$，共$O(\sqrt n)$分块，总时间复杂度为$O(n\sqrt n)$</p>
 <p>若分块共计分成sz块，区间左端点分配到第i块的个数为$a_i$，对于第i块中的左端点由于是无序的，我们考虑最坏的移动情况，就是每次移动需要跨越整个块，这时候所需的时间复杂度为$O(a_i\sqrt n)$。所有块所需时间复杂度$O(\sum \limits_{i=1}^{sz} a_i \sqrt n) = O(n \sqrt n)$</p>
-<!--more-->
 <p>q次区间查询，每次查询求区间内去重后的元素个数。</p>
 <pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
 #define SINGLE_INPUT

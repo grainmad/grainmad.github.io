@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"grainmad.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="重链剖分树上任意两点间路径可由$logn$条重链组成，所有重链视为连续的区间，用线段树维护。对路径的修改查询，只需修改$logn$个区间，总复杂度$O(log^2n)$ &#x2F;&#x2F; p3384 #include &lt;algorithm&gt; #include &lt;cstring&gt; #include &lt;iostream&gt; #include &lt;vector&gt; usin">
+    <meta name="description" content="重链剖分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="重链剖分">
 <meta property="og:url" content="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/ab6be601d180/afd8f06df631/index.html">
 <meta property="og:site_name" content="代码如诗">
-<meta property="og:description" content="重链剖分树上任意两点间路径可由$logn$条重链组成，所有重链视为连续的区间，用线段树维护。对路径的修改查询，只需修改$logn$个区间，总复杂度$O(log^2n)$ &#x2F;&#x2F; p3384 #include &lt;algorithm&gt; #include &lt;cstring&gt; #include &lt;iostream&gt; #include &lt;vector&gt; usin">
+<meta property="og:description" content="重链剖分">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-03T10:42:02.000Z">
-<meta property="article:modified_time" content="2024-06-05T06:38:41.000Z">
+<meta property="article:modified_time" content="2024-06-05T07:32:22.000Z">
 <meta property="article:author" content="GrainMad">
 <meta property="article:tag" content="notion">
 <meta property="article:tag" content="Algorithm">
@@ -235,7 +235,7 @@
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="name" content="重链剖分 | 代码如诗">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="<ul style='text-align: left;'><li>重链剖分</li></ul>">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -257,7 +257,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 06:38:41" itemprop="dateModified" datetime="2024-06-05T06:38:41+00:00">2024-06-05</time>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -272,6 +272,7 @@
   
 </div>
 
+            <div class="post-description"><ul style='text-align: left;'><li>重链剖分</li></ul></div>
         </div>
       </header>
 
@@ -280,166 +281,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="重链剖分"><a href="#重链剖分" class="headerlink" title="重链剖分"></a>重链剖分</h1><p>树上任意两点间路径可由$logn$条重链组成，所有重链视为连续的区间，用线段树维护。对路径的修改查询，只需修改$logn$个区间，总复杂度$O(log^2n)$</p>
-<pre><code class="cpp">// p3384
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-const int N = 100010;
-int n, m, a, b, root, P, w[N];
-#define ll long long
-#define lc (u &lt;&lt; 1)
-#define rc (u &lt;&lt; 1 | 1)
-vector&lt;int&gt; e[N];
-int fa[N], dep[N], sz[N], son[N];
-int top[N], id[N], nw[N], cnt;  // 重链
-
-/*
-    fa[u] u的父节点
-    dep[u] u的深度
-    sz[u] 以u为根的子树节点数
-    son[u] u的重儿子
-    top[u] u所在重链的顶点
-    id[u] u剖分后的新编号cnt
-    nw[cnt] 新编号对应的权值
-*/
-
-struct tree &#123;
-    int l, r;
-    ll add, sum;
-&#125; tr[N * 4];  // 线段树
-
-void dfs1(int u, int father) &#123;  // 搞fa,dep,sz,son
-    fa[u] = father, dep[u] = dep[father] + 1, sz[u] = 1;
-    for (int v : e[u]) &#123;
-        if (v == father)
-            continue;
-        dfs1(v, u);
-        sz[u] += sz[v];
-        if (sz[son[u]] &lt; sz[v])
-            son[u] = v;
-    &#125;
-&#125;
-void dfs2(int u, int t) &#123;  // 搞top,id,nw
-    top[u] = t, id[u] = ++cnt, nw[cnt] = w[u];
-    if (!son[u])
-        return;
-    dfs2(son[u], t);
-    for (int v : e[u]) &#123;
-        if (v == fa[u] || v == son[u])
-            continue;
-        dfs2(v, v);
-    &#125;
-&#125;
-void pushup(int u) &#123;
-    tr[u].sum = tr[lc].sum + tr[rc].sum;
-&#125;
-void pushdown(int u) &#123;
-    if (tr[u].add) &#123;
-        tr[lc].sum += tr[u].add * (tr[lc].r - tr[lc].l + 1);
-        tr[rc].sum += tr[u].add * (tr[rc].r - tr[rc].l + 1);
-        tr[lc].add += tr[u].add;
-        tr[rc].add += tr[u].add;
-        tr[u].add = 0;
-    &#125;
-&#125;
-void build(int u, int l, int r) &#123;  // 构建线段树
-    tr[u] = &#123;l, r, 0, nw[r]&#125;;
-    if (l == r)
-        return;
-    int mid = l + r &gt;&gt; 1;
-    build(lc, l, mid), build(rc, mid + 1, r);
-    pushup(u);
-&#125;
-ll query(int u, int l, int r) &#123;  // 线段树查询
-    if (l &lt;= tr[u].l &amp;&amp; tr[u].r &lt;= r)
-        return tr[u].sum;
-    pushdown(u);
-    int mid = tr[u].l + tr[u].r &gt;&gt; 1;
-    ll res = 0;
-    if (l &lt;= mid)
-        res += query(lc, l, r);
-    if (r &gt; mid)
-        res += query(rc, l, r);
-    return res;
-&#125;
-ll query_path(int u, int v) &#123;  // 查询路径
-    ll res = 0;
-    while (top[u] != top[v]) &#123;
-        if (dep[top[u]] &lt; dep[top[v]])
-            swap(u, v);
-        res += query(1, id[top[u]], id[u]);
-        u = fa[top[u]];
-    &#125;
-    if (dep[u] &lt; dep[v])
-        swap(u, v);
-    res += query(1, id[v], id[u]);  // 最后一段
-    return res;
-&#125;
-ll query_tree(int u) &#123;  // 查询子树
-    return query(1, id[u], id[u] + sz[u] - 1);
-&#125;
-void update(int u, int l, int r, int k) &#123;  // 线段树修改
-    if (l &lt;= tr[u].l &amp;&amp; tr[u].r &lt;= r) &#123;
-        tr[u].add += k;
-        tr[u].sum += k * (tr[u].r - tr[u].l + 1);
-        return;
-    &#125;
-    pushdown(u);
-    int mid = tr[u].l + tr[u].r &gt;&gt; 1;
-    if (l &lt;= mid)
-        update(lc, l, r, k);
-    if (r &gt; mid)
-        update(rc, l, r, k);
-    pushup(u);
-&#125;
-void update_path(int u, int v, int k) &#123;  // 修改路径
-    while (top[u] != top[v]) &#123;
-        if (dep[top[u]] &lt; dep[top[v]])
-            swap(u, v);
-        update(1, id[top[u]], id[u], k);
-        u = fa[top[u]];
-    &#125;
-    if (dep[u] &lt; dep[v])
-        swap(u, v);
-    update(1, id[v], id[u], k);  // 最后一段
-&#125;
-void update_tree(int u, int k) &#123;  // 修改子树
-    update(1, id[u], id[u] + sz[u] - 1, k);
-&#125;
-int main() &#123;
-    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;root, &amp;P);
-    for (int i = 1; i &lt;= n; i++)
-        scanf(&quot;%d&quot;, &amp;w[i]);
-    for (int i = 0; i &lt; n - 1; i++) &#123;
-        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-        e[a].push_back(b);
-        e[b].push_back(a);
-    &#125;
-    dfs1(root, 0);
-    dfs2(root, root);  // 把树拆成链
-    build(1, 1, n);    // 用链建线段树
-    while (m--) &#123;
-        int t, u, v, k;
-        scanf(&quot;%d%d&quot;, &amp;t, &amp;u);
-        if (t == 1) &#123;
-            scanf(&quot;%d%d&quot;, &amp;v, &amp;k);
-            update_path(u, v, k);
-        &#125; else if (t == 3) &#123;
-            scanf(&quot;%d&quot;, &amp;k);
-            update_tree(u, k);
-        &#125; else if (t == 2) &#123;
-            scanf(&quot;%d&quot;, &amp;v);
-            printf(&quot;%d\n&quot;, query_path(u, v) % P);
-        &#125; else
-            printf(&quot;%d\n&quot;, query_tree(u) % P);
-    &#125;
-&#125;
-``&lt;!--more--&gt;
-</code></pre>
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// p3384</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"><span class="type">int</span> n, m, a, b, root, P, w[N];</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> lc (u &lt;&lt; 1)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rc (u &lt;&lt; 1 | 1)</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; e[N];</span><br><span class="line"><span class="type">int</span> fa[N], dep[N], sz[N], son[N];</span><br><span class="line"><span class="type">int</span> top[N], id[N], nw[N], cnt;  <span class="comment">// 重链</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    fa[u] u的父节点</span></span><br><span class="line"><span class="comment">    dep[u] u的深度</span></span><br><span class="line"><span class="comment">    sz[u] 以u为根的子树节点数</span></span><br><span class="line"><span class="comment">    son[u] u的重儿子</span></span><br><span class="line"><span class="comment">    top[u] u所在重链的顶点</span></span><br><span class="line"><span class="comment">    id[u] u剖分后的新编号cnt</span></span><br><span class="line"><span class="comment">    nw[cnt] 新编号对应的权值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">tree</span> &#123;</span><br><span class="line">    <span class="type">int</span> l, r;</span><br><span class="line">    ll add, sum;</span><br><span class="line">&#125; tr[N * <span class="number">4</span>];  <span class="comment">// 线段树</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs1</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> father)</span> </span>&#123;  <span class="comment">// 搞fa,dep,sz,son</span></span><br><span class="line">    fa[u] = father, dep[u] = dep[father] + <span class="number">1</span>, sz[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> v : e[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == father)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs1</span>(v, u);</span><br><span class="line">        sz[u] += sz[v];</span><br><span class="line">        <span class="keyword">if</span> (sz[son[u]] &lt; sz[v])</span><br><span class="line">            son[u] = v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs2</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> t)</span> </span>&#123;  <span class="comment">// 搞top,id,nw</span></span><br><span class="line">    top[u] = t, id[u] = ++cnt, nw[cnt] = w[u];</span><br><span class="line">    <span class="keyword">if</span> (!son[u])</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">dfs2</span>(son[u], t);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> v : e[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == fa[u] || v == son[u])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs2</span>(v, v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">    tr[u].sum = tr[lc].sum + tr[rc].sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushdown</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tr[u].add) &#123;</span><br><span class="line">        tr[lc].sum += tr[u].add * (tr[lc].r - tr[lc].l + <span class="number">1</span>);</span><br><span class="line">        tr[rc].sum += tr[u].add * (tr[rc].r - tr[rc].l + <span class="number">1</span>);</span><br><span class="line">        tr[lc].add += tr[u].add;</span><br><span class="line">        tr[rc].add += tr[u].add;</span><br><span class="line">        tr[u].add = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;  <span class="comment">// 构建线段树</span></span><br><span class="line">    tr[u] = &#123;l, r, <span class="number">0</span>, nw[r]&#125;;</span><br><span class="line">    <span class="keyword">if</span> (l == r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">build</span>(lc, l, mid), <span class="built_in">build</span>(rc, mid + <span class="number">1</span>, r);</span><br><span class="line">    <span class="built_in">pushup</span>(u);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;  <span class="comment">// 线段树查询</span></span><br><span class="line">    <span class="keyword">if</span> (l &lt;= tr[u].l &amp;&amp; tr[u].r &lt;= r)</span><br><span class="line">        <span class="keyword">return</span> tr[u].sum;</span><br><span class="line">    <span class="built_in">pushdown</span>(u);</span><br><span class="line">    <span class="type">int</span> mid = tr[u].l + tr[u].r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    ll res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (l &lt;= mid)</span><br><span class="line">        res += <span class="built_in">query</span>(lc, l, r);</span><br><span class="line">    <span class="keyword">if</span> (r &gt; mid)</span><br><span class="line">        res += <span class="built_in">query</span>(rc, l, r);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">query_path</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v)</span> </span>&#123;  <span class="comment">// 查询路径</span></span><br><span class="line">    ll res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (top[u] != top[v]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (dep[top[u]] &lt; dep[top[v]])</span><br><span class="line">            <span class="built_in">swap</span>(u, v);</span><br><span class="line">        res += <span class="built_in">query</span>(<span class="number">1</span>, id[top[u]], id[u]);</span><br><span class="line">        u = fa[top[u]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dep[u] &lt; dep[v])</span><br><span class="line">        <span class="built_in">swap</span>(u, v);</span><br><span class="line">    res += <span class="built_in">query</span>(<span class="number">1</span>, id[v], id[u]);  <span class="comment">// 最后一段</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">query_tree</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;  <span class="comment">// 查询子树</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">query</span>(<span class="number">1</span>, id[u], id[u] + sz[u] - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">update</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> k)</span> </span>&#123;  <span class="comment">// 线段树修改</span></span><br><span class="line">    <span class="keyword">if</span> (l &lt;= tr[u].l &amp;&amp; tr[u].r &lt;= r) &#123;</span><br><span class="line">        tr[u].add += k;</span><br><span class="line">        tr[u].sum += k * (tr[u].r - tr[u].l + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">pushdown</span>(u);</span><br><span class="line">    <span class="type">int</span> mid = tr[u].l + tr[u].r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (l &lt;= mid)</span><br><span class="line">        <span class="built_in">update</span>(lc, l, r, k);</span><br><span class="line">    <span class="keyword">if</span> (r &gt; mid)</span><br><span class="line">        <span class="built_in">update</span>(rc, l, r, k);</span><br><span class="line">    <span class="built_in">pushup</span>(u);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">update_path</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v, <span class="type">int</span> k)</span> </span>&#123;  <span class="comment">// 修改路径</span></span><br><span class="line">    <span class="keyword">while</span> (top[u] != top[v]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (dep[top[u]] &lt; dep[top[v]])</span><br><span class="line">            <span class="built_in">swap</span>(u, v);</span><br><span class="line">        <span class="built_in">update</span>(<span class="number">1</span>, id[top[u]], id[u], k);</span><br><span class="line">        u = fa[top[u]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dep[u] &lt; dep[v])</span><br><span class="line">        <span class="built_in">swap</span>(u, v);</span><br><span class="line">    <span class="built_in">update</span>(<span class="number">1</span>, id[v], id[u], k);  <span class="comment">// 最后一段</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">update_tree</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> k)</span> </span>&#123;  <span class="comment">// 修改子树</span></span><br><span class="line">    <span class="built_in">update</span>(<span class="number">1</span>, id[u], id[u] + sz[u] - <span class="number">1</span>, k);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;root, &amp;P);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;w[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">        e[a].<span class="built_in">push_back</span>(b);</span><br><span class="line">        e[b].<span class="built_in">push_back</span>(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs1</span>(root, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">dfs2</span>(root, root);  <span class="comment">// 把树拆成链</span></span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>, <span class="number">1</span>, n);    <span class="comment">// 用链建线段树</span></span><br><span class="line">    <span class="keyword">while</span> (m--) &#123;</span><br><span class="line">        <span class="type">int</span> t, u, v, k;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;t, &amp;u);</span><br><span class="line">        <span class="keyword">if</span> (t == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;v, &amp;k);</span><br><span class="line">            <span class="built_in">update_path</span>(u, v, k);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (t == <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;k);</span><br><span class="line">            <span class="built_in">update_tree</span>(u, k);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (t == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;v);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">query_path</span>(u, v) % P);</span><br><span class="line">        &#125; <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">query_tree</span>(u) % P);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     

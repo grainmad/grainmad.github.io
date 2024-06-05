@@ -1,5 +1,5 @@
 <hr>
-<p>title: “珂朵莉树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “珂朵莉树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>珂朵莉树</li></ul>“</p>
 <hr>
 <h1 id="珂朵莉树"><a href="#珂朵莉树" class="headerlink" title="珂朵莉树"></a>珂朵莉树</h1><h1 id="区间合并"><a href="#区间合并" class="headerlink" title="区间合并"></a>区间合并</h1><pre><code class="cpp">// from leetcode 2276. 统计区间中的整数数目
 map&lt;int, int&gt; mp;
@@ -19,20 +19,11 @@ void add(int left, int right) {
 int count() {
     return cnt;
 }
-```&lt;!--more--&gt;
-
-主要思想是**对于新插入的区间，删掉所有它覆盖（含部分覆盖）的区间，然后再插入**。
-
-区间的右边界作为键，左边界作为值。
-由于map的特性，所有键都是有序的。
-第一个大于等于left的键值对就是我们要删除的第一个区间。然后不断删除区间直到区间的左边界大于right为止。
-
-[https://codeforces.com/contest/1859/problem/D](https://codeforces.com/contest/1859/problem/D)
-
-# 珂朵莉树
-
-```cpp
-struct Node_t {
+</code></pre>
+<p>主要思想是<strong>对于新插入的区间，删掉所有它覆盖（含部分覆盖）的区间，然后再插入</strong>。</p>
+<p>区间的右边界作为键，左边界作为值。<br>由于map的特性，所有键都是有序的。<br>第一个大于等于left的键值对就是我们要删除的第一个区间。然后不断删除区间直到区间的左边界大于right为止。</p>
+<p><a href="https://codeforces.com/contest/1859/problem/D">https://codeforces.com/contest/1859/problem/D</a></p>
+<h1 id="珂朵莉树-1"><a href="#珂朵莉树-1" class="headerlink" title="珂朵莉树"></a>珂朵莉树</h1><pre><code class="cpp">struct Node_t {
     int l, r;
     mutable int v;
 

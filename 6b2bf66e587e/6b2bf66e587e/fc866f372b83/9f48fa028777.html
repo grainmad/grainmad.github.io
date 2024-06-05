@@ -1,5 +1,5 @@
 <hr>
-<p>title: “A 搜索算法”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 轮子]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “A 搜索算法”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 轮子]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>A 搜索算法</li></ul>“</p>
 <hr>
 <h1 id="A-搜索算法"><a href="#A-搜索算法" class="headerlink" title="A* 搜索算法"></a>A* 搜索算法</h1><h1 id="A"><a href="#A" class="headerlink" title="A*"></a>A*</h1><p>Dijkstra算法保证能找到一条从初始点到目标点的最短路径，只要所有的边都有一个非负的代价值。</p>
 <p>{% asset_img ‘树与图 7e7bfac00b7e44ad8acdfb20d04c231d/最短路 634accc6b5454f73b001df29370933f7/Untitled.png’ %}</p>
@@ -7,7 +7,7 @@
 <p>{% asset_img ‘树与图 7e7bfac00b7e44ad8acdfb20d04c231d/最短路 634accc6b5454f73b001df29370933f7/Untitled 1.png’ %}</p>
 <p>A* 把Dijkstra算法（靠近初始点的结点）和BFS算法（靠近目标点的结点）的信息块结合起来，形成一个评估函数 f(n) = g(n)+h(n)</p>
 <h2 id="A-的算法流程。"><a href="#A-的算法流程。" class="headerlink" title="A* 的算法流程。"></a>A* 的算法流程。</h2><p>A*算法有两个集合，OPEN集和CLOSED集。其中OPEN集保存待扩展的结点。CLOSED集保存已扩展过的结点。</p>
-<p>开始时，OPEN集只包含一个元素：初始结点。CLOSED集是空的。<br>在主循环中重复地从OPEN集中取出最好的结点n（评估函数f最小的结点）并检查之：<!--more--></p>
+<p>开始时，OPEN集只包含一个元素：初始结点。CLOSED集是空的。<br>在主循环中重复地从OPEN集中取出最好的结点n（评估函数f最小的结点）并检查之：</p>
 <ul>
 <li>如果n是目标结点，则我们的任务完成了。</li>
 <li>结点n被从OPEN集中删除并加入CLOSED集。然后检查它的邻居n’:<ul>

@@ -1,5 +1,5 @@
 <hr>
-<p>title: “线段树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “线段树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 区间操作]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>线段树</li></ul>“</p>
 <hr>
 <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><h2 id="结构体实现"><a href="#结构体实现" class="headerlink" title="结构体实现"></a>结构体实现</h2><p>区间修改，区间求和</p>
 <pre><code class="cpp">#define ll long long
@@ -67,14 +67,10 @@ void seg_print() {
         cout &lt;&lt; &quot;id:&quot; &lt;&lt; i &lt;&lt; &quot; [&quot; &lt;&lt; seg[i].l &lt;&lt; &quot;,&quot; &lt;&lt; seg[i].r &lt;&lt; &quot;] val:&quot; &lt;&lt; seg[i].val &lt;&lt; &quot; tag:&quot; &lt;&lt; seg[i].tag &lt;&lt; endl;
     }
 }
-```&lt;!--more--&gt;
-
-动态开点线段树更耗空间，不过不用离散化处理。
-
-区间+1，区间最大值，动态开点，new对象耗时间，
-
-```cpp
-#define ll long long
+</code></pre>
+<p>动态开点线段树更耗空间，不过不用离散化处理。</p>
+<p>区间+1，区间最大值，动态开点，new对象耗时间，</p>
+<pre><code class="cpp">#define ll long long
 struct Node {
     ll l, r, mx, tag;
     Node* ls, *rs;

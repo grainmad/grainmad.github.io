@@ -1,5 +1,5 @@
 <hr>
-<p>title: “离散期望”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “离散期望”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>离散期望</li></ul>“</p>
 <hr>
 <h1 id="离散期望"><a href="#离散期望" class="headerlink" title="离散期望"></a>离散期望</h1><ul>
 <li><strong>数学期望</strong> : 随机试验中每次可能结果的概率乘以其结果的总和，反映随机变量平均取值的大小。</li>
@@ -11,7 +11,7 @@
 <p>$E_{1 \rightarrow 2} = \frac{1}{2} \times 1 + \frac{1}{2} \times (E_{1 \rightarrow 2} + 1) \Rightarrow E_{1 \rightarrow 2} = 2$</p>
 <p>$E_{2 \rightarrow 3} = \frac{1}{3} \times 1 + \frac{1}{3} \times (E_{2 \rightarrow 3} + 1) + \frac{1}{3} \times (E_{1 \rightarrow 3} + 1)$ </p>
 <p>由期望的线性性，$E_{1 \rightarrow 3} = E_{1 \rightarrow 2} + E_{2 \rightarrow 3}$</p>
-<p>$E_{2 \rightarrow 3} = \frac{1}{3} \times 1 + \frac{1}{3} \times (E_{2 \rightarrow 3} + 1) + \frac{1}{3} \times (E_{1 \rightarrow 2}+E_{2 \rightarrow 3} + 1) \Rightarrow E_{2 \rightarrow 3} = 5$<!--more--></p>
+<p>$E_{2 \rightarrow 3} = \frac{1}{3} \times 1 + \frac{1}{3} \times (E_{2 \rightarrow 3} + 1) + \frac{1}{3} \times (E_{1 \rightarrow 2}+E_{2 \rightarrow 3} + 1) \Rightarrow E_{2 \rightarrow 3} = 5$</p>
 <p>$E_{1 \rightarrow 3} = E_{1 \rightarrow 2} + E_{2 \rightarrow 3} = 2 + 5 = 7$</p>
 <h1 id="求期望"><a href="#求期望" class="headerlink" title="求期望"></a>求期望</h1><p>概率是<code>有效方案数/总方案数</code> ，而期望是<code>有效方案结果值之和/总方案数</code>，由于无效方案结果值为0，也可以<code>所有方案结果值之和/总方案数</code> </p>
 <p>我们设$s$为总方案数，$t$为所有方案的结果值之和。</p>

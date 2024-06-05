@@ -1,5 +1,5 @@
 <hr>
-<p>title: “求组合数”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “求组合数”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 数学]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>求组合数</li></ul>“</p>
 <hr>
 <h1 id="求组合数"><a href="#求组合数" class="headerlink" title="求组合数"></a>求组合数</h1><h1 id="非取模的组合数"><a href="#非取模的组合数" class="headerlink" title="非取模的组合数"></a>非取模的组合数</h1><h2 id="基于公式-binom-n-m-frac-n-m-n-m"><a href="#基于公式-binom-n-m-frac-n-m-n-m" class="headerlink" title="基于公式$\binom{n}{m}=\frac{n!}{m!(n-m)!}$"></a>基于公式$\binom{n}{m}=\frac{n!}{m!(n-m)!}$</h2><p>时间复杂度$O(m)$，当计算$\binom{30}{15}=155117520$<br>时，正溢出了long long型，所以答案计算不正确</p>
 <pre><code class="cpp">using ll = long long;
@@ -11,14 +11,9 @@ ll comb(ll n, ll m) {
     }
     return a/b;
 }
-```&lt;!--more--&gt;
-
-## 基于公式$\binom{n}{m}=\frac{n-m+1}{m}\binom{n}{m-1}$
-
-时间复杂度$O(m)$，能够计算更大的组合数
-
-```cpp
-// comb(n, m) = (n-m+1)/m * comb(n, m-1)
+</code></pre>
+<h2 id="基于公式-binom-n-m-frac-n-m-1-m-binom-n-m-1"><a href="#基于公式-binom-n-m-frac-n-m-1-m-binom-n-m-1" class="headerlink" title="基于公式$\binom{n}{m}=\frac{n-m+1}{m}\binom{n}{m-1}$"></a>基于公式$\binom{n}{m}=\frac{n-m+1}{m}\binom{n}{m-1}$</h2><p>时间复杂度$O(m)$，能够计算更大的组合数</p>
+<pre><code class="cpp">// comb(n, m) = (n-m+1)/m * comb(n, m-1)
 // comb(n, m-1)是整数，(n-m+1)*comb(n, m-1)是整数，(n-m+1)*comb(n, m-1)/m是整数
 // comb(n, m-1) = (n-m+2)/(m-1) * comb(n, m-2)
 

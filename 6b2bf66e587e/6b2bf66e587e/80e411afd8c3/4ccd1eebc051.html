@@ -1,24 +1,47 @@
 <hr>
-<p>title: “数位dp模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 动态规划]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “数位dp模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 动态规划]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>数位dp模板</li></ul>“</p>
 <hr>
-<h1 id="数位dp模板"><a href="#数位dp模板" class="headerlink" title="数位dp模板"></a>数位dp模板</h1><p>```cpp<br>// leetcode 2376. 统计特殊整数<br>//大范围内每一位都不同的数字个数<br>/*<br>dp[p][mask][limit][zero]<br>代表着 “填充到了第p位(p从0开始)，已出现的数字集合为mask，limit为前i位是否为n的前缀，zero为前i位是否全部为0，<br>第i位及之后的位数可以任意构造但是最终构造的数小于等于n且各个位数各不相同” 的个数。<br>*/<br>string s;<br>int dp[10][1&lt;&lt;10][2][2];<br>int dfs(int p, int mask, int limit, int zero) {<br>    if (p == s.size()) return 1-zero;//全是前导零则不算答案。<br>    if (dp[p][mask][limit][zero] != -1) return dp[p][mask][limit][zero]; //遇到计算过的状态直接返回<br>    int res = 0;<br>    // 累计前导零的方案数<br>    // limit=1,由于之前是存在前导零，所以构造的位数必定小于n的位数，第p+1位最多能取到9;<br>    // zero=1，之前是前导零，现在也是填充0，所以第p+1位的zero=1<br>    if (zero == 1) res += dfs(p+1, mask, 0, 1);</p>
-<pre><code>// 累计非前导零的方案方案数
-// 枚举的下限取决于zero。
-//      当存在前导零，由于当前统计非前导零的方案数，所以只能从1开始
-//      若不存在前导零，当前从0开始构造是可以满足最终构造的数&lt;=n的
-// 枚举上限取决于limit。
-//      当limit存在说明p之前构造的数恰好是n的前缀，此时若超过n的第p位则不满足最终构造的数&lt;=n。
-//      当limit不存在说明前p位构造的数已经在字典序上小于n的前p位了，第p位即使取9，最终构造的数也不会大于n
-for (int i=(zero?1:0); i&lt;=(limit?s[p]-&#39;0&#39;:9); i++) {// 不设置当前位为前导零，若之前为前导零则当前可从0开始，否则是1，若limit存在当前值超过s[p]必定大于n
-    if (mask&gt;&gt;i&amp;1) continue; //前p个构造的数中已经有i，跳过。
-    res += dfs(p+1, mask|1&lt;&lt;i, limit&amp;&amp;(i==s[p]-&#39;0&#39;), 0); 
-    // limit = limit&amp;&amp;(i==s[p]-&#39;0&#39;), 当前p个数是n的前缀，且第p个数也取到了n的第p位则形成了长度为p+1的前缀
-    // zero = 0, 当前循环是统计非前导零的方案数。
+<h1 id="数位dp模板"><a href="#数位dp模板" class="headerlink" title="数位dp模板"></a>数位dp模板</h1><pre><code class="cpp">// leetcode 2376. 统计特殊整数
+//大范围内每一位都不同的数字个数
+/*
+dp[p][mask][limit][zero] 
+代表着 “填充到了第p位(p从0开始)，已出现的数字集合为mask，limit为前i位是否为n的前缀，zero为前i位是否全部为0，
+第i位及之后的位数可以任意构造但是最终构造的数小于等于n且各个位数各不相同” 的个数。
+*/
+string s;
+int dp[10][1&lt;&lt;10][2][2];
+int dfs(int p, int mask, int limit, int zero) {
+    if (p == s.size()) return 1-zero;//全是前导零则不算答案。
+    if (dp[p][mask][limit][zero] != -1) return dp[p][mask][limit][zero]; //遇到计算过的状态直接返回
+    int res = 0;
+    // 累计前导零的方案数
+    // limit=1,由于之前是存在前导零，所以构造的位数必定小于n的位数，第p+1位最多能取到9; 
+    // zero=1，之前是前导零，现在也是填充0，所以第p+1位的zero=1
+    if (zero == 1) res += dfs(p+1, mask, 0, 1);
+
+    // 累计非前导零的方案方案数
+    // 枚举的下限取决于zero。
+    //      当存在前导零，由于当前统计非前导零的方案数，所以只能从1开始
+    //      若不存在前导零，当前从0开始构造是可以满足最终构造的数&lt;=n的
+    // 枚举上限取决于limit。
+    //      当limit存在说明p之前构造的数恰好是n的前缀，此时若超过n的第p位则不满足最终构造的数&lt;=n。
+    //      当limit不存在说明前p位构造的数已经在字典序上小于n的前p位了，第p位即使取9，最终构造的数也不会大于n
+    for (int i=(zero?1:0); i&lt;=(limit?s[p]-&#39;0&#39;:9); i++) {// 不设置当前位为前导零，若之前为前导零则当前可从0开始，否则是1，若limit存在当前值超过s[p]必定大于n
+        if (mask&gt;&gt;i&amp;1) continue; //前p个构造的数中已经有i，跳过。
+        res += dfs(p+1, mask|1&lt;&lt;i, limit&amp;&amp;(i==s[p]-&#39;0&#39;), 0); 
+        // limit = limit&amp;&amp;(i==s[p]-&#39;0&#39;), 当前p个数是n的前缀，且第p个数也取到了n的第p位则形成了长度为p+1的前缀
+        // zero = 0, 当前循环是统计非前导零的方案数。
+    }
+    return dp[p][mask][limit][zero] = res;
 }
-return dp[p][mask][limit][zero] = res;
+int countSpecialNumbers(int n) {
+    s = to_string(n);
+    memset(dp, -1, sizeof(dp));
+    return dfs(0, 0, 1, 1);
+    //limit=1，第一位的最大值最多不能超过s[0],否则大于n.
+    //zero=1，前导零存在后续的前导零才可以存在
+}
 </code></pre>
-<p>}<br>int countSpecialNumbers(int n) {<br>    s = to_string(n);<br>    memset(dp, -1, sizeof(dp));<br>    return dfs(0, 0, 1, 1);<br>    //limit=1，第一位的最大值最多不能超过s[0],否则大于n.<br>    //zero=1，前导零存在后续的前导零才可以存在<br>}</p>
-<p>```<!--more--></p>
 <p>类似题</p>
 <p><a href="https://leetcode.cn/problems/number-of-digit-one/"><strong>233. 数字 1 的个数</strong></a></p>
 <p><a href="https://leetcode.cn/problems/numbers-with-repeated-digits/"><strong>1012. 至少有 1 位重复的数字</strong></a></p>

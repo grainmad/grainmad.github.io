@@ -1,5 +1,5 @@
 <hr>
-<p>title: “最短路”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “最短路”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 树与图]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>最短路</li></ul>“</p>
 <hr>
 <h1 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h1><h1 id="Dijkstra-算法"><a href="#Dijkstra-算法" class="headerlink" title="Dijkstra 算法"></a><strong>Dijkstra 算法</strong></h1><p>将结点分成两个集合：已确定最短路长度的点集（记为$S$ 集合）的和未确定最短路长度的点集（记为$T$ 集合）。一开始所有的点都属于$T$集合。初始化$dis(s) = 0$，其他点的均为$INF$。</p>
 <p>然后重复这些操作：</p>
@@ -55,14 +55,10 @@ void dijkstra(int n, int s) {
         }
     }
 }
-```&lt;!--more--&gt;
-
-优先队列：
-
-和二叉堆类似，但使用优先队列时，如果同一个点的最短路被更新多次，因为先前更新时插入的元素不能被删除，也不能被修改，只能留在优先队列中，故优先队列内的元素个数是 $O(m)$ 的，时间复杂度为 $O(mlogm)$。
-
-```cpp
-struct edge {
+</code></pre>
+<p>优先队列：</p>
+<p>和二叉堆类似，但使用优先队列时，如果同一个点的最短路被更新多次，因为先前更新时插入的元素不能被删除，也不能被修改，只能留在优先队列中，故优先队列内的元素个数是 $O(m)$ 的，时间复杂度为 $O(mlogm)$。</p>
+<pre><code class="cpp">struct edge {
     int v, w;
 };
 

@@ -246,7 +246,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 06:38:41" itemprop="dateModified" datetime="2024-06-05T06:38:41+00:00">2024-06-05</time>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,22 +268,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h1><h1 id="RSA加密系统"><a href="#RSA加密系统" class="headerlink" title="RSA加密系统"></a>RSA加密系统</h1><p>RSA公钥加密系统中，公钥和密钥的产生：</p>
-<ol>
-<li>随机选取两个大质数p和q，使得p ≠ q。</li>
-<li>计算n=pq。</li>
-<li>选取一个与$\phi (n)$互质的小奇数e，其中$\phi (n)=(p-1)(q-1)$</li>
-<li>对模$\phi (n)$，计算出e的乘法逆元d的值。即$ed\equiv 1\pmod {\phi(n)}$</li>
-<li>将$p=(e,n)$公开作为RSA公钥</li>
-<li>将$s=(d,n)$公开作为RSA密钥</li>
-</ol>
-<p>假设密文为 c ，明文为 m</p>
-<p>RSA的加密过程为：$c = m^e\pmod n$</p>
-<p>RSA的解密过程为：$m = c^d\pmod n$</p>
-<p>这里是公钥加密，私钥解密。
+          <p><ul style='text-align: left;'><li>RSA</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/236bf1d66f72/#more" rel="contents">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/236bf1d66f72/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -350,7 +338,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 06:38:41" itemprop="dateModified" datetime="2024-06-05T06:38:41+00:00">2024-06-05</time>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -372,19 +360,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>对于子数组<code>nums[left…right],</code>我们将<code>nums[left]</code>排到正确的位置上</p>
-<p>每次排好一个元素,然后以这个元素作为分割,递归解决子问题</p>
-<h3 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h3><ul>
-<li>对于右指针向左寻找第一个小于等于<code>nums[left]</code>的元素</li>
-<li>对于左指针向右寻找第一个大于<code>nums[left]</code>的元素</li>
-<li>将两个指针所指向的元素进行交换</li>
-</ul>
-<p>注意到<strong>左指针自始至终满足小于等于<code>nums[left]</code></strong> ,也就是说当指针相遇<code>l=r</code>时,都满足<code>nums[left…l] ≤ nums[left]</code>,我们可以让<code>nums[left]</code>和<code>nums[l]</code>交换,也就排好<code>nums[left]</code>这个元素,然后递归处理子数组nums[left…l-1]和<code>nums[l+1,right]</code></p>
-<p>为什么是右指针先移动?</p>
-<p>确保了指针相遇时指针以及指针左侧的元素都小于<code>nums[left]</code></p>
+          <p><ul style='text-align: left;'><li>排序</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/55bae4adebc6/#more" rel="contents">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/55bae4adebc6/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -451,7 +430,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 06:38:41" itemprop="dateModified" datetime="2024-06-05T06:38:41+00:00">2024-06-05</time>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -473,18 +452,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="A-搜索算法"><a href="#A-搜索算法" class="headerlink" title="A* 搜索算法"></a>A* 搜索算法</h1><h1 id="A"><a href="#A" class="headerlink" title="A*"></a>A*</h1><p>Dijkstra算法保证能找到一条从初始点到目标点的最短路径，只要所有的边都有一个非负的代价值。</p>
-
-
-<p>最佳优先搜索不能保证找到一条最短路径。然而，它比Dijkstra算法快的多，因为它用了一个启发式函数（heuristic function）快速地导向目标结点。</p>
-
-
-<p>A* 把Dijkstra算法（靠近初始点的结点）和BFS算法（靠近目标点的结点）的信息块结合起来，形成一个评估函数 f(n) = g(n)+h(n)</p>
-<h2 id="A-的算法流程。"><a href="#A-的算法流程。" class="headerlink" title="A* 的算法流程。"></a>A* 的算法流程。</h2><p>A*算法有两个集合，OPEN集和CLOSED集。其中OPEN集保存待扩展的结点。CLOSED集保存已扩展过的结点。</p>
-<p>开始时，OPEN集只包含一个元素：初始结点。CLOSED集是空的。<br>在主循环中重复地从OPEN集中取出最好的结点n（评估函数f最小的结点）并检查之：
+          <p><ul style='text-align: left;'><li>A 搜索算法</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/9f48fa028777/#more" rel="contents">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/9f48fa028777/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -551,7 +522,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 06:38:41" itemprop="dateModified" datetime="2024-06-05T06:38:41+00:00">2024-06-05</time>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -573,20 +544,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="快速平方根倒数"><a href="#快速平方根倒数" class="headerlink" title="快速平方根倒数"></a>快速平方根倒数</h1><p>如何求一个正数$n$的平方根倒数$\frac{1}{\sqrt n}$</p>
-<blockquote>
-<p>牛顿迭代法它是一种在实数域和复数域上近似求解方程的方法。方法使用函数$f(x)$的泰勒级数前面几项来寻找方程$f(x)=0$的根。</p>
-<p>首先，选择一个接近函数$f(x)$零点的$x_{0}$，计算相应的$f(x_{0})$和切线斜率$f’(x_{0})$（这里$f’$表示函数$f$的导数）。然后我们计算穿过点$(x_{0},f(x_{0}))$并且斜率为$f’(x_{0})$的直线和$x$轴的交点的$x$坐标，也就是方程$0=(x-x_{0})\cdot f’(x_{0})+f(x_{0})$的解。</p>
-<p>我们将新求得的点的$x$坐标命名为$x_{1}$，通常$x_{1}$会比$x_{0}$更接近方程$f(x)=0$的解。因此我们现在可以利用$x_{1}$开始下一轮迭代。迭代公式可化简为$x_{n+1}=x_{n}-{\frac {f(x_{n})}{f’(x_{n})}}$</p>
-</blockquote>
-<p>若$\frac{1}{\sqrt n}$为函数$f(x)$的根，$x=\frac{1}{\sqrt n} \Rightarrow n = \frac{1}{x^2} \Rightarrow f(x) = \frac{1}{x^2}-N$</p>
-<p>通过已知的$f(x)$得到具体迭代公式为$x_{t+1} = x_t - \frac{x^{-2}-n}{-2x^{-3}} = \frac{3}{2}x_{t}-\frac{n}{2}x_t^3$</p>
-<p>为了减少迭代次数，初始时找到选择一个接近函数$f(x)$零点的$x_{0}$尤为重要。</p>
-<blockquote>
-<p>一个浮点数 (Value) 的表示其实可以这样表示：</p>
+          <p><ul style='text-align: left;'><li>快速平方根倒数</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/f88597fb9ee9/#more" rel="contents">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/f88597fb9ee9/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -653,7 +614,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 06:38:41" itemprop="dateModified" datetime="2024-06-05T06:38:41+00:00">2024-06-05</time>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -675,37 +636,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="虚树"><a href="#虚树" class="headerlink" title="虚树"></a>虚树</h1><p>给出一个$n$个点的树，$q$次询问，第i次选择$k_i$个点，问关于这$k_i$个的点的问题。$\sum k_i &lt; n$</p>
-<p>暴力$O(nq)$，每次建立$k_i$个点的虚树，建立与处理都是$O(k_i)$，总复杂度$O(\sum k_i)$</p>
-<p>构成虚树的点是关键点，关键点=查询的k个点+查询点的两两之间的公共祖先+根节点</p>
-<p>如果两两之间的公共祖先都不同那么是不是就有$k^2$个祖先节点？好像最坏的情况是满二叉树的k个叶子，这样关键点也不过2k。</p>
-<img data-src="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/31a83ab3ff47/Untitled.png" class="">
-
-<p>```cpp<br>const int N = 200005, M = N * 2;<br>int h[N], to[M], ne[M], tot;<br>void add(int x, int y) {  // 连边<br>    to[++tot] = y;<br>    ne[tot] = h[x];<br>    h[x] = tot;<br>}</p>
-<p>// 遍历x所连的点<br>vector<int> radiate(int x) {<br>    vector<int> rt;<br>    for (int i = h[x]; i; i = ne[i])<br>        rt.push_back(to[i]);<br>    return rt;<br>}</p>
-<p>void clearTree() {<br>    // for (int i = 1; i &lt;= n; i++) {<br>    //     h[i] = 0;<br>    // }<br>    function&lt;void(int, int)&gt; cls = [&amp;](int x, int fa) {<br>        for (int i = h[x]; i; i = ne[i]) {<br>            int y = to[i];<br>            if (y == fa)<br>                continue;<br>            cls(y, x);<br>        }<br>        h[x] = 0;<br>    };<br>    cls(1, 0);  // 含1连通块清空<br>    tot = 0;<br>}</p>
-<p>int dep[N], fa[N][20];<br>int dfn[N], cnt;  // dfs序<br>int s[N], top;    // 栈</p>
-<p>// 初始的树是双向边, dfs(1, 0),  dep, fa, dfn<br>void dfs(int x, int f) {  // 树上倍增<br>    dfn[x] = ++cnt;<br>    dep[x] = dep[f] + 1;<br>    fa[x][0] = f;<br>    for (int i = 1; i &lt;= 19; i++)<br>        fa[x][i] = fa[fa[x][i - 1]][i - 1];</p>
-<pre><code>for (int i = h[x]; i; i = ne[i]) &#123;
-    int y = to[i];
-    if (y == f)
-        continue;
-    dfs(y, x);
-&#125;
-</code></pre>
-<p>}<br>int lca(int x, int y) {  // 求lca<br>    if (dep[x] &lt; dep[y])<br>        swap(x, y);<br>    for (int i = 19; ~i; i–)<br>        if (dep[fa[x][i]] &gt;= dep[y])<br>            x = fa[x][i];<br>    if (x == y)<br>        return y;</p>
-<pre><code>for (int i = 19; ~i; i--)
-    if (fa[x][i] != fa[y][i])
-        x = fa[x][i], y = fa[y][i];
-return fa[x][0];
-</code></pre>
-<p>}<br>int cmp(int a, int b) {<br>    return dfn[a] &lt; dfn[b];<br>}</p>
-<p>// 构建的虚树是单向边<br>void build(vector<int>&amp; a) {  // 建虚树<br>    int k = a.size();<br>    sort(a.begin(), a.end(), cmp);  // 按dfs序排序<br>    tot = 0;         // 清空前一颗树，注意各树节点x h[x]=0<br>    s[top = 1] = 1;  // 根节点入栈<br>    if (k &amp;&amp; a[0] != 1)<br>        s[++top] = a[0];<br>    for (int i = 1; i &lt; k; i++) {  // 枚举查询点<br>        int l = lca(s[top], a[i]);<br>        // 对当前链连边,top出栈<br>        while (top &gt; 1 &amp;&amp; dep[s[top - 1]] &gt;= dep[l])<br>            add(s[top - 1], s[top]), top–;<br>        // 对lca和top连边,top出栈,lca入栈<br>        if (l != s[top])<br>            add(l, s[top]), s[top] = l;<br>        // 查询点入栈<br>        s[++top] = a[i];<br>    }<br>    while (top)  // 对最后一条链连边,top出栈<br>        add(s[top - 1], s[top]), top–;<br>}</p>
-<p>void printVtree(int x, int fa) {<br>    cout &lt;&lt; x &lt;&lt; “:”;<br>    for (int i = h[x]; i; i = ne[i]) {<br>        if (to[i] == fa)<br>            continue;<br>        cout &lt;&lt; to[i] &lt;&lt; “ “;<br>    }<br>    cout &lt;&lt; endl;<br>    for (int i = h[x]; i; i = ne[i]) {<br>        int y = to[i];<br>        if (y == fa)<br>            continue;<br>        printVtree(y, x);<br>    }<br>}</p>
-<p>```
+          <p><ul style='text-align: left;'><li>虚树</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/31a83ab3ff47/#more" rel="contents">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/31a83ab3ff47/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -772,7 +706,7 @@ return fa[x][0];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 06:38:41" itemprop="dateModified" datetime="2024-06-05T06:38:41+00:00">2024-06-05</time>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -794,37 +728,15 @@ return fa[x][0];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="树的直径与中心"><a href="#树的直径与中心" class="headerlink" title="树的直径与中心"></a>树的直径与中心</h1><pre><code class="cpp">int n;
-cin &gt;&gt; n;
-vector&lt;vector&lt;int&gt;&gt; g(n+1);
-vector&lt;vector&lt;int&gt;&gt; d(3, vector&lt;int&gt;(n+1));
-for (int i=1; i&lt;n; i++) &#123;
-    int u, v;
-    cin &gt;&gt; u &gt;&gt; v;
-    g[u].push_back(v);
-    g[v].push_back(u);
-&#125;
-int c = 0;
-function&lt;void(int,int,int)&gt; dfs = [&amp;](int u, int fa, int o) &#123;
-    for (int v : g[u]) &#123;
-        if (v == fa) continue;
-        d[o][v] = d[o][u] + 1;
-        if (d[o][v] &gt; d[o][c]) c = v;
-        dfs(v, u, o);
-    &#125;
-&#125;;
-dfs(1, 0, 0);
-dfs(c, 0, 1);
-dfs(c, 0, 2);
-// cout &lt;&lt; d &lt;&lt; endl;
-// d[2][c] 直径
-vector&lt;int&gt; h; // 某条直径上的中心点,直径奇数一个,偶数两个
-for (int i=1; i&lt;=n; i++) &#123;
-    if (d[1][i]+d[2][i] == d[2][c] &amp;&amp; abs(d[1][i]-d[2][i]) == d[2][c]%2) h.push_back(i);
-&#125;
-``&lt;!--more--&gt;
-</code></pre>
-
+          <p><ul style='text-align: left;'><li>树的直径与中心</li></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/6537c15aaaae/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -971,7 +883,7 @@ for (int i=1; i&lt;=n; i++) &#123;
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 06:38:41" itemprop="dateModified" datetime="2024-06-05T06:38:41+00:00">2024-06-05</time>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -993,37 +905,15 @@ for (int i=1; i&lt;=n; i++) &#123;
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="LCA"><a href="#LCA" class="headerlink" title="LCA"></a>LCA</h1><h1 id="倍增法"><a href="#倍增法" class="headerlink" title="倍增法"></a>倍增法</h1><ul>
-<li>每个节点保存了离自己2的幂次距离的祖先节点，那么每个节点只需要保存$logn$个信息。因此预处理花$O(nlogn)$时间与空间。</li>
-<li>寻找LCA的过程，先让两个节点处于同一层，只需$O(logn)$时间，再花费$O(logn)$移动到LCA的子节点。</li>
-</ul>
-<p>实际上还可保留每个节点与2的幂次祖先节点之间的节点区间信息，如果相邻区间信息的可合。那么只需$O(logn)$次合并，便可得到树上任意两点之间的区间信息。例如：任意两点间的距离，任意两点间的最大子段和（通过维护区间的最大前缀和、最大后缀和、总和以及最大子段和）。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> N 100005</span></span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; g[N];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认不存在的节点编号是0</span></span><br><span class="line"><span class="type">int</span> fa[N][<span class="number">31</span>], dep[N];</span><br><span class="line"></span><br><span class="line"><span class="comment">// dfs，用来为 lca 算法做准备。接受两个参数：dfs 起始节点和它的父亲节点。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> fno)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化：第 2^0 = 1 个祖先就是它的父亲节点，dep 也比父亲节点多 1。</span></span><br><span class="line">    fa[u][<span class="number">0</span>] = fno;</span><br><span class="line">    dep[u] = dep[fa[u][<span class="number">0</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 初始化：其他的祖先节点：第 2^i 的祖先节点是第 2^(i-1) 的祖先节点的第</span></span><br><span class="line">    <span class="comment">// 2^(i-1) 的祖先节点。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; <span class="number">31</span>; ++i) &#123;</span><br><span class="line">        fa[u][i] = fa[fa[u][i - <span class="number">1</span>]][i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 遍历子节点来进行 dfs。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> v : g[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == fno)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// lca。用倍增算法算取 x 和 y 的 lca 节点。</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lca</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 令 y 比 x 深。</span></span><br><span class="line">    <span class="keyword">if</span> (dep[x] &gt; dep[y])</span><br><span class="line">        <span class="built_in">swap</span>(x, y);</span><br><span class="line">    <span class="comment">// 令 y 和 x 在一个深度。</span></span><br><span class="line">    <span class="type">int</span> tmp = dep[y] - dep[x];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; tmp; ++j, tmp &gt;&gt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> (tmp &amp; <span class="number">1</span>)</span><br><span class="line">            y = fa[y][j];</span><br><span class="line">    <span class="comment">// 如果这个时候 y = x，那么 x，y 就都是它们自己的祖先。</span></span><br><span class="line">    <span class="keyword">if</span> (y == x)</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    <span class="comment">// 不然的话，找到第一个不是它们祖先的两个点。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">30</span>; j &gt;= <span class="number">0</span> &amp;&amp; y != x; --j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (fa[x][j] != fa[y][j]) &#123;</span><br><span class="line">            x = fa[x][j];</span><br><span class="line">            y = fa[y][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回结果。</span></span><br><span class="line">    <span class="keyword">return</span> fa[x][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    g[x].<span class="built_in">push_back</span>(y);</span><br><span class="line">    g[y].<span class="built_in">push_back</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意初始时以0作为根节点的父亲，dfs(u,0)</span></span><br><span class="line">```&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line">一棵树，树的节点有权值，求树上任意两节点之间的最大子段和[https:<span class="comment">//codeforces.com/contest/1843/problem/F2](https://codeforces.com/contest/1843/problem/F2)</span></span><br><span class="line"></span><br><span class="line">```cpp</span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="comment">// #define SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 200005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LG 31</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; g[N];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> fa[N][LG], dep[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Info</span> &#123;</span><br><span class="line">    <span class="type">int</span> sum, max_prf, min_prf, max_suf, min_suf, max_seg, min_seg;</span><br><span class="line">    <span class="built_in">Info</span>(<span class="type">int</span> val = <span class="number">0</span>) &#123;</span><br><span class="line">        sum = val;</span><br><span class="line">        max_prf = max_suf = max_seg = <span class="built_in">max</span>(<span class="number">0</span>, val);</span><br><span class="line">        min_prf = min_suf = min_seg = <span class="built_in">min</span>(<span class="number">0</span>, val);</span><br><span class="line">    &#125;</span><br><span class="line">    Info <span class="keyword">operator</span>+(<span class="type">const</span> Info&amp; o) &#123;</span><br><span class="line">        <span class="function">Info <span class="title">rt</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">        rt.sum = sum + o.sum;</span><br><span class="line">        rt.min_prf = <span class="built_in">min</span>(min_prf, sum + o.min_prf);</span><br><span class="line">        rt.max_prf = <span class="built_in">max</span>(max_prf, sum + o.max_prf);</span><br><span class="line">        rt.min_suf = <span class="built_in">min</span>(o.min_suf, o.sum + min_suf);</span><br><span class="line">        rt.max_suf = <span class="built_in">max</span>(o.max_suf, o.sum + max_suf);</span><br><span class="line">        rt.min_seg = <span class="built_in">min</span>(&#123;min_suf + o.min_prf, min_seg, o.min_seg&#125;);</span><br><span class="line">        rt.max_seg = <span class="built_in">max</span>(&#123;max_suf + o.max_prf, max_seg, o.max_seg&#125;);</span><br><span class="line">        <span class="keyword">return</span> rt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; info[N][LG];</span><br><span class="line"></span><br><span class="line"><span class="comment">// fa[i][j] i节点的第2^j个祖先</span></span><br><span class="line"><span class="comment">// info[i][j] 在i节点的第2^j个祖先（不包含f[i][j]）到当前的节点i的区间信息。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// dfs，用来为 lca 算法做准备。接受两个参数：dfs 起始节点和它的父亲节点。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> fno)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化：第 2^0 = 1 个祖先就是它的父亲节点，dep 也比父亲节点多 1。</span></span><br><span class="line">    fa[u][<span class="number">0</span>] = fno;</span><br><span class="line">    dep[u] = dep[fa[u][<span class="number">0</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 初始化：其他的祖先节点：第 2^i 的祖先节点是第 2^(i-1) 的祖先节点的第</span></span><br><span class="line">    <span class="comment">// 2^(i-1) 的祖先节点。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; LG; ++i) &#123;</span><br><span class="line">        fa[u][i] = fa[fa[u][i - <span class="number">1</span>]][i - <span class="number">1</span>];</span><br><span class="line">        info[u][i] = info[fa[u][i - <span class="number">1</span>]][i - <span class="number">1</span>] + info[u][i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 遍历子节点来进行 dfs。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> v : g[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == fno)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Info <span class="title">lca</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 令 y 比 x 深。</span></span><br><span class="line">    <span class="keyword">if</span> (dep[x] &gt; dep[y])</span><br><span class="line">        <span class="built_in">swap</span>(x, y);</span><br><span class="line">    <span class="comment">// 令 y 和 x 在一个深度。</span></span><br><span class="line">    Info a, b;</span><br><span class="line">    <span class="type">int</span> tmp = dep[y] - dep[x];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; tmp; ++j, tmp &gt;&gt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> (tmp &amp; <span class="number">1</span>)</span><br><span class="line">            b = info[y][j] + b, y = fa[y][j];</span><br><span class="line">    <span class="comment">// 如果这个时候 y = x，那么 x，y 就都是它们自己的祖先。</span></span><br><span class="line">    <span class="keyword">if</span> (y == x) &#123;</span><br><span class="line">        <span class="keyword">return</span> info[x][<span class="number">0</span>] + b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 不然的话，找到第一个不是它们祖先的两个点。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = LG - <span class="number">1</span>; j &gt;= <span class="number">0</span> &amp;&amp; y != x; --j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (fa[x][j] != fa[y][j]) &#123;</span><br><span class="line">            a = info[x][j] + a;</span><br><span class="line">            x = fa[x][j];</span><br><span class="line">            b = info[y][j] + b;</span><br><span class="line">            y = fa[y][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回结果。</span></span><br><span class="line">    a = info[x][<span class="number">1</span>] + a;</span><br><span class="line">    b = info[y][<span class="number">0</span>] + b;</span><br><span class="line">    <span class="built_in">swap</span>(a.max_prf, a.max_suf);</span><br><span class="line">    <span class="built_in">swap</span>(a.min_prf, a.min_suf);</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    g[x].<span class="built_in">push_back</span>(y);</span><br><span class="line">    g[y].<span class="built_in">push_back</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> cur = <span class="number">2</span>;</span><br><span class="line">    info[<span class="number">1</span>][<span class="number">0</span>] = <span class="built_in">Info</span>(<span class="number">1</span>);</span><br><span class="line">    vector&lt;tuple&lt;<span class="type">int</span>, <span class="type">int</span>, <span class="type">int</span>&gt;&gt; q;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        string s;</span><br><span class="line">        cin &gt;&gt; s;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="string">&quot;+&quot;</span>) &#123;</span><br><span class="line">            <span class="type">int</span> v, val;</span><br><span class="line">            cin &gt;&gt; v &gt;&gt; val;</span><br><span class="line">            info[cur][<span class="number">0</span>] = <span class="built_in">Info</span>(val);</span><br><span class="line">            <span class="built_in">add</span>(v, cur++);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> u, v, k;</span><br><span class="line">            cin &gt;&gt; u &gt;&gt; v &gt;&gt; k;</span><br><span class="line">            q.<span class="built_in">emplace_back</span>(u, v, k);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> [u, v, k] : q) &#123;</span><br><span class="line">        <span class="keyword">auto</span> rt = <span class="built_in">lca</span>(u, v);</span><br><span class="line">        <span class="keyword">if</span> (rt.min_seg &lt;= k &amp;&amp; k &lt;= rt.max_seg) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; cur; i++) &#123;</span><br><span class="line">        g[i].<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="欧拉序"><a href="#欧拉序" class="headerlink" title="欧拉序"></a>欧拉序</h1><p>dfs欧拉序，ST表</p>
-<p>通过求出树的欧拉序，可以将树上最近公共祖先问题转化为区间问题。</p>
-<p>求lca的rmq方法，先求树的欧拉序，并预处理出每个节点的深度。然后记录每个点<code>x</code>在欧拉序中的第一个位置<code>p[x]</code>。求两个点<code>x</code>和<code>y</code>的lca实际上就是欧拉序中的子区间<code>[p[x], p[y]]</code>中深度最小的点。</p>
-<p>感觉单纯的求lca可以用，如果还有路径上的值需要维护，还得倍增。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//https://www.luogu.com.cn/problem/P3379</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; g[N];</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; eulerTour;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> fc[N], dep[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> fno)</span> </span>&#123;</span><br><span class="line">    dep[u] = dep[fno] + <span class="number">1</span>;  <span class="comment">// 每个节点的深度</span></span><br><span class="line">    <span class="comment">// 每个节点欧拉序中第一次出现的位置</span></span><br><span class="line">    fc[u] = eulerTour.<span class="built_in">size</span>();  <span class="comment">// 每个节点第一次在欧拉序中出现的位置</span></span><br><span class="line">    eulerTour.<span class="built_in">push_back</span>(u);  <span class="comment">// 欧拉序</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> v : g[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == fno)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(v, u);</span><br><span class="line">        eulerTour.<span class="built_in">push_back</span>(u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 用st表维护欧拉序区间最小值，按照深度比较</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ST</span> &#123;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; st;  <span class="comment">// st[i][j] 代表区间[i, i+2^j)最小值</span></span><br><span class="line">    <span class="built_in">ST</span>(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; a) : <span class="built_in">st</span>(a.<span class="built_in">size</span>(), <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(<span class="number">30</span>)) &#123;</span><br><span class="line">        <span class="type">int</span> sz = a.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; sz; i++)</span><br><span class="line">            st[i][<span class="number">0</span>] = a[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; (<span class="number">1</span> &lt;&lt; j) &lt;= sz; j++) &#123;             <span class="comment">// 区间大小</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i + (<span class="number">1</span> &lt;&lt; j) - <span class="number">1</span> &lt; sz; i++) &#123;  <span class="comment">// 区间下限</span></span><br><span class="line">                <span class="type">int</span> x = st[i][j - <span class="number">1</span>], y = st[i + (<span class="number">1</span> &lt;&lt; (j - <span class="number">1</span>))][j - <span class="number">1</span>];</span><br><span class="line">                st[i][j] = dep[x] &lt; dep[y] ? x : y;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">ask</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> ((<span class="number">1</span> &lt;&lt; (k + <span class="number">1</span>)) &lt;= r - l + <span class="number">1</span>)</span><br><span class="line">            k++;</span><br><span class="line">        <span class="type">int</span> x = st[l][k], y = st[r - (<span class="number">1</span> &lt;&lt; k) + <span class="number">1</span>][k];</span><br><span class="line">        <span class="keyword">return</span> dep[x] &lt; dep[y] ? x : y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建图g</span></span><br><span class="line"><span class="comment">// 根为s则调用dfs(s,0)</span></span><br><span class="line"><span class="comment">// 通过欧拉序建立ST表</span></span><br><span class="line"><span class="comment">// 查找x和y的lca, st.ask(min(fc[x], fc[y]), max(fc[x], fc[y]))</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m, s;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> x, y;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        g[x].<span class="built_in">push_back</span>(y);</span><br><span class="line">        g[y].<span class="built_in">push_back</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(s, <span class="number">0</span>);</span><br><span class="line">    <span class="function">ST <span class="title">st</span><span class="params">(eulerTour)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="type">int</span> x, y;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        <span class="comment">// 获取x和y的lca</span></span><br><span class="line">        cout &lt;&lt; st.<span class="built_in">ask</span>(<span class="built_in">min</span>(fc[x], fc[y]), <span class="built_in">max</span>(fc[x], fc[y])) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="tarjan"><a href="#tarjan" class="headerlink" title="tarjan"></a>tarjan</h1><p>离线，并查集</p>
-<p>我们用vis数值记录每个节点是否被dfs遍历过。</p>
-<p>深搜遍历子树u结束后（函数调用结束），子树的根节点在并查集上指向其父节点。</p>
-<p>深搜遍历子树u在u的子节点全部遍历后（函数调用结束前），寻找查询中含u的点对(u,v)（这一步可以离线处理），若v已经被遍历vis[v] = true，则u和v的最近公共祖先就是并查集中v的根root。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P3379</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; g[N];</span><br><span class="line">vector&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; q[N];</span><br><span class="line"><span class="type">int</span> vis[N], ans[N];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> fa[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">ufind</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fa[x] &lt; <span class="number">0</span> ? x : fa[x] = <span class="built_in">ufind</span>(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">tarjan</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">    vis[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> v : g[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (vis[v])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">tarjan</span>(v);</span><br><span class="line">        fa[v] = u;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> [v, i] : q[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (vis[v])</span><br><span class="line">            ans[i] = <span class="built_in">ufind</span>(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m, s;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> x, y;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        g[x].<span class="built_in">push_back</span>(y);</span><br><span class="line">        g[y].<span class="built_in">push_back</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="type">int</span> x, y;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        q[x].<span class="built_in">emplace_back</span>(y, i);</span><br><span class="line">        q[y].<span class="built_in">emplace_back</span>(x, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(fa, <span class="number">-1</span>, <span class="built_in">sizeof</span>(fa));</span><br><span class="line">    <span class="built_in">tarjan</span>(s);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        cout &lt;&lt; ans[i] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="重链剖分"><a href="#重链剖分" class="headerlink" title="重链剖分"></a>重链剖分</h1><p>树链剖分用于将树分割成若干条链的形式，以维护树上路径的信息。</p>
-<p>具体来说，将整棵树剖分为若干条链，使它组合成线性结构，然后用其他的数据结构维护信息。</p>
-<p><strong>树链剖分</strong>（树剖/链剖）有多种形式，如 <strong>重链剖分</strong>，<strong>长链剖分</strong> 和用于 Link/cut Tree 的剖分（有时被称作「实链剖分」），大多数情况下（没有特别说明时），「树链剖分」都指「重链剖分」。</p>
-<p>重链剖分可以将树上的任意一条路径划分成不超过logn条连续的链，每条链上的点深度互不相同（即是自底向上的一条链，链上所有点的 LCA 为链的一个端点）。</p>
-<blockquote>
-<p>当我们向下经过一条 <strong>轻边</strong> 时，所在子树的大小至少会除以二。<br>因此，对于树上的任意一条路径，把它拆分成从LCA分别向两边往下走，分别最多走logn次，因此，树上的每条路径都可以被拆分成不超过logn条重链。</p>
-</blockquote>
-<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
-<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
-<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
-<p>重链剖分还能保证划分出的每条链上的节点 DFS 序连续，因此可以方便地用一些维护序列的数据结构（如线段树）来维护树上路径的信息。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, m, s, a, b;</span><br><span class="line"></span><br><span class="line"><span class="comment">// !!! 空节点为0，0为根节点的父节点</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">500010</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; e[N];</span><br><span class="line"><span class="type">int</span> fa[N],   <span class="comment">// fa[i] i的父节点</span></span><br><span class="line">    son[N],  <span class="comment">// son[i] i的重儿子</span></span><br><span class="line">    dep[N],  <span class="comment">// dep[i] i的深度</span></span><br><span class="line">    siz[N],  <span class="comment">// siz[i] i子树的节点数</span></span><br><span class="line">    top[N];  <span class="comment">// top[i] i所在链的顶端（轻儿子）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 重链剖分将产生logn条链，基于树上启发式合并</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs1</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> f)</span> </span>&#123;  <span class="comment">// 搞fa,dep,son</span></span><br><span class="line">    fa[u] = f;</span><br><span class="line">    siz[u] = <span class="number">1</span>;</span><br><span class="line">    dep[u] = dep[f] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> v : e[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == f)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs1</span>(v, u);</span><br><span class="line">        siz[u] += siz[v];</span><br><span class="line">        <span class="keyword">if</span> (siz[son[u]] &lt; siz[v])  <span class="comment">// 重儿子为节点数多的儿子</span></span><br><span class="line">            son[u] = v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs2</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> t)</span> </span>&#123;  <span class="comment">// 搞top</span></span><br><span class="line">    top[u] = t;            <span class="comment">// 记录链头</span></span><br><span class="line">    <span class="keyword">if</span> (!son[u])           <span class="comment">// 每个节点必有重儿子，除非为叶子</span></span><br><span class="line">        <span class="keyword">return</span>;            <span class="comment">// 无重儿子</span></span><br><span class="line">    <span class="built_in">dfs2</span>(son[u], t);       <span class="comment">// 搜重儿子</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> v : e[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == fa[u] || v == son[u])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs2</span>(v, v);  <span class="comment">// 搜轻儿子，轻儿子是一条链的开端</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lca</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (top[u] !=</span><br><span class="line">           top[v]) &#123;  <span class="comment">// 只有logn条链，跳转不超过logn次将处于同一条链上</span></span><br><span class="line">        <span class="keyword">if</span> (dep[top[u]] &lt; dep[top[v]])</span><br><span class="line">            <span class="built_in">swap</span>(u, v);</span><br><span class="line">        u = fa[top[u]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 深度小的为lca</span></span><br><span class="line">    <span class="keyword">return</span> dep[u] &lt; dep[v] ? u : v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;s);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">        e[a].<span class="built_in">push_back</span>(b);</span><br><span class="line">        e[b].<span class="built_in">push_back</span>(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs1</span>(s, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">dfs2</span>(s, s);</span><br><span class="line">    <span class="keyword">while</span> (m--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">lca</span>(a, b));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p><ul style='text-align: left;'><li>LCA</li></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/c2605ea4f01d/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1100,7 +990,15 @@ for (int i=1; i&lt;=n; i++) &#123;
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="树分治"><a href="#树分治" class="headerlink" title="树分治"></a>树分治</h1><h1 id="点分治"><a href="#点分治" class="headerlink" title="点分治"></a>点分治</h1><h1 id="动态点分治"><a href="#动态点分治" class="headerlink" title="动态点分治"></a>动态点分治</h1>
+          <p><ul style='text-align: left;'><li>树分治</li></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/e6bf970620e5/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1162,7 +1060,7 @@ for (int i=1; i&lt;=n; i++) &#123;
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 06:38:41" itemprop="dateModified" datetime="2024-06-05T06:38:41+00:00">2024-06-05</time>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1184,167 +1082,15 @@ for (int i=1; i&lt;=n; i++) &#123;
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="重链剖分"><a href="#重链剖分" class="headerlink" title="重链剖分"></a>重链剖分</h1><p>树上任意两点间路径可由$logn$条重链组成，所有重链视为连续的区间，用线段树维护。对路径的修改查询，只需修改$logn$个区间，总复杂度$O(log^2n)$</p>
-<pre><code class="cpp">// p3384
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-const int N = 100010;
-int n, m, a, b, root, P, w[N];
-#define ll long long
-#define lc (u &lt;&lt; 1)
-#define rc (u &lt;&lt; 1 | 1)
-vector&lt;int&gt; e[N];
-int fa[N], dep[N], sz[N], son[N];
-int top[N], id[N], nw[N], cnt;  // 重链
-
-/*
-    fa[u] u的父节点
-    dep[u] u的深度
-    sz[u] 以u为根的子树节点数
-    son[u] u的重儿子
-    top[u] u所在重链的顶点
-    id[u] u剖分后的新编号cnt
-    nw[cnt] 新编号对应的权值
-*/
-
-struct tree &#123;
-    int l, r;
-    ll add, sum;
-&#125; tr[N * 4];  // 线段树
-
-void dfs1(int u, int father) &#123;  // 搞fa,dep,sz,son
-    fa[u] = father, dep[u] = dep[father] + 1, sz[u] = 1;
-    for (int v : e[u]) &#123;
-        if (v == father)
-            continue;
-        dfs1(v, u);
-        sz[u] += sz[v];
-        if (sz[son[u]] &lt; sz[v])
-            son[u] = v;
-    &#125;
-&#125;
-void dfs2(int u, int t) &#123;  // 搞top,id,nw
-    top[u] = t, id[u] = ++cnt, nw[cnt] = w[u];
-    if (!son[u])
-        return;
-    dfs2(son[u], t);
-    for (int v : e[u]) &#123;
-        if (v == fa[u] || v == son[u])
-            continue;
-        dfs2(v, v);
-    &#125;
-&#125;
-void pushup(int u) &#123;
-    tr[u].sum = tr[lc].sum + tr[rc].sum;
-&#125;
-void pushdown(int u) &#123;
-    if (tr[u].add) &#123;
-        tr[lc].sum += tr[u].add * (tr[lc].r - tr[lc].l + 1);
-        tr[rc].sum += tr[u].add * (tr[rc].r - tr[rc].l + 1);
-        tr[lc].add += tr[u].add;
-        tr[rc].add += tr[u].add;
-        tr[u].add = 0;
-    &#125;
-&#125;
-void build(int u, int l, int r) &#123;  // 构建线段树
-    tr[u] = &#123;l, r, 0, nw[r]&#125;;
-    if (l == r)
-        return;
-    int mid = l + r &gt;&gt; 1;
-    build(lc, l, mid), build(rc, mid + 1, r);
-    pushup(u);
-&#125;
-ll query(int u, int l, int r) &#123;  // 线段树查询
-    if (l &lt;= tr[u].l &amp;&amp; tr[u].r &lt;= r)
-        return tr[u].sum;
-    pushdown(u);
-    int mid = tr[u].l + tr[u].r &gt;&gt; 1;
-    ll res = 0;
-    if (l &lt;= mid)
-        res += query(lc, l, r);
-    if (r &gt; mid)
-        res += query(rc, l, r);
-    return res;
-&#125;
-ll query_path(int u, int v) &#123;  // 查询路径
-    ll res = 0;
-    while (top[u] != top[v]) &#123;
-        if (dep[top[u]] &lt; dep[top[v]])
-            swap(u, v);
-        res += query(1, id[top[u]], id[u]);
-        u = fa[top[u]];
-    &#125;
-    if (dep[u] &lt; dep[v])
-        swap(u, v);
-    res += query(1, id[v], id[u]);  // 最后一段
-    return res;
-&#125;
-ll query_tree(int u) &#123;  // 查询子树
-    return query(1, id[u], id[u] + sz[u] - 1);
-&#125;
-void update(int u, int l, int r, int k) &#123;  // 线段树修改
-    if (l &lt;= tr[u].l &amp;&amp; tr[u].r &lt;= r) &#123;
-        tr[u].add += k;
-        tr[u].sum += k * (tr[u].r - tr[u].l + 1);
-        return;
-    &#125;
-    pushdown(u);
-    int mid = tr[u].l + tr[u].r &gt;&gt; 1;
-    if (l &lt;= mid)
-        update(lc, l, r, k);
-    if (r &gt; mid)
-        update(rc, l, r, k);
-    pushup(u);
-&#125;
-void update_path(int u, int v, int k) &#123;  // 修改路径
-    while (top[u] != top[v]) &#123;
-        if (dep[top[u]] &lt; dep[top[v]])
-            swap(u, v);
-        update(1, id[top[u]], id[u], k);
-        u = fa[top[u]];
-    &#125;
-    if (dep[u] &lt; dep[v])
-        swap(u, v);
-    update(1, id[v], id[u], k);  // 最后一段
-&#125;
-void update_tree(int u, int k) &#123;  // 修改子树
-    update(1, id[u], id[u] + sz[u] - 1, k);
-&#125;
-int main() &#123;
-    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;root, &amp;P);
-    for (int i = 1; i &lt;= n; i++)
-        scanf(&quot;%d&quot;, &amp;w[i]);
-    for (int i = 0; i &lt; n - 1; i++) &#123;
-        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-        e[a].push_back(b);
-        e[b].push_back(a);
-    &#125;
-    dfs1(root, 0);
-    dfs2(root, root);  // 把树拆成链
-    build(1, 1, n);    // 用链建线段树
-    while (m--) &#123;
-        int t, u, v, k;
-        scanf(&quot;%d%d&quot;, &amp;t, &amp;u);
-        if (t == 1) &#123;
-            scanf(&quot;%d%d&quot;, &amp;v, &amp;k);
-            update_path(u, v, k);
-        &#125; else if (t == 3) &#123;
-            scanf(&quot;%d&quot;, &amp;k);
-            update_tree(u, k);
-        &#125; else if (t == 2) &#123;
-            scanf(&quot;%d&quot;, &amp;v);
-            printf(&quot;%d\n&quot;, query_path(u, v) % P);
-        &#125; else
-            printf(&quot;%d\n&quot;, query_tree(u) % P);
-    &#125;
-&#125;
-``&lt;!--more--&gt;
-</code></pre>
-
+          <p><ul style='text-align: left;'><li>重链剖分</li></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/ab6be601d180/afd8f06df631/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

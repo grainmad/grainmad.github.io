@@ -1,5 +1,5 @@
 <hr>
-<p>title: “重链剖分”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 06:38:41<br>tag: [notion, Algorithm, 树与图, 树上问题, 树链剖分]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: </p>
+<p>title: “重链剖分”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [notion, Algorithm, 树与图, 树上问题, 树链剖分]<br>categories: Algorithm<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>重链剖分</li></ul>“</p>
 <hr>
 <h1 id="重链剖分"><a href="#重链剖分" class="headerlink" title="重链剖分"></a>重链剖分</h1><p>树上任意两点间路径可由$logn$条重链组成，所有重链视为连续的区间，用线段树维护。对路径的修改查询，只需修改$logn$个区间，总复杂度$O(log^2n)$</p>
 <pre><code class="cpp">// p3384
@@ -159,5 +159,4 @@ int main() {
             printf(&quot;%d\n&quot;, query_tree(u) % P);
     }
 }
-``&lt;!--more--&gt;
 </code></pre>
