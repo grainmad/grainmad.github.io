@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"grainmad.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="A. Buy the StringB. Sum of MediansC1. Binary Table (Easy Version)C2. Binary Table (Hard Version)D. Graph Subset ProblemE. Greedy Shopping">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round 684 (Div. 2)">
+<meta property="og:url" content="https://grainmad.github.io/codeforces/1440/index.html">
+<meta property="og:site_name" content="代码如诗">
+<meta property="og:description" content="A. Buy the StringB. Sum of MediansC1. Binary Table (Easy Version)C2. Binary Table (Hard Version)D. Graph Subset ProblemE. Greedy Shopping">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-17T15:37:05.000Z">
+<meta property="article:modified_time" content="2023-09-11T20:20:22.000Z">
+<meta property="article:author" content="GrainMad">
+<meta property="article:tag" content="contest">
+<meta property="article:tag" content="codeforces">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://grainmad.github.io/codeforces/1440/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/codeforces/1440/","path":"codeforces/1440/","title":"Codeforces Round 684 (Div. 2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Codeforces Round 684 (Div. 2) | 代码如诗</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">代码如诗</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">554</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Codeforces-Round-684-Div-2"><span class="nav-number">1.</span> <span class="nav-text">Codeforces Round 684 (Div. 2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Buy-the-String"><span class="nav-number">1.1.</span> <span class="nav-text">A. Buy the String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Sum-of-Medians"><span class="nav-number">1.2.</span> <span class="nav-text">B. Sum of Medians</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C1-Binary-Table-Easy-Version"><span class="nav-number">1.3.</span> <span class="nav-text">C1. Binary Table (Easy Version)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C2-Binary-Table-Hard-Version"><span class="nav-number">1.4.</span> <span class="nav-text">C2. Binary Table (Hard Version)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="nav-number">1.4.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Graph-Subset-Problem"><span class="nav-number">1.5.</span> <span class="nav-text">D. Graph Subset Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-4"><span class="nav-number">1.5.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-4"><span class="nav-number">1.5.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-4"><span class="nav-number">1.5.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Greedy-Shopping"><span class="nav-number">1.6.</span> <span class="nav-text">E. Greedy Shopping</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-5"><span class="nav-number">1.6.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-5"><span class="nav-number">1.6.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-5"><span class="nav-number">1.6.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GrainMad"
+      src="/images/mona-loading-dimmed-5da225352fd7.gif">
+  <p class="site-author-name" itemprop="name">GrainMad</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">554</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/grainmad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;grainmad" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/grainmad" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1440/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Codeforces Round 684 (Div. 2) | 代码如诗">
+      <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/A">A. Buy the String</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/B">B. Sum of Medians</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/C1">C1. Binary Table (Easy Version)</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/C2">C2. Binary Table (Hard Version)</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/D">D. Graph Subset Problem</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/E">E. Greedy Shopping</a></p></ul>">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Codeforces Round 684 (Div. 2)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-17 15:37:05" itemprop="dateCreated datePublished" datetime="2023-05-17T15:37:05+00:00">2023-05-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-11 20:20:22" itemprop="dateModified" datetime="2023-09-11T20:20:22+00:00">2023-09-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description"><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/A">A. Buy the String</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/B">B. Sum of Medians</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/C1">C1. Binary Table (Easy Version)</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/C2">C2. Binary Table (Hard Version)</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/D">D. Graph Subset Problem</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/E">E. Greedy Shopping</a></p></ul></div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Codeforces-Round-684-Div-2"><a href="#Codeforces-Round-684-Div-2" class="headerlink" title="Codeforces Round 684 (Div. 2)"></a>Codeforces Round 684 (Div. 2)</h1><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problems">Complete problemset</a></p>
+<h2 id="A-Buy-the-String"><a href="#A-Buy-the-String" class="headerlink" title="A. Buy the String"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/A">A. Buy the String</a></h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给出一个01串，购买0需要c0元，购买1需要c1元，现在你可以修改字符串中任意个字符，每个字符需要h元。</p>
+<p>在你修改后，求购买字符串的最小价格。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>如果0修改为1后，修改的费用+买1的费用 &lt; 买0的费用，就可以把所有0都修改了</p>
+<p>如果1修改为0后，修改的费用+买0的费用 &lt; 买1的费用，就可以把所有1都修改了</p>
+<p>否则就是正常购买。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 100005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n, c0, c1, h;</span><br><span class="line">	string s;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; c0 &gt;&gt; c1 &gt;&gt; h;</span><br><span class="line">	cin &gt;&gt; s;</span><br><span class="line">	<span class="type">int</span> cnt0=<span class="number">0</span>, cnt1=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">char</span> i:s) i==<span class="string">&#x27;0&#x27;</span>?cnt0++:cnt1++;</span><br><span class="line">	<span class="comment">// cout &lt;&lt; cnt0 &lt;&lt; &quot; &quot; &lt;&lt; cnt1 &lt;&lt; endl;</span></span><br><span class="line">	<span class="keyword">if</span> (c0+h &lt; c1) &#123;</span><br><span class="line">		cout &lt;&lt; cnt1*h + c0*(cnt0+cnt1) &lt;&lt; endl;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (c1+h &lt; c0) &#123;</span><br><span class="line">		cout &lt;&lt; cnt0*h + c1*(cnt0+cnt1) &lt;&lt; endl;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		cout &lt;&lt; c1*cnt1 + c0*cnt0 &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">	cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span> (t--) &#123;</span><br><span class="line">		<span class="built_in">sol</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="B-Sum-of-Medians"><a href="#B-Sum-of-Medians" class="headerlink" title="B. Sum of Medians"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/B">B. Sum of Medians</a></h2><h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p>给出nk个数，将其划分为k个长度为n的数组。</p>
+<p>使得每个数组的中位数都尽可能大。</p>
+<p>最后输出所有数组的中位数之和。</p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>贪心，由于每个中位数必有ceil(n/2)-1个大于它的数，所以nk个数中最大的前ceil(n/2)-1个数不能是中位数，所以划分的数组中最大的中位数是第ceil(n/2)大的数。第二大的中位数也随之确定的了，是第ceil(n/2)+n大的数。后续以此类推。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 1000005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n, k;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	<span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">v</span><span class="params">(n*k)</span></span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span>&amp; i:v) cin &gt;&gt; i;</span><br><span class="line">	<span class="built_in">sort</span>(v.<span class="built_in">rbegin</span>(), v.<span class="built_in">rend</span>());</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=n-(n+<span class="number">1</span>)/<span class="number">2</span>, j=<span class="number">0</span>; j&lt;k; j++) &#123;</span><br><span class="line">		<span class="comment">// cout &lt;&lt; i &lt;&lt; &quot;, &quot;;</span></span><br><span class="line">		ans += v[i];</span><br><span class="line">		i += n-(n+<span class="number">1</span>)/<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">	cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span> (t--) &#123;</span><br><span class="line">		<span class="built_in">sol</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C1-Binary-Table-Easy-Version"><a href="#C1-Binary-Table-Easy-Version" class="headerlink" title="C1. Binary Table (Easy Version)"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/C1">C1. Binary Table (Easy Version)</a></h2><h3 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h3><p>c2</p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>c2</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="C2-Binary-Table-Hard-Version"><a href="#C2-Binary-Table-Hard-Version" class="headerlink" title="C2. Binary Table (Hard Version)"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/C2">C2. Binary Table (Hard Version)</a></h2><h3 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h3><p>给出一个n行m列的矩阵。</p>
+<p>每次操作可以选择一个4x4的子矩阵，选择其中3个位置反转其值。</p>
+<p>请用不超过nm次操作将矩阵所有元素归为0。</p>
+<p>构造操作序列。</p>
+<h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>bug: 一个bug，当时程序非正常退出，应该是数组越界。像打印些东西来定位到bug。但是死活不输出。<br>到后面突然想起cout没有endl。这样在输出的内容会留在缓冲区。非正常退出没有将缓冲区的内容输出。<br>endl用于将缓冲区内容输出。</p>
+<p>bug：在解决四个方块都是1的情况时，调用三个方块是1和一个方块是1的方法。 错误。 三个方块是1需要先找到0的位置。四个方块是1没有0</p>
+<p>对于解决2 * 2的方块只需要最多4步。<br>那么如果n 和 m都是偶数，最多只需要<code>n * m / 4 * 4 = m * n</code>步</p>
+<ul>
+<li>如果n 是奇数 m 是 偶数 处理最后一行只需要 m/2次操作 总共需要 <code>(n-1)*m+m/2 = m*n - m/2 &lt;= m*n</code></li>
+<li>如果n 是偶数 m 是 奇数 处理最后一列只需要 n/2次操作 总共需要 <code>n*(m-1)+n/2 = m*n - n/2 &lt;= m*n</code></li>
+<li>如果n 是奇数 m 是 奇数 处理最后一列只需要 ceil(n/2)次操作, 处理最后一行只需要 floor(m/2)次操作 总共需要 <code>(n-1)*(m-1)+ceil(n/2)+floor(m/2) = m*n - floor(n/2) - ceil(m/2) + 1 &lt;= m*n</code></li>
+</ul>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 105</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">string g[N];</span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; stp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get1</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> rt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=x; i&lt;x+<span class="number">2</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j=y; j&lt;y+<span class="number">2</span>; j++) &#123;</span><br><span class="line">			rt += g[i][j]-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// cout &lt;&lt; &quot;rt &quot; &lt;&lt; rt &lt;&lt; endl;</span></span><br><span class="line">	<span class="keyword">return</span> rt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rest</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, std::vector&lt;<span class="type">int</span>&gt;&amp; v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (g[x][y] == <span class="string">&#x27;1&#x27;</span>) g[x][y] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	<span class="keyword">else</span> g[x][y] = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">	v.<span class="built_in">push_back</span>(x);</span><br><span class="line">	v.<span class="built_in">push_back</span>(y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ch</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> l, <span class="type">int</span> r, vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt; idx)</span> </span>&#123;</span><br><span class="line">	std::vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> j=l; j&lt;=r; j++) &#123;</span><br><span class="line">		<span class="type">int</span> rj = (j+i+<span class="number">4</span>)%<span class="number">4</span>;</span><br><span class="line">		<span class="type">int</span> rx = idx[rj].first, ry= idx[rj].second;</span><br><span class="line">		<span class="built_in">rest</span>(rx, ry, v);</span><br><span class="line">	&#125;</span><br><span class="line">	stp.<span class="built_in">push_back</span>(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">case1</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt; idx = &#123;&#123;x, y&#125;, &#123;x, y+<span class="number">1</span>&#125;, &#123;x+<span class="number">1</span>, y+<span class="number">1</span>&#125;, &#123;x+<span class="number">1</span>, y&#125;&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) &#123;</span><br><span class="line">		<span class="type">int</span> sx = idx[i].first;</span><br><span class="line">		<span class="type">int</span> sy = idx[i].second;</span><br><span class="line">		<span class="keyword">if</span> (g[sx][sy] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">			<span class="built_in">ch</span>(i, <span class="number">0</span>, <span class="number">2</span>, idx);</span><br><span class="line">			<span class="built_in">ch</span>(i, <span class="number">-2</span>, <span class="number">0</span>, idx);</span><br><span class="line">			<span class="built_in">ch</span>(i, <span class="number">-1</span>, <span class="number">1</span>, idx);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">case21</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt; idx = &#123;&#123;x, y&#125;, &#123;x, y+<span class="number">1</span>&#125;, &#123;x+<span class="number">1</span>, y+<span class="number">1</span>&#125;, &#123;x+<span class="number">1</span>, y&#125;&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) &#123;</span><br><span class="line">		<span class="type">int</span> sx = idx[i].first;</span><br><span class="line">		<span class="type">int</span> sy = idx[i].second;</span><br><span class="line">		<span class="keyword">if</span> (g[sx][sy] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">			<span class="built_in">ch</span>(i, <span class="number">-1</span>, <span class="number">1</span>, idx);</span><br><span class="line">			<span class="built_in">ch</span>(i, <span class="number">1</span>, <span class="number">3</span>, idx);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">case22</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt; idx = &#123;&#123;x, y&#125;, &#123;x, y+<span class="number">1</span>&#125;, &#123;x+<span class="number">1</span>, y+<span class="number">1</span>&#125;, &#123;x+<span class="number">1</span>, y&#125;&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) &#123;</span><br><span class="line">		<span class="type">int</span> ux = idx[i].first;</span><br><span class="line">		<span class="type">int</span> uy = idx[i].second;</span><br><span class="line">		<span class="type">int</span> nx = idx[(i+<span class="number">1</span>)%<span class="number">4</span>].first;</span><br><span class="line">		<span class="type">int</span> ny = idx[(i+<span class="number">1</span>)%<span class="number">4</span>].second;</span><br><span class="line">		<span class="keyword">if</span> (g[ux][uy] == <span class="string">&#x27;0&#x27;</span> &amp;&amp; g[nx][ny] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">			<span class="built_in">ch</span>(i, <span class="number">-2</span>, <span class="number">0</span>, idx);</span><br><span class="line">			<span class="built_in">ch</span>(i, <span class="number">-1</span>, <span class="number">1</span>, idx);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">case2</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (g[x][y] == g[x+<span class="number">1</span>][y+<span class="number">1</span>]) &#123;</span><br><span class="line">		<span class="built_in">case21</span>(x, y);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="built_in">case22</span>(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">case3</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt; idx = &#123;&#123;x, y&#125;, &#123;x, y+<span class="number">1</span>&#125;, &#123;x+<span class="number">1</span>, y+<span class="number">1</span>&#125;, &#123;x+<span class="number">1</span>, y&#125;&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) &#123;</span><br><span class="line">		<span class="type">int</span> sx = idx[i].first;</span><br><span class="line">		<span class="type">int</span> sy = idx[i].second;</span><br><span class="line">		<span class="keyword">if</span> (g[sx][sy] == <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">			<span class="built_in">ch</span>(i, <span class="number">1</span>, <span class="number">3</span>, idx);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">case4</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt; idx = &#123;&#123;x, y&#125;, &#123;x, y+<span class="number">1</span>&#125;, &#123;x+<span class="number">1</span>, y+<span class="number">1</span>&#125;, &#123;x+<span class="number">1</span>, y&#125;&#125;;</span><br><span class="line">	<span class="built_in">ch</span>(<span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, idx);</span><br><span class="line">	<span class="built_in">case1</span>(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">blockr</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (g[x][y] == <span class="string">&#x27;0&#x27;</span> &amp;&amp; g[x][y+<span class="number">1</span>] == <span class="string">&#x27;0&#x27;</span>) <span class="keyword">return</span>;</span><br><span class="line">	std::vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">	<span class="keyword">if</span> (g[x][y] == <span class="string">&#x27;1&#x27;</span> &amp;&amp; g[x][y+<span class="number">1</span>] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">		<span class="built_in">rest</span>(x, y, v);</span><br><span class="line">		<span class="built_in">rest</span>(x, y+<span class="number">1</span>, v);</span><br><span class="line">		<span class="built_in">rest</span>(x<span class="number">-1</span>, y, v);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (g[x][y] == <span class="string">&#x27;1&#x27;</span> &amp;&amp; g[x][y+<span class="number">1</span>] == <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">		<span class="built_in">rest</span>(x, y, v);</span><br><span class="line">		<span class="built_in">rest</span>(x<span class="number">-1</span>, y, v);</span><br><span class="line">		<span class="built_in">rest</span>(x<span class="number">-1</span>, y+<span class="number">1</span>, v);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (g[x][y] == <span class="string">&#x27;0&#x27;</span> &amp;&amp; g[x][y+<span class="number">1</span>] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">		<span class="built_in">rest</span>(x, y+<span class="number">1</span>, v);</span><br><span class="line">		<span class="built_in">rest</span>(x<span class="number">-1</span>, y, v);</span><br><span class="line">		<span class="built_in">rest</span>(x<span class="number">-1</span>, y+<span class="number">1</span>, v);</span><br><span class="line">	&#125;</span><br><span class="line">	stp.<span class="built_in">push_back</span>(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">blockc</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (g[x][y] == <span class="string">&#x27;0&#x27;</span> &amp;&amp; g[x+<span class="number">1</span>][y] == <span class="string">&#x27;0&#x27;</span>) <span class="keyword">return</span>;</span><br><span class="line">	std::vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">	<span class="keyword">if</span> (g[x][y] == <span class="string">&#x27;1&#x27;</span> &amp;&amp; g[x+<span class="number">1</span>][y] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">		<span class="built_in">rest</span>(x, y, v);</span><br><span class="line">		<span class="built_in">rest</span>(x+<span class="number">1</span>, y, v);</span><br><span class="line">		<span class="built_in">rest</span>(x, y<span class="number">-1</span>, v);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (g[x][y] == <span class="string">&#x27;1&#x27;</span> &amp;&amp; g[x+<span class="number">1</span>][y] == <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">		<span class="built_in">rest</span>(x, y, v);</span><br><span class="line">		<span class="built_in">rest</span>(x, y<span class="number">-1</span>, v);</span><br><span class="line">		<span class="built_in">rest</span>(x+<span class="number">1</span>, y<span class="number">-1</span>, v);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (g[x][y] == <span class="string">&#x27;0&#x27;</span> &amp;&amp; g[x+<span class="number">1</span>][y] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">		<span class="built_in">rest</span>(x+<span class="number">1</span>, y, v);</span><br><span class="line">		<span class="built_in">rest</span>(x, y<span class="number">-1</span>, v);</span><br><span class="line">		<span class="built_in">rest</span>(x+<span class="number">1</span>, y<span class="number">-1</span>, v);</span><br><span class="line">	&#125;</span><br><span class="line">	stp.<span class="built_in">push_back</span>(v);	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">set0</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> c = <span class="built_in">get1</span>(x, y);</span><br><span class="line">	<span class="comment">// cout &lt;&lt; &quot;x=&quot; &lt;&lt; x &lt;&lt; &quot; y=&quot; &lt;&lt; y &lt;&lt; &quot; c=&quot; &lt;&lt; c &lt;&lt; endl;</span></span><br><span class="line">	<span class="keyword">if</span> (c == <span class="number">1</span>) <span class="built_in">case1</span>(x, y);</span><br><span class="line">	<span class="keyword">if</span> (c == <span class="number">2</span>) <span class="built_in">case2</span>(x, y);</span><br><span class="line">	<span class="keyword">if</span> (c == <span class="number">3</span>) <span class="built_in">case3</span>(x, y);</span><br><span class="line">	<span class="keyword">if</span> (c == <span class="number">4</span>) <span class="built_in">case4</span>(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">0</span>; k&lt;n; k++) &#123;</span><br><span class="line">		cout &lt;&lt; g[k] &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	stp.<span class="built_in">clear</span>();</span><br><span class="line">	<span class="type">int</span> n, m;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">		cin &gt;&gt; g[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n%<span class="number">2</span> &amp;&amp; m%<span class="number">2</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n<span class="number">-1</span>; i+=<span class="number">2</span>) &#123;</span><br><span class="line">			<span class="built_in">blockc</span>(i, m<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">blockc</span>(n<span class="number">-2</span>, m<span class="number">-1</span>);</span><br><span class="line">		m--;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;m; i+=<span class="number">2</span>) &#123;</span><br><span class="line">			<span class="built_in">blockr</span>(n<span class="number">-1</span>, i);</span><br><span class="line">		&#125;</span><br><span class="line">		n--;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (n%<span class="number">2</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;m; i+=<span class="number">2</span>) &#123;</span><br><span class="line">			<span class="built_in">blockr</span>(n<span class="number">-1</span>, i);</span><br><span class="line">		&#125;</span><br><span class="line">		n--;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (m%<span class="number">2</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i+=<span class="number">2</span>) &#123;</span><br><span class="line">			<span class="built_in">blockc</span>(i, m<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		m--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i+=<span class="number">2</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;m; j+=<span class="number">2</span>) &#123;</span><br><span class="line">			<span class="built_in">set0</span>(i, j);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; stp.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i:stp) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j:i) cout &lt;&lt; j+<span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">	cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span> (t--) &#123;</span><br><span class="line">		<span class="built_in">sol</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="D-Graph-Subset-Problem"><a href="#D-Graph-Subset-Problem" class="headerlink" title="D. Graph Subset Problem"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/D">D. Graph Subset Problem</a></h2><h3 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h3><h3 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h3><h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="E-Greedy-Shopping"><a href="#E-Greedy-Shopping" class="headerlink" title="E. Greedy Shopping"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1440/problem/E">E. Greedy Shopping</a></h2><h3 id="题意-5"><a href="#题意-5" class="headerlink" title="题意"></a>题意</h3><h3 id="思路-5"><a href="#思路-5" class="headerlink" title="思路"></a>思路</h3><h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/contest/" rel="tag"><i class="fa fa-tag"></i> contest</a>
+              <a href="/tags/codeforces/" rel="tag"><i class="fa fa-tag"></i> codeforces</a>
+          </div>
+          <script type="text/javascript">
+            var tagsall=document.getElementsByClassName("post-tags")
+            for (var i = tagsall.length - 1; i >= 0; i--){
+                var tags=tagsall[i].getElementsByTagName("a");
+                for (var j = tags.length - 1; j >= 0; j--) {
+                    var golden_ratio = 0.618033988749895;
+                    var s = 0.5;
+                    var v = 0.999;
+                    var h = golden_ratio + Math.random()*0.8 - 0.5;
+                    var h_i = parseInt(h * 6);
+                    var f = h * 6 - h_i;
+                    var p = v * (1 - s);
+                    var q = v * (1 - f * s);
+                    var t = v * (1 - (1 - f) * s);
+                    var r, g, b;
+                    switch (h_i) {
+                        case 0:
+                            r = v;
+                            g = t;
+                            b = p;
+                            break;
+                        case 1:
+                            r = q;
+                            g = v;
+                            b = p;
+                            break;
+                        case 2:
+                            r = p;
+                            g = v;
+                            b = t;
+                            break;
+                        case 3 :
+                            r = p;
+                            g = q;
+                            b = v;
+                            break;
+                        case 4:
+                            r = t;
+                            g = p;
+                            b = v;
+                            break;
+                        case 5:
+                            r = v;
+                            g = p;
+                            b = q;
+                            break;
+                        default:
+                            r = 1;
+                            g = 1;
+                            b = 1;
+                      }
+                    tags[j].style.background = "rgba("+parseInt(r*255)+","+parseInt(g*255)+","+parseInt(b*255)+","+0.7+")";
+                }
+            }
+          </script>
+          <style>
+          .post-tags a {
+              display: inline-block;
+              font-size: 0.8em;
+              padding: 0px 10px;
+              border-radius: 8px;
+              color: rgb(85, 85, 85);
+              border: 0px;
+          }
+          .post-tags a:hover{
+              box-shadow: 0px 5px 15px 0px rgba(0,0,0,.4);
+              transform: scale(1.1);
+              transition-duration: 0.15s;
+          }
+          </style>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/codeforces/1457/" rel="prev" title="Codeforces Round 687 (Div. 2, based on Technocup 2021 Elimination Round 2)">
+                  <i class="fa fa-chevron-left"></i> Codeforces Round 687 (Div. 2, based on Technocup 2021 Elimination Round 2)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/codeforces/1832/" rel="next" title="Educational Codeforces Round 148 (Rated for Div. 2)">
+                  Educational Codeforces Round 148 (Rated for Div. 2) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GrainMad</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.7/mermaid.min.js","integrity":"sha256-G58AID1YoX5YaEtWfXSI0VLrZ6N4kvNvwg0BI8zUFxE="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#606863',
+  buttonColorLight: '#dcdee3',
+  saveInCookies: true,
+  label: '🌗',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"grainmad/grainmad.github.io","issue_term":"pathname","theme":"github-dark-orange"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":450},"mobile":{"show":false,"scale":0.5},"react":{"opacity":0.7}});</script></body>
+</html>
