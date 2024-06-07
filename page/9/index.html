@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">554</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">510</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,13 +153,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">554</span>
+          <span class="site-state-item-count">510</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1141G/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/01/1221D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1141G/" class="post-title-link" itemprop="url">1141G Privatization of Roads in Treeland</a>
+          <a href="/codeforces/ape/2024/04/01/1221D/" class="post-title-link" itemprop="url">Make The Fence Great Again</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,7 +239,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -248,6 +248,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -261,10 +265,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>Treeland包含n个城市和n-1条道路。每条道路都是双向的，连接两个不同的城市。从任何一个城市你都可以通过公路到达任何其他城市。是的，你是对的——这个国家的拓扑结构是一棵没有方向的树。</p><p>在Treeland有一些私人道路公司。政府决定向这些公司出售道路。每条路都属于一家公司，一家公司可以拥有多条道路。</p><p>政府害怕看上去不公平。他们认为，如果有一家公司拥有两条或两条以上的进入这个城市的道路，那么这个城市里的人就会认为这是不公平的。政府希望这样不公平的城市数量不超过k，那么最少需要多少个不同的公司来参与投资？</p><p>选择公司的数量r，这样就可以将每条道路分配给某家公司，这样一家公司拥有两条或两条以上到达同一个城市道路的城市数量最多为k。（译者注：这里是有一点费脑子，大家多想想）换句话说，如果对一个城市来说，所有的到达这座城市的道路都属于不同的公司，那么这个城市就是好的。你的任务是找到最小的r，然后分配所有道路，使得不太好的城市的数量不超过k。</p><p><img alt="" src="https://cdn.luogu.org/upload/vjudge_pic/CF1141G/7d36299fe9125bdd92ab603e16bc3fe180559f7f.png" /></p><p>图为第一个例子(n=6，k=2)。答案r=2。边上的数字表示边的编号。边的颜色表示公司：红色为第一个公司，蓝色为第二个公司。灰色顶点(3号)不好。这类顶点的数目(只有一个)不超过k（k=2）。如果有一家公司，在分配合理的情况下，不可能有2个不好的城市。</p></ul></p>
+          <p><ul style="text-align:left;"><p>给出$n$个数，定义一个数列是好的当且仅当$a_{i}\ne a_{i-1}$</p><p>你可以通过调整数的大小来把一个数列变成好的，将一个位置$i$上的数$+1$需要的花费是$b_i$，问：最小的花费</p><p>有$q$组询问，保证$\sum_{i=1}^q n_i\le3\times10^5$，答案在$long\ long$范围内</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1141G/">
+              <a class="btn" href="/codeforces/ape/2024/04/01/1221D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -295,7 +299,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1270D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/02/1088D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -313,7 +317,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1270D/" class="post-title-link" itemprop="url">1270D Strange Device</a>
+          <a href="/codeforces/ape/2024/04/02/1088D/" class="post-title-link" itemprop="url">Ehab and another another xor problem</a>
         </h2>
 
         <div class="post-meta-container">
@@ -324,7 +328,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -333,6 +337,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -346,10 +354,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有一个长为 $n$ 数列 $a$，值已确定且值互不相等，但是你不知道。</p><p>现在有个设备，你可以输入长为 $k$ 的上升序列 $p_1,p_2 \dots p_k$，进行询问，它会回答 $a_{p_1},a_{p_2} \dots a_{p_k}$ 中第 $m$ 小的数在原数列的坐标和这个数的值。现在给你 $n$ 和 $k$，让你在最多询问 $n$ 次后回答 $m$ 的大小。保证一定可以构造出方案。</p></ul></p>
+          <p><ul style="text-align:left;"><p>交互题，系统有两个整数 $(a,b)$，你每次可以询问一组整数 $(c,d)$，系统会回答：</p><ul><li><p>$1$ 如果 $a\oplus c&gt;b\oplus d$</p></li><li><p>$0$ 如果 $a\oplus c=b\oplus d$</p></li><li><p>$-1$ 如果 $a\oplus c&lt;b\oplus d$</p></li></ul><p>其中操作 $a\oplus b$ 表示 $a$ 和 $b$ <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bitwise_operation#XOR">按位异或</a></p><p>你需要在询问不超过 $62$ 次之后输出 $(a,b)$ 的值，保证 $0\le a, b &lt; 2^{30}$。</p><p>输入格式：</p><p>请见“交互”</p><p>输出格式：</p><p>输出 <code>! a b</code> 以输出答案，不要忘了在输出答案后清除缓冲区</p><p>输出 <code>? c d</code> 以询问，$c$ 和 $d$ 都应该是小于 $2^{30}$ 的非负整数，不要忘了在输出每一次询问后清除缓冲区</p><p>你可以用下列操作来清除缓冲区：</p><ul><li><p>C++：<code>fflush(stdout)</code></p></li><li><p>Java：<code>System.out.flush()</code></p></li><li><p>Python：<code>stdout.flush()</code></p></li><li><p>Pascal：<code>fflush(stdout)</code></p></li><li><p>对于其它语言请参考文档</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1270D/">
+              <a class="btn" href="/codeforces/ape/2024/04/02/1088D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -380,7 +388,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1328D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/03/1295D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -398,7 +406,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1328D/" class="post-title-link" itemprop="url">1328D Carousel</a>
+          <a href="/codeforces/ape/2024/04/03/1295D/" class="post-title-link" itemprop="url">Same GCDs</a>
         </h2>
 
         <div class="post-meta-container">
@@ -409,7 +417,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -418,6 +426,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -431,10 +443,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有$q$组询问,每组询问如下:</p><p>已知一个有$n(3\le n\le 2<em>10^5)$个点的</em><em>环</em><em>,点$i$的类型为$a_i$,现在需要给每个点进行染色,要求</em><em>相邻</em>*不同类型的点的颜色不同且所用颜色数最小.输出颜色数及一种染色方案即可.(颜色从1开始)</p><p>注意:($\sum n)\le 2*10^5$.</p></ul></p>
+          <p><ul style="text-align:left;"><p>求</p><p>$$\sum_{x=0}^{m-1} [\ \gcd(a, m) = \gcd(a + x, m)\ ]$$</p><p>多组测试数据, $T \leq 50,\ 1 \leq a &lt; m \leq 10^{10}$</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1328D/">
+              <a class="btn" href="/codeforces/ape/2024/04/03/1295D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -465,7 +477,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1527B2/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/03/1555E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -483,7 +495,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1527B2/" class="post-title-link" itemprop="url">1527B2 Palindrome Game (hard version)</a>
+          <a href="/codeforces/ape/2024/04/03/1555E/" class="post-title-link" itemprop="url">Boring Segments</a>
         </h2>
 
         <div class="post-meta-container">
@@ -494,7 +506,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -503,6 +515,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -516,10 +532,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>**简易版和繁难版的唯一区别是，简易版中的给定字符串 $s$ 最初是一个回文字符串，而繁难版中的这一条件并不总是正确的。</p><p>回文字符串是指从左到右和从右到左读法相同的字符串。例如，&quot;101101 &quot;是一个回文字符串，而 &quot;0101 &quot;不是。</p><p>爱丽丝和鲍勃正在一个长度为 $n$ 的字符串 $s$ 上玩游戏，这个字符串由字符 &quot;0 &quot;和 &quot;1 &quot;组成。双方轮流玩，爱丽丝先玩。</p><p>在每个回合中，玩家可以执行以下操作之一：</p><ol><li><p>选择任意 $i$ ( $1 \le i \le n$ )，其中 $s[i] =$ 为&#x27;0&#x27;，并将 $s[i]$ 改为&#x27;1&#x27;。0&quot;，并将 $s[i]$ 改为 &quot;1&quot;。支付 1 美元。</p></li><li><p>反转整个字符串，支付 0 美元。只有当字符串目前***不是回文字符串，并且上一次操作不是反转时，才允许进行此操作。也就是说，如果爱丽丝反转了字符串，那么鲍勃下一步就不能反转，反之亦然。</p></li></ol><p>反转字符串是指将字符串中的字母从最后一个重新排序到第一个。例如，&quot;01001 &quot;在反转后会变成 &quot;10010&quot;。</p><p>当字符串中的每个字符都变成 &quot;1 &quot;时，游戏结束。到此为止，花费最少的玩家获胜，如果双方花费相同，则为平局。如果双方都以最佳方式进行游戏，输出结果是 Alice 赢、Bob 赢还是平局。</p></ul></p>
+          <p><ul style="text-align:left;"><p>在一个 $[1,m]$ 的数轴上有 n 条线段，第 i 条覆盖了 $[l_i,r_i]$ 的区间，权值为 $w_i$ ，你的任务是从这些线段中选出若干条首尾相接线段覆盖整个数轴，使得这些线段权值极差最小化，输出这个极差</p><p>首尾相接的定义是，假设你有机会从同一条线段覆盖的任意两个点中移动，如果你可以从位置 1 出发，经过一些线段到达位置 m ，就称为这些线段首尾相接</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1527B2/">
+              <a class="btn" href="/codeforces/ape/2024/04/03/1555E/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -550,7 +566,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1833G/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/04/1801D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -568,7 +584,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1833G/" class="post-title-link" itemprop="url">1833G Ksyusha and Chinchilla</a>
+          <a href="/codeforces/ape/2024/04/04/1801D/" class="post-title-link" itemprop="url">The way home</a>
         </h2>
 
         <div class="post-meta-container">
@@ -579,7 +595,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -588,6 +604,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -601,10 +621,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>在一棵树上删去一些边，使得形成的几个连通块，都<strong>有且仅有</strong> $3$ 个结点。</p><p>第一行是数据组数，接下来：</p><p>对于每组数据：</p><ul><li><p>第一行一个正整数 $n$，表示结点数量。</p></li><li><p>接下来 $n-1$ 行，每行两个正整数 $u,v$，表示 $u,v$ 间有一条边。</p></li></ul><p>对于每组数据：</p><ul><li><p>若不存在任何一种删边方式满足条件，则输出：<code>-1</code>。</p></li><li><p>若存在满足条件的删边方式：</p></li><li><p>第一行，一个正整数，删掉的边数。</p></li><li><p>第二行，所有删掉的边的编号，若不用删除任何边，则输出一个空行。</p></li></ul><p>by @<a href="/user/768612">gty314159</a></p></ul></p>
+          <p><ul style="text-align:left;"><p>一个人在一张有向图的 $1$ 号结点，他要去到 $n$ 结点。每条边 $(a_i,b_i)$ 有边权 $s_i$，表示走过这条边需要花 $s_i$ 元。这个人一开始有 $p$ 元，到了一个点 $u$，他可以进行若干次演出，每次演出收获 $w_u$ 元。问到达 $n$ 的最小演出次数，若无解输出 <code>-1</code>。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1833G/">
+              <a class="btn" href="/codeforces/ape/2024/04/04/1801D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -635,7 +655,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1906E/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/05/1709C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -653,7 +673,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1906E/" class="post-title-link" itemprop="url">1906E Merge Not Sort</a>
+          <a href="/codeforces/ape/2024/04/05/1709C/" class="post-title-link" itemprop="url">Recover an RBS</a>
         </h2>
 
         <div class="post-meta-container">
@@ -664,7 +684,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-05-08 19:43:39" itemprop="dateCreated datePublished" datetime="2024-05-08T19:43:39+00:00">2024-05-08</time>
+      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -673,6 +693,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -686,10 +710,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>已知对两个长度为 $N$ 的、<strong>可能未排序的</strong>数组 $A$ 和 $B$ 执行如下的归并操作，生成的数组是一个长度为 $2N$ 的、给定的<strong>排列</strong>（即 $[1,2N]$ 中每个整数都正好出现一遍的数组）$C$：</p><p>```</p><p>Merge(A[1..N], B[1..N]):</p><p>C = []</p><p>i = 1</p><p>j = 1</p><p>while i &lt;= N AND j &lt;= N:</p><p>if A[i] &lt; B[j]:</p><p>append A[i] to C</p><p>i = i + 1</p><p>else:</p><p>append B[j] to C</p><p>j = j + 1</p><p>while i &lt;= N:</p><p>append A[i] to C</p><p>i = i + 1</p><p>while j &lt;= N:</p><p>append B[j] to C</p><p>j = j + 1</p><p>return C</p><p>```</p><p>构造出任意一组符合条件的 $A,B$；如果无解输出 <code>-1</code>。</p><p>翻译自 @<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/556366">zyc212303</a>。</p></ul></p>
+          <p><ul style="text-align:left;"><p>有个<strong>合法括号序列</strong>，部分字符被 <code>?</code> 替换了，问是否存在<strong>唯一的一种</strong>填 <code>?</code> 的方案，使得括号序列合法，即判断填 <code>?</code> 使得括号序列合法的方案数<strong>是否等于1</strong>。存在唯一方案输出 <code>YES</code>，方案不唯一输出 <code>NO</code></p><p>序列长度 $\sum n\le 2\times 10^5$，测试点数 $T\leq 5\times 10^4$</p><p>第一行输出测试点总数 $T$。</p><p>之后每一行一个字符串 $s$ 表示替换掉部分字符后的<strong>合法括号序列</strong>。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1906E/">
+              <a class="btn" href="/codeforces/ape/2024/04/05/1709C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -720,7 +744,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/atcode/abc348/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1944/1944/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -738,7 +762,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/atcode/abc348/" class="post-title-link" itemprop="url">Toyota Programming Contest 2024#4（AtCoder Beginner Contest 348）</a>
+          <a href="/codeforces/contest/1944/1944/" class="post-title-link" itemprop="url">Codeforces Round 934 (Div. 2)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -749,7 +773,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-26 19:00:02" itemprop="dateCreated datePublished" datetime="2024-03-26T19:00:02+00:00">2024-03-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -757,7 +781,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/atcode/" itemprop="url" rel="index"><span itemprop="name">atcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
         </span>
     </span>
 
@@ -771,10 +799,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc348/tasks/abc348_d">D - Medicines on Grid</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc348/tasks/abc348_e">E - Minimize Sum of Distances</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc348/tasks/abc348_f">F - Oddly Similar</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc348/tasks/abc348_g">G - Max (Sum - Max)</a></p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1944/problem/A">A. Destroying Bridges</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1944/problem/B">B. Equal XOR</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1944/problem/C">C. MEX Game 1</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1944/problem/D">D. Non-Palindromic Substring</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1944/problem/E">E. Tree Compass</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1944/problem/F1">F1. Counting Is Fun (Easy Version)</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1944/problem/F2">F2. Counting Is Fun (Hard Version)</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/atcode/abc348/">
+              <a class="btn" href="/codeforces/contest/1944/1944/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -805,7 +833,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1129B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1945/1945/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -823,7 +851,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1129B/" class="post-title-link" itemprop="url">1129B Wrong Answer</a>
+          <a href="/codeforces/contest/1945/1945/" class="post-title-link" itemprop="url">Codeforces Round 935 (Div. 3)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -834,7 +862,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-26 19:00:02" itemprop="dateCreated datePublished" datetime="2024-03-26T19:00:02+00:00">2024-03-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -843,6 +871,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
         </span>
     </span>
 
@@ -856,10 +888,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>Alice做到了这样一道题：</p><p>&gt; 给定一个序列$a$，有$n$个元素，编号从$0$到$n-1$。求$\max\limits_{0 \leq l \leq r \leq n-1} \sum\limits_{l \leq i \leq r} (r-l+1) \cdot a_i$。</p><p>&gt;</p><p>&gt; $|a_i| \leq 10^6,n \leq 2000$</p><p>Alice觉得这题太水了，很快就给出了解法：</p><p>```</p><p>function find_answer(n, a)</p><h1>Assumes n is an integer between 1 and 2000, inclusive</h1><h1>Assumes a is a list containing n integers: a[0], a[1], ..., a[n-1]</h1><p>res = 0</p><p>cur = 0</p><p>k = -1</p><p>for i = 0 to i = n-1</p><p>cur = cur + a[i]</p><p>if cur &lt; 0</p><p>cur = 0</p><p>k = i</p><p>res = max(res, (i-k)*cur)</p><p>return res</p><p>```</p><p>聪明的你一定发现了，Alice的解法是错误的。例如对于序列$a = [6, -8, 7, -42]$，Alice的程序得出的结果是$7$，而正确答案应该是$3 \cdot (6-8+7) = 15$。</p><p>于是你决定HACK掉Alice的解法。</p><p>请给出一组数据，使得正确答案-Alice的答案=$k$，你的数据必须满足$n \leq 2000,|a_i| \leq 10^6$。</p><p>$k \leq 10^9$</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1945/problem/A">A. Setting up Camp</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1945/problem/B">B. Fireworks</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1945/problem/C">C. Left and Right Houses</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1945/problem/D">D. Seraphim the Owl</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1945/problem/E">E. Binary Search</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1945/problem/F">F. Kirill and Mushrooms</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1945/problem/G">G. Cook and Porridge</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1945/problem/H">H. GCD is Greater</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1129B/">
+              <a class="btn" href="/codeforces/contest/1945/1945/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -890,7 +922,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1179B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1948/1948/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -908,7 +940,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1179B/" class="post-title-link" itemprop="url">1179B Tolik and His Uncle</a>
+          <a href="/codeforces/contest/1948/1948/" class="post-title-link" itemprop="url">Educational Codeforces Round 163 (Rated for Div. 2)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -919,7 +951,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-26 19:00:02" itemprop="dateCreated datePublished" datetime="2024-03-26T19:00:02+00:00">2024-03-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -928,6 +960,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
         </span>
     </span>
 
@@ -941,10 +977,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有一天，_rqy想出来了一道构造题，出给了wqy去做。然而wqy不会做，于是就来找你。</p><p>你有一个$n$行$m$列的棋盘，其中第$i$行第$j$列的格子标号为$(i,j)$。你需要从$(1,1)$开始遍历这个棋盘。每一次，如果你在$(x,y)$，你可以选择一个向量$(\text{d}x,\text{d}y)$，并且移动到$(x+\text{d}x,y+\text{d}y)$这个格子上。</p><p>你不能离开这个棋盘，同时每一个向量只能使用一次。你的任务是合理安排自己的行走路线，使得每一个格子都只被经过一次。输出这个方案。</p><p>wqy翻译了那么多题面，你一定要帮他解出来！</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1948/problem/A">A. Special Characters</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1948/problem/B">B. Array Fix</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1948/problem/C">C. Arrow Path</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1948/problem/D">D. Tandem Repeats?</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1948/problem/E">E. Clique Partition</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1948/problem/F">F. Rare Coins</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1948/problem/G">G. MST with Matching</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1179B/">
+              <a class="btn" href="/codeforces/contest/1948/1948/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -975,7 +1011,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1208C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/17/1725M/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -993,7 +1029,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1208C/" class="post-title-link" itemprop="url">1208C Magic Grid</a>
+          <a href="/codeforces/ape/2024/03/17/1725M/" class="post-title-link" itemprop="url">Moving Both Hands</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1004,7 +1040,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-26 19:00:02" itemprop="dateCreated datePublished" datetime="2024-03-26T19:00:02+00:00">2024-03-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1013,6 +1049,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -1026,10 +1066,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><h3>题目描述</h3><p>我们定义“魔法网格”为一个满足以下两个条件的大小为 $n \times n$ 的整数方阵：</p><p>$1.$ 从 $0$ 到 $n^2-1$ 的所有整数都在矩阵中出现过恰好一次。</p><p>$2.$ 矩阵中的每行元素的按位异或和与每列元素的按位异或和都相等。</p><p>按位异或，即 $C/C++$ 中的 $\wedge$ 运算符或 $Pascal$ 中的 $xor$ 运算符。</p><p>现在给你一个 $n$ ，保证 $n$ 是 $4$ 的倍数。请构造一个“魔法网格”。</p><p>输入仅包含一行，为一个整数 $n$ ，保证 $n$ 是 $4$ 的倍数。</p><p>输出 $n$ 行，每行 $n$ 个整数，每个整数之间用一个空格隔开，第 $i$ 行第 $j$ 列输出的数表示“魔法网格”的第 $i$ 行第 $j$ 列的数。</p><p>如果有多个答案，请输入任意一个。保证每组数据至少有一个合法解。</p></ul></p>
+          <p><ul style="text-align:left;"><p><strong>题目描述</strong></p><p>Alice 在进行一个有向图上做游戏。有向图上共有 $n$ 个节点，$m$ 条有向边。Alice的手上有</p><p>一个红色球和一个蓝色球。</p><p>游戏开始时，Alice将红色球放在 $1$ 号节点上，将蓝色球放在 $i$ 号节点上。</p><p>长度为 $w$</p><p>的有向边表示可以通过一次操作将在 $v$ 的点转移</p><p>到 $u$ </p><p>花费 $w$时间。</p><p>每局游戏中，Alice 要通过尽可能少的时间将两个球共同转移到任意同一个节点上。Alice 同一时间只能操作一个球。现在 Alice 想知道对于每个点 $2\le i \le n$</p><p>，每局游戏完成的最小时间是</p><p>多少。</p><p><strong>输入格式</strong></p><p>输入第一行是两个整数 $n$ ，$m$。</p><p>接下来 $m$行，每行三个整数 $u$，$v$，$w$，表示图上有一条从 $u$ 指向 $v$ 长为 $w$ 的有向边。</p><p><strong>输出格式</strong></p><p>输出 $n$ 行，每行一个整数，第 $i$ 行的整数表示蓝色球开始时在 $i$ 号点上时游戏的</p><p>最小完成时间。如果不能完成游戏，输出 -1 。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1208C/">
+              <a class="btn" href="/codeforces/ape/2024/03/17/1725M/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1053,7 +1093,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

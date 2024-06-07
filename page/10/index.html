@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">554</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">510</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,13 +153,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">554</span>
+          <span class="site-state-item-count">510</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1244D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/18/1396B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1244D/" class="post-title-link" itemprop="url">1244D Paint the Tree</a>
+          <a href="/codeforces/ape/2024/03/18/1396B/" class="post-title-link" itemprop="url">Stoned Game</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,7 +239,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-26 19:00:02" itemprop="dateCreated datePublished" datetime="2024-03-26T19:00:02+00:00">2024-03-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -248,6 +248,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -261,10 +265,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有一棵树，有3种颜色，第$i$个节点染成第$j$种颜色的代价是$c_{j,i}$，现在要你求出一种染色方案，使得总代价最小，且对于任意三个相邻的节点，颜色不能相同。输出最小代价与其中一种方案。无解输出$-1$。</p><p>$3\le n\le 10^5$</p></ul></p>
+          <p><ul style="text-align:left;"><p>有n堆石子，每堆分别有$a_i$个石子。</p><p>两者轮流取其中一个石子。但不能取上次对手取过的那一堆。特殊的，第一次取可以取任何一堆的石子。</p><p>当前先手取完要取的石子之后使对手无路可走时，先手获胜。</p><p>t组数据，每组数据给出n和a，输出谁必会胜利。若先手胜利输出“T”，若后者胜利输出“HL”。无引号。</p><p>数据范围请参考原题。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1244D/">
+              <a class="btn" href="/codeforces/ape/2024/03/18/1396B/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -295,7 +299,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1256F/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/19/1726D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -313,7 +317,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1256F/" class="post-title-link" itemprop="url">1256F Equalizing Two Strings</a>
+          <a href="/codeforces/ape/2024/03/19/1726D/" class="post-title-link" itemprop="url">Edge Split</a>
         </h2>
 
         <div class="post-meta-container">
@@ -324,7 +328,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-26 19:00:02" itemprop="dateCreated datePublished" datetime="2024-03-26T19:00:02+00:00">2024-03-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -333,6 +337,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -346,10 +354,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给你两长度都为 $n$ 的小写字符串 $S, T$。</p><p>每次操作中你可以任选一个 $L (1\le L\le n)$，同时翻转 $S$ 中的任意一个长度为 $L$ 的子串和 $T$ 中任意一个长度为 $L$ 的子串。</p><p>请回答你是否能在若干次操作后使两字符串一样？</p><p>输入格式</p><p>第一行一个正整数 $q(1\le q\le 10^4)$ 表示询问次数</p><p>接下来 $q$ 组数据，每组数据三行，第一行一个正整数 $n(1\le n\le 2\times 10^5)$，第二行一个字符串 $S$，第三行一个字符串 $T$。</p><p>保证 $\sum n\le 2\times 10^5$</p><p>输出格式</p><p>$q$ 行，每行一个字符串 <code>YES</code> 或 <code>NO</code>。</p></ul></p>
+          <p><ul style="text-align:left;"><p>给定一个含有 $n$ 个点 $m$ 条边的无向简单图。</p><p>对这张简单图的所有边进行红蓝染色。其中<strong>仅由红边</strong>组成的无向图连通块数为 $c_1$，<strong>仅由蓝边</strong>组成的无向图连通块数为 $c_2$。</p><p>请构造一种染色方案使得 $c_1 + c_2$ 最小。如果有多种构造方案，任意输出一种即可。</p><p>输入格式</p><p>第一行包含一个整数 $T \; (1 \leqslant T \leqslant 10^5)$ 表示测试样例组数。</p><p>对于每组测试样例，第一行包含两个整数 $n \; (2 \leqslant n \leqslant 2 \cdot 10^5 )$ 和 $m \; (n - 1 \leqslant m \leqslant \min(n + 2, \frac{n \cdot (n - 1)}{2}))$ 表示该简单图的点数和边数。</p><p>接下来的 m 行，含有两个数 $u_i$ 和 $v_i \; (1 \leqslant u_i,v_i \leqslant n, \; u_i \neq v_i)$ 表示点 $u_i$ 和点 $v_i$ 间存在一条有向边。数据满足图联通且不存在重边和自环。</p><p>数据满足 $\sum n \leqslant 10^6, \; \sum m \leqslant 2 \cdot 10^6$</p><p>输出格式</p><p>对于每组测试样例，包含一行一个长度为 $m$ 的 $01$串 $s$ 表示其中一种满足题目条件的染色方案。其中 $s_i = 0$ 表示边 $(u_i, v_i)$ 被染成的红色，否则表示被染成了蓝色。</p><p>$Translated \; by \; Zigh$</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1256F/">
+              <a class="btn" href="/codeforces/ape/2024/03/19/1726D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -380,7 +388,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1329A/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/atcode/abc344/abc344/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -398,7 +406,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1329A/" class="post-title-link" itemprop="url">1329A Dreamoon Likes Coloring</a>
+          <a href="/atcode/abc344/abc344/" class="post-title-link" itemprop="url">	Toyota Programming Contest 2024#3（AtCoder Beginner Contest 344）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -409,7 +417,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-16 21:08:21" itemprop="dateCreated datePublished" datetime="2024-03-16T21:08:21+00:00">2024-03-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -417,7 +425,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+          <a href="/categories/atcoder/" itemprop="url" rel="index"><span itemprop="name">atcoder</span></a>
         </span>
     </span>
 
@@ -431,10 +439,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给定长为 $n$ 的格子和 $m$ 种颜色。</p><p>Dreamoon 会<strong>依次</strong>刷这 $m$ 种颜色，对于第 $i$ 种颜色，他会从第 $p_i$ 格开始刷到第 $p_i+l_i-1$ 格。$p_i$ 不能超过 $n-l_i+1$ 或小于 $1$，这样会超出格子。</p><p>您的任务是找出一组 $p_i$，使得 Dreamoon 刷完所有颜色之后每种颜色至少出现了一次，且每个格子都被刷上了颜色。</p><p>$1 \leq m \leq n \leq 10^5$，$1 \leq l_i \leq n$</p><p>翻译 by Meatherm</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc344/tasks/abc344_a">A - Spoiler</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc344/tasks/abc344_b">B - Delimiter</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc344/tasks/abc344_c">C - A+B+C</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc344/tasks/abc344_d">D - String Bags</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc344/tasks/abc344_e">E - Insert or Erase</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc344/tasks/abc344_f">F - Earn to Advance</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc344/tasks/abc344_g">G - Points and Comparison</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1329A/">
+              <a class="btn" href="/atcode/abc344/abc344/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -465,7 +473,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1380D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1941/1941/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -483,7 +491,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1380D/" class="post-title-link" itemprop="url">1380D Berserk And Fireball</a>
+          <a href="/codeforces/contest/1941/1941/" class="post-title-link" itemprop="url">Codeforces Round 933 (Div. 3)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -494,7 +502,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-16 21:08:21" itemprop="dateCreated datePublished" datetime="2024-03-16T21:08:21+00:00">2024-03-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -503,6 +511,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
         </span>
     </span>
 
@@ -516,10 +528,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有 $n$ 个战士站成一排，第 $i$ 个战士的战力是 $a_i$。所有战士的战力都是两两不同的。</p><p>你可以使用两种类型的咒语：</p><ol><li><p>火球术：你可以消耗 $x$ 点法力值来干掉连续的 $k$ 个战士（你必须干掉正好 $k$ 个，而不能干掉 $\le k$ 个）。</p></li><li><p>狂暴术：你可以消耗 $y$ 点法力值，选择站在一起的两个战士使他们展开决斗，战力较弱的那个战士将会被干掉。</p></li></ol><p>我们来举个例子，假设有 $7$ 个战士，其战力分别为 $[2,3,7,8,11,5,4]$，且此时的$k=3$（$k$ 的定义详见火球术）。如果你对战力为 $8$ 与 $11$ 的两个战士施加狂暴术，剩下战士的战力将会变成 $[2,3,7,11,5,4]$（战力为 $8$ 的战士在决斗中战死）。然后如果我们对战力为 $[7,11,5]$ 的战士施加火球术，剩下战士的战力将会变成 $[2,3,4]$。</p><p>你想要组建一支军队，因此你想要将所有战士战力的序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$。试计算你所需的最少法力值。</p><p>输入格式</p><p>第一行两个整数 $n,m (1\le n,m\le 2\cdot 10^5)$ ——序列 $a$ 的长度和序列 $b$ 的长度。</p><p>第二行三个整数 $x,k,y (1\le x,y\le 10^9,1\le k\le n)$ ——火球术消耗的法力值，火球术的范围和狂暴术消耗的法力值。</p><p>第三行 $n$ 个整数 $a_1,a_2,…,a_n (1\le a_i\le n)$。保证 $a_i$ 是两两不同的。</p><p>第四行 $m$ 个整数 $b_1,b_2,…,b_m(1\le b_i\le n)$。保证 $b_i$ 是两两不同的。</p><p>输出格式</p><p>一行一个整数，即将序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$所需的最少法力值。如果无法完成变换，则输出$-1$。</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1941/problem/A">A. Rudolf and the Ticket</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1941/problem/B">B. Rudolf and 121</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1941/problem/C">C. Rudolf and the Ugly String</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1941/problem/D">D. Rudolf and the Ball Game</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1941/problem/E">E. Rudolf and k Bridges</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1941/problem/F">F. Rudolf and Imbalance</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1941/problem/G">G. Rudolf and Subway</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1380D/">
+              <a class="btn" href="/codeforces/contest/1941/1941/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -550,7 +562,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1416B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/14/1717D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -568,7 +580,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1416B/" class="post-title-link" itemprop="url">1416B Make Them Equal</a>
+          <a href="/codeforces/ape/2024/03/14/1717D/" class="post-title-link" itemprop="url">Madoka and The Corruption Scheme</a>
         </h2>
 
         <div class="post-meta-container">
@@ -579,7 +591,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-16 21:08:21" itemprop="dateCreated datePublished" datetime="2024-03-16T21:08:21+00:00">2024-03-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -588,6 +600,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -601,10 +617,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><ul><li><p>给出一个序列 $a$，求出一个长度不超过 $3n$ 的操作序列，使序列 $a$ 中每个元素相等。</p></li><li><p>定义一次操作为：选出 $(i,j,x)$ 三元组，满足 $i,j$ 为序列合法下标，$x$ 为 $10^9$ 以内非负整数，令 $a_i:= a_i-x\cdot i,a_j:=a_j+x\cdot i$。</p></li><li><p>必须保证操作过程中的任意时刻序列 $a$ 中每个元素都非负。</p></li><li><p>输出时先输出操作次数 $k$，然后输出 $k$ 行操作序列。</p></li><li><p>数据组数 $t\le10^4$，序列长度 $n\le10^4$，元素大小 $1\le a_i\le10^5$。</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>有$2^n$名参赛者，参赛者编号为$1$至$2^n$。</p><p>一共有$n$轮比赛，每一轮，参赛者两两比赛，胜者进入下一轮。因此如图所示，赛程图是一个满二叉树。</p><p>现在你可以决定每一个参赛者第一轮的初始排列顺序（对应二叉树叶子节点的顺序），并且你可以决定每一场比赛是左边的人胜出或是右边的人胜出（如图红线为胜出者）。你希望第一名的人编号最小。</p><p>但是，有另一个人也能操纵比赛。他可以更改任意$k$场比赛的结果。</p><p>输出你能确保得第一名的人的编号的最小值，对$10^9+7$取模。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1416B/">
+              <a class="btn" href="/codeforces/ape/2024/03/14/1717D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -635,7 +651,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1428D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/15/1012C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -653,7 +669,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1428D/" class="post-title-link" itemprop="url">1428D Bouncing Boomerangs</a>
+          <a href="/codeforces/ape/2024/03/15/1012C/" class="post-title-link" itemprop="url">Hills</a>
         </h2>
 
         <div class="post-meta-container">
@@ -664,7 +680,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-16 21:08:21" itemprop="dateCreated datePublished" datetime="2024-03-16T21:08:21+00:00">2024-03-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -673,6 +689,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -686,10 +706,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>在$n\times n$的网格上，有若干目标。从最低下扔回旋镖，碰到目标会右转。每行、每列不超过两个目标。现在已知从每一列扔出去会撞到$a_i$个障碍($a_i\le 3$)，请求出一种合法方案。</p><p>翻译 by jun头吉吉</p></ul></p>
+          <p><ul style="text-align:left;"><p>给你 $n$ 个数，你一次操作可以把某一个数减一（可以减为负数），你的目标是使任意的 $k$ 个数严格大于它旁边的两个数（第一个数只用严格大于第二个数，第 $n$ 个数只用严格大于第 $n-1$ 个数），问最少需要几次操作。 $k$ 是不确定的，请输出 $k∈[1,\left\lceil\dfrac{n}{2}\right\rceil]$ 时的答案。</p><p>输入格式</p><p>第一行一个正整数 $n$。</p><p>第二行 $n$ 个正整数 $a_i$。</p><p>输出格式</p><p>一行 $\left\lceil\dfrac{n}{2}\right\rceil$ 个数，第 $i$ 个数代表 $k=i$ 时的答案</p><p>数据范围</p><p>$1≤n≤5000$</p><p>$1≤ai≤100000$</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1428D/">
+              <a class="btn" href="/codeforces/ape/2024/03/15/1012C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -720,7 +740,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1438C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/13/1383B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -738,7 +758,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1438C/" class="post-title-link" itemprop="url">1438C Engineer Artem</a>
+          <a href="/codeforces/ape/2024/03/13/1383B/" class="post-title-link" itemprop="url">GameGame</a>
         </h2>
 
         <div class="post-meta-container">
@@ -749,7 +769,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-13 19:48:47" itemprop="dateCreated datePublished" datetime="2024-03-13T19:48:47+00:00">2024-03-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -758,6 +778,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -771,10 +795,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出一个 $n\times m$ 的矩阵 $a$（$1\le n,m\le 100$），其中 $1\le a_{i,j}\le 10^9$。</p><p>定义一个矩阵是合法的当且仅当没有任何两个相邻的元素是相等的（上下左右为相邻）。</p><p>你可以将矩阵中若干个元素加一，使其合法，输出最终矩阵。</p><p>形式化地，对于每个 $(i,j)$，$b_{i,j}=a_{i,j}$ 或者 $b_{i,j}=a_{i,j}+1$，输出合法的 $b$ 矩阵。</p><p>$t$ 组数据（$t\le 10$）。</p></ul></p>
+          <p><ul style="text-align:left;"><p>有一个长度为N的a数组，初始两人的得分都为零，</p><p>两个人轮流从其中拿走一个数，再将自己目前得分与拿走的数异或，最终得分高者获胜。</p><p>问先手有没有必胜策略，必胜输出“WIN”，必败输出“LOSE”，平局输出“DRAW”。</p><p>多组数据。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1438C/">
+              <a class="btn" href="/codeforces/ape/2024/03/13/1383B/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -805,7 +829,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1491D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1935/1935/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -823,7 +847,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1491D/" class="post-title-link" itemprop="url">1491D Zookeeper and The Infinite Zoo</a>
+          <a href="/codeforces/contest/1935/1935/" class="post-title-link" itemprop="url">Codeforces Round 932 (Div. 2)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -834,7 +858,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-12 21:14:01" itemprop="dateCreated datePublished" datetime="2024-03-12T21:14:01+00:00">2024-03-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -843,6 +867,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
         </span>
     </span>
 
@@ -856,10 +884,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有一个无限图，其中有无数个节点，从 $1$ 开始标号。有一条从 $u$ 到 $u+v$ 的单向边，当且仅当 $u \&amp;  v = v$ (这里的 $\&amp;$ 指 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/位操作#按位与（AND）">按位与</a> 。除此以外没有其它边。</p><p>有 $q$ 个询问，询问是否存在一条从 $u$ 到 $v$ 的路径。</p><p>输入格式</p><p>第一行一个整数 $q$ （$1\le q\le10^5 $） —— 询问的个数</p><p>接下来 $q$ 行中，每行有两个整数 $u,v$ ($1 \leq u,v &lt; 2^{30}$)，意义如上</p><p>输出格式</p><p>对于每个询问，输出一行 <code>YES</code> 来表示存在从 $u$ 到 $v$ 的一条路径，或输出一行 <code>NO</code> 表示不存在这样一条路径。(你可以以任意大小写形式来输出 <code>YES</code> 或 <code>NO</code>)</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1935/problem/A">A. Entertainment in MAC</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1935/problem/B">B. Informatics in MAC</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1935/problem/C">C. Messenger in MAC</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1935/problem/D">D. Exam in MAC</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1935/problem/E">E. Distance Learning Courses in MAC</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1935/problem/F">F. Andrey&#x27;s Tree</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1491D/">
+              <a class="btn" href="/codeforces/contest/1935/1935/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -890,7 +918,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1508A/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E7%BA%BF%E6%80%A7dp/K%20%E4%B8%AA%E4%B8%8D%E7%9B%B8%E4%BA%A4%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E8%83%BD%E9%87%8F%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -908,7 +936,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1508A/" class="post-title-link" itemprop="url">1508A Binary Literature</a>
+          <a href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/K%20%E4%B8%AA%E4%B8%8D%E7%9B%B8%E4%BA%A4%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E8%83%BD%E9%87%8F%E5%80%BC/" class="post-title-link" itemprop="url">K 个不相交子数组的最大能量值</a>
         </h2>
 
         <div class="post-meta-container">
@@ -919,7 +947,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-12 21:14:01" itemprop="dateCreated datePublished" datetime="2024-03-12T21:14:01+00:00">2024-03-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -927,7 +955,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -941,10 +969,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给你一个正整数 $n$ 和三个长度为 $2\times n$ 的 01 字符串 $s_1,s_2,s_3$。你需要构造一个 01 字符串 $S$，使得：</p><ul><li><p>字符串 $S$ 的长度不能超过 $3\times n$。</p></li><li><p>$s_1,s_2,s_3$ 当中至少有两个字符串是 $S$ 的子序列。</p></li></ul><p>可以证明一定有解，有多种解时输出任意一种即可。$T$ 组数据。</p><p>$1\leq T\leq10^4;1\leq n,\sum n\leq10^5;$</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-strength-of-k-disjoint-subarrays/description/">100216. K 个不相交子数组的最大能量值</a></p><hr /><p>给你一个长度为 <code>n</code> 下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 和一个 <strong>正奇数</strong> 整数 <code>k</code> 。</p><p><code>x</code> 个子数组的能量值定义为 <code>strength = sum[1] * x - sum[2] * (x - 1) + sum[3] * (x - 2) - sum[4] * (x - 3) + ... + sum[x] * 1</code> ，其中 <code>sum[i]</code> 是第 <code>i</code> 个子数组的和。更正式的，能量值是满足 <code>1 &amp;lt;= i &amp;lt;= x</code> 的所有 <code>i</code> 对应的 <code>(-1)^i+1 * sum[i] * (x - i + 1)</code> 之和。</p><p>你需要在 <code>nums</code> 中选择 <code>k</code> 个 <strong>不相交</strong><strong>子数组</strong> ，使得 <strong>能量值最大</strong> 。</p><p>请你返回可以得到的 <strong>最大</strong><strong>能量值</strong> 。</p><p><strong>注意</strong>，选出来的所有子数组 <strong>不</strong> 需要覆盖整个数组。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,2,3,-1,2], k = 3</p><p>输出：22</p><p>解释：选择 3 个子数组的最好方式是选择：nums[0..2] ，nums[3..3] 和 nums[4..4] 。能量值为 (1 + 2 + 3) * 3 - (-1) * 2 + 2 * 1 = 22 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [12,-2,-2,-2,-2], k = 5</p><p>输出：64</p><p>解释：唯一一种选 5 个不相交子数组的方案是：nums[0..0] ，nums[1..1] ，nums[2..2] ，nums[3..3] 和 nums[4..4] 。能量值为 12 * 5 - (-2) * 4 + (-2) * 3 - (-2) * 2 + (-2) * 1 = 64 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [-1,-2,-3], k = 1</p><p>输出：-1</p><p>解释：选择 1 个子数组的最优方案是：nums[0..0] 。能量值为 -1 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 10^4</code></p></li><li><p><code>-10^9 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= n</code></p></li><li><p><code>1 &amp;lt;= n * k &amp;lt;= 10^6</code></p></li><li><p><code>k</code> 是奇数。</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1508A/">
+              <a class="btn" href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/K%20%E4%B8%AA%E4%B8%8D%E7%9B%B8%E4%BA%A4%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E8%83%BD%E9%87%8F%E5%80%BC/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -975,7 +1003,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/1508B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/10/1355E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -993,7 +1021,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/1508B/" class="post-title-link" itemprop="url">1508B Almost Sorted</a>
+          <a href="/codeforces/ape/2024/03/10/1355E/" class="post-title-link" itemprop="url">Restorer Distance</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1004,7 +1032,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-30 17:49:26" itemprop="dateCreated datePublished" datetime="2024-04-30T17:49:26+00:00">2024-04-30</time>
+      <time title="创建时间：2024-03-12 21:14:01" itemprop="dateCreated datePublished" datetime="2024-03-12T21:14:01+00:00">2024-03-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1013,6 +1041,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -1026,10 +1058,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>如果一个长度为 $n$ 的排列 $a$ 满足对于任意整数 $i\in[1,n-1]$ 都有 $a_{i+1}\geq a_i-1$，我们就说这个排列是“几乎有序的”。</p><p>给定 $n,k$，求所有长度为 $n$ 的“几乎有序的”排列中，字典序第 $k$ 小的那个。特别的，如果这样的排列不存在，输出 $-1$。$T$ 组数据。</p><p>$1\leq T\leq10^3;1\leq n,\sum n\leq10^5;1\leq k\leq10^{18};$</p></ul></p>
+          <p><ul style="text-align:left;"><p>你要修理一堵墙，这堵墙由 $N$ 个宽度为一的砖块构成，其中第 $i$ 块砖的高度为 $h_i$ 。你需要执行下列操作让这 $N$ 块砖的高度变得全部相等。</p><p>1、使一块砖的高度加一，这需要花费 $A$ 的代价。</p><p>2、使一块高度为正的砖的高度减一，这需要花费 $R$ 的代价。</p><p>3、使一块高度为正的砖的高度减一，另一块砖的高度加一，这需要花费 $M$ 的代价。</p><p>给定 $N,A,R,M$ ，你需要求出使所有砖的高度变得相同的最小代价。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/1508B/">
+              <a class="btn" href="/codeforces/ape/2024/03/10/1355E/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1053,7 +1085,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
