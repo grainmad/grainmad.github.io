@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"grainmad.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="给出一个长度为n的浮点数数组a。数组每个值在0到1之间。现在你要n个人出题。第i个人出题成功的概率为a[i]。如果可以从n个人中选一些人出题，恰好只有一个人出题的最大概率是多少？">
+    <meta name="description" content="给出一个长度为n的浮点数数组a。数组每个值在0到1之间。现在你要n个人出题。第i个人出题成功的概率为a[i]如果可以从n个人中选一些人出题，恰好只有一个人出题的最大概率是多少？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Andrey and Problem">
 <meta property="og:url" content="https://grainmad.github.io/codeforces/ape/2023/04/27/442B/index.html">
 <meta property="og:site_name" content="代码如诗">
-<meta property="og:description" content="给出一个长度为n的浮点数数组a。数组每个值在0到1之间。现在你要n个人出题。第i个人出题成功的概率为a[i]。如果可以从n个人中选一些人出题，恰好只有一个人出题的最大概率是多少？">
+<meta property="og:description" content="给出一个长度为n的浮点数数组a。数组每个值在0到1之间。现在你要n个人出题。第i个人出题成功的概率为a[i]如果可以从n个人中选一些人出题，恰好只有一个人出题的最大概率是多少？">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-17T15:28:59.000Z">
-<meta property="article:modified_time" content="2023-06-08T20:08:27.000Z">
+<meta property="article:modified_time" content="2024-06-07T17:41:48.000Z">
 <meta property="article:author" content="GrainMad">
 <meta property="article:tag" content="codeforces">
 <meta property="article:tag" content="greedy">
@@ -90,7 +90,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">510</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">554</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,7 +162,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">510</span>
+          <span class="site-state-item-count">554</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -234,7 +234,7 @@
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="name" content="Andrey and Problem | 代码如诗">
-      <meta itemprop="description" content="<ul style="text-align:left;"><p>给出一个长度为n的浮点数数组a。数组每个值在0到1之间。</p><p>现在你要n个人出题。</p><p>第i个人出题成功的概率为<code>a[i]</code>。</p><p>如果可以从n个人中选一些人出题，恰好只有一个人出题的最大概率是多少？</p></ul>">
+      <meta itemprop="description" content="<ul style="text-align:left;"><p>给出一个长度为n的浮点数数组a。数组每个值在0到1之间。</p><p>现在你要n个人出题。</p><p>第i个人出题成功的概率为<code>a[i]</code></p><p>如果可以从n个人中选一些人出题，恰好只有一个人出题的最大概率是多少？</p></ul>">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-06-08 20:08:27" itemprop="dateModified" datetime="2023-06-08T20:08:27+00:00">2023-06-08</time>
+      <time title="修改时间：2024-06-07 17:41:48" itemprop="dateModified" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -275,7 +275,7 @@
   
 </div>
 
-            <div class="post-description"><ul style="text-align:left;"><p>给出一个长度为n的浮点数数组a。数组每个值在0到1之间。</p><p>现在你要n个人出题。</p><p>第i个人出题成功的概率为<code>a[i]</code>。</p><p>如果可以从n个人中选一些人出题，恰好只有一个人出题的最大概率是多少？</p></ul></div>
+            <div class="post-description"><ul style="text-align:left;"><p>给出一个长度为n的浮点数数组a。数组每个值在0到1之间。</p><p>现在你要n个人出题。</p><p>第i个人出题成功的概率为<code>a[i]</code></p><p>如果可以从n个人中选一些人出题，恰好只有一个人出题的最大概率是多少？</p></ul></div>
         </div>
       </header>
 
@@ -289,7 +289,7 @@
 <p>tag: greedy, math, probabilities</p>
 <h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给出一个长度为n的浮点数数组a。数组每个值在0到1之间。</p>
 <p>现在你要n个人出题。</p>
-<p>第i个人出题成功的概率为<code>a[i]</code>。</p>
+<p>第i个人出题成功的概率为<code>a[i]</code></p>
 <p>如果可以从n个人中选一些人出题，恰好只有一个人出题的最大概率是多少？</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>假设选了k个人那么恰好有一人成功的概率是：<br>$\sum \limits_{i=1}^{k} \prod \limits_{j \neq i} (1-a_j)$和式变换，分离变量后<br>$ \sum \limits_{i=1}^{k} \frac{a_i}{1-a_i} \prod \limits_{j=1}^{k} (1-a_j)$</p>
 <p>令$S=\sum \limits_{i=1}^{k} \frac{a_i}{1-a_i}, P = \prod \limits_{j=1}^{k} (1-a_j)$</p>

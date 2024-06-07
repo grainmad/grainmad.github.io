@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">510</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">554</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">510</span>
+          <span class="site-state-item-count">554</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/2858.%20%E5%8F%AF%E4%BB%A5%E5%88%B0%E8%BE%BE%E6%AF%8F%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%91%E8%BE%B9%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1917/1917/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/2858.%20%E5%8F%AF%E4%BB%A5%E5%88%B0%E8%BE%BE%E6%AF%8F%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%91%E8%BE%B9%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/" class="post-title-link" itemprop="url">2858. 可以到达每一个节点的最少边反转次数</a>
+          <a href="/codeforces/contest/1917/1917/" class="post-title-link" itemprop="url">Codeforces Round 917 (Div. 2)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,537 +239,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-09-18 19:14:45" itemprop="dateCreated datePublished" datetime="2023-09-18T19:14:45+00:00">2023-09-18</time>
+      <time title="创建时间：2024-01-02 13:59:41" itemprop="dateCreated datePublished" datetime="2024-01-02T13:59:41+00:00">2024-01-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
+        <i class="far fa-calendar-check"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-edge-reversals-so-every-node-is-reachable/description/">2858. 可以到达每一个节点的最少边反转次数</a></p><hr /><p>给你一个 <code>n</code> 个点的 <strong>简单有向图</strong> （没有重复边的有向图），节点编号为 <code>0</code> 到 <code>n - 1</code> 。如果这些边是双向边，那么这个图形成一棵 <strong>树</strong> 。</p><p>给你一个整数 <code>n</code> 和一个 <strong>二维</strong> 整数数组 <code>edges</code> ，其中 <code>edges[i] = [ui, vi]</code> 表示从节点 <code>ui</code> 到节点 <code>vi</code> 有一条 <strong>有向边</strong> 。</p><p><strong>边反转</strong> 指的是将一条边的方向反转，也就是说一条从节点 <code>ui</code> 到节点 <code>vi</code> 的边会变为一条从节点 <code>vi</code> 到节点 <code>ui</code> 的边。</p><p>对于范围 <code>[0, n - 1]</code> 中的每一个节点 <code>i</code> ，你的任务是分别 <strong>独立</strong> 计算 <strong>最少</strong> 需要多少次 <strong>边反转</strong> ，从节点 <code>i</code> 出发经过 <strong>一系列有向边</strong> ，可以到达所有的节点。</p><p>请你返回一个长度为 <code>n</code> 的整数数组 <code>answer</code> ，其中 <code>answer[i]</code>表示从节点 <code>i</code> 出发，可以到达所有节点的 <strong>最少边反转</strong> 次数。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/08/26/image-20230826221104-3.png" /></p><p>```txt</p><p>输入：n = 4, edges = [[2,0],[2,1],[1,3]]</p><p>输出：[1,1,0,2]</p><p>解释：上图表示了与输入对应的简单有向图。</p><p>对于节点 0 ：反转 [2,0] ，从节点 0 出发可以到达所有节点。</p><p>所以 answer[0] = 1 。</p><p>对于节点 1 ：反转 [2,1] ，从节点 1 出发可以到达所有节点。</p><p>所以 answer[1] = 1 。</p><p>对于节点 2 ：不需要反转就可以从节点 2 出发到达所有节点。</p><p>所以 answer[2] = 0 。</p><p>对于节点 3 ：反转 [1,3] 和 [2,1] ，从节点 3 出发可以到达所有节点。</p><p>所以 answer[3] = 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/08/26/image-20230826225541-2.png" /></p><p>```txt</p><p>输入：n = 3, edges = [[1,2],[2,0]]</p><p>输出：[2,0,1]</p><p>解释：上图表示了与输入对应的简单有向图。</p><p>对于节点 0 ：反转 [2,0] 和 [1,2] ，从节点 0 出发可以到达所有节点。</p><p>所以 answer[0] = 2 。</p><p>对于节点 1 ：不需要反转就可以从节点 2 出发到达所有节点。</p><p>所以 answer[1] = 0 。</p><p>对于节点 2 ：反转 [1,2] ，从节点 2 出发可以到达所有节点。</p><p>所以 answer[2] = 1 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>2 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>edges.length == n - 1</code></p></li><li><p><code>edges[i].length == 2</code></p></li><li><p><code>0 &amp;lt;= ui == edges[i][0] &amp;lt; n</code></p></li><li><p><code>0 &amp;lt;= vi == edges[i][1] &amp;lt; n</code></p></li><li><p><code>ui != vi</code></p></li><li><p>输入保证如果边是双向边，可以得到一棵树。</p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/2858.%20%E5%8F%AF%E4%BB%A5%E5%88%B0%E8%BE%BE%E6%AF%8F%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%91%E8%BE%B9%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/11/1493C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2023/09/11/1493C/" class="post-title-link" itemprop="url">K-beautiful Strings</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-18 19:14:45" itemprop="dateCreated datePublished" datetime="2023-09-18T19:14:45+00:00">2023-09-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出一个长度为n的字符串s，以及一个数字k。</p><p>求一个长度为n的字典序最小的字符串，满足条件在字典序大于等于s，且每个字符出现的次数是k的倍数。</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2023/09/11/1493C/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/15/1015E2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2023/09/15/1015E2/" class="post-title-link" itemprop="url">Stars Drawing (Hard Edition)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-18 19:14:45" itemprop="dateCreated datePublished" datetime="2023-09-18T19:14:45+00:00">2023-09-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出一个包含<code>*</code>和<code>.</code>的n行m列的矩阵。</p><p>求其是否可以由至少1阶星星图组成，星星可以覆盖。</p><p>1到3阶的星星如下。</p><p><img alt="图片" src="https://espresso.codeforces.com/70271637c81815425c34b7351a93a341d23ff9da.png" /></p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2023/09/15/1015E2/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/16/1280B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2023/09/16/1280B/" class="post-title-link" itemprop="url">Beingawesomeism</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-18 19:14:45" itemprop="dateCreated datePublished" datetime="2023-09-18T19:14:45+00:00">2023-09-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出一个二维矩阵，只包含<code>A</code>和<code>P</code>。两种字符。</p><p>现在你每次操作可以选择一个$1\times n$或$n \times 1$的图形，然后可以沿着任意方向移动任意步，将该范围内的格子同化。</p><p><img alt="" src="https://espresso.codeforces.com/5417185338bfaae1779d2924b2c740f9987d6dc2.png" /></p><p>问全部变为<code>A</code>最少操作步数为多少。</p><p>无法实现，则输出NORTH</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2023/09/16/1280B/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/17/1466E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2023/09/17/1466E/" class="post-title-link" itemprop="url">Apollo versus Pan</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-18 19:14:45" itemprop="dateCreated datePublished" datetime="2023-09-18T19:14:45+00:00">2023-09-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出$x_1, x_2, \ldots, x_n$</p><p>求$\sum_{i=1}^n \sum_{j=1}^n \sum_{k=1}^n (x_i \, \&amp; \, x_j) \cdot (x_j \, | \, x_k)$</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2023/09/17/1466E/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/18/1780D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2023/09/18/1780D/" class="post-title-link" itemprop="url">Bit Guessing Game</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-18 19:14:45" itemprop="dateCreated datePublished" datetime="2023-09-18T19:14:45+00:00">2023-09-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>交互题</p><p>你需要猜测一个数n，初始时给出n的二进制比特位的1的个数。</p><p>每次查询提供x，必须保证x不大于n，然后更新n为n-x，然后得到查询结果是n的二进制比特位的1的个数。</p><p>请在30次操作内找出n。</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2023/09/18/1780D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1863/1863/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/contest/1863/1863/" class="post-title-link" itemprop="url">Pinely Round 2 (Div. 1 + Div. 2)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-11 20:20:22" itemprop="dateCreated datePublished" datetime="2023-09-11T20:20:22+00:00">2023-09-11</time>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-03 21:44:06" itemprop="dateModified" datetime="2024-01-03T21:44:06+00:00">2024-01-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -795,10 +272,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1863/problem/A">A. Channel</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1863/problem/B">B. Split Sort</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1863/problem/C">C. MEX Repetition</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1863/problem/D">D. Two-Colored Dominoes</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1863/problem/E">E. Speedrun</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1863/problem/F">F. Divide, XOR, and Conquer</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1863/problem/G">G. Swaps</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1863/problem/H">H. Goldberg Machine 3</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1863/problem/I">I. Redundant Routes</a></p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1917/problem/A">A. Least Product</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1917/problem/B">B. Erase First or Second Letter</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1917/problem/C">C. Watering an Array</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1917/problem/D">D. Yet Another Inversions Problem</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1917/problem/E">E. Construct Matrix</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1917/problem/F">F. Construct Tree</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/contest/1863/1863/">
+              <a class="btn" href="/codeforces/contest/1917/1917/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -829,7 +306,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1872/1872/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/100126.%20%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E6%8C%87%E5%AE%9A%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -847,7 +324,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/contest/1872/1872/" class="post-title-link" itemprop="url">Codeforces Round 895 (Div. 3)</a>
+          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/100126.%20%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E6%8C%87%E5%AE%9A%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">100126. 重新排列后包含指定子字符串的字符串数目</a>
         </h2>
 
         <div class="post-meta-container">
@@ -858,7 +335,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-09-11 20:20:22" itemprop="dateCreated datePublished" datetime="2023-09-11T20:20:22+00:00">2023-09-11</time>
+      <time title="创建时间：2024-01-02 13:59:41" itemprop="dateCreated datePublished" datetime="2024-01-02T13:59:41+00:00">2024-01-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -866,11 +343,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -884,10 +357,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1872/problem/A">A. Two Vessels</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1872/problem/B">B. The Corridor or There and Back Again</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1872/problem/C">C. Non-coprime Split</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1872/problem/D">D. Plus Minus Permutation</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1872/problem/E">E. Data Structures Fan</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1872/problem/F">F. Selling a Menagerie</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1872/problem/G">G. Replace With Product</a></p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-strings-which-can-be-rearranged-to-contain-substring/description/">100126. 重新排列后包含指定子字符串的字符串数目</a></p><hr /><p>给你一个整数 <code>n</code> 。</p><p>如果一个字符串 <code>s</code> 只包含小写英文字母，<strong>且</strong> 将 <code>s</code> 的字符重新排列后，新字符串包含 <strong>子字符串</strong> <code>&amp;quot;leet&amp;quot;</code> ，那么我们称字符串 <code>s</code> 是一个 <strong>好</strong> 字符串。</p><p>比方说：</p><ul><li><p>字符串 <code>&amp;quot;lteer&amp;quot;</code> 是好字符串，因为重新排列后可以得到 <code>&amp;quot;leetr&amp;quot;</code> 。</p></li><li><p><code>&amp;quot;letl&amp;quot;</code> 不是好字符串，因为无法重新排列并得到子字符串 <code>&amp;quot;leet&amp;quot;</code> 。</p></li></ul><p>请你返回长度为 <code>n</code> 的好字符串 <strong>总</strong> 数目。</p><p>由于答案可能很大，将答案对 <code>10^9 + 7</code> <strong>取余</strong> 后返回。</p><p><strong>子字符串</strong> 是一个字符串中一段连续的字符序列。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 4</p><p>输出：12</p><p>解释：总共有 12 个字符串重新排列后包含子字符串 &quot;leet&quot; ：&quot;eelt&quot; ，&quot;eetl&quot; ，&quot;elet&quot; ，&quot;elte&quot; ，&quot;etel&quot; ，&quot;etle&quot; ，&quot;leet&quot; ，&quot;lete&quot; ，&quot;ltee&quot; ，&quot;teel&quot; ，&quot;tele&quot; 和 &quot;tlee&quot; 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 10</p><p>输出：83943898</p><p>解释：长度为 10 的字符串重新排列后包含子字符串 &quot;leet&quot; 的方案数为 526083947580 。所以答案为 526083947580 % (109 + 7) = 83943898 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><code>1 &amp;lt;= n &amp;lt;= 10^5</code></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/contest/1872/1872/">
+              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/100126.%20%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E6%8C%87%E5%AE%9A%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -918,7 +391,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/06/1200E/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/100127.%20%E7%BB%99%E5%B0%8F%E6%9C%8B%E5%8F%8B%E4%BB%AC%E5%88%86%E7%B3%96%E6%9E%9C%20II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -936,7 +409,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2023/09/06/1200E/" class="post-title-link" itemprop="url">Compress Words</a>
+          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/100127.%20%E7%BB%99%E5%B0%8F%E6%9C%8B%E5%8F%8B%E4%BB%AC%E5%88%86%E7%B3%96%E6%9E%9C%20II/" class="post-title-link" itemprop="url">100127. 给小朋友们分糖果 II</a>
         </h2>
 
         <div class="post-meta-container">
@@ -947,7 +420,177 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-09-11 20:20:22" itemprop="dateCreated datePublished" datetime="2023-09-11T20:20:22+00:00">2023-09-11</time>
+      <time title="创建时间：2024-01-02 13:59:41" itemprop="dateCreated datePublished" datetime="2024-01-02T13:59:41+00:00">2024-01-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/distribute-candies-among-children-ii/description/">100127. 给小朋友们分糖果 II</a></p><hr /><p>给你两个正整数 <code>n</code> 和 <code>limit</code> 。</p><p>请你将 <code>n</code> 颗糖果分给 <code>3</code> 位小朋友，确保没有任何小朋友得到超过 <code>limit</code> 颗糖果，请你返回满足此条件下的 <strong>总方案数</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 5, limit = 2</p><p>输出：3</p><p>解释：总共有 3 种方法分配 5 颗糖果，且每位小朋友的糖果数不超过 2 ：(1, 2, 2) ，(2, 1, 2) 和 (2, 2, 1) 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 3, limit = 3</p><p>输出：10</p><p>解释：总共有 10 种方法分配 3 颗糖果，且每位小朋友的糖果数不超过 3 ：(0, 0, 3) ，(0, 1, 2) ，(0, 2, 1) ，(0, 3, 0) ，(1, 0, 2) ，(1, 1, 1) ，(1, 2, 0) ，(2, 0, 1) ，(2, 1, 0) 和 (3, 0, 0) 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 10^6</code></p></li><li><p><code>1 &amp;lt;= limit &amp;lt;= 10^6</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/100127.%20%E7%BB%99%E5%B0%8F%E6%9C%8B%E5%8F%8B%E4%BB%AC%E5%88%86%E7%B3%96%E6%9E%9C%20II/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/%E7%BB%9F%E8%AE%A1%E6%84%9F%E5%86%92%E5%BA%8F%E5%88%97%E7%9A%84%E6%95%B0%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/%E7%BB%9F%E8%AE%A1%E6%84%9F%E5%86%92%E5%BA%8F%E5%88%97%E7%9A%84%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">统计感冒序列的数目</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-02 13:59:41" itemprop="dateCreated datePublished" datetime="2024-01-02T13:59:41+00:00">2024-01-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-the-number-of-infection-sequences/description/">2954. 统计感冒序列的数目</a></p><hr /><p>给你一个整数 <code>n</code> 和一个下标从 <strong>0</strong> 开始的整数数组 <code>sick</code> ，数组按 <strong>升序</strong> 排序。</p><p>有 <code>n</code> 位小朋友站成一排，按顺序编号为 <code>0</code> 到 <code>n - 1</code> 。数组 <code>sick</code> 包含一开始得了感冒的小朋友的位置。如果位置为 <code>i</code> 的小朋友得了感冒，他会传染给下标为 <code>i - 1</code> 或者 <code>i + 1</code> 的小朋友，<strong>前提</strong> 是被传染的小朋友存在且还没有得感冒。每一秒中， <strong>至多一位</strong> 还没感冒的小朋友会被传染。</p><p>经过有限的秒数后，队列中所有小朋友都会感冒。<strong>感冒序列</strong> 指的是 <strong>所有</strong> 一开始没有感冒的小朋友最后得感冒的顺序序列。请你返回所有感冒序列的数目。</p><p>由于答案可能很大，请你将答案对 <code>10^9 + 7</code> 取余后返回。</p><p><strong>注意</strong>，感冒序列 <strong>不</strong> 包含一开始就得了感冒的小朋友的下标。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 5, sick = [0,4]</p><p>输出：4</p><p>解释：一开始，下标为 1 ，2 和 3 的小朋友没有感冒。总共有 4 个可能的感冒序列：</p><ul><li>一开始，下标为 1 和 3 的小朋友可以被传染，因为他们分别挨着有感冒的小朋友 0 和 4 ，令下标为 1 的小朋友先被传染。</li></ul><p>然后，下标为 2 的小朋友挨着感冒的小朋友 1 ，下标为 3 的小朋友挨着感冒的小朋友 4 ，两位小朋友都可以被传染，令下标为 2 的小朋友被传染。</p><p>最后，下标为 3 的小朋友被传染，因为他挨着感冒的小朋友 2 和 4 ，感冒序列为 [1,2,3] 。</p><ul><li>一开始，下标为 1 和 3 的小朋友可以被传染，因为他们分别挨着感冒的小朋友 0 和 4 ，令下标为 1 的小朋友先被传染。</li></ul><p>然后，下标为 2 的小朋友挨着感冒的小朋友 1 ，下标为 3 的小朋友挨着感冒的小朋友 4 ，两位小朋友都可以被传染，令下标为 3 的小朋友被传染。</p><p>最后，下标为 2 的小朋友被传染，因为他挨着感冒的小朋友 1 和 3 ，感冒序列为  [1,3,2] 。</p><ul><li><p>感冒序列 [3,1,2] ，被传染的顺序：[0,1,2,3,4] =&gt; [0,1,2,3,4] =&gt; [0,1,2,3,4] =&gt; [0,1,2,3,4] 。</p></li><li><p>感冒序列 [3,2,1] ，被传染的顺序：[0,1,2,3,4] =&gt; [0,1,2,3,4] =&gt; [0,1,2,3,4] =&gt; [0,1,2,3,4] 。</p></li></ul><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 4, sick = [1]</p><p>输出：3</p><p>解释：一开始，下标为 0 ，2 和 3 的小朋友没有感冒。总共有 3 个可能的感冒序列：</p><ul><li><p>感冒序列 [0,2,3] ，被传染的顺序：[0,1,2,3] =&gt; [0,1,2,3] =&gt; [0,1,2,3] =&gt; [0,1,2,3] 。</p></li><li><p>感冒序列 [2,0,3] ，被传染的顺序：[0,1,2,3] =&gt; [0,1,2,3] =&gt; [0,1,2,3] =&gt; [0,1,2,3] 。</p></li><li><p>感冒序列 [2,3,0] ，被传染的顺序：[0,1,2,3] =&gt; [0,1,2,3] =&gt; [0,1,2,3] =&gt; [0,1,2,3] 。</p></li></ul><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>2 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= sick.length &amp;lt;= n - 1</code></p></li><li><p><code>0 &amp;lt;= sick[i] &amp;lt;= n - 1</code></p></li><li><p><code>sick</code> 按升序排列。</p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/%E7%BB%9F%E8%AE%A1%E6%84%9F%E5%86%92%E5%BA%8F%E5%88%97%E7%9A%84%E6%95%B0%E7%9B%AE/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/12/09/1010B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2023/12/09/1010B/" class="post-title-link" itemprop="url">Rocket</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-02 13:59:41" itemprop="dateCreated datePublished" datetime="2024-01-02T13:59:41+00:00">2024-01-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -973,10 +616,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出n个字符串，字符串会逐个两两合并。</p><p>合并的规则：选择一个最大的len，且满足前一个字符串的后缀len且等于后一个字符串的前缀len，将这部分合并。</p><p>输出最终合并结果。</p></ul></p>
+          <p><ul style="text-align:left;"><p>交互题</p><p>有一个x，它是属于1到m之间的整数。</p><p>每次可向系统询问y。当y &lt; x，则返回1；当y &gt; x，则返回-1；当y = x，则返回0。</p><p>但是，系统有时候的返回值是错误的，具体的，当正常返回值为x时，系统返回的为-x。</p><p>系统的查询结果正确性是以n为周期的。n不超过30。</p><p>现在，要求在不超过60次查询内找出x。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2023/09/06/1200E/">
+              <a class="btn" href="/codeforces/ape/2023/12/09/1010B/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1007,7 +650,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/2851.%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/12/13/1746D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -1025,7 +668,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/2851.%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" class="post-title-link" itemprop="url">2851. 字符串转换</a>
+          <a href="/codeforces/ape/2023/12/13/1746D/" class="post-title-link" itemprop="url">Paths on the Tree</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1036,7 +679,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-09-11 20:20:21" itemprop="dateCreated datePublished" datetime="2023-09-11T20:20:21+00:00">2023-09-11</time>
+      <time title="创建时间：2024-01-02 13:59:41" itemprop="dateCreated datePublished" datetime="2024-01-02T13:59:41+00:00">2024-01-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1044,7 +687,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -1058,10 +705,366 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/string-transformation/">2851. 字符串转换</a></p><hr /><p>You are given two strings <code>s</code> and <code>t</code> of equal length <code>n</code>. You can perform the following operation on the string <code>s</code>:</p><ul><li><p>Remove a <strong>suffix</strong> of <code>s</code> of length <code>l</code> where <code>0 &amp;lt; l &amp;lt; n</code> and append it at the start of <code>s</code>.  </p><p>For example, let <code>s = &amp;#x27;abcd&amp;#x27;</code> then in one operation you can remove the suffix <code>&amp;#x27;cd&amp;#x27;</code> and append it in front of <code>s</code> making <code>s = &amp;#x27;cdab&amp;#x27;</code>.</p></li></ul><p>You are also given an integer <code>k</code>. Return <em>the number of ways in which</em> <code>s</code> <em>can be transformed into</em> <code>t</code> <em>in </em><em>exactly</em><em><em> <code>k</code> </em>operations.</em></p><p>Since the answer can be large, return it <strong>modulo</strong> <code>10^9 + 7</code>.</p><p><strong>Example 1:</strong></p><p>```txt</p><p>Input: s = &quot;abcd&quot;, t = &quot;cdab&quot;, k = 2</p><p>Output: 2</p><p>Explanation: </p><p>First way:</p><p>In first operation, choose suffix from index = 3, so resulting s = &quot;dabc&quot;.</p><p>In second operation, choose suffix from index = 3, so resulting s = &quot;cdab&quot;.</p><p>Second way:</p><p>In first operation, choose suffix from index = 1, so resulting s = &quot;bcda&quot;.</p><p>In second operation, choose suffix from index = 1, so resulting s = &quot;cdab&quot;.</p><p>```</p><p><strong>Example 2:</strong></p><p>```txt</p><p>Input: s = &quot;ababab&quot;, t = &quot;ababab&quot;, k = 1</p><p>Output: 2</p><p>Explanation: </p><p>First way:</p><p>Choose suffix from index = 2, so resulting s = &quot;ababab&quot;.</p><p>Second way:</p><p>Choose suffix from index = 4, so resulting s = &quot;ababab&quot;.</p><p>```</p><p><strong>Constraints:</strong></p><ul><li><p><code>2 &amp;lt;= s.length &amp;lt;= 5 * 10^5</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= 10^15</code></p></li><li><p><code>s.length == t.length</code></p></li><li><p><code>s</code> and <code>t</code> consist of only lowercase English alphabets.</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>给出一颗n个节点的树，并且每个节点都有权值，现在需要选择k条从根出发的路径，使得每条所选路径上节点权值之和最大。要求是每个节点选择的次数与其他所有兄弟节点被选次数相差不超过1。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/2851.%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/">
+              <a class="btn" href="/codeforces/ape/2023/12/13/1746D/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/11/01/1413C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2023/11/01/1413C/" class="post-title-link" itemprop="url">Perform Easily</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-08 21:29:38" itemprop="dateCreated datePublished" datetime="2023-11-08T21:29:38+00:00">2023-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p>一把吉他6根弦，假设有无限品。</p><p>现在弹奏i弦j品会得到$a_i+j$音符</p><p>现在给出$b_1, b_2, \cdots, b_n$共计n个音符，每个音符都可以在不同的弦品组合上演奏，弹奏的难易程度取决于所用品格的最大指数和最小指数之间的差值。这种差值越小，演奏就越容易。请确定最小的可能差值。</p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/ape/2023/11/01/1413C/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/11/05/1733D2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2023/11/05/1733D2/" class="post-title-link" itemprop="url">Zero-One (Hard Version)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-08 21:29:38" itemprop="dateCreated datePublished" datetime="2023-11-08T21:29:38+00:00">2023-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p>给出两个长度都为n的01字符串a和b。</p><p>现在每次操作可以选择a中两个索引l和r，$(l&lt;r)$。</p><p>让$a_l$变为$1-a_l$，让$a_r$变为$1-a_r$</p><p>如果$l+1=r$，则操作代价为x否则操作代价为y。</p><p>问让a变为b的最小代价。</p><p>$5 \le n \le 5000$</p><p>$1 \le x, y\le 10^9$</p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/ape/2023/11/05/1733D2/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/11/03/1080D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2023/11/03/1080D/" class="post-title-link" itemprop="url">Olya and magical square</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-08 21:29:37" itemprop="dateCreated datePublished" datetime="2023-11-08T21:29:37+00:00">2023-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p>给出一个数n和k，代表着有一个$2^n\times2^n$的正方形，和操作k次。</p><p>每次操作可以从当前局面中选出一个正方形，将其划分为四个小正方形。</p><p>问能否在k次操作后，使得左下角的正方形和右上角的正方形边长都为l，且两者间存在一条边长都为l的正方形组成的路径。</p><p>输出可能的l。</p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/ape/2023/11/03/1080D/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/11/04/1117C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2023/11/04/1117C/" class="post-title-link" itemprop="url">Magic Ship</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-08 21:29:37" itemprop="dateCreated datePublished" datetime="2023-11-08T21:29:37+00:00">2023-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p>在无边无际的大海上，有一艘船所在位置为(x1,y1)，需要到达目的地(x2,y2)。</p><p>现在船每天可以朝四个方向中的某一个方向移动一个单位或者不动。</p><p>此外由于天气原因，每天的风向会让船向某个方向移动一个单位。</p><p>告诉你接下来n天的天气，n天之后的天气是周期性变化的。</p><p>现在问到达目的地的最少天数。</p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/ape/2023/11/04/1117C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1085,7 +1088,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

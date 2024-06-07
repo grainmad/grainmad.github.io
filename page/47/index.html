@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">510</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">554</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">510</span>
+          <span class="site-state-item-count">554</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9B%AE%E6%A0%87%E5%80%BC%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E5%B9%B3%E8%A1%A1%E6%A0%91/%E9%A4%90%E7%9B%98%E6%A0%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9B%AE%E6%A0%87%E5%80%BC%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/" class="post-title-link" itemprop="url">最接近目标值的子序列和</a>
+          <a href="/leetcode/%E5%B9%B3%E8%A1%A1%E6%A0%91/%E9%A4%90%E7%9B%98%E6%A0%88/" class="post-title-link" itemprop="url">餐盘栈</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,7 +239,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+      <time title="创建时间：2023-04-28 22:57:50" itemprop="dateCreated datePublished" datetime="2023-04-28T22:57:50+00:00">2023-04-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,10 +268,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/closest-subsequence-sum/">1755. 最接近目标值的子序列和</a></p><hr /><p>给你一个整数数组 <code>nums</code> 和一个目标值 <code>goal</code> 。</p><p>你需要从 <code>nums</code> 中选出一个子序列，使子序列元素总和最接近 <code>goal</code> 。也就是说，如果子序列元素和为 <code>sum</code> ，你需要 <strong>最小化绝对差</strong> <code>abs(sum - goal)</code> 。</p><p>返回 <code>abs(sum - goal)</code> 可能的 <strong>最小值</strong> 。</p><p>注意，数组的子序列是通过移除原始数组中的某些元素（可能全部或无）而形成的数组。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [5,-7,3,5], goal = 6</p><p>输出：0</p><p>解释：选择整个数组作为选出的子序列，元素和为 6 。</p><p>子序列和与目标值相等，所以绝对差为 0 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [7,-9,15,-2], goal = -5</p><p>输出：1</p><p>解释：选出子序列 [7,-9,-2] ，元素和为 -4 。</p><p>绝对差为 abs(-4 - (-5)) = abs(1) = 1 ，是可能的最小值。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [1,2,3], goal = -7</p><p>输出：7</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 40</code></p></li><li><p><code>-10^7 &amp;lt;= nums[i] &amp;lt;= 10^7</code></p></li><li><p><code>-10^9 &amp;lt;= goal &amp;lt;= 10^9</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/dinner-plate-stacks/">1172. 餐盘栈</a></p><hr /><p>我们把无限数量 ∞ 的栈排成一行，按从左到右的次序从 0 开始编号。每个栈的的最大容量 <code>capacity</code> 都相同。</p><p>实现一个叫「餐盘」的类 <code>DinnerPlates</code>：</p><ul><li><p><code>DinnerPlates(int capacity)</code> - 给出栈的最大容量 <code>capacity</code>。</p></li><li><p><code>void push(int val)</code> - 将给出的正整数 <code>val</code> 推入 <strong>从左往右第一个</strong> 没有满的栈。</p></li><li><p><code>int pop()</code> - 返回 <strong>从右往左第一个</strong> 非空栈顶部的值，并将其从栈中删除；如果所有的栈都是空的，请返回 <code>-1</code>。</p></li><li><p><code>int popAtStack(int index)</code> - 返回编号 <code>index</code> 的栈顶部的值，并将其从栈中删除；如果编号 <code>index</code> 的栈是空的，请返回 <code>-1</code>。</p></li></ul><p><strong>示例：</strong></p><p>```txt</p><p>输入： </p><p>[&quot;DinnerPlates&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;popAtStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;popAtStack&quot;,&quot;popAtStack&quot;,&quot;pop&quot;,&quot;pop&quot;,&quot;pop&quot;,&quot;pop&quot;,&quot;pop&quot;]</p><p>[[2],[1],[2],[3],[4],[5],[0],[20],[21],[0],[2],[],[],[],[],[]]</p><p>输出：</p><p>[null,null,null,null,null,null,2,null,null,20,21,5,4,3,1,-1]</p><p>解释：</p><p>DinnerPlates D = DinnerPlates(2);  // 初始化，栈最大容量 capacity = 2</p><p>D.push(1);</p><p>D.push(2);</p><p>D.push(3);</p><p>D.push(4);</p><p>D.push(5);         // 栈的现状为：    2  4</p><p>1  3  5</p><pre><code>                                ﹈ ﹈ ﹈</code></pre><p>D.popAtStack(0);   // 返回 2。栈的现状为：      4</p><pre><code>                                      1  3  5                                      ﹈ ﹈ ﹈</code></pre><p>D.push(20);        // 栈的现状为：  20  4</p><p>1  3  5</p><pre><code>                               ﹈ ﹈ ﹈</code></pre><p>D.push(21);        // 栈的现状为：  20  4 21</p><p>1  3  5</p><pre><code>                               ﹈ ﹈ ﹈</code></pre><p>D.popAtStack(0);   // 返回 20。栈的现状为：       4 21</p><pre><code>                                        1  3  5                                        ﹈ ﹈ ﹈</code></pre><p>D.popAtStack(2);   // 返回 21。栈的现状为：       4</p><pre><code>                                        1  3  5                                        ﹈ ﹈ ﹈</code></pre><p>D.pop()            // 返回 5。栈的现状为：        4</p><pre><code>                                        1  3                                        ﹈ ﹈</code></pre><p>D.pop()            // 返回 4。栈的现状为：    1  3 </p><pre><code>                                       ﹈ ﹈</code></pre><p>D.pop()            // 返回 3。栈的现状为：    1 </p><pre><code>                                       ﹈</code></pre><p>D.pop()            // 返回 1。现在没有栈。</p><p>D.pop()            // 返回 -1。仍然没有栈。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= capacity &amp;lt;= 20000</code></p></li><li><p><code>1 &amp;lt;= val &amp;lt;= 20000</code></p></li><li><p><code>0 &amp;lt;= index &amp;lt;= 100000</code></p></li><li><p>最多会对 <code>push</code>，<code>pop</code>，和 <code>popAtStack</code> 进行 <code>200000</code> 次调用。</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9B%AE%E6%A0%87%E5%80%BC%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/">
+              <a class="btn" href="/leetcode/%E5%B9%B3%E8%A1%A1%E6%A0%91/%E9%A4%90%E7%9B%98%E6%A0%88/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -302,7 +302,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E9%AB%98%E7%9A%84%E5%B9%BF%E5%91%8A%E7%89%8C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E5%8C%BA%E9%97%B4%E8%AE%A1%E6%95%B0/%E4%BD%BF%E6%95%B0%E7%BB%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%8F%98%E6%88%90%201%20%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -320,7 +320,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E9%AB%98%E7%9A%84%E5%B9%BF%E5%91%8A%E7%89%8C/" class="post-title-link" itemprop="url">最高的广告牌</a>
+          <a href="/leetcode/%E5%8C%BA%E9%97%B4%E8%AE%A1%E6%95%B0/%E4%BD%BF%E6%95%B0%E7%BB%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%8F%98%E6%88%90%201%20%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/" class="post-title-link" itemprop="url">使数组所有元素变成 1 的最少操作次数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -331,7 +331,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+      <time title="创建时间：2023-04-23 21:15:25" itemprop="dateCreated datePublished" datetime="2023-04-23T21:15:25+00:00">2023-04-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -360,10 +360,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/tallest-billboard/">956. 最高的广告牌</a></p><hr /><p>你正在安装一个广告牌，并希望它高度最大。这块广告牌将有两个钢制支架，两边各一个。每个钢支架的高度必须相等。</p><p>你有一堆可以焊接在一起的钢筋 <code>rods</code>。举个例子，如果钢筋的长度为 <code>1</code>、<code>2</code> 和 <code>3</code>，则可以将它们焊接在一起形成长度为 <code>6</code> 的支架。</p><p>返回 <em>广告牌的最大可能安装高度</em> 。如果没法安装广告牌，请返回 <code>0</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：[1,2,3,6]</p><p>输出：6</p><p>解释：我们有两个不相交的子集 {1,2,3} 和 {6}，它们具有相同的和 sum = 6。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：[1,2,3,4,5,6]</p><p>输出：10</p><p>解释：我们有两个不相交的子集 {2,3,5} 和 {4,6}，它们具有相同的和 sum = 10。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：[1,2]</p><p>输出：0</p><p>解释：没法安装广告牌，所以返回 0。</p><p>```</p><p><strong>提示：</strong></p><ol><li><p><code>0 &amp;lt;= rods.length &amp;lt;= 20</code></p></li><li><p><code>1 &amp;lt;= rods[i] &amp;lt;= 1000</code></p></li><li><p><code>sum(rods[i]) &amp;lt;= 5000</code></p></li></ol></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-operations-to-make-all-array-elements-equal-to-1/">6392. 使数组所有元素变成 1 的最少操作次数</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始的 <strong>正</strong> 整数数组 <code>nums</code> 。你可以对数组执行以下操作 <strong>任意</strong> 次：</p><ul><li>选择一个满足 <code>0 &amp;lt;= i &amp;lt; n - 1</code> 的下标 <code>i</code> ，将 <code>nums[i]</code> 或者 <code>nums[i+1]</code> 两者之一替换成它们的最大公约数。</li></ul><p>请你返回使数组 <code>nums</code> 中所有元素都等于 <code>1</code> 的 <strong>最少</strong> 操作次数。如果无法让数组全部变成 <code>1</code> ，请你返回 <code>-1</code> 。</p><p>两个正整数的最大公约数指的是能整除这两个数的最大正整数。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [2,6,3,4]</p><p>输出：4</p><p>解释：我们可以执行以下操作：</p><ul><li><p>选择下标 i = 2 ，将 nums[2] 替换为 gcd(3,4) = 1 ，得到 nums = [2,6,1,4] 。</p></li><li><p>选择下标 i = 1 ，将 nums[1] 替换为 gcd(6,1) = 1 ，得到 nums = [2,1,1,4] 。</p></li><li><p>选择下标 i = 0 ，将 nums[0] 替换为 gcd(2,1) = 1 ，得到 nums = [1,1,1,4] 。</p></li><li><p>选择下标 i = 2 ，将 nums[3] 替换为 gcd(1,4) = 1 ，得到 nums = [1,1,1,1] 。</p></li></ul><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [2,10,6,14]</p><p>输出：-1</p><p>解释：无法将所有元素都变成 1 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>2 &amp;lt;= nums.length &amp;lt;= 50</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^6</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E9%AB%98%E7%9A%84%E5%B9%BF%E5%91%8A%E7%89%8C/">
+              <a class="btn" href="/leetcode/%E5%8C%BA%E9%97%B4%E8%AE%A1%E6%95%B0/%E4%BD%BF%E6%95%B0%E7%BB%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%8F%98%E6%88%90%201%20%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -394,7 +394,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E7%9B%AE%E6%A0%87%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E8%AE%BE%E8%AE%A1%E5%8F%AF%E4%BB%A5%E6%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -412,7 +412,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E7%9B%AE%E6%A0%87%E5%92%8C/" class="post-title-link" itemprop="url">目标和</a>
+          <a href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E8%AE%BE%E8%AE%A1%E5%8F%AF%E4%BB%A5%E6%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%B1%BB/" class="post-title-link" itemprop="url">设计可以求最短路径的图类</a>
         </h2>
 
         <div class="post-meta-container">
@@ -423,7 +423,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+      <time title="创建时间：2023-04-16 17:23:34" itemprop="dateCreated datePublished" datetime="2023-04-16T17:23:34+00:00">2023-04-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -452,10 +452,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/target-sum/">494. 目标和</a></p><hr /><p>给你一个整数数组 <code>nums</code> 和一个整数 <code>target</code> 。</p><p>向数组中的每个整数前添加 <code>&amp;#x27;+&amp;#x27;</code> 或 <code>&amp;#x27;-&amp;#x27;</code> ，然后串联起所有整数，可以构造一个 <strong>表达式</strong> ：</p><ul><li>例如，<code>nums = [2, 1]</code> ，可以在 <code>2</code> 之前添加 <code>&amp;#x27;+&amp;#x27;</code> ，在 <code>1</code> 之前添加 <code>&amp;#x27;-&amp;#x27;</code> ，然后串联起来得到表达式 <code>&amp;quot;+2-1&amp;quot;</code> 。</li></ul><p>返回可以通过上述方法构造的、运算结果等于 <code>target</code> 的不同 <strong>表达式</strong> 的数目。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,1,1,1,1], target = 3</p><p>输出：5</p><p>解释：一共有 5 种方法让最终目标和为 3 。</p><p>-1 + 1 + 1 + 1 + 1 = 3</p><p>+1 - 1 + 1 + 1 + 1 = 3</p><p>+1 + 1 - 1 + 1 + 1 = 3</p><p>+1 + 1 + 1 - 1 + 1 = 3</p><p>+1 + 1 + 1 + 1 - 1 = 3</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1], target = 1</p><p>输出：1</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 20</code></p></li><li><p><code>0 &amp;lt;= nums[i] &amp;lt;= 1000</code></p></li><li><p><code>0 &amp;lt;= sum(nums[i]) &amp;lt;= 1000</code></p></li><li><p><code>-1000 &amp;lt;= target &amp;lt;= 1000</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-graph-with-shortest-path-calculator/">6336. 设计可以求最短路径的图类</a></p><hr /><p>给你一个有 <code>n</code> 个节点的 <strong>有向带权</strong> 图，节点编号为 <code>0</code> 到 <code>n - 1</code> 。图中的初始边用数组 <code>edges</code> 表示，其中 <code>edges[i] = [fromi, toi, edgeCosti]</code> 表示从 <code>fromi</code> 到 <code>toi</code> 有一条代价为 <code>edgeCosti</code> 的边。</p><p>请你实现一个 <code>Graph</code> 类：</p><ul><li><p><code>Graph(int n, int[][] edges)</code> 初始化图有 <code>n</code> 个节点，并输入初始边。</p></li><li><p><code>addEdge(int[] edge)</code> 向边集中添加一条边，其中 <code>edge = [from, to, edgeCost]</code> 。数据保证添加这条边之前对应的两个节点之间没有有向边。</p></li><li><p><code>int shortestPath(int node1, int node2)</code> 返回从节点 <code>node1</code> 到 <code>node2</code> 的路径 <strong>最小</strong> 代价。如果路径不存在，返回 <code>-1</code> 。一条路径的代价是路径中所有边代价之和。</p></li></ul><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/01/11/graph3drawio-2.png" /></p><p>```txt</p><p>输入：</p><p>[&quot;Graph&quot;, &quot;shortestPath&quot;, &quot;shortestPath&quot;, &quot;addEdge&quot;, &quot;shortestPath&quot;]</p><p>[[4, [[0, 2, 5], [0, 1, 2], [1, 2, 1], [3, 0, 3]]], [3, 2], [0, 3], [[1, 3, 4]], [0, 3]]</p><p>输出：</p><p>[null, 6, -1, null, 6]</p><p>解释：</p><p>Graph g = new Graph(4, [[0, 2, 5], [0, 1, 2], [1, 2, 1], [3, 0, 3]]);</p><p>g.shortestPath(3, 2); // 返回 6 。从 3 到 2 的最短路径如第一幅图所示：3 -&gt; 0 -&gt; 1 -&gt; 2 ，总代价为 3 + 2 + 1 = 6 。</p><p>g.shortestPath(0, 3); // 返回 -1 。没有从 0 到 3 的路径。</p><p>g.addEdge([1, 3, 4]); // 添加一条节点 1 到节点 3 的边，得到第二幅图。</p><p>g.shortestPath(0, 3); // 返回 6 。从 0 到 3 的最短路径为 0 -&gt; 1 -&gt; 3 ，总代价为 2 + 4 = 6 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 100</code></p></li><li><p><code>0 &amp;lt;= edges.length &amp;lt;= n * (n - 1)</code></p></li><li><p><code>edges[i].length == edge.length == 3</code></p></li><li><p><code>0 &amp;lt;= fromi, toi, from, to, node1, node2 &amp;lt;= n - 1</code></p></li><li><p><code>1 &amp;lt;= edgeCosti, edgeCost &amp;lt;= 10^6</code></p></li><li><p>图中任何时候都不会有重边和自环。</p></li><li><p>调用 <code>addEdge</code> 至多 <code>100</code> 次。</p></li><li><p>调用 <code>shortestPath</code> 至多 <code>100</code> 次。</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E7%9B%AE%E6%A0%87%E5%92%8C/">
+              <a class="btn" href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E8%AE%BE%E8%AE%A1%E5%8F%AF%E4%BB%A5%E6%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%B1%BB/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -486,7 +486,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E6%9C%80%E5%B0%8F%E5%8C%96%E6%97%85%E8%A1%8C%E7%9A%84%E4%BB%B7%E6%A0%BC%E6%80%BB%E5%92%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -504,7 +504,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/" class="post-title-link" itemprop="url">收集树中金币</a>
+          <a href="/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E6%9C%80%E5%B0%8F%E5%8C%96%E6%97%85%E8%A1%8C%E7%9A%84%E4%BB%B7%E6%A0%BC%E6%80%BB%E5%92%8C/" class="post-title-link" itemprop="url">最小化旅行的价格总和</a>
         </h2>
 
         <div class="post-meta-container">
@@ -515,7 +515,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+      <time title="创建时间：2023-04-16 17:23:34" itemprop="dateCreated datePublished" datetime="2023-04-16T17:23:34+00:00">2023-04-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -544,10 +544,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/collect-coins-in-a-tree/">6356. 收集树中金币</a></p><hr /><p>给你一个 <code>n</code> 个节点的无向无根树，节点编号从 <code>0</code> 到 <code>n - 1</code> 。给你整数 <code>n</code> 和一个长度为 <code>n - 1</code> 的二维整数数组 <code>edges</code> ，其中 <code>edges[i] = [ai, bi]</code> 表示树中节点 <code>ai</code> 和 <code>bi</code> 之间有一条边。再给你一个长度为 <code>n</code> 的数组 <code>coins</code> ，其中 <code>coins[i]</code> 可能为 <code>0</code> 也可能为 <code>1</code> ，<code>1</code> 表示节点 <code>i</code> 处有一个金币。</p><p>一开始，你需要选择树中任意一个节点出发。你可以执行下述操作任意次：</p><ul><li><p>收集距离当前节点距离为 <code>2</code> 以内的所有金币，或者</p></li><li><p>移动到树中一个相邻节点。</p></li></ul><p>你需要收集树中所有的金币，并且回到出发节点，请你返回最少经过的边数。</p><p>如果你多次经过一条边，每一次经过都会给答案加一。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/03/01/graph-2.png" /></p><p>```txt</p><p>输入：coins = [1,0,0,0,0,1], edges = [[0,1],[1,2],[2,3],[3,4],[4,5]]</p><p>输出：2</p><p>解释：从节点 2 出发，收集节点 0 处的金币，移动到节点 3 ，收集节点 5 处的金币，然后移动回节点 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/03/02/graph-4.png" /></p><p>```txt</p><p>输入：coins = [0,0,0,1,1,0,0,1], edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[5,6],[5,7]]</p><p>输出：2</p><p>解释：从节点 0 出发，收集节点 4 和 3 处的金币，移动到节点 2 处，收集节点 7 处的金币，移动回节点 0 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == coins.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 3 * 10^4</code></p></li><li><p><code>0 &amp;lt;= coins[i] &amp;lt;= 1</code></p></li><li><p><code>edges.length == n - 1</code></p></li><li><p><code>edges[i].length == 2</code></p></li><li><p><code>0 &amp;lt;= ai, bi &amp;lt; n</code></p></li><li><p><code>ai != bi</code></p></li><li><p><code>edges</code> 表示一棵合法的树。</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimize-the-total-price-of-the-trips/">6378. 最小化旅行的价格总和</a></p><hr /><p>现有一棵无向、无根的树，树中有 <code>n</code> 个节点，按从 <code>0</code> 到 <code>n - 1</code> 编号。给你一个整数 <code>n</code> 和一个长度为 <code>n - 1</code> 的二维整数数组 <code>edges</code> ，其中 <code>edges[i] = [ai, bi]</code> 表示树中节点 <code>ai</code> 和 <code>bi</code> 之间存在一条边。</p><p>每个节点都关联一个价格。给你一个整数数组 <code>price</code> ，其中 <code>price[i]</code> 是第 <code>i</code> 个节点的价格。</p><p>给定路径的 <strong>价格总和</strong> 是该路径上所有节点的价格之和。</p><p>另给你一个二维整数数组 <code>trips</code> ，其中 <code>trips[i] = [starti, endi]</code> 表示您从节点 <code>starti</code> 开始第 <code>i</code> 次旅行，并通过任何你喜欢的路径前往节点 <code>endi</code> 。</p><p>在执行第一次旅行之前，你可以选择一些 <strong>非相邻节点</strong> 并将价格减半。</p><p>返回执行所有旅行的最小价格总和。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/03/16/diagram2.png" /></p><p>```txt</p><p>输入：n = 4, edges = [[0,1],[1,2],[1,3]], price = [2,2,10,6], trips = [[0,3],[2,1],[2,3]]</p><p>输出：23</p><p>解释：</p><p>上图表示将节点 2 视为根之后的树结构。第一个图表示初始树，第二个图表示选择节点 0 、2 和 3 并使其价格减半后的树。</p><p>第 1 次旅行，选择路径 [0,1,3] 。路径的价格总和为 1 + 2 + 3 = 6 。</p><p>第 2 次旅行，选择路径 [2,1] 。路径的价格总和为 2 + 5 = 7 。</p><p>第 3 次旅行，选择路径 [2,1,3] 。路径的价格总和为 5 + 2 + 3 = 10 。</p><p>所有旅行的价格总和为 6 + 7 + 10 = 23 。可以证明，23 是可以实现的最小答案。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/03/16/diagram3.png" /></p><p>```txt</p><p>输入：n = 2, edges = [[0,1]], price = [2,2], trips = [[0,0]]</p><p>输出：1</p><p>解释：</p><p>上图表示将节点 0 视为根之后的树结构。第一个图表示初始树，第二个图表示选择节点 0 并使其价格减半后的树。 </p><p>第 1 次旅行，选择路径 [0] 。路径的价格总和为 1 。 </p><p>所有旅行的价格总和为 1 。可以证明，1 是可以实现的最小答案。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 50</code></p></li><li><p><code>edges.length == n - 1</code></p></li><li><p><code>0 &amp;lt;= ai, bi &amp;lt;= n - 1</code></p></li><li><p><code>edges</code> 表示一棵有效的树</p></li><li><p><code>price.length == n</code></p></li><li><p><code>price[i]</code> 是一个偶数</p></li><li><p><code>1 &amp;lt;= price[i] &amp;lt;= 1000</code></p></li><li><p><code>1 &amp;lt;= trips.length &amp;lt;= 100</code></p></li><li><p><code>0 &amp;lt;= starti, endi &amp;lt;= n - 1</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/">
+              <a class="btn" href="/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E6%9C%80%E5%B0%8F%E5%8C%96%E6%97%85%E8%A1%8C%E7%9A%84%E4%BB%B7%E6%A0%BC%E6%80%BB%E5%92%8C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -578,7 +578,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E6%95%B0%E7%9B%AE%E7%9B%B8%E7%AD%89/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/BFS/%E4%BD%BF%E7%BD%91%E6%A0%BC%E5%9B%BE%E8%87%B3%E5%B0%91%E6%9C%89%E4%B8%80%E6%9D%A1%E6%9C%89%E6%95%88%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -596,7 +596,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E6%95%B0%E7%9B%AE%E7%9B%B8%E7%AD%89/" class="post-title-link" itemprop="url">使字符串总不同字符的数目相等</a>
+          <a href="/leetcode/BFS/%E4%BD%BF%E7%BD%91%E6%A0%BC%E5%9B%BE%E8%87%B3%E5%B0%91%E6%9C%89%E4%B8%80%E6%9D%A1%E6%9C%89%E6%95%88%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7/" class="post-title-link" itemprop="url">使网格图至少有一条有效路径的最小代价</a>
         </h2>
 
         <div class="post-meta-container">
@@ -607,7 +607,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+      <time title="创建时间：2023-04-09 19:42:20" itemprop="dateCreated datePublished" datetime="2023-04-09T19:42:20+00:00">2023-04-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -636,10 +636,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/make-number-of-distinct-characters-equal/">2531. 使字符串总不同字符的数目相等</a></p><hr /><p>给你两个下标从 <strong>0</strong> 开始的字符串 <code>word1</code> 和 <code>word2</code> 。</p><p>一次 <strong>移动</strong> 由以下两个步骤组成：</p><ul><li><p>选中两个下标 <code>i</code> 和 <code>j</code> ，分别满足 <code>0 &amp;lt;= i &amp;lt; word1.length</code> 和 <code>0 &amp;lt;= j &amp;lt; word2.length</code> ，</p></li><li><p>交换 <code>word1[i]</code> 和 <code>word2[j]</code> 。</p></li></ul><p>如果可以通过 <strong>恰好一次</strong> 移动，使 <code>word1</code> 和 <code>word2</code> 中不同字符的数目相等，则返回 <code>true</code> ；否则，返回 <code>false</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：word1 = &quot;ac&quot;, word2 = &quot;b&quot;</p><p>输出：false</p><p>解释：交换任何一组下标都会导致第一个字符串中有 2 个不同的字符，而在第二个字符串中只有 1 个不同字符。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：word1 = &quot;abcc&quot;, word2 = &quot;aab&quot;</p><p>输出：true</p><p>解释：交换第一个字符串的下标 2 和第二个字符串的下标 0 。之后得到 word1 = &quot;abac&quot; 和 word2 = &quot;cab&quot; ，各有 3 个不同字符。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：word1 = &quot;abcde&quot;, word2 = &quot;fghij&quot;</p><p>输出：true</p><p>解释：无论交换哪一组下标，两个字符串中都会有 5 个不同字符。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= word1.length, word2.length &amp;lt;= 10^5</code></p></li><li><p><code>word1</code> 和 <code>word2</code> 仅由小写英文字母组成。</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/">1368. 使网格图至少有一条有效路径的最小代价</a></p><hr /><p>给你一个 m x n 的网格图 <code>grid</code> 。 <code>grid</code> 中每个格子都有一个数字，对应着从该格子出发下一步走的方向。 <code>grid[i][j]</code> 中的数字可能为以下几种情况：</p><ul><li><p><strong>1</strong> ，下一步往右走，也就是你会从 <code>grid[i][j]</code> 走到 <code>grid[i][j + 1]</code></p></li><li><p><strong>2</strong> ，下一步往左走，也就是你会从 <code>grid[i][j]</code> 走到 <code>grid[i][j - 1]</code></p></li><li><p><strong>3</strong> ，下一步往下走，也就是你会从 <code>grid[i][j]</code> 走到 <code>grid[i + 1][j]</code></p></li><li><p><strong>4</strong> ，下一步往上走，也就是你会从 <code>grid[i][j]</code> 走到 <code>grid[i - 1][j]</code></p></li></ul><p>注意网格图中可能会有 <strong>无效数字</strong> ，因为它们可能指向 <code>grid</code> 以外的区域。</p><p>一开始，你会从最左上角的格子 <code>(0,0)</code> 出发。我们定义一条 <strong>有效路径</strong> 为从格子 <code>(0,0)</code> 出发，每一步都顺着数字对应方向走，最终在最右下角的格子 <code>(m - 1, n - 1)</code> 结束的路径。有效路径 <strong>不需要是最短路径</strong> 。</p><p>你可以花费 <code>cost = 1</code> 的代价修改一个格子中的数字，但每个格子中的数字 <strong>只能修改一次</strong> 。</p><p>请你返回让网格图至少有一条有效路径的最小代价。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/29/grid1.png" /></p><p>```txt</p><p>输入：grid = [[1,1,1,1],[2,2,2,2],[1,1,1,1],[2,2,2,2]]</p><p>输出：3</p><p>解释：你将从点 (0, 0) 出发。</p><p>到达 (3, 3) 的路径为： (0, 0) --&gt; (0, 1) --&gt; (0, 2) --&gt; (0, 3) 花费代价 cost = 1 使方向向下 --&gt; (1, 3) --&gt; (1, 2) --&gt; (1, 1) --&gt; (1, 0) 花费代价 cost = 1 使方向向下 --&gt; (2, 0) --&gt; (2, 1) --&gt; (2, 2) --&gt; (2, 3) 花费代价 cost = 1 使方向向下 --&gt; (3, 3)</p><p>总花费为 cost = 3.</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/29/grid2.png" /></p><p>```txt</p><p>输入：grid = [[1,1,3],[3,2,2],[1,1,4]]</p><p>输出：0</p><p>解释：不修改任何数字你就可以从 (0, 0) 到达 (2, 2) 。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/29/grid3.png" /></p><p>```txt</p><p>输入：grid = [[1,2],[4,3]]</p><p>输出：1</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：grid = [[2,2,2],[2,2,2]]</p><p>输出：3</p><p>```</p><p><strong>示例 5：</strong></p><p>```txt</p><p>输入：grid = [[4]]</p><p>输出：0</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>1 &amp;lt;= m, n &amp;lt;= 100</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E6%95%B0%E7%9B%AE%E7%9B%B8%E7%AD%89/">
+              <a class="btn" href="/leetcode/BFS/%E4%BD%BF%E7%BD%91%E6%A0%BC%E5%9B%BE%E8%87%B3%E5%B0%91%E6%9C%89%E4%B8%80%E6%9D%A1%E6%9C%89%E6%95%88%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -670,7 +670,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%88%B0%E8%BE%BE%E8%A7%92%E8%90%BD%E9%9C%80%E8%A6%81%E7%A7%BB%E9%99%A4%E9%9A%9C%E7%A2%8D%E7%89%A9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%9B%AE/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/BFS/%E6%9C%80%E5%B0%91%E7%BF%BB%E8%BD%AC%E6%93%8D%E4%BD%9C%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -688,7 +688,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%88%B0%E8%BE%BE%E8%A7%92%E8%90%BD%E9%9C%80%E8%A6%81%E7%A7%BB%E9%99%A4%E9%9A%9C%E7%A2%8D%E7%89%A9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">到达角落需要移除障碍物的最小数目</a>
+          <a href="/leetcode/BFS/%E6%9C%80%E5%B0%91%E7%BF%BB%E8%BD%AC%E6%93%8D%E4%BD%9C%E6%95%B0/" class="post-title-link" itemprop="url">最少翻转操作数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -728,10 +728,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner/">2290. 到达角落需要移除障碍物的最小数目</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始的二维整数数组 <code>grid</code> ，数组大小为 <code>m x n</code> 。每个单元格都是两个值之一：</p><ul><li><p><code>0</code> 表示一个 <strong>空</strong> 单元格，</p></li><li><p><code>1</code> 表示一个可以移除的 <strong>障碍物</strong> 。</p></li></ul><p>你可以向上、下、左、右移动，从一个空单元格移动到另一个空单元格。</p><p>现在你需要从左上角 <code>(0, 0)</code> 移动到右下角 <code>(m - 1, n - 1)</code> ，返回需要移除的障碍物的 <strong>最小</strong> 数目。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/04/06/example1drawio-1.png" /></p><p>```txt</p><p>输入：grid = [[0,1,1],[1,1,0],[1,1,0]]</p><p>输出：2</p><p>解释：可以移除位于 (0, 1) 和 (0, 2) 的障碍物来创建从 (0, 0) 到 (2, 2) 的路径。</p><p>可以证明我们至少需要移除两个障碍物，所以返回 2 。</p><p>注意，可能存在其他方式来移除 2 个障碍物，创建出可行的路径。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/04/06/example1drawio.png" /></p><p>```txt</p><p>输入：grid = [[0,1,0,0,0],[0,1,0,1,0],[0,0,0,1,0]]</p><p>输出：0</p><p>解释：不移除任何障碍物就能从 (0, 0) 到 (2, 4) ，所以返回 0 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>1 &amp;lt;= m, n &amp;lt;= 10^5</code></p></li><li><p><code>2 &amp;lt;= m * n &amp;lt;= 10^5</code></p></li><li><p><code>grid[i][j]</code> 为 <code>0</code> <strong>或</strong> <code>1</code></p></li><li><p><code>grid[0][0] == grid[m - 1][n - 1] == 0</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-reverse-operations/">6365. 最少翻转操作数</a></p><hr /><p>给你一个整数 <code>n</code> 和一个在范围 <code>[0, n - 1]</code> 以内的整数 <code>p</code> ，它们表示一个长度为 <code>n</code> 且下标从 <strong>0</strong> 开始的数组 <code>arr</code> ，数组中除了下标为 <code>p</code> 处是 <code>1</code> 以外，其他所有数都是 <code>0</code> 。</p><p>同时给你一个整数数组 <code>banned</code> ，它包含数组中的一些位置。<code>banned</code> 中第 <strong>i</strong> 个位置表示 <code>arr[banned[i]] = 0</code> ，题目保证 <code>banned[i] != p</code> 。</p><p>你可以对 <code>arr</code> 进行 <strong>若干次</strong> 操作。一次操作中，你选择大小为 <code>k</code> 的一个 <strong>子数组</strong> ，并将它 <strong>翻转</strong> 。在任何一次翻转操作后，你都需要确保 <code>arr</code> 中唯一的 <code>1</code> 不会到达任何 <code>banned</code> 中的位置。换句话说，<code>arr[banned[i]]</code> 始终 <strong>保持</strong> <code>0</code> 。</p><p>请你返回一个数组 <code>ans</code> ，对于 <code>[0, n - 1]</code> 之间的任意下标 <code>i</code> ，<code>ans[i]</code> 是将 <code>1</code> 放到位置 <code>i</code> 处的 <strong>最少</strong> 翻转操作次数，如果无法放到位置 <code>i</code> 处，此数为 <code>-1</code> 。</p><ul><li><p><strong>子数组</strong> 指的是一个数组里一段连续 <strong>非空</strong> 的元素序列。</p></li><li><p>对于所有的 <code>i</code> ，<code>ans[i]</code> 相互之间独立计算。</p></li><li><p>将一个数组中的元素 <strong>翻转</strong> 指的是将数组中的值变成 <strong>相反顺序</strong> 。</p></li></ul><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 4, p = 0, banned = [1,2], k = 4</p><p>输出：[0,-1,-1,1]</p><p>解释：k = 4，所以只有一种可行的翻转操作，就是将整个数组翻转。一开始 1 在位置 0 处，所以将它翻转到位置 0 处需要的操作数为 0 。</p><p>我们不能将 1 翻转到 banned 中的位置，所以位置 1 和 2 处的答案都是 -1 。</p><p>通过一次翻转操作，可以将 1 放到位置 3 处，所以位置 3 的答案是 1 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 5, p = 0, banned = [2,4], k = 3</p><p>输出：[0,-1,-1,-1,-1]</p><p>解释：这个例子中 1 一开始在位置 0 处，所以此下标的答案为 0 。</p><p>翻转的子数组长度为 k = 3 ，1 此时在位置 0 处，所以我们可以翻转子数组 [0, 2]，但翻转后的下标 2 在 banned 中，所以不能执行此操作。</p><p>由于 1 没法离开位置 0 ，所以其他位置的答案都是 -1 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：n = 4, p = 2, banned = [0,1,3], k = 1</p><p>输出：[-1,-1,0,-1]</p><p>解释：这个例子中，我们只能对长度为 1 的子数组执行翻转操作，所以 1 无法离开初始位置。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>0 &amp;lt;= p &amp;lt;= n - 1</code></p></li><li><p><code>0 &amp;lt;= banned.length &amp;lt;= n - 1</code></p></li><li><p><code>0 &amp;lt;= banned[i] &amp;lt;= n - 1</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= n</code> </p></li><li><p><code>banned[i] != p</code></p></li><li><p><code>banned</code> 中的值 <strong>互不相同</strong> 。</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%88%B0%E8%BE%BE%E8%A7%92%E8%90%BD%E9%9C%80%E8%A6%81%E7%A7%BB%E9%99%A4%E9%9A%9C%E7%A2%8D%E7%89%A9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%9B%AE/">
+              <a class="btn" href="/leetcode/BFS/%E6%9C%80%E5%B0%91%E7%BF%BB%E8%BD%AC%E6%93%8D%E4%BD%9C%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -762,7 +762,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%9C%A8%E7%BD%91%E6%A0%BC%E5%9B%BE%E4%B8%AD%E8%AE%BF%E9%97%AE%E4%B8%80%E4%B8%AA%E6%A0%BC%E5%AD%90%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/BFS/%E7%BB%9F%E8%AE%A1%E5%AD%90%E6%A0%91%E4%B8%AD%E5%9F%8E%E5%B8%82%E4%B9%8B%E9%97%B4%E6%9C%80%E5%A4%A7%E8%B7%9D%E7%A6%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -780,7 +780,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%9C%A8%E7%BD%91%E6%A0%BC%E5%9B%BE%E4%B8%AD%E8%AE%BF%E9%97%AE%E4%B8%80%E4%B8%AA%E6%A0%BC%E5%AD%90%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/" class="post-title-link" itemprop="url">在网格图中访问一个格子的最少时间</a>
+          <a href="/leetcode/BFS/%E7%BB%9F%E8%AE%A1%E5%AD%90%E6%A0%91%E4%B8%AD%E5%9F%8E%E5%B8%82%E4%B9%8B%E9%97%B4%E6%9C%80%E5%A4%A7%E8%B7%9D%E7%A6%BB/" class="post-title-link" itemprop="url">统计子树中城市之间最大距离</a>
         </h2>
 
         <div class="post-meta-container">
@@ -820,10 +820,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-time-to-visit-a-cell-in-a-grid/">6366. 在网格图中访问一个格子的最少时间</a></p><hr /><p>给你一个 <code>m x n</code> 的矩阵 <code>grid</code> ，每个元素都为 <strong>非负</strong> 整数，其中 <code>grid[row][col]</code> 表示可以访问格子 <code>(row, col)</code> 的 <strong>最早</strong> 时间。也就是说当你访问格子 <code>(row, col)</code> 时，最少已经经过的时间为 <code>grid[row][col]</code> 。</p><p>你从 <strong>最左上角</strong> 出发，出发时刻为 <code>0</code> ，你必须一直移动到上下左右相邻四个格子中的 <strong>任意</strong> 一个格子（即不能停留在格子上）。每次移动都需要花费 1 单位时间。</p><p>请你返回 <strong>最早</strong> 到达右下角格子的时间，如果你无法到达右下角的格子，请你返回 <code>-1</code> 。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/02/14/yetgriddrawio-8.png" /></p><p>```txt</p><p>输入：grid = [[0,1,3,2],[5,1,2,5],[4,3,8,6]]</p><p>输出：7</p><p>解释：一条可行的路径为：</p><ul><li><p>时刻 t = 0 ，我们在格子 (0,0) 。</p></li><li><p>时刻 t = 1 ，我们移动到格子 (0,1) ，可以移动的原因是 grid[0][1] &lt;= 1 。</p></li><li><p>时刻 t = 2 ，我们移动到格子 (1,1) ，可以移动的原因是 grid[1][1] &lt;= 2 。</p></li><li><p>时刻 t = 3 ，我们移动到格子 (1,2) ，可以移动的原因是 grid[1][2] &lt;= 3 。</p></li><li><p>时刻 t = 4 ，我们移动到格子 (1,1) ，可以移动的原因是 grid[1][1] &lt;= 4 。</p></li><li><p>时刻 t = 5 ，我们移动到格子 (1,2) ，可以移动的原因是 grid[1][2] &lt;= 5 。</p></li><li><p>时刻 t = 6 ，我们移动到格子 (1,3) ，可以移动的原因是 grid[1][3] &lt;= 6 。</p></li><li><p>时刻 t = 7 ，我们移动到格子 (2,3) ，可以移动的原因是 grid[2][3] &lt;= 7 。</p></li></ul><p>最终到达时刻为 7 。这是最早可以到达的时间。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/02/14/yetgriddrawio-9.png" /></p><p>```txt</p><p>输入：grid = [[0,2,4],[3,2,1],[1,0,4]]</p><p>输出：-1</p><p>解释：没法从左上角按题目规定走到右下角。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>2 &amp;lt;= m, n &amp;lt;= 1000</code></p></li><li><p><code>4 &amp;lt;= m * n &amp;lt;= 10^5</code></p></li><li><p><code>0 &amp;lt;= grid[i][j] &amp;lt;= 10^5</code></p></li><li><p><code>grid[0][0] == 0</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-subtrees-with-max-distance-between-cities/">1617. 统计子树中城市之间最大距离</a></p><hr /><p>给你 <code>n</code> 个城市，编号为从 <code>1</code> 到 <code>n</code> 。同时给你一个大小为 <code>n-1</code> 的数组 <code>edges</code> ，其中 <code>edges[i] = [ui, vi]</code> 表示城市 <code>ui</code> 和 <code>vi</code> 之间有一条双向边。题目保证任意城市之间只有唯一的一条路径。换句话说，所有城市形成了一棵 <strong>树</strong> 。</p><p>一棵 <strong>子树</strong> 是城市的一个子集，且子集中任意城市之间可以通过子集中的其他城市和边到达。两个子树被认为不一样的条件是至少有一个城市在其中一棵子树中存在，但在另一棵子树中不存在。</p><p>对于 <code>d</code> 从 <code>1</code> 到 <code>n-1</code> ，请你找到城市间 <strong>最大距离</strong> 恰好为 <code>d</code> 的所有子树数目。</p><p>请你返回一个大小为 <code>n-1</code> 的数组，其中第 <code>d</code> 个元素（<strong>下标从 1 开始</strong>）是城市间 <strong>最大距离</strong> 恰好等于 <code>d</code> 的子树数目。</p><p><strong>请注意</strong>，两个城市间距离定义为它们之间需要经过的边的数目。</p><p><strong>示例 1：</strong></p><p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/11/p1.png" /></strong></p><p>```txt</p><p>输入：n = 4, edges = [[1,2],[2,3],[2,4]]</p><p>输出：[3,4,0]</p><p>解释：</p><p>子树 {1,2}, {2,3} 和 {2,4} 最大距离都是 1 。</p><p>子树 {1,2,3}, {1,2,4}, {2,3,4} 和 {1,2,3,4} 最大距离都为 2 。</p><p>不存在城市间最大距离为 3 的子树。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 2, edges = [[1,2]]</p><p>输出：[1]</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：n = 3, edges = [[1,2],[2,3]]</p><p>输出：[2,1]</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>2 &amp;lt;= n &amp;lt;= 15</code></p></li><li><p><code>edges.length == n-1</code></p></li><li><p><code>edges[i].length == 2</code></p></li><li><p><code>1 &amp;lt;= ui, vi &amp;lt;= n</code></p></li><li><p>题目保证 <code>(ui, vi)</code> 所表示的边互不相同。</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%9C%A8%E7%BD%91%E6%A0%BC%E5%9B%BE%E4%B8%AD%E8%AE%BF%E9%97%AE%E4%B8%80%E4%B8%AA%E6%A0%BC%E5%AD%90%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/">
+              <a class="btn" href="/leetcode/BFS/%E7%BB%9F%E8%AE%A1%E5%AD%90%E6%A0%91%E4%B8%AD%E5%9F%8E%E5%B8%82%E4%B9%8B%E9%97%B4%E6%9C%80%E5%A4%A7%E8%B7%9D%E7%A6%BB/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -854,7 +854,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E5%92%8C%E8%87%B3%E5%B0%91%E4%B8%BA%20K%20%E7%9A%84%E6%9C%80%E7%9F%AD%E5%AD%90%E6%95%B0%E7%BB%84/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/BFS/%E7%BD%91%E6%A0%BC%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%B0%91%E8%AE%BF%E9%97%AE%E7%9A%84%E6%A0%BC%E5%AD%90%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -872,7 +872,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E5%92%8C%E8%87%B3%E5%B0%91%E4%B8%BA%20K%20%E7%9A%84%E6%9C%80%E7%9F%AD%E5%AD%90%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">和至少为 K 的最短子数组</a>
+          <a href="/leetcode/BFS/%E7%BD%91%E6%A0%BC%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%B0%91%E8%AE%BF%E9%97%AE%E7%9A%84%E6%A0%BC%E5%AD%90%E6%95%B0/" class="post-title-link" itemprop="url">网格图中最少访问的格子数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -912,10 +912,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/">862. 和至少为 K 的最短子数组</a></p><hr /><p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，找出 <code>nums</code> 中和至少为 <code>k</code> 的 <strong>最短非空子数组</strong> ，并返回该子数组的长度。如果不存在这样的 <strong>子数组</strong> ，返回 <code>-1</code> 。</p><p><strong>子数组</strong> 是数组中 <strong>连续</strong> 的一部分。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1], k = 1</p><p>输出：1</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1,2], k = 4</p><p>输出：-1</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [2,-1,2], k = 3</p><p>输出：3</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>-10^5 &amp;lt;= nums[i] &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= 10^9</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-visited-cells-in-a-grid/">6353. 网格图中最少访问的格子数</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始的 <code>m x n</code> 整数矩阵 <code>grid</code> 。你一开始的位置在 <strong>左上角</strong> 格子 <code>(0, 0)</code> 。</p><p>当你在格子 <code>(i, j)</code> 的时候，你可以移动到以下格子之一：</p><ul><li><p>满足 <code>j &amp;lt; k &amp;lt;= grid[i][j] + j</code> 的格子 <code>(i, k)</code> （向右移动），或者</p></li><li><p>满足 <code>i &amp;lt; k &amp;lt;= grid[i][j] + i</code> 的格子 <code>(k, j)</code> （向下移动）。</p></li></ul><p>请你返回到达 <strong>右下角</strong> 格子 <code>(m - 1, n - 1)</code> 需要经过的最少移动格子数，如果无法到达右下角格子，请你返回 <code>-1</code> 。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/01/25/ex1.png" /></p><p>```txt</p><p>输入：grid = [[3,4,2,1],[4,2,3,1],[2,1,0,0],[2,4,0,0]]</p><p>输出：4</p><p>解释：上图展示了到达右下角格子经过的 4 个格子。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/01/25/ex2.png" /></p><p>```txt</p><p>输入：grid = [[3,4,2,1],[4,2,1,1],[2,1,1,0],[3,4,1,0]]</p><p>输出：3</p><p>解释：上图展示了到达右下角格子经过的 3 个格子。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/01/26/ex3.png" /></p><p>```txt</p><p>输入：grid = [[2,1,0],[1,0,0]]</p><p>输出：-1</p><p>解释：无法到达右下角格子。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>1 &amp;lt;= m, n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= m * n &amp;lt;= 10^5</code></p></li><li><p><code>0 &amp;lt;= grid[i][j] &amp;lt; m * n</code></p></li><li><p><code>grid[m - 1][n - 1] == 0</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E5%92%8C%E8%87%B3%E5%B0%91%E4%B8%BA%20K%20%E7%9A%84%E6%9C%80%E7%9F%AD%E5%AD%90%E6%95%B0%E7%BB%84/">
+              <a class="btn" href="/leetcode/BFS/%E7%BD%91%E6%A0%BC%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%B0%91%E8%AE%BF%E9%97%AE%E7%9A%84%E6%A0%BC%E5%AD%90%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -946,7 +946,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%B8%91%E6%95%B0%20III/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -964,7 +964,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/" class="post-title-link" itemprop="url">花括号展开 II</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%B8%91%E6%95%B0%20III/" class="post-title-link" itemprop="url">丑数 III</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1004,10 +1004,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/brace-expansion-ii/">1096. 花括号展开 II</a></p><hr /><p>如果你熟悉 Shell 编程，那么一定了解过花括号展开，它可以用来生成任意字符串。</p><p>花括号展开的表达式可以看作一个由 <strong>花括号</strong>、<strong>逗号</strong> 和 <strong>小写英文字母</strong> 组成的字符串，定义下面几条语法规则：</p><ul><li><p>如果只给出单一的元素 <code>x</code>，那么表达式表示的字符串就只有 <code>&amp;quot;x&amp;quot;</code>。<code>R(x) = {x}</code></p><ul><li><p>例如，表达式 <code>&amp;quot;a&amp;quot;</code> 表示字符串 <code>&amp;quot;a&amp;quot;</code>。</p></li><li><p>而表达式 <code>&amp;quot;w&amp;quot;</code> 就表示字符串 <code>&amp;quot;w&amp;quot;</code>。</p></li></ul></li><li><p>当两个或多个表达式并列，以逗号分隔，我们取这些表达式中元素的并集。<code>R({e_1,e_2,...}) = R(e_1) ∪ R(e_2) ∪ ...</code></p><ul><li><p>例如，表达式 <code>&amp;quot;{a,b,c}&amp;quot;</code> 表示字符串 <code>&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;</code>。</p></li><li><p>而表达式 <code>&amp;quot;{{a,b},{b,c}}&amp;quot;</code> 也可以表示字符串 <code>&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;</code>。</p></li></ul></li><li><p>要是两个或多个表达式相接，中间没有隔开时，我们从这些表达式中各取一个元素依次连接形成字符串。<code>R(e_1 + e_2) = {a + b for (a, b) in R(e_1) × R(e_2)}</code></p><ul><li>例如，表达式 <code>&amp;quot;{a,b}{c,d}&amp;quot;</code> 表示字符串 <code>&amp;quot;ac&amp;quot;,&amp;quot;ad&amp;quot;,&amp;quot;bc&amp;quot;,&amp;quot;bd&amp;quot;</code>。</li></ul></li><li><p>表达式之间允许嵌套，单一元素与表达式的连接也是允许的。</p><ul><li><p>例如，表达式 <code>&amp;quot;a{b,c,d}&amp;quot;</code> 表示字符串 <code>&amp;quot;ab&amp;quot;,&amp;quot;ac&amp;quot;,&amp;quot;ad&amp;quot;​​​​​​</code>。</p></li><li><p>例如，表达式 <code>&amp;quot;a{b,c}{d,e}f{g,h}&amp;quot;</code> 可以表示字符串 <code>&amp;quot;abdfg&amp;quot;, &amp;quot;abdfh&amp;quot;, &amp;quot;abefg&amp;quot;, &amp;quot;abefh&amp;quot;, &amp;quot;acdfg&amp;quot;, &amp;quot;acdfh&amp;quot;, &amp;quot;acefg&amp;quot;, &amp;quot;acefh&amp;quot;</code>。</p></li></ul></li></ul><p>给出表示基于给定语法规则的表达式 <code>expression</code>，返回它所表示的所有字符串组成的有序列表。</p><p>假如你希望以「集合」的概念了解此题，也可以通过点击 “<strong>显示英文描述</strong>” 获取详情。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：expression = &quot;{a,b}{c,{d,e}}&quot;</p><p>输出：[&quot;ac&quot;,&quot;ad&quot;,&quot;ae&quot;,&quot;bc&quot;,&quot;bd&quot;,&quot;be&quot;]</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：expression = &quot;{{a,z},a{b,c},{ab,z}}&quot;</p><p>输出：[&quot;a&quot;,&quot;ab&quot;,&quot;ac&quot;,&quot;z&quot;]</p><p>解释：输出中 不应 出现重复的组合结果。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= expression.length &amp;lt;= 60</code></p></li><li><p><code>expression[i]</code> 由 <code>&amp;#x27;{&amp;#x27;</code>，<code>&amp;#x27;}&amp;#x27;</code>，<code>&amp;#x27;,&amp;#x27;</code> 或小写英文字母组成</p></li><li><p>给出的表达式 <code>expression</code> 用以表示一组基于题目描述中语法构造的字符串</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ugly-number-iii/">1201. 丑数 III</a></p><hr /><p>给你四个整数：<code>n</code> 、<code>a</code> 、<code>b</code> 、<code>c</code> ，请你设计一个算法来找出第 <code>n</code> 个丑数。</p><p>丑数是可以被 <code>a</code> <strong>或</strong> <code>b</code> <strong>或</strong> <code>c</code> 整除的 <strong>正整数</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 3, a = 2, b = 3, c = 5</p><p>输出：4</p><p>解释：丑数序列为 2, 3, 4, 5, 6, 8, 9, 10... 其中第 3 个是 4。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 4, a = 2, b = 3, c = 4</p><p>输出：6</p><p>解释：丑数序列为 2, 3, 4, 6, 8, 9, 10, 12... 其中第 4 个是 6。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：n = 5, a = 2, b = 11, c = 13</p><p>输出：10</p><p>解释：丑数序列为 2, 4, 6, 8, 10, 11, 12, 13... 其中第 5 个是 10。</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：n = 1000000000, a = 2, b = 217983653, c = 336916467</p><p>输出：1999999984</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n, a, b, c &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= a * b * c &amp;lt;= 10^18</code></p></li><li><p>本题结果在 <code>[1, 2 * 10^9]</code> 的范围内</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%B8%91%E6%95%B0%20III/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1038,7 +1038,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%BD%BF%E6%95%B0%E7%BB%84%E8%BF%9E%E7%BB%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -1056,7 +1056,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/" class="post-title-link" itemprop="url">表现良好的最长时间段</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%BD%BF%E6%95%B0%E7%BB%84%E8%BF%9E%E7%BB%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/" class="post-title-link" itemprop="url">使数组连续的最少操作数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1096,10 +1096,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-well-performing-interval/">1124. 表现良好的最长时间段</a></p><hr /><p>给你一份工作时间表 <code>hours</code>，上面记录着某一位员工每天的工作小时数。</p><p>我们认为当员工一天中的工作小时数大于 <code>8</code> 小时的时候，那么这一天就是「<strong>劳累的一天</strong>」。</p><p>所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 <strong>大于</strong>「不劳累的天数」。</p><p>请你返回「表现良好时间段」的最大长度。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：hours = [9,9,6,0,6,6,9]</p><p>输出：3</p><p>解释：最长的表现良好时间段是 [9,9,6]。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：hours = [6,6,6]</p><p>输出：0</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= hours.length &amp;lt;= 10^4</code></p></li><li><p><code>0 &amp;lt;= hours[i] &amp;lt;= 16</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-operations-to-make-array-continuous/">2009. 使数组连续的最少操作数</a></p><hr /><p>给你一个整数数组 <code>nums</code> 。每一次操作中，你可以将 <code>nums</code> 中 <strong>任意</strong> 一个元素替换成 <strong>任意</strong> 整数。</p><p>如果 <code>nums</code> 满足以下条件，那么它是 <strong>连续的</strong> ：</p><ul><li><p><code>nums</code> 中所有元素都是 <strong>互不相同</strong> 的。</p></li><li><p><code>nums</code> 中 <strong>最大</strong> 元素与 <strong>最小</strong> 元素的差等于 <code>nums.length - 1</code> 。</p></li></ul><p>比方说，<code>nums = [4, 2, 5, 3]</code> 是 <strong>连续的</strong> ，但是 <code>nums = [1, 2, 3, 5, 6]</code> <strong>不是连续的</strong> 。</p><p>请你返回使 <code>nums</code> <strong>连续</strong> 的 <strong>最少</strong> 操作次数。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [4,2,5,3]</p><p>输出：0</p><p>解释：nums 已经是连续的了。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1,2,3,5,6]</p><p>输出：1</p><p>解释：一个可能的解是将最后一个元素变为 4 。</p><p>结果数组为 [1,2,3,5,4] ，是连续数组。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [1,10,100,1000]</p><p>输出：3</p><p>解释：一个可能的解是：</p><ul><li><p>将第二个元素变为 2 。</p></li><li><p>将第三个元素变为 3 。</p></li><li><p>将第四个元素变为 4 。</p></li></ul><p>结果数组为 [1,2,3,4] ，是连续数组。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%BD%BF%E6%95%B0%E7%BB%84%E8%BF%9E%E7%BB%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1123,7 +1123,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/46/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/44/">44</a><a class="page-number" href="/page/46/">46</a><span class="page-number current">47</span><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/50/">50</a><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/48/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/46/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/44/">44</a><a class="page-number" href="/page/46/">46</a><span class="page-number current">47</span><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/50/">50</a><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/48/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

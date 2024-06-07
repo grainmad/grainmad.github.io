@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">510</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">554</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">510</span>
+          <span class="site-state-item-count">554</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/12/1227D2/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/d56e9598c761/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/12/1227D2/" class="post-title-link" itemprop="url">Optimal Subsequences (Hard Version)</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/d56e9598c761/" class="post-title-link" itemprop="url">tarjan 桥与割点</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,7 +239,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-12 21:14:01" itemprop="dateCreated datePublished" datetime="2024-03-12T21:14:01+00:00">2024-03-12</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -247,11 +254,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -265,10 +268,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><strong>本题为较困难版本。</strong></p><p>给定一个长度为 $n$ 的正整数序列 $a_1,a_2,...,a_n$。</p><p>有 $m$ 个询问，每次询问给出两个正整数 $k,pos$。你需要找到一个长度为 $k$ 的<strong>子序列</strong>，且满足如下要求：</p><ul><li><p>该子序列的<strong>元素和</strong>是所有子序列中最大的；</p></li><li><p>该子序列是所有满足上一条件的子序列中<strong>字典序</strong>最小的一个。</p></li></ul><p>对于每个询问，输出该子序列的第 $pos$ 个元素的值。</p><p>$1 \le n,m \le 2 \times 10^5$（这是与简单版本<strong>唯一</strong>的区别）， $\ 1 \le k \le n$，在同一询问中有 $1 \le pos \le k$。</p><p>Translated by HoshizoraZ</p></ul></p>
+          <p><ul style='text-align: left;'><li>tarjan 桥与割点</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/12/1227D2/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/d56e9598c761/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -299,7 +302,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/12/1423B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -317,7 +320,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/12/1423B/" class="post-title-link" itemprop="url">Valuable Paper</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/" class="post-title-link" itemprop="url">平衡树</a>
         </h2>
 
         <div class="post-meta-container">
@@ -328,7 +331,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-12 21:14:01" itemprop="dateCreated datePublished" datetime="2024-03-12T21:14:01+00:00">2024-03-12</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -336,11 +346,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -354,10 +360,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>大流感来袭，世界上最缺乏的物资是厕纸。</p><p>有N个厕纸工厂和N个机场，由于某些原因，每个工厂只能运往1个机场，每个机场只能从1个工厂运货。</p><p>现在有M条路能修，每条路都有一个需要的时间di。</p><p>现在要找N条路沟通这N对工厂机场，使得这些路同时开始修，最终修好的时间最短。</p></ul></p>
+          <p><ul style='text-align: left;'><li>平衡树</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/12/1423B/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/dc56a999888e/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -388,7 +394,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1934/1934/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/df29370933f7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -406,7 +412,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/contest/1934/1934/" class="post-title-link" itemprop="url">Codeforces Round 931 (Div. 2)</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/df29370933f7/" class="post-title-link" itemprop="url">最短路</a>
         </h2>
 
         <div class="post-meta-container">
@@ -417,7 +423,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -425,11 +438,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -443,10 +452,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1934/problem/A">A. Too Min Too Max</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1934/problem/B">B. Yet Another Coin Problem</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1934/problem/C">C. Find a Mine</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1934/problem/D1">D1. XOR Break — Solo Version</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1934/problem/D2">D2. XOR Break — Game Version</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1934/problem/E">E. Weird LCM Operations</a></p></ul></p>
+          <p><ul style='text-align: left;'><li>最短路</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/contest/1934/1934/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/df29370933f7/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -477,7 +486,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1937/1937/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/efe04f1c6444/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -495,7 +504,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/contest/1937/1937/" class="post-title-link" itemprop="url">Codeforces Round 930 (Div. 2)</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/efe04f1c6444/" class="post-title-link" itemprop="url">DFS序与欧拉序</a>
         </h2>
 
         <div class="post-meta-container">
@@ -506,7 +515,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -514,11 +530,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -532,10 +544,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1937/problem/A">A. Shuffle Party</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1937/problem/B">B. Binary Path</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1937/problem/C">C. Bitwise Operation Wizard</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1937/problem/D">D. Pinball</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1937/problem/E">E. Pokémon Arena</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1937/problem/F">F. Bitwise Paradox</a></p></ul></p>
+          <p><ul style='text-align: left;'><li>DFS序与欧拉序</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/contest/1937/1937/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/efe04f1c6444/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -566,7 +578,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/02/1216E1/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fc866f372b83/236bf1d66f72/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -584,7 +596,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/02/1216E1/" class="post-title-link" itemprop="url">Numerical Sequence (easy version)</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/236bf1d66f72/" class="post-title-link" itemprop="url">RSA</a>
         </h2>
 
         <div class="post-meta-container">
@@ -595,7 +607,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -603,11 +622,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -621,10 +636,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给你一个形式为 &quot;112123123412345 $\dots$ &quot;的无穷序列，它由一个接一个的连续正整数块组成。第一个整数块由 $1$ 到 $1$ 的所有数字组成，第二个整数块由 $1$ 到 $2$ 的所有数字组成，第三个整数块由 $1$ 到 $3$ ， $\dots$ 的所有数字组成， 第$i$个整数块由 $1$ 到 $i$ 的所有数字组成。</p><p>所以序列的前 $56$ 个元素是 &quot;11212312341234512345612345671234567812345678912345678910&quot;。序列中的元素从 1 开始编号。例如，序列的 $1$ 个元素是 $1$ ，序列的 $3$ 个元素是 $2$ ，序列的 $20$ 个元素是 $5$ ，序列的 $38$ 个元素是 $2$ ，序列的 $56$ 个元素是 $0$ 。</p><p>你的任务是回答 $q$ 个独立的查询。在 $i$ -th查询中，你得到了一个整数 $k_i$ 。计算序列中位于 $k_i$ 位置的数字。</p></ul></p>
+          <p><ul style='text-align: left;'><li>RSA</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/02/1216E1/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/236bf1d66f72/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -655,7 +670,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/04/1556C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fc866f372b83/55bae4adebc6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -673,7 +688,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/04/1556C/" class="post-title-link" itemprop="url">Compressed Bracket Sequence</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/55bae4adebc6/" class="post-title-link" itemprop="url">排序</a>
         </h2>
 
         <div class="post-meta-container">
@@ -684,7 +699,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -692,11 +714,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -710,10 +728,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给一个长度为 $n\,(1\le n\le 1000)$ 的正整数序列 $\left{c_n\right}\,(1\le c_i\le 10^9)$。用该序列一如下方式构造一个括号序列 $s$：</p><ol><li><p>开始 $c$ 为空；</p></li><li><p>对 $i$ 从 $1$ 到 $n$ 依次遍历，若 $i$ 为奇数，则在 $s$ 后插入 $c_i$ 个 <code>&amp;#x27;(&amp;#x27;</code>，否则插入 $c_i$ 个 <code>&amp;#x27;)&amp;#x27;</code>。</p></li></ol><p>求有多少对 $\left&lt;l,r\right&gt;$ 使得 $s_{l\sim r}$ 为合法括号序列。</p></ul></p>
+          <p><ul style='text-align: left;'><li>排序</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/04/1556C/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/55bae4adebc6/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -744,7 +762,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/05/1168B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fc866f372b83/9f48fa028777/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -762,7 +780,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/05/1168B/" class="post-title-link" itemprop="url">Good Triple</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/9f48fa028777/" class="post-title-link" itemprop="url">A 搜索算法</a>
         </h2>
 
         <div class="post-meta-container">
@@ -773,7 +791,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -781,11 +806,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -799,10 +820,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出01串s，求数对<code>[l,r]</code>个数，使得能找到至少一对<code>[x,k]</code>,使<code>1&amp;lt;=x,k&amp;lt;=|s|</code>且<code>l&amp;lt;=x&amp;lt;x+2k&amp;lt;=r</code>且<code>s[x]=s[x+k]=s[x+2k]</code></p></ul></p>
+          <p><ul style='text-align: left;'><li>A 搜索算法</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/05/1168B/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/9f48fa028777/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -833,7 +854,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/05/1178D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fc866f372b83/f88597fb9ee9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -851,7 +872,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/05/1178D/" class="post-title-link" itemprop="url">Prime Graph</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/f88597fb9ee9/" class="post-title-link" itemprop="url">快速平方根倒数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -862,7 +883,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -870,11 +898,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -888,10 +912,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出n个点，求一个图。  </p><p>要求这张图满足：</p><ol><li><p>图是简单无向图（即没有重边和自环）</p></li><li><p>点的编号为1~n</p></li><li><p>图的边数是素数</p></li><li><p>每个点的度都是素数 （0,1不是素数）  </p></li></ol><p>注意：图可以不连通，给出任意一张符合上述要求的图即可。</p></ul></p>
+          <p><ul style='text-align: left;'><li>快速平方根倒数</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/05/1178D/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/f88597fb9ee9/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -922,7 +946,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/05/1250A/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/31a83ab3ff47/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -940,7 +964,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/05/1250A/" class="post-title-link" itemprop="url">Berstagram</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/31a83ab3ff47/" class="post-title-link" itemprop="url">虚树</a>
         </h2>
 
         <div class="post-meta-container">
@@ -951,7 +975,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -959,11 +990,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -977,10 +1004,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给定两个序列 $a=[a_1,a_2,\dots,a_m]$ 和 $b=[b_1,b_2,\dots,b_n]$，其中 $b_i$ 的初始值为 $i$，$a_i$ 的初始值将由键盘读入。对于每个 $a_i$，若 $b_j=a_i$，则将 $b_j$ 与 $b_{j-1}$ 的值调换（若 $j=1$，则序列不变）。</p><p>第一行两个整数 $n$ 和 $m$，意义如上所述。</p><p>第二行包含 $m$ 个整数 $a_i$（$1\le i\le m$），表示序列 $a$。</p><p>输出共 $n$ 行，每行包含两个整数。第 $i$ 行的两个数分别表示数字 $i$ 在序列 $b$ 中出现过的所有位置中最靠前的一个与最靠后的一个。</p><p>序列 $b$ 经过每一次操作后的变化：</p><p>初始：$[1,2,3]$；  </p><p>第一次操作后：$[1,3,2]$；  </p><p>第二次操作后：$[1,2,3]$；  </p><p>第三次操作后：$[1,2,3]$；  </p><p>第四次操作后：$[1,3,2]$；  </p><p>第五次操作后：$[3,1,2]$。</p><p>当中，$1$ 出现过的位置有 $1$ 和 $2$，最靠前的是 $1$，最靠后的是 $2$；$2$出现过的位置有 $2$ 和 $3$，最靠前的是 $2$，最靠后的是 $3$；$3$出现过的位置有 $1$，$2$ 和 $3$，最靠前的是 $1$，最靠后的是 $3$。</p></ul></p>
+          <p><ul style='text-align: left;'><li>虚树</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/05/1250A/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/31a83ab3ff47/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1011,7 +1038,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/05/1370C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/6537c15aaaae/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -1029,7 +1056,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/05/1370C/" class="post-title-link" itemprop="url">Number Game</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/6537c15aaaae/" class="post-title-link" itemprop="url">树的直径与中心</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1040,7 +1067,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-09 17:57:49" itemprop="dateCreated datePublished" datetime="2024-03-09T17:57:49+00:00">2024-03-09</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 07:32:22" itemprop="dateModified" datetime="2024-06-05T07:32:22+00:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1048,11 +1082,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -1066,10 +1096,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有一个正整数 $n$。</p><p>两名玩家轮流操作。每次操作可以执行以下一种：</p><ul><li><p>将 $n$ 除以一个 $n$ 的大于 $1$ 的奇数因子。</p></li><li><p>将 $n$ 减去 $1$（若 $n\gt1$）。</p></li></ul><p>无法操作者输。</p><p>问先手是否有必胜策略。如果先手有必胜策略，输出 <code>Ashishgup</code>，否则输出 <code>FastestFinger</code>。</p><p>多组数据，数据组数 $t \leq 100$，$1 \leq n \leq 10^9$</p><p>翻译 by Meatherm</p></ul></p>
+          <p><ul style='text-align: left;'><li>树的直径与中心</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/05/1370C/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/6537c15aaaae/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1093,7 +1123,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

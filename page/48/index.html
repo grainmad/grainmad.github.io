@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">510</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">554</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">510</span>
+          <span class="site-state-item-count">554</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%BF%87%E6%A1%A5%E7%9A%84%E6%97%B6%E9%97%B4/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%BF%87%E6%A1%A5%E7%9A%84%E6%97%B6%E9%97%B4/" class="post-title-link" itemprop="url">过桥的时间</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/" class="post-title-link" itemprop="url">制作 m 束花所需的最少天数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -268,10 +268,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/time-to-cross-a-bridge/">2532. 过桥的时间</a></p><hr /><p>共有 <code>k</code> 位工人计划将 <code>n</code> 个箱子从旧仓库移动到新仓库。给你两个整数 <code>n</code> 和 <code>k</code>，以及一个二维整数数组 <code>time</code> ，数组的大小为 <code>k x 4</code> ，其中 <code>time[i] = [leftToRighti, pickOldi, rightToLefti, putNewi]</code> 。</p><p>一条河将两座仓库分隔，只能通过一座桥通行。旧仓库位于河的右岸，新仓库在河的左岸。开始时，所有 <code>k</code> 位工人都在桥的左侧等待。为了移动这些箱子，第 <code>i</code> 位工人（下标从 <strong>0</strong> 开始）可以：</p><ul><li><p>从左岸（新仓库）跨过桥到右岸（旧仓库），用时 <code>leftToRighti</code> 分钟。</p></li><li><p>从旧仓库选择一个箱子，并返回到桥边，用时 <code>pickOldi</code> 分钟。不同工人可以同时搬起所选的箱子。</p></li><li><p>从右岸（旧仓库）跨过桥到左岸（新仓库），用时 <code>rightToLefti</code> 分钟。</p></li><li><p>将箱子放入新仓库，并返回到桥边，用时 <code>putNewi</code> 分钟。不同工人可以同时放下所选的箱子。</p></li></ul><p>如果满足下面任一条件，则认为工人 <code>i</code> 的 <strong>效率低于</strong> 工人 <code>j</code> ：</p><ul><li><p><code>leftToRighti + rightToLefti &amp;gt; leftToRightj + rightToLeftj</code></p></li><li><p><code>leftToRighti + rightToLefti == leftToRightj + rightToLeftj</code> 且 <code>i &amp;gt; j</code></p></li></ul><p>工人通过桥时需要遵循以下规则：</p><ul><li><p>如果工人 <code>x</code> 到达桥边时，工人 <code>y</code> 正在过桥，那么工人 <code>x</code> 需要在桥边等待。</p></li><li><p>如果没有正在过桥的工人，那么在桥右边等待的工人可以先过桥。如果同时有多个工人在右边等待，那么 <strong>效率最低</strong> 的工人会先过桥。</p></li><li><p>如果没有正在过桥的工人，且桥右边也没有在等待的工人，同时旧仓库还剩下至少一个箱子需要搬运，此时在桥左边的工人可以过桥。如果同时有多个工人在左边等待，那么 <strong>效率最低</strong> 的工人会先过桥。</p></li></ul><p>所有 <code>n</code> 个盒子都需要放入新仓库，请你返回最后一个搬运箱子的工人 <strong>到达河左岸</strong> 的时间。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 1, k = 3, time = [[1,1,2,1],[1,1,3,1],[1,1,4,1]]</p><p>输出：6</p><p>解释：</p><p>从 0 到 1 ：工人 2 从左岸过桥到达右岸。</p><p>从 1 到 2 ：工人 2 从旧仓库搬起一个箱子。</p><p>从 2 到 6 ：工人 2 从右岸过桥到达左岸。</p><p>从 6 到 7 ：工人 2 将箱子放入新仓库。</p><p>整个过程在 7 分钟后结束。因为问题关注的是最后一个工人到达左岸的时间，所以返回 6 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 3, k = 2, time = [[1,9,1,8],[10,10,10,10]]</p><p>输出：50</p><p>解释：</p><p>从 0 到 10 ：工人 1 从左岸过桥到达右岸。</p><p>从 10 到 20 ：工人 1 从旧仓库搬起一个箱子。</p><p>从 10 到 11 ：工人 0 从左岸过桥到达右岸。</p><p>从 11 到 20 ：工人 0 从旧仓库搬起一个箱子。</p><p>从 20 到 30 ：工人 1 从右岸过桥到达左岸。</p><p>从 30 到 40 ：工人 1 将箱子放入新仓库。</p><p>从 30 到 31 ：工人 0 从右岸过桥到达左岸。</p><p>从 31 到 39 ：工人 0 将箱子放入新仓库。</p><p>从 39 到 40 ：工人 0 从左岸过桥到达右岸。</p><p>从 40 到 49 ：工人 0 从旧仓库搬起一个箱子。</p><p>从 49 到 50 ：工人 0 从右岸过桥到达左岸。</p><p>从 50 到 58 ：工人 0 将箱子放入新仓库。</p><p>整个过程在 58 分钟后结束。因为问题关注的是最后一个工人到达左岸的时间，所以返回 50 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n, k &amp;lt;= 10^4</code></p></li><li><p><code>time.length == k</code></p></li><li><p><code>time[i].length == 4</code></p></li><li><p><code>1 &amp;lt;= leftToRighti, pickOldi, rightToLefti, putNewi &amp;lt;= 1000</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-days-to-make-m-bouquets/">1482. 制作 m 束花所需的最少天数</a></p><hr /><p>给你一个整数数组 <code>bloomDay</code>，以及两个整数 <code>m</code> 和 <code>k</code> 。</p><p>现需要制作 <code>m</code> 束花。制作花束时，需要使用花园中 <strong>相邻的 <code>k</code> 朵花</strong> 。</p><p>花园中有 <code>n</code> 朵花，第 <code>i</code> 朵花会在 <code>bloomDay[i]</code> 时盛开，<strong>恰好</strong> 可以用于 <strong>一束</strong> 花中。</p><p>请你返回从花园中摘 <code>m</code> 束花需要等待的最少的天数。如果不能摘到 <code>m</code> 束花则返回 <strong>-1</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,3,10,2], m = 3, k = 1</p><p>输出：3</p><p>解释：让我们一起观察这三天的花开过程，x 表示花开，而 _ 表示花还未开。</p><p>现在需要制作 3 束花，每束只需要 1 朵。</p><p>1 天后：[x, <em>, </em>, <em>, </em>]   // 只能制作 1 束花</p><p>2 天后：[x, <em>, </em>, _, x]   // 只能制作 2 束花</p><p>3 天后：[x, <em>, x, </em>, x]   // 可以制作 3 束花，答案为 3</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,3,10,2], m = 3, k = 2</p><p>输出：-1</p><p>解释：要制作 3 束花，每束需要 2 朵花，也就是一共需要 6 朵花。而花园中只有 5 朵花，无法满足制作要求，返回 -1 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：bloomDay = [7,7,7,7,12,7,7], m = 2, k = 3</p><p>输出：12</p><p>解释：要制作 2 束花，每束需要 3 朵。</p><p>花园在 7 天后和 12 天后的情况如下：</p><p>7 天后：[x, x, x, x, _, x, x]</p><p>可以用前 3 朵盛开的花制作第一束花。但不能使用后 3 朵盛开的花，因为它们不相邻。</p><p>12 天后：[x, x, x, x, x, x, x]</p><p>显然，我们可以用不同的方式制作两束花。</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：bloomDay = [1000000000,1000000000], m = 1, k = 1</p><p>输出：1000000000</p><p>解释：需要等 1000000000 天才能采到花来制作花束</p><p>```</p><p><strong>示例 5：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,2,9,3,8,4,7,5,6], m = 4, k = 2</p><p>输出：9</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>bloomDay.length == n</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= bloomDay[i] &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= m &amp;lt;= 10^6</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= n</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%BF%87%E6%A1%A5%E7%9A%84%E6%97%B6%E9%97%B4/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -302,7 +302,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E5%8C%85%E5%90%AB%E6%AF%8F%E4%B8%AA%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%9C%80%E5%B0%8F%E5%8C%BA%E9%97%B4/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%9C%A8%E7%BA%BF%E9%80%89%E4%B8%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -320,7 +320,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E5%8C%85%E5%90%AB%E6%AF%8F%E4%B8%AA%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%9C%80%E5%B0%8F%E5%8C%BA%E9%97%B4/" class="post-title-link" itemprop="url">包含每个查询的最小区间</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%9C%A8%E7%BA%BF%E9%80%89%E4%B8%BE/" class="post-title-link" itemprop="url">在线选举</a>
         </h2>
 
         <div class="post-meta-container">
@@ -360,10 +360,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-interval-to-include-each-query/">1851. 包含每个查询的最小区间</a></p><hr /><p>给你一个二维整数数组 <code>intervals</code> ，其中 <code>intervals[i] = [lefti, righti]</code> 表示第 <code>i</code> 个区间开始于 <code>lefti</code> 、结束于 <code>righti</code>（包含两侧取值，<strong>闭区间</strong>）。区间的 <strong>长度</strong> 定义为区间中包含的整数数目，更正式地表达是 <code>righti - lefti + 1</code> 。</p><p>再给你一个整数数组 <code>queries</code> 。第 <code>j</code> 个查询的答案是满足 <code>lefti &amp;lt;= queries[j] &amp;lt;= righti</code> 的 <strong>长度最小区间 <code>i</code> 的长度</strong> 。如果不存在这样的区间，那么答案是 <code>-1</code> 。</p><p>以数组形式返回对应查询的所有答案。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：intervals = [[1,4],[2,4],[3,6],[4,4]], queries = [2,3,4,5]</p><p>输出：[3,3,1,4]</p><p>解释：查询处理如下：</p><ul><li><p>Query = 2 ：区间 [2,4] 是包含 2 的最小区间，答案为 4 - 2 + 1 = 3 。</p></li><li><p>Query = 3 ：区间 [2,4] 是包含 3 的最小区间，答案为 4 - 2 + 1 = 3 。</p></li><li><p>Query = 4 ：区间 [4,4] 是包含 4 的最小区间，答案为 4 - 4 + 1 = 1 。</p></li><li><p>Query = 5 ：区间 [3,6] 是包含 5 的最小区间，答案为 6 - 3 + 1 = 4 。</p></li></ul><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：intervals = [[2,3],[2,5],[1,8],[20,25]], queries = [2,19,5,22]</p><p>输出：[2,-1,4,6]</p><p>解释：查询处理如下：</p><ul><li><p>Query = 2 ：区间 [2,3] 是包含 2 的最小区间，答案为 3 - 2 + 1 = 2 。</p></li><li><p>Query = 19：不存在包含 19 的区间，答案为 -1 。</p></li><li><p>Query = 5 ：区间 [2,5] 是包含 5 的最小区间，答案为 5 - 2 + 1 = 4 。</p></li><li><p>Query = 22：区间 [20,25] 是包含 22 的最小区间，答案为 25 - 20 + 1 = 6 。</p></li></ul><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= intervals.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= queries.length &amp;lt;= 10^5</code></p></li><li><p><code>queries[i].length == 2</code></p></li><li><p><code>1 &amp;lt;= lefti &amp;lt;= righti &amp;lt;= 10^7</code></p></li><li><p><code>1 &amp;lt;= queries[j] &amp;lt;= 10^7</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/online-election/">911. 在线选举</a></p><hr /><p>给你两个整数数组 <code>persons</code> 和 <code>times</code> 。在选举中，第 <code>i</code> 张票是在时刻为 <code>times[i]</code> 时投给候选人 <code>persons[i]</code> 的。</p><p>对于发生在时刻 <code>t</code> 的每个查询，需要找出在 <code>t</code> 时刻在选举中领先的候选人的编号。</p><p>在 <code>t</code> 时刻投出的选票也将被计入我们的查询之中。在平局的情况下，最近获得投票的候选人将会获胜。</p><p>实现 <code>TopVotedCandidate</code> 类：</p><ul><li><p><code>TopVotedCandidate(int[] persons, int[] times)</code> 使用 <code>persons</code> 和 <code>times</code> 数组初始化对象。</p></li><li><p><code>int q(int t)</code> 根据前面描述的规则，返回在时刻 <code>t</code> 在选举中领先的候选人的编号。</p></li></ul><p><strong>示例：</strong></p><p>```txt</p><p>输入：</p><p>[&quot;TopVotedCandidate&quot;, &quot;q&quot;, &quot;q&quot;, &quot;q&quot;, &quot;q&quot;, &quot;q&quot;, &quot;q&quot;]</p><p>[[[0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]], [3], [12], [25], [15], [24], [8]]</p><p>输出：</p><p>[null, 0, 1, 1, 0, 0, 1]</p><p>解释：</p><p>TopVotedCandidate topVotedCandidate = new TopVotedCandidate([0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]);</p><p>topVotedCandidate.q(3); // 返回 0 ，在时刻 3 ，票数分布为 [0] ，编号为 0 的候选人领先。</p><p>topVotedCandidate.q(12); // 返回 1 ，在时刻 12 ，票数分布为 [0,1,1] ，编号为 1 的候选人领先。</p><p>topVotedCandidate.q(25); // 返回 1 ，在时刻 25 ，票数分布为 [0,1,1,0,0,1] ，编号为 1 的候选人领先。（在平局的情况下，1 是最近获得投票的候选人）。</p><p>topVotedCandidate.q(15); // 返回 0</p><p>topVotedCandidate.q(24); // 返回 0</p><p>topVotedCandidate.q(8); // 返回 1</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= persons.length &amp;lt;= 5000</code></p></li><li><p><code>times.length == persons.length</code></p></li><li><p><code>0 &amp;lt;= persons[i] &amp;lt; persons.length</code></p></li><li><p><code>0 &amp;lt;= times[i] &amp;lt;= 10^9</code></p></li><li><p><code>times</code> 是一个严格递增的有序数组</p></li><li><p><code>times[0] &amp;lt;= t &amp;lt;= 10^9</code></p></li><li><p>每个测试用例最多调用 <code>10^4</code> 次 <code>q</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E5%8C%85%E5%90%AB%E6%AF%8F%E4%B8%AA%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%9C%80%E5%B0%8F%E5%8C%BA%E9%97%B4/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%9C%A8%E7%BA%BF%E9%80%89%E4%B8%BE/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -394,7 +394,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E7%A0%B4%E8%A7%A3%E4%BF%9D%E9%99%A9%E7%AE%B1/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E4%B8%89%E4%B8%AA%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -412,7 +412,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E7%A0%B4%E8%A7%A3%E4%BF%9D%E9%99%A9%E7%AE%B1/" class="post-title-link" itemprop="url">破解保险箱</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E4%B8%89%E4%B8%AA%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/" class="post-title-link" itemprop="url">将数组分成三个子数组的方案数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -452,10 +452,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/cracking-the-safe/">753. 破解保险箱</a></p><hr /><p>有一个需要密码才能打开的保险箱。密码是 <code>n</code> 位数, 密码的每一位是 <code>k</code> 位序列 <code>0, 1, ..., k-1</code> 中的一个 。</p><p>你可以随意输入密码，保险箱会自动记住最后 <code>n</code> 位输入，如果匹配，则能够打开保险箱。</p><p>举个例子，假设密码是 <code>&amp;quot;345&amp;quot;</code>，你可以输入 <code>&amp;quot;012345&amp;quot;</code> 来打开它，只是你输入了 6 个字符.</p><p>请返回一个能打开保险箱的最短字符串。</p><p><strong>示例1:</strong></p><p>```txt</p><p>输入: n = 1, k = 2</p><p>输出: &quot;01&quot;</p><p>说明: &quot;10&quot;也可以打开保险箱。</p><p>```</p><p><strong>示例2:</strong></p><p>```txt</p><p>输入: n = 2, k = 2</p><p>输出: &quot;00110&quot;</p><p>说明: &quot;01100&quot;, &quot;10011&quot;, &quot;11001&quot; 也能打开保险箱。</p><p>```</p><p><strong>提示：</strong></p><ol><li><p><code>n</code> 的范围是 <code>[1, 4]</code>。</p></li><li><p><code>k</code> 的范围是 <code>[1, 10]</code>。</p></li><li><p><code>k^n</code> 最大可能为 <code>4096</code>。</p></li></ol></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ways-to-split-array-into-three-subarrays/">1712. 将数组分成三个子数组的方案数</a></p><hr /><p>我们称一个分割整数数组的方案是 <strong>好的</strong> ，当它满足：</p><ul><li><p>数组被分成三个 <strong>非空</strong> 连续子数组，从左至右分别命名为 <code>left</code> ， <code>mid</code> ， <code>right</code> 。</p></li><li><p><code>left</code> 中元素和小于等于 <code>mid</code> 中元素和，<code>mid</code> 中元素和小于等于 <code>right</code> 中元素和。</p></li></ul><p>给你一个 <strong>非负</strong> 整数数组 <code>nums</code> ，请你返回 <strong>好的</strong> 分割 <code>nums</code> 方案数目。由于答案可能会很大，请你将结果对 <code>10^9 + 7</code> 取余后返回。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,1,1]</p><p>输出：1</p><p>解释：唯一一种好的分割方案是将 nums 分成 [1] [1] [1] 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1,2,2,2,5,0]</p><p>输出：3</p><p>解释：nums 总共有 3 种好的分割方案：</p><p>[1] [2] [2,2,5,0]</p><p>[1] [2,2] [2,5,0]</p><p>[1,2] [2,2] [5,0]</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [3,2,1]</p><p>输出：0</p><p>解释：没有好的分割方案。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>3 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>0 &amp;lt;= nums[i] &amp;lt;= 10^4</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E7%A0%B4%E8%A7%A3%E4%BF%9D%E9%99%A9%E7%AE%B1/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E4%B8%89%E4%B8%AA%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -486,7 +486,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%20IV/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -504,7 +504,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B/" class="post-title-link" itemprop="url">重新安排行程</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%20IV/" class="post-title-link" itemprop="url">打家劫舍 IV</a>
         </h2>
 
         <div class="post-meta-container">
@@ -544,10 +544,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reconstruct-itinerary/">332. 重新安排行程</a></p><hr /><p>给你一份航线列表 <code>tickets</code> ，其中 <code>tickets[i] = [fromi, toi]</code> 表示飞机出发和降落的机场地点。请你对该行程进行重新规划排序。</p><p>所有这些机票都属于一个从 <code>JFK</code>（肯尼迪国际机场）出发的先生，所以该行程必须从 <code>JFK</code> 开始。如果存在多种有效的行程，请你按字典排序返回最小的行程组合。</p><ul><li>例如，行程 <code>[&amp;quot;JFK&amp;quot;, &amp;quot;LGA&amp;quot;]</code> 与 <code>[&amp;quot;JFK&amp;quot;, &amp;quot;LGB&amp;quot;]</code> 相比就更小，排序更靠前。</li></ul><p>假定所有机票至少存在一种合理的行程。且所有的机票 必须都用一次 且 只能用一次。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/03/14/itinerary1-graph.jpg" /></p><p>```txt</p><p>输入：tickets = [[&quot;MUC&quot;,&quot;LHR&quot;],[&quot;JFK&quot;,&quot;MUC&quot;],[&quot;SFO&quot;,&quot;SJC&quot;],[&quot;LHR&quot;,&quot;SFO&quot;]]</p><p>输出：[&quot;JFK&quot;,&quot;MUC&quot;,&quot;LHR&quot;,&quot;SFO&quot;,&quot;SJC&quot;]</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/03/14/itinerary2-graph.jpg" /></p><p>```txt</p><p>输入：tickets = [[&quot;JFK&quot;,&quot;SFO&quot;],[&quot;JFK&quot;,&quot;ATL&quot;],[&quot;SFO&quot;,&quot;ATL&quot;],[&quot;ATL&quot;,&quot;JFK&quot;],[&quot;ATL&quot;,&quot;SFO&quot;]]</p><p>输出：[&quot;JFK&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;SFO&quot;]</p><p>解释：另一种有效的行程是 [&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;ATL&quot;,&quot;SFO&quot;] ，但是它字典排序更大更靠后。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= tickets.length &amp;lt;= 300</code></p></li><li><p><code>tickets[i].length == 2</code></p></li><li><p><code>fromi.length == 3</code></p></li><li><p><code>toi.length == 3</code></p></li><li><p><code>fromi</code> 和 <code>toi</code> 由大写英文字母组成</p></li><li><p><code>fromi != toi</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/house-robber-iv/">6346. 打家劫舍 IV</a></p><hr /><p>沿街有一排连续的房屋。每间房屋内都藏有一定的现金。现在有一位小偷计划从这些房屋中窃取现金。</p><p>由于相邻的房屋装有相互连通的防盗系统，所以小偷 <strong>不会窃取相邻的房屋</strong> 。</p><p>小偷的 <strong>窃取能力</strong> 定义为他在窃取过程中能从单间房屋中窃取的 <strong>最大金额</strong> 。</p><p>给你一个整数数组 <code>nums</code> 表示每间房屋存放的现金金额。形式上，从左起第 <code>i</code> 间房屋中放有 <code>nums[i]</code> 美元。</p><p>另给你一个整数数组 <code>k</code> ，表示窃贼将会窃取的 <strong>最少</strong> 房屋数。小偷总能窃取至少 <code>k</code> 间房屋。</p><p>返回小偷的 <strong>最小</strong> 窃取能力。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [2,3,5,9], k = 2</p><p>输出：5</p><p>解释：</p><p>小偷窃取至少 2 间房屋，共有 3 种方式：</p><ul><li><p>窃取下标 0 和 2 处的房屋，窃取能力为 max(nums[0], nums[2]) = 5 。</p></li><li><p>窃取下标 0 和 3 处的房屋，窃取能力为 max(nums[0], nums[3]) = 9 。</p></li><li><p>窃取下标 1 和 3 处的房屋，窃取能力为 max(nums[1], nums[3]) = 9 。</p></li></ul><p>因此，返回 min(5, 9, 9) = 5 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [2,7,9,3,1], k = 2</p><p>输出：2</p><p>解释：共有 7 种窃取方式。窃取能力最小的情况所对应的方式是窃取下标 0 和 4 处的房屋。返回 max(nums[0], nums[4]) = 2 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= (nums.length + 1)/2</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%20IV/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -578,7 +578,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%A7%BB%E5%8A%A8%E7%9F%B3%E5%AD%90%E7%9B%B4%E5%88%B0%E8%BF%9E%E7%BB%AD%20II/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%94%BE%E7%BD%AE%E7%9B%92%E5%AD%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -596,7 +596,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%A7%BB%E5%8A%A8%E7%9F%B3%E5%AD%90%E7%9B%B4%E5%88%B0%E8%BF%9E%E7%BB%AD%20II/" class="post-title-link" itemprop="url">移动石子直到连续 II</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%94%BE%E7%BD%AE%E7%9B%92%E5%AD%90/" class="post-title-link" itemprop="url">放置盒子</a>
         </h2>
 
         <div class="post-meta-container">
@@ -636,10 +636,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/moving-stones-until-consecutive-ii/">1040. 移动石子直到连续 II</a></p><hr /><p>在一个长度 <strong>无限</strong> 的数轴上，第 <code>i</code> 颗石子的位置为 <code>stones[i]</code>。如果一颗石子的位置最小/最大，那么该石子被称作 <strong>端点石子</strong> 。</p><p>每个回合，你可以将一颗端点石子拿起并移动到一个未占用的位置，使得该石子不再是一颗端点石子。</p><p>值得注意的是，如果石子像 <code>stones = [1,2,5]</code> 这样，你将 <strong>无法</strong> 移动位于位置 5 的端点石子，因为无论将它移动到任何位置（例如 0 或 3），该石子都仍然会是端点石子。</p><p>当你无法进行任何移动时，即，这些石子的位置连续时，游戏结束。</p><p>要使游戏结束，你可以执行的最小和最大移动次数分别是多少？ 以长度为 2 的数组形式返回答案：<code>answer = [minimum_moves, maximum_moves]</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：[7,4,9]</p><p>输出：[1,2]</p><p>解释：</p><p>我们可以移动一次，4 -&gt; 8，游戏结束。</p><p>或者，我们可以移动两次 9 -&gt; 5，4 -&gt; 6，游戏结束。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：[6,5,4,3,10]</p><p>输出：[2,3]</p><p>解释：</p><p>我们可以移动 3 -&gt; 8，接着是 10 -&gt; 7，游戏结束。</p><p>或者，我们可以移动 3 -&gt; 7, 4 -&gt; 8, 5 -&gt; 9，游戏结束。</p><p>注意，我们无法进行 10 -&gt; 2 这样的移动来结束游戏，因为这是不合要求的移动。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：[100,101,104,102,103]</p><p>输出：[0,0]</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>3 &amp;lt;= stones.length &amp;lt;= 10^4</code></p></li><li><p><code>1 &amp;lt;= stones[i] &amp;lt;= 10^9</code></p></li><li><p><code>stones[i]</code> 的值各不相同。</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/building-boxes/">1739. 放置盒子</a></p><hr /><p>有一个立方体房间，其长度、宽度和高度都等于 <code>n</code> 个单位。请你在房间里放置 <code>n</code> 个盒子，每个盒子都是一个单位边长的立方体。放置规则如下：</p><ul><li><p>你可以把盒子放在地板上的任何地方。</p></li><li><p>如果盒子 <code>x</code> 需要放置在盒子 <code>y</code> 的顶部，那么盒子 <code>y</code> 竖直的四个侧面都 <strong>必须</strong> 与另一个盒子或墙相邻。</p></li></ul><p>给你一个整数 <code>n</code> ，返回接触地面的盒子的 <strong>最少</strong> 可能数量<em>。</em></p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/3-boxes.png" /></p><p>```txt</p><p>输入：n = 3</p><p>输出：3</p><p>解释：上图是 3 个盒子的摆放位置。</p><p>这些盒子放在房间的一角，对应左侧位置。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/4-boxes.png" /></p><p>```txt</p><p>输入：n = 4</p><p>输出：3</p><p>解释：上图是 3 个盒子的摆放位置。</p><p>这些盒子放在房间的一角，对应左侧位置。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/10-boxes.png" /></p><p>```txt</p><p>输入：n = 10</p><p>输出：6</p><p>解释：上图是 10 个盒子的摆放位置。</p><p>这些盒子放在房间的一角，对应后方位置。</p><p>```</p><p><strong>提示：</strong></p><ul><li><code>1 &amp;lt;= n &amp;lt;= 10^9</code></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%A7%BB%E5%8A%A8%E7%9F%B3%E5%AD%90%E7%9B%B4%E5%88%B0%E8%BF%9E%E7%BB%AD%20II/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%94%BE%E7%BD%AE%E7%9B%92%E5%AD%90/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -670,7 +670,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0%E7%9B%AE/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%A4%A7%E5%8C%96%E5%9F%8E%E5%B8%82%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BE%9B%E7%94%B5%E7%AB%99%E6%95%B0%E7%9B%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -688,7 +688,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">统计好子数组的数目</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%A4%A7%E5%8C%96%E5%9F%8E%E5%B8%82%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BE%9B%E7%94%B5%E7%AB%99%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">最大化城市的最小供电站数目</a>
         </h2>
 
         <div class="post-meta-container">
@@ -728,10 +728,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-the-number-of-good-subarrays/">6293. 统计好子数组的数目</a></p><hr /><p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，请你返回 <code>nums</code> 中 <strong>好</strong> 子数组的数目。</p><p>一个子数组 <code>arr</code> 如果有 <strong>至少</strong> <code>k</code> 对下标 <code>(i, j)</code> 满足 <code>i &amp;lt; j</code> 且 <code>arr[i] == arr[j]</code> ，那么称它是一个 <strong>好</strong> 子数组。</p><p><strong>子数组</strong> 是原数组中一段连续 <strong>非空</strong> 的元素序列。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,1,1,1,1], k = 10</p><p>输出：1</p><p>解释：唯一的好子数组是这个数组本身。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [3,1,4,3,2,2,4], k = 2</p><p>输出：4</p><p>解释：总共有 4 个不同的好子数组：</p><ul><li><p>[3,1,4,3,2,2] 有 2 对。</p></li><li><p>[3,1,4,3,2,2,4] 有 3 对。</p></li><li><p>[1,4,3,2,2,4] 有 2 对。</p></li><li><p>[4,3,2,2,4] 有 2 对。</p></li></ul><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i], k &amp;lt;= 10^9</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximize-the-minimum-powered-city/">2528. 最大化城市的最小供电站数目</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始长度为 <code>n</code> 的整数数组 <code>stations</code> ，其中 <code>stations[i]</code> 表示第 <code>i</code> 座城市的供电站数目。</p><p>每个供电站可以在一定 <strong>范围</strong> 内给所有城市提供电力。换句话说，如果给定的范围是 <code>r</code> ，在城市 <code>i</code> 处的供电站可以给所有满足 <code>|i - j| &amp;lt;= r</code> 且 <code>0 &amp;lt;= i, j &amp;lt;= n - 1</code> 的城市 <code>j</code> 供电。</p><ul><li><code>|x|</code> 表示 <code>x</code> 的 <strong>绝对值</strong> 。比方说，<code>|7 - 5| = 2</code> ，<code>|3 - 10| = 7</code> 。</li></ul><p>一座城市的 <strong>电量</strong> 是所有能给它供电的供电站数目。</p><p>政府批准了可以额外建造 <code>k</code> 座供电站，你需要决定这些供电站分别应该建在哪里，这些供电站与已经存在的供电站有相同的供电范围。</p><p>给你两个整数 <code>r</code> 和 <code>k</code> ，如果以最优策略建造额外的发电站，返回所有城市中，最小供电站数目的最大值是多少。</p><p>这 <code>k</code> 座供电站可以建在多个城市。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：stations = [1,2,4,5,0], r = 1, k = 2</p><p>输出：5</p><p>解释：</p><p>最优方案之一是把 2 座供电站都建在城市 1 。</p><p>每座城市的供电站数目分别为 [1,4,4,5,0] 。</p><ul><li><p>城市 0 的供电站数目为 1 + 4 = 5 。</p></li><li><p>城市 1 的供电站数目为 1 + 4 + 4 = 9 。</p></li><li><p>城市 2 的供电站数目为 4 + 4 + 5 = 13 。</p></li><li><p>城市 3 的供电站数目为 5 + 4 = 9 。</p></li><li><p>城市 4 的供电站数目为 5 + 0 = 5 。</p></li></ul><p>供电站数目最少是 5 。</p><p>无法得到更优解，所以我们返回 5 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：stations = [4,4,4,4], r = 0, k = 3</p><p>输出：4</p><p>解释：</p><p>无论如何安排，总有一座城市的供电站数目是 4 ，所以最优解是 4 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == stations.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>0 &amp;lt;= stations[i] &amp;lt;= 10^5</code></p></li><li><p><code>0 &amp;lt;= r &amp;lt;= n - 1</code></p></li><li><p><code>0 &amp;lt;= k &amp;lt;= 10^9</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0%E7%9B%AE/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%A4%A7%E5%8C%96%E5%9F%8E%E5%B8%82%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BE%9B%E7%94%B5%E7%AB%99%E6%95%B0%E7%9B%AE/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -762,7 +762,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/LCS/%E6%9C%80%E7%9F%AD%E5%85%AC%E5%85%B1%E8%B6%85%E5%BA%8F%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%B0%8F%E4%BD%93%E5%8A%9B%E6%B6%88%E8%80%97%E8%B7%AF%E5%BE%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -780,7 +780,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/LCS/%E6%9C%80%E7%9F%AD%E5%85%AC%E5%85%B1%E8%B6%85%E5%BA%8F%E5%88%97/" class="post-title-link" itemprop="url">最短公共超序列</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%B0%8F%E4%BD%93%E5%8A%9B%E6%B6%88%E8%80%97%E8%B7%AF%E5%BE%84/" class="post-title-link" itemprop="url">最小体力消耗路径</a>
         </h2>
 
         <div class="post-meta-container">
@@ -820,10 +820,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/shortest-common-supersequence/">1092. 最短公共超序列</a></p><hr /><p>给你两个字符串 <code>str1</code> 和 <code>str2</code>，返回同时以 <code>str1</code> 和 <code>str2</code> 作为 <strong>子序列</strong> 的最短字符串。如果答案不止一个，则可以返回满足条件的 <strong>任意一个</strong> 答案。</p><p>如果从字符串 <code>t</code> 中删除一些字符（也可能不删除），可以得到字符串 <code>s</code> ，那么 <code>s</code> 就是 t 的一个子序列。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：str1 = &quot;abac&quot;, str2 = &quot;cab&quot;</p><p>输出：&quot;cabac&quot;</p><p>解释：</p><p>str1 = &quot;abac&quot; 是 &quot;cabac&quot; 的一个子串，因为我们可以删去 &quot;cabac&quot; 的第一个 &quot;c&quot;得到 &quot;abac&quot;。 </p><p>str2 = &quot;cab&quot; 是 &quot;cabac&quot; 的一个子串，因为我们可以删去 &quot;cabac&quot; 末尾的 &quot;ac&quot; 得到 &quot;cab&quot;。</p><p>最终我们给出的答案是满足上述属性的最短字符串。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：str1 = &quot;aaaaaaaa&quot;, str2 = &quot;aaaaaaaa&quot;</p><p>输出：&quot;aaaaaaaa&quot;</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= str1.length, str2.length &amp;lt;= 1000</code></p></li><li><p><code>str1</code> 和 <code>str2</code> 都由小写英文字母组成。</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/path-with-minimum-effort/">1631. 最小体力消耗路径</a></p><hr /><p>你准备参加一场远足活动。给你一个二维 <code>rows x columns</code> 的地图 <code>heights</code> ，其中 <code>heights[row][col]</code> 表示格子 <code>(row, col)</code> 的高度。一开始你在最左上角的格子 <code>(0, 0)</code> ，且你希望去最右下角的格子 <code>(rows-1, columns-1)</code> （注意下标从 <strong>0</strong> 开始编号）。你每次可以往 <strong>上</strong>，<strong>下</strong>，<strong>左</strong>，<strong>右</strong> 四个方向之一移动，你想要找到耗费 <strong>体力</strong> 最小的一条路径。</p><p>一条路径耗费的 <strong>体力值</strong> 是路径上相邻格子之间 <strong>高度差绝对值</strong> 的 <strong>最大值</strong> 决定的。</p><p>请你返回从左上角走到右下角的最小 <strong>体力消耗值</strong> 。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/ex1.png" /></p><p>```txt</p><p>输入：heights = [[1,2,2],[3,8,2],[5,3,5]]</p><p>输出：2</p><p>解释：路径 [1,3,5,3,5] 连续格子的差值绝对值最大为 2 。</p><p>这条路径比路径 [1,2,2,2,5] 更优，因为另一条路径差值最大值为 3 。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/ex2.png" /></p><p>```txt</p><p>输入：heights = [[1,2,3],[3,8,4],[5,3,5]]</p><p>输出：1</p><p>解释：路径 [1,2,3,4,5] 的相邻格子差值绝对值最大为 1 ，比路径 [1,3,5,3,5] 更优。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/25/ex3.png" /></p><p>```txt</p><p>输入：heights = [[1,2,1,1,1],[1,2,1,2,1],[1,2,1,2,1],[1,2,1,2,1],[1,1,1,2,1]]</p><p>输出：0</p><p>解释：上图所示路径不需要消耗任何体力。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>rows == heights.length</code></p></li><li><p><code>columns == heights[i].length</code></p></li><li><p><code>1 &amp;lt;= rows, columns &amp;lt;= 100</code></p></li><li><p><code>1 &amp;lt;= heights[i][j] &amp;lt;= 10^6</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/LCS/%E6%9C%80%E7%9F%AD%E5%85%AC%E5%85%B1%E8%B6%85%E5%BA%8F%E5%88%97/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%B0%8F%E4%BD%93%E5%8A%9B%E6%B6%88%E8%80%97%E8%B7%AF%E5%BE%84/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -854,7 +854,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E5%8C%BA%E9%97%B4dp/K%20%E6%AC%A1%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%80%BB%E7%A9%BA%E9%97%B4/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%B0%8F%E5%8C%96%E6%95%B0%E5%AF%B9%E7%9A%84%E6%9C%80%E5%A4%A7%E5%B7%AE%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -872,7 +872,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E5%8C%BA%E9%97%B4dp/K%20%E6%AC%A1%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%80%BB%E7%A9%BA%E9%97%B4/" class="post-title-link" itemprop="url">K 次调整数组大小浪费的最小总空间</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%B0%8F%E5%8C%96%E6%95%B0%E5%AF%B9%E7%9A%84%E6%9C%80%E5%A4%A7%E5%B7%AE%E5%80%BC/" class="post-title-link" itemprop="url">最小化数对的最大差值</a>
         </h2>
 
         <div class="post-meta-container">
@@ -912,10 +912,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-total-space-wasted-with-k-resizing-operations/">1959. K 次调整数组大小浪费的最小总空间</a></p><hr /><p>你正在设计一个动态数组。给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> ，其中 <code>nums[i]</code> 是 <code>i</code> 时刻数组中的元素数目。除此以外，你还有一个整数 <code>k</code> ，表示你可以 <strong>调整</strong> 数组大小的 <strong>最多</strong> 次数（每次都可以调整成 <strong>任意</strong> 大小）。</p><p><code>t</code> 时刻数组的大小 <code>sizet</code> 必须大于等于 <code>nums[t]</code> ，因为数组需要有足够的空间容纳所有元素。<code>t</code> 时刻 <strong>浪费的空间</strong> 为 <code>sizet - nums[t]</code> ，<strong>总</strong> 浪费空间为满足 <code>0 &amp;lt;= t &amp;lt; nums.length</code> 的每一个时刻 <code>t</code> 浪费的空间 <strong>之和</strong> 。</p><p>在调整数组大小不超过 <code>k</code> 次的前提下，请你返回 <strong>最小总浪费空间</strong> 。</p><p><strong>注意：</strong>数组最开始时可以为 <strong>任意大小</strong> ，且 <strong>不计入</strong> 调整大小的操作次数。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [10,20], k = 0</p><p>输出：10</p><p>解释：size = [20,20].</p><p>我们可以让数组初始大小为 20 。</p><p>总浪费空间为 (20 - 10) + (20 - 20) = 10 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [10,20,30], k = 1</p><p>输出：10</p><p>解释：size = [20,20,30].</p><p>我们可以让数组初始大小为 20 ，然后时刻 2 调整大小为 30 。</p><p>总浪费空间为 (20 - 10) + (20 - 20) + (30 - 30) = 10 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [10,20,15,30,20], k = 2</p><p>输出：15</p><p>解释：size = [10,20,20,30,30].</p><p>我们可以让数组初始大小为 10 ，时刻 1 调整大小为 20 ，时刻 3 调整大小为 30 。</p><p>总浪费空间为 (10 - 10) + (20 - 20) + (20 - 15) + (30 - 30) + (30 - 20) = 15 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 200</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^6</code></p></li><li><p><code>0 &amp;lt;= k &amp;lt;= nums.length - 1</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimize-the-maximum-difference-of-pairs/">6359. 最小化数对的最大差值</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 和一个整数 <code>p</code> 。请你从 <code>nums</code> 中找到 <code>p</code> 个下标对，每个下标对对应数值取差值，你需要使得这 <code>p</code> 个差值的 <strong>最大值</strong> <strong>最小</strong>。同时，你需要确保每个下标在这 <code>p</code> 个下标对中最多出现一次。</p><p>对于一个下标对 <code>i</code> 和 <code>j</code> ，这一对的差值为 <code>|nums[i] - nums[j]|</code> ，其中 <code>|x|</code> 表示 <code>x</code> 的 <strong>绝对值</strong> 。</p><p>请你返回 <code>p</code> 个下标对对应数值 <strong>最大差值</strong> 的 <strong>最小值</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [10,1,2,7,1,3], p = 2</p><p>输出：1</p><p>解释：第一个下标对选择 1 和 4 ，第二个下标对选择 2 和 5 。</p><p>最大差值为 max(|nums[1] - nums[4]|, |nums[2] - nums[5]|) = max(0, 1) = 1 。所以我们返回 1 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [4,2,1,2], p = 1</p><p>输出：0</p><p>解释：选择下标 1 和 3 构成下标对。差值为 |2 - 2| = 0 ，这是最大差值的最小值。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>0 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li><li><p><code>0 &amp;lt;= p &amp;lt;= (nums.length)/2</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E5%8C%BA%E9%97%B4dp/K%20%E6%AC%A1%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%80%BB%E7%A9%BA%E9%97%B4/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%B0%8F%E5%8C%96%E6%95%B0%E5%AF%B9%E7%9A%84%E6%9C%80%E5%A4%A7%E5%B7%AE%E5%80%BC/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -946,7 +946,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E5%8C%BA%E9%97%B4dp/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%B0%91%E5%BE%97%E5%88%86%E5%AD%90%E5%BA%8F%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -964,7 +964,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E5%8C%BA%E9%97%B4dp/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/" class="post-title-link" itemprop="url">多边形三角剖分的最低得分</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%B0%91%E5%BE%97%E5%88%86%E5%AD%90%E5%BA%8F%E5%88%97/" class="post-title-link" itemprop="url">最少得分子序列</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1004,10 +1004,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-score-triangulation-of-polygon/">1039. 多边形三角剖分的最低得分</a></p><hr /><p>你有一个凸的 <code>n</code> 边形，其每个顶点都有一个整数值。给定一个整数数组 <code>values</code> ，其中 <code>values[i]</code> 是第 <code>i</code> 个顶点的值（即 <strong>顺时针顺序</strong> ）。</p><p>假设将多边形 <strong>剖分</strong> 为 <code>n - 2</code> 个三角形。对于每个三角形，该三角形的值是顶点标记的<strong>乘积</strong>，三角剖分的分数是进行三角剖分后所有 <code>n - 2</code> 个三角形的值之和。</p><p>返回 <em>多边形进行三角剖分后可以得到的最低分</em> 。  </p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/02/25/shape1.jpg" /></p><p>```txt</p><p>输入：values = [1,2,3]</p><p>输出：6</p><p>解释：多边形已经三角化，唯一三角形的分数为 6。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/02/25/shape2.jpg" /></p><p>```txt</p><p>输入：values = [3,7,4,5]</p><p>输出：144</p><p>解释：有两种三角剖分，可能得分分别为：3<em>7</em>5 + 4<em>5</em>7 = 245，或 3<em>4</em>5 + 3<em>4</em>7 = 144。最低分数为 144。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/02/25/shape3.jpg" /></p><p>```txt</p><p>输入：values = [1,3,1,4,1,5]</p><p>输出：13</p><p>解释：最低分数三角剖分的得分情况为 1<em>1</em>3 + 1<em>1</em>4 + 1<em>1</em>5 + 1<em>1</em>1 = 13。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == values.length</code></p></li><li><p><code>3 &amp;lt;= n &amp;lt;= 50</code></p></li><li><p><code>1 &amp;lt;= values[i] &amp;lt;= 100</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsequence-with-the-minimum-score/">6357. 最少得分子序列</a></p><hr /><p>给你两个字符串 <code>s</code> 和 <code>t</code> 。</p><p>你可以从字符串 <code>t</code> 中删除任意数目的字符。</p><p>如果没有从字符串 <code>t</code> 中删除字符，那么得分为 <code>0</code> ，否则：</p><ul><li><p>令 <code>left</code> 为删除字符中的最小下标。</p></li><li><p>令 <code>right</code> 为删除字符中的最大下标。</p></li></ul><p>字符串的得分为 <code>right - left + 1</code> 。</p><p>请你返回使 <code>t</code> 成为 <code>s</code> 子序列的最小得分。</p><p>一个字符串的 <strong>子序列</strong> 是从原字符串中删除一些字符后（也可以一个也不删除），剩余字符不改变顺序得到的字符串。（比方说 <code>&amp;quot;ace&amp;quot;</code> 是 <code>&amp;quot;***a***b***c***d***e***&amp;quot;</code> 的子序列，但是 <code>&amp;quot;aec&amp;quot;</code> 不是）。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：s = &quot;abacaba&quot;, t = &quot;bzaa&quot;</p><p>输出：1</p><p>解释：这个例子中，我们删除下标 1 处的字符 &quot;z&quot; （下标从 0 开始）。</p><p>字符串 t 变为 &quot;baa&quot; ，它是字符串 &quot;abacaba&quot; 的子序列，得分为 1 - 1 + 1 = 1 。</p><p>1 是能得到的最小得分。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：s = &quot;cde&quot;, t = &quot;xyz&quot;</p><p>输出：3</p><p>解释：这个例子中，我们将下标为 0， 1 和 2 处的字符 &quot;x&quot; ，&quot;y&quot; 和 &quot;z&quot; 删除（下标从 0 开始）。</p><p>字符串变成 &quot;&quot; ，它是字符串 &quot;cde&quot; 的子序列，得分为 2 - 0 + 1 = 3 。</p><p>3 是能得到的最小得分。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= s.length, t.length &amp;lt;= 10^5</code></p></li><li><p><code>s</code> 和 <code>t</code> 都只包含小写英文字母。</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E5%8C%BA%E9%97%B4dp/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%80%E5%B0%91%E5%BE%97%E5%88%86%E5%AD%90%E5%BA%8F%E5%88%97/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1038,7 +1038,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC%E5%92%8C%E4%B8%8E%E6%9C%80%E5%B0%8F%E4%BB%B7%E5%80%BC%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%89%E7%95%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E6%8C%87%E5%AE%9A%E4%B8%8B%E6%A0%87%E5%A4%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -1056,7 +1056,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC%E5%92%8C%E4%B8%8E%E6%9C%80%E5%B0%8F%E4%BB%B7%E5%80%BC%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC/" class="post-title-link" itemprop="url">最大价值和与最小价值和的差值</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%89%E7%95%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E6%8C%87%E5%AE%9A%E4%B8%8B%E6%A0%87%E5%A4%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" class="post-title-link" itemprop="url">有界数组中指定下标处的最大值</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1096,10 +1096,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/difference-between-maximum-and-minimum-price-sum/">6294. 最大价值和与最小价值和的差值</a></p><hr /><p>给你一个 <code>n</code> 个节点的无向无根图，节点编号为 <code>0</code> 到 <code>n - 1</code> 。给你一个整数 <code>n</code> 和一个长度为 <code>n - 1</code> 的二维整数数组 <code>edges</code> ，其中 <code>edges[i] = [ai, bi]</code> 表示树中节点 <code>ai</code> 和 <code>bi</code> 之间有一条边。</p><p>每个节点都有一个价值。给你一个整数数组 <code>price</code> ，其中 <code>price[i]</code> 是第 <code>i</code> 个节点的价值。</p><p>一条路径的 <strong>价值和</strong> 是这条路径上所有节点的价值之和。</p><p>你可以选择树中任意一个节点作为根节点 <code>root</code> 。选择 <code>root</code> 为根的 <strong>开销</strong> 是以 <code>root</code> 为起点的所有路径中，<strong>价值和</strong> 最大的一条路径与最小的一条路径的差值。</p><p>请你返回所有节点作为根节点的选择中，<strong>最大</strong> 的 <strong>开销</strong> 为多少。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/12/01/example14.png" /></p><p>```txt</p><p>输入：n = 6, edges = [[0,1],[1,2],[1,3],[3,4],[3,5]], price = [9,8,7,6,10,5]</p><p>输出：24</p><p>解释：上图展示了以节点 2 为根的树。左图（红色的节点）是最大价值和路径，右图（蓝色的节点）是最小价值和路径。</p><ul><li><p>第一条路径节点为 [2,1,3,4]：价值为 [7,8,6,10] ，价值和为 31 。</p></li><li><p>第二条路径节点为 [2] ，价值为 [7] 。</p></li></ul><p>最大路径和与最小路径和的差值为 24 。24 是所有方案中的最大开销。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/11/24/p1_example2.png" /></p><p>```txt</p><p>输入：n = 3, edges = [[0,1],[1,2]], price = [1,1,1]</p><p>输出：2</p><p>解释：上图展示了以节点 0 为根的树。左图（红色的节点）是最大价值和路径，右图（蓝色的节点）是最小价值和路径。</p><ul><li><p>第一条路径包含节点 [0,1,2]：价值为 [1,1,1] ，价值和为 3 。</p></li><li><p>第二条路径节点为 [0] ，价值为 [1] 。</p></li></ul><p>最大路径和与最小路径和的差值为 2 。2 是所有方案中的最大开销。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>edges.length == n - 1</code></p></li><li><p><code>0 &amp;lt;= ai, bi &amp;lt;= n - 1</code></p></li><li><p><code>edges</code> 表示一棵符合题面要求的树。</p></li><li><p><code>price.length == n</code></p></li><li><p><code>1 &amp;lt;= price[i] &amp;lt;= 10^5</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-value-at-a-given-index-in-a-bounded-array/">1802. 有界数组中指定下标处的最大值</a></p><hr /><p>给你三个正整数 <code>n</code>、<code>index</code> 和 <code>maxSum</code> 。你需要构造一个同时满足下述所有条件的数组 <code>nums</code>（下标 <strong>从 0 开始</strong> 计数）：</p><ul><li><p><code>nums.length == n</code></p></li><li><p><code>nums[i]</code> 是 <strong>正整数</strong> ，其中 <code>0 &amp;lt;= i &amp;lt; n</code></p></li><li><p><code>abs(nums[i] - nums[i+1]) &amp;lt;= 1</code> ，其中 <code>0 &amp;lt;= i &amp;lt; n-1</code></p></li><li><p><code>nums</code> 中所有元素之和不超过 <code>maxSum</code></p></li><li><p><code>nums[index]</code> 的值被 <strong>最大化</strong></p></li></ul><p>返回你所构造的数组中的 <code>nums[index]</code> 。</p><p>注意：<code>abs(x)</code> 等于 <code>x</code> 的前提是 <code>x &amp;gt;= 0</code> ；否则，<code>abs(x)</code> 等于 <code>-x</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 4, index = 2,  maxSum = 6</p><p>输出：2</p><p>解释：数组 [1,1,2,1] 和 [1,2,2,1] 满足所有条件。不存在其他在指定下标处具有更大值的有效数组。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 6, index = 1,  maxSum = 10</p><p>输出：3</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= maxSum &amp;lt;= 10^9</code></p></li><li><p><code>0 &amp;lt;= index &amp;lt; n</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC%E5%92%8C%E4%B8%8E%E6%9C%80%E5%B0%8F%E4%BB%B7%E5%80%BC%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%9C%89%E7%95%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E6%8C%87%E5%AE%9A%E4%B8%8B%E6%A0%87%E5%A4%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1123,7 +1123,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/47/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/45/">45</a><a class="page-number" href="/page/47/">47</a><span class="page-number current">48</span><a class="page-number" href="/page/49/">49</a><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/49/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/47/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/45/">45</a><a class="page-number" href="/page/47/">47</a><span class="page-number current">48</span><a class="page-number" href="/page/49/">49</a><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/55/">55</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/49/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
