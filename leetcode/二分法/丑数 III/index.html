@@ -27,7 +27,7 @@
 <meta property="og:description" content="1201. 丑数 III给你四个整数：n 、a 、b 、c ，请你设计一个算法来找出第 n 个丑数。丑数是可以被 a 或 b 或 c 整除的 正整数 。示例 1：&#96;&#96;&#96;txt输入：n &#x3D; 3, a &#x3D; 2, b &#x3D; 3, c &#x3D; 5输出：4解释：丑数序列为 2, 3, 4, 5, 6, 8, 9, 10... 其中第 3 个是 4。&#96;&#96;&#96;示例 2：&#96;&#96;&#96;txt输入：n &#x3D; 4, a &#x3D; 2, b">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-09T19:03:51.000Z">
-<meta property="article:modified_time" content="2023-06-08T20:08:27.000Z">
+<meta property="article:modified_time" content="2024-06-07T18:11:18.000Z">
 <meta property="article:author" content="GrainMad">
 <meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="二分法">
@@ -145,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -254,7 +254,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-06-08 20:08:27" itemprop="dateModified" datetime="2023-06-08T20:08:27+00:00">2023-06-08</time>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -298,7 +298,7 @@
 <li>  <code>1 &lt;= a * b * c &lt;= 10^18</code></li>
 <li>本题结果在 <code>[1, 2 * 10^9]</code> 的范围内</li>
 </ul>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>我们令函数f(x)为不大于x的丑数个数。可见x越大丑数不会减小，f(x)是非递减的。<br>于是可以对f(x)二分查找，找到第一个大于等于n的数便是答案。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>我们令函数f(x)为不大于x的丑数个数。可见x越大丑数不会减小，f(x)是非递减的。<br>于是可以对f(x)二分查找，找到第一个大于等于n的数便是答案。</p>
 <p>但是如何寻找不大于x的丑数个数呢？</p>
 <p>答案是$\lfloor \frac{x}{a} \rfloor + \lfloor \frac{x}{b} \rfloor + \lfloor \frac{x}{c} \rfloor - \lfloor \frac{x}{lcm(a,b)} \rfloor - \lfloor \frac{x}{lcm(b,c} \rfloor - \lfloor \frac{x}{lcm(a,c)} \rfloor + \lfloor \frac{x}{lcm(a,b,c)} \rfloor$, 在小于x的a的倍数和b的倍数中a和b的公倍数是重复的需要减去，b和c，a和c都同理。但是对于a，b和c的公倍数实际上a，b与c的倍数之和总共是加了三次，而两两之间的公倍数又恰好减去了三次，我们需要再加一次保证每个数都只出现一次。这就是容斥原理。</p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">nthUglyNumber</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="type">long</span> l = <span class="number">0</span>, r = <span class="number">2e9</span>+<span class="number">7</span>;</span><br><span class="line">        <span class="keyword">while</span> (l&lt;r) &#123;</span><br><span class="line">            <span class="type">long</span> m = l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (m/a+m/b+m/c-m/<span class="built_in">lcm</span>(a,b)-m/<span class="built_in">lcm</span>(a,c)-m/<span class="built_in">lcm</span>(b,c)+m/<span class="built_in">lcm</span>(a, <span class="built_in">lcm</span>(b, c)) &lt; n) &#123;</span><br><span class="line">                l = m+<span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                r = m;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>

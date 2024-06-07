@@ -27,7 +27,7 @@
 <meta property="og:description" content="1755. 最接近目标值的子序列和给你一个整数数组 nums 和一个目标值 goal 。你需要从 nums 中选出一个子序列，使子序列元素总和最接近 goal 。也就是说，如果子序列元素和为 sum ，你需要 最小化绝对差 abs(sum - goal) 。返回 abs(sum - goal) 可能的 最小值 。注意，数组的子序列是通过移除原始数组中的某些元素（可能全部或无）而形成的数组。示例 1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-09T19:03:51.000Z">
-<meta property="article:modified_time" content="2023-06-08T20:08:27.000Z">
+<meta property="article:modified_time" content="2024-06-07T18:11:19.000Z">
 <meta property="article:author" content="GrainMad">
 <meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="折半搜索">
@@ -145,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -254,7 +254,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-06-08 20:08:27" itemprop="dateModified" datetime="2023-06-08T20:08:27+00:00">2023-06-08</time>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -297,7 +297,7 @@
 <li>  <code>-10^7 &lt;= nums[i] &lt;= 10^7</code></li>
 <li><code>-10^9 &lt;= goal &lt;= 10^9</code></li>
 </ul>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>折半搜索，二分或双指针。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>折半搜索，二分或双指针。</p>
 <p>注意到数组大小最多为40</p>
 <p>我们枚举左一半长度的数组的所有子序列的和（共2^{n/2}种）存到有序集合a中，然后枚举右一半长度的数组的每个子序列之和x，可以通过在a中二分查找距离goal-x最近的数y，然后维护最小值min(goal-x-y)。时间复杂度O(2^{n/2} * logn)</p>
 <p>也可以求出两个子序列集合a，b。然后通过双指针找到离goal最近的两数之和。时间复杂度O(2^{n/2})</p>

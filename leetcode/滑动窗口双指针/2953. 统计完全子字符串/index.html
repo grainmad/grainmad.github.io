@@ -27,7 +27,7 @@
 <meta property="og:description" content="2953. 统计完全子字符串给你一个字符串 word 和一个整数 k 。如果 word 的一个子字符串 s 满足以下条件，我们称它是 完全字符串：s 中每个字符 恰好 出现 k 次。相邻字符在字母表中的顺序 至多 相差 2 。也就是说，s 中两个相邻字符 c1 和 c2 ，它们在字母表中的位置相差 至多 为 2 。请你返回 word 中 完全 子字符串的数目。子字符串 指的是一个字符串中一段连续">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-02T13:59:41.000Z">
-<meta property="article:modified_time" content="2024-01-02T13:59:41.000Z">
+<meta property="article:modified_time" content="2024-06-07T18:11:19.000Z">
 <meta property="article:author" content="GrainMad">
 <meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="滑动窗口双指针">
@@ -145,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -251,6 +251,13 @@
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分类于</span>
@@ -291,7 +298,7 @@
 <li>  <code>word</code> 只包含小写英文字母。</li>
 <li><code>1 &lt;= k &lt;= word.length</code></li>
 </ul>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>相邻字符字典序相差至多为2，我们可将整个串分割成若干子串。对于每个子串满足相邻字符字典序相差至多为2。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>相邻字符字典序相差至多为2，我们可将整个串分割成若干子串。对于每个子串满足相邻字符字典序相差至多为2。</p>
 <p>对于子串s，我们进行$min(26, \lfloor\frac{|s|}{k}\rfloor)$次滑动窗口，第i次滑窗的固定滑动窗口大小为$i\times k$，在滑窗过程中检测窗口内恰好有i个字符出现k次则说明这个子串是合法子串。给答案贡献1。</p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">countCompleteSubstrings</span><span class="params">(string word, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> sw = [&amp;](string s) &#123;</span><br><span class="line">            <span class="type">int</span> sz = s.<span class="built_in">size</span>(), rt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">26</span> &amp;&amp; i*k&lt;=sz; i++) &#123;</span><br><span class="line">                <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">c</span><span class="params">(<span class="number">26</span>)</span></span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> r=<span class="number">0</span>; r&lt;sz; r++) &#123;</span><br><span class="line">                    c[s[r]-<span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">                    <span class="keyword">if</span> (r-i*k&gt;=<span class="number">0</span>) c[s[r-i*k]-<span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="built_in">count</span>(c.<span class="built_in">begin</span>(), c.<span class="built_in">end</span>(), k) == i) rt++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> rt;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> n = word.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n;) &#123;</span><br><span class="line">            <span class="type">int</span> p = i++;</span><br><span class="line">            <span class="keyword">while</span> (i&lt;n &amp;&amp; <span class="built_in">abs</span>(word[i]-word[i<span class="number">-1</span>])&lt;=<span class="number">2</span>) i++;</span><br><span class="line">            ans += <span class="built_in">sw</span>(word.<span class="built_in">substr</span>(p, i-p));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
