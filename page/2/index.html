@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/08/1560F1/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E6%95%B0%E7%9B%AE%E7%9B%B8%E7%AD%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/08/1560F1/" class="post-title-link" itemprop="url">Nearest Beautiful Number (easy version)</a>
+          <a href="/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E6%95%B0%E7%9B%AE%E7%9B%B8%E7%AD%89/" class="post-title-link" itemprop="url">使字符串总不同字符的数目相等</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,7 +239,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -247,11 +254,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -265,10 +268,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给定数据组数 $t$，每组数据包含正整数 $n$、$k$，求满足 $x\geq n$ 的最小正整数 $x$，使 $x$ 是个 $k$-beautiful 数。</p><p>一个正整数是个 $k$-beautiful 数，当且仅当其无前导零的十进制数值表示中，不同的数字不超过 $k$ 个。</p><p>数据满足 $1 \leq t \leq 10^4$，$1 \leq n \leq 10^9$，$1 \leq k \leq 2$。</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/make-number-of-distinct-characters-equal/">2531. 使字符串总不同字符的数目相等</a></p><hr /><p>给你两个下标从 <strong>0</strong> 开始的字符串 <code>word1</code> 和 <code>word2</code> 。</p><p>一次 <strong>移动</strong> 由以下两个步骤组成：</p><ul><li><p>选中两个下标 <code>i</code> 和 <code>j</code> ，分别满足 <code>0 &amp;lt;= i &amp;lt; word1.length</code> 和 <code>0 &amp;lt;= j &amp;lt; word2.length</code> ，</p></li><li><p>交换 <code>word1[i]</code> 和 <code>word2[j]</code> 。</p></li></ul><p>如果可以通过 <strong>恰好一次</strong> 移动，使 <code>word1</code> 和 <code>word2</code> 中不同字符的数目相等，则返回 <code>true</code> ；否则，返回 <code>false</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：word1 = &quot;ac&quot;, word2 = &quot;b&quot;</p><p>输出：false</p><p>解释：交换任何一组下标都会导致第一个字符串中有 2 个不同的字符，而在第二个字符串中只有 1 个不同字符。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：word1 = &quot;abcc&quot;, word2 = &quot;aab&quot;</p><p>输出：true</p><p>解释：交换第一个字符串的下标 2 和第二个字符串的下标 0 。之后得到 word1 = &quot;abac&quot; 和 word2 = &quot;cab&quot; ，各有 3 个不同字符。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：word1 = &quot;abcde&quot;, word2 = &quot;fghij&quot;</p><p>输出：true</p><p>解释：无论交换哪一组下标，两个字符串中都会有 5 个不同字符。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= word1.length, word2.length &amp;lt;= 10^5</code></p></li><li><p><code>word1</code> 和 <code>word2</code> 仅由小写英文字母组成。</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/08/1560F1/">
+              <a class="btn" href="/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E6%95%B0%E7%9B%AE%E7%9B%B8%E7%AD%89/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -299,7 +302,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/09/1380D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E5%90%88%E6%B3%95%E5%88%86%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%91%E7%BB%84%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -317,7 +320,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/09/1380D/" class="post-title-link" itemprop="url">Berserk And Fireball</a>
+          <a href="/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E5%90%88%E6%B3%95%E5%88%86%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%91%E7%BB%84%E6%95%B0/" class="post-title-link" itemprop="url">合法分组的最少组数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -328,7 +331,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-10-24 14:55:20" itemprop="dateCreated datePublished" datetime="2023-10-24T14:55:20+00:00">2023-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -336,11 +346,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -354,10 +360,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有 $n$ 个战士站成一排，第 $i$ 个战士的战力是 $a_i$。所有战士的战力都是两两不同的。</p><p>你可以使用两种类型的咒语：</p><ol><li><p>火球术：你可以消耗 $x$ 点法力值来干掉连续的 $k$ 个战士（你必须干掉正好 $k$ 个，而不能干掉 $\le k$ 个）。</p></li><li><p>狂暴术：你可以消耗 $y$ 点法力值，选择站在一起的两个战士使他们展开决斗，战力较弱的那个战士将会被干掉。</p></li></ol><p>我们来举个例子，假设有 $7$ 个战士，其战力分别为 $[2,3,7,8,11,5,4]$，且此时的$k=3$（$k$ 的定义详见火球术）。如果你对战力为 $8$ 与 $11$ 的两个战士施加狂暴术，剩下战士的战力将会变成 $[2,3,7,11,5,4]$（战力为 $8$ 的战士在决斗中战死）。然后如果我们对战力为 $[7,11,5]$ 的战士施加火球术，剩下战士的战力将会变成 $[2,3,4]$。</p><p>你想要组建一支军队，因此你想要将所有战士战力的序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$。试计算你所需的最少法力值。</p><p>输入格式</p><p>第一行两个整数 $n,m (1\le n,m\le 2\cdot 10^5)$ ——序列 $a$ 的长度和序列 $b$ 的长度。</p><p>第二行三个整数 $x,k,y (1\le x,y\le 10^9,1\le k\le n)$ ——火球术消耗的法力值，火球术的范围和狂暴术消耗的法力值。</p><p>第三行 $n$ 个整数 $a_1,a_2,…,a_n (1\le a_i\le n)$。保证 $a_i$ 是两两不同的。</p><p>第四行 $m$ 个整数 $b_1,b_2,…,b_m(1\le b_i\le n)$。保证 $b_i$ 是两两不同的。</p><p>输出格式</p><p>一行一个整数，即将序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$所需的最少法力值。如果无法完成变换，则输出$-1$。</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-groups-to-create-a-valid-assignment/description/">100097. 合法分组的最少组数</a></p><hr /><p>给你一个长度为 <code>n</code> 下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 。</p><p>我们想将下标进行分组，使得 <code>[0, n - 1]</code> 内所有下标 <code>i</code> 都 <strong>恰好</strong> 被分到其中一组。</p><p>如果以下条件成立，我们说这个分组方案是合法的：</p><ul><li><p>对于每个组 <code>g</code> ，同一组内所有下标在 <code>nums</code> 中对应的数值都相等。</p></li><li><p>对于任意两个组 <code>g1</code> 和 <code>g2</code> ，两个组中 <strong>下标数量</strong> 的 <strong>差值不超过</strong> <code>1</code> 。</p></li></ul><p>请你返回一个整数，表示得到一个合法分组方案的 <strong>最少</strong> 组数。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [3,2,3,2,3]</p><p>输出：2</p><p>解释：一个得到 2 个分组的方案如下，中括号内的数字都是下标：</p><p>组 1 -&gt; [0,2,4]</p><p>组 2 -&gt; [1,3]</p><p>所有下标都只属于一个组。</p><p>组 1 中，nums[0] == nums[2] == nums[4] ，所有下标对应的数值都相等。</p><p>组 2 中，nums[1] == nums[3] ，所有下标对应的数值都相等。</p><p>组 1 中下标数目为 3 ，组 2 中下标数目为 2 。</p><p>两者之差不超过 1 。</p><p>无法得到一个小于 2 组的答案，因为如果只有 1 组，组内所有下标对应的数值都要相等。</p><p>所以答案为 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [10,10,10,3,1,1]</p><p>输出：4</p><p>解释：一个得到 2 个分组的方案如下，中括号内的数字都是下标：</p><p>组 1 -&gt; [0]</p><p>组 2 -&gt; [1,2]</p><p>组 3 -&gt; [3]</p><p>组 4 -&gt; [4,5]</p><p>分组方案满足题目要求的两个条件。</p><p>无法得到一个小于 4 组的答案。</p><p>所以答案为 4 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/09/1380D/">
+              <a class="btn" href="/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E5%90%88%E6%B3%95%E5%88%86%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%91%E7%BB%84%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -388,7 +394,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/09/1491D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E5%B0%86%E7%9F%B3%E5%A4%B4%E5%88%86%E6%95%A3%E5%88%B0%E7%BD%91%E6%A0%BC%E5%9B%BE%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E5%8A%A8%E6%AC%A1%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -406,7 +412,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/09/1491D/" class="post-title-link" itemprop="url">Zookeeper and The Infinite Zoo</a>
+          <a href="/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E5%B0%86%E7%9F%B3%E5%A4%B4%E5%88%86%E6%95%A3%E5%88%B0%E7%BD%91%E6%A0%BC%E5%9B%BE%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E5%8A%A8%E6%AC%A1%E6%95%B0/" class="post-title-link" itemprop="url">将石头分散到网格图的最少移动次数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -417,7 +423,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-09-11 20:20:21" itemprop="dateCreated datePublished" datetime="2023-09-11T20:20:21+00:00">2023-09-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -425,11 +438,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -443,10 +452,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有一个无限图，其中有无数个节点，从 $1$ 开始标号。有一条从 $u$ 到 $u+v$ 的单向边，当且仅当 $u \&amp;  v = v$ (这里的 $\&amp;$ 指 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/位操作#按位与（AND）">按位与</a> 。除此以外没有其它边。</p><p>有 $q$ 个询问，询问是否存在一条从 $u$ 到 $v$ 的路径。</p><p>输入格式</p><p>第一行一个整数 $q$ （$1\le q\le10^5 $） —— 询问的个数</p><p>接下来 $q$ 行中，每行有两个整数 $u,v$ ($1 \leq u,v &lt; 2^{30}$)，意义如上</p><p>输出格式</p><p>对于每个询问，输出一行 <code>YES</code> 来表示存在从 $u$ 到 $v$ 的一条路径，或输出一行 <code>NO</code> 表示不存在这样一条路径。(你可以以任意大小写形式来输出 <code>YES</code> 或 <code>NO</code>)</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-moves-to-spread-stones-over-grid/description/">2850. 将石头分散到网格图的最少移动次数</a></p><hr /><p>给你一个大小为 <code>3 * 3</code> ，下标从 <strong>0</strong> 开始的二维整数矩阵 <code>grid</code> ，分别表示每一个格子里石头的数目。网格图中总共恰好有 <code>9</code> 个石头，一个格子里可能会有 <strong>多个</strong> 石头。</p><p>每一次操作中，你可以将一个石头从它当前所在格子移动到一个至少有一条公共边的相邻格子。</p><p>请你返回每个格子恰好有一个石头的 <strong>最少移动次数</strong> 。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/08/23/example1-3.svg" /></p><p>```txt</p><p>输入：grid = [[1,1,0],[1,1,1],[1,2,1]]</p><p>输出：3</p><p>解释：让每个格子都有一个石头的一个操作序列为：</p><p>1 - 将一个石头从格子 (2,1) 移动到 (2,2) 。</p><p>2 - 将一个石头从格子 (2,2) 移动到 (1,2) 。</p><p>3 - 将一个石头从格子 (1,2) 移动到 (0,2) 。</p><p>总共需要 3 次操作让每个格子都有一个石头。</p><p>让每个格子都有一个石头的最少操作次数为 3 。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/08/23/example2-2.svg" /></p><p>```txt</p><p>输入：grid = [[1,3,0],[1,0,0],[1,0,3]]</p><p>输出：4</p><p>解释：让每个格子都有一个石头的一个操作序列为：</p><p>1 - 将一个石头从格子 (0,1) 移动到 (0,2) 。</p><p>2 - 将一个石头从格子 (0,1) 移动到 (1,1) 。</p><p>3 - 将一个石头从格子 (2,2) 移动到 (1,2) 。</p><p>4 - 将一个石头从格子 (2,2) 移动到 (2,1) 。</p><p>总共需要 4 次操作让每个格子都有一个石头。</p><p>让每个格子都有一个石头的最少操作次数为 4 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>grid.length == grid[i].length == 3</code></p></li><li><p><code>0 &amp;lt;= grid[i][j] &amp;lt;= 9</code></p></li><li><p><code>grid</code> 中元素之和为 <code>9</code> 。</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/09/1491D/">
+              <a class="btn" href="/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E5%B0%86%E7%9F%B3%E5%A4%B4%E5%88%86%E6%95%A3%E5%88%B0%E7%BD%91%E6%A0%BC%E5%9B%BE%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E5%8A%A8%E6%AC%A1%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -477,7 +486,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/09/1772F/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E4%BF%AE%E6%94%B9%E5%9B%BE%E4%B8%AD%E7%9A%84%E8%BE%B9%E6%9D%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -495,7 +504,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/09/1772F/" class="post-title-link" itemprop="url">Copy of a Copy of a Copy</a>
+          <a href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E4%BF%AE%E6%94%B9%E5%9B%BE%E4%B8%AD%E7%9A%84%E8%BE%B9%E6%9D%83/" class="post-title-link" itemprop="url">修改图中的边权</a>
         </h2>
 
         <div class="post-meta-container">
@@ -506,7 +515,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-06-08 20:08:27" itemprop="dateCreated datePublished" datetime="2023-06-08T20:08:27+00:00">2023-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -514,11 +530,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -532,10 +544,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给定一张 $n$ 行 $m$ 列的黑白图片（下标从 $1$ 开始），每一个单元格都被涂上了黑色或白色（$1$ 或者 $0$）。</p><p>我们对这张图片进行了若干次（可能为零次）操作，每一次操作都是下列两种之一：</p><ul><li><p>选择一个单元格，这个单元格不能在图片的边缘（即，单元格所在行不能是 $1$ 或 $n$ 行，所在列不能是 $1$ 或 $m$ 列），并且这个单元格被四个不同颜色的单元格包围（中间 $0$ 四周 $1$，反之亦然），将这个单元格涂成相反的颜色；</p></li><li><p>复制一份当前图片。</p></li></ul><p>两种操作不一定会交替进行。</p><p>给出你初始图片与 $k$ 份复制图片，一共 $k+1$ 份图片，这 $k+1$ 份图片是被随机打乱的。</p><p>你的任务是恢复操作的顺序。若有多种可能答案，只输出其中一个即可。</p><p>所有数据保证答案一定存在。</p><p>输入格式</p><p>输入第一行包含三个整数 $n$、$m$ 以及 $k$（$3\le n，m\le 30$；$0\le k\le 100$），分别表示图片的行数、列数和复制图片的数量。</p><p>接下来 $k+1$ 行，每行一张图片，包括 $k$ 张复制图片和 $1$ 张初始图片，顺序是打乱的。</p><p>每张图片由 $n$ 行 $m$ 列组成，每个单元格都为 $0$ 或 $1$。每张图片之前都有一个空行。</p><p>输出格式</p><p>输出第一行一个整数，表示初始图片是第几张。图片按其输入顺序分别编号 $1$ 至 $k+1$。</p><p>输出第二行一个整数 $q$，表示进行了多少次操作。</p><p>接下来 $q$ 行，每行对应一次操作，须按正确顺序输出操作。每个操作有题目描述中提到的两种类型：</p><ul><li><p>$1\ x\ y$ 表示在坐标 $(x,y)$ 执行第一种操作；</p></li><li><p>$2\ i$ 表示复制一份当前图片，编号是 $i$。</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/modify-graph-edge-weights/">2699. 修改图中的边权</a></p><hr /><p>给你一个 <code>n</code> 个节点的 <strong>无向带权连通</strong> 图，节点编号为 <code>0</code> 到 <code>n - 1</code> ，再给你一个整数数组 <code>edges</code> ，其中 <code>edges[i] = [ai, bi, wi]</code> 表示节点 <code>ai</code> 和 <code>bi</code> 之间有一条边权为 <code>wi</code> 的边。</p><p>部分边的边权为 <code>-1</code>（<code>wi = -1</code>），其他边的边权都为 <strong>正</strong> 数（<code>wi &amp;gt; 0</code>）。</p><p>你需要将所有边权为 <code>-1</code> 的边都修改为范围 <code>[1, 2 * 10^9]</code> 中的 <strong>正整数</strong> ，使得从节点 <code>source</code> 到节点 <code>destination</code> 的 <strong>最短距离</strong> 为整数 <code>target</code> 。如果有 <strong>多种</strong> 修改方案可以使 <code>source</code> 和 <code>destination</code> 之间的最短距离等于 <code>target</code> ，你可以返回任意一种方案。</p><p>如果存在使 <code>source</code> 到 <code>destination</code> 最短距离为 <code>target</code> 的方案，请你按任意顺序返回包含所有边的数组（包括未修改边权的边）。如果不存在这样的方案，请你返回一个 <strong>空数组</strong> 。</p><p><strong>注意：</strong>你不能修改一开始边权为正数的边。</p><p><strong>示例 1：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2023/04/18/graph.png" /></strong></p><p>```txt</p><p>输入：n = 5, edges = [[4,1,-1],[2,0,-1],[0,3,-1],[4,3,-1]], source = 0, destination = 1, target = 5</p><p>输出：[[4,1,1],[2,0,1],[0,3,3],[4,3,1]]</p><p>解释：上图展示了一个满足题意的修改方案，从 0 到 1 的最短距离为 5 。</p><p>```</p><p><strong>示例 2：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2023/04/18/graph-2.png" /></strong></p><p>```txt</p><p>输入：n = 3, edges = [[0,1,-1],[0,2,5]], source = 0, destination = 2, target = 6</p><p>输出：[]</p><p>解释：上图是一开始的图。没有办法通过修改边权为 -1 的边，使得 0 到 2 的最短距离等于 6 ，所以返回一个空数组。</p><p>```</p><p><strong>示例 3：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2023/04/19/graph-3.png" /></strong></p><p>```txt</p><p>输入：n = 4, edges = [[1,0,4],[1,2,3],[2,3,5],[0,3,-1]], source = 0, destination = 2, target = 6</p><p>输出：[[1,0,4],[1,2,3],[2,3,5],[0,3,1]]</p><p>解释：上图展示了一个满足题意的修改方案，从 0 到 2 的最短距离为 6 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 100</code></p></li><li><p><code>1 &amp;lt;= edges.length &amp;lt;= n * (n - 1) / 2</code></p></li><li><p><code>edges[i].length == 3</code></p></li><li><p><code>0 &amp;lt;= ai, bi &amp;lt; n</code></p></li><li><p><code>wi = -1</code> 或者 <code>1 &amp;lt;= wi &amp;lt;= 10^7</code></p></li><li><p><code>ai != bi</code></p></li><li><p><code>0 &amp;lt;= source, destination &amp;lt; n</code></p></li><li><p><code>source != destination</code></p></li><li><p><code>1 &amp;lt;= target &amp;lt;= 10^9</code></p></li><li><p>输入的图是连通图，且没有自环和重边。</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/09/1772F/">
+              <a class="btn" href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E4%BF%AE%E6%94%B9%E5%9B%BE%E4%B8%AD%E7%9A%84%E8%BE%B9%E6%9D%83/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -566,7 +578,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/10/1129B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%88%B0%E8%BE%BE%E8%A7%92%E8%90%BD%E9%9C%80%E8%A6%81%E7%A7%BB%E9%99%A4%E9%9A%9C%E7%A2%8D%E7%89%A9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%9B%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -584,7 +596,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/10/1129B/" class="post-title-link" itemprop="url">Wrong Answer</a>
+          <a href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%88%B0%E8%BE%BE%E8%A7%92%E8%90%BD%E9%9C%80%E8%A6%81%E7%A7%BB%E9%99%A4%E9%9A%9C%E7%A2%8D%E7%89%A9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">到达角落需要移除障碍物的最小数目</a>
         </h2>
 
         <div class="post-meta-container">
@@ -595,7 +607,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -603,11 +622,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -621,10 +636,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>Alice做到了这样一道题：</p><p>&gt; 给定一个序列$a$，有$n$个元素，编号从$0$到$n-1$。求$\max\limits_{0 \leq l \leq r \leq n-1} \sum\limits_{l \leq i \leq r} (r-l+1) \cdot a_i$。</p><p>&gt;</p><p>&gt; $|a_i| \leq 10^6,n \leq 2000$</p><p>Alice觉得这题太水了，很快就给出了解法：</p><p>```</p><p>function find_answer(n, a)</p><pre><code># Assumes n is an integer between 1 and 2000, inclusive# Assumes a is a list containing n integers: a[0], a[1], ..., a[n-1]res = 0cur = 0k = -1for i = 0 to i = n-1    cur = cur + a[i]    if cur &amp;lt; 0        cur = 0        k = i    res = max(res, (i-k)*cur)return res</code></pre><p>```</p><p>聪明的你一定发现了，Alice的解法是错误的。例如对于序列$a = [6, -8, 7, -42]$，Alice的程序得出的结果是$7$，而正确答案应该是$3 \cdot (6-8+7) = 15$。</p><p>于是你决定HACK掉Alice的解法。</p><p>请给出一组数据，使得正确答案-Alice的答案=$k$，你的数据必须满足$n \leq 2000,|a_i| \leq 10^6$。</p><p>$k \leq 10^9$</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner/">2290. 到达角落需要移除障碍物的最小数目</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始的二维整数数组 <code>grid</code> ，数组大小为 <code>m x n</code> 。每个单元格都是两个值之一：</p><ul><li><p><code>0</code> 表示一个 <strong>空</strong> 单元格，</p></li><li><p><code>1</code> 表示一个可以移除的 <strong>障碍物</strong> 。</p></li></ul><p>你可以向上、下、左、右移动，从一个空单元格移动到另一个空单元格。</p><p>现在你需要从左上角 <code>(0, 0)</code> 移动到右下角 <code>(m - 1, n - 1)</code> ，返回需要移除的障碍物的 <strong>最小</strong> 数目。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/04/06/example1drawio-1.png" /></p><p>```txt</p><p>输入：grid = [[0,1,1],[1,1,0],[1,1,0]]</p><p>输出：2</p><p>解释：可以移除位于 (0, 1) 和 (0, 2) 的障碍物来创建从 (0, 0) 到 (2, 2) 的路径。</p><p>可以证明我们至少需要移除两个障碍物，所以返回 2 。</p><p>注意，可能存在其他方式来移除 2 个障碍物，创建出可行的路径。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/04/06/example1drawio.png" /></p><p>```txt</p><p>输入：grid = [[0,1,0,0,0],[0,1,0,1,0],[0,0,0,1,0]]</p><p>输出：0</p><p>解释：不移除任何障碍物就能从 (0, 0) 到 (2, 4) ，所以返回 0 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>1 &amp;lt;= m, n &amp;lt;= 10^5</code></p></li><li><p><code>2 &amp;lt;= m * n &amp;lt;= 10^5</code></p></li><li><p><code>grid[i][j]</code> 为 <code>0</code> <strong>或</strong> <code>1</code></p></li><li><p><code>grid[0][0] == grid[m - 1][n - 1] == 0</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/10/1129B/">
+              <a class="btn" href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%88%B0%E8%BE%BE%E8%A7%92%E8%90%BD%E9%9C%80%E8%A6%81%E7%A7%BB%E9%99%A4%E9%9A%9C%E7%A2%8D%E7%89%A9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%9B%AE/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -655,7 +670,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/10/1256F/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%9C%A8%E7%BD%91%E6%A0%BC%E5%9B%BE%E4%B8%AD%E8%AE%BF%E9%97%AE%E4%B8%80%E4%B8%AA%E6%A0%BC%E5%AD%90%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -673,7 +688,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/10/1256F/" class="post-title-link" itemprop="url">Equalizing Two Strings</a>
+          <a href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%9C%A8%E7%BD%91%E6%A0%BC%E5%9B%BE%E4%B8%AD%E8%AE%BF%E9%97%AE%E4%B8%80%E4%B8%AA%E6%A0%BC%E5%AD%90%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/" class="post-title-link" itemprop="url">在网格图中访问一个格子的最少时间</a>
         </h2>
 
         <div class="post-meta-container">
@@ -684,7 +699,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -692,11 +714,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -710,10 +728,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给你两长度都为 $n$ 的小写字符串 $S, T$。</p><p>每次操作中你可以任选一个 $L (1\le L\le n)$，同时翻转 $S$ 中的任意一个长度为 $L$ 的子串和 $T$ 中任意一个长度为 $L$ 的子串。</p><p>请回答你是否能在若干次操作后使两字符串一样？</p><p>输入格式</p><p>第一行一个正整数 $q(1\le q\le 10^4)$ 表示询问次数</p><p>接下来 $q$ 组数据，每组数据三行，第一行一个正整数 $n(1\le n\le 2\times 10^5)$，第二行一个字符串 $S$，第三行一个字符串 $T$。</p><p>保证 $\sum n\le 2\times 10^5$</p><p>输出格式</p><p>$q$ 行，每行一个字符串 <code>YES</code> 或 <code>NO</code>。</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-time-to-visit-a-cell-in-a-grid/">6366. 在网格图中访问一个格子的最少时间</a></p><hr /><p>给你一个 <code>m x n</code> 的矩阵 <code>grid</code> ，每个元素都为 <strong>非负</strong> 整数，其中 <code>grid[row][col]</code> 表示可以访问格子 <code>(row, col)</code> 的 <strong>最早</strong> 时间。也就是说当你访问格子 <code>(row, col)</code> 时，最少已经经过的时间为 <code>grid[row][col]</code> 。</p><p>你从 <strong>最左上角</strong> 出发，出发时刻为 <code>0</code> ，你必须一直移动到上下左右相邻四个格子中的 <strong>任意</strong> 一个格子（即不能停留在格子上）。每次移动都需要花费 1 单位时间。</p><p>请你返回 <strong>最早</strong> 到达右下角格子的时间，如果你无法到达右下角的格子，请你返回 <code>-1</code> 。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/02/14/yetgriddrawio-8.png" /></p><p>```txt</p><p>输入：grid = [[0,1,3,2],[5,1,2,5],[4,3,8,6]]</p><p>输出：7</p><p>解释：一条可行的路径为：</p><ul><li><p>时刻 t = 0 ，我们在格子 (0,0) 。</p></li><li><p>时刻 t = 1 ，我们移动到格子 (0,1) ，可以移动的原因是 grid[0][1] &lt;= 1 。</p></li><li><p>时刻 t = 2 ，我们移动到格子 (1,1) ，可以移动的原因是 grid[1][1] &lt;= 2 。</p></li><li><p>时刻 t = 3 ，我们移动到格子 (1,2) ，可以移动的原因是 grid[1][2] &lt;= 3 。</p></li><li><p>时刻 t = 4 ，我们移动到格子 (1,1) ，可以移动的原因是 grid[1][1] &lt;= 4 。</p></li><li><p>时刻 t = 5 ，我们移动到格子 (1,2) ，可以移动的原因是 grid[1][2] &lt;= 5 。</p></li><li><p>时刻 t = 6 ，我们移动到格子 (1,3) ，可以移动的原因是 grid[1][3] &lt;= 6 。</p></li><li><p>时刻 t = 7 ，我们移动到格子 (2,3) ，可以移动的原因是 grid[2][3] &lt;= 7 。</p></li></ul><p>最终到达时刻为 7 。这是最早可以到达的时间。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/02/14/yetgriddrawio-9.png" /></p><p>```txt</p><p>输入：grid = [[0,2,4],[3,2,1],[1,0,4]]</p><p>输出：-1</p><p>解释：没法从左上角按题目规定走到右下角。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>2 &amp;lt;= m, n &amp;lt;= 1000</code></p></li><li><p><code>4 &amp;lt;= m * n &amp;lt;= 10^5</code></p></li><li><p><code>0 &amp;lt;= grid[i][j] &amp;lt;= 10^5</code></p></li><li><p><code>grid[0][0] == 0</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/10/1256F/">
+              <a class="btn" href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%9C%A8%E7%BD%91%E6%A0%BC%E5%9B%BE%E4%B8%AD%E8%AE%BF%E9%97%AE%E4%B8%80%E4%B8%AA%E6%A0%BC%E5%AD%90%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -744,7 +762,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/10/1416B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E8%AE%BE%E8%AE%A1%E5%8F%AF%E4%BB%A5%E6%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -762,7 +780,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/10/1416B/" class="post-title-link" itemprop="url">Make Them Equal</a>
+          <a href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E8%AE%BE%E8%AE%A1%E5%8F%AF%E4%BB%A5%E6%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%B1%BB/" class="post-title-link" itemprop="url">设计可以求最短路径的图类</a>
         </h2>
 
         <div class="post-meta-container">
@@ -773,7 +791,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-04-16 17:23:34" itemprop="dateCreated datePublished" datetime="2023-04-16T17:23:34+00:00">2023-04-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -781,11 +806,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -799,277 +820,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><ul><li><p>给出一个序列 $a$，求出一个长度不超过 $3n$ 的操作序列，使序列 $a$ 中每个元素相等。</p></li><li><p>定义一次操作为：选出 $(i,j,x)$ 三元组，满足 $i,j$ 为序列合法下标，$x$ 为 $10^9$ 以内非负整数，令 $a_i:= a_i-x\cdot i,a_j:=a_j+x\cdot i$。</p></li><li><p>必须保证操作过程中的任意时刻序列 $a$ 中每个元素都非负。</p></li><li><p>输出时先输出操作次数 $k$，然后输出 $k$ 行操作序列。</p></li><li><p>数据组数 $t\le10^4$，序列长度 $n\le10^4$，元素大小 $1\le a_i\le10^5$。</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-graph-with-shortest-path-calculator/">6336. 设计可以求最短路径的图类</a></p><hr /><p>给你一个有 <code>n</code> 个节点的 <strong>有向带权</strong> 图，节点编号为 <code>0</code> 到 <code>n - 1</code> 。图中的初始边用数组 <code>edges</code> 表示，其中 <code>edges[i] = [fromi, toi, edgeCosti]</code> 表示从 <code>fromi</code> 到 <code>toi</code> 有一条代价为 <code>edgeCosti</code> 的边。</p><p>请你实现一个 <code>Graph</code> 类：</p><ul><li><p><code>Graph(int n, int[][] edges)</code> 初始化图有 <code>n</code> 个节点，并输入初始边。</p></li><li><p><code>addEdge(int[] edge)</code> 向边集中添加一条边，其中 <code>edge = [from, to, edgeCost]</code> 。数据保证添加这条边之前对应的两个节点之间没有有向边。</p></li><li><p><code>int shortestPath(int node1, int node2)</code> 返回从节点 <code>node1</code> 到 <code>node2</code> 的路径 <strong>最小</strong> 代价。如果路径不存在，返回 <code>-1</code> 。一条路径的代价是路径中所有边代价之和。</p></li></ul><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/01/11/graph3drawio-2.png" /></p><p>```txt</p><p>输入：</p><p>[&quot;Graph&quot;, &quot;shortestPath&quot;, &quot;shortestPath&quot;, &quot;addEdge&quot;, &quot;shortestPath&quot;]</p><p>[[4, [[0, 2, 5], [0, 1, 2], [1, 2, 1], [3, 0, 3]]], [3, 2], [0, 3], [[1, 3, 4]], [0, 3]]</p><p>输出：</p><p>[null, 6, -1, null, 6]</p><p>解释：</p><p>Graph g = new Graph(4, [[0, 2, 5], [0, 1, 2], [1, 2, 1], [3, 0, 3]]);</p><p>g.shortestPath(3, 2); // 返回 6 。从 3 到 2 的最短路径如第一幅图所示：3 -&gt; 0 -&gt; 1 -&gt; 2 ，总代价为 3 + 2 + 1 = 6 。</p><p>g.shortestPath(0, 3); // 返回 -1 。没有从 0 到 3 的路径。</p><p>g.addEdge([1, 3, 4]); // 添加一条节点 1 到节点 3 的边，得到第二幅图。</p><p>g.shortestPath(0, 3); // 返回 6 。从 0 到 3 的最短路径为 0 -&gt; 1 -&gt; 3 ，总代价为 2 + 4 = 6 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 100</code></p></li><li><p><code>0 &amp;lt;= edges.length &amp;lt;= n * (n - 1)</code></p></li><li><p><code>edges[i].length == edge.length == 3</code></p></li><li><p><code>0 &amp;lt;= fromi, toi, from, to, node1, node2 &amp;lt;= n - 1</code></p></li><li><p><code>1 &amp;lt;= edgeCosti, edgeCost &amp;lt;= 10^6</code></p></li><li><p>图中任何时候都不会有重边和自环。</p></li><li><p>调用 <code>addEdge</code> 至多 <code>100</code> 次。</p></li><li><p>调用 <code>shortestPath</code> 至多 <code>100</code> 次。</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/10/1416B/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/10/1619F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/10/1619F/" class="post-title-link" itemprop="url">Let's Play the Hat?</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>The Hat是一个快速解释/猜测单词的游戏(类似于Alias)。在这道题中，我们所讨论的是一种游戏变体，即玩家坐在桌旁，每个人都单独玩游戏。</p><p>有 $n$ 个人聚集在一个有 $m$ 张桌子( $n \ge m \times 2$ )的房间里。他们想玩 $k$ 次 The Hat。$k$ 次游戏将在这些桌子上进行，每个人都会玩 $k$ 次游戏。</p><p>这些玩家被分配到这些桌子上。每个玩家可以在不同的桌子上玩，但每局游戏每个玩家只能在一张桌子上玩。</p><p>玩家们希望拥有“公平”的游戏顺序。出于这个原因，他们正在寻找一个方案，要求如下:</p><ul><li><p>在任意一场游戏中，所有桌子都有 $\lfloor \dfrac{n}{m} \rfloor$ 或 $\lceil \dfrac{n}{m} \rceil$ 个玩家。不同的桌子有不同数量的玩家，这些玩家可以玩不同的游戏。</p></li><li><p>每个玩家都有一个值 $b_i$，它表示第 $i$ 个玩家和 $\lceil \dfrac{n}{m} \rceil$ 个玩家在一张桌子上玩游戏的次数。任意两个玩家的 $b_i$ 值相差不会超过 $1$。换句话说，对于任意两个玩家 $i,j$，满足 $|b_i-b_j| \leq 1$。</p></li></ul><p>我们称有 $\lfloor \dfrac{n}{m} \rfloor$ 个玩家的桌子为“小桌子”，称有 $\lceil \dfrac{n}{m} \rceil$ 个玩家的桌子为“大桌子”。</p><p>例如，$n=5,m=2,k=2$，那么根据第一项要求，每张桌子上应该有 $2$ 或 $3$ 名玩家。考虑这些游戏顺序：</p><ul><li><p>第一局：玩家 $1,2,3$ 在第一张桌子上玩，玩家 $4,5$ 在第二张桌子上玩。第二局：玩家 $5,1$ 在第一张桌子上玩，玩家 $2,3,4$ 在第二张桌子上玩。这个顺序是不“公平”的，因为 $b_2=2$ (第二名玩家在大桌子上玩了两次)，$b_5=0$ (第五名玩家没有在大桌子上玩过游戏)。</p></li><li><p>第一局：玩家 $1,2,3$ 在第一张桌子上玩，玩家 $4,5$ 在第二张桌子上玩。第二局：玩家 $4,5,2$ 在第一张桌子上玩，玩家 $1,3$ 在第二张桌子。这是一种“公平”的顺序：$b=[1,2,1,1,1]$ (任意两个值的差都不超过 $1$)。</p></li></ul><p>为 $n$ 个玩家找到所有“公平”的顺序，如果他们玩 $k$ 次游戏，在 $m$ 张桌子上。</p><p>输入格式</p><p>第一行一个整数 $t(1 \leq t \leq 10^4)$，表示数据组数。</p><p>接下来 $t$ 行，每行三个整数 $n,m,k(2 \leq n \leq 2 \times 10^5,1 \leq m \leq \lfloor \dfrac{n}{2} \rfloor,1 \leq k \leq 10^5)$，分别表示玩家个数，桌子个数以及游戏次数。</p><p>保证所有测试用例的 $n \times k$ 之和不超过 $2 \times 10^5$。</p><p>输出格式</p><p>对于每组数据，输出 $k$ 块矩阵，每块矩阵有 $m$ 行。每一块矩阵表示一次游戏，共有 $m$ 张桌子，用一行表示一张桌子，每行先输出这张桌子的玩家数，再输出这些玩家。每组数据</p><p>如果有多个“公平”的顺序，那么输出任意一个。保证至少有一个有效的解。</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/10/1619F/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/10/1656D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/10/1656D/" class="post-title-link" itemprop="url">K-good</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给定一个整数 $n$，请找出一个大于等于 $2$ 的整数 $k$，使得 $n$ 可以表示成 $k$ 个除以 $k$ 的余数互不相同的正整数之和。</p><p>数据范围：</p><ul><li><p>$t$ 组数据，$1\leqslant t\leqslant 10^5$。</p></li><li><p>$2\leqslant n\leqslant 10^{18}$。</p></li></ul><p>Translated by Eason_AC</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/10/1656D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/11/1508A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/11/1508A/" class="post-title-link" itemprop="url">Binary Literature</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给你一个正整数 $n$ 和三个长度为 $2\times n$ 的 01 字符串 $s_1,s_2,s_3$。你需要构造一个 01 字符串 $S$，使得：</p><ul><li><p>字符串 $S$ 的长度不能超过 $3\times n$。</p></li><li><p>$s_1,s_2,s_3$ 当中至少有两个字符串是 $S$ 的子序列。</p></li></ul><p>可以证明一定有解，有多种解时输出任意一种即可。$T$ 组数据。</p><p>$1\leq T\leq10^4;1\leq n,\sum n\leq10^5;$</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/11/1508A/">
+              <a class="btn" href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E8%AE%BE%E8%AE%A1%E5%8F%AF%E4%BB%A5%E6%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%B1%BB/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1093,7 +847,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/65/">65</a><a class="page-number" href="/page/80/">80</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

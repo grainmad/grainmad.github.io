@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%87%8D%E6%8E%92%E6%B0%B4%E6%9E%9C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/12/13/1746D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%87%8D%E6%8E%92%E6%B0%B4%E6%9E%9C/" class="post-title-link" itemprop="url">重排水果</a>
+          <a href="/codeforces/ape/2023/12/13/1746D/" class="post-title-link" itemprop="url">Paths on the Tree</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,14 +239,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+      <time title="创建时间：2024-01-02 13:59:41" itemprop="dateCreated datePublished" datetime="2024-01-02T13:59:41+00:00">2024-01-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,7 +247,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -268,10 +265,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rearranging-fruits/">6345. 重排水果</a></p><hr /><p>你有两个果篮，每个果篮中有 <code>n</code> 个水果。给你两个下标从 <strong>0</strong> 开始的整数数组 <code>basket1</code> 和 <code>basket2</code> ，用以表示两个果篮中每个水果的成本。</p><p>你希望两个果篮相等。为此，可以根据需要多次执行下述操作：</p><ul><li><p>选中两个下标 <code>i</code> 和 <code>j</code> ，并交换 <code>basket1</code> 中的第 <code>i</code> 个水果和 <code>basket2</code> 中的第 <code>j</code> 个水果。</p></li><li><p>交换的成本是 <code>min(basket1i,basket2j)</code> 。</p></li></ul><p>根据果篮中水果的成本进行排序，如果排序后结果完全相同，则认为两个果篮相等。</p><p>返回使两个果篮相等的最小交换成本，如果无法使两个果篮相等，则返回 <code>-1</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：basket1 = [4,2,2,2], basket2 = [1,4,1,2]</p><p>输出：1</p><p>解释：交换 basket1 中下标为 1 的水果和 basket2 中下标为 0 的水果，交换的成本为 1 。此时，basket1 = [4,1,2,2] 且 basket2 = [2,4,1,2] 。重排两个数组，发现二者相等。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：basket1 = [2,3,4,1], basket2 = [3,2,5,1]</p><p>输出：-1</p><p>解释：可以证明无法使两个果篮相等。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>basket1.length == bakste2.length</code></p></li><li><p><code>1 &amp;lt;= basket1.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= basket1i,basket2i &amp;lt;= 10^9</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>给出一颗n个节点的树，并且每个节点都有权值，现在需要选择k条从根出发的路径，使得每条所选路径上节点权值之和最大。要求是每个节点选择的次数与其他所有兄弟节点被选次数相差不超过1。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%87%8D%E6%8E%92%E6%B0%B4%E6%9E%9C/">
+              <a class="btn" href="/codeforces/ape/2023/12/13/1746D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -302,7 +299,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%BB%91%E6%9D%BF%E5%BC%82%E6%88%96%E6%B8%B8%E6%88%8F/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/11/01/1413C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -320,7 +317,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%BB%91%E6%9D%BF%E5%BC%82%E6%88%96%E6%B8%B8%E6%88%8F/" class="post-title-link" itemprop="url">黑板异或游戏</a>
+          <a href="/codeforces/ape/2023/11/01/1413C/" class="post-title-link" itemprop="url">Perform Easily</a>
         </h2>
 
         <div class="post-meta-container">
@@ -331,14 +328,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+      <time title="创建时间：2023-11-08 21:29:38" itemprop="dateCreated datePublished" datetime="2023-11-08T21:29:38+00:00">2023-11-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -346,7 +336,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -360,10 +354,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/chalkboard-xor-game/">810. 黑板异或游戏</a></p><hr /><p>黑板上写着一个非负整数数组 <code>nums[i]</code> 。</p><p>Alice 和 Bob 轮流从黑板上擦掉一个数字，Alice 先手。如果擦除一个数字后，剩余的所有数字按位异或运算得出的结果等于 <code>0</code> 的话，当前玩家游戏失败。 另外，如果只剩一个数字，按位异或运算得到它本身；如果无数字剩余，按位异或运算结果为 <code>0</code>。</p><p>并且，轮到某个玩家时，如果当前黑板上所有数字按位异或运算结果等于 <code>0</code> ，这个玩家获胜。</p><p>假设两个玩家每步都使用最优解，当且仅当 Alice 获胜时返回 <code>true</code>。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入: nums = [1,1,2]</p><p>输出: false</p><p>解释: </p><p>Alice 有两个选择: 擦掉数字 1 或 2。</p><p>如果擦掉 1, 数组变成 [1, 2]。剩余数字按位异或得到 1 XOR 2 = 3。那么 Bob 可以擦掉任意数字，因为 Alice 会成为擦掉最后一个数字的人，她总是会输。</p><p>如果 Alice 擦掉 2，那么数组变成[1, 1]。剩余数字按位异或得到 1 XOR 1 = 0。Alice 仍然会输掉游戏。</p><p>```</p><p><strong>示例 2:</strong></p><p>```txt</p><p>输入: nums = [0,1]</p><p>输出: true</p><p>```</p><p><strong>示例 3:</strong></p><p>```txt</p><p>输入: nums = [1,2,3]</p><p>输出: true</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 1000</code></p></li><li><p><code>0 &amp;lt;= nums[i] &amp;lt; 2^16</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>一把吉他6根弦，假设有无限品。</p><p>现在弹奏i弦j品会得到$a_i+j$音符</p><p>现在给出$b_1, b_2, \cdots, b_n$共计n个音符，每个音符都可以在不同的弦品组合上演奏，弹奏的难易程度取决于所用品格的最大指数和最小指数之间的差值。这种差值越小，演奏就越容易。请确定最小的可能差值。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%BB%91%E6%9D%BF%E5%BC%82%E6%88%96%E6%B8%B8%E6%88%8F/">
+              <a class="btn" href="/codeforces/ape/2023/11/01/1413C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -394,7 +388,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%B9%B6%E6%9C%80%E5%B0%8F%E5%8C%96%E6%95%B0%E7%BB%84%E5%92%8C%E7%9A%84%E5%B7%AE/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/11/05/1733D2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -412,7 +406,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%B9%B6%E6%9C%80%E5%B0%8F%E5%8C%96%E6%95%B0%E7%BB%84%E5%92%8C%E7%9A%84%E5%B7%AE/" class="post-title-link" itemprop="url">将数组分成两个数组并最小化数组和的差</a>
+          <a href="/codeforces/ape/2023/11/05/1733D2/" class="post-title-link" itemprop="url">Zero-One (Hard Version)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -423,14 +417,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+      <time title="创建时间：2023-11-08 21:29:38" itemprop="dateCreated datePublished" datetime="2023-11-08T21:29:38+00:00">2023-11-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -438,7 +425,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -452,10 +443,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-array-into-two-arrays-to-minimize-sum-difference/">2035. 将数组分成两个数组并最小化数组和的差</a></p><hr /><p>给你一个长度为 <code>2 * n</code> 的整数数组。你需要将 <code>nums</code> 分成 <strong>两个</strong> 长度为 <code>n</code> 的数组，分别求出两个数组的和，并 <strong>最小化</strong> 两个数组和之 <strong>差的绝对值</strong> 。<code>nums</code> 中每个元素都需要放入两个数组之一。</p><p>请你返回 <strong>最小</strong> 的数组和之差。</p><p><strong>示例 1：</strong></p><p><img alt="example-1" src="https://assets.leetcode.com/uploads/2021/10/02/ex1.png" /></p><p>```txt</p><p>输入：nums = [3,9,7,3]</p><p>输出：2</p><p>解释：最优分组方案是分成 [3,9] 和 [7,3] 。</p><p>数组和之差的绝对值为 abs((3 + 9) - (7 + 3)) = 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [-36,36]</p><p>输出：72</p><p>解释：最优分组方案是分成 [-36] 和 [36] 。</p><p>数组和之差的绝对值为 abs((-36) - (36)) = 72 。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="example-3" src="https://assets.leetcode.com/uploads/2021/10/02/ex3.png" /></p><p>```txt</p><p>输入：nums = [2,-1,0,4,-2,-9]</p><p>输出：0</p><p>解释：最优分组方案是分成 [2,4,-9] 和 [-1,0,-2] 。</p><p>数组和之差的绝对值为 abs((2 + 4 + -9) - (-1 + 0 + -2)) = 0 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 15</code></p></li><li><p><code>nums.length == 2 * n</code></p></li><li><p><code>-10^7 &amp;lt;= nums[i] &amp;lt;= 10^7</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>给出两个长度都为n的01字符串a和b。</p><p>现在每次操作可以选择a中两个索引l和r，$(l&lt;r)$。</p><p>让$a_l$变为$1-a_l$，让$a_r$变为$1-a_r$</p><p>如果$l+1=r$，则操作代价为x否则操作代价为y。</p><p>问让a变为b的最小代价。</p><p>$5 \le n \le 5000$</p><p>$1 \le x, y\le 10^9$</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%B9%B6%E6%9C%80%E5%B0%8F%E5%8C%96%E6%95%B0%E7%BB%84%E5%92%8C%E7%9A%84%E5%B7%AE/">
+              <a class="btn" href="/codeforces/ape/2023/11/05/1733D2/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -486,7 +477,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%95%B0%E7%BB%84%E7%9A%84%E5%9D%87%E5%80%BC%E5%88%86%E5%89%B2/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/11/03/1080D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -504,7 +495,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%95%B0%E7%BB%84%E7%9A%84%E5%9D%87%E5%80%BC%E5%88%86%E5%89%B2/" class="post-title-link" itemprop="url">数组的均值分割</a>
+          <a href="/codeforces/ape/2023/11/03/1080D/" class="post-title-link" itemprop="url">Olya and magical square</a>
         </h2>
 
         <div class="post-meta-container">
@@ -515,14 +506,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+      <time title="创建时间：2023-11-08 21:29:37" itemprop="dateCreated datePublished" datetime="2023-11-08T21:29:37+00:00">2023-11-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -530,7 +514,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -544,10 +532,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/split-array-with-same-average/">805. 数组的均值分割</a></p><hr /><p>给定你一个整数数组 <code>nums</code></p><p>我们要将 <code>nums</code> 数组中的每个元素移动到 <code>A</code> 数组 或者 <code>B</code> 数组中，使得 <code>A</code> 数组和 <code>B</code> 数组不为空，并且 <code>average(A) == average(B)</code> 。</p><p>如果可以完成则返回<code>true</code> ， 否则返回 <code>false</code>  。</p><p><strong>注意：</strong>对于数组 <code>arr</code> ,  <code>average(arr)</code> 是 <code>arr</code> 的所有元素的和除以 <code>arr</code> 长度。</p><p><strong>示例 1:</strong></p><p>```txt</p><p>输入: nums = [1,2,3,4,5,6,7,8]</p><p>输出: true</p><p>解释: 我们可以将数组分割为 [1,4,5,8] 和 [2,3,6,7], 他们的平均值都是4.5。</p><p>```</p><p><strong>示例 2:</strong></p><p>```txt</p><p>输入: nums = [3,1]</p><p>输出: false</p><p>```</p><p><strong>提示:</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 30</code></p></li><li><p><code>0 &amp;lt;= nums[i] &amp;lt;= 10^4</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>给出一个数n和k，代表着有一个$2^n\times2^n$的正方形，和操作k次。</p><p>每次操作可以从当前局面中选出一个正方形，将其划分为四个小正方形。</p><p>问能否在k次操作后，使得左下角的正方形和右上角的正方形边长都为l，且两者间存在一条边长都为l的正方形组成的路径。</p><p>输出可能的l。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%95%B0%E7%BB%84%E7%9A%84%E5%9D%87%E5%80%BC%E5%88%86%E5%89%B2/">
+              <a class="btn" href="/codeforces/ape/2023/11/03/1080D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -578,7 +566,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9B%AE%E6%A0%87%E5%80%BC%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/11/04/1117C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -596,7 +584,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9B%AE%E6%A0%87%E5%80%BC%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/" class="post-title-link" itemprop="url">最接近目标值的子序列和</a>
+          <a href="/codeforces/ape/2023/11/04/1117C/" class="post-title-link" itemprop="url">Magic Ship</a>
         </h2>
 
         <div class="post-meta-container">
@@ -607,14 +595,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+      <time title="创建时间：2023-11-08 21:29:37" itemprop="dateCreated datePublished" datetime="2023-11-08T21:29:37+00:00">2023-11-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -622,7 +603,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -636,10 +621,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/closest-subsequence-sum/">1755. 最接近目标值的子序列和</a></p><hr /><p>给你一个整数数组 <code>nums</code> 和一个目标值 <code>goal</code> 。</p><p>你需要从 <code>nums</code> 中选出一个子序列，使子序列元素总和最接近 <code>goal</code> 。也就是说，如果子序列元素和为 <code>sum</code> ，你需要 <strong>最小化绝对差</strong> <code>abs(sum - goal)</code> 。</p><p>返回 <code>abs(sum - goal)</code> 可能的 <strong>最小值</strong> 。</p><p>注意，数组的子序列是通过移除原始数组中的某些元素（可能全部或无）而形成的数组。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [5,-7,3,5], goal = 6</p><p>输出：0</p><p>解释：选择整个数组作为选出的子序列，元素和为 6 。</p><p>子序列和与目标值相等，所以绝对差为 0 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [7,-9,15,-2], goal = -5</p><p>输出：1</p><p>解释：选出子序列 [7,-9,-2] ，元素和为 -4 。</p><p>绝对差为 abs(-4 - (-5)) = abs(1) = 1 ，是可能的最小值。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [1,2,3], goal = -7</p><p>输出：7</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 40</code></p></li><li><p><code>-10^7 &amp;lt;= nums[i] &amp;lt;= 10^7</code></p></li><li><p><code>-10^9 &amp;lt;= goal &amp;lt;= 10^9</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>在无边无际的大海上，有一艘船所在位置为(x1,y1)，需要到达目的地(x2,y2)。</p><p>现在船每天可以朝四个方向中的某一个方向移动一个单位或者不动。</p><p>此外由于天气原因，每天的风向会让船向某个方向移动一个单位。</p><p>告诉你接下来n天的天气，n天之后的天气是周期性变化的。</p><p>现在问到达目的地的最少天数。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9B%AE%E6%A0%87%E5%80%BC%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/">
+              <a class="btn" href="/codeforces/ape/2023/11/04/1117C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -670,7 +655,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E9%AB%98%E7%9A%84%E5%B9%BF%E5%91%8A%E7%89%8C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1883/1883/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -688,7 +673,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E9%AB%98%E7%9A%84%E5%B9%BF%E5%91%8A%E7%89%8C/" class="post-title-link" itemprop="url">最高的广告牌</a>
+          <a href="/codeforces/contest/1883/1883/" class="post-title-link" itemprop="url">Codeforces Round 905 (Div. 3)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -699,14 +684,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+      <time title="创建时间：2023-10-27 19:47:48" itemprop="dateCreated datePublished" datetime="2023-10-27T19:47:48+00:00">2023-10-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -714,7 +692,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
         </span>
     </span>
 
@@ -728,10 +710,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/tallest-billboard/">956. 最高的广告牌</a></p><hr /><p>你正在安装一个广告牌，并希望它高度最大。这块广告牌将有两个钢制支架，两边各一个。每个钢支架的高度必须相等。</p><p>你有一堆可以焊接在一起的钢筋 <code>rods</code>。举个例子，如果钢筋的长度为 <code>1</code>、<code>2</code> 和 <code>3</code>，则可以将它们焊接在一起形成长度为 <code>6</code> 的支架。</p><p>返回 <em>广告牌的最大可能安装高度</em> 。如果没法安装广告牌，请返回 <code>0</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：[1,2,3,6]</p><p>输出：6</p><p>解释：我们有两个不相交的子集 {1,2,3} 和 {6}，它们具有相同的和 sum = 6。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：[1,2,3,4,5,6]</p><p>输出：10</p><p>解释：我们有两个不相交的子集 {2,3,5} 和 {4,6}，它们具有相同的和 sum = 10。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：[1,2]</p><p>输出：0</p><p>解释：没法安装广告牌，所以返回 0。</p><p>```</p><p><strong>提示：</strong></p><ol><li><p><code>0 &amp;lt;= rods.length &amp;lt;= 20</code></p></li><li><p><code>1 &amp;lt;= rods[i] &amp;lt;= 1000</code></p></li><li><p><code>sum(rods[i]) &amp;lt;= 5000</code></p></li></ol></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1883/problem/A">A. Morning</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1883/problem/B">B. Chemistry</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1883/problem/C">C. Raspberries</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1883/problem/D">D. In Love</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1883/problem/E">E. Look Back</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1883/problem/F">F. You Are So Beautiful</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1883/problem/G1">G1. Dances (Easy version)</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1883/problem/G2">G2. Dances (Hard Version)</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E9%AB%98%E7%9A%84%E5%B9%BF%E5%91%8A%E7%89%8C/">
+              <a class="btn" href="/codeforces/contest/1883/1883/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -762,7 +744,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E7%9B%AE%E6%A0%87%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1884/1884/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -780,7 +762,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E7%9B%AE%E6%A0%87%E5%92%8C/" class="post-title-link" itemprop="url">目标和</a>
+          <a href="/codeforces/contest/1884/1884/" class="post-title-link" itemprop="url">Codeforces Round 904 (Div. 2)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -791,14 +773,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+      <time title="创建时间：2023-10-24 14:55:20" itemprop="dateCreated datePublished" datetime="2023-10-24T14:55:20+00:00">2023-10-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+      <time title="修改时间：2023-10-27 19:47:48" itemprop="dateModified" datetime="2023-10-27T19:47:48+00:00">2023-10-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -806,7 +788,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
         </span>
     </span>
 
@@ -820,286 +806,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/target-sum/">494. 目标和</a></p><hr /><p>给你一个整数数组 <code>nums</code> 和一个整数 <code>target</code> 。</p><p>向数组中的每个整数前添加 <code>&amp;#x27;+&amp;#x27;</code> 或 <code>&amp;#x27;-&amp;#x27;</code> ，然后串联起所有整数，可以构造一个 <strong>表达式</strong> ：</p><ul><li>例如，<code>nums = [2, 1]</code> ，可以在 <code>2</code> 之前添加 <code>&amp;#x27;+&amp;#x27;</code> ，在 <code>1</code> 之前添加 <code>&amp;#x27;-&amp;#x27;</code> ，然后串联起来得到表达式 <code>&amp;quot;+2-1&amp;quot;</code> 。</li></ul><p>返回可以通过上述方法构造的、运算结果等于 <code>target</code> 的不同 <strong>表达式</strong> 的数目。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,1,1,1,1], target = 3</p><p>输出：5</p><p>解释：一共有 5 种方法让最终目标和为 3 。</p><p>-1 + 1 + 1 + 1 + 1 = 3</p><p>+1 - 1 + 1 + 1 + 1 = 3</p><p>+1 + 1 - 1 + 1 + 1 = 3</p><p>+1 + 1 + 1 - 1 + 1 = 3</p><p>+1 + 1 + 1 + 1 - 1 = 3</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1], target = 1</p><p>输出：1</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 20</code></p></li><li><p><code>0 &amp;lt;= nums[i] &amp;lt;= 1000</code></p></li><li><p><code>0 &amp;lt;= sum(nums[i]) &amp;lt;= 1000</code></p></li><li><p><code>-1000 &amp;lt;= target &amp;lt;= 1000</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1884/problem/A">A. Simple Design</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1884/problem/B">B. Haunted House</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1884/problem/C">C. Medium Design</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1884/problem/D">D. Counting Rhyme</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1884/problem/E">E. Hard Design</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E7%9B%AE%E6%A0%87%E5%92%8C/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/" class="post-title-link" itemprop="url">收集树中金币</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/collect-coins-in-a-tree/">6356. 收集树中金币</a></p><hr /><p>给你一个 <code>n</code> 个节点的无向无根树，节点编号从 <code>0</code> 到 <code>n - 1</code> 。给你整数 <code>n</code> 和一个长度为 <code>n - 1</code> 的二维整数数组 <code>edges</code> ，其中 <code>edges[i] = [ai, bi]</code> 表示树中节点 <code>ai</code> 和 <code>bi</code> 之间有一条边。再给你一个长度为 <code>n</code> 的数组 <code>coins</code> ，其中 <code>coins[i]</code> 可能为 <code>0</code> 也可能为 <code>1</code> ，<code>1</code> 表示节点 <code>i</code> 处有一个金币。</p><p>一开始，你需要选择树中任意一个节点出发。你可以执行下述操作任意次：</p><ul><li><p>收集距离当前节点距离为 <code>2</code> 以内的所有金币，或者</p></li><li><p>移动到树中一个相邻节点。</p></li></ul><p>你需要收集树中所有的金币，并且回到出发节点，请你返回最少经过的边数。</p><p>如果你多次经过一条边，每一次经过都会给答案加一。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/03/01/graph-2.png" /></p><p>```txt</p><p>输入：coins = [1,0,0,0,0,1], edges = [[0,1],[1,2],[2,3],[3,4],[4,5]]</p><p>输出：2</p><p>解释：从节点 2 出发，收集节点 0 处的金币，移动到节点 3 ，收集节点 5 处的金币，然后移动回节点 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/03/02/graph-4.png" /></p><p>```txt</p><p>输入：coins = [0,0,0,1,1,0,0,1], edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[5,6],[5,7]]</p><p>输出：2</p><p>解释：从节点 0 出发，收集节点 4 和 3 处的金币，移动到节点 2 处，收集节点 7 处的金币，移动回节点 0 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == coins.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 3 * 10^4</code></p></li><li><p><code>0 &amp;lt;= coins[i] &amp;lt;= 1</code></p></li><li><p><code>edges.length == n - 1</code></p></li><li><p><code>edges[i].length == 2</code></p></li><li><p><code>0 &amp;lt;= ai, bi &amp;lt; n</code></p></li><li><p><code>ai != bi</code></p></li><li><p><code>edges</code> 表示一棵合法的树。</p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E6%95%B0%E7%9B%AE%E7%9B%B8%E7%AD%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E6%95%B0%E7%9B%AE%E7%9B%B8%E7%AD%89/" class="post-title-link" itemprop="url">使字符串总不同字符的数目相等</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/make-number-of-distinct-characters-equal/">2531. 使字符串总不同字符的数目相等</a></p><hr /><p>给你两个下标从 <strong>0</strong> 开始的字符串 <code>word1</code> 和 <code>word2</code> 。</p><p>一次 <strong>移动</strong> 由以下两个步骤组成：</p><ul><li><p>选中两个下标 <code>i</code> 和 <code>j</code> ，分别满足 <code>0 &amp;lt;= i &amp;lt; word1.length</code> 和 <code>0 &amp;lt;= j &amp;lt; word2.length</code> ，</p></li><li><p>交换 <code>word1[i]</code> 和 <code>word2[j]</code> 。</p></li></ul><p>如果可以通过 <strong>恰好一次</strong> 移动，使 <code>word1</code> 和 <code>word2</code> 中不同字符的数目相等，则返回 <code>true</code> ；否则，返回 <code>false</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：word1 = &quot;ac&quot;, word2 = &quot;b&quot;</p><p>输出：false</p><p>解释：交换任何一组下标都会导致第一个字符串中有 2 个不同的字符，而在第二个字符串中只有 1 个不同字符。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：word1 = &quot;abcc&quot;, word2 = &quot;aab&quot;</p><p>输出：true</p><p>解释：交换第一个字符串的下标 2 和第二个字符串的下标 0 。之后得到 word1 = &quot;abac&quot; 和 word2 = &quot;cab&quot; ，各有 3 个不同字符。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：word1 = &quot;abcde&quot;, word2 = &quot;fghij&quot;</p><p>输出：true</p><p>解释：无论交换哪一组下标，两个字符串中都会有 5 个不同字符。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= word1.length, word2.length &amp;lt;= 10^5</code></p></li><li><p><code>word1</code> 和 <code>word2</code> 仅由小写英文字母组成。</p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%9A%B4%E5%8A%9B%E6%A8%A1%E6%8B%9F/%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E4%B8%8D%E5%90%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E6%95%B0%E7%9B%AE%E7%9B%B8%E7%AD%89/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%88%B0%E8%BE%BE%E8%A7%92%E8%90%BD%E9%9C%80%E8%A6%81%E7%A7%BB%E9%99%A4%E9%9A%9C%E7%A2%8D%E7%89%A9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%9B%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%88%B0%E8%BE%BE%E8%A7%92%E8%90%BD%E9%9C%80%E8%A6%81%E7%A7%BB%E9%99%A4%E9%9A%9C%E7%A2%8D%E7%89%A9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">到达角落需要移除障碍物的最小数目</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner/">2290. 到达角落需要移除障碍物的最小数目</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始的二维整数数组 <code>grid</code> ，数组大小为 <code>m x n</code> 。每个单元格都是两个值之一：</p><ul><li><p><code>0</code> 表示一个 <strong>空</strong> 单元格，</p></li><li><p><code>1</code> 表示一个可以移除的 <strong>障碍物</strong> 。</p></li></ul><p>你可以向上、下、左、右移动，从一个空单元格移动到另一个空单元格。</p><p>现在你需要从左上角 <code>(0, 0)</code> 移动到右下角 <code>(m - 1, n - 1)</code> ，返回需要移除的障碍物的 <strong>最小</strong> 数目。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/04/06/example1drawio-1.png" /></p><p>```txt</p><p>输入：grid = [[0,1,1],[1,1,0],[1,1,0]]</p><p>输出：2</p><p>解释：可以移除位于 (0, 1) 和 (0, 2) 的障碍物来创建从 (0, 0) 到 (2, 2) 的路径。</p><p>可以证明我们至少需要移除两个障碍物，所以返回 2 。</p><p>注意，可能存在其他方式来移除 2 个障碍物，创建出可行的路径。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/04/06/example1drawio.png" /></p><p>```txt</p><p>输入：grid = [[0,1,0,0,0],[0,1,0,1,0],[0,0,0,1,0]]</p><p>输出：0</p><p>解释：不移除任何障碍物就能从 (0, 0) 到 (2, 4) ，所以返回 0 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>1 &amp;lt;= m, n &amp;lt;= 10^5</code></p></li><li><p><code>2 &amp;lt;= m * n &amp;lt;= 10^5</code></p></li><li><p><code>grid[i][j]</code> 为 <code>0</code> <strong>或</strong> <code>1</code></p></li><li><p><code>grid[0][0] == grid[m - 1][n - 1] == 0</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E5%88%B0%E8%BE%BE%E8%A7%92%E8%90%BD%E9%9C%80%E8%A6%81%E7%A7%BB%E9%99%A4%E9%9A%9C%E7%A2%8D%E7%89%A9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%9B%AE/">
+              <a class="btn" href="/codeforces/contest/1884/1884/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1123,7 +833,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/50/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/36/">36</a><a class="page-number" href="/page/44/">44</a><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/50/">50</a><span class="page-number current">51</span><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/52/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/50/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/36/">36</a><a class="page-number" href="/page/44/">44</a><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/50/">50</a><span class="page-number current">51</span><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/58/">58</a><a class="page-number" href="/page/66/">66</a><a class="page-number" href="/page/80/">80</a><a class="extend next" rel="next" href="/page/52/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

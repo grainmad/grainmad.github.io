@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/11/1508B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E5%92%8C%E8%87%B3%E5%B0%91%E4%B8%BA%20K%20%E7%9A%84%E6%9C%80%E7%9F%AD%E5%AD%90%E6%95%B0%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/11/1508B/" class="post-title-link" itemprop="url">Almost Sorted</a>
+          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E5%92%8C%E8%87%B3%E5%B0%91%E4%B8%BA%20K%20%E7%9A%84%E6%9C%80%E7%9F%AD%E5%AD%90%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">和至少为 K 的最短子数组</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,7 +239,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -247,11 +254,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -265,10 +268,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>如果一个长度为 $n$ 的排列 $a$ 满足对于任意整数 $i\in[1,n-1]$ 都有 $a_{i+1}\geq a_i-1$，我们就说这个排列是“几乎有序的”。</p><p>给定 $n,k$，求所有长度为 $n$ 的“几乎有序的”排列中，字典序第 $k$ 小的那个。特别的，如果这样的排列不存在，输出 $-1$。$T$ 组数据。</p><p>$1\leq T\leq10^3;1\leq n,\sum n\leq10^5;1\leq k\leq10^{18};$</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/">862. 和至少为 K 的最短子数组</a></p><hr /><p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，找出 <code>nums</code> 中和至少为 <code>k</code> 的 <strong>最短非空子数组</strong> ，并返回该子数组的长度。如果不存在这样的 <strong>子数组</strong> ，返回 <code>-1</code> 。</p><p><strong>子数组</strong> 是数组中 <strong>连续</strong> 的一部分。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1], k = 1</p><p>输出：1</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1,2], k = 4</p><p>输出：-1</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [2,-1,2], k = 3</p><p>输出：3</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>-10^5 &amp;lt;= nums[i] &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= 10^9</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/11/1508B/">
+              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E5%92%8C%E8%87%B3%E5%B0%91%E4%B8%BA%20K%20%E7%9A%84%E6%9C%80%E7%9F%AD%E5%AD%90%E6%95%B0%E7%BB%84/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -299,7 +302,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/11/1672F1/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E6%89%BE%E5%88%B0%E6%9C%80%E5%A4%A7%E9%9D%9E%E9%80%92%E5%87%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%95%BF%E5%BA%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -317,7 +320,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/11/1672F1/" class="post-title-link" itemprop="url">Array Shuffling</a>
+          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E6%89%BE%E5%88%B0%E6%9C%80%E5%A4%A7%E9%9D%9E%E9%80%92%E5%87%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%95%BF%E5%BA%A6/" class="post-title-link" itemprop="url">找到最大非递减数组的长度</a>
         </h2>
 
         <div class="post-meta-container">
@@ -328,7 +331,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2024-01-02 13:59:41" itemprop="dateCreated datePublished" datetime="2024-01-02T13:59:41+00:00">2024-01-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -336,11 +346,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -354,10 +360,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>数组 $b$ 是数组 $a$ 的一个排列。每次操作只能交换 $b$ 数组的两个元素。一个数组 $b$ 的“难过值”是使 $b$ 复原为 $a$ 的最小操作次数。</p><p>现在给定数组 $a$ ，求出“难过值”最大的数组 $b$（任意一组）。</p><p>$\sum n \leq 2\times 10^5$ 。</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-maximum-non-decreasing-array-length/description/">2945. 找到最大非递减数组的长度</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 。</p><p>你可以执行任意次操作。每次操作中，你需要选择一个 <strong>子数组</strong> ，并将这个子数组用它所包含元素的 <strong>和</strong> 替换。比方说，给定数组是 <code>[1,3,5,6]</code> ，你可以选择子数组 <code>[3,5]</code> ，用子数组的和 <code>8</code> 替换掉子数组，然后数组会变为 <code>[1,8,6]</code> 。</p><p>请你返回执行任意次操作以后，可以得到的 <strong>最长非递减</strong> 数组的长度。</p><p><strong>子数组</strong> 指的是一个数组中一段连续 <strong>非空</strong> 的元素序列。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [5,2,2]</p><p>输出：1</p><p>解释：这个长度为 3 的数组不是非递减的。</p><p>我们有 2 种方案使数组长度为 2 。</p><p>第一种，选择子数组 [2,2] ，对数组执行操作后得到 [5,4] 。</p><p>第二种，选择子数组 [5,2] ，对数组执行操作后得到 [7,2] 。</p><p>这两种方案中，数组最后都不是 非递减 的，所以不是可行的答案。</p><p>如果我们选择子数组 [5,2,2] ，并将它替换为 [9] ，数组变成非递减的。</p><p>所以答案为 1 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1,2,3,4]</p><p>输出：4</p><p>解释：数组已经是非递减的。所以答案为 4 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [4,3,2,6]</p><p>输出：3</p><p>解释：将 [3,2] 替换为 [5] ，得到数组 [4,5,6] ，它是非递减的。</p><p>最大可能的答案为 3 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^5</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/11/1672F1/">
+              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E6%89%BE%E5%88%B0%E6%9C%80%E5%A4%A7%E9%9D%9E%E9%80%92%E5%87%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%95%BF%E5%BA%A6/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -388,7 +394,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/12/1854A2/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E6%93%8D%E4%BD%9C%E4%BD%BF%E5%BE%97%E5%88%86%E6%9C%80%E5%A4%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -406,7 +412,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/12/1854A2/" class="post-title-link" itemprop="url">Dual (Hard Version)</a>
+          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E6%93%8D%E4%BD%9C%E4%BD%BF%E5%BE%97%E5%88%86%E6%9C%80%E5%A4%A7/" class="post-title-link" itemprop="url">操作使得分最大</a>
         </h2>
 
         <div class="post-meta-container">
@@ -417,7 +423,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-08-27 23:08:52" itemprop="dateCreated datePublished" datetime="2023-08-27T23:08:52+00:00">2023-08-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -425,11 +438,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -443,10 +452,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有 $t$（$1\le t\le 500$）组数据，对于每组数据给出一个长度为 $n$（$1\le n\le 20$）的序列 $a$（$-20\le a_i\le 20$）。</p><p>可以进行 $k$（$0\le k\le 31$）次操作，每次操作任选一组 $i,j$（$1\le i,j\le n$），把 $a_i\leftarrow a_i+a_j$，最后使得整个序列单调不减。</p><p>对于每组数据，第一行输出 $k$，之后 $k$ 行输出执行操作的 $i,j$。</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/apply-operations-to-maximize-score/description/">2818. 操作使得分最大</a></p><hr /><p>给你一个长度为 <code>n</code> 的正整数数组 <code>nums</code> 和一个整数 <code>k</code> 。</p><p>一开始，你的分数为 <code>1</code> 。你可以进行以下操作至多 <code>k</code> 次，目标是使你的分数最大：</p><ul><li><p>选择一个之前没有选过的 <strong>非空</strong> 子数组 <code>nums[l, ..., r]</code> 。</p></li><li><p>从 <code>nums[l, ..., r]</code> 里面选择一个 <strong>质数分数</strong> 最高的元素 <code>x</code> 。如果多个元素质数分数相同且最高，选择下标最小的一个。</p></li><li><p>将你的分数乘以 <code>x</code> 。</p></li></ul><p><code>nums[l, ..., r]</code> 表示 <code>nums</code> 中起始下标为 <code>l</code> ，结束下标为 <code>r</code> 的子数组，两个端点都包含。</p><p>一个整数的 <strong>质数分数</strong> 等于 <code>x</code> 不同质因子的数目。比方说， <code>300</code> 的质数分数为 <code>3</code> ，因为 <code>300 = 2 * 2 * 3 * 5 * 5</code> 。</p><p>请你返回进行至多 <code>k</code> 次操作后，可以得到的 <strong>最大分数</strong> 。</p><p>由于答案可能很大，请你将结果对 <code>10^9 + 7</code> 取余后返回。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [8,3,9,3,8], k = 2</p><p>输出：81</p><p>解释：进行以下操作可以得到分数 81 ：</p><ul><li><p>选择子数组 nums[2, ..., 2] 。nums[2] 是子数组中唯一的元素。所以我们将分数乘以 nums[2] ，分数变为 1 * 9 = 9 。</p></li><li><p>选择子数组 nums[2, ..., 3] 。nums[2] 和 nums[3] 质数分数都为 1 ，但是 nums[2] 下标更小。所以我们将分数乘以 nums[2] ，分数变为 9 * 9 = 81 。</p></li></ul><p>81 是可以得到的最高得分。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [19,12,14,6,10,18], k = 3</p><p>输出：4788</p><p>解释：进行以下操作可以得到分数 4788 ：</p><ul><li><p>选择子数组 nums[0, ..., 0] 。nums[0] 是子数组中唯一的元素。所以我们将分数乘以 nums[0] ，分数变为 1 * 19 = 19 。</p></li><li><p>选择子数组 nums[5, ..., 5] 。nums[5] 是子数组中唯一的元素。所以我们将分数乘以 nums[5] ，分数变为 19 * 18 = 342 。</p></li><li><p>选择子数组 nums[2, ..., 3] 。nums[2] 和 nums[3] 质数分数都为 2，但是 nums[2] 下标更小。所以我们将分数乘以 nums[2] ，分数变为  342 * 14 = 4788 。</p></li></ul><p>4788 是可以得到的最高的分。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length == n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= min(n * (n + 1) / 2, 10^9)</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/12/1854A2/">
+              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E6%93%8D%E4%BD%9C%E4%BD%BF%E5%BE%97%E5%88%86%E6%9C%80%E5%A4%A7/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -477,7 +486,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/13/1329A/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -495,7 +504,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/13/1329A/" class="post-title-link" itemprop="url">Dreamoon Likes Coloring</a>
+          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/" class="post-title-link" itemprop="url">花括号展开 II</a>
         </h2>
 
         <div class="post-meta-container">
@@ -506,7 +515,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -514,11 +530,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -532,10 +544,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给定长为 $n$ 的格子和 $m$ 种颜色。</p><p>Dreamoon 会<strong>依次</strong>刷这 $m$ 种颜色，对于第 $i$ 种颜色，他会从第 $p_i$ 格开始刷到第 $p_i+l_i-1$ 格。$p_i$ 不能超过 $n-l_i+1$ 或小于 $1$，这样会超出格子。</p><p>您的任务是找出一组 $p_i$，使得 Dreamoon 刷完所有颜色之后每种颜色至少出现了一次，且每个格子都被刷上了颜色。</p><p>$1 \leq m \leq n \leq 10^5$，$1 \leq l_i \leq n$</p><p>翻译 by Meatherm</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/brace-expansion-ii/">1096. 花括号展开 II</a></p><hr /><p>如果你熟悉 Shell 编程，那么一定了解过花括号展开，它可以用来生成任意字符串。</p><p>花括号展开的表达式可以看作一个由 <strong>花括号</strong>、<strong>逗号</strong> 和 <strong>小写英文字母</strong> 组成的字符串，定义下面几条语法规则：</p><ul><li><p>如果只给出单一的元素 <code>x</code>，那么表达式表示的字符串就只有 <code>&amp;quot;x&amp;quot;</code>。<code>R(x) = {x}</code></p><ul><li><p>例如，表达式 <code>&amp;quot;a&amp;quot;</code> 表示字符串 <code>&amp;quot;a&amp;quot;</code>。</p></li><li><p>而表达式 <code>&amp;quot;w&amp;quot;</code> 就表示字符串 <code>&amp;quot;w&amp;quot;</code>。</p></li></ul></li><li><p>当两个或多个表达式并列，以逗号分隔，我们取这些表达式中元素的并集。<code>R({e_1,e_2,...}) = R(e_1) ∪ R(e_2) ∪ ...</code></p><ul><li><p>例如，表达式 <code>&amp;quot;{a,b,c}&amp;quot;</code> 表示字符串 <code>&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;</code>。</p></li><li><p>而表达式 <code>&amp;quot;{{a,b},{b,c}}&amp;quot;</code> 也可以表示字符串 <code>&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;</code>。</p></li></ul></li><li><p>要是两个或多个表达式相接，中间没有隔开时，我们从这些表达式中各取一个元素依次连接形成字符串。<code>R(e_1 + e_2) = {a + b for (a, b) in R(e_1) × R(e_2)}</code></p><ul><li>例如，表达式 <code>&amp;quot;{a,b}{c,d}&amp;quot;</code> 表示字符串 <code>&amp;quot;ac&amp;quot;,&amp;quot;ad&amp;quot;,&amp;quot;bc&amp;quot;,&amp;quot;bd&amp;quot;</code>。</li></ul></li><li><p>表达式之间允许嵌套，单一元素与表达式的连接也是允许的。</p><ul><li><p>例如，表达式 <code>&amp;quot;a{b,c,d}&amp;quot;</code> 表示字符串 <code>&amp;quot;ab&amp;quot;,&amp;quot;ac&amp;quot;,&amp;quot;ad&amp;quot;​​​​​​</code>。</p></li><li><p>例如，表达式 <code>&amp;quot;a{b,c}{d,e}f{g,h}&amp;quot;</code> 可以表示字符串 <code>&amp;quot;abdfg&amp;quot;, &amp;quot;abdfh&amp;quot;, &amp;quot;abefg&amp;quot;, &amp;quot;abefh&amp;quot;, &amp;quot;acdfg&amp;quot;, &amp;quot;acdfh&amp;quot;, &amp;quot;acefg&amp;quot;, &amp;quot;acefh&amp;quot;</code>。</p></li></ul></li></ul><p>给出表示基于给定语法规则的表达式 <code>expression</code>，返回它所表示的所有字符串组成的有序列表。</p><p>假如你希望以「集合」的概念了解此题，也可以通过点击 “<strong>显示英文描述</strong>” 获取详情。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：expression = &quot;{a,b}{c,{d,e}}&quot;</p><p>输出：[&quot;ac&quot;,&quot;ad&quot;,&quot;ae&quot;,&quot;bc&quot;,&quot;bd&quot;,&quot;be&quot;]</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：expression = &quot;{{a,z},a{b,c},{ab,z}}&quot;</p><p>输出：[&quot;a&quot;,&quot;ab&quot;,&quot;ac&quot;,&quot;z&quot;]</p><p>解释：输出中 不应 出现重复的组合结果。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= expression.length &amp;lt;= 60</code></p></li><li><p><code>expression[i]</code> 由 <code>&amp;#x27;{&amp;#x27;</code>，<code>&amp;#x27;}&amp;#x27;</code>，<code>&amp;#x27;,&amp;#x27;</code> 或小写英文字母组成</p></li><li><p>给出的表达式 <code>expression</code> 用以表示一组基于题目描述中语法构造的字符串</p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/13/1329A/">
+              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -566,7 +578,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/23/1697D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -584,7 +596,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/23/1697D/" class="post-title-link" itemprop="url">Guess The String</a>
+          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/" class="post-title-link" itemprop="url">表现良好的最长时间段</a>
         </h2>
 
         <div class="post-meta-container">
@@ -595,7 +607,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -603,11 +622,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -621,10 +636,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><strong>本题为交互题，使用 IO 交互。</strong></p><p><strong>在你输出一行后，请清空缓冲区：</strong></p><ul><li><p>在 C++ 中，使用 <code>fflush(stdout)</code> 或 <code>cout.flush()</code>。</p></li><li><p>在 Pascal 中，使用 <code>flush(output)</code>。</p></li><li><p>在 Python 中，使用 <code>stdout.flush()</code>。</p></li><li><p>其他语言请自行查阅文档。</p></li></ul><p><strong>请遵循题目完成交互，发出不合法询问可能会出现 TLE，WA 等问题。</strong></p><hr /><p>给定一个长度为 $n$ 且只包含小写字母的字符串 $S$，你需要猜出它。</p><p>一共有 $4$ 种交互方式：</p><p>| 格式 | 允许调用次数 | 限制 | 返回值 | 说明 |</p><p>| :----------: | :----------: | :----------: | :----------: | :----------: |</p><p>| 无 | $1$ | 无 | 一个整数，$n$ 的值。 | <strong>在最开始调用。</strong> |</p><p>| <code>? 1 i</code> | $26$ | $i$ 为 $[1,n]$ 范围内的整数。 | 一个<strong>字符</strong>，$S_i$（$S$ 的第 $i$ 个字符）。 | 无 |</p><p>| <code>? 2 l r</code> | $6 \times 10^3$ | $1 \le l \le r \le n$，且 $l,r$ 为整数。 |  一个整数，$S_{l \ldots r}$（$S$ 的第 $l$ 至 $r$ 个字符）中不同字符的<strong>种数</strong>。 | 无 |</p><p>| <code>! s</code> | $1$ | $s$ 是一个字符串，代表你所认为的 $S$。 | （评测结果——AC 或 WA。） | <strong>最后调用，然后停止交互。</strong> |</p><hr /><p>对于 $100\%$ 的数据，$1 \le n \le 10^3$。</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-well-performing-interval/">1124. 表现良好的最长时间段</a></p><hr /><p>给你一份工作时间表 <code>hours</code>，上面记录着某一位员工每天的工作小时数。</p><p>我们认为当员工一天中的工作小时数大于 <code>8</code> 小时的时候，那么这一天就是「<strong>劳累的一天</strong>」。</p><p>所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 <strong>大于</strong>「不劳累的天数」。</p><p>请你返回「表现良好时间段」的最大长度。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：hours = [9,9,6,0,6,6,9]</p><p>输出：3</p><p>解释：最长的表现良好时间段是 [9,9,6]。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：hours = [6,6,6]</p><p>输出：0</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= hours.length &amp;lt;= 10^4</code></p></li><li><p><code>0 &amp;lt;= hours[i] &amp;lt;= 16</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/23/1697D/">
+              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -655,7 +670,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/24/1554D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%BF%87%E6%A1%A5%E7%9A%84%E6%97%B6%E9%97%B4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -673,7 +688,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/24/1554D/" class="post-title-link" itemprop="url">Diane</a>
+          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%BF%87%E6%A1%A5%E7%9A%84%E6%97%B6%E9%97%B4/" class="post-title-link" itemprop="url">过桥的时间</a>
         </h2>
 
         <div class="post-meta-container">
@@ -684,7 +699,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -692,11 +714,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -710,10 +728,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><h3>题意简述</h3><p>要求您构造一个长度为 $n$ 的由小写字母构成的字符串，使得字符串内每个字串出现奇数次。</p><h3>输入格式</h3><p>第一行输入一个整数 $t$ 表示数据组数。</p><p>对于每组数据输入一个整数 $n$ 表示字符串长度。</p><h3>输出格式</h3><p>对于每组数据，输出一行长度为 $n$ 的满足题意的字符串。若有多组解任意输出一组即可。</p><h3>说明/提示</h3><p>在第一组数据里， $\texttt{abc}$  的每个子串都恰好只出现一次。</p><p>在第三组数据里，$\texttt{bbcaabbba}$ 的每个子串出现奇数次，其中 $\texttt{b}$ 出现 $5$ 次，$\texttt{a}$ 和 $\texttt{bb}$ 各出现 $3$ 次，其它子串各出现 $1$ 次。</p><h3>数据范围及约定</h3><p>对于 $100\%$ 的数据，$1\le t\le 500$，$1\le n \le 10^5$，$1\le \sum n\le 3\times 10^5$。</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/time-to-cross-a-bridge/">2532. 过桥的时间</a></p><hr /><p>共有 <code>k</code> 位工人计划将 <code>n</code> 个箱子从旧仓库移动到新仓库。给你两个整数 <code>n</code> 和 <code>k</code>，以及一个二维整数数组 <code>time</code> ，数组的大小为 <code>k x 4</code> ，其中 <code>time[i] = [leftToRighti, pickOldi, rightToLefti, putNewi]</code> 。</p><p>一条河将两座仓库分隔，只能通过一座桥通行。旧仓库位于河的右岸，新仓库在河的左岸。开始时，所有 <code>k</code> 位工人都在桥的左侧等待。为了移动这些箱子，第 <code>i</code> 位工人（下标从 <strong>0</strong> 开始）可以：</p><ul><li><p>从左岸（新仓库）跨过桥到右岸（旧仓库），用时 <code>leftToRighti</code> 分钟。</p></li><li><p>从旧仓库选择一个箱子，并返回到桥边，用时 <code>pickOldi</code> 分钟。不同工人可以同时搬起所选的箱子。</p></li><li><p>从右岸（旧仓库）跨过桥到左岸（新仓库），用时 <code>rightToLefti</code> 分钟。</p></li><li><p>将箱子放入新仓库，并返回到桥边，用时 <code>putNewi</code> 分钟。不同工人可以同时放下所选的箱子。</p></li></ul><p>如果满足下面任一条件，则认为工人 <code>i</code> 的 <strong>效率低于</strong> 工人 <code>j</code> ：</p><ul><li><p><code>leftToRighti + rightToLefti &amp;gt; leftToRightj + rightToLeftj</code></p></li><li><p><code>leftToRighti + rightToLefti == leftToRightj + rightToLeftj</code> 且 <code>i &amp;gt; j</code></p></li></ul><p>工人通过桥时需要遵循以下规则：</p><ul><li><p>如果工人 <code>x</code> 到达桥边时，工人 <code>y</code> 正在过桥，那么工人 <code>x</code> 需要在桥边等待。</p></li><li><p>如果没有正在过桥的工人，那么在桥右边等待的工人可以先过桥。如果同时有多个工人在右边等待，那么 <strong>效率最低</strong> 的工人会先过桥。</p></li><li><p>如果没有正在过桥的工人，且桥右边也没有在等待的工人，同时旧仓库还剩下至少一个箱子需要搬运，此时在桥左边的工人可以过桥。如果同时有多个工人在左边等待，那么 <strong>效率最低</strong> 的工人会先过桥。</p></li></ul><p>所有 <code>n</code> 个盒子都需要放入新仓库，请你返回最后一个搬运箱子的工人 <strong>到达河左岸</strong> 的时间。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 1, k = 3, time = [[1,1,2,1],[1,1,3,1],[1,1,4,1]]</p><p>输出：6</p><p>解释：</p><p>从 0 到 1 ：工人 2 从左岸过桥到达右岸。</p><p>从 1 到 2 ：工人 2 从旧仓库搬起一个箱子。</p><p>从 2 到 6 ：工人 2 从右岸过桥到达左岸。</p><p>从 6 到 7 ：工人 2 将箱子放入新仓库。</p><p>整个过程在 7 分钟后结束。因为问题关注的是最后一个工人到达左岸的时间，所以返回 6 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 3, k = 2, time = [[1,9,1,8],[10,10,10,10]]</p><p>输出：50</p><p>解释：</p><p>从 0 到 10 ：工人 1 从左岸过桥到达右岸。</p><p>从 10 到 20 ：工人 1 从旧仓库搬起一个箱子。</p><p>从 10 到 11 ：工人 0 从左岸过桥到达右岸。</p><p>从 11 到 20 ：工人 0 从旧仓库搬起一个箱子。</p><p>从 20 到 30 ：工人 1 从右岸过桥到达左岸。</p><p>从 30 到 40 ：工人 1 将箱子放入新仓库。</p><p>从 30 到 31 ：工人 0 从右岸过桥到达左岸。</p><p>从 31 到 39 ：工人 0 将箱子放入新仓库。</p><p>从 39 到 40 ：工人 0 从左岸过桥到达右岸。</p><p>从 40 到 49 ：工人 0 从旧仓库搬起一个箱子。</p><p>从 49 到 50 ：工人 0 从右岸过桥到达左岸。</p><p>从 50 到 58 ：工人 0 将箱子放入新仓库。</p><p>整个过程在 58 分钟后结束。因为问题关注的是最后一个工人到达左岸的时间，所以返回 50 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n, k &amp;lt;= 10^4</code></p></li><li><p><code>time.length == k</code></p></li><li><p><code>time[i].length == 4</code></p></li><li><p><code>1 &amp;lt;= leftToRighti, pickOldi, rightToLefti, putNewi &amp;lt;= 1000</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/24/1554D/">
+              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%BF%87%E6%A1%A5%E7%9A%84%E6%97%B6%E9%97%B4/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -744,7 +762,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/24/1638D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E5%8C%85%E5%90%AB%E6%AF%8F%E4%B8%AA%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%9C%80%E5%B0%8F%E5%8C%BA%E9%97%B4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -762,7 +780,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/24/1638D/" class="post-title-link" itemprop="url">Big Brush</a>
+          <a href="/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E5%8C%85%E5%90%AB%E6%AF%8F%E4%B8%AA%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%9C%80%E5%B0%8F%E5%8C%BA%E9%97%B4/" class="post-title-link" itemprop="url">包含每个查询的最小区间</a>
         </h2>
 
         <div class="post-meta-container">
@@ -773,7 +791,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -781,11 +806,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -799,277 +820,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给定一个大小为 $n \times m$ 的网格，每一个网格都有颜色 $c_{i,j}$。</p><p>最初，你有一个没有颜色的网格，可以进行若干次操作：</p><ul><li><p>选择两个整数 $i$ 和 $j(1\le i &lt; n,1 \le j &lt; m)$，并且选择一种颜色 $k(1 \le k \le nm)$。</p></li><li><p>将格子 $(i,j)$，$(i + 1,j)$，$(i,j+1)$，$(i+1,j+1)$ 涂为颜色 $k$。</p></li></ul><p>询问是否能进行不超过 $nm$ 次操作，将空白网格涂成给定的网格。</p><p>如果不能，输出 $-1$，否则输出方案。</p><p><strong>数据范围</strong>：</p><p>$2\le n,m \le 1000,1 \le c_{i,j} \le nm$。</p></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-interval-to-include-each-query/">1851. 包含每个查询的最小区间</a></p><hr /><p>给你一个二维整数数组 <code>intervals</code> ，其中 <code>intervals[i] = [lefti, righti]</code> 表示第 <code>i</code> 个区间开始于 <code>lefti</code> 、结束于 <code>righti</code>（包含两侧取值，<strong>闭区间</strong>）。区间的 <strong>长度</strong> 定义为区间中包含的整数数目，更正式地表达是 <code>righti - lefti + 1</code> 。</p><p>再给你一个整数数组 <code>queries</code> 。第 <code>j</code> 个查询的答案是满足 <code>lefti &amp;lt;= queries[j] &amp;lt;= righti</code> 的 <strong>长度最小区间 <code>i</code> 的长度</strong> 。如果不存在这样的区间，那么答案是 <code>-1</code> 。</p><p>以数组形式返回对应查询的所有答案。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：intervals = [[1,4],[2,4],[3,6],[4,4]], queries = [2,3,4,5]</p><p>输出：[3,3,1,4]</p><p>解释：查询处理如下：</p><ul><li><p>Query = 2 ：区间 [2,4] 是包含 2 的最小区间，答案为 4 - 2 + 1 = 3 。</p></li><li><p>Query = 3 ：区间 [2,4] 是包含 3 的最小区间，答案为 4 - 2 + 1 = 3 。</p></li><li><p>Query = 4 ：区间 [4,4] 是包含 4 的最小区间，答案为 4 - 4 + 1 = 1 。</p></li><li><p>Query = 5 ：区间 [3,6] 是包含 5 的最小区间，答案为 6 - 3 + 1 = 4 。</p></li></ul><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：intervals = [[2,3],[2,5],[1,8],[20,25]], queries = [2,19,5,22]</p><p>输出：[2,-1,4,6]</p><p>解释：查询处理如下：</p><ul><li><p>Query = 2 ：区间 [2,3] 是包含 2 的最小区间，答案为 3 - 2 + 1 = 2 。</p></li><li><p>Query = 19：不存在包含 19 的区间，答案为 -1 。</p></li><li><p>Query = 5 ：区间 [2,5] 是包含 5 的最小区间，答案为 5 - 2 + 1 = 4 。</p></li><li><p>Query = 22：区间 [20,25] 是包含 22 的最小区间，答案为 25 - 20 + 1 = 6 。</p></li></ul><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= intervals.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= queries.length &amp;lt;= 10^5</code></p></li><li><p><code>queries[i].length == 2</code></p></li><li><p><code>1 &amp;lt;= lefti &amp;lt;= righti &amp;lt;= 10^7</code></p></li><li><p><code>1 &amp;lt;= queries[j] &amp;lt;= 10^7</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/24/1638D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/24/1770D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/24/1770D/" class="post-title-link" itemprop="url">Koxia and Game</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>Koxia 和 Mahiru 正在玩一个游戏。游戏使用 $a,b,c$ 三个长度为 $n$ 的数组，共进行 $n$ 轮。</p><p>每一轮中，Koxia 先在 $a_i,b_i,c_i$ 中选择一个数字，Mahiru 再从未选择的两个数字中选择一个。</p><p>如果 $n$ 轮后 Mahiru 选择的数字刚好包含 $1$ 至 $n$ 中每个数字各一个（即为 $1$ 至 $n$ 的一个排列），<strong>则 Koxia 获胜。否则，Mahiru 获胜。</strong></p><p>假设双方都采取最优策略，给定 $a,b$ 数组，求使得 Koxia 必胜的 $c$ 数组的个数。</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/24/1770D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/25/1244D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/25/1244D/" class="post-title-link" itemprop="url">Paint the Tree</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有一棵树，有3种颜色，第$i$个节点染成第$j$种颜色的代价是$c_{j,i}$，现在要你求出一种染色方案，使得总代价最小，且对于任意三个相邻的节点，颜色不能相同。输出最小代价与其中一种方案。无解输出$-1$。</p><p>$3\le n\le 10^5$</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/25/1244D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/26/1682D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/26/1682D/" class="post-title-link" itemprop="url">Circular Spanning Tree</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有 $T$ 组数据，每组数据有一个长度为 $n$ 的 $\tt 01$ 字符串，求构造一个 $n$ 个结点的树满足每个结点的度数的奇偶性符合 $\tt 01$ 串 $s$，且将这些点依次排列到一个环上，任意两条边不在非端点处相交。</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/26/1682D/">
+              <a class="btn" href="/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E5%8C%85%E5%90%AB%E6%AF%8F%E4%B8%AA%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%9C%80%E5%B0%8F%E5%8C%BA%E9%97%B4/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1093,7 +847,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/66/">66</a><a class="page-number" href="/page/80/">80</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

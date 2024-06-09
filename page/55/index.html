@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E5%A5%BD%E5%88%86%E5%8C%BA%E7%9A%84%E6%95%B0%E7%9B%AE/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/23/1715D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E5%A5%BD%E5%88%86%E5%8C%BA%E7%9A%84%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">好分区的数目</a>
+          <a href="/codeforces/ape/2023/09/23/1715D/" class="post-title-link" itemprop="url">2+ doors</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,14 +239,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+      <time title="创建时间：2023-10-10 19:59:57" itemprop="dateCreated datePublished" datetime="2023-10-10T19:59:57+00:00">2023-10-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,7 +247,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -268,10 +265,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-great-partitions/">2518. 好分区的数目</a></p><hr /><p>给你一个正整数数组 <code>nums</code> 和一个整数 <code>k</code> 。</p><p><strong>分区</strong> 的定义是：将数组划分成两个有序的 <strong>组</strong> ，并满足每个元素 <strong>恰好</strong> 存在于 <strong>某一个</strong> 组中。如果分区中每个组的元素和都大于等于 <code>k</code> ，则认为分区是一个好分区。</p><p>返回 <strong>不同</strong> 的好分区的数目。由于答案可能很大，请返回对 <code>10^9 + 7</code> <strong>取余</strong> 后的结果。</p><p>如果在两个分区中，存在某个元素 <code>nums[i]</code> 被分在不同的组中，则认为这两个分区不同。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,2,3,4], k = 4</p><p>输出：6</p><p>解释：好分区的情况是 ([1,2,3], [4]), ([1,3], [2,4]), ([1,4], [2,3]), ([2,3], [1,4]), ([2,4], [1,3]) 和 ([4], [1,2,3]) 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [3,3,3], k = 4</p><p>输出：0</p><p>解释：数组中不存在好分区。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [6,6], k = 2</p><p>输出：2</p><p>解释：可以将 nums[0] 放入第一个分区或第二个分区中。</p><p>好分区的情况是 ([6], [6]) 和 ([6], [6]) 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length, k &amp;lt;= 1000</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>给出一个长度为n的数组a，以及q个条件，每个条件都包含三个数i,j,x。意味着$a_i|a_j = x$</p><p>求满足所有条件的最小字典序的数组。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E5%A5%BD%E5%88%86%E5%8C%BA%E7%9A%84%E6%95%B0%E7%9B%AE/">
+              <a class="btn" href="/codeforces/ape/2023/09/23/1715D/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -302,7 +299,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E6%97%A0%E5%B9%B3%E6%96%B9%E5%AD%90%E9%9B%86%E8%AE%A1%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/10/08/1801C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -320,7 +317,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E6%97%A0%E5%B9%B3%E6%96%B9%E5%AD%90%E9%9B%86%E8%AE%A1%E6%95%B0/" class="post-title-link" itemprop="url">无平方子集计数</a>
+          <a href="/codeforces/ape/2023/10/08/1801C/" class="post-title-link" itemprop="url">Music Festival</a>
         </h2>
 
         <div class="post-meta-container">
@@ -331,14 +328,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+      <time title="创建时间：2023-10-10 19:59:57" itemprop="dateCreated datePublished" datetime="2023-10-10T19:59:57+00:00">2023-10-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -346,7 +336,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -360,10 +354,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-the-number-of-square-free-subsets/">6364. 无平方子集计数</a></p><hr /><p>给你一个正整数数组 <code>nums</code> 。</p><p>如果数组 <code>nums</code> 的子集中的元素乘积是一个 <strong>无平方因子数</strong> ，则认为该子集是一个 <strong>无平方</strong> 子集。</p><p><strong>无平方因子数</strong> 是无法被除 <code>1</code> 之外任何平方数整除的数字。</p><p>返回数组 <code>nums</code> 中 <strong>无平方</strong> 且 <strong>非空</strong> 的子集数目。因为答案可能很大，返回对 <code>10^9 + 7</code> 取余的结果。</p><p><code>nums</code> 的 <strong>非空子集</strong> 是可以由删除 <code>nums</code> 中一些元素（可以不删除，但不能全部删除）得到的一个数组。如果构成两个子集时选择删除的下标不同，则认为这两个子集不同。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [3,4,4,5]</p><p>输出：3</p><p>解释：示例中有 3 个无平方子集：</p><ul><li><p>由第 0 个元素 [3] 组成的子集。其元素的乘积是 3 ，这是一个无平方因子数。</p></li><li><p>由第 3 个元素 [5] 组成的子集。其元素的乘积是 5 ，这是一个无平方因子数。</p></li><li><p>由第 0 个和第 3 个元素 [3,5] 组成的子集。其元素的乘积是 15 ，这是一个无平方因子数。</p></li></ul><p>可以证明给定数组中不存在超过 3 个无平方子集。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1]</p><p>输出：1</p><p>解释：示例中有 1 个无平方子集：</p><ul><li>由第 0 个元素 [1] 组成的子集。其元素的乘积是 1 ，这是一个无平方因子数。</li></ul><p>可以证明给定数组中不存在超过 1 个无平方子集。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 1000</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 30</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>给出n张专辑，每张专辑中有不同数目的歌曲，每首歌曲都有一个cool值。</p><p>每张专辑只能顺序播放，不能调整歌曲的顺序。</p><p>当听到一首歌曲的cool值比之前所有听过的都大，则增加一点印象值。</p><p>现在，你需要将专辑调整播放顺序，使得印象值最大。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E6%97%A0%E5%B9%B3%E6%96%B9%E5%AD%90%E9%9B%86%E8%AE%A1%E6%95%B0/">
+              <a class="btn" href="/codeforces/ape/2023/10/08/1801C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -394,7 +388,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E6%9C%80%E5%B0%8F%E7%9A%84%E5%BF%85%E8%A6%81%E5%9B%A2%E9%98%9F/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/20/1495B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -412,7 +406,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E6%9C%80%E5%B0%8F%E7%9A%84%E5%BF%85%E8%A6%81%E5%9B%A2%E9%98%9F/" class="post-title-link" itemprop="url">最小的必要团队</a>
+          <a href="/codeforces/ape/2023/09/20/1495B/" class="post-title-link" itemprop="url">Let's Go Hiking</a>
         </h2>
 
         <div class="post-meta-container">
@@ -423,14 +417,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+      <time title="创建时间：2023-09-20 21:41:28" itemprop="dateCreated datePublished" datetime="2023-09-20T21:41:28+00:00">2023-09-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -438,7 +425,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -452,10 +443,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/smallest-sufficient-team/">1125. 最小的必要团队</a></p><hr /><p>作为项目经理，你规划了一份需求的技能清单 <code>req_skills</code>，并打算从备选人员名单 <code>people</code> 中选出些人组成一个「必要团队」（ 编号为 <code>i</code> 的备选人员 <code>people[i]</code> 含有一份该备选人员掌握的技能列表）。</p><p>所谓「必要团队」，就是在这个团队中，对于所需求的技能列表 <code>req_skills</code> 中列出的每项技能，团队中至少有一名成员已经掌握。可以用每个人的编号来表示团队中的成员：</p><ul><li>例如，团队 <code>team = [0, 1, 3]</code> 表示掌握技能分别为 <code>people[0]</code>，<code>people[1]</code>，和 <code>people[3]</code> 的备选人员。</li></ul><p>请你返回 <strong>任一</strong> 规模最小的必要团队，团队成员用人员编号表示。你可以按 <strong>任意顺序</strong> 返回答案，题目数据保证答案存在。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：req_skills = [&quot;java&quot;,&quot;nodejs&quot;,&quot;reactjs&quot;], people = [[&quot;java&quot;],[&quot;nodejs&quot;],[&quot;nodejs&quot;,&quot;reactjs&quot;]]</p><p>输出：[0,2]</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：req_skills = [&quot;algorithms&quot;,&quot;math&quot;,&quot;java&quot;,&quot;reactjs&quot;,&quot;csharp&quot;,&quot;aws&quot;], people = [[&quot;algorithms&quot;,&quot;math&quot;,&quot;java&quot;],[&quot;algorithms&quot;,&quot;math&quot;,&quot;reactjs&quot;],[&quot;java&quot;,&quot;csharp&quot;,&quot;aws&quot;],[&quot;reactjs&quot;,&quot;csharp&quot;],[&quot;csharp&quot;,&quot;math&quot;],[&quot;aws&quot;,&quot;java&quot;]]</p><p>输出：[1,2]</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= req_skills.length &amp;lt;= 16</code></p></li><li><p><code>1 &amp;lt;= req_skills[i].length &amp;lt;= 16</code></p></li><li><p><code>req_skills[i]</code> 由小写英文字母组成</p></li><li><p><code>req_skills</code> 中的所有字符串 <strong>互不相同</strong></p></li><li><p><code>1 &amp;lt;= people.length &amp;lt;= 60</code></p></li><li><p><code>0 &amp;lt;= people[i].length &amp;lt;= 16</code></p></li><li><p><code>1 &amp;lt;= people[i][j].length &amp;lt;= 16</code></p></li><li><p><code>people[i][j]</code> 由小写英文字母组成</p></li><li><p><code>people[i]</code> 中的所有字符串 <strong>互不相同</strong></p></li><li><p><code>people[i]</code> 中的每个技能是 <code>req_skills</code> 中的技能</p></li><li><p>题目数据保证「必要团队」一定存在</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>给出一个1到n的排列$a_1, a_2, \cdots, a_n$，现在A和B两个人在博弈。</p><p>A先选择一个位置x，B后选择一个位置y，x和y不能冲突。</p><p>然后A和B轮流执行操作。</p><p>A只能移动到相邻的位置x-1或x+1上，并且移动后的位置上的值要比移动前的位置上的值小，也不能移动到y上。</p><p>B只能移动到相邻的位置y-1或y+1上，并且移动后的位置上的值要比移动前的位置上的值大，也不能移动到x上。</p><p>当有一方移动后而另一方无法移动则获胜。</p><p>问A能获胜的x的位置有哪些。</p><p>$n \le 10^5$</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E6%9C%80%E5%B0%8F%E7%9A%84%E5%BF%85%E8%A6%81%E5%9B%A2%E9%98%9F/">
+              <a class="btn" href="/codeforces/ape/2023/09/20/1495B/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -486,7 +477,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E8%8E%B7%E5%BE%97%E5%88%86%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1859/1859/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -504,7 +495,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E8%8E%B7%E5%BE%97%E5%88%86%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95%E6%95%B0/" class="post-title-link" itemprop="url">获得分数的方法数</a>
+          <a href="/codeforces/contest/1859/1859/" class="post-title-link" itemprop="url">Codeforces Round 892 (Div. 2)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -515,14 +506,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+      <time title="创建时间：2023-08-27 23:08:52" itemprop="dateCreated datePublished" datetime="2023-08-27T23:08:52+00:00">2023-08-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+      <time title="修改时间：2023-09-19 19:51:55" itemprop="dateModified" datetime="2023-09-19T19:51:55+00:00">2023-09-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -530,7 +521,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
         </span>
     </span>
 
@@ -544,10 +539,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-ways-to-earn-points/">2585. 获得分数的方法数</a></p><hr /><p>考试中有 <code>n</code> 种类型的题目。给你一个整数 <code>target</code> 和一个下标从 <strong>0</strong> 开始的二维整数数组 <code>types</code> ，其中 <code>types[i] = [counti, marksi]</code> 表示第 <code>i</code> 种类型的题目有 <code>counti</code> 道，每道题目对应 <code>marksi</code> 分。</p><p>返回你在考试中恰好得到 <code>target</code> 分的方法数。由于答案可能很大，结果需要对 <code>10^9 +7</code> 取余。</p><p><strong>注意</strong>，同类型题目无法区分。</p><ul><li>比如说，如果有 <code>3</code> 道同类型题目，那么解答第 <code>1</code> 和第 <code>2</code> 道题目与解答第 <code>1</code> 和第 <code>3</code> 道题目或者第 <code>2</code> 和第 <code>3</code> 道题目是相同的。</li></ul><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：target = 6, types = [[6,1],[3,2],[2,3]]</p><p>输出：7</p><p>解释：要获得 6 分，你可以选择以下七种方法之一：</p><ul><li><p>解决 6 道第 0 种类型的题目：1 + 1 + 1 + 1 + 1 + 1 = 6</p></li><li><p>解决 4 道第 0 种类型的题目和 1 道第 1 种类型的题目：1 + 1 + 1 + 1 + 2 = 6</p></li><li><p>解决 2 道第 0 种类型的题目和 2 道第 1 种类型的题目：1 + 1 + 2 + 2 = 6</p></li><li><p>解决 3 道第 0 种类型的题目和 1 道第 2 种类型的题目：1 + 1 + 1 + 3 = 6</p></li><li><p>解决 1 道第 0 种类型的题目、1 道第 1 种类型的题目和 1 道第 2 种类型的题目：1 + 2 + 3 = 6</p></li><li><p>解决 3 道第 1 种类型的题目：2 + 2 + 2 = 6</p></li><li><p>解决 2 道第 2 种类型的题目：3 + 3 = 6</p></li></ul><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：target = 5, types = [[50,1],[50,2],[50,5]]</p><p>输出：4</p><p>解释：要获得 5 分，你可以选择以下四种方法之一：</p><ul><li><p>解决 5 道第 0 种类型的题目：1 + 1 + 1 + 1 + 1 = 5</p></li><li><p>解决 3 道第 0 种类型的题目和 1 道第 1 种类型的题目：1 + 1 + 1 + 2 = 5</p></li><li><p>解决 1 道第 0 种类型的题目和 2 道第 1 种类型的题目：1 + 2 + 2 = 5</p></li><li><p>解决 1 道第 2 种类型的题目：5</p></li></ul><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：target = 18, types = [[6,1],[3,2],[2,3]]</p><p>输出：1</p><p>解释：只有回答所有题目才能获得 18 分。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= target &amp;lt;= 1000</code></p></li><li><p><code>n == types.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 50</code></p></li><li><p><code>types[i].length == 2</code></p></li><li><p><code>1 &amp;lt;= counti, marksi &amp;lt;= 50</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1859/problem/A">A. United We Stand</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1859/problem/B">B. Olya and Game with Arrays</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1859/problem/C">C. Another Permutation Problem</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1859/problem/D">D. Andrey and Escape from Capygrad</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1859/problem/E">E. Maximum Monogonosity</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1859/problem/F">F. Teleportation in Byteland</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E8%8E%B7%E5%BE%97%E5%88%86%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95%E6%95%B0/">
+              <a class="btn" href="/codeforces/contest/1859/1859/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -578,7 +573,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95/%E5%9C%86%E5%BD%A2%E9%9D%B6%E5%86%85%E7%9A%84%E6%9C%80%E5%A4%A7%E9%A3%9E%E9%95%96%E6%95%B0%E9%87%8F/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/19/1402A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -596,7 +591,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95/%E5%9C%86%E5%BD%A2%E9%9D%B6%E5%86%85%E7%9A%84%E6%9C%80%E5%A4%A7%E9%A3%9E%E9%95%96%E6%95%B0%E9%87%8F/" class="post-title-link" itemprop="url">圆形靶内的最大飞镖数量</a>
+          <a href="/codeforces/ape/2023/09/19/1402A/" class="post-title-link" itemprop="url">Fancy Fence</a>
         </h2>
 
         <div class="post-meta-container">
@@ -607,14 +602,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+      <time title="创建时间：2023-09-19 16:31:54" itemprop="dateCreated datePublished" datetime="2023-09-19T16:31:54+00:00">2023-09-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -622,7 +610,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -636,10 +628,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-number-of-darts-inside-of-a-circular-dartboard/">1453. 圆形靶内的最大飞镖数量</a></p><hr /><p>墙壁上挂着一个圆形的飞镖靶。现在请你蒙着眼睛向靶上投掷飞镖。</p><p>投掷到墙上的飞镖用二维平面上的点坐标数组表示。飞镖靶的半径为 <code>r</code> 。</p><p>请返回能够落在 <strong>任意</strong> 半径为 <code>r</code> 的圆形靶内或靶上的最大飞镖数。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/05/16/sample_1_1806.png" /></p><p>```txt</p><p>输入：points = [[-2,0],[2,0],[0,2],[0,-2]], r = 2</p><p>输出：4</p><p>解释：如果圆形的飞镖靶的圆心为 (0,0) ，半径为 2 ，所有的飞镖都落在靶上，此时落在靶上的飞镖数最大，值为 4 。</p><p>```</p><p><strong>示例 2：</strong></p><p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/05/16/sample_2_1806.png" /></strong></p><p>```txt</p><p>输入：points = [[-3,0],[3,0],[2,6],[5,4],[0,9],[7,8]], r = 5</p><p>输出：5</p><p>解释：如果圆形的飞镖靶的圆心为 (0,4) ，半径为 5 ，则除了 (7,8) 之外的飞镖都落在靶上，此时落在靶上的飞镖数最大，值为 5 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：points = [[-2,0],[2,0],[0,2],[0,-2]], r = 1</p><p>输出：1</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：points = [[1,2],[3,5],[1,-1],[2,3],[4,1],[1,3]], r = 2</p><p>输出：4</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= points.length &amp;lt;= 100</code></p></li><li><p><code>points[i].length == 2</code></p></li><li><p><code>-10^4 &amp;lt;= points[i][0], points[i][1] &amp;lt;= 10^4</code></p></li><li><p><code>1 &amp;lt;= r &amp;lt;= 5000</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>按顺序给出若干个矩形的高度和宽度。每个矩形放置在地面上紧贴着。</p><p>例如一个$1\times 1$和$2\times 2$的矩形如下。</p><p><img alt="" src="https://espresso.codeforces.com/4cdd9740a73dbe20839f9c2c6f63013dc64c3228.png" /></p><p>求给出的图形的所有可能的子矩形的个数。只要子矩形形状或位置不一样则认为子矩形不同。</p><p>例如在上图中</p><p>有5个</p><p><img alt="" src="https://espresso.codeforces.com/623fa3317dbe6f14bfc09de4e84a5697f7fd50b4.png" /></p><p>有3个</p><p><img alt="" src="https://espresso.codeforces.com/ed1242a9b1ba23b3ed0fb1091687db4c38636361.png" /></p><p>有1个</p><p><img alt="" src="https://espresso.codeforces.com/dc72fb71437165929d3c2e8f75bf36f4a3ebde55.png" /></p><p>有2个</p><p><img alt="" src="https://espresso.codeforces.com/aa2d3c6f72712ddf9675a15cf8ae86163213bf9f.png" /></p><p>有1个</p><p><img alt="" src="https://espresso.codeforces.com/e7cccc5f98caea29c15d0cefc2a709b195d3e85b.png" /></p><p>共计12个。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95/%E5%9C%86%E5%BD%A2%E9%9D%B6%E5%86%85%E7%9A%84%E6%9C%80%E5%A4%A7%E9%A3%9E%E9%95%96%E6%95%B0%E9%87%8F/">
+              <a class="btn" href="/codeforces/ape/2023/09/19/1402A/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -670,7 +662,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95/%E6%9C%80%E5%B0%8F%E9%9D%A2%E7%A7%AF%E7%9F%A9%E5%BD%A2%20II/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/11/1493C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -688,7 +680,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95/%E6%9C%80%E5%B0%8F%E9%9D%A2%E7%A7%AF%E7%9F%A9%E5%BD%A2%20II/" class="post-title-link" itemprop="url">最小面积矩形 II</a>
+          <a href="/codeforces/ape/2023/09/11/1493C/" class="post-title-link" itemprop="url">K-beautiful Strings</a>
         </h2>
 
         <div class="post-meta-container">
@@ -699,14 +691,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+      <time title="创建时间：2023-09-18 19:14:45" itemprop="dateCreated datePublished" datetime="2023-09-18T19:14:45+00:00">2023-09-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -714,7 +699,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -728,10 +717,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-area-rectangle-ii/">963. 最小面积矩形 II</a></p><hr /><p>给定在 xy 平面上的一组点，确定由这些点组成的任何矩形的最小面积，其中矩形的边<strong>不一定平行于</strong> x 轴和 y 轴。</p><p>如果没有任何矩形，就返回 0。</p><p><strong>示例 1：</strong></p><p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/22/1a.png" /></strong></p><p>```txt</p><p>输入：[[1,2],[2,1],[1,0],[0,1]]</p><p>输出：2.00000</p><p>解释：最小面积的矩形出现在 [1,2],[2,1],[1,0],[0,1] 处，面积为 2。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/23/2.png" /></p><p>```txt</p><p>输入：[[0,1],[2,1],[1,1],[1,0],[2,0]]</p><p>输出：1.00000</p><p>解释：最小面积的矩形出现在 [1,0],[1,1],[2,1],[2,0] 处，面积为 1。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/23/3.png" /></p><p>```txt</p><p>输入：[[0,3],[1,2],[3,1],[1,3],[2,1]]</p><p>输出：0</p><p>解释：没法从这些点中组成任何矩形。</p><p>```</p><p><strong>示例 4：</strong></p><p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/21/4c.png" /></strong></p><p>```txt</p><p>输入：[[3,1],[1,1],[0,1],[2,1],[3,3],[3,2],[0,2],[2,3]]</p><p>输出：2.00000</p><p>解释：最小面积的矩形出现在 [2,1],[2,3],[3,3],[3,1] 处，面积为 2。</p><p>```</p><p><strong>提示：</strong></p><ol><li><p><code>1 &amp;lt;= points.length &amp;lt;= 50</code></p></li><li><p><code>0 &amp;lt;= points[i][0] &amp;lt;= 40000</code></p></li><li><p><code>0 &amp;lt;= points[i][1] &amp;lt;= 40000</code></p></li><li><p>所有的点都是不同的。</p></li><li><p>与真实值误差不超过 <code>10^-5</code> 的答案将视为正确结果。</p></li></ol></ul></p>
+          <p><ul style="text-align:left;"><p>给出一个长度为n的字符串s，以及一个数字k。</p><p>求一个长度为n的字典序最小的字符串，满足条件在字典序大于等于s，且每个字符出现的次数是k的倍数。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95/%E6%9C%80%E5%B0%8F%E9%9D%A2%E7%A7%AF%E7%9F%A9%E5%BD%A2%20II/">
+              <a class="btn" href="/codeforces/ape/2023/09/11/1493C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -762,7 +751,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E4%BD%BF%E4%B9%98%E7%A7%AF%E4%BA%92%E8%B4%A8/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2023/09/15/1015E2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -780,7 +769,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E4%BD%BF%E4%B9%98%E7%A7%AF%E4%BA%92%E8%B4%A8/" class="post-title-link" itemprop="url">分割数组使乘积互质</a>
+          <a href="/codeforces/ape/2023/09/15/1015E2/" class="post-title-link" itemprop="url">Stars Drawing (Hard Edition)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -791,14 +780,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+      <time title="创建时间：2023-09-18 19:14:45" itemprop="dateCreated datePublished" datetime="2023-09-18T19:14:45+00:00">2023-09-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -806,7 +788,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -820,286 +806,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/split-the-array-to-make-coprime-products/">2584. 分割数组使乘积互质</a></p><hr /><p>给你一个长度为 <code>n</code> 的整数数组 <code>nums</code> ，下标从 <strong>0</strong> 开始。</p><p>如果在下标 <code>i</code> 处 <strong>分割</strong> 数组，其中 <code>0 &amp;lt;= i &amp;lt;= n - 2</code> ，使前 <code>i + 1</code> 个元素的乘积和剩余元素的乘积互质，则认为该分割 <strong>有效</strong> 。</p><ul><li>例如，如果 <code>nums = [2, 3, 3]</code> ，那么在下标 <code>i = 0</code> 处的分割有效，因为 <code>2</code> 和 <code>9</code> 互质，而在下标 <code>i = 1</code> 处的分割无效，因为 <code>6</code> 和 <code>3</code> 不互质。在下标 <code>i = 2</code> 处的分割也无效，因为 <code>i == n - 1</code> 。</li></ul><p>返回可以有效分割数组的最小下标 <code>i</code> ，如果不存在有效分割，则返回 <code>-1</code> 。</p><p>当且仅当 <code>gcd(val1, val2) == 1</code> 成立时，<code>val1</code> 和 <code>val2</code> 这两个值才是互质的，其中 <code>gcd(val1, val2)</code> 表示 <code>val1</code> 和 <code>val2</code> 的最大公约数。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/12/14/second.PNG" /></p><p>```txt</p><p>输入：nums = [4,7,8,15,3,5]</p><p>输出：2</p><p>解释：上表展示了每个下标 i 处的前 i + 1 个元素的乘积、剩余元素的乘积和它们的最大公约数的值。</p><p>唯一一个有效分割位于下标 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/12/14/capture.PNG" /></p><p>```txt</p><p>输入：nums = [4,7,15,8,3,5]</p><p>输出：-1</p><p>解释：上表展示了每个下标 i 处的前 i + 1 个元素的乘积、剩余元素的乘积和它们的最大公约数的值。</p><p>不存在有效分割。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == nums.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^4</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^6</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>给出一个包含<code>*</code>和<code>.</code>的n行m列的矩阵。</p><p>求其是否可以由至少1阶星星图组成，星星可以覆盖。</p><p>1到3阶的星星如下。</p><p><img alt="图片" src="https://espresso.codeforces.com/70271637c81815425c34b7351a93a341d23ff9da.png" /></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E4%BD%BF%E4%B9%98%E7%A7%AF%E4%BA%92%E8%B4%A8/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E7%82%B9%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%88%B0%E8%BE%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E7%82%B9%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%88%B0%E8%BE%BE/" class="post-title-link" itemprop="url">判断一个点是否可以到达</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/check-if-point-is-reachable/">2543. 判断一个点是否可以到达</a></p><hr /><p>给你一个无穷大的网格图。一开始你在 <code>(1, 1)</code> ，你需要通过有限步移动到达点 <code>(targetX, targetY)</code> 。</p><p><strong>每一步</strong> ，你可以从点 <code>(x, y)</code> 移动到以下点之一：</p><ul><li><p><code>(x, y - x)</code></p></li><li><p><code>(x - y, y)</code></p></li><li><p><code>(2 * x, y)</code></p></li><li><p><code>(x, 2 * y)</code></p></li></ul><p>给你两个整数 <code>targetX</code> 和 <code>targetY</code> ，分别表示你最后需要到达点的 X 和 Y 坐标。如果你可以从 <code>(1, 1)</code> 出发到达这个点，请你返回<code>true</code> ，否则返回 <code>false</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：targetX = 6, targetY = 9</p><p>输出：false</p><p>解释：没法从 (1,1) 出发到达 (6,9) ，所以返回 false 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：targetX = 4, targetY = 7</p><p>输出：true</p><p>解释：你可以按照以下路径到达：(1,1) -&gt; (1,2) -&gt; (1,4) -&gt; (1,8) -&gt; (1,7) -&gt; (2,7) -&gt; (4,7) 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><code>1 &amp;lt;= targetX, targetY &amp;lt;= 10^9</code></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E7%82%B9%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%88%B0%E8%BE%BE/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">序列中不同最大公约数的数目</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-different-subsequences-gcds/">1819. 序列中不同最大公约数的数目</a></p><hr /><p>给你一个由正整数组成的数组 <code>nums</code> 。</p><p>数字序列的 <strong>最大公约数</strong> 定义为序列中所有整数的共有约数中的最大整数。</p><ul><li>例如，序列 <code>[4,6,16]</code> 的最大公约数是 <code>2</code> 。</li></ul><p>数组的一个 <strong>子序列</strong> 本质是一个序列，可以通过删除数组中的某些元素（或者不删除）得到。</p><ul><li>例如，<code>[2,5,10]</code> 是 <code>[1,2,1,**2**,4,1,**5**,**10**]</code> 的一个子序列。</li></ul><p>计算并返回 <code>nums</code> 的所有 <strong>非空</strong> 子序列中 <strong>不同</strong> 最大公约数的 <strong>数目</strong> 。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/04/03/image-1.png" /></p><p>```txt</p><p>输入：nums = [6,10,3]</p><p>输出：5</p><p>解释：上图显示了所有的非空子序列与各自的最大公约数。</p><p>不同的最大公约数为 6 、10 、3 、2 和 1 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [5,15,40,5,6]</p><p>输出：7</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 2 * 10^5</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%9F%E8%AE%A1%E5%8F%AF%E4%BB%A5%E8%A2%AB%20K%20%E6%95%B4%E9%99%A4%E7%9A%84%E4%B8%8B%E6%A0%87%E5%AF%B9%E6%95%B0%E7%9B%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%9F%E8%AE%A1%E5%8F%AF%E4%BB%A5%E8%A2%AB%20K%20%E6%95%B4%E9%99%A4%E7%9A%84%E4%B8%8B%E6%A0%87%E5%AF%B9%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">统计可以被 K 整除的下标对数目</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-array-pairs-divisible-by-k/">2183. 统计可以被 K 整除的下标对数目</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始、长度为 <code>n</code> 的整数数组 <code>nums</code> 和一个整数 <code>k</code> ，返回满足下述条件的下标对 <code>(i, j)</code> 的数目：</p><ul><li><p><code>0 &amp;lt;= i &amp;lt; j &amp;lt;= n - 1</code> 且</p></li><li><p><code>nums[i] * nums[j]</code> 能被 <code>k</code> 整除。</p></li></ul><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,2,3,4,5], k = 2</p><p>输出：7</p><p>解释：</p><p>共有 7 对下标的对应积可以被 2 整除：</p><p>(0, 1)、(0, 3)、(1, 2)、(1, 3)、(1, 4)、(2, 3) 和 (3, 4)</p><p>它们的积分别是 2、4、6、8、10、12 和 20 。</p><p>其他下标对，例如 (0, 2) 和 (2, 4) 的乘积分别是 3 和 15 ，都无法被 2 整除。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1,2,3,4], k = 5</p><p>输出：0</p><p>解释：不存在对应积可以被 5 整除的下标对。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i], k &amp;lt;= 10^5</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%9F%E8%AE%A1%E5%8F%AF%E4%BB%A5%E8%A2%AB%20K%20%E6%95%B4%E9%99%A4%E7%9A%84%E4%B8%8B%E6%A0%87%E5%AF%B9%E6%95%B0%E7%9B%AE/">
+              <a class="btn" href="/codeforces/ape/2023/09/15/1015E2/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1123,7 +833,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/54/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/54/">54</a><span class="page-number current">55</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/56/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/54/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/54/">54</a><span class="page-number current">55</span><a class="page-number" href="/page/56/">56</a><a class="page-number" href="/page/58/">58</a><a class="page-number" href="/page/62/">62</a><a class="page-number" href="/page/70/">70</a><a class="page-number" href="/page/80/">80</a><a class="extend next" rel="next" href="/page/56/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
