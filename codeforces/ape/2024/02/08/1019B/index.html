@@ -290,7 +290,7 @@
 </ol>
 <p>对于操作 $1$ ，交互程序会输出一个整数 $a_x$ 表示 $x$ 编号的人手中的数字。</p>
 <p>对于操作 $2$ ，如果你的答案是错误的，程序会直接退出，且测试结果为 <code>Wrong Answer</code> ，否则<strong>若无其他问题</strong>则测试结果为 <code>Accepted</code> 。</p>
-<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>设$a_i - a_{i+\frac{n}{2}} = b_i$，可知$b_i = -b_{i+\frac{n}{2}}$，并且$b_i-b_{i+1} \in {-2, 0, 2}$，我们只需要找到$b_i = 0$的i即可</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>设$a_i - a_{i+\frac{n}{2}} = b_i$，可知$b_i = -b_{i+\frac{n}{2}}$，并且$b_i-b_{i+1} \in \lbrace -2, 0, 2\rbrace $，我们只需要找到$b_i = 0$的i即可</p>
 <p>当存在$b_i$为奇数，所有$b_i$都为奇数。不存在答案。</p>
 <p>否则一定存在答案，犹豫$b_i = x, b_{i+\frac{n}{2}} = -x$，在x为偶数的情况下从x到-x每次歩长为2，必定经过0。</p>
 <p>$b_1$与$b_{1+\frac{n}{2}}$异号,从1到n/2之间进行二分查找一定能找到0</p>

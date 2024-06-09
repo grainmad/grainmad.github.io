@@ -282,7 +282,7 @@
 <p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1729/G">https://codeforces.com/problemset/problem/1729/G</a></p>
 <p>ranting: 2100</p>
 <p>tag: combinatorics, dp, hashing, strings, two pointers</p>
-<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出两个非空字符串$s$和$t$，以最小次数删除使得字符串$s$中不会出现字符串$t$，每次可以将字符串$s$中所有任意一个字符串$t$删除，并且有多少种不同的的方案，如：删除序列${1,2,3}$与删除序列${1,2,4}$是不同的，删除序列${2,4,6}$和删除序列${2,6}$也是不同的，但删除序列${3,5}$与删除序列${5,3}$是相同的</p>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>给出两个非空字符串$s$和$t$，以最小次数删除使得字符串$s$中不会出现字符串$t$，每次可以将字符串$s$中所有任意一个字符串$t$删除，并且有多少种不同的的方案，如：删除序列$\lbrace 1,2,3\rbrace $与删除序列$\lbrace 1,2,4\rbrace $是不同的，删除序列$\lbrace 2,4,6\rbrace $和删除序列$\lbrace 2,6\rbrace $也是不同的，但删除序列$\lbrace 3,5\rbrace $与删除序列$\lbrace 5,3\rbrace $是相同的</p>
 <p>现有$q$次询问，每次输出最小删除次数与以最小删除次数删除的方案数(对$10^9+7$取模)</p>
 <p>程序输入的第一行是询问次数$q(1\le q \le 50 )$，接下来一行字符串$s(1 \le |s| \le 500)$和一行字符串$t(1 \le |t| \le 500)$</p>
 <p>程序输出$q$行答案，每次输出最小删除次数与以最小删除次数删除的方案数(对$10^9+7$取模)</p>

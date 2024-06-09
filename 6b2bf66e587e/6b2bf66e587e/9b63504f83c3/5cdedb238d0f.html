@@ -72,7 +72,7 @@ vector&lt;int&gt; euler_sieve(int n) {  // 求n及以内的质数
     return phi;
 }
 </code></pre>
-<h1 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h1><p>$\mu(i) = \left { \begin{array}{ll}<br>1 &amp; i = 0 \<br>0 &amp; i中含重复质因子\<br>(-1)^k &amp; k为i的不同质因子个数<br>\end{array} \right.$</p>
+<h1 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h1><p>$\mu(i) = \left \lbrace  \begin{array}{ll}<br>1 &amp; i = 0 \<br>0 &amp; i中含重复质因子\<br>(-1)^k &amp; k为i的不同质因子个数<br>\end{array} \right.$</p>
 <pre><code class="cpp">vector&lt;int&gt; mobius(int n) {  // 求n及以内的莫比乌斯函数
     vector&lt;int&gt; p;           // 质数集合
     vector&lt;int&gt; cp(n + 1);   // cp[i] i为合数
