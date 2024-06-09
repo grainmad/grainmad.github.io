@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">554</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">555</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">554</span>
+          <span class="site-state-item-count">555</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/29/1714F/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/29/1714F/" class="post-title-link" itemprop="url">Build a Tree and That Is It</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/" class="post-title-link" itemprop="url">树与图</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,7 +239,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -247,11 +247,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -265,10 +261,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>树是一个没有环的无向连通图，<strong>注意</strong>，在本题中，我们讨论的是无根树</p><p>现有四个整数 $ n, d_{12}, d_{23} $ 和 $ d_{31} $ . 构建一颗满足以下条件的树:</p><ul><li><p>包含从 $ 1 $ 到 $ n $ 的 $n$ 个节点,</p></li><li><p>从节点 $ 1 $ 到节点 $ 2 $ 的距离（最短路的长度）为 $ d_{12} $ ,</p></li><li><p>从节点 $ 2 $ 到节点 $ 3 $ 的距离为 $ d_{23} $ ,</p></li><li><p>从节点 $ 3 $ 到节点 $ 1 $ 的距离为 $ d_{31} $ .</p></li></ul><p>输出满足条件的任意一棵树；若不存在，请~~证明~~.</p><p>输入</p><p>第一行包含一个整数 $ t $ ( $ 1 \le t \le 10^4 $ ) 表示测试组数.</p><p>接下来 $ t $ 组, 每组一行数据包含 $4$ 个整数 $ n, d_{12}, d_{23} $ and $ d_{31} $ ( $ 3 \le n \le 2\cdot10^5; 1 \le d_{12}, d_{23}, d_{31} \le n-1 $ ).</p><p>输入数据保证所有 $ n $ 不超过 $ 2\cdot10^5 $ .</p><p>输出</p><p>对于每一组数据，若存在这种树，输出<code>YES</code>；若不存在，输出<code>NO</code>.</p><p>对于存在的情况，额外输出 $ n-1 $ 行来描述这棵树的边（一对正整数 $ x_i, y_i $ 表示第 $ i $ 条边连接第 $ x_i $ 号节点和第 $ y_i $ 号节点.</p><p>你可以按照任何顺序输出这些边及其顶点，若有多种解，输出其中一种即可.</p></ul></p>
+          <p><ul style="text-align:left;"><li>树与图<ul><li>子树计数模板</li><li>tarjan 桥与割点</li><li>网络流</li><li>平衡树</li><li>并查集</li><li>树上问题<ul><li>树分治</li><li>树的直径与中心</li><li>LCA</li><li>虚树</li><li>树链剖分<ul><li>实链剖分</li><li>长链剖分</li><li>重链剖分</li></ul></li></ul></li><li>最短路</li><li>二分图</li><li>DFS序与欧拉序</li></ul></li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/29/1714F/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -299,7 +295,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/30/1213G/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fc866f372b83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -317,7 +313,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/30/1213G/" class="post-title-link" itemprop="url">Path Queries</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/" class="post-title-link" itemprop="url">轮子</a>
         </h2>
 
         <div class="post-meta-container">
@@ -328,7 +324,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -336,11 +332,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -354,10 +346,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>$\mathsf E \color{red}\mathsf{ntropyIncreaser}$ 有一棵 $n$ 个点的树，每条边都带权。  </p><p>她会问你 $m$ 个问题，每次给你一个正整数 $q$，求最大权值不大于 $q$ 的简单路径数量。  </p><p>需要注意的是，对于一个点对 $(u,v)$ 只记一次，单独一个点不算路径。</p><p>输入格式</p><p>第一行两个正整数 $n,m$，意义如题目描述。  </p><p>接下来 $n-1$ 行，每行三个正整数 $u,v,w$，表示 $u,v$ 之间有一条权为 $w$ 的无向边。  </p><p>最后一行 $m$ 个正整数，表示询问。</p><p>输出格式  </p><p>对于每个询问，输出一行一个整数表示答案。</p><p>数据范围  </p><p>$1\le n,m \le 2\times10^5$  </p><p>$1\le u,v \le n$  </p><p>$1\le w,q \le 2\times 10^5$  </p></ul></p>
+          <p><ul style="text-align:left;"><li>轮子<ul><li>RSA</li><li>排序</li><li>A 搜索算法</li><li>快速平方根倒数</li></ul></li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/30/1213G/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fc866f372b83/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -388,7 +380,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/31/1620C/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/9b63504f83c3/a63039e173d4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -406,7 +398,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/31/1620C/" class="post-title-link" itemprop="url">BA-String</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/9b63504f83c3/a63039e173d4/" class="post-title-link" itemprop="url">二进制操作技巧</a>
         </h2>
 
         <div class="post-meta-container">
@@ -417,7 +409,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -425,11 +417,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -443,10 +431,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>您拥有一个整数 $k$，以及一个由字符 <code>a</code> 与字符 <code>*</code> 组成的长度为 $n$ 的字符串。</p><p>在这其中，每一个星号都<strong>必须</strong>替换成 $0\sim k$ 个字符 <code>b</code>，在所有的星号替换完成后，得到的字符串我们称为 <code>BA-String</code>。</p><p>请您求出给定字符串所转化出的字典序第 $x$ 小的 <code>BA-String</code>。</p><p>本题采用多组数据，数据组数为 $T$。</p><p>$1\leqslant T,n,k\leqslant2000$</p><p>$1\leqslant x\leqslant10^{18}$</p></ul></p>
+          <p><ul style="text-align:left;"><li>二进制操作技巧</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/31/1620C/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/9b63504f83c3/a63039e173d4/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -477,7 +465,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/01/1221D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/a2269d02ceb9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -495,7 +483,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/01/1221D/" class="post-title-link" itemprop="url">Make The Fence Great Again</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/a2269d02ceb9/" class="post-title-link" itemprop="url">子树计数模板</a>
         </h2>
 
         <div class="post-meta-container">
@@ -506,7 +494,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -514,11 +502,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -532,10 +516,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出$n$个数，定义一个数列是好的当且仅当$a_{i}\ne a_{i-1}$</p><p>你可以通过调整数的大小来把一个数列变成好的，将一个位置$i$上的数$+1$需要的花费是$b_i$，问：最小的花费</p><p>有$q$组询问，保证$\sum_{i=1}^q n_i\le3\times10^5$，答案在$long\ long$范围内</p></ul></p>
+          <p><ul style="text-align:left;"><li>子树计数模板</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/01/1221D/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/a2269d02ceb9/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -566,7 +550,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/02/1088D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -584,7 +568,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/02/1088D/" class="post-title-link" itemprop="url">Ehab and another another xor problem</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/" class="post-title-link" itemprop="url">树上问题</a>
         </h2>
 
         <div class="post-meta-container">
@@ -595,7 +579,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -603,11 +587,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -621,10 +601,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>交互题，系统有两个整数 $(a,b)$，你每次可以询问一组整数 $(c,d)$，系统会回答：</p><ul><li><p>$1$ 如果 $a\oplus c&gt;b\oplus d$</p></li><li><p>$0$ 如果 $a\oplus c=b\oplus d$</p></li><li><p>$-1$ 如果 $a\oplus c&lt;b\oplus d$</p></li></ul><p>其中操作 $a\oplus b$ 表示 $a$ 和 $b$ <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bitwise_operation#XOR">按位异或</a></p><p>你需要在询问不超过 $62$ 次之后输出 $(a,b)$ 的值，保证 $0\le a, b &lt; 2^{30}$。</p><p>输入格式：</p><p>请见“交互”</p><p>输出格式：</p><p>输出 <code>! a b</code> 以输出答案，不要忘了在输出答案后清除缓冲区</p><p>输出 <code>? c d</code> 以询问，$c$ 和 $d$ 都应该是小于 $2^{30}$ 的非负整数，不要忘了在输出每一次询问后清除缓冲区</p><p>你可以用下列操作来清除缓冲区：</p><ul><li><p>C++：<code>fflush(stdout)</code></p></li><li><p>Java：<code>System.out.flush()</code></p></li><li><p>Python：<code>stdout.flush()</code></p></li><li><p>Pascal：<code>fflush(stdout)</code></p></li><li><p>对于其它语言请参考文档</p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><li>树上问题<ul><li>树分治</li><li>树的直径与中心</li><li>LCA</li><li>虚树</li><li>树链剖分<ul><li>实链剖分</li><li>长链剖分</li><li>重链剖分</li></ul></li></ul></li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/02/1088D/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -655,7 +635,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/03/1295D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/ab6be601d180/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -673,7 +653,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/03/1295D/" class="post-title-link" itemprop="url">Same GCDs</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/ab6be601d180/" class="post-title-link" itemprop="url">树链剖分</a>
         </h2>
 
         <div class="post-meta-container">
@@ -684,7 +664,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -692,11 +672,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -710,10 +686,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>求</p><p>$$\sum_{x=0}^{m-1} [\ \gcd(a, m) = \gcd(a + x, m)\ ]$$</p><p>多组测试数据, $T \leq 50,\ 1 \leq a &lt; m \leq 10^{10}$</p></ul></p>
+          <p><ul style="text-align:left;"><li>树链剖分<ul><li>实链剖分</li><li>长链剖分</li><li>重链剖分</li></ul></li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/03/1295D/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/ab6be601d180/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -744,7 +720,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/03/1555E/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/e6bf970620e5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -762,7 +738,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/03/1555E/" class="post-title-link" itemprop="url">Boring Segments</a>
+          <a href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/e6bf970620e5/" class="post-title-link" itemprop="url">树分治</a>
         </h2>
 
         <div class="post-meta-container">
@@ -773,7 +749,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-04-06 18:55:42" itemprop="dateCreated datePublished" datetime="2024-04-06T18:55:42+00:00">2024-04-06</time>
+      <time title="创建时间：2024-06-03 10:42:02" itemprop="dateCreated datePublished" datetime="2024-06-03T10:42:02+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -781,11 +757,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
         </span>
     </span>
 
@@ -799,10 +771,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>在一个 $[1,m]$ 的数轴上有 n 条线段，第 i 条覆盖了 $[l_i,r_i]$ 的区间，权值为 $w_i$ ，你的任务是从这些线段中选出若干条首尾相接线段覆盖整个数轴，使得这些线段权值极差最小化，输出这个极差</p><p>首尾相接的定义是，假设你有机会从同一条线段覆盖的任意两个点中移动，如果你可以从位置 1 出发，经过一些线段到达位置 m ，就称为这些线段首尾相接</p></ul></p>
+          <p><ul style="text-align:left;"><li>树分治</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/03/1555E/">
+              <a class="btn" href="/6b2bf66e587e/6b2bf66e587e/fb20d04c231d/afe44686db51/e6bf970620e5/">
                 阅读全文 &raquo;
               </a>
             </div>
