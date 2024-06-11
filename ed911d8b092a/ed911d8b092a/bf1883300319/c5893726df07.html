@@ -1,5 +1,5 @@
 <hr>
-<p>title: “母函数”<br>date: 2024-06-04 18:22:26<br>updated: 2024-06-04 18:22:26<br>tag: [notion, Math, Combinatorics]<br>categories: Math<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>母函数</li></ul>“</p>
+<p>title: “母函数”<br>date: 2024-06-04 18:22:26<br>updated: 2024-06-11 16:15:40<br>tag: [“notion”, “Math”, “Combinatorics”]<br>categories: “Math”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>母函数</li></ul>‘</p>
 <hr>
 <h1 id="母函数"><a href="#母函数" class="headerlink" title="母函数"></a>母函数</h1><h1 id="母函数-1"><a href="#母函数-1" class="headerlink" title="母函数"></a>母函数</h1><p>在数学中，某个序列${\displaystyle (a_{n}){n\in \mathbb {N} }}(a{n})_{n\in \mathbb {N} }$ 的母函数（又称生成函数，英语：Generating function）是一种形式幂级数，其每一项的系数可以提供关于这个序列的信息。</p>
 <p>母函数就是一列用来展示一串数字序列的挂衣架。</p>
@@ -23,8 +23,8 @@
 <h2 id="无序拆分"><a href="#无序拆分" class="headerlink" title="无序拆分"></a><strong>无序拆分</strong></h2><p>各个部分不考虑顺序的拆分叫无序拆分（Partition）</p>
 <p>把n个无区别的球放到r个无标志的盒子，盒子可以是空的。</p>
 <p>$G(x) = (1+x+x^2+x^3+\cdots)(1+x^2+x^4+x^6+\cdots)\cdots(1+x^r+x^{2r}+x^{3r}+\cdots)$，n的拆分个数就是$x^n$的系数。</p>
-<p>1出现的母函数$(1+x+x^2+x^3+\cdots)$</p>
-<p>2出现的母函数$(1+x^2+x^4+x^6+\cdots)$</p>
+<p>数字1出现的母函数$(1+x+x^2+x^3+\cdots)$</p>
+<p>数字2出现的母函数$(1+x^2+x^4+x^6+\cdots)$</p>
 <pre><code class="python">x = int(input())
 cnt = [1]*(x+1);
 for i in range(2, x+1):
@@ -52,8 +52,7 @@ print(&quot;{}可拆分方案数为{}&quot;.format(x, cnt[x]))
 <p>$G(x) = 2x(f(0)+f(1)x+f(2)x^2+\cdots) + x + x^2 + x^3 + \cdots$</p>
 <p>$G(x) = 2xG(x) + x+ x^2 + x^3 + \cdots$</p>
 <p>根据泰勒公式</p>
-<p>$G(x) = 2xG(x) + \frac{1}{1-x}-1$</p>
-<p>$G(x) = \frac{x}{(1-2x)(1-x)} = \frac{1}{1-2x} - \frac{1}{1-x} = (1+2x+ 2^2x^2 + 2^3x^3 + \cdots)-(1+x+ x^2 + x^3 + \cdots)=\sum \limits_{i=0}^{\infty} (2^i-1)x^i$</p>
+<p>$G(x) = 2xG(x) + \frac{1}{1-x}-1 \Rightarrow \<br>G(x) = \frac{x}{(1-2x)(1-x)} \<br>=\frac{1}{1-2x} - \frac{1}{1-x} \<br>= (1+2x+ 2^2x^2 + 2^3x^3 + \cdots)-(1+x+ x^2 + x^3 + \cdots) \<br>= \sum \limits_{i=0}^{\infty} (2^i-1)x^i$</p>
 <h1 id="出现偶数次数5的n位10进制数"><a href="#出现偶数次数5的n位10进制数" class="headerlink" title="出现偶数次数5的n位10进制数"></a>出现偶数次数5的n位10进制数</h1><p>给出一个长度位n的10进制数，问出现5的次数是偶数的个数有多少?不能有前导零。</p>
 <p>用动态规划的思想寻找子问题。</p>
 <p>考虑前i个数以5结尾和非5结尾的个数有多少个。</p>
@@ -68,20 +67,23 @@ print(&quot;{}可拆分方案数为{}&quot;.format(x, cnt[x]))
 <p>对于每个系数$a_i,b_i,i&gt;1$都带入递推式，整理后得到</p>
 <p>$A(x) = 8 + x(9A(x) + B(x))$</p>
 <p>$B(x) = 1 + x(9B(x) + A(x))$</p>
-<p>联立方程组求得$A(x) = \frac{8-71x}{(1-10x)(1-8x)} = \frac{1}{2}(\frac{9}{1-10x}+\frac{7}{1-8x}) = \sum \limits_{i=0}^{\infty}(\frac{9\cdot10^i+7\cdot8^i}{2})x^{i}$</p>
+<p>联立方程组</p>
+<p>$A(x) = \frac{8-71x}{(1-10x)(1-8x)} \<br>= \frac{1}{2}(\frac{9}{1-10x}+\frac{7}{1-8x}) \<br>= \sum \limits_{i=0}^{\infty}(\frac{9\cdot10^i+7\cdot8^i}{2})x^{i}$</p>
 <p>$a_i = \frac{9\cdot10^{i-1}+7\cdot8^{i-1}}{2}$</p>
 <h1 id="Fibonacci"><a href="#Fibonacci" class="headerlink" title="Fibonacci"></a>Fibonacci</h1><p>$F_i = F_{i-1} + F_{i-2} , i&gt;2$</p>
 <p>$F_1 = F_2 = 1$</p>
-<p>a母函数法求$F_i$，构造母函数$G(x) = F_1x+F_2x^2+\cdots+F_ix^i+\cdots$</p>
+<p>母函数法求$F_i$，构造母函数$G(x) = F_1x+F_2x^2+\cdots+F_ix^i+\cdots$</p>
 <p>$G(x) = x + xG(x)+x^2G(x)$</p>
 <p>$G(x) = \frac{x}{1-x-x^2}$</p>
 <p>由于需要利用$\frac{1}{1-x}$的泰勒展开，我们将分母因式分解为形如$(1-ax)(1-bx)$的形式。</p>
 <p>$1^2-x+\frac{x^2}{4}-\frac{5x^2}{4}=(1-\frac{x}{2})^2-(\frac{\sqrt5x}{2})^2=(1-\frac{1+\sqrt5}{2}x)(1-\frac{1-\sqrt5}{2}x)$</p>
 <p>因此$G(x) = \frac{x}{(1-\frac{1+\sqrt5}{2}x)(1-\frac{1-\sqrt5}{2}x)}$</p>
 <p>设$a = \frac{1+\sqrt5}{2}$，$b=\frac{1-\sqrt5}{2}$</p>
-<p>y用待定系数法将$G(x)$拆为两项$G(x) = \frac{x}{(1-ax)(1-bx)} = \frac{A}{1-ax} + \frac{B}{1-bx} = \frac{A(1-bx)+B(1-ax)}{(1-ax)(1-bx)} = \frac{-(Ab+Ba)x+A+B}{(1-ax)(1-bx)}$，可知$-(Ab+Ba) = 1, A+B = 0$，解得$A=\frac{1}{\sqrt5}, B = -\frac{1}{\sqrt5}$</p>
-<p>$G(x) = \frac{1}{\sqrt5}(\frac{1}{1-ax}-\frac{1}{1-bx})=\sum \limits_{i=0}^{\infty} \frac{1}{\sqrt5}(a^i-b^i)x^i=\sum \limits_{i=0}^{\infty} \frac{1}{\sqrt5}((\frac{1+\sqrt5}{2})^i-(\frac{1-\sqrt5}{2})^i)x^i$</p>
-<p>so $F_i = \frac{1}{\sqrt5}((\frac{1+\sqrt5}{2})^i-(\frac{1-\sqrt5}{2})^i)$</p>
+<p>用待定系数法将$G(x)$拆为两项</p>
+<p>$G(x) = \frac{x}{(1-ax)(1-bx)} \<br>= \frac{A}{1-ax} + \frac{B}{1-bx} \<br>= \frac{A(1-bx)+B(1-ax)}{(1-ax)(1-bx)} \<br>= \frac{-(Ab+Ba)x+A+B}{(1-ax)(1-bx)}$</p>
+<p>可知$-(Ab+Ba) = 1, A+B = 0$，解得$A=\frac{1}{\sqrt5}, B = -\frac{1}{\sqrt5}$</p>
+<p>$G(x) = \frac{1}{\sqrt5}(\frac{1}{1-ax}-\frac{1}{1-bx}) \<br>=\sum \limits_{i=0}^{\infty} \frac{1}{\sqrt5}(a^i-b^i)x^i \<br>=\sum \limits_{i=0}^{\infty} \frac{1}{\sqrt5}((\frac{1+\sqrt5}{2})^i-(\frac{1-\sqrt5}{2})^i)x^i$</p>
+<p> $F_i = \frac{1}{\sqrt5}((\frac{1+\sqrt5}{2})^i-(\frac{1-\sqrt5}{2})^i)$</p>
 <p>Fibonacci<strong>恒等式</strong></p>
 <p>$F_1^2+F_2^2+F_3^2+\cdots+F_n^2 = F_nF_{n+1}$</p>
 <p>右侧有$F_{n+1}$，左侧没有需要凑出一个$F_{n+1}$且是正数</p>
@@ -91,34 +93,37 @@ print(&quot;{}可拆分方案数为{}&quot;.format(x, cnt[x]))
 <p>$F_1+F_2+F_3+\cdots+F_n = F_{n+2}-1$</p>
 <p>右侧有$F_{n+2}$，将$F_n$替换为$F_{n+2}-F_{n+1}$</p>
 <hr>
-<h1 id="线性常系数齐次递推关系"><a href="#线性常系数齐次递推关系" class="headerlink" title="线性常系数齐次递推关系"></a>线性常系数齐次递推关系</h1><p>若序列$\lbrace a_n\rbrace $满足</p>
+<h1 id="线性常系数齐次递推关系"><a href="#线性常系数齐次递推关系" class="headerlink" title="线性常系数齐次递推关系"></a>线性常系数齐次递推关系</h1><p>若序列$\lbrace a_n\rbrace$满足</p>
 <p>$a_n + c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} = 0$</p>
 <p>$a_i = d_i, 0≤i&lt;k,$ $d_i$为常数</p>
-<p>则$\lbrace a_n\rbrace $为<strong>k阶线性常系数齐次</strong>递推关系。</p>
-<h1 id="特征多项式求解递推关系"><a href="#特征多项式求解递推关系" class="headerlink" title="特征多项式求解递推关系"></a>特征多项式求解递推关系</h1><p>$\lbrace a_n\rbrace $为k阶线性常系数齐次递推关系</p>
+<p>则$\lbrace a_n\rbrace$为<strong>k阶线性常系数齐次</strong>递推关系。</p>
+<h1 id="特征多项式求解递推关系"><a href="#特征多项式求解递推关系" class="headerlink" title="特征多项式求解递推关系"></a>特征多项式求解递推关系</h1><p>$\lbrace a_n \rbrace$为k阶线性常系数齐次递推关系</p>
 <p>$a_n + c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} = 0$</p>
-<p>特征多项式为$C(x) = x^k+c_1x^{k-1}+c_2x^{k-2}+\cdots+c_k=(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_k)=0$</p>
+<p>特征多项式为</p>
+<p>$C(x) = x^k+c_1x^{k-1}+c_2x^{k-2}+\cdots+c_k \<br>=(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_k)=0$</p>
 <p><strong>当$C(x)$无重根</strong></p>
 <p>$G(x)$可化为$G(x) = \frac{l_1}{1-\alpha_1x} + \frac{l_2}{1-\alpha_2x} + \cdots + \frac{l_k}{1-\alpha_kx}=\sum \limits ^{k}_{i=1} \frac{l_i}{1-\alpha_i x}$，$l_i$是待定系数</p>
 <p>通过泰勒公式展开，$x^n$的系数就是我们要求的$a_n$，即 $a_n = \sum \limits_{i=1}^{k} l_i\alpha_i^n$</p>
-<p>已知$\lbrace a_n\rbrace $的前k项初始值，就可以形成k个方程求解k个待定系数$l_1,l_2,\dots,l_k$</p>
+<p>已知$\lbrace a_n \rbrace$的前k项初始值，就可以形成k个方程求解k个待定系数$l_1,l_2,\dots,l_k$</p>
 <p>eg：用特征多项式求解Fibonacci</p>
 <p>$F_i - F_{i-1} + F_{i-2}=0,F_1 = F_2 = 1$</p>
 <p>特征多项式$x^2-x-1=(x-\frac{1+\sqrt5}{2})(x-\frac{1-\sqrt5}{2})$</p>
 <p>令$\alpha_1 =\frac{1+\sqrt5}{2}, \alpha_2 = \frac{1-\sqrt5}{2}$</p>
 <p>由$a_n = \sum \limits_{i=1}^{2} l_i\alpha_i^n$联立方程组</p>
-<p>$\left\lbrace  \begin{array}{l}<br>f_1 = l_1\alpha_1+l_2\alpha_2 = 1 \<br>f_2 = l_1\alpha_1^2+l_2\alpha_2^2  = 1<br>\end{array}\right.$</p>
+<p>$\left\lbrace \begin{array}{l}<br>f_1 = l_1\alpha_1+l_2\alpha_2 = 1 \<br>f_2 = l_1\alpha_1^2+l_2\alpha_2^2  = 1<br>\end{array}\right.$</p>
 <p>解得$l_1=\frac{1}{\sqrt5}, l_2 = -\frac{1}{\sqrt5}$</p>
 <p>$a_n =  \frac{1}{\sqrt5} (\frac{1+\sqrt5}{2})^n - \frac{1}{\sqrt5} (\frac{1-\sqrt5}{2})^n$</p>
 <p><strong>当$C(x)$有重根</strong></p>
-<p>有时候特征方程有k重根$\alpha$，组成母函数的部分分式$A(x) = \frac{l_1}{1-\alpha_1x} + \frac{l_2}{(1-\alpha_2x)^2} + \cdots + \frac{l_k}{(1-\alpha_kx)^k}=\sum \limits ^{k}_{i=1} \frac{l_i}{(1-\alpha_i x)^i}$</p>
+<p>有时候特征方程有k重根$\alpha$，组成母函数的部分分式</p>
+<p>$A(x) = \frac{l_1}{1-\alpha_1x} + \frac{l_2}{(1-\alpha_2x)^2} + \cdots + \frac{l_k}{(1-\alpha_kx)^k}=\sum \limits ^{k}_{i=1} \frac{l_i}{(1-\alpha_i x)^i}$</p>
 <p>$x^n$的系数$a_n = \sum \limits_{i=1}^{k}l_iC_{n+i-1}^{i-1}\alpha^n$，</p>
 <p>这个组合数是n的i-1次多项式，可以将递推关系的解对应$(A_0+A_1n+\cdots+A_{k-1}n^{k-1})\alpha^n$，只需要求出$A_0,A_1,\dots,A_{k-1}$这k个待定系数即可。</p>
 <p><strong>当$C(x)$有虚数根</strong></p>
 <p>略</p>
 <h1 id="Catalan数"><a href="#Catalan数" class="headerlink" title="Catalan数"></a>Catalan数</h1><p>一个无穷大的栈的进站序列为$1,2,\cdots,n$有多少个不同的出栈序列？</p>
 <p>若栈第二次为空时面临着第$i+1$个元素入栈，那么最后一个从栈里拿出的就是第一个元素，实际上问题就被拆解为$i-1$个元素的出栈顺序数和$n-i$个元素的出栈顺序数的乘积。</p>
-<p>因此得到递推关系$C(n) = C(n-1)*C(0) + C(n-2)*C(1) + \cdots + C(1)*C(n-2)+C(0)*C(n-1)$</p>
+<p>因此得到递推关系</p>
+<p>$C(n) = C(n-1)*C(0) + C(n-2)*C(1) + \cdots + C(1)*C(n-2)+C(0)*C(n-1)$</p>
 <p><strong>母函数证明</strong></p>
 <p>设母函数为$c(x) = \sum \limits _{i=0}^{\infty}C(i)x^n$</p>
 <p>$c(x)^2 = C(0)C(0) + (C(1)C(0)+C(0)C(1))x+(C(2)C(0)+C(1)C(1)+C(0)C(2))x^2+\cdots$</p>
@@ -172,7 +177,7 @@ print(&quot;{}可拆分方案数为{}&quot;.format(x, cnt[x]))
 <p>$s(n,k)=s(n-1,k-1)-ns(n-1,k)$</p>
 <p><strong>Falling factorial</strong></p>
 <p>$x(x-1)(x-2)\cdots(x-n+1)=s(n,0) + s(n,1)x + s(n,2)x^2 + \cdots + s(n,n)x^n$</p>
-<p>$x(x-1)(x-2)\cdots(x-n+1)(x-n)=(s(n,0) + s(n,1)x + s(n,2)x^2 + \cdots + s(n,n)x^n)(x-n)=s(n,0)+(s(n,0)-ns(n,1))x+(s(n,1)-ns(n,2))x+(s(n,2)-ns(n,3))x+\cdots+(s(n,n-1)-ns(n,n))x = s(n+1,0)+s(n+1,1)x+s(n+1,x^2)^2+s(n+1,3)x^3+\cdots+s(n+1,n+1)x^{n+1}$</p>
+<p>$x(x-1)(x-2)\cdots(x-n+1)(x-n)= \<br>(s(n,0) + s(n,1)x + s(n,2)x^2 + \cdots + s(n,n)x^n)(x-n)= \<br>s(n,0)+(s(n,0)-ns(n,1))x+(s(n,1)-ns(n,2))x+(s(n,2)-ns(n,3))x+\cdots+(s(n,n-1)-ns(n,n))x = \<br>s(n+1,0)+s(n+1,1)x+s(n+1,x^2)^2+s(n+1,3)x^3+\cdots+s(n+1,n+1)x^{n+1}$</p>
 <h2 id="第二类Stirling数"><a href="#第二类Stirling数" class="headerlink" title="第二类Stirling数"></a>第二类Stirling数</h2><p>n个有区别的球放到m个相同的盒子中，要求无一空盒。</p>
 <p>$S(n,0) = 0, S(n,1) = 1$</p>
 <p>$S(n,m) = S(n-1,m-1) + mS(n-1,m)$</p>

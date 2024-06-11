@@ -1,5 +1,5 @@
 <hr>
-<p>title: “排列组合”<br>date: 2024-06-04 18:22:26<br>updated: 2024-06-04 18:22:26<br>tag: [notion, Math, Combinatorics]<br>categories: Math<br>mathjax: true<br>comments: true<br>description: “<ul style='text-align: left;'><li>排列组合</li></ul>“</p>
+<p>title: “排列组合”<br>date: 2024-06-04 18:22:26<br>updated: 2024-06-11 16:15:40<br>tag: [“notion”, “Math”, “Combinatorics”]<br>categories: “Math”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>排列组合</li></ul>‘</p>
 <hr>
 <h1 id="排列组合"><a href="#排列组合" class="headerlink" title="排列组合"></a>排列组合</h1><h1 id="计数基本法则"><a href="#计数基本法则" class="headerlink" title="计数基本法则"></a>计数基本法则</h1><p>加法法则</p>
 <p>事件A有m中产生方式，事件B有n中产生方式，事件A<strong>或</strong>B有m+n种产生方式</p>
@@ -32,8 +32,8 @@
 <p>$x_1+x_2+\cdots+x_n = b$有多少个非负整数解？</p>
 <p>相当于n个可重复元素中选b个，相当于将b分到n个区间中，相当于b个无区别元素加入n-1个无区别隔板的多重全排列。</p>
 <h1 id="不相邻组合"><a href="#不相邻组合" class="headerlink" title="不相邻组合"></a>不相邻组合</h1><p>n<strong>种</strong>不同的元素选r个<strong>不相邻可重复</strong>的元素。</p>
-<p>设选取的不相邻组合为$B=\lbrace b_0, b_1, \cdots , b_{r-1}\rbrace $，且$B$是升序排序的。</p>
-<p>我们通过$B$中<strong>每个元素减去对应下标</strong>来构造一个组合$C=\lbrace b_0, b_1-1, \cdots, b_{r-1}-r+1\rbrace $</p>
+<p>设选取的不相邻组合为$B={b_0, b_1, \cdots , b_{r-1}}$，且$B$是升序排序的。</p>
+<p>我们通过$B$中<strong>每个元素减去对应下标</strong>来构造一个组合$C={b_0, b_1-1, \cdots, b_{r-1}-r+1}$</p>
 <p>由于B是不相邻组合，所以每个相邻元素满足$b_i &lt; b_{i+1}-1$，为不等式两边都减去$i$得$b_i-i &lt; b_{i+1}-(i+1)$，即$C_i&lt;C_{i+1}$。因此C是不重复的。</p>
 <p>C的最大取值为$n-r+1$，n种元素中选r个不相邻的数的种数对应无重组合数$C(n-r+1，r)$</p>
 <h1 id="捆绑法与隔板法"><a href="#捆绑法与隔板法" class="headerlink" title="捆绑法与隔板法"></a>捆绑法与隔板法</h1><p>对于相邻问题用捆绑，对于分区域用隔板</p>
