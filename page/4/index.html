@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E4%BB%8E%E4%BB%93%E5%BA%93%E5%88%B0%E7%A0%81%E5%A4%B4%E8%BF%90%E8%BE%93%E7%AE%B1%E5%AD%90/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/ed911d8b092a/ed911d8b092a/bf1883300319/edca072e1fb8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E4%BB%8E%E4%BB%93%E5%BA%93%E5%88%B0%E7%A0%81%E5%A4%B4%E8%BF%90%E8%BE%93%E7%AE%B1%E5%AD%90/" class="post-title-link" itemprop="url">从仓库到码头运输箱子</a>
+          <a href="/ed911d8b092a/ed911d8b092a/bf1883300319/edca072e1fb8/" class="post-title-link" itemprop="url">排列组合</a>
         </h2>
 
         <div class="post-meta-container">
@@ -239,14 +239,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+      <time title="创建时间：2024-06-04 18:22:26" itemprop="dateCreated datePublished" datetime="2024-06-04T18:22:26+00:00">2024-06-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-10 03:44:11" itemprop="dateModified" datetime="2024-06-10T03:44:11+00:00">2024-06-10</time>
+      <time title="修改时间：2024-06-11 16:15:40" itemprop="dateModified" datetime="2024-06-11T16:15:40+00:00">2024-06-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,7 +254,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
         </span>
     </span>
 
@@ -268,10 +268,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/delivering-boxes-from-storage-to-ports/">1687. 从仓库到码头运输箱子</a></p><hr /><p>你有一辆货运卡车，你需要用这一辆车把一些箱子从仓库运送到码头。这辆卡车每次运输有 <strong>箱子数目的限制</strong> 和 <strong>总重量的限制</strong> 。</p><p>给你一个箱子数组 <code>boxes</code> 和三个整数 <code>portsCount</code>, <code>maxBoxes</code> 和 <code>maxWeight</code> ，其中 <code>boxes[i] = [ports​​i​, weighti]</code> 。</p><ul><li><p><code>ports​​i</code> 表示第 <code>i</code> 个箱子需要送达的码头， <code>weightsi</code> 是第 <code>i</code> 个箱子的重量。</p></li><li><p><code>portsCount</code> 是码头的数目。</p></li><li><p><code>maxBoxes</code> 和 <code>maxWeight</code> 分别是卡车每趟运输箱子数目和重量的限制。</p></li></ul><p>箱子需要按照 <strong>数组顺序</strong> 运输，同时每次运输需要遵循以下步骤：</p><ul><li><p>卡车从 <code>boxes</code> 队列中按顺序取出若干个箱子，但不能违反 <code>maxBoxes</code> 和 <code>maxWeight</code> 限制。</p></li><li><p>对于在卡车上的箱子，我们需要 <strong>按顺序</strong> 处理它们，卡车会通过 <strong>一趟行程</strong> 将最前面的箱子送到目的地码头并卸货。如果卡车已经在对应的码头，那么不需要 <strong>额外行程</strong> ，箱子也会立马被卸货。</p></li><li><p>卡车上所有箱子都被卸货后，卡车需要 <strong>一趟行程</strong> 回到仓库，从箱子队列里再取出一些箱子。</p></li></ul><p>卡车在将所有箱子运输并卸货后，最后必须回到仓库。</p><p>请你返回将所有箱子送到相应码头的 <strong>最少行程</strong> 次数。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：boxes = [[1,1],[2,1],[1,1]], portsCount = 2, maxBoxes = 3, maxWeight = 3</p><p>输出：4</p><p>解释：最优策略如下：</p><ul><li>卡车将所有箱子装上车，到达码头 1 ，然后去码头 2 ，然后再回到码头 1 ，最后回到仓库，总共需要 4 趟行程。</li></ul><p>所以总行程数为 4 。</p><p>注意到第一个和第三个箱子不能同时被卸货，因为箱子需要按顺序处理（也就是第二个箱子需要先被送到码头 2 ，然后才能处理第三个箱子）。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：boxes = [[1,2],[3,3],[3,1],[3,1],[2,4]], portsCount = 3, maxBoxes = 3, maxWeight = 6</p><p>输出：6</p><p>解释：最优策略如下：</p><ul><li><p>卡车首先运输第一个箱子，到达码头 1 ，然后回到仓库，总共 2 趟行程。</p></li><li><p>卡车运输第二、第三、第四个箱子，到达码头 3 ，然后回到仓库，总共 2 趟行程。</p></li><li><p>卡车运输第五个箱子，到达码头 2 ，回到仓库，总共 2 趟行程。</p></li></ul><p>总行程数为 2 + 2 + 2 = 6 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：boxes = [[1,4],[1,2],[2,1],[2,1],[3,2],[3,4]], portsCount = 3, maxBoxes = 6, maxWeight = 7</p><p>输出：6</p><p>解释：最优策略如下：</p><ul><li><p>卡车运输第一和第二个箱子，到达码头 1 ，然后回到仓库，总共 2 趟行程。</p></li><li><p>卡车运输第三和第四个箱子，到达码头 2 ，然后回到仓库，总共 2 趟行程。</p></li><li><p>卡车运输第五和第六个箱子，到达码头 3 ，然后回到仓库，总共 2 趟行程。</p></li></ul><p>总行程数为 2 + 2 + 2 = 6 。</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：boxes = [[2,4],[2,5],[3,1],[3,2],[3,7],[3,1],[4,4],[1,3],[5,2]], portsCount = 5, maxBoxes = 5, maxWeight = 7</p><p>输出：14</p><p>解释：最优策略如下：</p><ul><li><p>卡车运输第一个箱子，到达码头 2 ，然后回到仓库，总共 2 趟行程。</p></li><li><p>卡车运输第二个箱子，到达码头 2 ，然后回到仓库，总共 2 趟行程。</p></li><li><p>卡车运输第三和第四个箱子，到达码头 3 ，然后回到仓库，总共 2 趟行程。</p></li><li><p>卡车运输第五个箱子，到达码头 3 ，然后回到仓库，总共 2 趟行程。</p></li><li><p>卡车运输第六和第七个箱子，到达码头 3 ，然后去码头 4 ，然后回到仓库，总共 3 趟行程。</p></li><li><p>卡车运输第八和第九个箱子，到达码头 1 ，然后去码头 5 ，然后回到仓库，总共 3 趟行程。</p></li></ul><p>总行程数为 2 + 2 + 2 + 2 + 3 + 3 = 14 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= boxes.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= portsCount, maxBoxes, maxWeight &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= ports​​i &amp;lt;= portsCount</code></p></li><li><p><code>1 &amp;lt;= weightsi &amp;lt;= maxWeight</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><li>排列组合</li></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E4%BB%8E%E4%BB%93%E5%BA%93%E5%88%B0%E7%A0%81%E5%A4%B4%E8%BF%90%E8%BE%93%E7%AE%B1%E5%AD%90/">
+              <a class="btn" href="/ed911d8b092a/ed911d8b092a/bf1883300319/edca072e1fb8/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -302,7 +302,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E7%81%8C%E6%BA%89%E8%8A%B1%E5%9B%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%B0%B4%E9%BE%99%E5%A4%B4%E6%95%B0%E7%9B%AE/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/atcode/abc357/abc357/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -320,7 +320,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E7%81%8C%E6%BA%89%E8%8A%B1%E5%9B%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%B0%B4%E9%BE%99%E5%A4%B4%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">灌溉花园的最少水龙头数目</a>
+          <a href="/atcode/abc357/abc357/" class="post-title-link" itemprop="url">SuntoryProgrammingContest2024（AtCoder Beginner Contest 357）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -331,14 +331,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-10 03:44:11" itemprop="dateModified" datetime="2024-06-10T03:44:11+00:00">2024-06-10</time>
+      <time title="创建时间：2024-06-10 03:44:17" itemprop="dateCreated datePublished" datetime="2024-06-10T03:44:17+00:00">2024-06-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -346,7 +339,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/atcoder/" itemprop="url" rel="index"><span itemprop="name">atcoder</span></a>
         </span>
     </span>
 
@@ -360,10 +353,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-taps-to-open-to-water-a-garden/">1326. 灌溉花园的最少水龙头数目</a></p><hr /><p>在 x 轴上有一个一维的花园。花园长度为 <code>n</code>，从点 <code>0</code> 开始，到点 <code>n</code> 结束。</p><p>花园里总共有 <code>n + 1</code> 个水龙头，分别位于 <code>[0, 1, ..., n]</code> 。</p><p>给你一个整数 <code>n</code> 和一个长度为 <code>n + 1</code> 的整数数组 <code>ranges</code> ，其中 <code>ranges[i]</code> （下标从 0 开始）表示：如果打开点 <code>i</code> 处的水龙头，可以灌溉的区域为 <code>[i -  ranges[i], i + ranges[i]]</code> 。</p><p>请你返回可以灌溉整个花园的 <strong>最少水龙头数目</strong> 。如果花园始终存在无法灌溉到的地方，请你返回 <strong>-1</strong> 。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/01/19/1685_example_1.png" /></p><p>```txt</p><p>输入：n = 5, ranges = [3,4,1,1,0,0]</p><p>输出：1</p><p>解释：</p><p>点 0 处的水龙头可以灌溉区间 [-3,3]</p><p>点 1 处的水龙头可以灌溉区间 [-3,5]</p><p>点 2 处的水龙头可以灌溉区间 [1,3]</p><p>点 3 处的水龙头可以灌溉区间 [2,4]</p><p>点 4 处的水龙头可以灌溉区间 [4,4]</p><p>点 5 处的水龙头可以灌溉区间 [5,5]</p><p>只需要打开点 1 处的水龙头即可灌溉整个花园 [0,5] 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 3, ranges = [0,0,0,0]</p><p>输出：-1</p><p>解释：即使打开所有水龙头，你也无法灌溉整个花园。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 10^4</code></p></li><li><p><code>ranges.length == n + 1</code></p></li><li><p><code>0 &amp;lt;= ranges[i] &amp;lt;= 100</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc357/tasks/abc357_c">C - Sierpinski carpet</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc357/tasks/abc357_d">D - 88888888</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc357/tasks/abc357_e">E - Reachability in Functional Graph</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc357/tasks/abc357_f">F - Two Sequence Queries</a></p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E7%81%8C%E6%BA%89%E8%8A%B1%E5%9B%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%B0%B4%E9%BE%99%E5%A4%B4%E6%95%B0%E7%9B%AE/">
+              <a class="btn" href="/atcode/abc357/abc357/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -394,7 +387,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E7%BB%99%E5%A2%99%E5%A3%81%E5%88%B7%E6%B2%B9%E6%BC%86/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/06/07/1228D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -412,7 +405,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E7%BB%99%E5%A2%99%E5%A3%81%E5%88%B7%E6%B2%B9%E6%BC%86/" class="post-title-link" itemprop="url">给墙壁刷油漆</a>
+          <a href="/codeforces/ape/2024/06/07/1228D/" class="post-title-link" itemprop="url">Complete Tripartite</a>
         </h2>
 
         <div class="post-meta-container">
@@ -423,14 +416,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-06-25 18:20:18" itemprop="dateCreated datePublished" datetime="2023-06-25T18:20:18+00:00">2023-06-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-10 03:44:11" itemprop="dateModified" datetime="2024-06-10T03:44:11+00:00">2024-06-10</time>
+      <time title="创建时间：2024-06-10 03:44:14" itemprop="dateCreated datePublished" datetime="2024-06-10T03:44:14+00:00">2024-06-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -438,7 +424,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
         </span>
     </span>
 
@@ -452,10 +442,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/painting-the-walls/">2742. 给墙壁刷油漆</a></p><hr /><p>给你两个长度为 <code>n</code> 下标从 <strong>0</strong> 开始的整数数组 <code>cost</code> 和 <code>time</code> ，分别表示给 <code>n</code> 堵不同的墙刷油漆需要的开销和时间。你有两名油漆匠：</p><ul><li><p>一位需要 <strong>付费</strong> 的油漆匠，刷第 <code>i</code> 堵墙需要花费 <code>time[i]</code> 单位的时间，开销为 <code>cost[i]</code> 单位的钱。</p></li><li><p>一位 <strong>免费</strong> 的油漆匠，刷 <strong>任意</strong> 一堵墙的时间为 <code>1</code> 单位，开销为 <code>0</code> 。但是必须在付费油漆匠 <strong>工作</strong> 时，免费油漆匠才会工作。</p></li></ul><p>请你返回刷完 <code>n</code> 堵墙最少开销为多少。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：cost = [1,2,3,2], time = [1,2,3,2]</p><p>输出：3</p><p>解释：下标为 0 和 1 的墙由付费油漆匠来刷，需要 3 单位时间。同时，免费油漆匠刷下标为 2 和 3 的墙，需要 2 单位时间，开销为 0 。总开销为 1 + 2 = 3 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：cost = [2,3,4,2], time = [1,1,1,1]</p><p>输出：4</p><p>解释：下标为 0 和 3 的墙由付费油漆匠来刷，需要 2 单位时间。同时，免费油漆匠刷下标为 1 和 2 的墙，需要 2 单位时间，开销为 0 。总开销为 2 + 2 = 4 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= cost.length &amp;lt;= 500</code></p></li><li><p><code>cost.length == time.length</code></p></li><li><p><code>1 &amp;lt;= cost[i] &amp;lt;= 10^6</code></p></li><li><p><code>1 &amp;lt;= time[i] &amp;lt;= 500</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p>有一个 $n$ 个点 $m$ 条边的无向图，每一对顶点中最多有一条边。</p><p>设 $v_1,v_2$ 是两个不相交的非空子集，当满足下列条件时，$f(v_1,v_2)$ 的值为真：</p><ul><li><p>$v_1$ 中的点之间不存在边。</p></li><li><p>$v_2$ 中的点之间不存在边。</p></li><li><p>对于 $\forall x\in v_1$，$\forall y\in v_2$，$x$ 和 $y$ 之间有边。</p></li></ul><p>问是否存在三个点集 $v_1,v_2,v_3$，使得 $f(v_1,v_2)$，$f(v_2,v_3)$ 和 $f(v_1,v_3)$ 的值均为真。</p><p>如果是，输出每一个点所在的点集；否则输出 <code>-1</code>。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E7%BB%99%E5%A2%99%E5%A3%81%E5%88%B7%E6%B2%B9%E6%BC%86/">
+              <a class="btn" href="/codeforces/ape/2024/06/07/1228D/">
                 阅读全文 &raquo;
               </a>
             </div>
