@@ -655,7 +655,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/05/1168B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/07/1406C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -673,7 +673,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/05/1168B/" class="post-title-link" itemprop="url">Good Triple</a>
+          <a href="/codeforces/ape/2024/03/07/1406C/" class="post-title-link" itemprop="url">Link Cut Centroids</a>
         </h2>
 
         <div class="post-meta-container">
@@ -710,10 +710,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出01串s，求数对<code>[l,r]</code>个数，使得能找到至少一对<code>[x,k]</code>,使<code>1&amp;lt;=x,k&amp;lt;=|s|</code>且<code>l&amp;lt;=x&amp;lt;x+2k&amp;lt;=r</code>且<code>s[x]=s[x+k]=s[x+2k]</code></p></ul></p>
+          <p><ul style="text-align:left;"><p>给定一棵节点数为 $n$ 的树 ， 删一条边然后加上一条边 ， 使得该树的重心唯一 。（删掉的边和加上的边可以是同一条）</p><p>第 $1$ 行一个正整数 $T$ ， 表示有 $T$ 组测试数据 ， 其中 $1\le T\le10^4$</p><p>对于每组测试数据  。</p><p>第 $1$ 行一个正整数 $n$ ， 表示该树有 $n$ 个节点 ， 其中 $3\le n\le 10^5$ 。</p><p>第 $2$ 行到第 $n$ 行每行两个正整数 $x,y$ ， 表示 $x$ 到 $y$ 有无一条无向边 ， 其中 $1\le x,y\le n$ 。</p><p>对于每一组测试数据 。</p><p>第 $1$ 行两个正整数 $x_1,y_1$ ， 表示删的边的端点为 $x_1,y1$ 。</p><p>第 $2$ 行两个正整数 $x_2,y_2$ ， 表示连的边的端点为 $x_2,y_2$ 。</p><p>对于每个测试点，保证 $\sum{n}\le10^5$。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/05/1168B/">
+              <a class="btn" href="/codeforces/ape/2024/03/07/1406C/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -744,7 +744,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/05/1178D/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/07/1759E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -762,7 +762,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/05/1178D/" class="post-title-link" itemprop="url">Prime Graph</a>
+          <a href="/codeforces/ape/2024/03/07/1759E/" class="post-title-link" itemprop="url">The Humanoid</a>
         </h2>
 
         <div class="post-meta-container">
@@ -799,10 +799,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给出n个点，求一个图。  </p><p>要求这张图满足：</p><ol><li><p>图是简单无向图（即没有重边和自环）</p></li><li><p>点的编号为1~n</p></li><li><p>图的边数是素数</p></li><li><p>每个点的度都是素数 （0,1不是素数）  </p></li></ol><p>注意：图可以不连通，给出任意一张符合上述要求的图即可。</p></ul></p>
+          <p><ul style="text-align:left;"><p>有 $n$ 名宇航员，他们每个人有大小为 $a_i$ 的能量。一个初始具有 $h$ 单位能量的邪恶的人形生物来这里吸收宇航员们的能量。  </p><p>人型生物可以做以下三个动作：  </p><ul><li><p>吸收一个能量值严格低于当前人型生物的宇航员。</p></li><li><p>将自身的能量值翻倍 ($\times 2$), 这个操作最多能进行两次。</p></li><li><p>将自身的能量值翻三倍 ($\times 3$), 这个操作最多能进行一次。</p></li></ul><p>其中，当一名具有 $a_i$ 能量的宇航员被吸收时，这名宇航员消失，人型生物的能量增加 $\lfloor {a_i\over 2} \rfloor$。</p><p>请你帮他算一算，如果他用最佳方案进行操作，他最多能吸收几名宇航员的能量？  </p><p>第一行包含一个整数 $t\ (1\leq t \leq 10^4)$, 表示数据组数。  </p><p>对于每组数据，第一行包含两个整数 $n\ (1\leq n \leq 2\cdot 10^5),h\ (1\leq h \leq 10^6)$, 分别代表宇航员人数和人形生物的初始能量。第二行包含 $n$ 个整数 $a_i\ (1\leq a_i \leq 10^8)$, 表示每名宇航员的能量。</p><p>保证 $\sum n\leq 2\cdot 10^5$。  </p><p>对于每组数据，在单独的一行里输出一个整数，表示人形生物可以吸收宇航员的最大数量。</p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/05/1178D/">
+              <a class="btn" href="/codeforces/ape/2024/03/07/1759E/">
                 阅读全文 &raquo;
               </a>
             </div>
