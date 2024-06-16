@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">559</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">560</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">559</span>
+          <span class="site-state-item-count">560</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,95 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/07/1650E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2024/04/07/1650E/" class="post-title-link" itemprop="url">Rescheduling the Exam</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p>小 P 有 $n$ 场考试要考，它们的开始时间是 $a_1\sim a_n$（保证 $a$ 按升序排列），所有的考试都会在 $d$ 之前结束。</p><p>对于时间相邻的两场考试 $a_{i-1},a_{i}$，定义它们的距离为 $a_{i}-a_{i-1}-1$，而 $a_1$ 与 $a_{0}$ 的距离定义为 $a_1$ 与 $0$ 的距离。</p><p>定义对于这个数组 $a$ 的 $\mu$ 值为所有 $a_{i-1}$ 与 $a_{i}$ 之间距离的最小值。</p><p>你可以改变某一个 $a_i$ 的值（但不能 $&gt;d$），最大化修改后 $a$ 的 $\mu$ 的值，输出最大的 $\mu$ 值。</p><p>翻译提供者：@DaiRuiChen007</p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/ape/2024/04/07/1650E/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -714,95 +803,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/codeforces/ape/2024/04/09/1491D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/09/1772F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/09/1772F/" class="post-title-link" itemprop="url">Copy of a Copy of a Copy</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给定一张 $n$ 行 $m$ 列的黑白图片（下标从 $1$ 开始），每一个单元格都被涂上了黑色或白色（$1$ 或者 $0$）。</p><p>我们对这张图片进行了若干次（可能为零次）操作，每一次操作都是下列两种之一：</p><ul><li><p>选择一个单元格，这个单元格不能在图片的边缘（即，单元格所在行不能是 $1$ 或 $n$ 行，所在列不能是 $1$ 或 $m$ 列），并且这个单元格被四个不同颜色的单元格包围（中间 $0$ 四周 $1$，反之亦然），将这个单元格涂成相反的颜色；</p></li><li><p>复制一份当前图片。</p></li></ul><p>两种操作不一定会交替进行。</p><p>给出你初始图片与 $k$ 份复制图片，一共 $k+1$ 份图片，这 $k+1$ 份图片是被随机打乱的。</p><p>你的任务是恢复操作的顺序。若有多种可能答案，只输出其中一个即可。</p><p>所有数据保证答案一定存在。</p><p>输入格式</p><p>输入第一行包含三个整数 $n$、$m$ 以及 $k$（$3\le n，m\le 30$；$0\le k\le 100$），分别表示图片的行数、列数和复制图片的数量。</p><p>接下来 $k+1$ 行，每行一张图片，包括 $k$ 张复制图片和 $1$ 张初始图片，顺序是打乱的。</p><p>每张图片由 $n$ 行 $m$ 列组成，每个单元格都为 $0$ 或 $1$。每张图片之前都有一个空行。</p><p>输出格式</p><p>输出第一行一个整数，表示初始图片是第几张。图片按其输入顺序分别编号 $1$ 至 $k+1$。</p><p>输出第二行一个整数 $q$，表示进行了多少次操作。</p><p>接下来 $q$ 行，每行对应一次操作，须按正确顺序输出操作。每个操作有题目描述中提到的两种类型：</p><ul><li><p>$1\ x\ y$ 表示在坐标 $(x,y)$ 执行第一种操作；</p></li><li><p>$2\ i$ 表示复制一份当前图片，编号是 $i$。</p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/09/1772F/">
                 阅读全文 &raquo;
               </a>
             </div>

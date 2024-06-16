@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">559</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">560</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">559</span>
+          <span class="site-state-item-count">560</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,95 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/06/07/1228D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2024/06/07/1228D/" class="post-title-link" itemprop="url">Complete Tripartite</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-10 03:44:14" itemprop="dateCreated datePublished" datetime="2024-06-10T03:44:14+00:00">2024-06-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p>有一个 $n$ 个点 $m$ 条边的无向图，每一对顶点中最多有一条边。</p><p>设 $v_1,v_2$ 是两个不相交的非空子集，当满足下列条件时，$f(v_1,v_2)$ 的值为真：</p><ul><li><p>$v_1$ 中的点之间不存在边。</p></li><li><p>$v_2$ 中的点之间不存在边。</p></li><li><p>对于 $\forall x\in v_1$，$\forall y\in v_2$，$x$ 和 $y$ 之间有边。</p></li></ul><p>问是否存在三个点集 $v_1,v_2,v_3$，使得 $f(v_1,v_2)$，$f(v_2,v_3)$ 和 $f(v_1,v_3)$ 的值均为真。</p><p>如果是，输出每一个点所在的点集；否则输出 <code>-1</code>。</p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/ape/2024/06/07/1228D/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -732,98 +821,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E7%9B%AE%E6%A0%87%E5%92%8C/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/" class="post-title-link" itemprop="url">收集树中金币</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/collect-coins-in-a-tree/">6356. 收集树中金币</a></p><hr /><p>给你一个 <code>n</code> 个节点的无向无根树，节点编号从 <code>0</code> 到 <code>n - 1</code> 。给你整数 <code>n</code> 和一个长度为 <code>n - 1</code> 的二维整数数组 <code>edges</code> ，其中 <code>edges[i] = [ai, bi]</code> 表示树中节点 <code>ai</code> 和 <code>bi</code> 之间有一条边。再给你一个长度为 <code>n</code> 的数组 <code>coins</code> ，其中 <code>coins[i]</code> 可能为 <code>0</code> 也可能为 <code>1</code> ，<code>1</code> 表示节点 <code>i</code> 处有一个金币。</p><p>一开始，你需要选择树中任意一个节点出发。你可以执行下述操作任意次：</p><ul><li><p>收集距离当前节点距离为 <code>2</code> 以内的所有金币，或者</p></li><li><p>移动到树中一个相邻节点。</p></li></ul><p>你需要收集树中所有的金币，并且回到出发节点，请你返回最少经过的边数。</p><p>如果你多次经过一条边，每一次经过都会给答案加一。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/03/01/graph-2.png" /></p><p>```txt</p><p>输入：coins = [1,0,0,0,0,1], edges = [[0,1],[1,2],[2,3],[3,4],[4,5]]</p><p>输出：2</p><p>解释：从节点 2 出发，收集节点 0 处的金币，移动到节点 3 ，收集节点 5 处的金币，然后移动回节点 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/03/02/graph-4.png" /></p><p>```txt</p><p>输入：coins = [0,0,0,1,1,0,0,1], edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[5,6],[5,7]]</p><p>输出：2</p><p>解释：从节点 0 出发，收集节点 4 和 3 处的金币，移动到节点 2 处，收集节点 7 处的金币，移动回节点 0 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == coins.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 3 * 10^4</code></p></li><li><p><code>0 &amp;lt;= coins[i] &amp;lt;= 1</code></p></li><li><p><code>edges.length == n - 1</code></p></li><li><p><code>edges[i].length == 2</code></p></li><li><p><code>0 &amp;lt;= ai, bi &amp;lt; n</code></p></li><li><p><code>ai != bi</code></p></li><li><p><code>edges</code> 表示一棵合法的树。</p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/">
                 阅读全文 &raquo;
               </a>
             </div>
