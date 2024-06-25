@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"grainmad.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="C - Tile Distance 2D - Avoid K PalindromeE - Water TankF - Tree Degree Optimization">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UNIQUE VISION Programming Contest 2024 Summer (AtCoder Beginner Contest 359)">
+<meta property="og:url" content="https://grainmad.github.io/atcode/abc359/abc359/index.html">
+<meta property="og:site_name" content="代码如诗">
+<meta property="og:description" content="C - Tile Distance 2D - Avoid K PalindromeE - Water TankF - Tree Degree Optimization">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.atcoder.jp/abc359/7ab121cd550fa78b43845d4ffd7f74b3.png">
+<meta property="og:image" content="https://img.atcoder.jp/abc359/570466412318b9902952c408a421be0c.png">
+<meta property="article:published_time" content="2024-06-25T18:00:10.000Z">
+<meta property="article:modified_time" content="2024-06-25T18:00:10.000Z">
+<meta property="article:author" content="GrainMad">
+<meta property="article:tag" content="atcoder">
+<meta property="article:tag" content="contest">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.atcoder.jp/abc359/7ab121cd550fa78b43845d4ffd7f74b3.png">
+
+
+<link rel="canonical" href="https://grainmad.github.io/atcode/abc359/abc359/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/atcode/abc359/abc359/","path":"atcode/abc359/abc359/","title":"UNIQUE VISION Programming Contest 2024 Summer (AtCoder Beginner Contest 359)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>UNIQUE VISION Programming Contest 2024 Summer (AtCoder Beginner Contest 359) | 代码如诗</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">代码如诗</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">561</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UNIQUE-VISION-Programming-Contest-2024-Summer-AtCoder-Beginner-Contest-359"><span class="nav-number">1.</span> <span class="nav-text">UNIQUE VISION Programming Contest 2024 Summer (AtCoder Beginner Contest 359)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Tile-Distance-2"><span class="nav-number">1.1.</span> <span class="nav-text">C - Tile Distance 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Avoid-K-Palindrome"><span class="nav-number">1.2.</span> <span class="nav-text">D - Avoid K Palindrome</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Water-Tank"><span class="nav-number">1.3.</span> <span class="nav-text">E - Water Tank</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Tree-Degree-Optimization"><span class="nav-number">1.4.</span> <span class="nav-text">F - Tree Degree Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="nav-number">1.4.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GrainMad"
+      src="/images/mona-loading-dimmed-5da225352fd7.gif">
+  <p class="site-author-name" itemprop="name">GrainMad</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">561</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/grainmad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;grainmad" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/grainmad" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/atcode/abc359/abc359/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="UNIQUE VISION Programming Contest 2024 Summer (AtCoder Beginner Contest 359) | 代码如诗">
+      <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_c">C - Tile Distance 2</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_d">D - Avoid K Palindrome</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_e">E - Water Tank</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_f">F - Tree Degree Optimization</a></p></ul>">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UNIQUE VISION Programming Contest 2024 Summer (AtCoder Beginner Contest 359)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-25 18:00:10" itemprop="dateCreated datePublished" datetime="2024-06-25T18:00:10+00:00">2024-06-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/atcoder/" itemprop="url" rel="index"><span itemprop="name">atcoder</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description"><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_c">C - Tile Distance 2</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_d">D - Avoid K Palindrome</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_e">E - Water Tank</a></p><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_f">F - Tree Degree Optimization</a></p></ul></div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="UNIQUE-VISION-Programming-Contest-2024-Summer-AtCoder-Beginner-Contest-359"><a href="#UNIQUE-VISION-Programming-Contest-2024-Summer-AtCoder-Beginner-Contest-359" class="headerlink" title="UNIQUE VISION Programming Contest 2024 Summer (AtCoder Beginner Contest 359)"></a>UNIQUE VISION Programming Contest 2024 Summer (AtCoder Beginner Contest 359)</h1><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks">Complete problemset</a></p>
+<h2 id="C-Tile-Distance-2"><a href="#C-Tile-Distance-2" class="headerlink" title="C - Tile Distance 2"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_c">C - Tile Distance 2</a></h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>问题陈述</p>
+<p>坐标平面上覆盖有 $2\times1$ 瓷砖。瓷砖按照以下规则排列:</p>
+<ul>
+<li>对于整数对 $(i,j)$ ，正方形 $A _ {i,j}=\lbrace(x,y)\mid i\leq x\leq i+1\wedge j\leq y\leq j+1\rbrace$ 包含在一个平铺中。</li>
+<li>当 $i+j$ 为偶数时， $A _ {i,j}$ 和 $A _ {i + 1,j}$ 包含在同一块瓷砖中。</li>
+</ul>
+<p>瓷砖包括它们的边界，没有两个不同的瓷砖共享一个正面区域。</p>
+<p>在原点附近，瓷砖的布局如下:</p>
+<p><img data-src="https://img.atcoder.jp/abc359/7ab121cd550fa78b43845d4ffd7f74b3.png"></p>
+<p>高桥从坐标平面上的点 $(S _ x+0.5,S _ y+0.5)$ 开始。</p>
+<p>他可以随心所欲地重复以下动作:</p>
+<ul>
+<li>选择一个方向(上、下、左或右)和一个正整数 $n$ 。向该方向移动 $n$ 个单位。</li>
+</ul>
+<p>每次他进入一个瓦片，他支付的通行费为 $1$ 。</p>
+<p>找到他必须支付到达点 $(T _ x+0.5,T _ y+0.5)$ 的最低通行费。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>为了便于找规律。</p>
+<p>一个方块有两个单元格，我们将起点和终点都统一移动到所属方块的右侧单元格，发现如果行列坐标同奇偶性那么就位于方块左侧单元格。</p>
+<p>对于y坐标我们一定会通过$|T_y-S_y|$个边界。</p>
+<p>对于x坐标需要通$\frac{|T_x-S_x|}{2}$个边界，实际上通过一个y方向的边界可以减少一个x方向的边界</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">random_device seed;</span><br><span class="line"><span class="function">ranlux48 <span class="title">engine</span><span class="params">(seed())</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">random</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    uniform_int_distribution&lt;&gt; <span class="built_in">distrib</span>(l, r);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">distrib</span>(engine);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> pair&lt;t,u&gt;&amp; p) &#123;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;[&#x27;</span>&lt;&lt;p.first&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;p.second&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> vector&lt;t&gt;&amp; v) &#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;[&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> e:v) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os &lt;&lt; e; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> map&lt;t,u&gt;&amp; mp)&#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;&#123;&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [x,y]:mp) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os&lt;&lt;x&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;y; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll sx, sy;</span><br><span class="line">    ll tx, ty;</span><br><span class="line">    cin &gt;&gt; sx &gt;&gt; sy;</span><br><span class="line">    cin &gt;&gt; tx &gt;&gt; ty;</span><br><span class="line">    <span class="keyword">if</span> (sx%<span class="number">2</span> == sy%<span class="number">2</span>) sx++;</span><br><span class="line">    <span class="keyword">if</span> (tx%<span class="number">2</span> == ty%<span class="number">2</span>) tx++;</span><br><span class="line">    <span class="comment">// cout &lt;&lt; sx &lt;&lt; &quot; &quot; &lt;&lt; sy &lt;&lt; endl;</span></span><br><span class="line">    <span class="comment">// cout &lt;&lt; tx &lt;&lt; &quot; &quot; &lt;&lt; ty &lt;&lt; endl;</span></span><br><span class="line">    ll dy = <span class="built_in">abs</span>(ty-sy);</span><br><span class="line">    ll dx = <span class="built_in">abs</span>(tx-sx);</span><br><span class="line">    cout &lt;&lt; dy+<span class="built_in">max</span>(<span class="number">0LL</span>, dx/<span class="number">2</span>-dy/<span class="number">2</span>) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="D-Avoid-K-Palindrome"><a href="#D-Avoid-K-Palindrome" class="headerlink" title="D - Avoid K Palindrome"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_d">D - Avoid K Palindrome</a></h2><h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p>问题陈述</p>
+<p>您得到一个长度为 $N$ 的字符串 $S$ ，由字符‘ A’、‘ B’和‘ ?’组成。</p>
+<p>您还将获得一个正整数 $K$ 。包含“ A”和“ B”的字符串 $T$ 如果满足以下条件，则被认为是 <strong>好字符串</strong>:</p>
+<ul>
+<li>$T$ 中长度为 $K$ 的不连续子串是回文。</li>
+</ul>
+<p>让 $q$ 是“ ？“ $S$ 中的字符。有 $2^q$ 字符串可以通过替换每个‘ ？在 $S$ 中加上“ A”或“ B”。找出这些字符串中有多少是好字符串。</p>
+<p>计数可能非常大，因此请找到它的模数 $998244353$ 。</p>
+<ul>
+<li>  $2 \leq K \leq N \leq 1000$</li>
+<li>  $K \leq 10$</li>
+<li>  $S$ is a string consisting of <code>A</code>, <code>B</code>, and <code>?</code>.</li>
+<li>  The length of $S$ is $N$.</li>
+<li>  $N$ and $K$ are integers.</li>
+</ul>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>状态压缩dp</p>
+<p>$f_{i,j}$代表前i个字符末尾k个字符的状态为j的时候且非回文串，的方案数。</p>
+<p>$f_{i,j} = \sum f_{i-1, j’}$，$j$和$j’$非回文串，且类似滑动窗口只存在最高位和最低位的差异。$O(1)$可以通过$j$计算得出$j’$</p>
+<p>总复杂度$O(n2^k)$</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">random_device seed;</span><br><span class="line"><span class="function">ranlux48 <span class="title">engine</span><span class="params">(seed())</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">random</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    uniform_int_distribution&lt;&gt; <span class="built_in">distrib</span>(l, r);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">distrib</span>(engine);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> pair&lt;t,u&gt;&amp; p) &#123;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;[&#x27;</span>&lt;&lt;p.first&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;p.second&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> vector&lt;t&gt;&amp; v) &#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;[&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> e:v) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os &lt;&lt; e; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> map&lt;t,u&gt;&amp; mp)&#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;&#123;&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [x,y]:mp) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os&lt;&lt;x&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;y; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;k/<span class="number">2</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((x&gt;&gt;i&amp;<span class="number">1</span>) != (x&gt;&gt;(k-i<span class="number">-1</span>)&amp;<span class="number">1</span>)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, k;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    <span class="type">int</span> msk = (<span class="number">1</span>&lt;&lt;k);</span><br><span class="line">    <span class="function">vector <span class="title">f</span><span class="params">(n, vector&lt;<span class="type">int</span>&gt;(<span class="number">1</span>&lt;&lt;k))</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;msk; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isPalindrome</span>(j, k)) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="type">int</span> ok = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> t=<span class="number">0</span>; t&lt;k; t++) &#123;</span><br><span class="line">            <span class="type">int</span> c = (j&gt;&gt;t&amp;<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&#x27;A&#x27;</span>+c != s[k-t<span class="number">-1</span>] &amp;&amp; s[k-t<span class="number">-1</span>] != <span class="string">&#x27;?&#x27;</span>) ok = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (ok) &#123;</span><br><span class="line">            f[k<span class="number">-1</span>][j]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=k; i&lt;n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;msk; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isPalindrome</span>(j, k)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="type">int</span> ok = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> t=<span class="number">0</span>; t&lt;k; t++) &#123;</span><br><span class="line">                <span class="type">int</span> c = (j&gt;&gt;t&amp;<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (<span class="string">&#x27;A&#x27;</span>+c != s[i-t] &amp;&amp; s[i-t] != <span class="string">&#x27;?&#x27;</span>) ok = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (ok) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!<span class="built_in">isPalindrome</span>(j&gt;&gt;<span class="number">1</span>, k)) f[i][j] = (f[i][j] + f[i<span class="number">-1</span>][j&gt;&gt;<span class="number">1</span>]) % MOD;</span><br><span class="line">                <span class="keyword">if</span> (!<span class="built_in">isPalindrome</span>(j&gt;&gt;<span class="number">1</span> | (<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>)), k)) f[i][j] = (f[i][j] + f[i<span class="number">-1</span>][j&gt;&gt;<span class="number">1</span> | (<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>))]) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// cout &lt;&lt; f &lt;&lt; endl;</span></span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;msk; i++) &#123;</span><br><span class="line">        ans += f[n<span class="number">-1</span>][i];</span><br><span class="line">        ans %= MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="E-Water-Tank"><a href="#E-Water-Tank" class="headerlink" title="E - Water Tank"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_e">E - Water Tank</a></h2><h3 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h3><p>问题陈述</p>
+<p>给定一个长度为 $N$ : $H=(H _ 1,H _ 2,\dotsc,H _ N)$ 的正整数序列。</p>
+<p>有一个长度为 $N+1$ : $A=(A _ 0,A _ 1,\dotsc,A _ N)$ 的非负整数序列。最初， $A _ 0=A _ 1=\dotsb=A _ N=0$ 。</p>
+<p>在 $A$ 上重复执行下列操作:</p>
+<ol>
+<li>将 $A _ 0$ 的值增加 $1$ 。</li>
+<li>对于此顺序中的 $i=1,2,\ldots,N$ ，执行以下操作:</li>
+</ol>
+<ul>
+<li>如果 $A _ {i-1}\gt A _ i$ 和 $A _ {i-1}\gt H _ i$ ，则将 $A _ {i-1}$ 的值减少1，并将 $A _ i$ 的值增加 $1$ 。</li>
+</ul>
+<p>对于每个 $i=1,2,\ldots,N$ ，查找第一次保持 $A _ i&gt;0$ 之前的操作数。</p>
+<ul>
+<li>  $1\leq N\leq2\times10 ^ 5$</li>
+<li>  $1\leq H _ i\leq10 ^ 9\ (1\leq i\leq N)$</li>
+<li>  All input values are integers.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">input</span><br><span class="line">5</span><br><span class="line">3 1 4 1 5</span><br><span class="line"></span><br><span class="line">output</span><br><span class="line">4 5 13 14 26</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img.atcoder.jp/abc359/570466412318b9902952c408a421be0c.png"></p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>通过图片发现，就是单调栈，找左侧第一个最近一个大于自身的位置，然后计算这段区间的水量，在用个dp，保留前缀子问题的答案，当前区间的水量加上区间左端前的前缀答案就是当前的答案。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">random_device seed;</span><br><span class="line"><span class="function">ranlux48 <span class="title">engine</span><span class="params">(seed())</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">random</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    uniform_int_distribution&lt;&gt; <span class="built_in">distrib</span>(l, r);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">distrib</span>(engine);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> pair&lt;t,u&gt;&amp; p) &#123;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;[&#x27;</span>&lt;&lt;p.first&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;p.second&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> vector&lt;t&gt;&amp; v) &#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;[&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> e:v) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os &lt;&lt; e; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> map&lt;t,u&gt;&amp; mp)&#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;&#123;&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [x,y]:mp) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os&lt;&lt;x&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;y; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;ll&gt; <span class="title">a</span><span class="params">(n+<span class="number">1</span>, <span class="number">1e9</span>+<span class="number">7</span>)</span>, <span class="title">st</span><span class="params">(<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;ll&gt; <span class="title">ans</span><span class="params">(n+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (a[st.<span class="built_in">back</span>()] &lt; a[i]) st.<span class="built_in">pop_back</span>();</span><br><span class="line">        ans[i] = (i-st.<span class="built_in">back</span>())*a[i]+ans[st.<span class="built_in">back</span>()];</span><br><span class="line">        <span class="comment">// cout &lt;&lt; i &lt;&lt;  &quot; &quot; &lt;&lt; st.back() &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">        st.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        cout &lt;&lt; ans[i]+<span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="F-Tree-Degree-Optimization"><a href="#F-Tree-Degree-Optimization" class="headerlink" title="F - Tree Degree Optimization"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc359/tasks/abc359_f">F - Tree Degree Optimization</a></h2><h3 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h3><p>问题陈述</p>
+<p>给定一个整数序列 $A=(A_1,\ldots,A_N)$ 。对于具有 $N$ 顶点的树 $T$ ，定义 $f(T)$ 如下:</p>
+<ul>
+<li>设 $d_i$ 为 $T$ 中顶点 $i$ 的度。然后， $f(T)=\sum_{i=1}^N {d_i}^2 A_i$ 。</li>
+</ul>
+<p>查找可能的最小值 $f(T)$ 。</p>
+<p>约束保证答案小于 $2^{63}$ 。</p>
+<ul>
+<li>  $2\leq N\leq 2\times 10^5$</li>
+<li>  $1\leq A_i \leq 10^9$</li>
+<li>  All input values are integers.</li>
+</ul>
+<h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>总的度数$\sum d_i = 2n-2$</p>
+<p>先初始化所有$d_i=1$</p>
+<p>对于$d_i^2A_i$和$d_j^2A_j$，让$d_i$还是$d_j$增长1取决于谁增长的贡献较少。</p>
+<p>二者增长1分别会增长贡献$(2d_i+1)A_i$和$(2d_j+1)A_j$</p>
+<p>所以可以用优先队列维护最小的增长值，n-2次出队和入队就得到了$d$序列。</p>
+<p>然后计算答案$\sum d_i^2A_i$</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">random_device seed;</span><br><span class="line"><span class="function">ranlux48 <span class="title">engine</span><span class="params">(seed())</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">random</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    uniform_int_distribution&lt;&gt; <span class="built_in">distrib</span>(l, r);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">distrib</span>(engine);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> pair&lt;t,u&gt;&amp; p) &#123;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;[&#x27;</span>&lt;&lt;p.first&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;p.second&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> vector&lt;t&gt;&amp; v) &#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;[&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> e:v) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os &lt;&lt; e; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> map&lt;t,u&gt;&amp; mp)&#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;&#123;&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [x,y]:mp) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os&lt;&lt;x&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;y; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;ll&gt; <span class="title">a</span><span class="params">(n+<span class="number">1</span>, <span class="number">1e9</span>+<span class="number">7</span>)</span>, <span class="title">st</span><span class="params">(<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;ll&gt; <span class="title">ans</span><span class="params">(n+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (a[st.<span class="built_in">back</span>()] &lt; a[i]) st.<span class="built_in">pop_back</span>();</span><br><span class="line">        ans[i] = (i-st.<span class="built_in">back</span>())*a[i]+ans[st.<span class="built_in">back</span>()];</span><br><span class="line">        <span class="comment">// cout &lt;&lt; i &lt;&lt;  &quot; &quot; &lt;&lt; st.back() &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">        st.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        cout &lt;&lt; ans[i]+<span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/atcoder/" rel="tag"><i class="fa fa-tag"></i> atcoder</a>
+              <a href="/tags/contest/" rel="tag"><i class="fa fa-tag"></i> contest</a>
+          </div>
+          <script type="text/javascript">
+            var tagsall=document.getElementsByClassName("post-tags")
+            for (var i = tagsall.length - 1; i >= 0; i--){
+                var tags=tagsall[i].getElementsByTagName("a");
+                for (var j = tags.length - 1; j >= 0; j--) {
+                    var golden_ratio = 0.618033988749895;
+                    var s = 0.5;
+                    var v = 0.999;
+                    var h = golden_ratio + Math.random()*0.8 - 0.5;
+                    var h_i = parseInt(h * 6);
+                    var f = h * 6 - h_i;
+                    var p = v * (1 - s);
+                    var q = v * (1 - f * s);
+                    var t = v * (1 - (1 - f) * s);
+                    var r, g, b;
+                    switch (h_i) {
+                        case 0:
+                            r = v;
+                            g = t;
+                            b = p;
+                            break;
+                        case 1:
+                            r = q;
+                            g = v;
+                            b = p;
+                            break;
+                        case 2:
+                            r = p;
+                            g = v;
+                            b = t;
+                            break;
+                        case 3 :
+                            r = p;
+                            g = q;
+                            b = v;
+                            break;
+                        case 4:
+                            r = t;
+                            g = p;
+                            b = v;
+                            break;
+                        case 5:
+                            r = v;
+                            g = p;
+                            b = q;
+                            break;
+                        default:
+                            r = 1;
+                            g = 1;
+                            b = 1;
+                      }
+                    tags[j].style.background = "rgba("+parseInt(r*255)+","+parseInt(g*255)+","+parseInt(b*255)+","+0.7+")";
+                }
+            }
+          </script>
+          <style>
+          .post-tags a {
+              display: inline-block;
+              font-size: 0.8em;
+              padding: 0px 10px;
+              border-radius: 8px;
+              color: rgb(85, 85, 85);
+              border: 0px;
+          }
+          .post-tags a:hover{
+              box-shadow: 0px 5px 15px 0px rgba(0,0,0,.4);
+              transform: scale(1.1);
+              transition-duration: 0.15s;
+          }
+          </style>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/atcode/abc358/abc358/" rel="prev" title="AtCoder Beginner Contest 358">
+                  <i class="fa fa-chevron-left"></i> AtCoder Beginner Contest 358
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GrainMad</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.7/mermaid.min.js","integrity":"sha256-G58AID1YoX5YaEtWfXSI0VLrZ6N4kvNvwg0BI8zUFxE="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#606863',
+  buttonColorLight: '#dcdee3',
+  saveInCookies: true,
+  label: '🌗',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"grainmad/grainmad.github.io","issue_term":"pathname","theme":"github-dark-orange"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":450},"mobile":{"show":false,"scale":0.5},"react":{"opacity":0.7}});</script></body>
+</html>

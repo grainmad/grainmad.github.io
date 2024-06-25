@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">560</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">561</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">560</span>
+          <span class="site-state-item-count">561</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,184 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/09/1380D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2024/04/09/1380D/" class="post-title-link" itemprop="url">Berserk And Fireball</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p>有 $n$ 个战士站成一排，第 $i$ 个战士的战力是 $a_i$。所有战士的战力都是两两不同的。</p><p>你可以使用两种类型的咒语：</p><ol><li><p>火球术：你可以消耗 $x$ 点法力值来干掉连续的 $k$ 个战士（你必须干掉正好 $k$ 个，而不能干掉 $\le k$ 个）。</p></li><li><p>狂暴术：你可以消耗 $y$ 点法力值，选择站在一起的两个战士使他们展开决斗，战力较弱的那个战士将会被干掉。</p></li></ol><p>我们来举个例子，假设有 $7$ 个战士，其战力分别为 $[2,3,7,8,11,5,4]$，且此时的$k=3$（$k$ 的定义详见火球术）。如果你对战力为 $8$ 与 $11$ 的两个战士施加狂暴术，剩下战士的战力将会变成 $[2,3,7,11,5,4]$（战力为 $8$ 的战士在决斗中战死）。然后如果我们对战力为 $[7,11,5]$ 的战士施加火球术，剩下战士的战力将会变成 $[2,3,4]$。</p><p>你想要组建一支军队，因此你想要将所有战士战力的序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$。试计算你所需的最少法力值。</p><p>输入格式</p><p>第一行两个整数 $n,m (1\le n,m\le 2\cdot 10^5)$ ——序列 $a$ 的长度和序列 $b$ 的长度。</p><p>第二行三个整数 $x,k,y (1\le x,y\le 10^9,1\le k\le n)$ ——火球术消耗的法力值，火球术的范围和狂暴术消耗的法力值。</p><p>第三行 $n$ 个整数 $a_1,a_2,…,a_n (1\le a_i\le n)$。保证 $a_i$ 是两两不同的。</p><p>第四行 $m$ 个整数 $b_1,b_2,…,b_m(1\le b_i\le n)$。保证 $b_i$ 是两两不同的。</p><p>输出格式</p><p>一行一个整数，即将序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$所需的最少法力值。如果无法完成变换，则输出$-1$。</p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/ape/2024/04/09/1380D/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/09/1491D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2024/04/09/1491D/" class="post-title-link" itemprop="url">Zookeeper and The Infinite Zoo</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p>有一个无限图，其中有无数个节点，从 $1$ 开始标号。有一条从 $u$ 到 $u+v$ 的单向边，当且仅当 $u \&amp;  v = v$ (这里的 $\&amp;$ 指 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/位操作#按位与（AND）">按位与</a> 。除此以外没有其它边。</p><p>有 $q$ 个询问，询问是否存在一条从 $u$ 到 $v$ 的路径。</p><p>输入格式</p><p>第一行一个整数 $q$ （$1\le q\le10^5 $） —— 询问的个数</p><p>接下来 $q$ 行中，每行有两个整数 $u,v$ ($1 \leq u,v &lt; 2^{30}$)，意义如上</p><p>输出格式</p><p>对于每个询问，输出一行 <code>YES</code> 来表示存在从 $u$ 到 $v$ 的一条路径，或输出一行 <code>NO</code> 表示不存在这样一条路径。(你可以以任意大小写形式来输出 <code>YES</code> 或 <code>NO</code>)</p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/ape/2024/04/09/1491D/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -647,186 +825,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/10/1656D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/10/1656D/" class="post-title-link" itemprop="url">K-good</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给定一个整数 $n$，请找出一个大于等于 $2$ 的整数 $k$，使得 $n$ 可以表示成 $k$ 个除以 $k$ 的余数互不相同的正整数之和。</p><p>数据范围：</p><ul><li><p>$t$ 组数据，$1\leqslant t\leqslant 10^5$。</p></li><li><p>$2\leqslant n\leqslant 10^{18}$。</p></li></ul><p>Translated by Eason_AC</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/10/1656D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/11/1508A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/11/1508A/" class="post-title-link" itemprop="url">Binary Literature</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给你一个正整数 $n$ 和三个长度为 $2\times n$ 的 01 字符串 $s_1,s_2,s_3$。你需要构造一个 01 字符串 $S$，使得：</p><ul><li><p>字符串 $S$ 的长度不能超过 $3\times n$。</p></li><li><p>$s_1,s_2,s_3$ 当中至少有两个字符串是 $S$ 的子序列。</p></li></ul><p>可以证明一定有解，有多种解时输出任意一种即可。$T$ 组数据。</p><p>$1\leq T\leq10^4;1\leq n,\sum n\leq10^5;$</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/11/1508A/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/25/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/57/">57</a><a class="page-number" href="/page/80/">80</a><a class="extend next" rel="next" href="/page/27/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/25/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/57/">57</a><a class="page-number" href="/page/81/">81</a><a class="extend next" rel="next" href="/page/27/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
