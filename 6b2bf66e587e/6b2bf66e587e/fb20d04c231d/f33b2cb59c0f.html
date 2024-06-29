@@ -1,0 +1,249 @@
+<hr>
+<p>title: “精确覆盖 Dance Links”<br>date: 2024-06-29 10:35:13<br>updated: 2024-06-29 10:35:13<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>精确覆盖 Dance Links</li></ul>‘</p>
+<hr>
+<h1 id="精确覆盖-Dance-Links"><a href="#精确覆盖-Dance-Links" class="headerlink" title="精确覆盖 Dance Links"></a>精确覆盖 Dance Links</h1><pre><code class="cpp">template &lt;int MXNODE = 5000&gt; // 稀疏矩阵最大点数
+struct DLX {
+    int n, m, cur; // 行 列 新节点指针
+    int h[MXNODE];  //每行的头指针
+    int u[MXNODE], d[MXNODE], l[MXNODE], r[MXNODE]; //每个点的上下左右指针
+    int row[MXNODE], col[MXNODE]; //每个点所在行,列
+    int s[MXNODE]; //每列的节点数
+    int ans[MXNODE]; //选了那些行
+
+    DLX(int n, int m): n(n), m(m) {
+        cur = 0;
+        memset(h, 0, sizeof(u));
+        memset(u, 0, sizeof(u));
+        memset(d, 0, sizeof(d));
+        memset(l, 0, sizeof(l));
+        memset(r, 0, sizeof(r));
+        memset(row, 0, sizeof(row));
+        memset(col, 0, sizeof(col));
+        memset(s, 0, sizeof(s));
+        memset(ans, 0, sizeof(ans));
+        init();
+    }
+
+    void init(){ //初始化第0行的列表头
+        for(int y=0; y&lt;=m; y++){
+            u[y] = d[y] = y;
+            l[y] = y-1; r[y] = y+1;
+        }
+        l[0]=m; r[m]=0; cur=m+1; //下一个点的编号
+    }
+    //尾插法 要逐行逐列顺序插入
+    void link(int x,int y){ //在x行y列插入点 
+        row[cur]=x; col[cur]=y; s[y]++;
+        // 列表头y，原先y &lt;--&gt; u[y]，变为y &lt;--&gt; cur &lt;--&gt; u[y]
+        u[cur]=u[y]; // cur --&gt; u[y]
+        d[u[y]]=cur; // cur &lt;--&gt; u[y]
+        d[cur]=y; // y &lt;-- cur &lt;--&gt; u[y]
+        u[y]=cur; // y &lt;--&gt; cur &lt;--&gt; u[y]
+
+        // 行表头h[x]
+        if (h[x] == 0) {
+            h[x] = r[cur] = l[cur] = cur;
+        } else {
+            // 原先 l[h[x]] &lt;--&gt; h[x]，变为l[h[x]] &lt;--&gt; cur &lt;--&gt; h[x]
+            l[cur]=l[h[x]]; // l[h[x]] &lt;-- cur
+            r[l[h[x]]]=cur; // l[h[x]] &lt;--&gt; cur
+            r[cur]=h[x]; // l[h[x]] &lt;--&gt; cur --&gt; h[x]
+            l[h[x]]=cur; // l[h[x]] &lt;--&gt; cur &lt;--&gt; h[x]
+        }
+        cur++;
+    }
+    void remove(int y){ //删除y列与关联行
+        /*
+            a &lt;--&gt; b &lt;--&gt; c
+            to
+            a &lt;-- b --&gt; c
+              &lt;-------&gt;
+        */
+        r[l[y]]=r[y], l[r[y]]=l[y]; // 虚拟表头删除当前点
+        for(int i=d[y]; i!=y; i=d[i])   //向下
+            for(int j=r[i]; j!=i; j=r[j]) //向右
+                u[d[j]]=u[j], d[u[j]]=d[j], s[col[j]]--;
+    }
+    void resume(int y){ //恢复y列与关联行
+        r[l[y]]=y, l[r[y]]=y;  
+        for(int i=u[y]; i!=y; i=u[i])   //向上
+            for(int j=l[i]; j!=i; j=l[j]) //向左
+                u[d[j]]=j, d[u[j]]=j, s[col[j]]++;
+    }
+    bool dance(int dep){
+        if(r[0]==0){
+            for (int i=0; i&lt;dep; i++) {
+                cout &lt;&lt; ans[i] &lt;&lt; &quot; &quot;;
+            }
+            cout &lt;&lt; &quot;\n&quot;;
+            return true;
+        }
+
+        int y=r[0]; //找到点最少的列
+        for(int i=r[0];i;i=r[i]) if(s[i]&lt;s[y]) y=i;
+        remove(y);
+        for(int i=d[y];i!=y;i=d[i]) {
+            //在y列含1的行中选择一行作为答案，这一行存在1的列也需要关联删除才能保证精准覆盖
+            ans[dep]=row[i]; 
+            for(int j=r[i];j!=i;j=r[j]) remove(col[j]);
+            if(dance(dep+1)) return true;
+            for(int j=l[i];j!=i;j=l[j]) resume(col[j]);
+        }
+        resume(y); 
+        return false;
+    }
+};
+/*
+
+use:
+DLX dlx(n, m);
+
+dlx.link(i,j);
+
+dlx.dance(0);
+
+*/
+</code></pre>
+<ul>
+<li><a href="https://leetcode.cn/problems/sudoku-solver/">37. 解数独</a><pre><code class="cpp">
+template &lt;int MXNODE = 5000&gt; // 稀疏矩阵最大点数
+struct DLX {
+    int n, m, cur; // 行 列 新节点指针
+    int h[MXNODE];  //每行的头指针
+    int u[MXNODE], d[MXNODE], l[MXNODE], r[MXNODE]; //每个点的上下左右指针
+    int row[MXNODE], col[MXNODE]; //每个点所在行,列
+    int s[MXNODE]; //每列的节点数
+    int ans[MXNODE]; //选了那些行
+
+    DLX(int n, int m): n(n), m(m) {
+        cur = 0;
+        memset(h, 0, sizeof(u));
+        memset(u, 0, sizeof(u));
+        memset(d, 0, sizeof(d));
+        memset(l, 0, sizeof(l));
+        memset(r, 0, sizeof(r));
+        memset(row, 0, sizeof(row));
+        memset(col, 0, sizeof(col));
+        memset(s, 0, sizeof(s));
+        memset(ans, 0, sizeof(ans));
+        init();
+    }
+
+    void init(){ //初始化第0行的列表头
+        for(int y=0; y&lt;=m; y++){
+            u[y] = d[y] = y;
+            l[y] = y-1; r[y] = y+1;
+        }
+        l[0]=m; r[m]=0; cur=m+1; //下一个点的编号
+    }
+    //尾插法
+    void link(int x,int y){ //在x行y列插入点 
+        // cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; y &lt;&lt; &quot; &quot; &lt;&lt; cur &lt;&lt; endl;
+        row[cur]=x; col[cur]=y; s[y]++;
+        // 列表头y，原先y &lt;--&gt; u[y]，变为y &lt;--&gt; cur &lt;--&gt; u[y]
+        u[cur]=u[y]; // cur --&gt; u[y]
+        d[u[y]]=cur; // cur &lt;--&gt; u[y]
+        d[cur]=y; // y &lt;-- cur &lt;--&gt; u[y]
+        u[y]=cur; // y &lt;--&gt; cur &lt;--&gt; u[y]
+
+        // 行表头h[x]
+        if (h[x] == 0) {
+            h[x] = r[cur] = l[cur] = cur;
+        } else {
+            // 原先 l[h[x]] &lt;--&gt; h[x]，变为l[h[x]] &lt;--&gt; cur &lt;--&gt; h[x]
+            l[cur]=l[h[x]]; // l[h[x]] &lt;-- cur
+            r[l[h[x]]]=cur; // l[h[x]] &lt;--&gt; cur
+            r[cur]=h[x]; // l[h[x]] &lt;--&gt; cur --&gt; h[x]
+            l[h[x]]=cur; // l[h[x]] &lt;--&gt; cur &lt;--&gt; h[x]
+        }
+        cur++;
+    }
+    void remove(int y){ //删除y列与关联行
+        /*
+            a &lt;--&gt; b &lt;--&gt; c
+            to
+            a &lt;-- b --&gt; c
+              &lt;-------&gt;
+        */
+        r[l[y]]=r[y], l[r[y]]=l[y]; // 虚拟表头删除当前点
+        for(int i=d[y]; i!=y; i=d[i])   //向下
+            for(int j=r[i]; j!=i; j=r[j]) //向右
+                u[d[j]]=u[j], d[u[j]]=d[j], s[col[j]]--;
+    }
+    void resume(int y){ //恢复y列与关联行
+        r[l[y]]=y, l[r[y]]=y;  
+        for(int i=u[y]; i!=y; i=u[i])   //向上
+            for(int j=l[i]; j!=i; j=l[j]) //向左
+                u[d[j]]=j, d[u[j]]=j, s[col[j]]++;
+    }
+    bool dance(int dep, vector&lt;vector&lt;char&gt;&gt;&amp; board){
+        if(r[0]==0){
+            for (int i=0; i&lt;dep; i++) {
+                // cout &lt;&lt; ans[i] &lt;&lt; &quot; &quot;;
+                // 解码所选的行在数独中的信息
+                // ans[i] = (r*9+c)*9+k+1
+                int k = (ans[i]-1)%9;
+                int c = (ans[i]-1)/9%9;
+                int r = (ans[i]-1)/9/9;
+                board[r][c] = char(k+&#39;0&#39;+1);
+            }
+            // cout &lt;&lt; &quot;\n&quot;;
+            return true;
+        }
+
+        int y=r[0]; //找到点最少的列
+        for(int i=r[0];i;i=r[i]) if(s[i]&lt;s[y]) y=i;
+        remove(y);
+        for(int i=d[y];i!=y;i=d[i]) {
+            //在y列含1的行中选择一行作为答案，这一行存在1的列也需要关联删除才能保证精准覆盖
+            ans[dep]=row[i]; 
+            for(int j=r[i];j!=i;j=r[j]) remove(col[j]);
+            if(dance(dep+1, board)) return true;
+            for(int j=l[i];j!=i;j=l[j]) resume(col[j]);
+        }
+        resume(y); 
+        return false;
+    }
+};
+class Solution {
+public:
+    void solveSudoku(vector&lt;vector&lt;char&gt;&gt;&amp; board) {
+        /*
+            约束列
+            81格只能填一个数字 81列
+            每行每数只能填一次 81列
+            每列每数只能填一次 81列
+            每宫每数只能填一次 81列
+            共324列
+
+            决策行
+            每个格子有9种选法,共81格，共计729行
+            每行需要4列为1，共计2916个点
+
+            构建矩阵还需要第0行虚拟表头325个列节点
+
+        */
+        DLX dlx(729, 324);
+        for (int r=0; r&lt;9; r++) { // 数独行
+            for (int c=0; c&lt;9; c++) { // 数独列
+                bool all = board[r][c] == &#39;.&#39;;
+                for (int k=(all?0:board[r][c]-&#39;0&#39;-1); k&lt;(all?9:board[r][c]-&#39;0&#39;); k++) { // 数独选择数字
+                    // cout &lt;&lt; r &lt;&lt; &quot; &quot; &lt;&lt; c &lt;&lt; &quot; &quot; &lt;&lt; k &lt;&lt; &quot;\n&quot;;
+                    int row = (r*9+c)*9+k+1; // 行
+                    int clo1 = r*9+c+1; // i行j列填了数字
+                    int clo2 = 81+(r*9+k+1); // i行填了k
+                    int clo3 = 81*2+(c*9+k+1); // j列填了k
+                    int clo4 = 81*3+((r/3*3+c/3)*9+k+1); // r/3*3+c/3宫填了k
+                    dlx.link(row, clo1);
+                    dlx.link(row, clo2);
+                    dlx.link(row, clo3);
+                    dlx.link(row, clo4);
+                }
+            }
+        }
+        dlx.dance(0, board);
+    }
+};
+</code></pre>
+</li>
+</ul>
