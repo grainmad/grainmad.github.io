@@ -1,5 +1,5 @@
 <hr>
-<p>title: “精确覆盖 Dance Links”<br>date: 2024-06-29 10:35:13<br>updated: 2024-06-29 10:35:13<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>精确覆盖 Dance Links</li></ul>‘</p>
+<p>title: “精确覆盖 Dance Links”<br>date: 2024-06-29 10:35:13<br>updated: 2024-07-01 14:11:44<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>精确覆盖 Dance Links</li></ul>‘</p>
 <hr>
 <h1 id="精确覆盖-Dance-Links"><a href="#精确覆盖-Dance-Links" class="headerlink" title="精确覆盖 Dance Links"></a>精确覆盖 Dance Links</h1><pre><code class="cpp">template &lt;int MXNODE = 5000&gt; // 稀疏矩阵最大点数
 struct DLX {
@@ -242,6 +242,119 @@ public:
             }
         }
         dlx.dance(0, board);
+    }
+};
+</code></pre>
+</li>
+<li><a href="https://leetcode.cn/problems/n-queens-ii/">52. N 皇后 II</a><pre><code class="cpp">
+template &lt;int MXNODE = 5000&gt; // 稀疏矩阵最大点数
+struct DLX {
+    int n, m, cur; // 行 列 新节点指针
+    int h[MXNODE];  //每行的头指针
+    int u[MXNODE], d[MXNODE], l[MXNODE], r[MXNODE]; //每个点的上下左右指针
+    int row[MXNODE], col[MXNODE]; //每个点所在行,列
+    int s[MXNODE]; //每列的节点数
+    int ans = 0;
+
+    DLX(int n, int m): n(n), m(m) {
+        cur = ans = 0;
+        memset(h, 0, sizeof(u));
+        memset(u, 0, sizeof(u));
+        memset(d, 0, sizeof(d));
+        memset(l, 0, sizeof(l));
+        memset(r, 0, sizeof(r));
+        memset(row, 0, sizeof(row));
+        memset(col, 0, sizeof(col));
+        memset(s, 0, sizeof(s));
+        init();
+    }
+
+    void init(){ //初始化第0行的列表头
+        for(int y=0; y&lt;=m; y++){
+            u[y] = d[y] = y;
+            l[y] = y-1; r[y] = y+1;
+        }
+        l[0]=m; r[m]=0; cur=m+1; //下一个点的编号
+    }
+    //尾插法 要逐行逐列顺序插入
+    void link(int x,int y){ //在x行y列插入点 
+        row[cur]=x; col[cur]=y; s[y]++;
+        // 列表头y，原先y &lt;--&gt; u[y]，变为y &lt;--&gt; cur &lt;--&gt; u[y]
+        u[cur]=u[y]; // cur --&gt; u[y]
+        d[u[y]]=cur; // cur &lt;--&gt; u[y]
+        d[cur]=y; // y &lt;-- cur &lt;--&gt; u[y]
+        u[y]=cur; // y &lt;--&gt; cur &lt;--&gt; u[y]
+
+        // 行表头h[x]
+        if (h[x] == 0) {
+            h[x] = r[cur] = l[cur] = cur;
+        } else {
+            // 原先 l[h[x]] &lt;--&gt; h[x]，变为l[h[x]] &lt;--&gt; cur &lt;--&gt; h[x]
+            l[cur]=l[h[x]]; // l[h[x]] &lt;-- cur
+            r[l[h[x]]]=cur; // l[h[x]] &lt;--&gt; cur
+            r[cur]=h[x]; // l[h[x]] &lt;--&gt; cur --&gt; h[x]
+            l[h[x]]=cur; // l[h[x]] &lt;--&gt; cur &lt;--&gt; h[x]
+        }
+        cur++;
+    }
+    void remove(int y){ //删除y列与关联行
+        /*
+            a &lt;--&gt; b &lt;--&gt; c
+            to
+            a &lt;-- b --&gt; c
+              &lt;-------&gt;
+        */
+        r[l[y]]=r[y], l[r[y]]=l[y]; // 虚拟表头删除当前点
+        for(int i=d[y]; i!=y; i=d[i])   //向下
+            for(int j=r[i]; j!=i; j=r[j]) //向右
+                u[d[j]]=u[j], d[u[j]]=d[j], s[col[j]]--;
+    }
+    void resume(int y){ //恢复y列与关联行
+        r[l[y]]=y, l[r[y]]=y;  
+        for(int i=u[y]; i!=y; i=u[i])   //向上
+            for(int j=l[i]; j!=i; j=l[j]) //向左
+                u[d[j]]=j, d[u[j]]=j, s[col[j]]++;
+    }
+    void dance(int dep, int ed){
+        if (dep == ed) {
+            ans++;
+            return ;
+        }
+
+        int y=r[0]; //找到点最少的列
+        for(int i=r[0];i &amp;&amp; i&lt;=ed;i=r[i]) if(s[i]&lt;s[y]) y=i;
+        remove(y);
+        for(int i=d[y];i!=y;i=d[i]) {
+            //在y列含1的行中选择一行作为答案，这一行存在1的列也需要关联删除才能保证精准覆盖
+            for(int j=r[i];j!=i;j=r[j]) remove(col[j]);
+            dance(dep+1, ed);
+            for(int j=l[i];j!=i;j=l[j]) resume(col[j]);
+        }
+        resume(y); 
+    }
+};
+class Solution {
+public:
+    int totalNQueens(int n) {
+        int r = n*n, c = n+n+(2*n-1)+(2*n-1);
+        DLX&lt;500&gt; dlx(r, c);
+        for (int i=0; i&lt;n; i++) {
+            for (int j=0; j&lt;n; j++) {
+                int row = i*n+j+1;
+                int clo1 = i+1;
+                int clo2 = n + j+1;
+                int clo3 = 2*n + i-j+(n-1)+1;
+                int clo4 = 2*n + (2*n-1) + i+j+1;
+                // cout &lt;&lt;row &lt;&lt;  &quot; &quot; &lt;&lt; clo1 &lt;&lt;&quot; &quot; &lt;&lt;clo2 &lt;&lt;&quot; &quot; &lt;&lt; clo3 &lt;&lt;&quot; &quot; &lt;&lt;clo4 &lt;&lt;endl;
+                dlx.link(row, clo1);
+                dlx.link(row, clo2);
+                dlx.link(row, clo3);
+                dlx.link(row, clo4);
+            }
+        }
+        dlx.dance(0, n);
+
+        return dlx.ans;
     }
 };
 </code></pre>

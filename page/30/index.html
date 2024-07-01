@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">562</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">563</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">562</span>
+          <span class="site-state-item-count">563</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,184 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/30/1208C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2024/04/30/1208C/" class="post-title-link" itemprop="url">Magic Grid</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><h3>题目描述</h3><p>我们定义“魔法网格”为一个满足以下两个条件的大小为 $n \times n$ 的整数方阵：</p><p>$1.$ 从 $0$ 到 $n^2-1$ 的所有整数都在矩阵中出现过恰好一次。</p><p>$2.$ 矩阵中的每行元素的按位异或和与每列元素的按位异或和都相等。</p><p>按位异或，即 $C/C++$ 中的 $\wedge$ 运算符或 $Pascal$ 中的 $xor$ 运算符。</p><p>现在给你一个 $n$ ，保证 $n$ 是 $4$ 的倍数。请构造一个“魔法网格”。</p><p>输入仅包含一行，为一个整数 $n$ ，保证 $n$ 是 $4$ 的倍数。</p><p>输出 $n$ 行，每行 $n$ 个整数，每个整数之间用一个空格隔开，第 $i$ 行第 $j$ 列输出的数表示“魔法网格”的第 $i$ 行第 $j$ 列的数。</p><p>如果有多个答案，请输入任意一个。保证每组数据至少有一个合法解。</p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/ape/2024/04/30/1208C/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/30/1438C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/ape/2024/04/30/1438C/" class="post-title-link" itemprop="url">Engineer Artem</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p>给出一个 $n\times m$ 的矩阵 $a$（$1\le n,m\le 100$），其中 $1\le a_{i,j}\le 10^9$。</p><p>定义一个矩阵是合法的当且仅当没有任何两个相邻的元素是相等的（上下左右为相邻）。</p><p>你可以将矩阵中若干个元素加一，使其合法，输出最终矩阵。</p><p>形式化地，对于每个 $(i,j)$，$b_{i,j}=a_{i,j}$ 或者 $b_{i,j}=a_{i,j}+1$，输出合法的 $b$ 矩阵。</p><p>$t$ 组数据（$t\le 10$）。</p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/ape/2024/04/30/1438C/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -625,184 +803,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/codeforces/ape/2024/05/07/1527B2/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/05/08/1270D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/05/08/1270D/" class="post-title-link" itemprop="url">Strange Device</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有一个长为 $n$ 数列 $a$，值已确定且值互不相等，但是你不知道。</p><p>现在有个设备，你可以输入长为 $k$ 的上升序列 $p_1,p_2 \dots p_k$，进行询问，它会回答 $a_{p_1},a_{p_2} \dots a_{p_k}$ 中第 $m$ 小的数在原数列的坐标和这个数的值。现在给你 $n$ 和 $k$，让你在最多询问 $n$ 次后回答 $m$ 的大小。保证一定可以构造出方案。</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/05/08/1270D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/05/08/1906E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/05/08/1906E/" class="post-title-link" itemprop="url">Merge Not Sort</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>已知对两个长度为 $N$ 的、<strong>可能未排序的</strong>数组 $A$ 和 $B$ 执行如下的归并操作，生成的数组是一个长度为 $2N$ 的、给定的<strong>排列</strong>（即 $[1,2N]$ 中每个整数都正好出现一遍的数组）$C$：</p><p>```</p><p>Merge(A[1..N], B[1..N]):</p><p>C = []</p><p>i = 1</p><p>j = 1</p><p>while i &lt;= N AND j &lt;= N:</p><pre><code>if A[i] &amp;lt; B[j]:  append A[i] to C  i = i + 1else:  append B[j] to C  j = j + 1</code></pre><p>while i &lt;= N:</p><pre><code>append A[i] to Ci = i + 1</code></pre><p>while j &lt;= N:</p><pre><code>append B[j] to Cj = j + 1</code></pre><p>return C</p><p>```</p><p>构造出任意一组符合条件的 $A,B$；如果无解输出 <code>-1</code>。</p><p>翻译自 @<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/556366">zyc212303</a>。</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/05/08/1906E/">
                 阅读全文 &raquo;
               </a>
             </div>

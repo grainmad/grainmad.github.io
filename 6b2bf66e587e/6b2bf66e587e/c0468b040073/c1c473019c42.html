@@ -1,0 +1,677 @@
+<hr>
+<p>title: “KD树”<br>date: 2024-07-01 14:11:44<br>updated: 2024-07-01 14:11:44<br>tag: [“notion”, “Algorithm”, “区间操作”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>KD树</li></ul>‘</p>
+<hr>
+<h1 id="KD树"><a href="#KD树" class="headerlink" title="KD树"></a>KD树</h1><h1 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h1><ul>
+<li>静态构建<pre><code class="cpp">
+#define lc t[p].l
+#define rc t[p].r
+const int MXNODE = 200010;
+struct KD {     //KD树节点信息
+    int l, r;     //左右孩子
+    double v[2]; //点的坐标值
+    double L[2], U[2]; //子树区域的坐标范围 左下角 右上角
+    // bool operator&lt;(const KD &amp;b) const {
+    //     return v[K]&lt;b.v[K];
+    // }
+} t[MXNODE];
+
+void pushup(int p){ //更新p子树区域的坐标范围
+  for (int i=0; i&lt;2; i++){
+        t[p].L[i] = t[p].U[i] = t[p].v[i];
+    if (lc)
+        t[p].L[i] = min(t[p].L[i],t[lc].L[i]),
+        t[p].U[i] = max(t[p].U[i],t[lc].U[i]);
+    if (rc)
+        t[p].L[i] = min(t[p].L[i],t[rc].L[i]),
+        t[p].U[i] = max(t[p].U[i],t[rc].U[i]);
+  }
+}
+
+int build(int l,int r,int k){ //交替建树
+    if(l&gt;r) return 0;
+    int m=(l+r)&gt;&gt;1; 
+    K=k; nth_element(t+l,t+m,t+r+1); //中位数
+    t[m].l=build(l,m-1,k^1);
+    t[m].r=build(m+1,r,k^1);
+    pushup(m);
+    return m;
+}
+/*
+input t[1..n]
+root = insert(1, n, 0)
+*/
+</code></pre>
+</li>
+<li>动态构建<pre><code class="cpp">// 插入重构建树 
+
+#define lc t[p].l
+#define rc t[p].r
+const double A=0.7; //重构常数
+const int MAXNODE=200010;
+int g[MAXNODE], gsz;     //g存储节点的编号
+struct KD {     //KD树节点信息
+    int l,r;     //左右孩子
+    double v[2]; //点的坐标值
+    double L[2],U[2]; //子树区域坐标极值
+    int siz;     //子树大小
+} t[N];
+
+void pushup(int p){ //更新p子树的信息
+    t[p].siz=t[lc].siz+t[rc].siz+1;
+    for(int i=0; i&lt;2; i++) {
+        t[p].L[i]=t[p].U[i]=t[p].v[i];
+        if(lc)
+            t[p].L[i]=min(t[p].L[i],t[lc].L[i]),
+            t[p].U[i]=max(t[p].U[i],t[lc].U[i]);
+        if(rc)
+            t[p].L[i]=min(t[p].L[i],t[rc].L[i]),
+            t[p].U[i]=max(t[p].U[i],t[rc].U[i]);
+    }
+}
+
+int rebuild(int l,int r,int k){ //重构子树
+    if(l&gt;r) return 0;
+    int m=(l+r)&gt;&gt;1;
+    nth_element(g+l,g+m,g+r+1, [&amp;](int x, int y) {
+        return t[x].v[k] &lt; t[y].v[k];
+    });
+    t[g[m]].l=rebuild(l,m-1,k^1);
+    t[g[m]].r=rebuild(m+1,r,k^1);
+    pushup(g[m]);
+    return g[m];
+}
+
+void dfs(int p){ //提取p子树的节点编号
+    if(!p) return;
+    g[++gsz]=p;  
+    dfs(lc);
+    dfs(rc);
+}
+void check(int&amp; p,int k){ //检查
+    if(A*t[p].siz &lt; max(t[lc].siz, t[rc].siz)) // 存在一颗子树大于整棵树的0.7倍
+        gsz=0, dfs(p), p=rebuild(1,gsz,k);
+}
+void insert(int&amp; p, int cur, int k=0){ //插点
+    if(!p){ p=cur; pushup(p); return;}
+    insert(t[cur].v[k]&lt;=t[p].v[k] ? lc : rc, cur, k^1);
+    pushup(p);
+    check(p,k); //检查是否重构p子树
+}
+/*
+input t[1..n]
+root = 0
+insert(root, 1..n, 0)
+*/
+</code></pre>
+</li>
+</ul>
+<h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><ul>
+<li>平面最近/远点距离<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+#define lc t[p].l
+#define rc t[p].r
+const int MXNODE = 200010;
+struct KD {     //KD树节点信息
+    int l, r;     //左右孩子
+    double v[2]; //点的坐标值
+    double L[2], U[2]; //子树区域的坐标范围 左下角 右上角
+} t[MXNODE];
+
+void pushup(int p){ //更新p子树区域的坐标范围
+  for (int i=0; i&lt;2; i++){
+        t[p].L[i] = t[p].U[i] = t[p].v[i];
+    if (lc)
+        t[p].L[i] = min(t[p].L[i],t[lc].L[i]),
+        t[p].U[i] = max(t[p].U[i],t[lc].U[i]);
+    if (rc)
+        t[p].L[i] = min(t[p].L[i],t[rc].L[i]),
+        t[p].U[i] = max(t[p].U[i],t[rc].U[i]);
+  }
+}
+
+int build(int l, int r, int k=0){ //交替建树
+    if(l&gt;r) return 0;
+    int m=(l+r)&gt;&gt;1; 
+    nth_element(t+l,t+m,t+r+1, [&amp;](auto&amp; a, auto&amp; b) {
+        return a.v[k] &lt; b.v[k];
+    }); //中位数
+    t[m].l=build(l,m-1,k^1);
+    t[m].r=build(m+1,r,k^1);
+    pushup(m);
+    return m;
+}
+
+// ==== 曼哈顿距离 ====
+
+double mht_dis(int p, int cur){ 
+    double s=0;
+    for(int i=0;i&lt;2;i++) 
+        s+=abs(t[cur].v[i]-t[p].v[i]);
+    return s;
+}
+
+// 到p子树区域的最小曼哈顿距离评估
+double mht_min_evaldis(int p, int cur){ 
+    if(!p) return 2e18; 
+    double s=0;
+    for(int i=0;i&lt;2;i++)
+        s += max(t[cur].v[i]-t[p].U[i],0.0)+
+        max(t[p].L[i]-t[cur].v[i],0.0);
+    return s;
+}
+
+// 到p子树区域的最大曼哈顿距离评估
+double mht_max_evaldis(int p, int cur){ 
+    if(!p) return 0; 
+    double s=0;
+    for(int i=0;i&lt;2;i++)
+        s+=max(t[cur].v[i]-t[p].L[i], t[p].U[i]-t[cur].v[i]);
+    return s;
+}
+
+//查询当前点的最小欧几里得距离
+double ask_min_mhtdis(int root, int cur){ 
+    double ans = 2e18;
+    function&lt;void(int,int)&gt; dfs = [&amp;](int p, int cur) {
+        if(!p) return;
+        if(p!=cur) ans=min(ans,mht_dis(p,cur));
+        double dl=mht_min_evaldis(lc, cur),dr=mht_min_evaldis(rc, cur);
+        if(dl&lt;dr){
+            if(dl&lt;ans) dfs(lc, cur);
+            if(dr&lt;ans) dfs(rc, cur);
+        } else {
+            if(dr&lt;ans) dfs(rc, cur);
+            if(dl&lt;ans) dfs(lc, cur);
+        }
+    };
+    dfs(root, cur);
+    return ans;
+}
+
+double ask_max_mhtdis(int root, int cur){ 
+    double ans = 0;
+    function&lt;void(int,int)&gt; dfs = [&amp;](int p, int cur) {
+        if(!p) return;
+        if(p!=cur) ans=max(ans,mht_dis(p,cur));
+        double dl=mht_max_evaldis(lc, cur),dr=mht_max_evaldis(rc, cur);
+        if(dl&lt;dr){
+            if(dr&gt;ans) dfs(rc, cur);
+            if(dl&gt;ans) dfs(lc, cur);
+        } else {
+            if(dl&gt;ans) dfs(lc, cur);
+            if(dr&gt;ans) dfs(rc, cur);
+        }
+    };
+    dfs(root, cur);
+    return ans;
+}
+
+// ==== 欧几里得距离 ====
+
+double sq(double x){return x*x;}
+
+double ecl_dis(int p, int cur){
+    double s=0;
+    for(int i=0;i&lt;2;i++) 
+        s+=sq(t[cur].v[i]-t[p].v[i]);
+    return s;
+}
+
+double ecl_min_evaldis(int p, int cur){ 
+    if(!p) return 2e18; 
+    double s=0;
+    for(int i=0;i&lt;2;i++)
+        s+=sq(max(t[cur].v[i]-t[p].U[i],0.0))+
+        sq(max(t[p].L[i]-t[cur].v[i],0.0));
+    return s;
+}
+
+double ecl_max_evaldis(int p, int cur){ 
+    if(!p) return 0; 
+    double s=0;
+    for(int i=0;i&lt;2;i++)
+        s+=max(sq(t[cur].v[i]-t[p].L[i]), sq(t[p].U[i]-t[cur].v[i]));
+    return s;
+}
+
+//查询当前点的最小欧几里得距离
+double ask_min_ecldis(int root, int cur){ 
+    double ans = 2e18;
+    function&lt;void(int,int)&gt; dfs = [&amp;](int p, int cur) {
+        if(!p) return;
+        if(p!=cur) ans=min(ans,ecl_dis(p,cur));
+        double dl=ecl_min_evaldis(lc, cur),dr=ecl_min_evaldis(rc, cur);
+        if(dl&lt;dr){
+            if(dl&lt;ans) dfs(lc, cur);
+            if(dr&lt;ans) dfs(rc, cur);
+        } else {
+            if(dr&lt;ans) dfs(rc, cur);
+            if(dl&lt;ans) dfs(lc, cur);
+        }
+    };
+    dfs(root, cur);
+    return sqrt(ans);
+}
+
+double ask_max_ecldis(int root, int cur){ 
+    double ans = 0;
+    function&lt;void(int,int)&gt; dfs = [&amp;](int p, int cur) {
+        if(!p) return;
+        if(p!=cur) ans=max(ans,ecl_dis(p,cur));
+        double dl=ecl_min_evaldis(lc, cur),dr=ecl_max_evaldis(rc, cur);
+        if(dl&lt;dr){
+            if(dr&gt;ans) dfs(rc, cur);
+            if(dl&gt;ans) dfs(lc, cur);
+        } else {
+            if(dl&gt;ans) dfs(lc, cur);
+            if(dr&gt;ans) dfs(rc, cur);
+        }
+    };
+    dfs(root, cur);
+    return sqrt(ans);
+}
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    for (int i=1; i&lt;=n; i++) {
+        cin &gt;&gt; t[i].v[0] &gt;&gt; t[i].v[1];
+    }
+    int root = build(1, n, 0);
+    for (int i=1; i&lt;=n; i++) {
+        cout &lt;&lt; t[i].v[0] &lt;&lt; &quot; &quot; &lt;&lt;  t[i].v[1] &lt;&lt; &quot;: &quot;;
+        cout &lt;&lt; &quot;ecl min=&quot; &lt;&lt; ask_min_ecldis(root, i) &lt;&lt; &quot; max=&quot; &lt;&lt; ask_max_ecldis(root, i) &lt;&lt; &quot;\n&quot;;
+        cout &lt;&lt; &quot;mht min=&quot; &lt;&lt; ask_min_mhtdis(root, i) &lt;&lt; &quot; max=&quot; &lt;&lt; ask_max_mhtdis(root, i) &lt;&lt; &quot;\n&quot;;
+    }
+    return 0;
+}
+</code></pre>
+</li>
+<li>高维空间最近/远点对<pre><code class="cpp">
+#include&lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+template &lt;int K = 2, int MXNODE = 10010&gt;
+struct KDT
+{
+    #define lc t[p].l
+    #define rc t[p].r
+    struct KD {     //KD树节点信息
+        int l, r;     //左右孩子
+        double v[K]; //点的坐标值
+        double L[K], U[K]; //子树区域的坐标范围 左下角 右上角
+    } t[MXNODE];
+    int sz = 1;
+    int root = 0;
+
+    KDT() {}
+
+    void init_with_build(vector&lt;vector&lt;double&gt;&gt; points) {
+        for (auto&amp; i:points) {
+            for (int j=0; j&lt;K; j++) {
+                t[sz].v[j] = i[j];
+            }
+            sz++;
+        }
+        root = build(1, sz-1);
+    }
+
+    void pushup(int p){ //更新p子树区域的坐标范围
+        for (int i=0; i&lt;K; i++){
+                t[p].L[i] = t[p].U[i] = t[p].v[i];
+            if (lc)
+                t[p].L[i] = min(t[p].L[i],t[lc].L[i]),
+                t[p].U[i] = max(t[p].U[i],t[lc].U[i]);
+            if (rc)
+                t[p].L[i] = min(t[p].L[i],t[rc].L[i]),
+                t[p].U[i] = max(t[p].U[i],t[rc].U[i]);
+        }
+    }
+
+    int build(int l, int r, int k=0){ //交替建树
+        if(l&gt;r) return 0;
+        int m=(l+r)&gt;&gt;1; 
+        nth_element(t+l,t+m,t+r+1, [&amp;](auto&amp; a, auto&amp; b) {
+            return a.v[k] &lt; b.v[k];
+        }); //中位数
+        t[m].l=build(l,m-1,(k+1)%K);
+        t[m].r=build(m+1,r,(k+1)%K);
+        pushup(m);
+        return m;
+    }
+
+    // ==== 曼哈顿距离 ====
+
+    double mht_dis(int p, int cur){ 
+        double s=0;
+        for(int i=0;i&lt;K;i++) 
+            s+=fabs(t[cur].v[i]-t[p].v[i]);
+        return s;
+    }
+
+    // 到p子树区域的最小曼哈顿距离评估
+    double mht_min_evaldis(int p, int cur){ 
+        if(!p) return 2e18; 
+        double s=0;
+        for(int i=0;i&lt;K;i++)
+            s += max(t[cur].v[i]-t[p].U[i],0.0)+
+            max(t[p].L[i]-t[cur].v[i],0.0);
+        return s;
+    }
+
+    // 到p子树区域的最大曼哈顿距离评估
+    double mht_max_evaldis(int p, int cur){ 
+        if(!p) return 0; 
+        double s=0;
+        for(int i=0;i&lt;K;i++)
+            s+=max(t[cur].v[i]-t[p].L[i], t[p].U[i]-t[cur].v[i]);
+        return s;
+    }
+
+    //查询当前点的最小欧几里得距离
+    double ask_min_mhtdis(int root, int cur){ 
+        double ans = 2e18;
+        function&lt;void(int,int)&gt; dfs = [&amp;](int p, int cur) {
+            if(!p) return;
+            if(p!=cur) ans=min(ans,mht_dis(p,cur));
+            double dl=mht_min_evaldis(lc, cur),dr=mht_min_evaldis(rc, cur);
+            if(dl&lt;dr){
+                if(dl&lt;ans) dfs(lc, cur);
+                if(dr&lt;ans) dfs(rc, cur);
+            } else {
+                if(dr&lt;ans) dfs(rc, cur);
+                if(dl&lt;ans) dfs(lc, cur);
+            }
+        };
+        dfs(root, cur);
+        return ans;
+    }
+    double ask_min_mhtdis(int cur) {
+        return ask_min_mhtdis(root, cur);
+    }
+
+    double ask_max_mhtdis(int root, int cur){ 
+        double ans = 0;
+        function&lt;void(int,int)&gt; dfs = [&amp;](int p, int cur) {
+            if(!p) return;
+            if(p!=cur) ans=max(ans,mht_dis(p,cur));
+            double dl=mht_max_evaldis(lc, cur),dr=mht_max_evaldis(rc, cur);
+            if(dl&lt;dr){
+                if(dr&gt;ans) dfs(rc, cur);
+                if(dl&gt;ans) dfs(lc, cur);
+            } else {
+                if(dl&gt;ans) dfs(lc, cur);
+                if(dr&gt;ans) dfs(rc, cur);
+            }
+        };
+        dfs(root, cur);
+        return ans;
+    }
+    double ask_max_mhtdis(int cur) {
+        return ask_max_mhtdis(root, cur);
+    }
+};
+
+random_device seed;
+ranlux48 engine(seed());
+double random(int l, int r) {
+    uniform_int_distribution&lt;&gt; distrib(l, r);
+    return distrib(engine);
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const pair&lt;t,u&gt;&amp; p) {
+    return os&lt;&lt;&#39;[&#39;&lt;&lt;p.first&lt;&lt;&quot;, &quot;&lt;&lt;p.second&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const vector&lt;t&gt;&amp; v) {
+    os&lt;&lt;&#39;[&#39;; int s = 1;
+    for(auto e:v) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os &lt;&lt; e; }
+    return os&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const map&lt;t,u&gt;&amp; mp){
+    os&lt;&lt;&#39;{&#39;; int s = 1;
+    for(auto [x,y]:mp) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os&lt;&lt;x&lt;&lt;&quot;: &quot;&lt;&lt;y; }
+    return os&lt;&lt;&#39;}&#39;;
+}
+
+int main() {
+    
+    KDT&lt;4&gt; kdt;
+    int n = 100;
+    vector&lt;vector&lt;double&gt;&gt; data;
+    for (int i=0; i&lt;n; i++) {
+        vector&lt;double&gt; u = {random(1, 100), random(1, 10), random(1, 100), random(1, 10)};
+        data.push_back(u);
+    }
+    auto ask = [&amp;](int p) {
+        double ans = 2e18;
+        for (int i=1; i&lt;=n; i++) {
+            if (i == p) continue;
+            double tans = 0;
+            for (int j=0; j&lt;4; j++) {
+                tans += fabs(kdt.t[i].v[j]-kdt.t[p].v[j]);
+            }
+            ans = min(ans, tans);
+        }
+        return ans;
+    };
+    kdt.init_with_build(data);
+    for (int i=1; i&lt;=n; i++) {
+        cout &lt;&lt; kdt.ask_min_mhtdis(i) &lt;&lt; &quot; &quot; &lt;&lt; ask(i) &lt;&lt; &quot;\n&quot;;
+    }
+    
+
+}
+</code></pre>
+</li>
+<li>二维区间查询<pre><code class="cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+#define lc t[p].l
+#define rc t[p].r
+const int MXNODE = 200010;
+struct KD {     //KD树节点信息
+    int l, r;     //左右孩子
+    int siz; // 子树大小
+    double val; // 点权值
+    double sum = 0; // 权值总和
+    double v[2]; //点的坐标值
+    double L[2], U[2]; //子树区域的坐标范围 左下角 右上角
+} t[MXNODE];
+
+void pushup(int p){ //更新p子树区域的坐标范围
+    t[p].siz = t[lc].siz + t[rc].siz + 1;
+    t[p].sum = t[lc].sum + t[rc].sum + t[p].val;
+    // cout &lt;&lt; p &lt;&lt;&quot; &quot; &lt;&lt; t[p].siz &lt;&lt; &quot; &quot;  &lt;&lt; t[p].sum &lt;&lt; endl;
+    for (int i=0; i&lt;2; i++){
+            t[p].L[i] = t[p].U[i] = t[p].v[i];
+        if (lc)
+            t[p].L[i] = min(t[p].L[i],t[lc].L[i]),
+            t[p].U[i] = max(t[p].U[i],t[lc].U[i]);
+        if (rc)
+            t[p].L[i] = min(t[p].L[i],t[rc].L[i]),
+            t[p].U[i] = max(t[p].U[i],t[rc].U[i]);
+    }
+}
+
+int build(int l, int r, int k=0){ //交替建树
+    if(l&gt;r) return 0;
+    int m=(l+r)&gt;&gt;1; 
+    nth_element(t+l,t+m,t+r+1, [&amp;](auto&amp; a, auto&amp; b) {
+        return a.v[k] &lt; b.v[k];
+    }); //中位数
+    t[m].l=build(l,m-1,k^1);
+    t[m].r=build(m+1,r,k^1);
+    pushup(m);
+    return m;
+}
+
+double ask_sum(int p, int x1, int y1, int x2, int y2) {
+    // cout &lt;&lt; t[p].L[0] &lt;&lt; &quot; &quot; &lt;&lt; t[p].L[1] &lt;&lt; &quot; &quot; &lt;&lt; t[p].U[0] &lt;&lt; &quot; &quot; &lt;&lt; t[p].U[1] &lt;&lt; &quot;\n&quot;;
+    if(!p||x2&lt;t[p].L[0]||x1&gt;t[p].U[0]|| //不相交
+        y2&lt;t[p].L[1]||y1&gt;t[p].U[1]) return 0;
+    if(x1&lt;=t[p].L[0]&amp;&amp;t[p].U[0]&lt;=x2&amp;&amp;   //完全覆盖
+        y1&lt;=t[p].L[1]&amp;&amp;t[p].U[1]&lt;=y2) return t[p].sum;
+    double res=0;
+    if(x1&lt;=t[p].v[0]&amp;&amp;t[p].v[0]&lt;=x2&amp;&amp;   //部分覆盖
+        y1&lt;=t[p].v[1]&amp;&amp;t[p].v[1]&lt;=y2) res+=t[p].val;
+    return ask_sum(lc, x1, y1, x2, y2)+ask_sum(rc, x1, y1, x2, y2)+res;
+
+}
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    for (int i=1; i&lt;=n; i++) {
+        cin &gt;&gt; t[i].v[0] &gt;&gt; t[i].v[1] &gt;&gt; t[i].val;
+    }
+    int root = build(1, n);
+    cout &lt;&lt; ask_sum(root, 1, 1, 3, 2) &lt;&lt; &quot;\n&quot;;
+    
+    return 0;
+}
+</code></pre>
+</li>
+<li>高维度区间查询<pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+template &lt;class T, int K = 2, int MXNODE = 10010&gt;
+struct KDT {
+    #define lc t[p].l
+    #define rc t[p].r
+    struct KD {     //KD树节点信息
+        int l, r;     //左右孩子
+        int siz; // 子树大小
+        T val; // 点权值
+        T sum; // 权值总和
+        T v[K]; //点的坐标值
+        T L[K], U[K]; //子树区域的坐标范围 左下角 右上角
+    } t[MXNODE];
+    int sz = 1;
+    int root = 0;
+
+    KDT() {
+        t[0].sum = t[0].val = t[0].siz = 0;
+    }
+
+    void pushup(int p){ //更新p子树区域的坐标范围
+        t[p].siz = t[lc].siz + t[rc].siz + 1;
+        t[p].sum = t[lc].sum + t[rc].sum + t[p].val;
+        // cout &lt;&lt; p &lt;&lt;&quot; &quot; &lt;&lt; t[p].siz &lt;&lt; &quot; &quot;  &lt;&lt; t[p].sum &lt;&lt; endl;
+        for (int i=0; i&lt;K; i++){
+                t[p].L[i] = t[p].U[i] = t[p].v[i];
+            if (lc)
+                t[p].L[i] = min(t[p].L[i],t[lc].L[i]),
+                t[p].U[i] = max(t[p].U[i],t[lc].U[i]);
+            if (rc)
+                t[p].L[i] = min(t[p].L[i],t[rc].L[i]),
+                t[p].U[i] = max(t[p].U[i],t[rc].U[i]);
+        }
+    }
+    void init_with_build(vector&lt;vector&lt;T&gt;&gt; val) {
+        for (auto&amp; i:val) {
+            for (int j=0; j&lt;K; j++) {
+                t[sz].v[j] = i[j];
+            }
+            t[sz].val = i.back();
+            sz++;
+        }
+        root = build(1, sz-1);
+    }
+    int build(int l, int r, int k=0){ //交替建树
+        if(l&gt;r) return 0;
+        int m=(l+r)&gt;&gt;1; 
+        nth_element(t+l,t+m,t+r+1, [&amp;](auto&amp; a, auto&amp; b) {
+            return a.v[k] &lt; b.v[k];
+        }); //中位数
+        t[m].l=build(l,m-1,(k+1)%K);
+        t[m].r=build(m+1,r,(k+1)%K);
+        pushup(m);
+        return m;
+    }
+
+    double ask_sum(int p, vector&lt;T&gt; L, vector&lt;T&gt; U) {
+        if (!p) return 0;
+        for (int i=0; i&lt;K; i++) 
+            if (U[i]&lt;t[p].L[i] || L[i]&gt;t[p].U[i]) return 0;
+
+        int ff = 1;
+        for (int i=0; i&lt;K; i++) {
+            if (L[i] &lt;= t[p].L[i] &amp;&amp; t[p].U[i] &lt;= U[i]) continue;
+            ff = 0;
+        }
+        if (ff) return t[p].sum;
+        
+        double res=t[p].val;
+        for (int i=0; i&lt;K; i++) {
+            if (L[i] &lt;= t[p].v[i] &amp;&amp; t[p].v[i] &lt;= U[i]) continue;
+            res = 0;
+        }
+        return ask_sum(lc, L, U)+ask_sum(rc, L, U)+res;
+    }
+    double ask_sum(vector&lt;T&gt; L, vector&lt;T&gt; U) {
+        return ask_sum(root, L, U);
+    }
+};
+
+random_device seed;
+ranlux48 engine(seed());
+int random(int l, int r) {
+    uniform_int_distribution&lt;&gt; distrib(l, r);
+    return distrib(engine);
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const pair&lt;t,u&gt;&amp; p) {
+    return os&lt;&lt;&#39;[&#39;&lt;&lt;p.first&lt;&lt;&quot;, &quot;&lt;&lt;p.second&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const vector&lt;t&gt;&amp; v) {
+    os&lt;&lt;&#39;[&#39;; int s = 1;
+    for(auto e:v) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os &lt;&lt; e; }
+    return os&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const map&lt;t,u&gt;&amp; mp){
+    os&lt;&lt;&#39;{&#39;; int s = 1;
+    for(auto [x,y]:mp) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os&lt;&lt;x&lt;&lt;&quot;: &quot;&lt;&lt;y; }
+    return os&lt;&lt;&#39;}&#39;;
+}
+
+int main() {
+    int n = 10;
+    vector g(n, vector(n, vector&lt;int&gt;(n)));
+    for (auto&amp; i:g) {
+        for (auto&amp; j:i) {
+            for (auto&amp; k:j) k = random(1, 100);
+        }
+    }
+    KDT&lt;int, 3&gt; kdt;
+    vector&lt;vector&lt;int&gt;&gt; data;
+    int sz = 1;
+    for (int i=0; i&lt;n; i++) {
+        for (int j=0; j&lt;n; j++) {
+            for (int k=0; k&lt;n; k++) {
+                data.push_back(vector&lt;int&gt; {i,j,k, g[i][j][k]} );
+            }
+        }
+    }
+    cout &lt;&lt; data &lt;&lt; endl;
+    auto ask = [&amp;](vector&lt;int&gt; a, vector&lt;int&gt; b) {
+        double ans = 0;
+        for (int i=a[0]; i&lt;=b[0]; i++) {
+            for (int j=a[1]; j&lt;=b[1]; j++) {
+                for (int k=a[2]; k&lt;=b[2]; k++) {
+                    ans += g[i][j][k];
+                }
+            }
+        }
+        return ans;
+    };
+    kdt.init_with_build(data);
+    vector&lt;int&gt; a = {random(0,4),random(0,5),random(0,6)}, b={random(5,9),random(6,9), random(7,9)};
+    cout &lt;&lt; kdt.ask_sum(a, b) &lt;&lt; endl;
+    cout &lt;&lt; ask(a, b) &lt;&lt; endl;
+
+}
+</code></pre>
+</li>
+</ul>

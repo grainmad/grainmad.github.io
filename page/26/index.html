@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">562</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">563</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">562</span>
+          <span class="site-state-item-count">563</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,180 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E7%89%A9%E5%9D%97%E6%94%BE%E7%BD%AE%E6%9F%A5%E8%AF%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E7%89%A9%E5%9D%97%E6%94%BE%E7%BD%AE%E6%9F%A5%E8%AF%A2/" class="post-title-link" itemprop="url">物块放置查询</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/block-placement-queries/">物块放置查询</a></p><hr /><p>有一条无限长的数轴，原点在 0 处，沿着 x 轴 <strong>正</strong>  方向无限延伸。</p><p>给你一个二维数组 <code>queries</code> ，它包含两种操作：</p><ol><li><p>操作类型 1 ：<code>queries[i] = [1, x]</code> 。在距离原点 <code>x</code> 处建一个障碍物。数据保证当操作执行的时候，位置 <code>x</code> 处 <strong>没有</strong>  任何障碍物。</p></li><li><p>操作类型 2 ：<code>queries[i] = [2, x, sz]</code> 。判断在数轴范围 <code>[0, x]</code> 内是否可以放置一个长度为 <code>sz</code> 的物块，这个物块需要 <strong>完全</strong>  放置在范围 <code>[0, x]</code> 内。如果物块与任何障碍物有重合，那么这个物块 <strong>不能</strong>  被放置，但物块可以与障碍物刚好接触。注意，你只是进行查询，并 <strong>不是</strong>  真的放置这个物块。每个查询都是相互独立的。</p></li></ol><p>请你返回一个 boolean 数组<code>results</code> ，如果第 <code>i</code> 个操作类型 2 的操作你可以放置物块，那么 <code>results[i]</code> 为</p><p><code>true</code> ，否则为 <code>false</code> 。</p><p><strong>示例 1：</strong></p><p><strong>输入：</strong> queries = [[1,2],[2,3,3],[2,3,1],[2,2,2]]</p><p><strong>输出：</strong>[false,true,true]</p><p><strong>解释：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2024/04/22/example0block.png" /></strong></p><p>查询 0 ，在 <code>x = 2</code> 处放置一个障碍物。在 <code>x = 3</code> 之前任何大小不超过 2 的物块都可以被放置。</p><p><strong>示例 2：</strong></p><p><strong>输入：</strong> queries = [[1,7],[2,7,6],[1,2],[2,7,5],[2,7,6]]</p><p><strong>输出：</strong>[true,true,false]</p><p><strong>解释：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2024/04/22/example1block.png" /></strong></p><ul><li><p>查询 0 在 <code>x = 7</code> 处放置一个障碍物。在 <code>x = 7</code> 之前任何大小不超过 7 的物块都可以被放置。</p></li><li><p>查询 2 在 <code>x = 2</code> 处放置一个障碍物。现在，在 <code>x = 7</code> 之前任何大小不超过 5 的物块可以被放置，<code>x = 2</code> 之前任何大小不超过 2 的物块可以被放置。</p></li></ul><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= queries.length &amp;lt;= 15 * 104</code></p></li><li><p><code>2 &amp;lt;= queries[i].length &amp;lt;= 3</code></p></li><li><p><code>1 &amp;lt;= queries[i][0] &amp;lt;= 2</code></p></li><li><p><code>1 &amp;lt;= x, sz &amp;lt;= min(5 * 104, 3 * queries.length)</code></p></li><li><p>输入保证操作 1 中，<code>x</code> 处不会有障碍物。</p></li><li><p>输入保证至少有一个操作类型 2 。</p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E7%89%A9%E5%9D%97%E6%94%BE%E7%BD%AE%E6%9F%A5%E8%AF%A2/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/1974/1974/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/codeforces/contest/1974/1974/" class="post-title-link" itemprop="url">Codeforces Round 946 (Div. 3)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1974/problem/A">A. Phone Desktop</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1974/problem/B">B. Symmetric Encoding</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1974/problem/C">C. Beautiful Triple Pairs</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1974/problem/D">D. Ingenuity-2</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1974/problem/E">E. Money Buys Happiness</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1974/problem/F">F. Cutting Game</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1974/problem/G">G. Money Buys Less Happiness Now </a></p></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/codeforces/contest/1974/1974/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -632,184 +806,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/codeforces/ape/2024/04/08/1428D/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/08/1560F1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/08/1560F1/" class="post-title-link" itemprop="url">Nearest Beautiful Number (easy version)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>给定数据组数 $t$，每组数据包含正整数 $n$、$k$，求满足 $x\geq n$ 的最小正整数 $x$，使 $x$ 是个 $k$-beautiful 数。</p><p>一个正整数是个 $k$-beautiful 数，当且仅当其无前导零的十进制数值表示中，不同的数字不超过 $k$ 个。</p><p>数据满足 $1 \leq t \leq 10^4$，$1 \leq n \leq 10^9$，$1 \leq k \leq 2$。</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/08/1560F1/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/04/09/1380D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/04/09/1380D/" class="post-title-link" itemprop="url">Berserk And Fireball</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-07 17:41:48" itemprop="dateCreated datePublished" datetime="2024-06-07T17:41:48+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/codeforces/practice/" itemprop="url" rel="index"><span itemprop="name">practice</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>有 $n$ 个战士站成一排，第 $i$ 个战士的战力是 $a_i$。所有战士的战力都是两两不同的。</p><p>你可以使用两种类型的咒语：</p><ol><li><p>火球术：你可以消耗 $x$ 点法力值来干掉连续的 $k$ 个战士（你必须干掉正好 $k$ 个，而不能干掉 $\le k$ 个）。</p></li><li><p>狂暴术：你可以消耗 $y$ 点法力值，选择站在一起的两个战士使他们展开决斗，战力较弱的那个战士将会被干掉。</p></li></ol><p>我们来举个例子，假设有 $7$ 个战士，其战力分别为 $[2,3,7,8,11,5,4]$，且此时的$k=3$（$k$ 的定义详见火球术）。如果你对战力为 $8$ 与 $11$ 的两个战士施加狂暴术，剩下战士的战力将会变成 $[2,3,7,11,5,4]$（战力为 $8$ 的战士在决斗中战死）。然后如果我们对战力为 $[7,11,5]$ 的战士施加火球术，剩下战士的战力将会变成 $[2,3,4]$。</p><p>你想要组建一支军队，因此你想要将所有战士战力的序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$。试计算你所需的最少法力值。</p><p>输入格式</p><p>第一行两个整数 $n,m (1\le n,m\le 2\cdot 10^5)$ ——序列 $a$ 的长度和序列 $b$ 的长度。</p><p>第二行三个整数 $x,k,y (1\le x,y\le 10^9,1\le k\le n)$ ——火球术消耗的法力值，火球术的范围和狂暴术消耗的法力值。</p><p>第三行 $n$ 个整数 $a_1,a_2,…,a_n (1\le a_i\le n)$。保证 $a_i$ 是两两不同的。</p><p>第四行 $m$ 个整数 $b_1,b_2,…,b_m(1\le b_i\le n)$。保证 $b_i$ 是两两不同的。</p><p>输出格式</p><p>一行一个整数，即将序列从 $a_1,a_2,\cdots,a_n$ 变为 $b_1,b_2,\cdots,b_m$所需的最少法力值。如果无法完成变换，则输出$-1$。</p></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/04/09/1380D/">
                 阅读全文 &raquo;
               </a>
             </div>
