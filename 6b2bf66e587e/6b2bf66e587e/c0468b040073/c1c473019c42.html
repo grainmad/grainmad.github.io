@@ -1,5 +1,5 @@
 <hr>
-<p>title: “KD树”<br>date: 2024-07-01 14:11:44<br>updated: 2024-07-01 14:11:44<br>tag: [“notion”, “Algorithm”, “区间操作”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>KD树</li></ul>‘</p>
+<p>title: “KD树”<br>date: 2024-07-01 14:11:44<br>updated: 2024-07-02 14:34:54<br>tag: [“notion”, “Algorithm”, “区间操作”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>KD树</li></ul>‘</p>
 <hr>
 <h1 id="KD树"><a href="#KD树" class="headerlink" title="KD树"></a>KD树</h1><h1 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h1><ul>
 <li>静态构建<pre><code class="cpp">
@@ -592,7 +592,7 @@ struct KDT {
         return m;
     }
 
-    double ask_sum(int p, vector&lt;T&gt; L, vector&lt;T&gt; U) {
+    T ask_sum(int p, vector&lt;T&gt; L, vector&lt;T&gt; U) {
         if (!p) return 0;
         for (int i=0; i&lt;K; i++) 
             if (U[i]&lt;t[p].L[i] || L[i]&gt;t[p].U[i]) return 0;
@@ -604,14 +604,14 @@ struct KDT {
         }
         if (ff) return t[p].sum;
         
-        double res=t[p].val;
+        T res=t[p].val;
         for (int i=0; i&lt;K; i++) {
             if (L[i] &lt;= t[p].v[i] &amp;&amp; t[p].v[i] &lt;= U[i]) continue;
             res = 0;
         }
         return ask_sum(lc, L, U)+ask_sum(rc, L, U)+res;
     }
-    double ask_sum(vector&lt;T&gt; L, vector&lt;T&gt; U) {
+    T ask_sum(vector&lt;T&gt; L, vector&lt;T&gt; U) {
         return ask_sum(root, L, U);
     }
 };
