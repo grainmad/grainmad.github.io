@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">563</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">564</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">563</span>
+          <span class="site-state-item-count">564</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,98 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%87%8D%E6%8E%92%E6%B0%B4%E6%9E%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%87%8D%E6%8E%92%E6%B0%B4%E6%9E%9C/" class="post-title-link" itemprop="url">重排水果</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rearranging-fruits/">6345. 重排水果</a></p><hr /><p>你有两个果篮，每个果篮中有 <code>n</code> 个水果。给你两个下标从 <strong>0</strong> 开始的整数数组 <code>basket1</code> 和 <code>basket2</code> ，用以表示两个果篮中每个水果的成本。</p><p>你希望两个果篮相等。为此，可以根据需要多次执行下述操作：</p><ul><li><p>选中两个下标 <code>i</code> 和 <code>j</code> ，并交换 <code>basket1</code> 中的第 <code>i</code> 个水果和 <code>basket2</code> 中的第 <code>j</code> 个水果。</p></li><li><p>交换的成本是 <code>min(basket1i,basket2j)</code> 。</p></li></ul><p>根据果篮中水果的成本进行排序，如果排序后结果完全相同，则认为两个果篮相等。</p><p>返回使两个果篮相等的最小交换成本，如果无法使两个果篮相等，则返回 <code>-1</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：basket1 = [4,2,2,2], basket2 = [1,4,1,2]</p><p>输出：1</p><p>解释：交换 basket1 中下标为 1 的水果和 basket2 中下标为 0 的水果，交换的成本为 1 。此时，basket1 = [4,1,2,2] 且 basket2 = [2,4,1,2] 。重排两个数组，发现二者相等。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：basket1 = [2,3,4,1], basket2 = [3,2,5,1]</p><p>输出：-1</p><p>解释：可以证明无法使两个果篮相等。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>basket1.length == bakste2.length</code></p></li><li><p><code>1 &amp;lt;= basket1.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= basket1i,basket2i &amp;lt;= 10^9</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%87%8D%E6%8E%92%E6%B0%B4%E6%9E%9C/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -732,98 +824,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E5%8F%AF%E4%BB%A5%E5%88%B0%E8%BE%BE%E6%AF%8F%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%91%E8%BE%B9%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E6%94%B6%E9%9B%86%E6%89%80%E6%9C%89%E9%87%91%E5%B8%81%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E7%A7%AF%E5%88%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E6%94%B6%E9%9B%86%E6%89%80%E6%9C%89%E9%87%91%E5%B8%81%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E7%A7%AF%E5%88%86/" class="post-title-link" itemprop="url">收集所有金币可获得的最大积分</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-10-30 16:25:35" itemprop="dateCreated datePublished" datetime="2023-10-30T16:25:35+00:00">2023-10-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-points-after-collecting-coins-from-all-nodes/description/">100108. 收集所有金币可获得的最大积分</a></p><hr /><p>节点 <code>0</code> 处现有一棵由 <code>n</code> 个节点组成的无向树，节点编号从 <code>0</code> 到 <code>n - 1</code> 。给你一个长度为 <code>n - 1</code> 的二维 <strong>整数</strong> 数组 <code>edges</code> ，其中 <code>edges[i] = [ai, bi]</code> 表示在树上的节点 <code>ai</code> 和 <code>bi</code> 之间存在一条边。另给你一个下标从 <strong>0</strong> 开始、长度为 <code>n</code> 的数组 <code>coins</code> 和一个整数 <code>k</code> ，其中 <code>coins[i]</code> 表示节点 <code>i</code> 处的金币数量。</p><p>从根节点开始，你必须收集所有金币。要想收集节点上的金币，必须先收集该节点的祖先节点上的金币。</p><p>节点 <code>i</code> 上的金币可以用下述方法之一进行收集：</p><ul><li><p>收集所有金币，得到共计 <code>coins[i] - k</code> 点积分。如果 <code>coins[i] - k</code> 是负数，你将会失去 <code>abs(coins[i] - k)</code> 点积分。</p></li><li><p>收集所有金币，得到共计 <code>floor(coins[i] / 2)</code> 点积分。如果采用这种方法，节点 <code>i</code> 子树中所有节点 <code>j</code> 的金币数 <code>coins[j]</code> 将会减少至 <code>floor(coins[j] / 2)</code> 。</p></li></ul><p>返回收集 <strong>所有</strong> 树节点的金币之后可以获得的最大积分。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/09/18/ex1-copy.png" /></p><p>```txt</p><p>输入：edges = [[0,1],[1,2],[2,3]], coins = [10,10,3,3], k = 5</p><p>输出：11                        </p><p>解释：</p><p>使用第一种方法收集节点 0 上的所有金币。总积分 = 10 - 5 = 5 。</p><p>使用第一种方法收集节点 1 上的所有金币。总积分 = 5 + (10 - 5) = 10 。</p><p>使用第二种方法收集节点 2 上的所有金币。所以节点 3 上的金币将会变为 floor(3 / 2) = 1 ，总积分 = 10 + floor(3 / 2) = 11 。</p><p>使用第二种方法收集节点 3 上的所有金币。总积分 =  11 + floor(1 / 2) = 11.</p><p>可以证明收集所有节点上的金币能获得的最大积分是 11 。</p><p>```</p><p><strong>示例 2：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2023/09/18/ex2.png" /></strong></p><p>```txt</p><p>输入：edges = [[0,1],[0,2]], coins = [8,4,4], k = 0</p><p>输出：16</p><p>解释：</p><p>使用第一种方法收集所有节点上的金币，因此，总积分 = (8 - 0) + (4 - 0) + (4 - 0) = 16 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == coins.length</code></p></li><li><p><code>2 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>0 &amp;lt;= coins[i] &amp;lt;= 10^4</code></p></li><li><p><code>edges.length == n - 1</code></p></li><li><p><code>0 &amp;lt;= edges[i][0], edges[i][1] &amp;lt; n</code></p></li><li><p><code>0 &amp;lt;= k &amp;lt;= 10^4</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E6%94%B6%E9%9B%86%E6%89%80%E6%9C%89%E9%87%91%E5%B8%81%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E7%A7%AF%E5%88%86/">
                 阅读全文 &raquo;
               </a>
             </div>
