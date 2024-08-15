@@ -210,6 +210,190 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%A0%87%E8%AE%B0%E6%89%80%E6%9C%89%E4%B8%8B%E6%A0%87%E7%9A%84%E6%9C%80%E6%97%A9%E7%A7%92%E6%95%B0%20II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%A0%87%E8%AE%B0%E6%89%80%E6%9C%89%E4%B8%8B%E6%A0%87%E7%9A%84%E6%9C%80%E6%97%A9%E7%A7%92%E6%95%B0%20II/" class="post-title-link" itemprop="url">标记所有下标的最早秒数 II</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-02-28 21:43:34" itemprop="dateCreated datePublished" datetime="2024-02-28T21:43:34+00:00">2024-02-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/earliest-second-to-mark-indices-ii/description/">3049. 标记所有下标的最早秒数 II</a></p><hr /><p>给你两个下标从 <strong>1</strong> 开始的整数数组 <code>nums</code> 和 <code>changeIndices</code> ，数组的长度分别为 <code>n</code> 和 <code>m</code> 。</p><p>一开始，<code>nums</code> 中所有下标都是未标记的，你的任务是标记 <code>nums</code> 中 <strong>所有</strong> 下标。</p><p>从第 <code>1</code> 秒到第 <code>m</code> 秒（<strong>包括</strong> 第 <code>m</code> 秒），对于每一秒 <code>s</code> ，你可以执行以下操作 <strong>之一</strong> ：</p><ul><li><p>选择范围 <code>[1, n]</code> 中的一个下标 <code>i</code> ，并且将 <code>nums[i]</code> <strong>减少</strong> <code>1</code> 。</p></li><li><p>将 <code>nums[changeIndices[s]]</code> 设置成任意的 <strong>非负</strong> 整数。</p></li><li><p>选择范围 <code>[1, n]</code> 中的一个下标 <code>i</code> ， 满足 <code>nums[i]</code> <strong>等于</strong> <code>0</code>, 并 <strong>标记</strong> 下标 <code>i</code> 。</p></li><li><p>什么也不做。</p></li></ul><p>请你返回范围 <code>[1, m]</code> 中的一个整数，表示最优操作下，标记 <code>nums</code> 中 <strong>所有</strong> 下标的 <strong>最早秒数</strong> ，如果无法标记所有下标，返回 <code>-1</code> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [3,2,3], changeIndices = [1,3,2,2,2,2,3]</p><p>输出：6</p><p>解释：这个例子中，我们总共有 7 秒。按照以下操作标记所有下标：</p><p>第 1 秒：将 nums[changeIndices[1]] 变为 0 。nums 变为 [0,2,3] 。</p><p>第 2 秒：将 nums[changeIndices[2]] 变为 0 。nums 变为 [0,2,0] 。</p><p>第 3 秒：将 nums[changeIndices[3]] 变为 0 。nums 变为 [0,0,0] 。</p><p>第 4 秒：标记下标 1 ，因为 nums[1] 等于 0 。</p><p>第 5 秒：标记下标 2 ，因为 nums[2] 等于 0 。</p><p>第 6 秒：标记下标 3 ，因为 nums[3] 等于 0 。</p><p>现在所有下标已被标记。</p><p>最早可以在第 6 秒标记所有下标。</p><p>所以答案是 6 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [0,0,1,2], changeIndices = [1,2,1,2,1,2,1,2]</p><p>输出：7</p><p>解释：这个例子中，我们总共有 8 秒。按照以下操作标记所有下标：</p><p>第 1 秒：标记下标 1 ，因为 nums[1] 等于 0 。</p><p>第 2 秒：标记下标 2 ，因为 nums[2] 等于 0 。</p><p>第 3 秒：将 nums[4] 减少 1 。nums 变为 [0,0,1,1] 。</p><p>第 4 秒：将 nums[4] 减少 1 。nums 变为 [0,0,1,0] 。</p><p>第 5 秒：将 nums[3] 减少 1 。nums 变为 [0,0,0,0] 。</p><p>第 6 秒：标记下标 3 ，因为 nums[3] 等于 0 。</p><p>第 7 秒：标记下标 4 ，因为 nums[4] 等于 0 。</p><p>现在所有下标已被标记。</p><p>最早可以在第 7 秒标记所有下标。</p><p>所以答案是 7 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [1,2,3], changeIndices = [1,2,3]</p><p>输出：-1</p><p>解释：这个例子中，无法标记所有下标，因为我们没有足够的秒数。</p><p>所以答案是 -1 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n == nums.length &amp;lt;= 5000</code></p></li><li><p><code>0 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= m == changeIndices.length &amp;lt;= 5000</code></p></li><li><p><code>1 &amp;lt;= changeIndices[i] &amp;lt;= n</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%A0%87%E8%AE%B0%E6%89%80%E6%9C%89%E4%B8%8B%E6%A0%87%E7%9A%84%E6%9C%80%E6%97%A9%E7%A7%92%E6%95%B0%20II/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3/" class="post-title-link" itemprop="url">水位上升的泳池中游泳</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/swim-in-rising-water/">778. 水位上升的泳池中游泳</a></p><hr /><p>在一个 <code>n x n</code> 的整数矩阵 <code>grid</code> 中，每一个方格的值 <code>grid[i][j]</code> 表示位置 <code>(i, j)</code> 的平台高度。</p><p>当开始下雨时，在时间为 <code>t</code> 时，水池中的水位为 <code>t</code> 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。</p><p>你从坐标方格的左上平台 <code>(0，0)</code> 出发。返回 <em>你到达坐标方格的右下平台 <code>(n-1, n-1)</code> 所需的最少时间 。</em></p><p><strong>示例 1:</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/06/29/swim1-grid.jpg" /></p><p>```txt</p><p>输入: grid = [[0,2],[1,3]]</p><p>输出: 3</p><p>解释:</p><p>时间为0时，你位于坐标方格的位置为 (0, 0)。</p><p>此时你不能游向任意方向，因为四个相邻方向平台的高度都大于当前时间为 0 时的水位。</p><p>等时间到达 3 时，你才可以游向平台 (1, 1). 因为此时的水位是 3，坐标方格中的平台没有比水位 3 更高的，所以你可以游向坐标方格中的任意位置</p><p>```</p><p><strong>示例 2:</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg" /></p><p>```txt</p><p>输入: grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]</p><p>输出: 16</p><p>解释: 最终的路线用加粗进行了标记。</p><p>我们必须等到时间为 16，此时才能保证平台 (0, 0) 和 (4, 4) 是连通的</p><p>```</p><p><strong>提示:</strong></p><ul><li><p><code>n == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 50</code></p></li><li><p><code>0 &amp;lt;= grid[i][j] &amp;lt; n^2</code></p></li><li><p><code>grid[i][j]</code> 中每个值 <strong>均无重复</strong></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%B1%82%E5%87%BA%E6%9C%80%E5%A4%9A%E6%A0%87%E8%AE%B0%E4%B8%8B%E6%A0%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -640,190 +824,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E8%A2%8B%E5%AD%90%E9%87%8C%E6%9C%80%E5%B0%91%E6%95%B0%E7%9B%AE%E7%9A%84%E7%90%83/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E8%A3%85%E5%8C%85%E8%A3%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%A9%BA%E9%97%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E8%A3%85%E5%8C%85%E8%A3%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%A9%BA%E9%97%B4/" class="post-title-link" itemprop="url">装包裹的最小浪费空间</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-space-wasted-from-packaging/">1889. 装包裹的最小浪费空间</a></p><hr /><p>给你 <code>n</code> 个包裹，你需要把它们装在箱子里，<strong>每个箱子装一个包裹</strong>。总共有 <code>m</code> 个供应商提供 <strong>不同尺寸</strong> 的箱子（每个规格都有无数个箱子）。如果一个包裹的尺寸 <strong>小于等于</strong> 一个箱子的尺寸，那么这个包裹就可以放入这个箱子之中。</p><p>包裹的尺寸用一个整数数组 <code>packages</code> 表示，其中 <code>packages[i]</code> 是第 <code>i</code> 个包裹的尺寸。供应商用二维数组 <code>boxes</code> 表示，其中 <code>boxes[j]</code> 是第 <code>j</code> 个供应商提供的所有箱子尺寸的数组。</p><p>你想要选择 <strong>一个供应商</strong> 并只使用该供应商提供的箱子，使得 <strong>总浪费空间最小</strong> 。对于每个装了包裹的箱子，我们定义 <strong>浪费的</strong> 空间等于 <code>箱子的尺寸 - 包裹的尺寸</code> 。<strong>总浪费空间</strong> 为 <strong>所有</strong> 箱子中浪费空间的总和。</p><ul><li>比方说，如果你想要用尺寸数组为 <code>[4,8]</code> 的箱子装下尺寸为 <code>[2,3,5]</code> 的包裹，你可以将尺寸为 <code>2</code> 和 <code>3</code> 的两个包裹装入两个尺寸为 <code>4</code> 的箱子中，同时把尺寸为 <code>5</code> 的包裹装入尺寸为 <code>8</code> 的箱子中。总浪费空间为 <code>(4-2) + (4-3) + (8-5) = 6</code> 。</li></ul><p>请你选择 <strong>最优</strong> 箱子供应商，使得 <strong>总浪费空间最小</strong> 。如果 <strong>无法</strong> 将所有包裹放入箱子中，请你返回 <code>-1</code> 。由于答案可能会 <strong>很大</strong> ，请返回它对 <code>10^9 + 7</code> <strong>取余</strong> 的结果。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：packages = [2,3,5], boxes = [[4,8],[2,8]]</p><p>输出：6</p><p>解释：选择第一个供应商最优，用两个尺寸为 4 的箱子和一个尺寸为 8 的箱子。</p><p>总浪费空间为 (4-2) + (4-3) + (8-5) = 6 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：packages = [2,3,5], boxes = [[1,4],[2,3],[3,4]]</p><p>输出：-1</p><p>解释：没有箱子能装下尺寸为 5 的包裹。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：packages = [3,5,8,10,11,12], boxes = [[12],[11,9],[10,5,14]]</p><p>输出：9</p><p>解释：选择第三个供应商最优，用两个尺寸为 5 的箱子，两个尺寸为 10 的箱子和两个尺寸为 14 的箱子。</p><p>总浪费空间为 (5-3) + (5-5) + (10-8) + (10-10) + (14-11) + (14-12) = 9 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == packages.length</code></p></li><li><p><code>m == boxes.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= m &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= packages[i] &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= boxes[j].length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= boxes[j][k] &amp;lt;= 10^5</code></p></li><li><p><code>sum(boxes[j].length) &amp;lt;= 10^5</code></p></li><li><p><code>boxes[j]</code> 中的元素 <strong>互不相同</strong> 。</p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E8%A3%85%E5%8C%85%E8%A3%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%A9%BA%E9%97%B4/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E9%80%83%E7%A6%BB%E7%81%AB%E7%81%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 代码如诗">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E9%80%83%E7%A6%BB%E7%81%AB%E7%81%BE/" class="post-title-link" itemprop="url">逃离火灾</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/escape-the-spreading-fire/">2258. 逃离火灾</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始大小为 <code>m x n</code> 的二维整数数组 <code>grid</code> ，它表示一个网格图。每个格子为下面 3 个值之一：</p><ul><li><p><code>0</code> 表示草地。</p></li><li><p><code>1</code> 表示着火的格子。</p></li><li><p><code>2</code> 表示一座墙，你跟火都不能通过这个格子。</p></li></ul><p>一开始你在最左上角的格子 <code>(0, 0)</code> ，你想要到达最右下角的安全屋格子 <code>(m - 1, n - 1)</code> 。每一分钟，你可以移动到 <strong>相邻</strong> 的草地格子。每次你移动 <strong>之后</strong> ，着火的格子会扩散到所有不是墙的 <strong>相邻</strong> 格子。</p><p>请你返回你在初始位置可以停留的 <strong>最多</strong> 分钟数，且停留完这段时间后你还能安全到达安全屋。如果无法实现，请你返回 <code>-1</code> 。如果不管你在初始位置停留多久，你 <strong>总是</strong> 能到达安全屋，请你返回 <code>10^9</code> 。</p><p>注意，如果你到达安全屋后，火马上到了安全屋，这视为你能够安全到达安全屋。</p><p>如果两个格子有共同边，那么它们为 <strong>相邻</strong> 格子。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/03/10/ex1new.jpg" /></p><p>```txt</p><p>输入：grid = [[0,2,0,0,0,0,0],[0,0,0,2,2,1,0],[0,2,0,0,1,2,0],[0,0,2,2,2,0,2],[0,0,0,0,0,0,0]]</p><p>输出：3</p><p>解释：上图展示了你在初始位置停留 3 分钟后的情形。</p><p>你仍然可以安全到达安全屋。</p><p>停留超过 3 分钟会让你无法安全到达安全屋。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/03/10/ex2new2.jpg" /></p><p>```txt</p><p>输入：grid = [[0,0,0,0],[0,1,2,0],[0,2,0,0]]</p><p>输出：-1</p><p>解释：上图展示了你马上开始朝安全屋移动的情形。</p><p>火会蔓延到你可以移动的所有格子，所以无法安全到达安全屋。</p><p>所以返回 -1 。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/03/10/ex3new.jpg" /></p><p>```txt</p><p>输入：grid = [[0,0,0],[2,2,0],[1,2,0]]</p><p>输出：1000000000</p><p>解释：上图展示了初始网格图。</p><p>注意，由于火被墙围了起来，所以无论如何你都能安全到达安全屋。</p><p>所以返回 109 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>2 &amp;lt;= m, n &amp;lt;= 300</code></p></li><li><p><code>4 &amp;lt;= m * n &amp;lt;= 2 * 10^4</code></p></li><li><p><code>grid[i][j]</code> 是 <code>0</code> ，<code>1</code> 或者 <code>2</code> 。</p></li><li><p><code>grid[0][0] == grid[m - 1][n - 1] == 0</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E9%80%83%E7%A6%BB%E7%81%AB%E7%81%BE/">
                 阅读全文 &raquo;
               </a>
             </div>

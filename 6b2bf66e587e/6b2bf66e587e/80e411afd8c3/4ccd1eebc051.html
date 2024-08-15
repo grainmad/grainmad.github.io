@@ -1,5 +1,5 @@
 <hr>
-<p>title: “数位dp模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “动态规划”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>数位dp模板</li></ul>‘</p>
+<p>title: “数位dp模板”<br>date: 2024-06-03 10:42:02<br>updated: 2024-08-15 17:56:36<br>tag: [“notion”, “Algorithm”, “动态规划”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>数位dp模板</li></ul>‘</p>
 <hr>
 <h1 id="数位dp模板"><a href="#数位dp模板" class="headerlink" title="数位dp模板"></a>数位dp模板</h1><pre><code class="cpp">// leetcode 2376. 统计特殊整数
 //大范围内每一位都不同的数字个数
@@ -42,7 +42,7 @@ int countSpecialNumbers(int n) {
     //zero=1，前导零存在后续的前导零才可以存在
 }
 </code></pre>
-<p>类似题</p>
+<p>数位dp类似题</p>
 <p><a href="https://leetcode.cn/problems/number-of-digit-one/"><strong>233. 数字 1 的个数</strong></a></p>
 <p><a href="https://leetcode.cn/problems/numbers-with-repeated-digits/"><strong>1012. 至少有 1 位重复的数字</strong></a></p>
 <p><a href="https://leetcode.cn/problems/number-of-2s-in-range-lcci/"><strong>面试题 17.06. 2出现的次数</strong></a></p>
@@ -97,3 +97,23 @@ public:
 </code></pre>
 </li>
 </ul>
+<h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><p>这是一种记忆化搜索的新思路——构造合法的前缀，维护后缀最优/计数值。</p>
+<p>类似的题<a href="https://leetcode.cn/problems/minimum-sum-of-values-by-dividing-array/"><strong>3117. 划分数组得到最小的值之和</strong></a></p>
+<p>$f_{p,c,a}$含义为前p个数已经分割了c个组，且最后一组的与和为a，其可能构造的后缀中每个组的最后一个数的和</p>
+<p>我们的目标就是求最大的后缀$f_{0,0,-1}$</p>
+<pre><code class="python">class Solution:
+    def minimumValueSum(self, nums: List[int], andValues: List[int]) -&gt; int:
+        n, m = len(nums), len(andValues)
+        msk = (1&lt;&lt;20)-1
+        @cache
+        def dfs(p, c, a):
+            if p == n or c == m:
+                return 0 if p == n and c == m else inf
+            if a&amp;nums[p] &lt; andValues[c] : return inf
+            res = dfs(p+1, c, a&amp;nums[p])
+            if a&amp;nums[p] == andValues[c]:
+                res = min(res, dfs(p+1, c+1, msk)+nums[p])
+            return res
+        ans = dfs(0, 0, msk)
+        return ans if ans != inf else -1
+</code></pre>
