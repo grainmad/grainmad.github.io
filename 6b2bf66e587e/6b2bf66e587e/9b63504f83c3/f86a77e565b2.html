@@ -1,0 +1,38 @@
+<hr>
+<p>title: “有向图游戏SG函数”<br>date: 2024-08-23 07:29:18<br>updated: 2024-08-23 07:29:18<br>tag: [“notion”, “Algorithm”, “数学”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>有向图游戏SG函数</li></ul>‘</p>
+<hr>
+<h1 id="有向图游戏SG函数"><a href="#有向图游戏SG函数" class="headerlink" title="有向图游戏SG函数"></a>有向图游戏SG函数</h1><p>有向图游戏是一个经典的博弈游戏——实际上，大部分的<strong>公平组合游戏</strong>都可以转换为有向图游戏。</p>
+<p>在一个有向无环图中，只有一个起点，上面有一个棋子，两个玩家轮流沿着有向边推动棋子，不能走的玩家判负。</p>
+<p>定义 $\operatorname{mex}$ 函数的值为不属于集合 S 中的最小非负整数，即：</p>
+<p>$\operatorname{mex}(S)=\min{x} \quad (x \notin S, x \in N)$<br>例如 $\operatorname{mex}({0, 2, 4})=1$，$\operatorname{mex}({1, 2})=0$。</p>
+<p>对于状态 x 和它的所有 k 个后继状态 $y_1, y_2, \ldots, y_k$，定义 $\operatorname{SG}$ 函数：</p>
+<p>$\operatorname{SG}(x)=\operatorname{mex}{\operatorname{SG}(y_1), \operatorname{SG}(y_2), \ldots, \operatorname{SG}(y_k)}$<br>而对于由 n 个有向图游戏组成的组合游戏，设它们的起点分别为 $s_1, s_2, \ldots, s_n$，则有定理：当且仅当 $\operatorname{SG}(s_1) \oplus \operatorname{SG}(s_2) \oplus \ldots \oplus \operatorname{SG}(s_n) \neq 0$ 时，这个游戏是先手必胜的。同时，这是这一个组合游戏的游戏状态 x 的 SG 值。</p>
+<p>这一定理被称作 Sprague–Grundy 定理(Sprague–Grundy Theorem), 简称 SG 定理。</p>
+<p>必败态可达态<strong>全为</strong>必胜态</p>
+<p>必胜态可达态<strong>包含</strong>必败态</p>
+<h2 id="nim游戏"><a href="#nim游戏" class="headerlink" title="nim游戏"></a>nim游戏</h2><p>$n$ 堆物品，每堆有 $a_i$ 个，两个玩家轮流取走任意一堆的任意个物品，但不能不取。</p>
+<p>取走最后一个物品的人获胜。</p>
+<p>如果现在有 n=3 堆物品，而每堆分别有 2, 5, 4 个。转化为有向图游戏</p>
+<pre><code class="mermaid">graph TD
+
+2z((2)) --&gt; 1z((1)) &amp; 0z((0))
+1z --&gt; 0z
+
+4y[4] --&gt; 3y[3] &amp; 2y[2] &amp; 1y[1] &amp; 0y[0]
+3y --&gt; 2y &amp; 1y &amp; 0y
+2y --&gt; 1y &amp; 0y
+1y --&gt; 0y
+
+5x[5] --&gt; 4x[4] &amp; 3x[3] &amp; 2x[2] &amp; 1x[1] &amp; 0x[0]
+4x --&gt; 3x &amp; 2x &amp; 1x &amp; 0x
+3x --&gt; 2x &amp; 1x &amp; 0x
+2x --&gt; 1x &amp; 0x
+1x --&gt; 0x
+</code></pre>
+<p>$0$为必败态$SG(0)=0$</p>
+<p>$SG(1) = MEX{SG(0)} = 1$</p>
+<p>$SG(2) = MEX{SG(0), SG(1)} = 2$</p>
+<p>$SG(3) = MEX{SG(0), SG(1), SG(2)} = 3$</p>
+<p>$SG(4) = MEX{SG(0), SG(1), SG(2), SG(3)} = 4$</p>
+<p>$SG(5) = MEX{SG(0), SG(1), SG(2), SG(3), SG(4)} = 5$</p>
+<p>当前态$SG(2)\oplus SG(4) \oplus SG(5)=3\ne 0$，先手必胜。</p>
