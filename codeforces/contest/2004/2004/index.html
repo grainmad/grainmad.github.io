@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/mona-loading-dimmed-static-099e873d1b5c.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"grainmad.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="A. Closest PointB. Game with DoorsC. Splitting ItemsD. Colored PortalsE. Not a Nim Problem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Educational Codeforces Round 169 (Rated for Div. 2)">
+<meta property="og:url" content="https://grainmad.github.io/codeforces/contest/2004/2004/index.html">
+<meta property="og:site_name" content="代码如诗">
+<meta property="og:description" content="A. Closest PointB. Game with DoorsC. Splitting ItemsD. Colored PortalsE. Not a Nim Problem">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-25T22:02:09.000Z">
+<meta property="article:modified_time" content="2024-08-25T22:02:09.000Z">
+<meta property="article:author" content="GrainMad">
+<meta property="article:tag" content="contest">
+<meta property="article:tag" content="codeforces">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://grainmad.github.io/codeforces/contest/2004/2004/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/codeforces/contest/2004/2004/","path":"codeforces/contest/2004/2004/","title":"Educational Codeforces Round 169 (Rated for Div. 2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Educational Codeforces Round 169 (Rated for Div. 2) | 代码如诗</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">代码如诗</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">86</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">573</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Educational-Codeforces-Round-169-Rated-for-Div-2"><span class="nav-number">1.</span> <span class="nav-text">Educational Codeforces Round 169 (Rated for Div. 2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Closest-Point"><span class="nav-number">1.1.</span> <span class="nav-text">A. Closest Point</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Game-with-Doors"><span class="nav-number">1.2.</span> <span class="nav-text">B. Game with Doors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Splitting-Items"><span class="nav-number">1.3.</span> <span class="nav-text">C. Splitting Items</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Colored-Portals"><span class="nav-number">1.4.</span> <span class="nav-text">D. Colored Portals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="nav-number">1.4.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Not-a-Nim-Problem"><span class="nav-number">1.5.</span> <span class="nav-text">E. Not a Nim Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-4"><span class="nav-number">1.5.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-4"><span class="nav-number">1.5.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-4"><span class="nav-number">1.5.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GrainMad"
+      src="/images/mona-loading-dimmed-5da225352fd7.gif">
+  <p class="site-author-name" itemprop="name">GrainMad</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">573</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/grainmad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;grainmad" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/grainmad" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/contest/2004/2004/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Educational Codeforces Round 169 (Rated for Div. 2) | 代码如诗">
+      <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/A">A. Closest Point</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/B">B. Game with Doors</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/C">C. Splitting Items</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/D">D. Colored Portals</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/E">E. Not a Nim Problem</a></p></ul>">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Educational Codeforces Round 169 (Rated for Div. 2)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-25 22:02:09" itemprop="dateCreated datePublished" datetime="2024-08-25T22:02:09+00:00">2024-08-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforces/contest/" itemprop="url" rel="index"><span itemprop="name">contest</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description"><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/A">A. Closest Point</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/B">B. Game with Doors</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/C">C. Splitting Items</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/D">D. Colored Portals</a></p><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/E">E. Not a Nim Problem</a></p></ul></div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Educational-Codeforces-Round-169-Rated-for-Div-2"><a href="#Educational-Codeforces-Round-169-Rated-for-Div-2" class="headerlink" title="Educational Codeforces Round 169 (Rated for Div. 2)"></a>Educational Codeforces Round 169 (Rated for Div. 2)</h1><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problems">Complete problemset</a></p>
+<h2 id="A-Closest-Point"><a href="#A-Closest-Point" class="headerlink" title="A. Closest Point"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/A">A. Closest Point</a></h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>考虑直线上的一组点。两点 $i$ 和 $j$ 之间的距离为 $|i - j|$ 。</p>
+<p>如果集合中没有其他点 $k$ ，使得从 $j$ 到 $k$ 的距离<strong>严格小于从 $j$ 到 $i$ 的距离，那么集合中的点 $i$ 是</strong>最接近集合中的点 $j$ 的。换句话说，集合中所有其他点到 $j$ 的距离都大于或等于 $|i - j|$ 。</p>
+<p>例如，考虑一组点 ${1, 3, 5, 8}$ ：</p>
+<ul>
+<li>对于点 $1$ ，最近的点是 $3$ （其他点的距离大于 $|1-3| = 2$ ）；</li>
+<li>对于点 $3$ ，有两个最近点： $1$ 和 $5$ ；</li>
+<li>对于点 $5$ ，最近的点是 $3$ （但不是 $8$ ，因为它的距离大于 $|3-5|$ ）；</li>
+<li>对于点 $8$ ，最近的点是 $5$ 。</li>
+</ul>
+<p>给你一组点。你必须在这个集合中加入一个<strong>整数</strong>的点，使它与集合中现有的每一个点<strong>不同，并且</strong>它成为与集合中每一个点的最近的点。这可能吗？</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>超过两个点，或两个点相邻。就不行。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="comment">// #define SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">random_device seed;</span><br><span class="line"><span class="function">ranlux48 <span class="title">engine</span><span class="params">(seed())</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">random</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    uniform_int_distribution&lt;&gt; <span class="built_in">distrib</span>(l, r);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">distrib</span>(engine);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> pair&lt;t,u&gt;&amp; p) &#123;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;[&#x27;</span>&lt;&lt;p.first&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;p.second&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> vector&lt;t&gt;&amp; v) &#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;[&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> e:v) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os &lt;&lt; e; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> map&lt;t,u&gt;&amp; mp)&#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;&#123;&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [x,y]:mp) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os&lt;&lt;x&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;y; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n; </span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i:a) cin &gt;&gt; i;</span><br><span class="line">    <span class="built_in">sort</span>(a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">if</span> (n&gt;<span class="number">2</span> || n==<span class="number">2</span> &amp;&amp; a[<span class="number">0</span>] + <span class="number">1</span> == a[<span class="number">1</span>]) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="B-Game-with-Doors"><a href="#B-Game-with-Doors" class="headerlink" title="B. Game with Doors"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/B">B. Game with Doors</a></h2><h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p>有 $100$ 个房间排成一排，它们之间有 $99$ 扇门； $i$ 扇门连接着 $i$ 和 $i+1$ 两个房间。每扇门既可以上锁，也可以不上锁。最初，所有的门都没有上锁。</p>
+<p>如果房间 $y$ 和房间 $x$ 之间的所有门都没有上锁，我们就说房间 $x$ 可以从房间 $y$ 到达。</p>
+<p>你知道吗？</p>
+<ul>
+<li>爱丽丝在 $[l, r]$ 段的某个房间里；</li>
+<li>鲍勃位于线段 $[L, R]$ 中的某个房间；</li>
+<li>爱丽丝和鲍勃在不同的房间。</li>
+</ul>
+<p>但是，你不知道他们具体在哪个房间。</p>
+<p>你不想让爱丽丝和鲍勃接触到对方，所以你要锁上一些门来防止他们接触到对方。无论爱丽丝和鲍勃在给定段落中的起始位置如何，要使他们不能相遇，你必须锁上的门的最小数目是多少？</p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>没有公共部分，则只需要关一扇门。</p>
+<p>否则求出公共部分，公共部分左侧还有房间则还需要关一扇门，右侧还有房间也需要多关一扇门。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="comment">// #define SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">random_device seed;</span><br><span class="line"><span class="function">ranlux48 <span class="title">engine</span><span class="params">(seed())</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">random</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    uniform_int_distribution&lt;&gt; <span class="built_in">distrib</span>(l, r);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">distrib</span>(engine);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> pair&lt;t,u&gt;&amp; p) &#123;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;[&#x27;</span>&lt;&lt;p.first&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;p.second&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> vector&lt;t&gt;&amp; v) &#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;[&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> e:v) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os &lt;&lt; e; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> map&lt;t,u&gt;&amp; mp)&#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;&#123;&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [x,y]:mp) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os&lt;&lt;x&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;y; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> l1, r1, l2, r2;</span><br><span class="line">    cin &gt;&gt; l1 &gt;&gt; r1 &gt;&gt; l2 &gt;&gt; r2;</span><br><span class="line">    <span class="type">int</span> mxl = <span class="built_in">max</span>(l1, l2);</span><br><span class="line">    <span class="type">int</span> mnl = <span class="built_in">min</span>(l1, l2);</span><br><span class="line">    <span class="type">int</span> mxr = <span class="built_in">max</span>(r1, r2);</span><br><span class="line">    <span class="type">int</span> mnr = <span class="built_in">min</span>(r1, r2);</span><br><span class="line">    <span class="keyword">if</span> (mxl &gt; mnr) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;1\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="type">int</span> ans = mnr-mxl;</span><br><span class="line">        <span class="keyword">if</span> (mnl&lt;mxl) ans++;</span><br><span class="line">        <span class="keyword">if</span> (mxr&gt;mnr) ans++;</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-Splitting-Items"><a href="#C-Splitting-Items" class="headerlink" title="C. Splitting Items"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/C">C. Splitting Items</a></h2><h3 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h3><p>爱丽丝和鲍勃有 $n$ 件物品想平分，于是他们决定玩一个游戏。所有物品都有成本， $i$ 件物品的成本为 $a_i$ 。玩家从爱丽丝开始轮流移动。</p>
+<p>在每个回合中，玩家从剩下的物品中选择一个并拿走。游戏一直进行到没有物品为止。</p>
+<p>假设 $A$ 是爱丽丝拿走物品的总费用， $B$ 是鲍勃拿走物品的总费用。这样，游戏的得分就等于 $A - B$ 。</p>
+<p>爱丽丝希望分数最大化，而鲍勃希望分数最小化。爱丽丝和鲍勃都将以最优方式进行博弈。</p>
+<p>但游戏将在明天进行，所以今天鲍勃可以稍微修改一下成本。他可以将几个（可能一个也没有，也可能全部）项目的成本 $a_i$ 增加一个整数值（可能每个项目增加相同的值，也可能增加不同的值）。但是，增加的总金额必须小于或等于 $k$ 。否则，爱丽丝可能会怀疑。请注意，鲍勃<strong>不能减少</strong>成本，只能增加成本。</p>
+<p>鲍勃可能获得的最低分数是多少？</p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>所有物品价值降序排序。</p>
+<p>Alice拿的物品是奇数位置的，Bob是拿去的偶数位置的。</p>
+<p>Bob可以让偶数位置每个的值都尽量增长靠近前一个奇数位置的值，总增长值不超过k。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="comment">// #define SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">random_device seed;</span><br><span class="line"><span class="function">ranlux48 <span class="title">engine</span><span class="params">(seed())</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">random</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    uniform_int_distribution&lt;&gt; <span class="built_in">distrib</span>(l, r);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">distrib</span>(engine);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> pair&lt;t,u&gt;&amp; p) &#123;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;[&#x27;</span>&lt;&lt;p.first&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;p.second&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> vector&lt;t&gt;&amp; v) &#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;[&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> e:v) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os &lt;&lt; e; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> map&lt;t,u&gt;&amp; mp)&#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;&#123;&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [x,y]:mp) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os&lt;&lt;x&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;y; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll n, k;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="function">vector&lt;ll&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i:a) cin &gt;&gt; i;</span><br><span class="line">    <span class="built_in">sort</span>(a.<span class="built_in">rbegin</span>(), a.<span class="built_in">rend</span>());</span><br><span class="line">    <span class="function">vector&lt;ll&gt; <span class="title">s</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        s[i%<span class="number">2</span>]+=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    ll d = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;n; i+=<span class="number">2</span>) &#123;</span><br><span class="line">        d += a[i<span class="number">-1</span>] - a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    k = <span class="built_in">min</span>(d, k);</span><br><span class="line">    cout &lt;&lt; <span class="built_in">max</span>(<span class="number">0LL</span>, s[<span class="number">0</span>]-s[<span class="number">1</span>]-k) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="D-Colored-Portals"><a href="#D-Colored-Portals" class="headerlink" title="D. Colored Portals"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/D">D. Colored Portals</a></h2><h3 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h3><p>直线上有 $n$ 座城市。这些城市的编号从 $1$ 到 $n$ 。</p>
+<p>传送门用于在城市之间移动。传送门有 $4$ 种颜色：蓝色、绿色、红色和黄色。每个城市都有两种不同颜色的传送门。如果城市 $i$ 和城市 $j$ 的传送门颜色相同，你就可以在这两个城市之间移动（例如，你可以在 “蓝-红 “城市和 “蓝-绿 “城市之间移动）。这种移动需要花费 $|i-j|$ 枚金币。</p>
+<p>你的任务是回答 $q$ 个独立的问题：计算从城市 $x$ 移动到城市 $y$ 的最小花费。</p>
+<h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>4种颜色选两种，总共有6种方案。</p>
+<p>已有的城市可以分为6类。</p>
+<p>然后对于任意两个城市$i,j$，只要包含了同种颜色，实际上距离就是$|i-j|$。<br>如果不包含同种颜色，那么就可以枚举两个城市间颜色的组合，并在对应这类组合颜色的城市中，对于i和j，分别二分找出最近的两个点。枚举维护最小距离。</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="comment">// #define SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">random_device seed;</span><br><span class="line"><span class="function">ranlux48 <span class="title">engine</span><span class="params">(seed())</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">random</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    uniform_int_distribution&lt;&gt; <span class="built_in">distrib</span>(l, r);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">distrib</span>(engine);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> pair&lt;t,u&gt;&amp; p) &#123;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;[&#x27;</span>&lt;&lt;p.first&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;p.second&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> vector&lt;t&gt;&amp; v) &#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;[&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> e:v) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os &lt;&lt; e; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> map&lt;t,u&gt;&amp; mp)&#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;&#123;&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [x,y]:mp) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os&lt;&lt;x&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;y; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> ch[<span class="number">256</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, q;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; q;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">c</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="function">vector <span class="title">g</span><span class="params">(<span class="number">1</span>&lt;&lt;<span class="number">4</span>, vector&lt;<span class="type">int</span>&gt;())</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; s;</span><br><span class="line">        c[i] = <span class="number">1</span>&lt;&lt;ch[s[<span class="number">0</span>]] | <span class="number">1</span>&lt;&lt;ch[s[<span class="number">1</span>]];</span><br><span class="line">        g[c[i]].<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;q; i++) &#123;</span><br><span class="line">        <span class="type">int</span> x, y;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        x--; y--;</span><br><span class="line">        <span class="keyword">if</span> (c[x]&amp;c[y]) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="built_in">abs</span>(x-y) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> ans = INF;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) <span class="keyword">if</span> (c[x]&gt;&gt;i&amp;<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;<span class="number">4</span>; j++) <span class="keyword">if</span> (c[y]&gt;&gt;j&amp;<span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="type">int</span> m = <span class="number">1</span>&lt;&lt;i | <span class="number">1</span>&lt;&lt;j;</span><br><span class="line">                    <span class="keyword">auto</span>&amp; v = g[m];</span><br><span class="line">                    <span class="keyword">if</span> (v.<span class="built_in">empty</span>()) <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">auto</span> it1 = <span class="built_in">lower_bound</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), x);</span><br><span class="line">                    <span class="keyword">if</span> (it1 != v.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                        ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*it1-x)+<span class="built_in">abs</span>(*it1-y));</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (it1 != v.<span class="built_in">begin</span>()) &#123;</span><br><span class="line">                        --it1;</span><br><span class="line">                        ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*it1-x)+<span class="built_in">abs</span>(*it1-y));</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">auto</span> it2 = <span class="built_in">lower_bound</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), y);</span><br><span class="line">                    <span class="keyword">if</span> (it2 != v.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                        ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*it2-x)+<span class="built_in">abs</span>(*it2-y));</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (it2 != v.<span class="built_in">begin</span>()) &#123;</span><br><span class="line">                        --it2;</span><br><span class="line">                        ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*it2-x)+<span class="built_in">abs</span>(*it2-y));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            cout &lt;&lt; (ans == INF ? <span class="number">-1</span> : ans) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ch[<span class="string">&#x27;R&#x27;</span>] = <span class="number">0</span>;</span><br><span class="line">    ch[<span class="string">&#x27;G&#x27;</span>] = <span class="number">1</span>;</span><br><span class="line">    ch[<span class="string">&#x27;B&#x27;</span>] = <span class="number">2</span>;</span><br><span class="line">    ch[<span class="string">&#x27;Y&#x27;</span>] = <span class="number">3</span>;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="E-Not-a-Nim-Problem"><a href="#E-Not-a-Nim-Problem" class="headerlink" title="E. Not a Nim Problem"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/E">E. Not a Nim Problem</a></h2><h3 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h3><p>爱丽丝和鲍勃正在玩一个游戏。他们有 $n$ 堆棋子，其中 $i$ 堆最初包含 $a_i$ 颗棋子。</p>
+<p>在他们的回合中，玩家可以选择任意一堆石子，并从中取出任意正数的石子，但有一个条件：</p>
+<ul>
+<li>让当前石堆中的石子数量为 $x$ 。如果 $x$ 和 $y$ 的最大公约数不等于 $1$ ，则不允许从棋子堆中取走 $y$ 个棋子。</li>
+</ul>
+<p>无法下棋的一方输棋。两位棋手都以最佳状态下棋（也就是说，如果一位棋手的策略能让他获胜，那么无论对手如何回应，他都会获胜）。爱丽丝先下。</p>
+<p>确定谁会赢。</p>
+<h3 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h3><p>如果只有一堆石头，实际上可以转化为有向图游戏。求出其SG函数非0则必胜。</p>
+<p>如果有多堆石头，每一堆的SG函数值异或和非0则必胜。</p>
+<p>如何求SG函数。</p>
+<p>找规律发现，一堆中石头数x:</p>
+<ul>
+<li>x为偶数的$SG(x)=0$</li>
+<li>x为奇数的$SG(x)=id_{lpf_x}$ $lpf_x$为x的最小质因子，$id_x$为质数x的在升序排序后的质数集合中的序号。</li>
+</ul>
+<p>对于1e7数量级需要使用线性筛预处理求出最小质因子和质数集合。</p>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="comment">// #define SINGLE_INPUT</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 10000005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">random_device seed;</span><br><span class="line"><span class="function">ranlux48 <span class="title">engine</span><span class="params">(seed())</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">random</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    uniform_int_distribution&lt;&gt; <span class="built_in">distrib</span>(l, r);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">distrib</span>(engine);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> pair&lt;t,u&gt;&amp; p) &#123;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;[&#x27;</span>&lt;&lt;p.first&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;p.second&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> vector&lt;t&gt;&amp; v) &#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;[&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> e:v) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os &lt;&lt; e; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;]&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">t</span>,<span class="keyword">class</span> <span class="title class_">u</span>&gt; ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os,<span class="type">const</span> map&lt;t,u&gt;&amp; mp)&#123;</span><br><span class="line">    os&lt;&lt;<span class="string">&#x27;&#123;&#x27;</span>; <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [x,y]:mp) &#123; <span class="keyword">if</span> (s) s = <span class="number">0</span>; <span class="keyword">else</span> os &lt;&lt; <span class="string">&quot;, &quot;</span>; os&lt;&lt;x&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;y; &#125;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> p[N], lpf[N];</span><br><span class="line"><span class="type">int</span> sz = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">least_prime_factor</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;  <span class="comment">// 求n及以内的所有数的最小质因子</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (lpf[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            p[sz++] = i;</span><br><span class="line">            lpf[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; <span class="number">1LL</span> * p[j] * i &lt;= n; j++) &#123;</span><br><span class="line">            lpf[p[j] * i] = p[j];</span><br><span class="line">            <span class="keyword">if</span> (i % p[j] == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    lpf[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// for (int i = 0; i &lt;= 20; i++) &#123;</span></span><br><span class="line">    <span class="comment">//     // cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; lpf[i] &lt;&lt; endl;</span></span><br><span class="line">    <span class="comment">//     // cout &lt;&lt; lpf[i] &lt;&lt; &quot; &quot;;</span></span><br><span class="line">    <span class="comment">//     cout &lt;&lt; p[i] &lt;&lt; endl;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// for (int i = 1; i &lt;= 20; i++) &#123;</span></span><br><span class="line">    <span class="comment">//     cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; lpf[i] &lt;&lt; endl;</span></span><br><span class="line">        </span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sg</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n%<span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> pos = <span class="built_in">lower_bound</span>(p, p+sz, lpf[n]) - p;</span><br><span class="line">        <span class="keyword">return</span> pos+<span class="number">1</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        ans ^= <span class="built_in">sg</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; (ans == <span class="number">0</span> ? <span class="string">&quot;Bob&quot;</span>:<span class="string">&quot;Alice&quot;</span>) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">least_prime_factor</span>(N<span class="number">-1</span>);</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">15</span>) &lt;&lt; fixed;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SINGLE_INPUT</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">sol</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="built_in">sol</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/contest/" rel="tag"><i class="fa fa-tag"></i> contest</a>
+              <a href="/tags/codeforces/" rel="tag"><i class="fa fa-tag"></i> codeforces</a>
+          </div>
+          <script type="text/javascript">
+            var tagsall=document.getElementsByClassName("post-tags")
+            for (var i = tagsall.length - 1; i >= 0; i--){
+                var tags=tagsall[i].getElementsByTagName("a");
+                for (var j = tags.length - 1; j >= 0; j--) {
+                    var golden_ratio = 0.618033988749895;
+                    var s = 0.5;
+                    var v = 0.999;
+                    var h = golden_ratio + Math.random()*0.8 - 0.5;
+                    var h_i = parseInt(h * 6);
+                    var f = h * 6 - h_i;
+                    var p = v * (1 - s);
+                    var q = v * (1 - f * s);
+                    var t = v * (1 - (1 - f) * s);
+                    var r, g, b;
+                    switch (h_i) {
+                        case 0:
+                            r = v;
+                            g = t;
+                            b = p;
+                            break;
+                        case 1:
+                            r = q;
+                            g = v;
+                            b = p;
+                            break;
+                        case 2:
+                            r = p;
+                            g = v;
+                            b = t;
+                            break;
+                        case 3 :
+                            r = p;
+                            g = q;
+                            b = v;
+                            break;
+                        case 4:
+                            r = t;
+                            g = p;
+                            b = v;
+                            break;
+                        case 5:
+                            r = v;
+                            g = p;
+                            b = q;
+                            break;
+                        default:
+                            r = 1;
+                            g = 1;
+                            b = 1;
+                      }
+                    tags[j].style.background = "rgba("+parseInt(r*255)+","+parseInt(g*255)+","+parseInt(b*255)+","+0.7+")";
+                }
+            }
+          </script>
+          <style>
+          .post-tags a {
+              display: inline-block;
+              font-size: 0.8em;
+              padding: 0px 10px;
+              border-radius: 8px;
+              color: rgb(85, 85, 85);
+              border: 0px;
+          }
+          .post-tags a:hover{
+              box-shadow: 0px 5px 15px 0px rgba(0,0,0,.4);
+              transform: scale(1.1);
+              transition-duration: 0.15s;
+          }
+          </style>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/K%20%E6%AC%A1%E4%B9%98%E8%BF%90%E7%AE%97%E5%90%8E%E7%9A%84%E6%9C%80%E7%BB%88%E6%95%B0%E7%BB%84%20II/" rel="prev" title="K 次乘运算后的最终数组 II">
+                  <i class="fa fa-chevron-left"></i> K 次乘运算后的最终数组 II
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/codeforces/contest/2001/2001/" rel="next" title="Codeforces Round 967 (Div. 2)">
+                  Codeforces Round 967 (Div. 2) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GrainMad</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.7/mermaid.min.js","integrity":"sha256-G58AID1YoX5YaEtWfXSI0VLrZ6N4kvNvwg0BI8zUFxE="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#606863',
+  buttonColorLight: '#dcdee3',
+  saveInCookies: true,
+  label: '🌗',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"grainmad/grainmad.github.io","issue_term":"pathname","theme":"github-dark-orange"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":450},"mobile":{"show":false,"scale":0.5},"react":{"opacity":0.7}});</script></body>
+</html>
