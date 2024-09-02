@@ -1,0 +1,46 @@
+<hr>
+<p>title: “搜索剪枝技巧”<br>date: 2024-09-02 16:43:41<br>updated: 2024-09-02 16:43:41<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>搜索剪枝技巧</li></ul>‘</p>
+<hr>
+<h1 id="搜索剪枝技巧"><a href="#搜索剪枝技巧" class="headerlink" title="搜索剪枝技巧"></a>搜索剪枝技巧</h1><p>顺序剪枝：对搜索顺序<strong>排序</strong>，倾向于找到最值</p>
+<p>最优性剪枝：搜索过程中，<strong>预测</strong>最后的结果不优于已维护的最值</p>
+<p>记忆化：搜索到相同的子问题，可以<strong>记录</strong>，动态规划的另一种实现</p>
+<p>e.g.</p>
+<ul>
+<li><a href="https://leetcode.cn/problems/select-cells-in-grid-with-maximum-score/"><strong>3276. 选择矩阵中单元格的最大得分</strong></a>  对每行降序排序，并去重。优先搜索到较大的答案。  然后对于每个决策点，粗略估计最大值：后续全选每行的最大值。若结果小于以维护最大值，则剪枝。<pre><code class="cpp">class Solution {
+public:
+    int maxScore(vector&lt;vector&lt;int&gt;&gt;&amp; grid) {
+        int n = grid.size();
+        for (auto&amp; i:grid) {
+            sort(i.begin(), i.end());
+            i.erase(unique(i.begin(), i.end()), i.end());
+            reverse(i.begin(), i.end());
+        }
+        vector&lt;int&gt; suf(n+1);
+        for (int i=n-1; i&gt;=0; i--) {
+            suf[i] = suf[i+1] + grid[i][0];
+        }
+        vector&lt;int&gt; st(256);
+        int ans = 0;
+        function&lt;void(int,int)&gt; dfs = [&amp;](int p, int val) {
+            if (p == n) {
+                ans = max(ans, val);
+                return ;
+            }
+            for (auto i:grid[p]) {
+                if (st[i]) continue;
+                if (val+i+suf[p+1] &lt; ans) break;
+                st[i] = 1;
+                dfs(p+1, val+i);
+                st[i] = 0;
+            }
+            if (val+suf[p+1] &gt;= ans) {
+                dfs(p+1, val);
+            }
+        };
+        dfs(0, 0);
+        return ans;
+    }
+};
+</code></pre>
+</li>
+</ul>

@@ -1,0 +1,16 @@
+<hr>
+<p>title: “期望”<br>date: 2024-09-02 16:43:41<br>updated: 2024-09-02 16:43:41<br>tag: [“notion”, “Algorithm”, “动态规划”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>期望</li></ul>‘</p>
+<hr>
+<h1 id="期望"><a href="#期望" class="headerlink" title="期望"></a>期望</h1><p>状态值$f_x = \sum \limits_{y \in x} p_y f_y$，$y$为$x$的子状态，$p_y$是对应的概率</p>
+<p>eg:</p>
+<p>链接：<a href="https://www.nowcoder.com/questionTerminal/b5c4d567ca6a450eae7bee2852078b10?toCommentId=20052476&ran=927">https://www.nowcoder.com/questionTerminal/b5c4d567ca6a450eae7bee2852078b10?toCommentId=20052476&amp;ran=927</a> 来源：牛客网</p>
+<p>小欧拿了n个杯子排成了一排，其中有k个杯子装满了水，剩余的n−k个杯子为空的。小欧每回合的操作如下：</p>
+<ol>
+<li>随机选择一个杯子。</li>
+<li>杯子是空的。回合直接结束。</li>
+<li>杯子是满的。如果小欧上一回合喝过了水，则回合结束；否则将喝完这杯水，回合结束。</li>
+</ol>
+<p>小欧想知道，她喝完所有水的回合数期望是多少？</p>
+<p>$\left { \begin{array}{ccl}<br>f_{n,k,0} &amp; = &amp; \frac{k}{n} (f_{n,k-1,1}+1)+\frac{n-k}{n}(f_{n,k,0}+1)\<br>f_{n,k,1} &amp; = &amp; f_{n,k,0}+1<br>\end{array} \right. \Rightarrow f_{n,k,0}=\frac{n}{k}+f_{n,k-1,1}$</p>
+<p>$f_{n,1,0} = n + f_{n,0,1} = n$</p>
+<p>$f_{n,k,0} = \frac{n+k}{k} + \frac{n+k-1}{k-1} + \cdots + \frac{n+2}{2} + n$</p>
