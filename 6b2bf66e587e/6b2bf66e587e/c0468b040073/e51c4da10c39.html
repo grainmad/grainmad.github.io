@@ -1,0 +1,68 @@
+<hr>
+<p>title: “李超线段树”<br>date: 2024-09-16 10:41:23<br>updated: 2024-09-16 10:41:23<br>tag: [“notion”, “Algorithm”, “区间操作”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>李超线段树</li></ul>‘</p>
+<hr>
+<h1 id="李超线段树"><a href="#李超线段树" class="headerlink" title="李超线段树"></a>李超线段树</h1><p><code>change</code> 在x坐标区间<code>[l,r]</code>上新增编号为id的线段（x坐标范围为<code>[L,R]</code> ），更新最大y值</p>
+<p><code>query</code> 查询x坐标区间[l,r]上的最大</p>
+<pre><code class="cpp">#define N 50005
+#define ls u&lt;&lt;1
+#define rs u&lt;&lt;1|1
+int n,cnt;
+struct line{
+  double k,b; //斜率,截距
+}p[N*2];
+int tr[N*4]; //线段编号
+
+double Y(int id,int x){ //求Y值
+  return p[id].k*x+p[id].b;
+}
+void change(int u,int l,int r,int L,int R,int id){ //修改
+  int mid=(l+r)&gt;&gt;1;
+  if(L&lt;=l&amp;&amp;r&lt;=R){
+    if(Y(id,mid)&gt;Y(tr[u],mid)) swap(id,tr[u]);
+    if(Y(id,l)&gt;Y(tr[u],l)) change(ls,l,mid,L,R,id);
+    if(Y(id,r)&gt;Y(tr[u],r)) change(rs,mid+1,r,L,R,id);
+    return;
+  }
+  if(L&lt;=mid) change(ls,l,mid,L,R,id);
+  if(mid&lt;R) change(rs,mid+1,r,L,R,id);
+}
+double query(int u,int l,int r,int x){ //查询
+  if(l==r) return Y(tr[u],x);
+  int mid=(l+r)&gt;&gt;1;
+  double t=Y(tr[u],x);
+  if(x&lt;=mid) return max(t,query(ls,l,mid,x));
+  else return max(t,query(rs,mid+1,r,x));
+}
+</code></pre>
+<p>如果插入的是直线，认为线段范围包含了整个区间，条件<code>L&lt;=l&amp;&amp;r&lt;=R</code> 必定成立。</p>
+<p>维护所有<strong>直线</strong>的上凸壳</p>
+<pre><code class="cpp">using ll = long long;
+#define N 100005
+#define ls u&lt;&lt;1
+#define rs u&lt;&lt;1|1
+struct line{
+    ll k,b; //斜率,截距
+} p[N*2];
+int tr[N*4]; //线段编号
+int cnt = 0;
+ll Y(int id,int x){ //求Y值
+    return p[id].k*x+p[id].b;
+}
+void change(int u,int l,int r,int id){ //修改
+    int mid=(l+r)&gt;&gt;1;
+    if(Y(id,mid)&gt;Y(tr[u],mid)) swap(id,tr[u]);
+    if(Y(id,l)&gt;Y(tr[u],l)) change(ls,l,mid,id);
+    if(Y(id,r)&gt;Y(tr[u],r)) change(rs,mid+1,r,id);
+}
+ll query(int u,int l,int r,int x){ //查询
+    if(l==r) return Y(tr[u],x);
+    int mid=(l+r)&gt;&gt;1;
+    ll t=Y(tr[u],x);
+    if(x&lt;=mid) return max(t,query(ls,l,mid,x));
+    else return max(t,query(rs,mid+1,r,x));
+}
+void addline(ll k, ll b) {
+    p[++cnt] = {k, b};
+    change(1, 0, N, cnt);
+}
+</code></pre>

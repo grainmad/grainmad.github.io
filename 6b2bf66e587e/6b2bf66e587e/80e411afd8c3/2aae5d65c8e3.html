@@ -1,9 +1,11 @@
 <hr>
-<p>title: “斜率优化”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-29 10:35:13<br>tag: [“notion”, “Algorithm”, “动态规划”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>斜率优化</li></ul>‘</p>
+<p>title: “斜率优化”<br>date: 2024-06-03 10:42:02<br>updated: 2024-09-16 10:41:23<br>tag: [“notion”, “Algorithm”, “动态规划”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>斜率优化</li></ul>‘</p>
 <hr>
-<h1 id="斜率优化"><a href="#斜率优化" class="headerlink" title="斜率优化"></a>斜率优化</h1><p>形如 $dp_i = \min \limits_{j&lt;i} {dp_j + f_i\cdot g_j + h_i + v_j}$ 的状态转移方程。<br>可以使用斜率优化, 其中 $f_i, h_i$ 是i的函数, $g_j$, $v_j$是j的函数</p>
-<p>移项<br>$dp_i-h_i = \min \limits_{j&lt;i} {dp_j + v_j + f_i \cdot g_j}$</p>
-<p>令$b_i = dp_i-h_i, y_j = dp_j+v_j, x_j = g_j， k_i = -f_i$<br>得到 $b_i = \min \limits_{j&lt;i} {y_j - k_i \cdot x_j}$<br>对于每个确定的i，$b_i$和$k_i$是常量，$x_j$和$y_j$是变量。<br>我们需要让$b_i$最小，我们知道一次函数y=kx+b中b是截距，k是斜率。<br>对于已经确定斜率让截距最小就会让dp最小。<br>当$k_i$是单调的（假设是单调上升的）。我们求出$(x_j,y_j)$的下凸包，<br>让一根斜率为k_i的直线由下向上扫遇到第一个$(x_p,y_p)$就是最优的决策点。<br>最优决策点与之前的点连线斜率不会大于$k_i$，即$s&lt;p, \frac{y_p-y_s}{x_p-x_s} \le k_i$;<br>最优决策点与之后的点连线斜率大于$k_i$，即$p&lt;e, \frac{y_p-y_e}{x_p-x_e} &gt; k_i$;<br>基于这两条特点可以维护一个斜率递增的单调队列<br>对于求$dp_i$，先移除队列中斜率小于$k_i$的点，那么队首就是最有决策点。<br>然后移除队尾不满足单调性的点再将当前决策点加入队列。</p>
+<h1 id="斜率优化"><a href="#斜率优化" class="headerlink" title="斜率优化"></a>斜率优化</h1><h2 id="直线的斜率单调，每次加入的决策点的横坐标单调"><a href="#直线的斜率单调，每次加入的决策点的横坐标单调" class="headerlink" title="直线的斜率单调，每次加入的决策点的横坐标单调"></a><strong>直线的斜率单调，每次加入的决策点的横坐标单调</strong></h2><p>具有局限性</p>
+<p>形如 $dp_i = \min \limits_{j&lt;i} \lbrace dp_j + f_i\cdot g_j + h_i + v_j\rbrace$ 的状态转移方程。<br>可以使用斜率优化, 其中 $f_i, h_i$ 是i的函数, $g_j$, $v_j$是j的函数</p>
+<p>移项<br>$dp_i-h_i = \min \limits_{j&lt;i} \lbrace dp_j + v_j + f_i \cdot g_j\rbrace$</p>
+<p>令</p>
+<p>$b_i = dp_i-h_i\\ y_j = dp_j+v_j \\ x_j = g_j \\ k_i = -f_i$<br>得到 $b_i = \min \limits_{j&lt;i} \lbrace y_j - k_i \cdot x_j\rbrace$<br>对于每个确定的i，$b_i$和$k_i$是常量，$x_j$和$y_j$是变量。<br>我们需要让$b_i$最小，我们知道一次函数y=kx+b中b是截距，k是斜率。<br>对于已经确定斜率让截距最小就会让dp最小。<br>**当$k_i$是单调的**（假设是单调上升的）。我们求出$(x_j,y_j)$的下凸包，<br>让一根斜率为k_i的直线由下向上扫遇到第一个$(x_p,y_p)$就是最优的决策点。<br>最优决策点与之前的点连线斜率不会大于$k_i$，即$s&lt;p, \frac{y_p-y_s}{x_p-x_s} \le k_i$;<br>最优决策点与之后的点连线斜率大于$k_i$，即$p&lt;e, \frac{y_p-y_e}{x_p-x_e} &gt; k_i$;<br>基于这两条特点可以维护一个斜率递增的单调队列<br>对于求$dp_i$，先移除队列中斜率小于$k_i$的点，那么队首就是最优决策点。<br>然后移除队尾不满足单调性的点再将当前决策点加入队列。</p>
 <pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
 #define SINGLE_INPUT
 #define ll long long
@@ -41,3 +43,299 @@ int main() {
     return 0;
 }
 </code></pre>
+<h2 id="直线的斜率不再单调，每次加入的决策点的横坐标不再单调。"><a href="#直线的斜率不再单调，每次加入的决策点的横坐标不再单调。" class="headerlink" title="直线的斜率不再单调，每次加入的决策点的横坐标不再单调。"></a>直线的斜率不再单调，每次加入的决策点的横坐标不再单调。</h2><p>$dp_i = \max \limits_{j&lt;i} \lbrace dp_j + f_i\cdot g_j + h_i + v_j\rbrace \Rightarrow dp_i-h_i = \max \limits_{j&lt;i} \lbrace g_j \cdot f_i + dp_j + v_j\rbrace$</p>
+<p>令</p>
+<p>$x_i = f_i \\ k_j = g_j \\ b_j = dp_j+v_j \\ y_i = dp_i-h_i$</p>
+<p>得 $y_i = \max \limits_{j&lt;i} \lbrace k_j \cdot x_i + b_j\rbrace$</p>
+<p>问题转化为在平面上添加若干线段$y=k_jx+b_j,(j&lt;i)$，求横坐标为$x_i$时的最大纵坐标值$y_i$。</p>
+<ul>
+<li>平衡树维护线段形成的下凸包  <code>addLine(k, b)</code> 添加一条y=kx+b  <code>query(x)</code> 查询<strong>决策点的横坐标为x时</strong>，y的最大值。<pre><code class="cpp">using i64 = long long;
+
+struct Line {
+    mutable i64 k, b, p; // k: 斜率，b: 截距，p: 与前一条线的交点（用于维护凸包）
+
+    bool operator&lt; (const Line &amp;rhs) const {
+        return k &lt; rhs.k; // 按照斜率升序排序
+    }
+
+    bool operator&lt; (i64 rhs) const {
+        return p &lt; rhs; // 用于 lower_bound 操作，查找大于等于给定 p 值的线
+    }
+};
+
+class DynamicHull : public std::multiset&lt;Line, std::less&lt;&gt;&gt; {
+public:
+    using std::multiset&lt;Line, std::less&lt;&gt;&gt;::multiset;
+
+    void addLine(i64 k, i64 b) {
+        // 插入一条新线，并维护凸包
+        auto z = insert({k, b, 0}), y = z++, x = y;
+        while (isect(y, z)) z = erase(z); // 删除与新线相交且在凸包内部的线，右边
+        if (x != begin() and isect(--x, y)) isect(x, y = erase(y)); // 删除与新线相交且在凸包内部的线，左边
+        while ((y = x) != begin() and (--x)-&gt;p &gt;= y-&gt;p) // 删除多余的线
+            isect(x, erase(y));
+    }
+
+    i64 query(i64 x) {
+        // 查询 x 处取得最大值的直线
+        auto l = lower_bound(x);
+        return l-&gt;k * x + l-&gt;b;
+    }
+
+private:
+    static constexpr i64 inf = LLONG_MAX;
+
+    i64 div(i64 a, i64 b) {
+        // 整数除法向下取整，c++默认向0取整，处理负数情况
+        return a / b - ((a ^ b) &lt; 0 &amp;&amp; a % b);
+    }
+
+    bool isect(iterator x, iterator y) {
+        // 判断两条线是否相交，并更新 p 值
+        if (y == end()) return x-&gt;p = inf, 0; // 如果 y 是末尾，表示 x 是最后一条线，直接设置 p 为正无穷
+        if (x-&gt;k == y-&gt;k) {
+            // 两条直线平行
+            x-&gt;p = x-&gt;b &gt; y-&gt;b ? inf : -inf; // 根据截距判断相对位置，x 在 y 的上方则正无穷
+        } else {
+            // 两条直线相交
+            x-&gt;p = div(y-&gt;b - x-&gt;b, x-&gt;k - y-&gt;k); // 计算交点的 x 坐标，两直线相交k1 * x + b1 = k2 * x + b2 ---&gt; x = (b2 - b1) / (k1 - k2)
+        }
+        return x-&gt;p &gt;= y-&gt;p; // 判断交点是否在 y 的右侧（即 y 是否需要删除）
+    }
+};
+</code></pre>
+</li>
+<li>李超线段树  模板，非动态开点，能处理范围在<code>[0,x_range]</code>的整数x，或许修改后可以拓展到负数范围。不能处理大范围离散值。<pre><code class="cpp">// y=kx+b 整数x所属范围[0, x_range]，线段个数lines_count，是否下凸壳bowl，y值类型
+template &lt;int x_range = 1000005, int lines_count = 100005, bool bowl = true, class T = long long&gt; 
+struct DynamicHull {
+    struct line{
+        T k,b; //斜率,截距
+    } p[lines_count+4];
+    int tr[x_range+4&lt;&lt;2]; //线段编号
+    int cnt = 0;
+    DynamicHull() {
+        memset(p, 0, sizeof(p));
+        memset(tr, 0, sizeof(tr));
+        p[0].b = bowl ? 1e18 : -1e18;
+    }
+    T Y(int id,int x) { //求Y值
+        return p[id].k*x+p[id].b;
+    }
+    void change(int u, int l, int r, int id){ 
+        int mid=(l+r)&gt;&gt;1;
+        if (bowl) {
+            if(Y(id,mid)&lt;Y(tr[u],mid)) std::swap(id,tr[u]);
+            if(Y(id,l)&lt;Y(tr[u],l)) change(u&lt;&lt;1,l,mid,id);
+            if(Y(id,r)&lt;Y(tr[u],r)) change(u&lt;&lt;1|1,mid+1,r,id);
+        } else {
+            if(Y(id,mid)&gt;Y(tr[u],mid)) std::swap(id,tr[u]);
+            if(Y(id,l)&gt;Y(tr[u],l)) change(u&lt;&lt;1,l,mid,id);
+            if(Y(id,r)&gt;Y(tr[u],r)) change(u&lt;&lt;1|1,mid+1,r,id);
+        }
+        
+    }
+    
+    T query(int u,int l,int r,int x){
+        if(l==r) return Y(tr[u],x);
+        int mid=(l+r)&gt;&gt;1;
+        T t=Y(tr[u],x);
+        if(x&lt;=mid) return bowl ? std::min(t,query(u&lt;&lt;1,l,mid,x)) : std::max(t,query(u&lt;&lt;1,l,mid,x));
+        else return bowl ? std::min(t,query(u&lt;&lt;1|1,mid+1,r,x)) : std::max(t,query(u&lt;&lt;1|1,mid+1,r,x));
+    }
+
+    T query(int x){ //查询
+        return query(1, 0, x_range, x);
+    }
+
+    void addline(T k, T b) {
+        p[++cnt] = {k, b};
+        change(1, 0, x_range, cnt);
+    }
+};
+
+DynamicHull dh;
+</code></pre>
+<ul>
+<li><a href="https://www.luogu.com.cn/problem/P4655"><strong>P4655 [CEOI2017] Building Bridges</strong></a><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define SINGLE_INPUT
+#define ull unsigned long long
+#define ll long long
+#define N 500005
+#define MOD 998244353
+using namespace std;
+
+random_device seed;
+ranlux48 engine(seed());
+int random(int l, int r) {
+    uniform_int_distribution&lt;&gt; distrib(l, r);
+    return distrib(engine);
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const pair&lt;t,u&gt;&amp; p) {
+    return os&lt;&lt;&#39;[&#39;&lt;&lt;p.first&lt;&lt;&quot;, &quot;&lt;&lt;p.second&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const vector&lt;t&gt;&amp; v) {
+    os&lt;&lt;&#39;[&#39;; int s = 1;
+    for(auto e:v) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os &lt;&lt; e; }
+    return os&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const map&lt;t,u&gt;&amp; mp){
+    os&lt;&lt;&#39;{&#39;; int s = 1;
+    for(auto [x,y]:mp) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os&lt;&lt;x&lt;&lt;&quot;: &quot;&lt;&lt;y; }
+    return os&lt;&lt;&#39;}&#39;;
+}
+
+template &lt;int x_range = 1000005, int lines_count = 100005, bool bowl = true, class T = long long&gt; //bowl=true 维护下凸壳求最小值
+struct DynamicHull {
+    struct line{
+        T k,b; //斜率,截距
+    } p[lines_count+4];
+    int tr[x_range+4&lt;&lt;2]; //线段编号
+    int cnt = 0;
+    DynamicHull() {
+        memset(p, 0, sizeof(p));
+        memset(tr, 0, sizeof(tr));
+        p[0].b = bowl ? 1e18 : -1e18;
+    }
+    T Y(int id,int x) { //求Y值
+        return p[id].k*x+p[id].b;
+    }
+    void change(int u, int l, int r, int id){ 
+        int mid=(l+r)&gt;&gt;1;
+        if (bowl) {
+            if(Y(id,mid)&lt;Y(tr[u],mid)) std::swap(id,tr[u]);
+            if(Y(id,l)&lt;Y(tr[u],l)) change(u&lt;&lt;1,l,mid,id);
+            if(Y(id,r)&lt;Y(tr[u],r)) change(u&lt;&lt;1|1,mid+1,r,id);
+        } else {
+            if(Y(id,mid)&gt;Y(tr[u],mid)) std::swap(id,tr[u]);
+            if(Y(id,l)&gt;Y(tr[u],l)) change(u&lt;&lt;1,l,mid,id);
+            if(Y(id,r)&gt;Y(tr[u],r)) change(u&lt;&lt;1|1,mid+1,r,id);
+        }
+        
+    }
+    
+    T query(int u,int l,int r,int x){
+        if(l==r) return Y(tr[u],x);
+        int mid=(l+r)&gt;&gt;1;
+        T t=Y(tr[u],x);
+        if(x&lt;=mid) return bowl ? std::min(t,query(u&lt;&lt;1,l,mid,x)) : std::max(t,query(u&lt;&lt;1,l,mid,x));
+        else return bowl ? std::min(t,query(u&lt;&lt;1|1,mid+1,r,x)) : std::max(t,query(u&lt;&lt;1|1,mid+1,r,x));
+    }
+
+    T query(int x){ //查询
+        return query(1, 0, x_range, x);
+    }
+
+    void addline(T k, T b) {
+        p[++cnt] = {k, b};
+        change(1, 0, x_range, cnt);
+    }
+};
+
+DynamicHull dh;
+
+void sol() {
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;ll&gt; h(n+1), w(n+1);
+    for (int i=1; i&lt;=n; i++) {
+        cin &gt;&gt; h[i];
+    }
+    for (int i=1; i&lt;=n; i++) {
+        cin &gt;&gt; w[i];
+        w[i] += w[i-1];
+    }
+    vector&lt;ll&gt; f(n+1);
+    dh.addline(-2*h[1], f[1]+h[1]*h[1]-w[1]);
+    for (int i=2; i&lt;=n; i++) {
+        f[i] = h[i]*h[i]+w[i-1] + dh.query(h[i]);
+        dh.addline(-2*h[i], f[i]+h[i]*h[i]-w[i]);
+    }
+    cout &lt;&lt; f[n] &lt;&lt; &quot;\n&quot;;
+}
+
+int main() {
+    cout &lt;&lt; setprecision(15) &lt;&lt; fixed;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+#ifndef SINGLE_INPUT
+    int t;
+    cin &gt;&gt; t;
+    while (t--) {
+        sol();
+    }
+#else
+    sol();
+#endif
+    return 0;
+}
+</code></pre>
+<blockquote>
+</blockquote>
+</li>
+<li><a href="https://leetcode.cn/problems/reach-end-of-array-with-max-score/description/"><strong>3282. 到达数组末尾的最大得分</strong></a><pre><code class="cpp">// y=kx+b 整数x所属范围[0, x_range]，线段个数lines_count，是否下凸壳bowl，y值类型
+template &lt;int x_range = 1000005, int lines_count = 100005, bool bowl = true, class T = long long&gt; 
+struct DynamicHull {
+    struct line{
+        T k,b; //斜率,截距
+    } p[lines_count+4];
+    int tr[x_range+4&lt;&lt;2]; //线段编号
+    int cnt = 0;
+    DynamicHull() {
+        memset(p, 0, sizeof(p));
+        memset(tr, 0, sizeof(tr));
+        p[0].b = bowl ? 1e18 : -1e18;
+    }
+    T Y(int id,int x) { //求Y值
+        return p[id].k*x+p[id].b;
+    }
+    void change(int u, int l, int r, int id){ 
+        int mid=(l+r)&gt;&gt;1;
+        if (bowl) {
+            if(Y(id,mid)&lt;Y(tr[u],mid)) std::swap(id,tr[u]);
+            if(Y(id,l)&lt;Y(tr[u],l)) change(u&lt;&lt;1,l,mid,id);
+            if(Y(id,r)&lt;Y(tr[u],r)) change(u&lt;&lt;1|1,mid+1,r,id);
+        } else {
+            if(Y(id,mid)&gt;Y(tr[u],mid)) std::swap(id,tr[u]);
+            if(Y(id,l)&gt;Y(tr[u],l)) change(u&lt;&lt;1,l,mid,id);
+            if(Y(id,r)&gt;Y(tr[u],r)) change(u&lt;&lt;1|1,mid+1,r,id);
+        }
+        
+    }
+    
+    T query(int u,int l,int r,int x){
+        if(l==r) return Y(tr[u],x);
+        int mid=(l+r)&gt;&gt;1;
+        T t=Y(tr[u],x);
+        if(x&lt;=mid) return bowl ? std::min(t,query(u&lt;&lt;1,l,mid,x)) : std::max(t,query(u&lt;&lt;1,l,mid,x));
+        else return bowl ? std::min(t,query(u&lt;&lt;1|1,mid+1,r,x)) : std::max(t,query(u&lt;&lt;1|1,mid+1,r,x));
+    }
+
+    T query(int x){ //查询
+        return query(1, 0, x_range, x);
+    }
+
+    void addline(T k, T b) {
+        p[++cnt] = {k, b};
+        change(1, 0, x_range, cnt);
+    }
+};
+class Solution {
+public:
+    long long findMaximumScore(vector&lt;int&gt;&amp; nums) {
+        int n = nums.size();
+        DynamicHull&lt;100005, 100005, false&gt; dh;
+        dh.addline(nums[0], 0); // {nums[0], f[0]-0*nums[0]}
+        vector&lt;long long&gt; f(n);
+        for (int i=1; i&lt;n; i++) {
+            f[i] = dh.query(i);
+            dh.addline(nums[i], f[i]-1LL*i*nums[i]);
+        }
+        return f[n-1];
+    }
+};
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
