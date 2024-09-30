@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="逃离火灾">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E9%80%83%E7%A6%BB%E7%81%AB%E7%81%BE/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="2258. 逃离火灾给你一个下标从 0 开始大小为 m x n 的二维整数数组 grid ，它表示一个网格图。每个格子为下面 3 个值之一：0 表示草地。1 表示着火的格子。2 表示一座墙，你跟火都不能通过这个格子。一开始你在最左上角的格子 (0, 0) ，你想要到达最右下角的安全屋格子 (m - 1, n - 1) 。每一分钟，你可以移动到 相邻 的草地格子。每次你移动 之后 ，着火的格子会扩散">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2022/03/10/ex1new.jpg">
@@ -45,7 +45,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E9%80%83%E7%A6%BB%E7%81%AB%E7%81%BE/","path":"leetcode/二分法/逃离火灾/","title":"逃离火灾"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>逃离火灾 | 代码如诗</title>
+<title>逃离火灾 | fork()==0世界线变动</title>
   
 
 
@@ -76,7 +76,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -230,12 +230,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="逃离火灾 | 代码如诗">
+      <meta itemprop="name" content="逃离火灾 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/escape-the-spreading-fire/">2258. 逃离火灾</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始大小为 <code>m x n</code> 的二维整数数组 <code>grid</code> ，它表示一个网格图。每个格子为下面 3 个值之一：</p><ul><li><p><code>0</code> 表示草地。</p></li><li><p><code>1</code> 表示着火的格子。</p></li><li><p><code>2</code> 表示一座墙，你跟火都不能通过这个格子。</p></li></ul><p>一开始你在最左上角的格子 <code>(0, 0)</code> ，你想要到达最右下角的安全屋格子 <code>(m - 1, n - 1)</code> 。每一分钟，你可以移动到 <strong>相邻</strong> 的草地格子。每次你移动 <strong>之后</strong> ，着火的格子会扩散到所有不是墙的 <strong>相邻</strong> 格子。</p><p>请你返回你在初始位置可以停留的 <strong>最多</strong> 分钟数，且停留完这段时间后你还能安全到达安全屋。如果无法实现，请你返回 <code>-1</code> 。如果不管你在初始位置停留多久，你 <strong>总是</strong> 能到达安全屋，请你返回 <code>10^9</code> 。</p><p>注意，如果你到达安全屋后，火马上到了安全屋，这视为你能够安全到达安全屋。</p><p>如果两个格子有共同边，那么它们为 <strong>相邻</strong> 格子。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/03/10/ex1new.jpg" /></p><p>```txt</p><p>输入：grid = [[0,2,0,0,0,0,0],[0,0,0,2,2,1,0],[0,2,0,0,1,2,0],[0,0,2,2,2,0,2],[0,0,0,0,0,0,0]]</p><p>输出：3</p><p>解释：上图展示了你在初始位置停留 3 分钟后的情形。</p><p>你仍然可以安全到达安全屋。</p><p>停留超过 3 分钟会让你无法安全到达安全屋。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/03/10/ex2new2.jpg" /></p><p>```txt</p><p>输入：grid = [[0,0,0,0],[0,1,2,0],[0,2,0,0]]</p><p>输出：-1</p><p>解释：上图展示了你马上开始朝安全屋移动的情形。</p><p>火会蔓延到你可以移动的所有格子，所以无法安全到达安全屋。</p><p>所以返回 -1 。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/03/10/ex3new.jpg" /></p><p>```txt</p><p>输入：grid = [[0,0,0],[2,2,0],[1,2,0]]</p><p>输出：1000000000</p><p>解释：上图展示了初始网格图。</p><p>注意，由于火被墙围了起来，所以无论如何你都能安全到达安全屋。</p><p>所以返回 109 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>2 &amp;lt;= m, n &amp;lt;= 300</code></p></li><li><p><code>4 &amp;lt;= m * n &amp;lt;= 2 * 10^4</code></p></li><li><p><code>grid[i][j]</code> 是 <code>0</code> ，<code>1</code> 或者 <code>2</code> 。</p></li><li><p><code>grid[0][0] == grid[m - 1][n - 1] == 0</code></p></li></ul></ul>">
     </span>
       <header class="post-header">

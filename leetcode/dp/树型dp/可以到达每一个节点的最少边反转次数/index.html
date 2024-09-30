@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="可以到达每一个节点的最少边反转次数">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E5%8F%AF%E4%BB%A5%E5%88%B0%E8%BE%BE%E6%AF%8F%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%91%E8%BE%B9%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="2858. 可以到达每一个节点的最少边反转次数给你一个 n 个点的 简单有向图 （没有重复边的有向图），节点编号为 0 到 n - 1 。如果这些边是双向边，那么这个图形成一棵 树 。给你一个整数 n 和一个 二维 整数数组 edges ，其中 edges[i] &#x3D; [ui, vi] 表示从节点 ui 到节点 vi 有一条 有向边 。边反转 指的是将一条边的方向反转，也就是说一条从节点 ui 到节">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2023/08/26/image-20230826221104-3.png">
@@ -45,7 +45,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E5%8F%AF%E4%BB%A5%E5%88%B0%E8%BE%BE%E6%AF%8F%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%91%E8%BE%B9%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/","path":"leetcode/dp/树型dp/可以到达每一个节点的最少边反转次数/","title":"可以到达每一个节点的最少边反转次数"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>可以到达每一个节点的最少边反转次数 | 代码如诗</title>
+<title>可以到达每一个节点的最少边反转次数 | fork()==0世界线变动</title>
   
 
 
@@ -76,7 +76,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -230,12 +230,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="可以到达每一个节点的最少边反转次数 | 代码如诗">
+      <meta itemprop="name" content="可以到达每一个节点的最少边反转次数 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-edge-reversals-so-every-node-is-reachable/description/">2858. 可以到达每一个节点的最少边反转次数</a></p><hr /><p>给你一个 <code>n</code> 个点的 <strong>简单有向图</strong> （没有重复边的有向图），节点编号为 <code>0</code> 到 <code>n - 1</code> 。如果这些边是双向边，那么这个图形成一棵 <strong>树</strong> 。</p><p>给你一个整数 <code>n</code> 和一个 <strong>二维</strong> 整数数组 <code>edges</code> ，其中 <code>edges[i] = [ui, vi]</code> 表示从节点 <code>ui</code> 到节点 <code>vi</code> 有一条 <strong>有向边</strong> 。</p><p><strong>边反转</strong> 指的是将一条边的方向反转，也就是说一条从节点 <code>ui</code> 到节点 <code>vi</code> 的边会变为一条从节点 <code>vi</code> 到节点 <code>ui</code> 的边。</p><p>对于范围 <code>[0, n - 1]</code> 中的每一个节点 <code>i</code> ，你的任务是分别 <strong>独立</strong> 计算 <strong>最少</strong> 需要多少次 <strong>边反转</strong> ，从节点 <code>i</code> 出发经过 <strong>一系列有向边</strong> ，可以到达所有的节点。</p><p>请你返回一个长度为 <code>n</code> 的整数数组 <code>answer</code> ，其中 <code>answer[i]</code>表示从节点 <code>i</code> 出发，可以到达所有节点的 <strong>最少边反转</strong> 次数。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/08/26/image-20230826221104-3.png" /></p><p>```txt</p><p>输入：n = 4, edges = [[2,0],[2,1],[1,3]]</p><p>输出：[1,1,0,2]</p><p>解释：上图表示了与输入对应的简单有向图。</p><p>对于节点 0 ：反转 [2,0] ，从节点 0 出发可以到达所有节点。</p><p>所以 answer[0] = 1 。</p><p>对于节点 1 ：反转 [2,1] ，从节点 1 出发可以到达所有节点。</p><p>所以 answer[1] = 1 。</p><p>对于节点 2 ：不需要反转就可以从节点 2 出发到达所有节点。</p><p>所以 answer[2] = 0 。</p><p>对于节点 3 ：反转 [1,3] 和 [2,1] ，从节点 3 出发可以到达所有节点。</p><p>所以 answer[3] = 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/08/26/image-20230826225541-2.png" /></p><p>```txt</p><p>输入：n = 3, edges = [[1,2],[2,0]]</p><p>输出：[2,0,1]</p><p>解释：上图表示了与输入对应的简单有向图。</p><p>对于节点 0 ：反转 [2,0] 和 [1,2] ，从节点 0 出发可以到达所有节点。</p><p>所以 answer[0] = 2 。</p><p>对于节点 1 ：不需要反转就可以从节点 2 出发到达所有节点。</p><p>所以 answer[1] = 0 。</p><p>对于节点 2 ：反转 [1,2] ，从节点 2 出发可以到达所有节点。</p><p>所以 answer[2] = 1 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>2 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>edges.length == n - 1</code></p></li><li><p><code>edges[i].length == 2</code></p></li><li><p><code>0 &amp;lt;= ui == edges[i][0] &amp;lt; n</code></p></li><li><p><code>0 &amp;lt;= vi == edges[i][1] &amp;lt; n</code></p></li><li><p><code>ui != vi</code></p></li><li><p>输入保证如果边是双向边，可以得到一棵树。</p></li></ul></ul>">
     </span>
       <header class="post-header">

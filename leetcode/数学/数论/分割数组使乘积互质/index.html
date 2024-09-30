@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="分割数组使乘积互质">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E4%BD%BF%E4%B9%98%E7%A7%AF%E4%BA%92%E8%B4%A8/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="2584. 分割数组使乘积互质给你一个长度为 n 的整数数组 nums ，下标从 0 开始。如果在下标 i 处 分割 数组，其中 0 &amp;lt;&#x3D; i &amp;lt;&#x3D; n - 2 ，使前 i + 1 个元素的乘积和剩余元素的乘积互质，则认为该分割 有效 。例如，如果 nums &#x3D; [2, 3, 3] ，那么在下标 i &#x3D; 0 处的分割有效，因为 2 和 9 互质，而在下标 i &#x3D; 1 处">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2022/12/14/second.PNG">
@@ -45,7 +45,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E4%BD%BF%E4%B9%98%E7%A7%AF%E4%BA%92%E8%B4%A8/","path":"leetcode/数学/数论/分割数组使乘积互质/","title":"分割数组使乘积互质"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>分割数组使乘积互质 | 代码如诗</title>
+<title>分割数组使乘积互质 | fork()==0世界线变动</title>
   
 
 
@@ -76,7 +76,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -230,12 +230,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="分割数组使乘积互质 | 代码如诗">
+      <meta itemprop="name" content="分割数组使乘积互质 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/split-the-array-to-make-coprime-products/">2584. 分割数组使乘积互质</a></p><hr /><p>给你一个长度为 <code>n</code> 的整数数组 <code>nums</code> ，下标从 <strong>0</strong> 开始。</p><p>如果在下标 <code>i</code> 处 <strong>分割</strong> 数组，其中 <code>0 &amp;lt;= i &amp;lt;= n - 2</code> ，使前 <code>i + 1</code> 个元素的乘积和剩余元素的乘积互质，则认为该分割 <strong>有效</strong> 。</p><ul><li>例如，如果 <code>nums = [2, 3, 3]</code> ，那么在下标 <code>i = 0</code> 处的分割有效，因为 <code>2</code> 和 <code>9</code> 互质，而在下标 <code>i = 1</code> 处的分割无效，因为 <code>6</code> 和 <code>3</code> 不互质。在下标 <code>i = 2</code> 处的分割也无效，因为 <code>i == n - 1</code> 。</li></ul><p>返回可以有效分割数组的最小下标 <code>i</code> ，如果不存在有效分割，则返回 <code>-1</code> 。</p><p>当且仅当 <code>gcd(val1, val2) == 1</code> 成立时，<code>val1</code> 和 <code>val2</code> 这两个值才是互质的，其中 <code>gcd(val1, val2)</code> 表示 <code>val1</code> 和 <code>val2</code> 的最大公约数。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/12/14/second.PNG" /></p><p>```txt</p><p>输入：nums = [4,7,8,15,3,5]</p><p>输出：2</p><p>解释：上表展示了每个下标 i 处的前 i + 1 个元素的乘积、剩余元素的乘积和它们的最大公约数的值。</p><p>唯一一个有效分割位于下标 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/12/14/capture.PNG" /></p><p>```txt</p><p>输入：nums = [4,7,15,8,3,5]</p><p>输出：-1</p><p>解释：上表展示了每个下标 i 处的前 i + 1 个元素的乘积、剩余元素的乘积和它们的最大公约数的值。</p><p>不存在有效分割。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == nums.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^4</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^6</code></p></li></ul></ul>">
     </span>
       <header class="post-header">

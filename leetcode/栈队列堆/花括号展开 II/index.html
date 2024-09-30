@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="花括号展开 II">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="1096. 花括号展开 II如果你熟悉 Shell 编程，那么一定了解过花括号展开，它可以用来生成任意字符串。花括号展开的表达式可以看作一个由 花括号、逗号 和 小写英文字母 组成的字符串，定义下面几条语法规则：如果只给出单一的元素 x，那么表达式表示的字符串就只有 &amp;quot;x&amp;quot;。R(x) &#x3D; {x}例如，表达式 &amp;quot;a&amp;quot; 表示字符串">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-09T19:03:51.000Z">
@@ -41,7 +41,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/","path":"leetcode/栈队列堆/花括号展开 II/","title":"花括号展开 II"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>花括号展开 II | 代码如诗</title>
+<title>花括号展开 II | fork()==0世界线变动</title>
   
 
 
@@ -72,7 +72,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -226,12 +226,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="花括号展开 II | 代码如诗">
+      <meta itemprop="name" content="花括号展开 II | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/brace-expansion-ii/">1096. 花括号展开 II</a></p><hr /><p>如果你熟悉 Shell 编程，那么一定了解过花括号展开，它可以用来生成任意字符串。</p><p>花括号展开的表达式可以看作一个由 <strong>花括号</strong>、<strong>逗号</strong> 和 <strong>小写英文字母</strong> 组成的字符串，定义下面几条语法规则：</p><ul><li><p>如果只给出单一的元素 <code>x</code>，那么表达式表示的字符串就只有 <code>&amp;quot;x&amp;quot;</code>。<code>R(x) = {x}</code></p><ul><li><p>例如，表达式 <code>&amp;quot;a&amp;quot;</code> 表示字符串 <code>&amp;quot;a&amp;quot;</code>。</p></li><li><p>而表达式 <code>&amp;quot;w&amp;quot;</code> 就表示字符串 <code>&amp;quot;w&amp;quot;</code>。</p></li></ul></li><li><p>当两个或多个表达式并列，以逗号分隔，我们取这些表达式中元素的并集。<code>R({e_1,e_2,...}) = R(e_1) ∪ R(e_2) ∪ ...</code></p><ul><li><p>例如，表达式 <code>&amp;quot;{a,b,c}&amp;quot;</code> 表示字符串 <code>&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;</code>。</p></li><li><p>而表达式 <code>&amp;quot;{{a,b},{b,c}}&amp;quot;</code> 也可以表示字符串 <code>&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;</code>。</p></li></ul></li><li><p>要是两个或多个表达式相接，中间没有隔开时，我们从这些表达式中各取一个元素依次连接形成字符串。<code>R(e_1 + e_2) = {a + b for (a, b) in R(e_1) × R(e_2)}</code></p><ul><li>例如，表达式 <code>&amp;quot;{a,b}{c,d}&amp;quot;</code> 表示字符串 <code>&amp;quot;ac&amp;quot;,&amp;quot;ad&amp;quot;,&amp;quot;bc&amp;quot;,&amp;quot;bd&amp;quot;</code>。</li></ul></li><li><p>表达式之间允许嵌套，单一元素与表达式的连接也是允许的。</p><ul><li><p>例如，表达式 <code>&amp;quot;a{b,c,d}&amp;quot;</code> 表示字符串 <code>&amp;quot;ab&amp;quot;,&amp;quot;ac&amp;quot;,&amp;quot;ad&amp;quot;​​​​​​</code>。</p></li><li><p>例如，表达式 <code>&amp;quot;a{b,c}{d,e}f{g,h}&amp;quot;</code> 可以表示字符串 <code>&amp;quot;abdfg&amp;quot;, &amp;quot;abdfh&amp;quot;, &amp;quot;abefg&amp;quot;, &amp;quot;abefh&amp;quot;, &amp;quot;acdfg&amp;quot;, &amp;quot;acdfh&amp;quot;, &amp;quot;acefg&amp;quot;, &amp;quot;acefh&amp;quot;</code>。</p></li></ul></li></ul><p>给出表示基于给定语法规则的表达式 <code>expression</code>，返回它所表示的所有字符串组成的有序列表。</p><p>假如你希望以「集合」的概念了解此题，也可以通过点击 “<strong>显示英文描述</strong>” 获取详情。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：expression = &quot;{a,b}{c,{d,e}}&quot;</p><p>输出：[&quot;ac&quot;,&quot;ad&quot;,&quot;ae&quot;,&quot;bc&quot;,&quot;bd&quot;,&quot;be&quot;]</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：expression = &quot;{{a,z},a{b,c},{ab,z}}&quot;</p><p>输出：[&quot;a&quot;,&quot;ab&quot;,&quot;ac&quot;,&quot;z&quot;]</p><p>解释：输出中 不应 出现重复的组合结果。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= expression.length &amp;lt;= 60</code></p></li><li><p><code>expression[i]</code> 由 <code>&amp;#x27;{&amp;#x27;</code>，<code>&amp;#x27;}&amp;#x27;</code>，<code>&amp;#x27;,&amp;#x27;</code> 或小写英文字母组成</p></li><li><p>给出的表达式 <code>expression</code> 用以表示一组基于题目描述中语法构造的字符串</p></li></ul></ul>">
     </span>
       <header class="post-header">

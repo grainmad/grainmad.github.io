@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作使得分最大">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E6%93%8D%E4%BD%9C%E4%BD%BF%E5%BE%97%E5%88%86%E6%9C%80%E5%A4%A7/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="2818. 操作使得分最大给你一个长度为 n 的正整数数组 nums 和一个整数 k 。一开始，你的分数为 1 。你可以进行以下操作至多 k 次，目标是使你的分数最大：选择一个之前没有选过的 非空 子数组 nums[l, ..., r] 。从 nums[l, ..., r] 里面选择一个 质数分数 最高的元素 x 。如果多个元素质数分数相同且最高，选择下标最小的一个。将你的分数乘以 x 。nums">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-27T23:08:52.000Z">
@@ -41,7 +41,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E6%93%8D%E4%BD%9C%E4%BD%BF%E5%BE%97%E5%88%86%E6%9C%80%E5%A4%A7/","path":"leetcode/栈队列堆/操作使得分最大/","title":"操作使得分最大"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>操作使得分最大 | 代码如诗</title>
+<title>操作使得分最大 | fork()==0世界线变动</title>
   
 
 
@@ -72,7 +72,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -226,12 +226,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="操作使得分最大 | 代码如诗">
+      <meta itemprop="name" content="操作使得分最大 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/apply-operations-to-maximize-score/description/">2818. 操作使得分最大</a></p><hr /><p>给你一个长度为 <code>n</code> 的正整数数组 <code>nums</code> 和一个整数 <code>k</code> 。</p><p>一开始，你的分数为 <code>1</code> 。你可以进行以下操作至多 <code>k</code> 次，目标是使你的分数最大：</p><ul><li><p>选择一个之前没有选过的 <strong>非空</strong> 子数组 <code>nums[l, ..., r]</code> 。</p></li><li><p>从 <code>nums[l, ..., r]</code> 里面选择一个 <strong>质数分数</strong> 最高的元素 <code>x</code> 。如果多个元素质数分数相同且最高，选择下标最小的一个。</p></li><li><p>将你的分数乘以 <code>x</code> 。</p></li></ul><p><code>nums[l, ..., r]</code> 表示 <code>nums</code> 中起始下标为 <code>l</code> ，结束下标为 <code>r</code> 的子数组，两个端点都包含。</p><p>一个整数的 <strong>质数分数</strong> 等于 <code>x</code> 不同质因子的数目。比方说， <code>300</code> 的质数分数为 <code>3</code> ，因为 <code>300 = 2 * 2 * 3 * 5 * 5</code> 。</p><p>请你返回进行至多 <code>k</code> 次操作后，可以得到的 <strong>最大分数</strong> 。</p><p>由于答案可能很大，请你将结果对 <code>10^9 + 7</code> 取余后返回。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [8,3,9,3,8], k = 2</p><p>输出：81</p><p>解释：进行以下操作可以得到分数 81 ：</p><ul><li><p>选择子数组 nums[2, ..., 2] 。nums[2] 是子数组中唯一的元素。所以我们将分数乘以 nums[2] ，分数变为 1 * 9 = 9 。</p></li><li><p>选择子数组 nums[2, ..., 3] 。nums[2] 和 nums[3] 质数分数都为 1 ，但是 nums[2] 下标更小。所以我们将分数乘以 nums[2] ，分数变为 9 * 9 = 81 。</p></li></ul><p>81 是可以得到的最高得分。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [19,12,14,6,10,18], k = 3</p><p>输出：4788</p><p>解释：进行以下操作可以得到分数 4788 ：</p><ul><li><p>选择子数组 nums[0, ..., 0] 。nums[0] 是子数组中唯一的元素。所以我们将分数乘以 nums[0] ，分数变为 1 * 19 = 19 。</p></li><li><p>选择子数组 nums[5, ..., 5] 。nums[5] 是子数组中唯一的元素。所以我们将分数乘以 nums[5] ，分数变为 19 * 18 = 342 。</p></li><li><p>选择子数组 nums[2, ..., 3] 。nums[2] 和 nums[3] 质数分数都为 2，但是 nums[2] 下标更小。所以我们将分数乘以 nums[2] ，分数变为  342 * 14 = 4788 。</p></li></ul><p>4788 是可以得到的最高的分。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length == n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= min(n * (n + 1) / 2, 10^9)</code></p></li></ul></ul>">
     </span>
       <header class="post-header">

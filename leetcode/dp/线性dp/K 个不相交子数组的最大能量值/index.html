@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="K 个不相交子数组的最大能量值">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/dp/%E7%BA%BF%E6%80%A7dp/K%20%E4%B8%AA%E4%B8%8D%E7%9B%B8%E4%BA%A4%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E8%83%BD%E9%87%8F%E5%80%BC/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="100216. K 个不相交子数组的最大能量值给你一个长度为 n 下标从 0 开始的整数数组 nums 和一个 正奇数 整数 k 。x 个子数组的能量值定义为 strength &#x3D; sum[1] * x - sum[2] * (x - 1) + sum[3] * (x - 2) - sum[4] * (x - 3) + ... + sum[x] * 1 ，其中 sum[i] 是第 i 个子数组的和">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-12T21:14:01.000Z">
@@ -42,7 +42,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/dp/%E7%BA%BF%E6%80%A7dp/K%20%E4%B8%AA%E4%B8%8D%E7%9B%B8%E4%BA%A4%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E8%83%BD%E9%87%8F%E5%80%BC/","path":"leetcode/dp/线性dp/K 个不相交子数组的最大能量值/","title":"K 个不相交子数组的最大能量值"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>K 个不相交子数组的最大能量值 | 代码如诗</title>
+<title>K 个不相交子数组的最大能量值 | fork()==0世界线变动</title>
   
 
 
@@ -73,7 +73,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -227,12 +227,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="K 个不相交子数组的最大能量值 | 代码如诗">
+      <meta itemprop="name" content="K 个不相交子数组的最大能量值 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-strength-of-k-disjoint-subarrays/description/">100216. K 个不相交子数组的最大能量值</a></p><hr /><p>给你一个长度为 <code>n</code> 下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 和一个 <strong>正奇数</strong> 整数 <code>k</code> 。</p><p><code>x</code> 个子数组的能量值定义为 <code>strength = sum[1] * x - sum[2] * (x - 1) + sum[3] * (x - 2) - sum[4] * (x - 3) + ... + sum[x] * 1</code> ，其中 <code>sum[i]</code> 是第 <code>i</code> 个子数组的和。更正式的，能量值是满足 <code>1 &amp;lt;= i &amp;lt;= x</code> 的所有 <code>i</code> 对应的 <code>(-1)^i+1 * sum[i] * (x - i + 1)</code> 之和。</p><p>你需要在 <code>nums</code> 中选择 <code>k</code> 个 <strong>不相交</strong><strong>子数组</strong> ，使得 <strong>能量值最大</strong> 。</p><p>请你返回可以得到的 <strong>最大</strong><strong>能量值</strong> 。</p><p><strong>注意</strong>，选出来的所有子数组 <strong>不</strong> 需要覆盖整个数组。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,2,3,-1,2], k = 3</p><p>输出：22</p><p>解释：选择 3 个子数组的最好方式是选择：nums[0..2] ，nums[3..3] 和 nums[4..4] 。能量值为 (1 + 2 + 3) * 3 - (-1) * 2 + 2 * 1 = 22 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [12,-2,-2,-2,-2], k = 5</p><p>输出：64</p><p>解释：唯一一种选 5 个不相交子数组的方案是：nums[0..0] ，nums[1..1] ，nums[2..2] ，nums[3..3] 和 nums[4..4] 。能量值为 12 * 5 - (-2) * 4 + (-2) * 3 - (-2) * 2 + (-2) * 1 = 64 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [-1,-2,-3], k = 1</p><p>输出：-1</p><p>解释：选择 1 个子数组的最优方案是：nums[0..0] 。能量值为 -1 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 10^4</code></p></li><li><p><code>-10^9 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= n</code></p></li><li><p><code>1 &amp;lt;= n * k &amp;lt;= 10^6</code></p></li><li><p><code>k</code> 是奇数。</p></li></ul></ul>">
     </span>
       <header class="post-header">

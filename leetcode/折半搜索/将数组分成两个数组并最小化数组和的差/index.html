@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="将数组分成两个数组并最小化数组和的差">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%B9%B6%E6%9C%80%E5%B0%8F%E5%8C%96%E6%95%B0%E7%BB%84%E5%92%8C%E7%9A%84%E5%B7%AE/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="2035. 将数组分成两个数组并最小化数组和的差给你一个长度为 2 * n 的整数数组。你需要将 nums 分成 两个 长度为 n 的数组，分别求出两个数组的和，并 最小化 两个数组和之 差的绝对值 。nums 中每个元素都需要放入两个数组之一。请你返回 最小 的数组和之差。示例 1：&#96;&#96;&#96;txt输入：nums &#x3D; [3,9,7,3]输出：2解释：最优分组方案是分成 [3,9] 和 [7,3] 。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2021/10/02/ex1.png">
@@ -44,7 +44,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%B9%B6%E6%9C%80%E5%B0%8F%E5%8C%96%E6%95%B0%E7%BB%84%E5%92%8C%E7%9A%84%E5%B7%AE/","path":"leetcode/折半搜索/将数组分成两个数组并最小化数组和的差/","title":"将数组分成两个数组并最小化数组和的差"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>将数组分成两个数组并最小化数组和的差 | 代码如诗</title>
+<title>将数组分成两个数组并最小化数组和的差 | fork()==0世界线变动</title>
   
 
 
@@ -75,7 +75,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -229,12 +229,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="将数组分成两个数组并最小化数组和的差 | 代码如诗">
+      <meta itemprop="name" content="将数组分成两个数组并最小化数组和的差 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-array-into-two-arrays-to-minimize-sum-difference/">2035. 将数组分成两个数组并最小化数组和的差</a></p><hr /><p>给你一个长度为 <code>2 * n</code> 的整数数组。你需要将 <code>nums</code> 分成 <strong>两个</strong> 长度为 <code>n</code> 的数组，分别求出两个数组的和，并 <strong>最小化</strong> 两个数组和之 <strong>差的绝对值</strong> 。<code>nums</code> 中每个元素都需要放入两个数组之一。</p><p>请你返回 <strong>最小</strong> 的数组和之差。</p><p><strong>示例 1：</strong></p><p><img alt="example-1" src="https://assets.leetcode.com/uploads/2021/10/02/ex1.png" /></p><p>```txt</p><p>输入：nums = [3,9,7,3]</p><p>输出：2</p><p>解释：最优分组方案是分成 [3,9] 和 [7,3] 。</p><p>数组和之差的绝对值为 abs((3 + 9) - (7 + 3)) = 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [-36,36]</p><p>输出：72</p><p>解释：最优分组方案是分成 [-36] 和 [36] 。</p><p>数组和之差的绝对值为 abs((-36) - (36)) = 72 。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="example-3" src="https://assets.leetcode.com/uploads/2021/10/02/ex3.png" /></p><p>```txt</p><p>输入：nums = [2,-1,0,4,-2,-9]</p><p>输出：0</p><p>解释：最优分组方案是分成 [2,4,-9] 和 [-1,0,-2] 。</p><p>数组和之差的绝对值为 abs((2 + 4 + -9) - (-1 + 0 + -2)) = 0 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 15</code></p></li><li><p><code>nums.length == 2 * n</code></p></li><li><p><code>-10^7 &amp;lt;= nums[i] &amp;lt;= 10^7</code></p></li></ul></ul>">
     </span>
       <header class="post-header">

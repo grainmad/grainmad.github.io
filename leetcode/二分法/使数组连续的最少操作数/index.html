@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="使数组连续的最少操作数">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%BD%BF%E6%95%B0%E7%BB%84%E8%BF%9E%E7%BB%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="2009. 使数组连续的最少操作数给你一个整数数组 nums 。每一次操作中，你可以将 nums 中 任意 一个元素替换成 任意 整数。如果 nums 满足以下条件，那么它是 连续的 ：nums 中所有元素都是 互不相同 的。nums 中 最大 元素与 最小 元素的差等于 nums.length - 1 。比方说，nums &#x3D; [4, 2, 5, 3] 是 连续的 ，但是 nums &#x3D; [1, 2">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-09T19:03:51.000Z">
@@ -41,7 +41,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%BD%BF%E6%95%B0%E7%BB%84%E8%BF%9E%E7%BB%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/","path":"leetcode/二分法/使数组连续的最少操作数/","title":"使数组连续的最少操作数"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>使数组连续的最少操作数 | 代码如诗</title>
+<title>使数组连续的最少操作数 | fork()==0世界线变动</title>
   
 
 
@@ -72,7 +72,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -226,12 +226,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="使数组连续的最少操作数 | 代码如诗">
+      <meta itemprop="name" content="使数组连续的最少操作数 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-operations-to-make-array-continuous/">2009. 使数组连续的最少操作数</a></p><hr /><p>给你一个整数数组 <code>nums</code> 。每一次操作中，你可以将 <code>nums</code> 中 <strong>任意</strong> 一个元素替换成 <strong>任意</strong> 整数。</p><p>如果 <code>nums</code> 满足以下条件，那么它是 <strong>连续的</strong> ：</p><ul><li><p><code>nums</code> 中所有元素都是 <strong>互不相同</strong> 的。</p></li><li><p><code>nums</code> 中 <strong>最大</strong> 元素与 <strong>最小</strong> 元素的差等于 <code>nums.length - 1</code> 。</p></li></ul><p>比方说，<code>nums = [4, 2, 5, 3]</code> 是 <strong>连续的</strong> ，但是 <code>nums = [1, 2, 3, 5, 6]</code> <strong>不是连续的</strong> 。</p><p>请你返回使 <code>nums</code> <strong>连续</strong> 的 <strong>最少</strong> 操作次数。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [4,2,5,3]</p><p>输出：0</p><p>解释：nums 已经是连续的了。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1,2,3,5,6]</p><p>输出：1</p><p>解释：一个可能的解是将最后一个元素变为 4 。</p><p>结果数组为 [1,2,3,5,4] ，是连续数组。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [1,10,100,1000]</p><p>输出：3</p><p>解释：一个可能的解是：</p><ul><li><p>将第二个元素变为 2 。</p></li><li><p>将第三个元素变为 3 。</p></li><li><p>将第四个元素变为 4 。</p></li></ul><p>结果数组为 [1,2,3,4] ，是连续数组。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li></ul></ul>">
     </span>
       <header class="post-header">

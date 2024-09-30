@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="TediousLee">
 <meta property="og:url" content="https://grainmad.github.io/codeforces/ape/2024/01/15/1369D/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="首先，我们定义 RDB 为一棵具有特殊性质的树，它有一个级别 $level$。  一个级别为 $1$ 的 RDB 是一个单独的节点。接着，对于所有 $i&gt;1$，级别为 $i$ 的 RDB 的构成方法如下。  先求出级别为 $i-1$ 的 RDB，然后对于该 RDB 中的每个节点 $x$。  如果 $x$ 没有孩子，那么给他加上一个孩子。  如果 $x$ 只有一个孩子，那么给他加上两个孩子。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ubHVvZ3UuY29tLmNuL3VwbG9hZC92anVkZ2VfcGljL0NGMTM2OUQvNjRjNjY3Zjg4YjBiYTNiNThhNDU4MWU4ZjcyNmQ0ODQ3ZDk3N2E2Yy5wbmc?x-oss-process=image/format,png">
@@ -48,7 +48,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/codeforces/ape/2024/01/15/1369D/","path":"codeforces/ape/2024/01/15/1369D/","title":"TediousLee"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>TediousLee | 代码如诗</title>
+<title>TediousLee | fork()==0世界线变动</title>
   
 
 
@@ -79,7 +79,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -233,12 +233,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="TediousLee | 代码如诗">
+      <meta itemprop="name" content="TediousLee | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p>首先，我们定义 <code>RDB</code> 为一棵具有特殊性质的树，它有一个级别 $level$。  </p><p>一个级别为 $1$ 的 <code>RDB</code> 是一个单独的节点。</p><p>接着，对于所有 $i&gt;1$，级别为 $i$ 的 <code>RDB</code> 的构成方法如下。  </p><p>先求出级别为 $i-1$ 的 <code>RDB</code>，然后对于该 <code>RDB</code> 中的每个节点 $x$。  </p><ul><li><p>如果 $x$ 没有孩子，那么给他加上一个孩子。  </p></li><li><p>如果 $x$ 只有一个孩子，那么给他加上两个孩子。  </p></li><li><p>如果 $x$ 已经有了超过一个孩子，那么我们跳过节点 $x$。  </p></li></ul><p>以下是 $1\le n \le 3$ 的所有 <code>RDB</code></p><p><img alt="" src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ubHVvZ3UuY29tLmNuL3VwbG9hZC92anVkZ2VfcGljL0NGMTM2OUQvNjRjNjY3Zjg4YjBiYTNiNThhNDU4MWU4ZjcyNmQ0ODQ3ZDk3N2E2Yy5wbmc?x-oss-process=image/format,png" /></p><p>接下来，我们定义一个 <code>claw</code>  （见下图），它也是一棵具有特殊性质的树，并且将节点 $1$ 称为这个 <code>claw</code> 的中心，其他的称为底部节点。</p><p><img alt="" src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ubHVvZ3UuY29tLmNuL3VwbG9hZC92anVkZ2VfcGljL0NGMTM2OUQvNDE0MmRhNTE0NDVmNGNmY2UxNmVhNjhkOTY4MzJjYWFiZjE3YWNjZS5wbmc?x-oss-process=image/format,png" /></p><p>现在，给出一个级别为 $n$ 的 <code>RDB</code>，初始时他上面的所有节点都为绿色，你可以进行一些操作。  </p><p>对于每次操作，你需要在给出的 <code>RDB</code> 中找到一个 <code>claw</code>，满足所有底部节点在 <code>RDB</code> 中都是中心节点的儿子，且这四个节点在 <code>RDB</code> 中都是绿色。然后将这四个节点染为黄色。  </p><p>问最多可以将多少个节点染成黄色。</p><p><strong>输入格式</strong></p><p>第一行一个整数 $T$，表示数据的组数。  </p><p>接下来 $T$ 行，每行一个正整数 $n$，表示有一棵级别为 $n$ 的 <code>RDB</code>。</p><p><strong>输出格式</strong></p><p>输出有 $n$ 行，每行一个整数，对应每组数据的答案。  </p><p>这个答案可能很大，所以输出它对 $10^9+7$ 取模后的结果。</p><p><strong>说明与提示</strong></p><p>$1\le T\le 10^4$  </p><p>$1\le n \le 2\cdot 10^6$</p><p>感谢 @<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/120362">_Wolverine</a> 提供的翻译</p></ul>">
     </span>
       <header class="post-header">

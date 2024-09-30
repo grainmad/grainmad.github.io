@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="相邻字符不同的最长路径">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E7%9B%B8%E9%82%BB%E5%AD%97%E7%AC%A6%E4%B8%8D%E5%90%8C%E7%9A%84%E6%9C%80%E9%95%BF%E8%B7%AF%E5%BE%84/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="2246. 相邻字符不同的最长路径给你一棵 树（即一个连通、无向、无环图），根节点是节点 0 ，这棵树由编号从 0 到 n - 1 的 n 个节点组成。用下标从 0 开始、长度为 n 的数组 parent 来表示这棵树，其中 parent[i] 是节点 i 的父节点，由于节点 0 是根节点，所以 parent[0] &#x3D;&#x3D; -1 。另给你一个字符串 s ，长度也是 n ，其中 s[i] 表示分配给节">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2022/03/25/testingdrawio.png">
@@ -45,7 +45,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/dp/%E6%A0%91%E5%9E%8Bdp/%E7%9B%B8%E9%82%BB%E5%AD%97%E7%AC%A6%E4%B8%8D%E5%90%8C%E7%9A%84%E6%9C%80%E9%95%BF%E8%B7%AF%E5%BE%84/","path":"leetcode/dp/树型dp/相邻字符不同的最长路径/","title":"相邻字符不同的最长路径"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>相邻字符不同的最长路径 | 代码如诗</title>
+<title>相邻字符不同的最长路径 | fork()==0世界线变动</title>
   
 
 
@@ -76,7 +76,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -230,12 +230,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="相邻字符不同的最长路径 | 代码如诗">
+      <meta itemprop="name" content="相邻字符不同的最长路径 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-path-with-different-adjacent-characters/">2246. 相邻字符不同的最长路径</a></p><hr /><p>给你一棵 <strong>树</strong>（即一个连通、无向、无环图），根节点是节点 <code>0</code> ，这棵树由编号从 <code>0</code> 到 <code>n - 1</code> 的 <code>n</code> 个节点组成。用下标从 <strong>0</strong> 开始、长度为 <code>n</code> 的数组 <code>parent</code> 来表示这棵树，其中 <code>parent[i]</code> 是节点 <code>i</code> 的父节点，由于节点 <code>0</code> 是根节点，所以 <code>parent[0] == -1</code> 。</p><p>另给你一个字符串 <code>s</code> ，长度也是 <code>n</code> ，其中 <code>s[i]</code> 表示分配给节点 <code>i</code> 的字符。</p><p>请你找出路径上任意一对相邻节点都没有分配到相同字符的 <strong>最长路径</strong> ，并返回该路径的长度。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/03/25/testingdrawio.png" /></p><p>```txt</p><p>输入：parent = [-1,0,0,1,1,2], s = &quot;abacbe&quot;</p><p>输出：3</p><p>解释：任意一对相邻节点字符都不同的最长路径是：0 -&gt; 1 -&gt; 3 。该路径的长度是 3 ，所以返回 3 。</p><p>可以证明不存在满足上述条件且比 3 更长的路径。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2022/03/25/graph2drawio.png" /></p><p>```txt</p><p>输入：parent = [-1,0,0,0], s = &quot;aabc&quot;</p><p>输出：3</p><p>解释：任意一对相邻节点字符都不同的最长路径是：2 -&gt; 0 -&gt; 3 。该路径的长度为 3 ，所以返回 3 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == parent.length == s.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p>对所有 <code>i &amp;gt;= 1</code> ，<code>0 &amp;lt;= parent[i] &amp;lt;= n - 1</code> 均成立</p></li><li><p><code>parent[0] == -1</code></p></li><li><p><code>parent</code> 表示一棵有效的树</p></li><li><p><code>s</code> 仅由小写英文字母组成</p></li></ul></ul>">
     </span>
       <header class="post-header">

@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="重新排列后包含指定子字符串的字符串数目">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E6%8C%87%E5%AE%9A%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="100126. 重新排列后包含指定子字符串的字符串数目给你一个整数 n 。如果一个字符串 s 只包含小写英文字母，且 将 s 的字符重新排列后，新字符串包含 子字符串 &amp;quot;leet&amp;quot; ，那么我们称字符串 s 是一个 好 字符串。比方说：字符串 &amp;quot;lteer&amp;quot; 是好字符串，因为重新排列后可以得到 &amp;quot;leetr&amp;a">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-02T13:59:41.000Z">
@@ -42,7 +42,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88/%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E6%8C%87%E5%AE%9A%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/","path":"leetcode/数学/组合/重新排列后包含指定子字符串的字符串数目/","title":"重新排列后包含指定子字符串的字符串数目"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>重新排列后包含指定子字符串的字符串数目 | 代码如诗</title>
+<title>重新排列后包含指定子字符串的字符串数目 | fork()==0世界线变动</title>
   
 
 
@@ -73,7 +73,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -227,12 +227,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="重新排列后包含指定子字符串的字符串数目 | 代码如诗">
+      <meta itemprop="name" content="重新排列后包含指定子字符串的字符串数目 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-strings-which-can-be-rearranged-to-contain-substring/description/">100126. 重新排列后包含指定子字符串的字符串数目</a></p><hr /><p>给你一个整数 <code>n</code> 。</p><p>如果一个字符串 <code>s</code> 只包含小写英文字母，<strong>且</strong> 将 <code>s</code> 的字符重新排列后，新字符串包含 <strong>子字符串</strong> <code>&amp;quot;leet&amp;quot;</code> ，那么我们称字符串 <code>s</code> 是一个 <strong>好</strong> 字符串。</p><p>比方说：</p><ul><li><p>字符串 <code>&amp;quot;lteer&amp;quot;</code> 是好字符串，因为重新排列后可以得到 <code>&amp;quot;leetr&amp;quot;</code> 。</p></li><li><p><code>&amp;quot;letl&amp;quot;</code> 不是好字符串，因为无法重新排列并得到子字符串 <code>&amp;quot;leet&amp;quot;</code> 。</p></li></ul><p>请你返回长度为 <code>n</code> 的好字符串 <strong>总</strong> 数目。</p><p>由于答案可能很大，将答案对 <code>10^9 + 7</code> <strong>取余</strong> 后返回。</p><p><strong>子字符串</strong> 是一个字符串中一段连续的字符序列。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 4</p><p>输出：12</p><p>解释：总共有 12 个字符串重新排列后包含子字符串 &quot;leet&quot; ：&quot;eelt&quot; ，&quot;eetl&quot; ，&quot;elet&quot; ，&quot;elte&quot; ，&quot;etel&quot; ，&quot;etle&quot; ，&quot;leet&quot; ，&quot;lete&quot; ，&quot;ltee&quot; ，&quot;teel&quot; ，&quot;tele&quot; 和 &quot;tlee&quot; 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 10</p><p>输出：83943898</p><p>解释：长度为 10 的字符串重新排列后包含子字符串 &quot;leet&quot; 的方案数为 526083947580 。所以答案为 526083947580 % (109 + 7) = 83943898 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><code>1 &amp;lt;= n &amp;lt;= 10^5</code></li></ul></ul>">
     </span>
       <header class="post-header">

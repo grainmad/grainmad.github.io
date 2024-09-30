@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计子树中城市之间最大距离">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/BFS/%E7%BB%9F%E8%AE%A1%E5%AD%90%E6%A0%91%E4%B8%AD%E5%9F%8E%E5%B8%82%E4%B9%8B%E9%97%B4%E6%9C%80%E5%A4%A7%E8%B7%9D%E7%A6%BB/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="1617. 统计子树中城市之间最大距离给你 n 个城市，编号为从 1 到 n 。同时给你一个大小为 n-1 的数组 edges ，其中 edges[i] &#x3D; [ui, vi] 表示城市 ui 和 vi 之间有一条双向边。题目保证任意城市之间只有唯一的一条路径。换句话说，所有城市形成了一棵 树 。一棵 子树 是城市的一个子集，且子集中任意城市之间可以通过子集中的其他城市和边到达。两个子树被认为不一样">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/11/p1.png">
@@ -43,7 +43,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/BFS/%E7%BB%9F%E8%AE%A1%E5%AD%90%E6%A0%91%E4%B8%AD%E5%9F%8E%E5%B8%82%E4%B9%8B%E9%97%B4%E6%9C%80%E5%A4%A7%E8%B7%9D%E7%A6%BB/","path":"leetcode/BFS/统计子树中城市之间最大距离/","title":"统计子树中城市之间最大距离"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>统计子树中城市之间最大距离 | 代码如诗</title>
+<title>统计子树中城市之间最大距离 | fork()==0世界线变动</title>
   
 
 
@@ -74,7 +74,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -228,12 +228,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="统计子树中城市之间最大距离 | 代码如诗">
+      <meta itemprop="name" content="统计子树中城市之间最大距离 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-subtrees-with-max-distance-between-cities/">1617. 统计子树中城市之间最大距离</a></p><hr /><p>给你 <code>n</code> 个城市，编号为从 <code>1</code> 到 <code>n</code> 。同时给你一个大小为 <code>n-1</code> 的数组 <code>edges</code> ，其中 <code>edges[i] = [ui, vi]</code> 表示城市 <code>ui</code> 和 <code>vi</code> 之间有一条双向边。题目保证任意城市之间只有唯一的一条路径。换句话说，所有城市形成了一棵 <strong>树</strong> 。</p><p>一棵 <strong>子树</strong> 是城市的一个子集，且子集中任意城市之间可以通过子集中的其他城市和边到达。两个子树被认为不一样的条件是至少有一个城市在其中一棵子树中存在，但在另一棵子树中不存在。</p><p>对于 <code>d</code> 从 <code>1</code> 到 <code>n-1</code> ，请你找到城市间 <strong>最大距离</strong> 恰好为 <code>d</code> 的所有子树数目。</p><p>请你返回一个大小为 <code>n-1</code> 的数组，其中第 <code>d</code> 个元素（<strong>下标从 1 开始</strong>）是城市间 <strong>最大距离</strong> 恰好等于 <code>d</code> 的子树数目。</p><p><strong>请注意</strong>，两个城市间距离定义为它们之间需要经过的边的数目。</p><p><strong>示例 1：</strong></p><p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/11/p1.png" /></strong></p><p>```txt</p><p>输入：n = 4, edges = [[1,2],[2,3],[2,4]]</p><p>输出：[3,4,0]</p><p>解释：</p><p>子树 {1,2}, {2,3} 和 {2,4} 最大距离都是 1 。</p><p>子树 {1,2,3}, {1,2,4}, {2,3,4} 和 {1,2,3,4} 最大距离都为 2 。</p><p>不存在城市间最大距离为 3 的子树。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 2, edges = [[1,2]]</p><p>输出：[1]</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：n = 3, edges = [[1,2],[2,3]]</p><p>输出：[2,1]</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>2 &amp;lt;= n &amp;lt;= 15</code></p></li><li><p><code>edges.length == n-1</code></p></li><li><p><code>edges[i].length == 2</code></p></li><li><p><code>1 &amp;lt;= ui, vi &amp;lt;= n</code></p></li><li><p>题目保证 <code>(ui, vi)</code> 所表示的边互不相同。</p></li></ul></ul>">
     </span>
       <header class="post-header">

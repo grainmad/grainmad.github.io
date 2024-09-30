@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="获取所有钥匙的最短路径">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/BFS/%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E9%92%A5%E5%8C%99%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="864. 获取所有钥匙的最短路径给定一个二维网格 grid ，其中：&amp;#x27;.&amp;#x27; 代表一个空房间&amp;#x27;#&amp;#x27; 代表一堵墙&amp;#x27;@&amp;#x27; 是起点小写字母代表钥匙大写字母代表锁我们从起点开始出发，一次移动是指向四个基本方向之一行走一个单位空间。我们不能在网格外面行走，也无法穿过一堵墙。如果途经一个钥匙，我们就把它捡起来。除非我们手里有对应的钥匙，否则无法通过锁。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2021/07/23/lc-keys2.jpg">
@@ -45,7 +45,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/BFS/%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E9%92%A5%E5%8C%99%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/","path":"leetcode/BFS/获取所有钥匙的最短路径/","title":"获取所有钥匙的最短路径"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>获取所有钥匙的最短路径 | 代码如诗</title>
+<title>获取所有钥匙的最短路径 | fork()==0世界线变动</title>
   
 
 
@@ -76,7 +76,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -230,12 +230,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="获取所有钥匙的最短路径 | 代码如诗">
+      <meta itemprop="name" content="获取所有钥匙的最短路径 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/shortest-path-to-get-all-keys/">864. 获取所有钥匙的最短路径</a></p><hr /><p>给定一个二维网格 <code>grid</code> ，其中：</p><ul><li><p>&#x27;.&#x27; 代表一个空房间</p></li><li><p>&#x27;#&#x27; 代表一堵墙</p></li><li><p>&#x27;@&#x27; 是起点</p></li><li><p>小写字母代表钥匙</p></li><li><p>大写字母代表锁</p></li></ul><p>我们从起点开始出发，一次移动是指向四个基本方向之一行走一个单位空间。我们不能在网格外面行走，也无法穿过一堵墙。如果途经一个钥匙，我们就把它捡起来。除非我们手里有对应的钥匙，否则无法通过锁。</p><p>假设 k 为 钥匙/锁 的个数，且满足 <code>1 &amp;lt;= k &amp;lt;= 6</code>，字母表中的前 <code>k</code> 个字母在网格中都有自己对应的一个小写和一个大写字母。换言之，每个锁有唯一对应的钥匙，每个钥匙也有唯一对应的锁。另外，代表钥匙和锁的字母互为大小写并按字母顺序排列。</p><p>返回获取所有钥匙所需要的移动的最少次数。如果无法获取所有钥匙，返回 <code>-1</code> 。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/07/23/lc-keys2.jpg" /></p><p>```txt</p><p>输入：grid = [&quot;@.a.#&quot;,&quot;###.#&quot;,&quot;b.A.B&quot;]</p><p>输出：8</p><p>解释：目标是获得所有钥匙，而不是打开所有锁。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/07/23/lc-key2.jpg" /></p><p>```txt</p><p>输入：grid = [&quot;@..aA&quot;,&quot;..B#.&quot;,&quot;....b&quot;]</p><p>输出：6</p><p>```</p><p><strong>示例 3:</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/07/23/lc-keys3.jpg" /></p><p>```txt</p><p>输入: grid = [&quot;@Aa&quot;]</p><p>输出: -1</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == grid.length</code></p></li><li><p><code>n == grid[i].length</code></p></li><li><p><code>1 &amp;lt;= m, n &amp;lt;= 30</code></p></li><li><p><code>grid[i][j]</code> 只含有 <code>&amp;#x27;.&amp;#x27;</code>, <code>&amp;#x27;#&amp;#x27;</code>, <code>&amp;#x27;@&amp;#x27;</code>, <code>&amp;#x27;a&amp;#x27;-``&amp;#x27;f``&amp;#x27;</code> 以及 <code>&amp;#x27;A&amp;#x27;-&amp;#x27;F&amp;#x27;</code></p></li><li><p>钥匙的数目范围是 <code>[1, 6]</code> </p></li><li><p>每个钥匙都对应一个 <strong>不同</strong> 的字母</p></li><li><p>每个钥匙正好打开一个对应的锁</p></li></ul></ul>">
     </span>
       <header class="post-header">

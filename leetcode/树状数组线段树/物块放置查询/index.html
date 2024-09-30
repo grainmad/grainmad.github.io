@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="物块放置查询">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E7%89%A9%E5%9D%97%E6%94%BE%E7%BD%AE%E6%9F%A5%E8%AF%A2/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="物块放置查询有一条无限长的数轴，原点在 0 处，沿着 x 轴 正  方向无限延伸。给你一个二维数组 queries ，它包含两种操作：操作类型 1 ：queries[i] &#x3D; [1, x] 。在距离原点 x 处建一个障碍物。数据保证当操作执行的时候，位置 x 处 没有  任何障碍物。操作类型 2 ：queries[i] &#x3D; [2, x, sz] 。判断在数轴范围 [0, x] 内是否可以放置一个长">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2024/04/22/example0block.png">
@@ -44,7 +44,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BA%BF%E6%AE%B5%E6%A0%91/%E7%89%A9%E5%9D%97%E6%94%BE%E7%BD%AE%E6%9F%A5%E8%AF%A2/","path":"leetcode/树状数组线段树/物块放置查询/","title":"物块放置查询"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>物块放置查询 | 代码如诗</title>
+<title>物块放置查询 | fork()==0世界线变动</title>
   
 
 
@@ -75,7 +75,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -229,12 +229,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="物块放置查询 | 代码如诗">
+      <meta itemprop="name" content="物块放置查询 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/block-placement-queries/">物块放置查询</a></p><hr /><p>有一条无限长的数轴，原点在 0 处，沿着 x 轴 <strong>正</strong>  方向无限延伸。</p><p>给你一个二维数组 <code>queries</code> ，它包含两种操作：</p><ol><li><p>操作类型 1 ：<code>queries[i] = [1, x]</code> 。在距离原点 <code>x</code> 处建一个障碍物。数据保证当操作执行的时候，位置 <code>x</code> 处 <strong>没有</strong>  任何障碍物。</p></li><li><p>操作类型 2 ：<code>queries[i] = [2, x, sz]</code> 。判断在数轴范围 <code>[0, x]</code> 内是否可以放置一个长度为 <code>sz</code> 的物块，这个物块需要 <strong>完全</strong>  放置在范围 <code>[0, x]</code> 内。如果物块与任何障碍物有重合，那么这个物块 <strong>不能</strong>  被放置，但物块可以与障碍物刚好接触。注意，你只是进行查询，并 <strong>不是</strong>  真的放置这个物块。每个查询都是相互独立的。</p></li></ol><p>请你返回一个 boolean 数组<code>results</code> ，如果第 <code>i</code> 个操作类型 2 的操作你可以放置物块，那么 <code>results[i]</code> 为</p><p><code>true</code> ，否则为 <code>false</code> 。</p><p><strong>示例 1：</strong></p><p><strong>输入：</strong> queries = [[1,2],[2,3,3],[2,3,1],[2,2,2]]</p><p><strong>输出：</strong>[false,true,true]</p><p><strong>解释：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2024/04/22/example0block.png" /></strong></p><p>查询 0 ，在 <code>x = 2</code> 处放置一个障碍物。在 <code>x = 3</code> 之前任何大小不超过 2 的物块都可以被放置。</p><p><strong>示例 2：</strong></p><p><strong>输入：</strong> queries = [[1,7],[2,7,6],[1,2],[2,7,5],[2,7,6]]</p><p><strong>输出：</strong>[true,true,false]</p><p><strong>解释：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2024/04/22/example1block.png" /></strong></p><ul><li><p>查询 0 在 <code>x = 7</code> 处放置一个障碍物。在 <code>x = 7</code> 之前任何大小不超过 7 的物块都可以被放置。</p></li><li><p>查询 2 在 <code>x = 2</code> 处放置一个障碍物。现在，在 <code>x = 7</code> 之前任何大小不超过 5 的物块可以被放置，<code>x = 2</code> 之前任何大小不超过 2 的物块可以被放置。</p></li></ul><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= queries.length &amp;lt;= 15 * 104</code></p></li><li><p><code>2 &amp;lt;= queries[i].length &amp;lt;= 3</code></p></li><li><p><code>1 &amp;lt;= queries[i][0] &amp;lt;= 2</code></p></li><li><p><code>1 &amp;lt;= x, sz &amp;lt;= min(5 * 104, 3 * queries.length)</code></p></li><li><p>输入保证操作 1 中，<code>x</code> 处不会有障碍物。</p></li><li><p>输入保证至少有一个操作类型 2 。</p></li></ul></ul>">
     </span>
       <header class="post-header">

@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="装包裹的最小浪费空间">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E8%A3%85%E5%8C%85%E8%A3%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%A9%BA%E9%97%B4/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="1889. 装包裹的最小浪费空间给你 n 个包裹，你需要把它们装在箱子里，每个箱子装一个包裹。总共有 m 个供应商提供 不同尺寸 的箱子（每个规格都有无数个箱子）。如果一个包裹的尺寸 小于等于 一个箱子的尺寸，那么这个包裹就可以放入这个箱子之中。包裹的尺寸用一个整数数组 packages 表示，其中 packages[i] 是第 i 个包裹的尺寸。供应商用二维数组 boxes 表示，其中 boxe">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-09T19:03:51.000Z">
@@ -41,7 +41,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E8%A3%85%E5%8C%85%E8%A3%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%A9%BA%E9%97%B4/","path":"leetcode/二分法/装包裹的最小浪费空间/","title":"装包裹的最小浪费空间"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>装包裹的最小浪费空间 | 代码如诗</title>
+<title>装包裹的最小浪费空间 | fork()==0世界线变动</title>
   
 
 
@@ -72,7 +72,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -226,12 +226,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="装包裹的最小浪费空间 | 代码如诗">
+      <meta itemprop="name" content="装包裹的最小浪费空间 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-space-wasted-from-packaging/">1889. 装包裹的最小浪费空间</a></p><hr /><p>给你 <code>n</code> 个包裹，你需要把它们装在箱子里，<strong>每个箱子装一个包裹</strong>。总共有 <code>m</code> 个供应商提供 <strong>不同尺寸</strong> 的箱子（每个规格都有无数个箱子）。如果一个包裹的尺寸 <strong>小于等于</strong> 一个箱子的尺寸，那么这个包裹就可以放入这个箱子之中。</p><p>包裹的尺寸用一个整数数组 <code>packages</code> 表示，其中 <code>packages[i]</code> 是第 <code>i</code> 个包裹的尺寸。供应商用二维数组 <code>boxes</code> 表示，其中 <code>boxes[j]</code> 是第 <code>j</code> 个供应商提供的所有箱子尺寸的数组。</p><p>你想要选择 <strong>一个供应商</strong> 并只使用该供应商提供的箱子，使得 <strong>总浪费空间最小</strong> 。对于每个装了包裹的箱子，我们定义 <strong>浪费的</strong> 空间等于 <code>箱子的尺寸 - 包裹的尺寸</code> 。<strong>总浪费空间</strong> 为 <strong>所有</strong> 箱子中浪费空间的总和。</p><ul><li>比方说，如果你想要用尺寸数组为 <code>[4,8]</code> 的箱子装下尺寸为 <code>[2,3,5]</code> 的包裹，你可以将尺寸为 <code>2</code> 和 <code>3</code> 的两个包裹装入两个尺寸为 <code>4</code> 的箱子中，同时把尺寸为 <code>5</code> 的包裹装入尺寸为 <code>8</code> 的箱子中。总浪费空间为 <code>(4-2) + (4-3) + (8-5) = 6</code> 。</li></ul><p>请你选择 <strong>最优</strong> 箱子供应商，使得 <strong>总浪费空间最小</strong> 。如果 <strong>无法</strong> 将所有包裹放入箱子中，请你返回 <code>-1</code> 。由于答案可能会 <strong>很大</strong> ，请返回它对 <code>10^9 + 7</code> <strong>取余</strong> 的结果。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：packages = [2,3,5], boxes = [[4,8],[2,8]]</p><p>输出：6</p><p>解释：选择第一个供应商最优，用两个尺寸为 4 的箱子和一个尺寸为 8 的箱子。</p><p>总浪费空间为 (4-2) + (4-3) + (8-5) = 6 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：packages = [2,3,5], boxes = [[1,4],[2,3],[3,4]]</p><p>输出：-1</p><p>解释：没有箱子能装下尺寸为 5 的包裹。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：packages = [3,5,8,10,11,12], boxes = [[12],[11,9],[10,5,14]]</p><p>输出：9</p><p>解释：选择第三个供应商最优，用两个尺寸为 5 的箱子，两个尺寸为 10 的箱子和两个尺寸为 14 的箱子。</p><p>总浪费空间为 (5-3) + (5-5) + (10-8) + (10-10) + (14-11) + (14-12) = 9 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == packages.length</code></p></li><li><p><code>m == boxes.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= m &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= packages[i] &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= boxes[j].length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= boxes[j][k] &amp;lt;= 10^5</code></p></li><li><p><code>sum(boxes[j].length) &amp;lt;= 10^5</code></p></li><li><p><code>boxes[j]</code> 中的元素 <strong>互不相同</strong> 。</p></li></ul></ul>">
     </span>
       <header class="post-header">

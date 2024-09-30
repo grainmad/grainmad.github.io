@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="边权重均等查询">
 <meta property="og:url" content="https://grainmad.github.io/leetcode/%E5%80%8D%E5%A2%9E%E6%B3%95/%E8%BE%B9%E6%9D%83%E9%87%8D%E5%9D%87%E7%AD%89%E6%9F%A5%E8%AF%A2/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="2846. 边权重均等查询现有一棵由 n 个节点组成的无向树，节点按从 0 到 n - 1 编号。给你一个整数 n 和一个长度为 n - 1 的二维整数数组 edges ，其中 edges[i] &#x3D; [ui, vi, wi] 表示树中存在一条位于节点 ui 和节点 vi 之间、权重为 wi 的边。另给你一个长度为 m 的二维整数数组 queries ，其中 queries[i] &#x3D; [ai, bi">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2023/08/11/graph-6-1.png">
@@ -44,7 +44,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/leetcode/%E5%80%8D%E5%A2%9E%E6%B3%95/%E8%BE%B9%E6%9D%83%E9%87%8D%E5%9D%87%E7%AD%89%E6%9F%A5%E8%AF%A2/","path":"leetcode/倍增法/边权重均等查询/","title":"边权重均等查询"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>边权重均等查询 | 代码如诗</title>
+<title>边权重均等查询 | fork()==0世界线变动</title>
   
 
 
@@ -75,7 +75,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -229,12 +229,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="边权重均等查询 | 代码如诗">
+      <meta itemprop="name" content="边权重均等查询 | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-edge-weight-equilibrium-queries-in-a-tree/description/">2846. 边权重均等查询</a></p><hr /><p>现有一棵由 <code>n</code> 个节点组成的无向树，节点按从 <code>0</code> 到 <code>n - 1</code> 编号。给你一个整数 <code>n</code> 和一个长度为 <code>n - 1</code> 的二维整数数组 <code>edges</code> ，其中 <code>edges[i] = [ui, vi, wi]</code> 表示树中存在一条位于节点 <code>ui</code> 和节点 <code>vi</code> 之间、权重为 <code>wi</code> 的边。</p><p>另给你一个长度为 <code>m</code> 的二维整数数组 <code>queries</code> ，其中 <code>queries[i] = [ai, bi]</code> 。对于每条查询，请你找出使从 <code>ai</code> 到 <code>bi</code> 路径上每条边的权重相等所需的 <strong>最小操作次数</strong> 。在一次操作中，你可以选择树上的任意一条边，并将其权重更改为任意值。</p><p><strong>注意：</strong></p><ul><li><p>查询之间 <strong>相互独立</strong> 的，这意味着每条新的查询时，树都会回到 <strong>初始状态</strong> 。</p></li><li><p>从 <code>ai</code> 到 <code>bi</code>的路径是一个由 <strong>不同</strong> 节点组成的序列，从节点 <code>ai</code> 开始，到节点 <code>bi</code> 结束，且序列中相邻的两个节点在树中共享一条边。</p></li></ul><p>返回一个长度为 <code>m</code> 的数组 <code>answer</code> ，其中 <code>answer[i]</code> 是第 <code>i</code> 条查询的答案。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/08/11/graph-6-1.png" /></p><p>```txt</p><p>输入：n = 7, edges = [[0,1,1],[1,2,1],[2,3,1],[3,4,2],[4,5,2],[5,6,2]], queries = [[0,3],[3,6],[2,6],[0,6]]</p><p>输出：[0,0,1,3]</p><p>解释：第 1 条查询，从节点 0 到节点 3 的路径中的所有边的权重都是 1 。因此，答案为 0 。</p><p>第 2 条查询，从节点 3 到节点 6 的路径中的所有边的权重都是 2 。因此，答案为 0 。</p><p>第 3 条查询，将边 [2,3] 的权重变更为 2 。在这次操作之后，从节点 2 到节点 6 的路径中的所有边的权重都是 2 。因此，答案为 1 。</p><p>第 4 条查询，将边 [0,1]、[1,2]、[2,3] 的权重变更为 2 。在这次操作之后，从节点 0 到节点 6 的路径中的所有边的权重都是 2 。因此，答案为 3 。</p><p>对于每条查询 queries[i] ，可以证明 answer[i] 是使从 ai 到 bi 的路径中的所有边的权重相等的最小操作次数。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/08/11/graph-9-1.png" /></p><p>```txt</p><p>输入：n = 8, edges = [[1,2,6],[1,3,4],[2,4,6],[2,5,3],[3,6,6],[3,0,8],[7,0,2]], queries = [[4,6],[0,4],[6,5],[7,4]]</p><p>输出：[1,2,2,3]</p><p>解释：第 1 条查询，将边 [1,3] 的权重变更为 6 。在这次操作之后，从节点 4 到节点 6 的路径中的所有边的权重都是 6 。因此，答案为 1 。</p><p>第 2 条查询，将边 [0,3]、[3,1] 的权重变更为 6 。在这次操作之后，从节点 0 到节点 4 的路径中的所有边的权重都是 6 。因此，答案为 2 。</p><p>第 3 条查询，将边 [1,3]、[5,2] 的权重变更为 6 。在这次操作之后，从节点 6 到节点 5 的路径中的所有边的权重都是 6 。因此，答案为 2 。</p><p>第 4 条查询，将边 [0,7]、[0,3]、[1,3] 的权重变更为 6 。在这次操作之后，从节点 7 到节点 4 的路径中的所有边的权重都是 6 。因此，答案为 3 。</p><p>对于每条查询 queries[i] ，可以证明 answer[i] 是使从 ai 到 bi 的路径中的所有边的权重相等的最小操作次数。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n &amp;lt;= 10^4</code></p></li><li><p><code>edges.length == n - 1</code></p></li><li><p><code>edges[i].length == 3</code></p></li><li><p><code>0 &amp;lt;= ui, vi &amp;lt; n</code></p></li><li><p><code>1 &amp;lt;= wi &amp;lt;= 26</code></p></li><li><p>生成的输入满足 <code>edges</code> 表示一棵有效的树</p></li><li><p><code>1 &amp;lt;= queries.length == m &amp;lt;= 2 * 10^4</code></p></li><li><p><code>queries[i].length == 2</code></p></li><li><p><code>0 &amp;lt;= ai, bi &amp;lt; n</code></p></li></ul></ul>">
     </span>
       <header class="post-header">

@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Wrong Answer">
 <meta property="og:url" content="https://grainmad.github.io/codeforces/ape/2024/04/10/1129B/index.html">
-<meta property="og:site_name" content="代码如诗">
+<meta property="og:site_name" content="fork()&#x3D;&#x3D;0世界线变动">
 <meta property="og:description" content="Alice做到了这样一道题：&gt; 给定一个序列$a$，有$n$个元素，编号从$0$到$n-1$。求$\max\limits_{0 \leq l \leq r \leq n-1} \sum\limits_{l \leq i \leq r} (r-l+1) \cdot a_i$。&gt;&gt; $|a_i| \leq 10^6,n \leq 2000$Alice觉得这题太水了，很快就给出了解法：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-07T17:41:48.000Z">
@@ -41,7 +41,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://grainmad.github.io/codeforces/ape/2024/04/10/1129B/","path":"codeforces/ape/2024/04/10/1129B/","title":"Wrong Answer"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Wrong Answer | 代码如诗</title>
+<title>Wrong Answer | fork()==0世界线变动</title>
   
 
 
@@ -72,7 +72,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">代码如诗</p>
+      <p class="site-title">fork()==0世界线变动</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description"><span id="jinrishici-sentence">正在加载今日诗词....</span> <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
@@ -226,12 +226,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码如诗">
+      <meta itemprop="name" content="fork()==0世界线变动">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Wrong Answer | 代码如诗">
+      <meta itemprop="name" content="Wrong Answer | fork()==0世界线变动">
       <meta itemprop="description" content="<ul style="text-align:left;"><p>Alice做到了这样一道题：</p><p>&gt; 给定一个序列$a$，有$n$个元素，编号从$0$到$n-1$。求$\max\limits_{0 \leq l \leq r \leq n-1} \sum\limits_{l \leq i \leq r} (r-l+1) \cdot a_i$。</p><p>&gt;</p><p>&gt; $|a_i| \leq 10^6,n \leq 2000$</p><p>Alice觉得这题太水了，很快就给出了解法：</p><p>```</p><p>function find_answer(n, a)</p><pre><code># Assumes n is an integer between 1 and 2000, inclusive# Assumes a is a list containing n integers: a[0], a[1], ..., a[n-1]res = 0cur = 0k = -1for i = 0 to i = n-1    cur = cur + a[i]    if cur &amp;lt; 0        cur = 0        k = i    res = max(res, (i-k)*cur)return res</code></pre><p>```</p><p>聪明的你一定发现了，Alice的解法是错误的。例如对于序列$a = [6, -8, 7, -42]$，Alice的程序得出的结果是$7$，而正确答案应该是$3 \cdot (6-8+7) = 15$。</p><p>于是你决定HACK掉Alice的解法。</p><p>请给出一组数据，使得正确答案-Alice的答案=$k$，你的数据必须满足$n \leq 2000,|a_i| \leq 10^6$。</p><p>$k \leq 10^9$</p></ul>">
     </span>
       <header class="post-header">
