@@ -210,6 +210,98 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BD%8D%E8%BF%90%E7%AE%97/%E6%A0%91%E4%B8%AD%E5%8F%AF%E4%BB%A5%E5%BD%A2%E6%88%90%E5%9B%9E%E6%96%87%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E4%BD%8D%E8%BF%90%E7%AE%97/%E6%A0%91%E4%B8%AD%E5%8F%AF%E4%BB%A5%E5%BD%A2%E6%88%90%E5%9B%9E%E6%96%87%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/" class="post-title-link" itemprop="url">树中可以形成回文的路径数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-08-01 20:22:55" itemprop="dateCreated datePublished" datetime="2023-08-01T20:22:55+00:00">2023-08-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-paths-that-can-form-a-palindrome-in-a-tree/">2791. 树中可以形成回文的路径数</a></p><hr /><p>给你一棵 <strong>树</strong>（即，一个连通、无向且无环的图），<strong>根</strong> 节点为 <code>0</code> ，由编号从 <code>0</code> 到 <code>n - 1</code> 的 <code>n</code> 个节点组成。这棵树用一个长度为 <code>n</code> 、下标从 <strong>0</strong> 开始的数组 <code>parent</code> 表示，其中 <code>parent[i]</code> 为节点 <code>i</code> 的父节点，由于节点 <code>0</code> 为根节点，所以 <code>parent[0] == -1</code> 。</p><p>另给你一个长度为 <code>n</code> 的字符串 <code>s</code> ，其中 <code>s[i]</code> 是分配给 <code>i</code> 和 <code>parent[i]</code> 之间的边的字符。<code>s[0]</code> 可以忽略。</p><p>找出满足 <code>u &amp;lt; v</code> ，且从 <code>u</code> 到 <code>v</code> 的路径上分配的字符可以 <strong>重新排列</strong> 形成 <strong>回文</strong> 的所有节点对 <code>(u, v)</code> ，并返回节点对的数目。</p><p>如果一个字符串正着读和反着读都相同，那么这个字符串就是一个 <strong>回文</strong> 。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2023/07/15/treedrawio-8drawio.png" /></p><p>```txt</p><p>输入：parent = [-1,0,0,1,1,2], s = &quot;acaabc&quot;</p><p>输出：8</p><p>解释：符合题目要求的节点对分别是：</p><ul><li><p>(0,1)、(0,2)、(1,3)、(1,4) 和 (2,5) ，路径上只有一个字符，满足回文定义。</p></li><li><p>(2,3)，路径上字符形成的字符串是 &quot;aca&quot; ，满足回文定义。</p></li><li><p>(1,5)，路径上字符形成的字符串是 &quot;cac&quot; ，满足回文定义。</p></li><li><p>(3,5)，路径上字符形成的字符串是 &quot;acac&quot; ，可以重排形成回文 &quot;acca&quot; 。</p></li></ul><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：parent = [-1,0,0,0,0], s = &quot;aaaaa&quot;</p><p>输出：10</p><p>解释：任何满足 u &lt; v 的节点对 (u,v) 都符合题目要求。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == parent.length == s.length</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p>对于所有 <code>i &amp;gt;= 1</code> ，<code>0 &amp;lt;= parent[i] &amp;lt;= n - 1</code> 均成立</p></li><li><p><code>parent[0] == -1</code></p></li><li><p><code>parent</code> 表示一棵有效的树</p></li><li><p><code>s</code> 仅由小写英文字母组成</p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E4%BD%8D%E8%BF%90%E7%AE%97/%E6%A0%91%E4%B8%AD%E5%8F%AF%E4%BB%A5%E5%BD%A2%E6%88%90%E5%9B%9E%E6%96%87%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BD%8D%E8%BF%90%E7%AE%97/%E7%BB%99%E5%AE%9A%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0%E5%86%85%E4%BD%BF%E5%89%A9%E4%BD%99%E5%85%83%E7%B4%A0%E7%9A%84%E6%88%96%E5%80%BC%E6%9C%80%E5%B0%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -732,98 +824,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/leetcode/%E5%8C%BA%E9%97%B4%E8%AE%A1%E6%95%B0/%E4%BD%BF%E6%95%B0%E7%BB%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%8F%98%E6%88%90%201%20%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E5%8C%BA%E9%97%B4%E8%AE%A1%E6%95%B0/%E8%8B%B1%E9%9B%84%E7%9A%84%E5%8A%9B%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E5%8C%BA%E9%97%B4%E8%AE%A1%E6%95%B0/%E8%8B%B1%E9%9B%84%E7%9A%84%E5%8A%9B%E9%87%8F/" class="post-title-link" itemprop="url">英雄的力量</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-14 23:33:37" itemprop="dateCreated datePublished" datetime="2023-05-14T23:33:37+00:00">2023-05-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/power-of-heroes/">6423. 英雄的力量</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> ，它表示英雄的能力值。如果我们选出一部分英雄，这组英雄的 <strong>力量</strong> 定义为：</p><ul><li><code>i0</code> ，<code>i1</code> ，... <code>ik</code> 表示这组英雄在数组中的下标。那么这组英雄的力量为 <code>max(nums[i0],nums[i1] ... nums[ik])^2 * min(nums[i0],nums[i1] ... nums[ik])</code> 。</li></ul><p>请你返回所有可能的 <strong>非空</strong> 英雄组的 <strong>力量</strong> 之和。由于答案可能非常大，请你将结果对 <code>10^9 + 7</code> <strong>取余。</strong></p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [2,1,4]</p><p>输出：141</p><p>解释：</p><p>第 1 组：[2] 的力量为 22 * 2 = 8 。</p><p>第 2 组：[1] 的力量为 12 * 1 = 1 。</p><p>第 3 组：[4] 的力量为 42 * 4 = 64 。</p><p>第 4 组：[2,1] 的力量为 22 * 1 = 4 。</p><p>第 5 组：[2,4] 的力量为 42 * 2 = 32 。</p><p>第 6 组：[1,4] 的力量为 42 * 1 = 16 。</p><p>第​ ​​​​​​7 组：[2,1,4] 的力量为 42​​​​​​​ * 1 = 16 。</p><p>所有英雄组的力量之和为 8 + 1 + 64 + 4 + 32 + 16 + 16 = 141 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [1,1,1]</p><p>输出：7</p><p>解释：总共有 7 个英雄组，每一组的力量都是 1 。所以所有英雄组的力量之和为 7 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E5%8C%BA%E9%97%B4%E8%AE%A1%E6%95%B0/%E8%8B%B1%E9%9B%84%E7%9A%84%E5%8A%9B%E9%87%8F/">
                 阅读全文 &raquo;
               </a>
             </div>

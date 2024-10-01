@@ -1,5 +1,5 @@
 <hr>
-<p>title: “字符串哈希”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>字符串哈希</li></ul>‘</p>
+<p>title: “字符串哈希”<br>date: 2024-06-03 10:42:02<br>updated: 2024-10-01 07:16:24<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>字符串哈希</li></ul>‘</p>
 <hr>
 <h1 id="字符串哈希"><a href="#字符串哈希" class="headerlink" title="字符串哈希"></a>字符串哈希</h1><p><del>缺点：多重哈希容易卡常，单哈希容易被hack</del></p>
 <pre><code class="cpp">#define ll long long
@@ -62,7 +62,7 @@ int main() {
 <h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="多重哈希"><a href="#多重哈希" class="headerlink" title="多重哈希"></a>多重哈希</h2><pre><code class="cpp">// 单哈希容易被卡，封装用多重哈希
 // 两个串的哈希相等，说明串大概率相等。
 struct SHash {
-#define ll unsigned long long
+#define ll long long
     // string s[] index from 0 to n-1
     // B[i] = BASE^i
     // s[i...j] = s[0...j] - s[0...i-1]
@@ -92,14 +92,16 @@ struct MSHash{
     vector&lt;SHash&gt; h;
     MSHash(string&amp; s) {
         // MOD 太大会溢出
-        vector&lt;pair&lt;ll, ll&gt;&gt; param = {{137, 167772161},
-                                                                                {139, 469762049},
-                                                                                {149, 754974721},
-                                                                                {167, 998244353},
-                                                                                {151, 1045430273},
-                                                                                {157, 1051721729},
-                                                                                {163, 1053818881},
-                                                                                {173, 1000000007}};
+        vector&lt;pair&lt;ll, ll&gt;&gt; param ={
+            {137, 167772161},
+            {139, 469762049},
+            {149, 754974721},
+            {167, 998244353},
+            {151, 1045430273},
+            {157, 1051721729},
+            {163, 1053818881},
+            {173, 1000000007}
+        };
         for (auto [i, j] : param) {
             h.emplace_back(s, i, j);
         }
@@ -112,8 +114,124 @@ struct MSHash{
         }
         return true;
     }
+
+    // is s[l1...r1-1] == o[l2...r2-1] ? s[] index from 0
+    bool check(MSHash&amp; o, int l1, int r1, int l2, int r2) {
+        int sz = h.size();
+        for (int i=0; i&lt;sz; i++) {
+            if (h[i].hash(l1, r1) != o.h[i].hash(l2, r2))
+                return false;
+        }
+        return true;
+    }
+    void print(int l, int r) {
+        cout&lt;&lt;&#39;[&#39;; int s = 1;
+        for(auto&amp; e:h) { if (s) s = 0; else cout &lt;&lt; &quot;, &quot;; cout &lt;&lt; e.hash(l, r); }
+        cout&lt;&lt;&quot;]\n&quot;;
+    }
 };
 </code></pre>
+<ul>
+<li><a href="https://leetcode.cn/problems/find-the-occurrence-of-first-almost-equal-substring/"><strong>3303. 第一个几乎相等子字符串的下标</strong></a><pre><code class="cpp">// 单哈希容易被卡，封装用多重哈希
+// 两个串的哈希相等，说明串大概率相等。
+struct SHash {
+#define ll long long
+    // string s[] index from 0 to n-1
+    // B[i] = BASE^i
+    // s[i...j] = s[0...j] - s[0...i-1]
+    // hash s[0...i-1] = H[i] = s[0]*B[i-1]+s[1]*B[i-2]+...+s[i-1]*B[0]
+    // hash s[0...j] = H[j+1] = s[0]*B[j]+s[1]*B[j-1]+...+s[j]*B[0]
+    // hash s[i...j] = H[j+1] - H[i]*B[j-i+1]
+    // hash s[i...j-1] = H[j] - H[i]*B[j-i]
+    vector&lt;ll&gt; H, B;
+    ll len, base, mod;
+    SHash(string&amp; s, ll base = 171, ll mod = 998244353)
+        : H(s.size() + 1, 0),
+          B(s.size() + 1, 1),
+          len(s.size()),
+          base(base),
+          mod(mod) {
+        for (int i = 1; i &lt;= len; i++) {
+            H[i] = (H[i - 1] * base % mod + s[i - 1]) % mod;
+            B[i] = B[i - 1] * base % mod;
+        }
+    }
+    ll hash(int l, int r) {  // hash of s[l...r-1]
+        return (H[r] - H[l] * B[r - l] % mod + mod) % mod;
+    };
+};
+// 167772161,469762049,754974721,998244353,1045430273,1051721729,1053818881,1000000007
+struct MSHash{
+    vector&lt;SHash&gt; h;
+    MSHash(string&amp; s) {
+        // MOD 太大会溢出
+        vector&lt;pair&lt;ll, ll&gt;&gt; param ={
+            {163, 1053818881},
+            {173, 1000000007}
+        };
+        for (auto [i, j] : param) {
+            h.emplace_back(s, i, j);
+        }
+    }
+    // is s[l1...r1-1] == s[l2...r2-1] ? s[] index from 0
+    bool check(int l1, int r1, int l2, int r2) {
+        for (auto&amp; i : h) {
+            if (i.hash(l1, r1) != i.hash(l2, r2))
+                return false;
+        }
+        return true;
+    }
+
+    // is s[l1...r1-1] == o[l2...r2-1] ? s[] index from 0
+    bool check(MSHash&amp; o, int l1, int r1, int l2, int r2) {
+        int sz = h.size();
+        for (int i=0; i&lt;sz; i++) {
+            if (h[i].hash(l1, r1) != o.h[i].hash(l2, r2))
+                return false;
+        }
+        return true;
+    }
+    void print(int l, int r) {
+        cout&lt;&lt;&#39;[&#39;; int s = 1;
+        for(auto&amp; e:h) { if (s) s = 0; else cout &lt;&lt; &quot;, &quot;; cout &lt;&lt; e.hash(l, r); }
+        cout&lt;&lt;&quot;]\n&quot;;
+    }
+};
+
+class Solution {
+public:
+    int minStartingIndex(string s, string pattern) {
+        MSHash txt(s), pat(pattern);
+        int n = s.size(), m = pattern.size();
+        for (int i=0; i&lt;=n-m; i++) {
+            int l = i, r = i+m+1;
+            if (txt.check(pat, l, r-1, 0, m)) return i;
+            if (s[i] != pattern[0]) {
+                if (txt.check(pat, l+1, r-1, 1, m))
+                    return i;
+                continue;
+            }
+            while (l&lt;r) {
+                int mid = l+r&gt;&gt;1;
+                // cout &lt;&lt; mid &lt;&lt; endl;
+                // txt.print(i, mid);
+                // pat.print(0, mid-i);
+                if (txt.check(pat, i, mid, 0, mid-i)) {
+                    l = mid+1;
+                } else {
+                    r = mid;
+                }
+            }
+            if (txt.check(pat, r, i+m, r-i, m)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+};
+</code></pre>
+</li>
+</ul>
 <p>实际解题时封装太多层还是容易超时，建议用两个哈希</p>
 <pre><code class="cpp">SHash h1(s), h2(s, 173, 1000000007);
 // 检测 s[a,b) == s[c,d)
