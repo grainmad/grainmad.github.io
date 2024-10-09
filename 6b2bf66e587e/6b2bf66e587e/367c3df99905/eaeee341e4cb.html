@@ -1,7 +1,10 @@
 <hr>
-<p>title: “字符串最小表示”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-04 16:43:54<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>字符串最小表示</li></ul>‘</p>
+<p>title: “字符串最小表示”<br>date: 2024-06-03 10:42:02<br>updated: 2024-10-09 16:43:29<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>字符串最小表示</li></ul>‘</p>
 <hr>
-<h1 id="字符串最小表示"><a href="#字符串最小表示" class="headerlink" title="字符串最小表示"></a>字符串最小表示</h1><pre><code class="cpp">string fun(string s) {   
+<h1 id="字符串最小表示"><a href="#字符串最小表示" class="headerlink" title="字符串最小表示"></a>字符串最小表示</h1><h2 id="长度为n的循环字符串中找字典序最小的长度为n的子串"><a href="#长度为n的循环字符串中找字典序最小的长度为n的子串" class="headerlink" title="长度为n的循环字符串中找字典序最小的长度为n的子串"></a>长度为n的循环字符串中找字典序最小的长度为n的子串</h2><p>考虑对于一对字符串 $A,B$, 它们在原字符串 $S$ 中的起始位置分别为 $i,j$, 且它们的前 $k$ 个字符均相同，即$S[i \cdots i+k-1]=S[j \cdots j+k-1]$</p>
+<p>不妨先考虑 $S[i+k]&gt;S[j+k]$ 的情况，我们发现起始位置下标 $l$ 满足 $i\le l\le i+k$ 的字符串均不能成为答案。因为对于任意一个字符串 $S_{i+p}$（表示以 $i+p$ 为起始位置的字符串，$p \in [0, k]$）一定存在字符串 $S_{j+p}$ 比它更优。</p>
+<p>所以我们比较时可以跳过下标 $l\in [i,i+k]$, 直接比较 $S_{i+k+1}$</p>
+<pre><code class="cpp">string fun(string s) {   
     int a=0, b=1, c=0, n=s.size();
     while (a&lt;n &amp;&amp; b&lt;n &amp;&amp; c&lt;n) {
         if (s[(a+c)%n] == s[(b+c)%n]) {
@@ -16,4 +19,25 @@
     a = min(a, b);
     return s.substr(a)+s.substr(0, a);
 }
+</code></pre>
+<h2 id="寻找字符串中字典序最大的子串"><a href="#寻找字符串中字典序最大的子串" class="headerlink" title="寻找字符串中字典序最大的子串"></a>寻找字符串中字典序最大的子串</h2><p>最大子串必定是原串的后缀</p>
+<p><a href="https://leetcode.cn/problems/last-substring-in-lexicographical-order/description/"><strong>1163. 按字典序排在最后的子串</strong></a></p>
+<pre><code class="cpp">class Solution {
+public:
+    string lastSubstring(string s) {
+        int a=0, b=1, c=0, n=s.size();
+        while (a+c&lt;n &amp;&amp; b+c&lt;n) {
+            if (s[a+c] == s[b+c]) {
+                c++;
+            } else {
+                if (s[(a+c)%n] &lt; s[(b+c)%n]) a += c+1;
+                else b += c+1;
+                if (a == b) a++;
+                c=0;
+            }
+        }
+        a = min(a, b);
+        return s.substr(a);
+    }
+};
 </code></pre>
