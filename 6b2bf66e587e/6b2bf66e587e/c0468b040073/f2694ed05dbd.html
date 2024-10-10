@@ -1,0 +1,479 @@
+<hr>
+<p>title: “跳表”<br>date: 2024-10-10 16:41:59<br>updated: 2024-10-10 16:41:59<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>跳表</li></ul>‘</p>
+<hr>
+<h1 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h1><p>根据数据规模确定索引层数，根据概率确定插入数据索引层数。</p>
+<p>每插入一个元素，有概率生成$x$级索引，$0\le x\le p$，若当前跳表插入元素个数为$n$，$p$是满足$2^p\ge n$最小的数。生成$x$级索引的概率是$\frac{1}{2^x},(x&gt;0)$，不生成索引$(x=0)$概率为$\frac{1}{2^p}$。</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+random_device seed;
+ranlux48 engine(seed());
+int random(int l, int r) {
+    uniform_int_distribution&lt;&gt; distrib(l, r);
+    return distrib(engine);
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const pair&lt;t,u&gt;&amp; p) {
+    return os&lt;&lt;&#39;[&#39;&lt;&lt;p.first&lt;&lt;&quot;, &quot;&lt;&lt;p.second&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const vector&lt;t&gt;&amp; v) {
+    os&lt;&lt;&#39;[&#39;; int s = 1;
+    for(auto e:v) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os &lt;&lt; e; }
+    return os&lt;&lt;&#39;]&#39;;
+}
+template&lt;class t,class u&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os,const map&lt;t,u&gt;&amp; mp){
+    os&lt;&lt;&#39;{&#39;; int s = 1;
+    for(auto [x,y]:mp) { if (s) s = 0; else os &lt;&lt; &quot;, &quot;; os&lt;&lt;x&lt;&lt;&quot;: &quot;&lt;&lt;y; }
+    return os&lt;&lt;&#39;}&#39;;
+}
+
+#define NINF 0xf3f3f3f3
+class Skiplist {
+public:
+    struct Node {
+        int val;
+        Node* down;
+        Node* right;
+        Node(int val, Node* down=NULL, Node* right=NULL):val(val),down(down),right(right) {}
+    };
+    int val_cnt = 0;
+    int p = 0; // samllest p, that 2^p &gt;= val_cnt
+    vector&lt;Node*&gt; head; // size = p+1
+    Skiplist() {
+        head.emplace_back(new Node(NINF));
+    }
+    
+    bool search(int target) {
+        int lev = head.size()-1;
+        // 高层索引头为空，移除
+        while (lev &amp;&amp; head[lev]-&gt;right == NULL) {
+            delete head[lev];
+            head.pop_back();
+            lev--;
+        }
+        Node* cur = head[lev];
+        while (cur) {
+            // 右侧节点小于target 右移动
+            while (cur-&gt;right &amp;&amp; cur-&gt;right-&gt;val &lt; target) cur = cur-&gt;right;
+            // 右侧为target，找到答案
+            if (cur-&gt;right &amp;&amp; cur-&gt;right-&gt;val == target) return true;
+            //否则进入下一层索引
+            cur = cur-&gt;down;
+        }
+        return false;
+    }
+    
+    void add(int num) {
+        val_cnt++;
+        while ((1&lt;&lt;p) &lt; val_cnt) p++;
+        // 获取建立索引层数，概率算法
+        int idx = rand_idx();
+        // 当前索引头不够
+        int lev = head.size()-1;
+        while (lev &lt; idx) {
+            head.push_back(new Node(NINF, head.back()));
+            lev++;
+        }
+        Node* cur = head[lev], *up = NULL;
+        while (cur) {
+            // 右侧节点小于num 右移动
+            while (cur-&gt;right &amp;&amp; cur-&gt;right-&gt;val &lt; num) cur = cur-&gt;right;
+            // idx及以下建立索引
+            if (lev&lt;=idx) {
+                cur-&gt;right =  new Node(num, NULL, cur-&gt;right);
+                if (up != NULL) up-&gt;down = cur-&gt;right;
+                up = cur-&gt;right;
+            }
+            //进入下一层索引
+            cur = cur-&gt;down;
+            lev--;
+        }
+    }
+    
+    bool erase(int num) {
+        int lev = head.size()-1;
+        // 高层索引头为空，移除
+        while (lev &amp;&amp; head[lev]-&gt;right == NULL) {
+            delete head[lev];
+            head.pop_back();
+            lev--;
+        }
+        bool rt = false;
+        Node* cur = head[lev];
+        while (cur) {
+            // 右侧节点小于num 右移动
+            while (cur-&gt;right &amp;&amp; cur-&gt;right-&gt;val &lt; num) cur = cur-&gt;right;
+            // 右侧为num，删除之
+            if (cur-&gt;right &amp;&amp; cur-&gt;right-&gt;val == num) {
+                rt = true;
+                Node* e = cur-&gt;right;
+                cur-&gt;right = e-&gt;right;
+                delete e;
+            }
+            //否则进入下一层索引
+            cur = cur-&gt;down;
+        }
+
+        val_cnt--;
+        while (p &amp;&amp; (1&lt;&lt;p-1) &gt;= val_cnt) p--;
+
+        return rt;
+    }
+    void awesome_print() {
+        int lev = head.size()-1;
+        cout &lt;&lt; &quot;val_cnt: &quot; &lt;&lt; val_cnt &lt;&lt; &quot;\tlev: &quot; &lt;&lt; lev &lt;&lt; &quot;\tp: &quot; &lt;&lt; p &lt;&lt; endl;
+        map&lt;Node*,int&gt; mp;
+        set&lt;Node*&gt; st;
+        for (int i=lev; i&gt;=0; i--) {
+            Node* cur = head[i];
+            while (cur) {
+                if (!st.count(cur)) {
+                    Node* t = cur;
+                    st.insert(t);
+                    int c = 0;
+                    while (t-&gt;down) st.insert(t = t-&gt;down), c++;
+                    mp[t] = c;
+                }
+                cur = cur-&gt;right;
+            }
+        }
+        function&lt;void(int)&gt; dfs = [&amp;](int l) {
+            if (l &gt; lev) return;
+            dfs(l+1);
+            Node *t = head[0];
+            while (t) {
+                cout &lt;&lt; &quot;\t&quot;;
+                if (l&lt;=mp[t]) {
+                    if (t-&gt;val == NINF) {
+                        cout &lt;&lt; &quot;HEAD&quot;;
+                    } else {
+                        cout &lt;&lt; t-&gt;val;
+                    }
+                }
+                t = t-&gt;right;
+            }
+            cout &lt;&lt; endl;
+        };
+        dfs(0);
+    }
+private:
+    int rand_idx() {
+        int sz = 1&lt;&lt;p;
+        // int v = rand()%sz;
+        int v = random(0, sz-1);
+        int rt = 0;
+        while (v) {
+            rt++;
+            v &gt;&gt;= 1;
+        }
+        /*
+            sz = 8
+            0 : 0
+            1 : 1
+            2 : 2 3
+            4 : 4 5 6 7
+        */ 
+        return rt;
+    }
+};
+
+void sol() {
+    Skiplist sl;
+    vector&lt;int&gt; a;
+    for (int i=0; i&lt;20; i++) {
+        a.push_back(random(0, 100));
+    }
+    cout &lt;&lt; &quot;add seq &quot; &lt;&lt; a &lt;&lt; endl;
+    for (int i:a) {
+        sl.add(i);
+        cout &lt;&lt; &quot;add &quot; &lt;&lt; i &lt;&lt; endl;
+        sl.awesome_print();
+    }
+    random_shuffle(a.begin(), a.end());
+    cout &lt;&lt; &quot;del seq &quot; &lt;&lt; a &lt;&lt; endl;
+    for (int i:a) {
+        sl.erase(i);
+        cout &lt;&lt; &quot;erase &quot; &lt;&lt; i &lt;&lt; endl;
+        sl.awesome_print();
+    }
+}
+
+int main() {
+    sol();
+    return 0;
+}
+</code></pre>
+<ul>
+<li>print<pre><code>add seq [51, 29, 12, 9, 13, 65, 83, 67, 16, 37, 26, 82, 27, 79, 82, 100, 44, 2, 43, 75]
+add 51
+val_cnt: 1      lev: 0  p: 0
+        HEAD    51
+add 29
+val_cnt: 2      lev: 1  p: 1
+        HEAD    29
+        HEAD    29      51
+add 12
+val_cnt: 3      lev: 1  p: 2
+        HEAD            29
+        HEAD    12      29      51
+add 9
+val_cnt: 4      lev: 1  p: 2
+        HEAD                    29
+        HEAD    9       12      29      51
+add 13
+val_cnt: 5      lev: 3  p: 3
+        HEAD                    13
+        HEAD                    13
+        HEAD                    13      29
+        HEAD    9       12      13      29      51
+add 65
+val_cnt: 6      lev: 3  p: 3
+        HEAD                    13
+        HEAD                    13                      65
+        HEAD                    13      29              65
+        HEAD    9       12      13      29      51      65
+add 83
+val_cnt: 7      lev: 3  p: 3
+        HEAD                    13                              83
+        HEAD                    13                      65      83
+        HEAD                    13      29              65      83
+        HEAD    9       12      13      29      51      65      83
+add 67
+val_cnt: 8      lev: 3  p: 3
+        HEAD                    13                              67      83
+        HEAD                    13                      65      67      83
+        HEAD                    13      29              65      67      83
+        HEAD    9       12      13      29      51      65      67      83
+add 16
+val_cnt: 9      lev: 3  p: 4
+        HEAD                    13                                      67      83
+        HEAD                    13                              65      67      83
+        HEAD                    13      16      29              65      67      83
+        HEAD    9       12      13      16      29      51      65      67      83
+add 37
+val_cnt: 10     lev: 3  p: 4
+        HEAD                    13                      37                      67      83
+        HEAD                    13                      37              65      67      83
+        HEAD                    13      16      29      37              65      67      83
+        HEAD    9       12      13      16      29      37      51      65      67      83
+add 26
+val_cnt: 11     lev: 3  p: 4
+        HEAD                    13                              37                      67      83
+        HEAD                    13                              37              65      67      83
+        HEAD                    13      16      26      29      37              65      67      83
+        HEAD    9       12      13      16      26      29      37      51      65      67      83
+add 82
+val_cnt: 12     lev: 4  p: 4
+        HEAD                                                                                    82
+        HEAD                    13                              37                      67      82      83
+        HEAD                    13                              37              65      67      82      83
+        HEAD                    13      16      26      29      37              65      67      82      83
+        HEAD    9       12      13      16      26      29      37      51      65      67      82      83
+add 27
+val_cnt: 13     lev: 4  p: 4
+        HEAD                                                                                            82
+        HEAD                    13                                      37                      67      82      83
+        HEAD                    13                      27              37              65      67      82      83
+        HEAD                    13      16      26      27      29      37              65      67      82      83
+        HEAD    9       12      13      16      26      27      29      37      51      65      67      82      83
+add 79
+val_cnt: 14     lev: 4  p: 4
+        HEAD                                                                                                    82
+        HEAD                    13                                      37                      67      79      82      83
+        HEAD                    13                      27              37              65      67      79      82      83
+        HEAD                    13      16      26      27      29      37              65      67      79      82      83
+        HEAD    9       12      13      16      26      27      29      37      51      65      67      79      82      83
+add 82
+val_cnt: 15     lev: 4  p: 4
+        HEAD                                                                                                            82
+        HEAD                    13                                      37                      67      79              82      83
+        HEAD                    13                      27              37              65      67      79      82      82      83
+        HEAD                    13      16      26      27      29      37              65      67      79      82      82      83
+        HEAD    9       12      13      16      26      27      29      37      51      65      67      79      82      82      83
+add 100
+val_cnt: 16     lev: 4  p: 4
+        HEAD                                                                                                            82
+        HEAD                    13                                      37                      67      79              82      83      100
+        HEAD                    13                      27              37              65      67      79      82      82      83      100
+        HEAD                    13      16      26      27      29      37              65      67      79      82      82      83      100
+        HEAD    9       12      13      16      26      27      29      37      51      65      67      79      82      82      83      100
+add 44
+val_cnt: 17     lev: 5  p: 5
+        HEAD                                                                    44
+        HEAD                                                                    44                                              82
+        HEAD                    13                                      37      44                      67      79              82      83      100
+        HEAD                    13                      27              37      44              65      67      79      82      82      83      100
+        HEAD                    13      16      26      27      29      37      44              65      67      79      82      82      83      100
+        HEAD    9       12      13      16      26      27      29      37      44      51      65      67      79      82      82      83      100
+add 2
+val_cnt: 18     lev: 5  p: 5
+        HEAD                                                                            44
+        HEAD    2                                                                       44                                              82
+        HEAD    2                       13                                      37      44                      67      79              82      83      100
+        HEAD    2                       13                      27              37      44              65      67      79      82      82      83      100
+        HEAD    2                       13      16      26      27      29      37      44              65      67      79      82      82      83      100
+        HEAD    2       9       12      13      16      26      27      29      37      44      51      65      67      79      82      82      83      100
+add 43
+val_cnt: 19     lev: 5  p: 5
+        HEAD                                                                                    44
+        HEAD    2                                                                               44                                              82
+        HEAD    2                       13                                      37      43      44                      67      79              82      83      100
+        HEAD    2                       13                      27              37      43      44              65      67      79      82      82      83      100
+        HEAD    2                       13      16      26      27      29      37      43      44              65      67      79      82      82      83      100
+        HEAD    2       9       12      13      16      26      27      29      37      43      44      51      65      67      79      82      82      83      100
+add 75
+val_cnt: 20     lev: 5  p: 5
+        HEAD                                                                                    44                              75
+        HEAD    2                                                                               44                              75                      82
+        HEAD    2                       13                                      37      43      44                      67      75      79              82      83      100
+        HEAD    2                       13                      27              37      43      44              65      67      75      79      82      82      83      100
+        HEAD    2                       13      16      26      27      29      37      43      44              65      67      75      79      82      82      83      100
+        HEAD    2       9       12      13      16      26      27      29      37      43      44      51      65      67      75      79      82      82      83      100
+del seq [13, 26, 82, 100, 82, 44, 2, 29, 83, 37, 9, 67, 75, 12, 51, 27, 65, 43, 79, 16]
+erase 13
+val_cnt: 19     lev: 5  p: 5
+        HEAD                                                                            44                              75
+        HEAD    2                                                                       44                              75                      82
+        HEAD    2                                                       37      43      44                      67      75      79              82      83      100
+        HEAD    2                                       27              37      43      44              65      67      75      79      82      82      83      100
+        HEAD    2                       16      26      27      29      37      43      44              65      67      75      79      82      82      83      100
+        HEAD    2       9       12      16      26      27      29      37      43      44      51      65      67      75      79      82      82      83      100
+erase 26
+val_cnt: 18     lev: 5  p: 5
+        HEAD                                                                    44                              75
+        HEAD    2                                                               44                              75                      82
+        HEAD    2                                               37      43      44                      67      75      79              82      83      100
+        HEAD    2                               27              37      43      44              65      67      75      79      82      82      83      100
+        HEAD    2                       16      27      29      37      43      44              65      67      75      79      82      82      83      100
+        HEAD    2       9       12      16      27      29      37      43      44      51      65      67      75      79      82      82      83      100
+erase 82
+val_cnt: 17     lev: 5  p: 5
+        HEAD                                                                    44                              75
+        HEAD    2                                                               44                              75
+        HEAD    2                                               37      43      44                      67      75      79              83      100
+        HEAD    2                               27              37      43      44              65      67      75      79      82      83      100
+        HEAD    2                       16      27      29      37      43      44              65      67      75      79      82      83      100
+        HEAD    2       9       12      16      27      29      37      43      44      51      65      67      75      79      82      83      100
+erase 100
+val_cnt: 16     lev: 5  p: 4
+        HEAD                                                                    44                              75
+        HEAD    2                                                               44                              75
+        HEAD    2                                               37      43      44                      67      75      79              83
+        HEAD    2                               27              37      43      44              65      67      75      79      82      83
+        HEAD    2                       16      27      29      37      43      44              65      67      75      79      82      83
+        HEAD    2       9       12      16      27      29      37      43      44      51      65      67      75      79      82      83
+erase 82
+val_cnt: 15     lev: 5  p: 4
+        HEAD                                                                    44                              75
+        HEAD    2                                                               44                              75
+        HEAD    2                                               37      43      44                      67      75      79      83
+        HEAD    2                               27              37      43      44              65      67      75      79      83
+        HEAD    2                       16      27      29      37      43      44              65      67      75      79      83
+        HEAD    2       9       12      16      27      29      37      43      44      51      65      67      75      79      83
+erase 44
+val_cnt: 14     lev: 5  p: 4
+        HEAD                                                                                            75
+        HEAD    2                                                                                       75
+        HEAD    2                                               37      43                      67      75      79      83
+        HEAD    2                               27              37      43              65      67      75      79      83
+        HEAD    2                       16      27      29      37      43              65      67      75      79      83
+        HEAD    2       9       12      16      27      29      37      43      51      65      67      75      79      83
+erase 2
+val_cnt: 13     lev: 5  p: 4
+        HEAD                                                                                    75
+        HEAD                                                                                    75
+        HEAD                                            37      43                      67      75      79      83
+        HEAD                            27              37      43              65      67      75      79      83
+        HEAD                    16      27      29      37      43              65      67      75      79      83
+        HEAD    9       12      16      27      29      37      43      51      65      67      75      79      83
+erase 29
+val_cnt: 12     lev: 5  p: 4
+        HEAD                                                                            75
+        HEAD                                                                            75
+        HEAD                                    37      43                      67      75      79      83
+        HEAD                            27      37      43              65      67      75      79      83
+        HEAD                    16      27      37      43              65      67      75      79      83
+        HEAD    9       12      16      27      37      43      51      65      67      75      79      83
+erase 83
+val_cnt: 11     lev: 5  p: 4
+        HEAD                                                                            75
+        HEAD                                                                            75
+        HEAD                                    37      43                      67      75      79
+        HEAD                            27      37      43              65      67      75      79
+        HEAD                    16      27      37      43              65      67      75      79
+        HEAD    9       12      16      27      37      43      51      65      67      75      79
+erase 37
+val_cnt: 10     lev: 5  p: 4
+        HEAD                                                                    75
+        HEAD                                                                    75
+        HEAD                                    43                      67      75      79
+        HEAD                            27      43              65      67      75      79
+        HEAD                    16      27      43              65      67      75      79
+        HEAD    9       12      16      27      43      51      65      67      75      79
+erase 9
+val_cnt: 9      lev: 5  p: 4
+        HEAD                                                            75
+        HEAD                                                            75
+        HEAD                            43                      67      75      79
+        HEAD                    27      43              65      67      75      79
+        HEAD            16      27      43              65      67      75      79
+        HEAD    12      16      27      43      51      65      67      75      79
+erase 67
+val_cnt: 8      lev: 5  p: 3
+        HEAD                                                    75
+        HEAD                                                    75
+        HEAD                            43                      75      79
+        HEAD                    27      43              65      75      79
+        HEAD            16      27      43              65      75      79
+        HEAD    12      16      27      43      51      65      75      79
+erase 75
+val_cnt: 7      lev: 5  p: 3
+        HEAD
+        HEAD
+        HEAD                            43                      79
+        HEAD                    27      43              65      79
+        HEAD            16      27      43              65      79
+        HEAD    12      16      27      43      51      65      79
+erase 12
+val_cnt: 6      lev: 3  p: 3
+        HEAD                    43                      79
+        HEAD            27      43              65      79
+        HEAD    16      27      43              65      79
+        HEAD    16      27      43      51      65      79
+erase 51
+val_cnt: 5      lev: 3  p: 3
+        HEAD                    43              79
+        HEAD            27      43      65      79
+        HEAD    16      27      43      65      79
+        HEAD    16      27      43      65      79
+erase 27
+val_cnt: 4      lev: 3  p: 2
+        HEAD            43              79
+        HEAD            43      65      79
+        HEAD    16      43      65      79
+        HEAD    16      43      65      79
+erase 65
+val_cnt: 3      lev: 3  p: 2
+        HEAD            43      79
+        HEAD            43      79
+        HEAD    16      43      79
+        HEAD    16      43      79
+erase 43
+val_cnt: 2      lev: 3  p: 1
+        HEAD            79
+        HEAD            79
+        HEAD    16      79
+        HEAD    16      79
+erase 79
+val_cnt: 1      lev: 3  p: 0
+        HEAD
+        HEAD
+        HEAD    16
+        HEAD    16
+erase 16
+val_cnt: 0      lev: 1  p: 0
+        HEAD
+        HEAD
+</code></pre>
+</li>
+</ul>

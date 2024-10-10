@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">579</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">580</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">579</span>
+          <span class="site-state-item-count">580</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,190 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E7%BB%99%E5%A2%99%E5%A3%81%E5%88%B7%E6%B2%B9%E6%BC%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E7%BB%99%E5%A2%99%E5%A3%81%E5%88%B7%E6%B2%B9%E6%BC%86/" class="post-title-link" itemprop="url">给墙壁刷油漆</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-06-25 18:20:18" itemprop="dateCreated datePublished" datetime="2023-06-25T18:20:18+00:00">2023-06-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-12 01:49:53" itemprop="dateModified" datetime="2024-06-12T01:49:53+00:00">2024-06-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/painting-the-walls/">2742. 给墙壁刷油漆</a></p><hr /><p>给你两个长度为 <code>n</code> 下标从 <strong>0</strong> 开始的整数数组 <code>cost</code> 和 <code>time</code> ，分别表示给 <code>n</code> 堵不同的墙刷油漆需要的开销和时间。你有两名油漆匠：</p><ul><li><p>一位需要 <strong>付费</strong> 的油漆匠，刷第 <code>i</code> 堵墙需要花费 <code>time[i]</code> 单位的时间，开销为 <code>cost[i]</code> 单位的钱。</p></li><li><p>一位 <strong>免费</strong> 的油漆匠，刷 <strong>任意</strong> 一堵墙的时间为 <code>1</code> 单位，开销为 <code>0</code> 。但是必须在付费油漆匠 <strong>工作</strong> 时，免费油漆匠才会工作。</p></li></ul><p>请你返回刷完 <code>n</code> 堵墙最少开销为多少。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：cost = [1,2,3,2], time = [1,2,3,2]</p><p>输出：3</p><p>解释：下标为 0 和 1 的墙由付费油漆匠来刷，需要 3 单位时间。同时，免费油漆匠刷下标为 2 和 3 的墙，需要 2 单位时间，开销为 0 。总开销为 1 + 2 = 3 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：cost = [2,3,4,2], time = [1,1,1,1]</p><p>输出：4</p><p>解释：下标为 0 和 3 的墙由付费油漆匠来刷，需要 2 单位时间。同时，免费油漆匠刷下标为 1 和 2 的墙，需要 2 单位时间，开销为 0 。总开销为 2 + 2 = 4 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= cost.length &amp;lt;= 500</code></p></li><li><p><code>cost.length == time.length</code></p></li><li><p><code>1 &amp;lt;= cost[i] &amp;lt;= 10^6</code></p></li><li><p><code>1 &amp;lt;= time[i] &amp;lt;= 500</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/dp/%E8%83%8C%E5%8C%85dp/%E7%BB%99%E5%A2%99%E5%A3%81%E5%88%B7%E6%B2%B9%E6%BC%86/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E5%8C%BA%E9%97%B4dp/K%20%E6%AC%A1%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%80%BB%E7%A9%BA%E9%97%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/dp/%E5%8C%BA%E9%97%B4dp/K%20%E6%AC%A1%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%80%BB%E7%A9%BA%E9%97%B4/" class="post-title-link" itemprop="url">K 次调整数组大小浪费的最小总空间</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-12 01:49:52" itemprop="dateModified" datetime="2024-06-12T01:49:52+00:00">2024-06-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-total-space-wasted-with-k-resizing-operations/">1959. K 次调整数组大小浪费的最小总空间</a></p><hr /><p>你正在设计一个动态数组。给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> ，其中 <code>nums[i]</code> 是 <code>i</code> 时刻数组中的元素数目。除此以外，你还有一个整数 <code>k</code> ，表示你可以 <strong>调整</strong> 数组大小的 <strong>最多</strong> 次数（每次都可以调整成 <strong>任意</strong> 大小）。</p><p><code>t</code> 时刻数组的大小 <code>sizet</code> 必须大于等于 <code>nums[t]</code> ，因为数组需要有足够的空间容纳所有元素。<code>t</code> 时刻 <strong>浪费的空间</strong> 为 <code>sizet - nums[t]</code> ，<strong>总</strong> 浪费空间为满足 <code>0 &amp;lt;= t &amp;lt; nums.length</code> 的每一个时刻 <code>t</code> 浪费的空间 <strong>之和</strong> 。</p><p>在调整数组大小不超过 <code>k</code> 次的前提下，请你返回 <strong>最小总浪费空间</strong> 。</p><p><strong>注意：</strong>数组最开始时可以为 <strong>任意大小</strong> ，且 <strong>不计入</strong> 调整大小的操作次数。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [10,20], k = 0</p><p>输出：10</p><p>解释：size = [20,20].</p><p>我们可以让数组初始大小为 20 。</p><p>总浪费空间为 (20 - 10) + (20 - 20) = 10 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [10,20,30], k = 1</p><p>输出：10</p><p>解释：size = [20,20,30].</p><p>我们可以让数组初始大小为 20 ，然后时刻 2 调整大小为 30 。</p><p>总浪费空间为 (20 - 10) + (20 - 20) + (30 - 30) = 10 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [10,20,15,30,20], k = 2</p><p>输出：15</p><p>解释：size = [10,20,20,30,30].</p><p>我们可以让数组初始大小为 10 ，时刻 1 调整大小为 20 ，时刻 3 调整大小为 30 。</p><p>总浪费空间为 (10 - 10) + (20 - 20) + (20 - 15) + (30 - 30) + (30 - 20) = 15 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 200</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^6</code></p></li><li><p><code>0 &amp;lt;= k &amp;lt;= nums.length - 1</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/dp/%E5%8C%BA%E9%97%B4dp/K%20%E6%AC%A1%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%E6%B5%AA%E8%B4%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%80%BB%E7%A9%BA%E9%97%B4/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -630,190 +814,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%B9%B6%E6%9C%80%E5%B0%8F%E5%8C%96%E6%95%B0%E7%BB%84%E5%92%8C%E7%9A%84%E5%B7%AE/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%95%B0%E7%BB%84%E7%9A%84%E5%9D%87%E5%80%BC%E5%88%86%E5%89%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%95%B0%E7%BB%84%E7%9A%84%E5%9D%87%E5%80%BC%E5%88%86%E5%89%B2/" class="post-title-link" itemprop="url">数组的均值分割</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/split-array-with-same-average/">805. 数组的均值分割</a></p><hr /><p>给定你一个整数数组 <code>nums</code></p><p>我们要将 <code>nums</code> 数组中的每个元素移动到 <code>A</code> 数组 或者 <code>B</code> 数组中，使得 <code>A</code> 数组和 <code>B</code> 数组不为空，并且 <code>average(A) == average(B)</code> 。</p><p>如果可以完成则返回<code>true</code> ， 否则返回 <code>false</code>  。</p><p><strong>注意：</strong>对于数组 <code>arr</code> ,  <code>average(arr)</code> 是 <code>arr</code> 的所有元素的和除以 <code>arr</code> 长度。</p><p><strong>示例 1:</strong></p><p>```txt</p><p>输入: nums = [1,2,3,4,5,6,7,8]</p><p>输出: true</p><p>解释: 我们可以将数组分割为 [1,4,5,8] 和 [2,3,6,7], 他们的平均值都是4.5。</p><p>```</p><p><strong>示例 2:</strong></p><p>```txt</p><p>输入: nums = [3,1]</p><p>输出: false</p><p>```</p><p><strong>提示:</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 30</code></p></li><li><p><code>0 &amp;lt;= nums[i] &amp;lt;= 10^4</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%95%B0%E7%BB%84%E7%9A%84%E5%9D%87%E5%80%BC%E5%88%86%E5%89%B2/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9B%AE%E6%A0%87%E5%80%BC%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9B%AE%E6%A0%87%E5%80%BC%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/" class="post-title-link" itemprop="url">最接近目标值的子序列和</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/closest-subsequence-sum/">1755. 最接近目标值的子序列和</a></p><hr /><p>给你一个整数数组 <code>nums</code> 和一个目标值 <code>goal</code> 。</p><p>你需要从 <code>nums</code> 中选出一个子序列，使子序列元素总和最接近 <code>goal</code> 。也就是说，如果子序列元素和为 <code>sum</code> ，你需要 <strong>最小化绝对差</strong> <code>abs(sum - goal)</code> 。</p><p>返回 <code>abs(sum - goal)</code> 可能的 <strong>最小值</strong> 。</p><p>注意，数组的子序列是通过移除原始数组中的某些元素（可能全部或无）而形成的数组。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [5,-7,3,5], goal = 6</p><p>输出：0</p><p>解释：选择整个数组作为选出的子序列，元素和为 6 。</p><p>子序列和与目标值相等，所以绝对差为 0 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [7,-9,15,-2], goal = -5</p><p>输出：1</p><p>解释：选出子序列 [7,-9,-2] ，元素和为 -4 。</p><p>绝对差为 abs(-4 - (-5)) = abs(1) = 1 ，是可能的最小值。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [1,2,3], goal = -7</p><p>输出：7</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 40</code></p></li><li><p><code>-10^7 &amp;lt;= nums[i] &amp;lt;= 10^7</code></p></li><li><p><code>-10^9 &amp;lt;= goal &amp;lt;= 10^9</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9B%AE%E6%A0%87%E5%80%BC%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/">
                 阅读全文 &raquo;
               </a>
             </div>
