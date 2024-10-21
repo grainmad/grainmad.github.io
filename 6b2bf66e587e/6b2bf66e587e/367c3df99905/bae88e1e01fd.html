@@ -1,5 +1,5 @@
 <hr>
-<p>title: “字符串哈希”<br>date: 2024-06-03 10:42:02<br>updated: 2024-10-01 07:16:24<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>字符串哈希</li></ul>‘</p>
+<p>title: “字符串哈希”<br>date: 2024-06-03 10:42:02<br>updated: 2024-10-21 06:35:43<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>字符串哈希</li></ul>‘</p>
 <hr>
 <h1 id="字符串哈希"><a href="#字符串哈希" class="headerlink" title="字符串哈希"></a>字符串哈希</h1><p><del>缺点：多重哈希容易卡常，单哈希容易被hack</del></p>
 <pre><code class="cpp">#define ll long long
@@ -341,7 +341,7 @@ auto ok = [&amp;](int l, int r) { //[l,r) 0&lt;=l,r&lt;n
 };
 
 struct SHash {
-#define ll unsigned long long
+#define ll long long
     vector&lt;ll&gt; H, B, S;
     ll len, base, mod;
     SHash(string&amp; s, ll base = 171, ll mod = 998244353)

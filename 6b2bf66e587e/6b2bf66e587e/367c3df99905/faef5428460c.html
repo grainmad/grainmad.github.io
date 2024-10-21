@@ -1,5 +1,5 @@
 <hr>
-<p>title: “KMP”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>KMP</li></ul>‘</p>
+<p>title: “KMP”<br>date: 2024-06-03 10:42:02<br>updated: 2024-10-21 06:35:43<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>KMP</li></ul>‘</p>
 <hr>
 <h1 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h1><p><code>pat[0...M]</code>为模式串,长度为$M$<br><code>txt[0...N]</code>为文本串,长度为$N$<br>我们需要从$txt$中寻找$pat$串的位置</p>
 <p>kmp基本思想<br>利用最长公共前后缀确定匹配失败后的位置达到快速匹配的效果<br>算法分两部分:</p>
@@ -165,8 +165,8 @@ int main()
     return 0;
 }
 </code></pre>
-<p>精简版1</p>
-<pre><code class="cpp">void getlps(string&amp; pat, int* lps) {
+<ul>
+<li>精简版1<pre><code class="cpp">void getlps(string&amp; pat, int* lps) {
     int n = pat.size();
     lps[0] = 0;
     for (int i=1; i&lt;n; i++) {
@@ -196,8 +196,8 @@ int main()
     return 0;
 }
 </code></pre>
-<p>精简版2</p>
-<pre><code class="cpp">void getlps(string&amp; pat, int *lps) {
+</li>
+<li>精简版2<pre><code class="cpp">void getlps(string&amp; pat, int *lps) {
     int n = pat.size();
     lps[0] = 0;
     int i = 1, len = 0;
@@ -237,4 +237,27 @@ int main()
     return 0;
 }
 </code></pre>
+</li>
+</ul>
 <p>reference<br><a href="https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/">https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/</a></p>
+<ul>
+<li>精简版3  拼接模式串$pat$和文本串$txt$，求<strong>最长公共前后缀$\pi$数组</strong>  当$\pi_i = |pat|$，则$txt[i-|pat|+1 \dots i] = pat$  时间复杂度$O(n+m)$，证明，第i次循环时，len的变化$\pi_{i-1} \rightarrow \pi_i-1$,<pre><code class="cpp">void kmp(string pat, string txt) {
+    int n = pat.size(), m = txt.size();
+    string str = pat+&quot;@&quot;+txt;
+    int sz = str.size();
+    vector&lt;int&gt; pi(sz);
+    for (int i=1; i&lt;sz; i++) {
+        int len = pi[i-1];
+        while (len &amp;&amp; str[i] != str[len]) len = pi[len-1];
+        if (str[i] == str[len]) pi[i] = len+1;
+    }
+    
+    for (int i=n+1; i&lt;sz; i++) {
+        if (pi[i] == n) {
+            cout &lt;&lt;&quot;match index : [&quot; &lt;&lt; i-2*n &lt;&lt; &quot;, &quot; &lt;&lt; i - n - 1 &lt;&lt; &quot;]&quot; &lt;&lt; endl;
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>

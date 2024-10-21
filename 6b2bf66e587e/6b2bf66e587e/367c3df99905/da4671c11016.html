@@ -1,21 +1,22 @@
 <hr>
-<p>title: “manacher最长回文串”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>manacher最长回文串</li></ul>‘</p>
+<p>title: “manacher回文串”<br>date: 2024-06-03 10:42:02<br>updated: 2024-10-21 06:35:43<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>manacher回文串</li></ul>‘</p>
 <hr>
-<h1 id="manacher最长回文串"><a href="#manacher最长回文串" class="headerlink" title="manacher最长回文串"></a>manacher最长回文串</h1><p><strong>求所有以s[i]为中心的奇数回文串</strong></p>
+<h1 id="manacher回文串"><a href="#manacher回文串" class="headerlink" title="manacher回文串"></a>manacher回文串</h1><p><strong>求所有以s[i]为中心的奇数回文串</strong></p>
 <p>manacher 算法求最长回文子串。时间复杂度<code>O(n)</code></p>
 <p>预处理+运用dp思想。</p>
 <p><strong>预处理：</strong><br>回文串有奇数长度有偶数长度，如果用相同的字符插入每个字符之间及首尾，那么所有的回文串长度都会是奇数。</p>
 <p>例如: <code>abcbcba</code><br>用<code>|</code>分割得 <code>|a|b|c|b|c|b|a|</code><br>以回文串的中心字符作为分割点，左右两个子串的长度是相同的，称他们的长度为回文半径。</p>
 <p><strong>dp：</strong></p>
 <p>设$dp_i$为以i为中心的回文半径。在可以让我们知道所有以i为中心的奇数长度回文串。这个回文半径不包含中心，也就是说”abcba“，‘c’的回文半径是2。</p>
-<p>$d$为遍历到当前回文串最远覆盖的下标，即$d = max(dp_j+j), j \in [0, i-1]$。</p>
-<p>设$c$为满足$d = max(dp_j+j), j \in [0, i-1]$的$j$。<br>在求$dp_i$时，$dp_j,j&lt;i$已经全部求出，对于求$dp_i$：</p>
-<p>在$i\le r$时，分两种情况：</p>
+<p>$d$为当前已经求出的回文串中最远覆盖的下标，即$d = max(dp_j+j), j \in [0, i-1]$。</p>
+<p>$c$为拥有最远覆盖的下标的回文串中心，即满足$max(dp_j+j), j \in [0, i-1]$的$j$。</p>
+<p>在求$dp_i$时，$dp_j,j&lt;i$已经全部求出，对于求$dp_i$：</p>
+<p>在$i\le d$时，分两种情况：</p>
 <ol>
-<li>当$dp_i \le r$, 这时$dp_i = dp_j$, $j$是$i$关于$m$对称的点。即$dp_i = dp_{i-2m}$</li>
-<li>当$dp_i &gt; r$, 对于大于$r$的部分用中心扩散法，所以可以先让$dp_i = r-i$<br>由这两种情况可知让$dp_i = min(r-i, dp_{i-2m})$, 然后再做中心扩散法。</li>
+<li>当$dp_i \le d$, 这时$dp_i = dp_j$, $j$是$i$关于$m$对称的点。即$dp_i = dp_{i-2m}$</li>
+<li>当$dp_i &gt; d$, 对于大于$d$的部分用中心扩散法，所以可以先让$dp_i = d-i$<br>由这两种情况可知让$dp_i = min(d-i, dp_{2c-i})$, 然后再做中心扩散法。</li>
 </ol>
-<p>在$i&gt;r$时，直接使用中心扩散法。</p>
+<p>在$i&gt;d$时，直接使用中心扩散法。</p>
 <p>最后便可求得$dp$数组。以下标$i$为中心的回文串为<code>[i-dp[i]...dp[i]+i]</code>, 这个回文串中去除预处理加的分隔符便是原串的回文子串。</p>
 <pre><code class="cpp">// leetcode 5. 最长回文子串
 int dp[2005];
