@@ -1,9 +1,8 @@
 <hr>
-<p>title: “Z函数”<br>date: 2024-10-24 11:38:41<br>updated: 2024-10-24 11:38:41<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>Z函数</li></ul>‘</p>
+<p>title: “Z函数”<br>date: 2024-10-24 11:38:41<br>updated: 2024-10-24 13:27:15<br>tag: [“notion”, “Algorithm”, “数组字符串”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>Z函数</li></ul>‘</p>
 <hr>
 <h1 id="Z函数"><a href="#Z函数" class="headerlink" title="Z函数"></a>Z函数</h1><p>对于一个长度为 $n$ 的字符串 $s$，定义函数 $z[i]$ 表示 $s$ 和 $s[i,n-1]$（即以 $s[i]$ 开头的后缀）的最长公共前缀（LCP）的长度，则 $z$ 被称为 $s$ 的 <strong>Z 函数</strong>。特别地，$z[0] = 0$。</p>
 <p>在计算$z[i]$的过程中：</p>
-<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
 <ul>
 <li>如果$i\le r$，那么根据$[l,r]$的定义有$s[i,r]=s[i-l,r-l]$，因此$z[i]\ge min(z[i-l], r-i+1)$ 。这时：<ul>
 <li>若$z[i-l]&lt;r-i+1$，则$z[i]=z[i-l]$。</li>
@@ -13,6 +12,7 @@
 <li>如果$i&gt;r$，那么我们直接按照朴素算法，从$s[i]$开始比较，暴力求出$z[i]$。</li>
 <li>在求出$z[i]$后，如果$i+z[i]-1&gt;r$，我们就需要更新 $[l,r]$，即令$l=i,r=i+z[i]-1$。</li>
 </ul>
+<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
 <pre><code class="cpp">vector&lt;int&gt; z_func(const string&amp; s) {
     int n = s.length();
     vector&lt;int&gt; z(n);
