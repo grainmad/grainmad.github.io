@@ -1,8 +1,7 @@
 <hr>
-<p>title: “网络流”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>网络流</li></ul>‘</p>
+<p>title: “网络流”<br>date: 2024-06-03 10:42:02<br>updated: 2024-10-28 09:23:00<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>网络流</li></ul>‘</p>
 <hr>
-<h1 id="网络流"><a href="#网络流" class="headerlink" title="网络流"></a>网络流</h1><p>最小费用最大流</p>
-<pre><code class="cpp">#include &lt;algorithm&gt;
+<h1 id="网络流"><a href="#网络流" class="headerlink" title="网络流"></a>网络流</h1><h2 id="最小费用最大流dinic"><a href="#最小费用最大流dinic" class="headerlink" title="最小费用最大流dinic"></a>最小费用最大流dinic</h2><pre><code class="cpp">#include &lt;algorithm&gt;
 #include &lt;cstdio&gt;
 #include &lt;cstring&gt;
 #include &lt;queue&gt;
@@ -74,3 +73,214 @@ int main() {
   return 0;
 }
 </code></pre>
+<h2 id="最大流dinic"><a href="#最大流dinic" class="headerlink" title="最大流dinic"></a>最大流dinic</h2><pre><code class="cpp">
+#define N 100005
+#define INF 0x3f3f3f3f3f3f3f3f
+using ll = long long;
+struct MF {
+    struct edge {
+        int v, nxt;
+        ll cap, flow;
+    } e[N];
+
+    int fir[N], cnt = 0;
+
+    int n, S, T;
+    ll maxflow = 0;
+    int dep[N], cur[N];
+  
+    MF(int _n, int _s, int _t) {init(_n, _s, _t);}
+  
+    void init(int _n, int _s, int _t) {
+        n = _n;
+        S = _s;
+        T = _t;
+        memset(fir, -1, sizeof(int) * (n + 1));
+        cnt = 0;
+        maxflow = 0;
+    }
+
+    void addedge(int u, int v, int w) {
+        e[cnt] = {v, fir[u], w, 0};
+        fir[u] = cnt++;
+        e[cnt] = {u, fir[v], 0, 0};
+        fir[v] = cnt++;
+    }
+
+    bool bfs() {
+        queue&lt;int&gt; q;
+        memset(dep, 0, sizeof(int) * (n + 1));
+        dep[S] = 1;
+        q.push(S);
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            for (int i = fir[u]; ~i; i = e[i].nxt) {
+                int v = e[i].v;
+                if ((!dep[v]) &amp;&amp; (e[i].cap &gt; e[i].flow)) {
+                    dep[v] = dep[u] + 1;
+                    q.push(v);
+                }
+            }
+        }
+        return dep[T];
+    }
+
+    ll dfs(int u, ll flow) {
+        if ((u == T) || (!flow)) return flow;
+
+        ll ret = 0, d;
+        for (int&amp; i = cur[u]; ~i; i = e[i].nxt) {
+            int v = e[i].v;
+            if ((dep[v] == dep[u] + 1) &amp;&amp;
+                (d = dfs(v, min(flow - ret, e[i].cap - e[i].flow)))) {
+                ret += d;
+                e[i].flow += d;
+                e[i ^ 1].flow -= d;
+                if (ret == flow) return ret;
+            }
+        }
+        return ret;
+    }
+
+    ll dinic() {
+        while (bfs()) {
+            memcpy(cur, fir, sizeof(int) * (n + 1));
+            maxflow += dfs(S, INF);
+        }
+        return maxflow;
+    }
+};
+</code></pre>
+<ul>
+<li><a href="https://www.luogu.com.cn/problem/P4304"><strong>P4304 [TJOI2013] 攻击装置</strong></a><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+#define N 100005
+#define INF 0x3f3f3f3f3f3f3f3f
+using ll = long long;
+struct MF {
+    struct edge {
+        int v, nxt;
+        ll cap, flow;
+    } e[N];
+
+    int fir[N], cnt = 0;
+
+    int n, S, T;
+    ll maxflow = 0;
+    int dep[N], cur[N];
+  
+    MF(int _n, int _s, int _t) {init(_n, _s, _t);}
+  
+    void init(int _n, int _s, int _t) {
+        n = _n;
+        S = _s;
+        T = _t;
+        memset(fir, -1, sizeof(int) * (n + 1));
+        cnt = 0;
+        maxflow = 0;
+    }
+
+    void addedge(int u, int v, int w) {
+        e[cnt] = {v, fir[u], w, 0};
+        fir[u] = cnt++;
+        e[cnt] = {u, fir[v], 0, 0};
+        fir[v] = cnt++;
+    }
+
+    bool bfs() {
+        queue&lt;int&gt; q;
+        memset(dep, 0, sizeof(int) * (n + 1));
+        dep[S] = 1;
+        q.push(S);
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            for (int i = fir[u]; ~i; i = e[i].nxt) {
+                int v = e[i].v;
+                if ((!dep[v]) &amp;&amp; (e[i].cap &gt; e[i].flow)) {
+                    dep[v] = dep[u] + 1;
+                    q.push(v);
+                }
+            }
+        }
+        return dep[T];
+    }
+
+    ll dfs(int u, ll flow) {
+        if ((u == T) || (!flow)) return flow;
+
+        ll ret = 0, d;
+        for (int&amp; i = cur[u]; ~i; i = e[i].nxt) {
+            int v = e[i].v;
+            if ((dep[v] == dep[u] + 1) &amp;&amp;
+                (d = dfs(v, min(flow - ret, e[i].cap - e[i].flow)))) {
+                ret += d;
+                e[i].flow += d;
+                e[i ^ 1].flow -= d;
+                if (ret == flow) return ret;
+            }
+        }
+        return ret;
+    }
+
+    ll dinic() {
+        while (bfs()) {
+            memcpy(cur, fir, sizeof(int) * (n + 1));
+            maxflow += dfs(S, INF);
+        }
+        return maxflow;
+    }
+};
+
+int dir[8][2] = {
+    {-1, -2},
+    {-2, -1},
+    {1, -2},
+    {2, -1},
+    {-1, 2},
+    {-2, 1},
+    {1, 2},
+    {2, 1}
+};
+
+int main() {
+    ll n;
+    cin &gt;&gt; n;
+    ll S = n*n+4, T = n*n+5;
+    vector&lt;string&gt; g(n);
+    
+    for (int i=0; i&lt;n; i++) {
+        cin &gt;&gt; g[i];
+    }
+    int c1 = 0;
+    MF mf(n*n+10, S, T);
+    for (int i=0; i&lt;n; i++) {
+        for (int j=0; j&lt;n; j++) {
+            if (g[i][j] == &#39;1&#39;) {
+                c1++;
+                continue;
+            }
+            if ((i+j)%2) mf.addedge(i*n+j, T, 1);
+            else mf.addedge(S, i*n+j, 1);
+        }
+    }
+    
+    for (int i=0; i&lt;n; i++) {
+        for (int j=0; j&lt;n; j++) {
+            if ((i+j)%2 || g[i][j] == &#39;1&#39;) continue;
+            for (int k=0; k&lt;8; k++) {
+                int mi = i+dir[k][0];
+                int mj = j+dir[k][1];
+                if (mi&lt;0 || mi&gt;=n || mj&lt;0 || mj&gt;=n || g[mi][mj] == &#39;1&#39;) continue;
+                mf.addedge(i*n+j, mi*n+mj, 1);
+            }
+        }
+    }
+    cout &lt;&lt; n*n-c1-mf.dinic() &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+</li>
+</ul>

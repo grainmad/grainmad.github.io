@@ -1,18 +1,18 @@
 <hr>
-<p>title: “二分图”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>二分图</li></ul>‘</p>
+<p>title: “二分图”<br>date: 2024-06-03 10:42:02<br>updated: 2024-10-28 09:23:00<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>二分图</li></ul>‘</p>
 <hr>
-<h1 id="二分图"><a href="#二分图" class="headerlink" title="二分图"></a>二分图</h1><h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><p>二分图 : 分左右两部分，各部分之间的点没有边连接</p>
+<h1 id="二分图"><a href="#二分图" class="headerlink" title="二分图"></a>二分图</h1><h2 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h2><p>二分图 : 分左右两部分，各部分之间的点没有边连接</p>
 <p>最大匹配：二分图中选出一些边，使得这些边没有公共顶点，且边的数量最大</p>
 <p>最小点覆盖：选最少的点，满足每条边至少有一个端点被选。最小点覆盖 = 最大匹配</p>
 <blockquote>
 <p>最大匹配数为n，则有n个条边没有公共顶点。最大匹配中的每条边被覆盖至少需要n个点。<br>每个点至少会连接一条最大匹配中的边。</p>
 </blockquote>
-<p>最大独立集：选最多的点，满足两两之间没有边相连。最大独立集 = 最小点覆盖</p>
+<p>最大独立集：选最多的点，满足两两之间没有边相连。最大独立集 = 总点数-最小点覆盖</p>
 <blockquote>
 <p>在最小点覆盖中，任意一条边都被至少选了一个顶点，所以对于其点集的补集，任意一条边都被至多选了一个顶点，所以不存在边连接两个点集中的点，且该点集最大。</p>
 </blockquote>
-<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
-<h1 id="增广路算法"><a href="#增广路算法" class="headerlink" title="增广路算法"></a>增广路算法</h1><pre><code class="cpp">// O(VE)
+<h2 id="增广路算法"><a href="#增广路算法" class="headerlink" title="增广路算法"></a>增广路算法</h2><p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
+<pre><code class="cpp">// O(VE)
 struct augment_path {
     vector&lt;vector&lt;int&gt; &gt; g;
     vector&lt;int&gt; pa;  // 匹配
@@ -74,3 +74,114 @@ struct augment_path {
     }
 };
 </code></pre>
+<ul>
+<li><a href="https://www.luogu.com.cn/problem/P4304"><strong>P4304 [TJOI2013] 攻击装置</strong></a>  最大独立集<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+// O(VE)
+struct augment_path {
+    vector&lt;vector&lt;int&gt; &gt; g;
+    vector&lt;int&gt; pa;  // 匹配
+    vector&lt;int&gt; pb;
+    vector&lt;int&gt; vis;  // 访问
+    int n, m;         // 两个点集中的顶点数量
+    int dfn;          // 时间戳记
+    int res;          // 匹配数
+
+    augment_path(int _n, int _m) : n(_n), m(_m) {
+        assert(0 &lt;= n &amp;&amp; 0 &lt;= m);
+        pa = vector&lt;int&gt;(n, -1);
+        pb = vector&lt;int&gt;(m, -1);
+        vis = vector&lt;int&gt;(n);
+        g.resize(n);
+        res = 0;
+        dfn = 0;
+    }
+        // a集合中的点，b集合中的点
+    void add(int from, int to) {
+        assert(0 &lt;= from &amp;&amp; from &lt; n &amp;&amp; 0 &lt;= to &amp;&amp; to &lt; m);
+        g[from].push_back(to);
+    }
+
+    bool dfs(int v) {
+        vis[v] = dfn;
+        for (int u : g[v]) {
+            if (pb[u] == -1) {
+                pb[u] = v;
+                pa[v] = u;
+                return true;
+            }
+        }
+        for (int u : g[v]) {
+            if (vis[pb[u]] != dfn &amp;&amp; dfs(pb[u])) {
+                pa[v] = u;
+                pb[u] = v;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    int solve() {
+        while (true) {
+            dfn++;
+            int cnt = 0;
+            for (int i = 0; i &lt; n; i++) {
+                if (pa[i] == -1 &amp;&amp; dfs(i)) {
+                    cnt++;
+                }
+            }
+            if (cnt == 0) {
+                break;
+            }
+            res += cnt;
+        }
+        return res;
+    }
+};
+
+int dir[8][2] = {
+    {-1, -2},
+    {-2, -1},
+    {1, -2},
+    {2, -1},
+    {-1, 2},
+    {-2, 1},
+    {1, 2},
+    {2, 1}
+};
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;string&gt; g(n);
+    vector&lt;vector&lt;int&gt;&gt; id(n, vector&lt;int&gt;(n));
+    for (int i=0; i&lt;n; i++) {
+        cin &gt;&gt; g[i];
+    }
+    int lc = 0, rc = 0;
+    for (int i=0; i&lt;n; i++) {
+        for (int j=0; j&lt;n; j++) {
+            if (g[i][j] == &#39;1&#39;) continue;
+            if ((i+j)%2) id[i][j] = rc++;
+            else id[i][j] = lc++;
+        }
+    }
+    augment_path ap(lc, rc);
+    for (int i=0; i&lt;n; i++) {
+        for (int j=0; j&lt;n; j++) {
+            if ((i+j)%2 || g[i][j] == &#39;1&#39;) continue;
+            for (int k=0; k&lt;8; k++) {
+                int mi = i+dir[k][0];
+                int mj = j+dir[k][1];
+                if (mi&lt;0 || mi&gt;=n || mj&lt;0 || mj&gt;=n || g[mi][mj] == &#39;1&#39;) continue;
+                ap.add(id[i][j], id[mi][mj]);
+            }
+        }
+    }
+    cout &lt;&lt; lc + rc - ap.solve() &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+</li>
+</ul>

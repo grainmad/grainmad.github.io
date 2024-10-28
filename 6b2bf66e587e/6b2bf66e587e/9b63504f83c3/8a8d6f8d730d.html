@@ -1,5 +1,5 @@
 <hr>
-<p>title: “矩阵快速幂”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “数学”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>矩阵快速幂</li></ul>‘</p>
+<p>title: “矩阵快速幂”<br>date: 2024-06-03 10:42:02<br>updated: 2024-10-28 09:23:00<br>tag: [“notion”, “Algorithm”, “数学”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>矩阵快速幂</li></ul>‘</p>
 <hr>
 <h1 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h1><h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><pre><code class="cpp">struct Matrix {
     ll mat[N][N];
@@ -38,6 +38,7 @@ Matrix pow_matrix(Matrix a, ll p, int n, ll m) {
 </code></pre>
 <p>大矩阵作为函数参数且以值传递会发生段错误。</p>
 <p>一种大矩阵不会段错误的实现方式。</p>
+<p>使用方式$c=A^nb \Rightarrow c^T=b^T(A^T)^n$</p>
 <pre><code class="cpp">#define N 505
 #define MOD 998244353
 
@@ -67,6 +68,13 @@ struct Matrix {
         }
     }
 };
+void cpt(Matrix&amp; a, Matrix&amp; b, int n) {
+    // a *= b^n
+    for (; n; n &gt;&gt;= 1, b *= b)
+        if (n &amp; 1)
+            a *= b;
+    // a.print();
+}
 /*
     // a *= b^n
     for (; n; n &gt;&gt;= 1, b *= b)
@@ -78,7 +86,142 @@ struct Matrix {
 <h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p>常系数的递推式</p>
 <p>已知$f_0, f_1,\cdots,f_{k-1}$</p>
 <p>$f_i= c_0+c_1f_{i-1}+c_2f_{i-2}+\cdots+c_kf_{i-k}, i\ge k$</p>
+<p>构造$k+1$阶方阵转移</p>
+<p>$\left[ \begin{array}{c} f_i \ f_{i-1} \ f_{i-2} \ \vdots \ f_{i-(k-2)} \ f_{i-(k-1)} \ 1 \end{array}\right] = \left[ \begin{array}{cccccc} c_1 &amp; c2 &amp; c3 &amp; \cdots &amp; c_{k-1} &amp; c_k &amp; c_0 \ 1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 \ \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots \ 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 1 \end{array} \right] \left[ \begin{array}{c} f_{i-1} \ f_{i-2} \ f_{i-3} \ \vdots \ f_{i-(k-1)} \ f_{i-k} \ 1 \end{array}\right]$</p>
 <hr>
 <p>二维状态转移只依赖前一维度</p>
 <p>$f_{p,i} = \sum \limits_{j=0}^{n-1}f_{p-1, j}*c_{i,j}$</p>
 <p>设置一个$n\times n$的转移矩阵A。设置元素$A_{i,j}$为前一状态$f_{p-1,i}$向当前状态$f_{p,j}$转移的贡献$c_{i,j}$</p>
+<p>$\left[ \begin{array}{c} f_{p, 0} \ f_{p, 1} \ \vdots \ f_{p, n-2} \ f_{p, n-1} \end{array}\right] = \left[ \begin{array}{cccccc} c_{0,0} &amp; c_{0,1} &amp; \cdots &amp; c_{0, n-2} &amp; c_{0, n-1} \ c_{1,0} &amp; c_{1,1} &amp; \cdots &amp; c_{1, n-2} &amp; c_{1, n-1} \ \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \ c_{n-2,0} &amp; c_{n-2,1} &amp; \cdots &amp; c_{n-2, n-2} &amp; c_{n-2, n-1} \ c_{n-1,0} &amp; c_{n-1,1} &amp; \cdots &amp; c_{n-1, n-2} &amp; c_{n-1, n-1}  \end{array} \right] \left[ \begin{array}{c} f_{p-1, 0} \ f_{p-1, 1} \ \vdots \ f_{p-1, n-2} \ f_{p-1, n-1} \end{array}\right]$</p>
+<ul>
+<li><a href="https://leetcode.cn/problems/total-characters-in-string-after-transformations-ii/description/"><strong>3337. 字符串转换后的长度 II</strong></a>  模板1 443 ms<pre><code class="cpp">using ll = long long;
+const ll mod = 1e9+7;
+#define N 30
+struct Matrix {
+    ll mat[N][N];
+};
+// a: n*n b: n*n
+Matrix mul_matrix(Matrix a, Matrix b, int n, ll m) {
+    Matrix res;
+    for (int i = 0; i &lt; n; i++) {
+        for (int j = 0; j &lt; n; j++) {
+            res.mat[i][j] = 0;
+            for (int k = 0; k &lt; n; k++) {
+                res.mat[i][j] += a.mat[i][k] * b.mat[k][j] % m;
+                res.mat[i][j] %= m;
+            }
+        }
+    }
+    return res;
+}
+// a^p
+Matrix pow_matrix(Matrix a, ll p, int n, ll m) {
+    Matrix res;
+    // 单位矩阵
+    for (int i = 0; i &lt; n; i++) {
+        for (int j = 0; j &lt; n; j++) {
+            res.mat[i][j] = (i == j ? 1 : 0);
+        }
+    }
+    while (p != 0) {
+        if (p &amp; 1)
+            res = mul_matrix(a, res, n, m);
+        a = mul_matrix(a, a, n, m);
+        p &gt;&gt;= 1;
+    }
+    return res;
+}
+class Solution {
+public:
+    int lengthAfterTransformations(string s, int t, vector&lt;int&gt;&amp; nums) {
+        vector&lt;int&gt; c(26);
+        for (char i:s) c[i-&#39;a&#39;]++;
+        // f[i][j] 第i次跳转后，字符j的长度, f[0][j] = 1
+        // f[i][j] = \sum f[i-1][(j+k)%26], k \in [ 1, nums[i] ]
+        int n = 26;
+        Matrix f;
+        for (int i=0; i&lt;n; i++) f.mat[i][0] = 1;
+        Matrix A;
+        for (int i=0; i&lt;n; i++) {
+            for (int j=1; j&lt;=n; j++) {
+                A.mat[i][(i+j)%n] = (j&lt;=nums[i]);
+            }
+        }
+        A = pow_matrix(A, t, n, mod);
+        f = mul_matrix(A, f, n, mod);
+        ll ans = 0;
+        for (int i=0; i&lt;26; i++) ans = (ans + f.mat[i][0]*c[i]%mod)%mod;
+        return ans;
+    }
+};
+</code></pre>
+  模板2 90 ms<pre><code class="cpp">#define N 30
+const int MOD = 1e9+7;
+struct Matrix {
+    int mat[N][N];
+    int n;
+    Matrix(int n) : n(n) { memset(mat, 0, sizeof(mat)); }
+    inline void operator*=(const Matrix&amp; o) {
+        int ans[n][n];
+        memset(ans, 0, sizeof(ans));
+        for (int i = 0; i &lt; n; i++)
+            for (int j = 0; j &lt; n; j++)
+                if (mat[i][j])
+                    for (int k = 0; k &lt; n; k++)
+                        ans[i][k] =
+                            (ans[i][k] + (long long)(mat[i][j]) * o.mat[j][k]) %
+                            MOD;
+        for (int i = 0; i &lt; n; ++i)
+            for (int j = 0; j &lt; n; ++j)
+                mat[i][j] = ans[i][j];
+    }
+    void print() {
+        for (int i = 0; i &lt; n; i++) {
+            for (int j = 0; j &lt; n; j++) {
+                cout &lt;&lt; mat[i][j] &lt;&lt; &quot; &quot;;
+            }
+            cout &lt;&lt; &quot;\n&quot;;
+        }
+    }
+};
+void cpt(Matrix&amp; a, Matrix&amp; b, int n) {
+    // a *= b^n
+    for (; n; n &gt;&gt;= 1, b *= b)
+        if (n &amp; 1)
+            a *= b;
+    // a.print();
+}
+/*
+    // a *= b^n
+    for (; n; n &gt;&gt;= 1, b *= b)
+        if (n &amp; 1)
+            a *= b;
+    a.print();
+*/
+class Solution {
+public:
+    int lengthAfterTransformations(string s, int t, vector&lt;int&gt;&amp; nums) {
+        vector&lt;int&gt; c(26);
+        for (char i:s) c[i-&#39;a&#39;]++;
+        // f[i][j] 第i次跳转后，字符j的长度, f[0][j] = 1
+        // f[i][j] = \sum f[i-1][(j+k)%26], k \in [ 1, nums[i] ]
+        int n = 26;
+        Matrix f(n);
+        for (int i=0; i&lt;n; i++) f.mat[0][i] = 1;
+        Matrix A(n);
+        for (int i=0; i&lt;n; i++) {
+            for (int j=1; j&lt;=n; j++) {
+                A.mat[(i+j)%n][i] = (j&lt;=nums[i]);
+            }
+        }
+        // A.print();
+        // for (; t; t &gt;&gt;= 1, A *= A) if (t &amp; 1) f *= A;
+        cpt(f, A, t);
+        int ans = 0;
+        for (int i=0; i&lt;26; i++) ans = (ans + 1LL*f.mat[0][i]*c[i]%MOD)%MOD;
+        return ans;
+    }
+};
+</code></pre>
+</li>
+</ul>
