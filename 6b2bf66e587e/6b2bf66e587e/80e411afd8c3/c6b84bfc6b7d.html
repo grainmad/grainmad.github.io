@@ -1,0 +1,139 @@
+<hr>
+<p>title: “SOS DP”<br>date: 2024-11-03 06:29:02<br>updated: 2024-11-03 06:29:02<br>tag: [“notion”, “Algorithm”, “动态规划”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>SOS DP</li></ul>‘</p>
+<hr>
+<h1 id="SOS-DP"><a href="#SOS-DP" class="headerlink" title="SOS DP"></a>SOS DP</h1><h1 id="高维度数组求前缀和"><a href="#高维度数组求前缀和" class="headerlink" title="高维度数组求前缀和"></a>高维度数组求前缀和</h1><p>例如4维数组<code>f[d1][d2][d3][d4]</code>，每个维度分别为<code>d1,d2,d3,d4</code></p>
+<pre><code class="cpp">int f[d1][d2][d3][d4];
+for (int i1=1; i1&lt;d1; i1++) {
+    for (int i2=1; i2&lt;d2; i2++) {
+        for (int i3=1; i3&lt;d3; i3++) {
+            for (int i4=1; i4&lt;d4; i4++) {
+                f[i1][i2][i3][i4] += f[i1][i2][i3][i4-1];
+            }
+        }
+    }
+}
+for (int i1=1; i1&lt;d1; i1++) {
+    for (int i2=1; i2&lt;d2; i2++) {
+        for (int i3=1; i3&lt;d3; i3++) {
+            for (int i4=1; i4&lt;d4; i4++) {
+                f[i1][i2][i3][i4] += f[i1][i2][i3-1][i4];
+            }
+        }
+    }
+}
+for (int i1=1; i1&lt;d1; i1++) {
+    for (int i2=1; i2&lt;d2; i2++) {
+        for (int i3=1; i3&lt;d3; i3++) {
+            for (int i4=1; i4&lt;d4; i4++) {
+                f[i1][i2][i3][i4] += f[i1][i2-1][i3][i4];
+            }
+        }
+    }
+}
+for (int i1=1; i1&lt;d1; i1++) {
+    for (int i2=1; i2&lt;d2; i2++) {
+        for (int i3=1; i3&lt;d3; i3++) {
+            for (int i4=1; i4&lt;d4; i4++) {
+                f[i1][i2][i3][i4] += f[i1-1][i2][i3][i4];
+            }
+        }
+    }
+}
+</code></pre>
+<p>对于有$n$维的数组，第$i$维度为$d_i$，求前缀和其时间复杂度是$\prod \limits_{i=1}^n d_i$<br>若每个维度大小都相等，$d_i=c$，那么时间复杂度是$c^n$</p>
+<p>若$c=2$，这些下标可以用一个$n$位二进制数来表示，二进制数可以代表集合，求前缀和可以认为是求子集和。</p>
+<h1 id="求子集和"><a href="#求子集和" class="headerlink" title="求子集和"></a>求子集和</h1><p>使用维度大小为2的高维度数组表示子集</p>
+<pre><code class="cpp">int f[2][2][2][2];
+for (int i1=1; i1&lt;2; i1++) {
+    for (int i2=1; i2&lt;2; i2++) {
+        for (int i3=1; i3&lt;2; i3++) {
+            for (int i4=1; i4&lt;2; i4++) {
+                f[i1][i2][i3][i4] += f[i1][i2][i3][i4-1];
+            }
+        }
+    }
+}
+for (int i1=1; i1&lt;2; i1++) {
+    for (int i2=1; i2&lt;2; i2++) {
+        for (int i3=1; i3&lt;2; i3++) {
+            for (int i4=1; i4&lt;2; i4++) {
+                f[i1][i2][i3][i4] += f[i1][i2][i3-1][i4];
+            }
+        }
+    }
+}
+for (int i1=1; i1&lt;2; i1++) {
+    for (int i2=1; i2&lt;2; i2++) {
+        for (int i3=1; i3&lt;2; i3++) {
+            for (int i4=1; i4&lt;2; i4++) {
+                f[i1][i2][i3][i4] += f[i1][i2-1][i3][i4];
+            }
+        }
+    }
+}
+for (int i1=1; i1&lt;2; i1++) {
+    for (int i2=1; i2&lt;2; i2++) {
+        for (int i3=1; i3&lt;2; i3++) {
+            for (int i4=1; i4&lt;2; i4++) {
+                f[i1][i2][i3][i4] += f[i1-1][i2][i3][i4];
+            }
+        }
+    }
+}
+</code></pre>
+<p>这样非常不elegent，可以利用二进制数的特性，四重for循环可改为枚举二进制数 可以枚举4个二进制位确定是哪个下标累加</p>
+<pre><code class="cpp">for (int i=0; i&lt;4; i++) {
+    for (int j=0; j&lt;1&lt;&lt;4; j++) {
+        int i1=j&gt;&gt;3, i2=j&gt;&gt;2&amp;1, i3=j&gt;&gt;1&amp;1, i4=j&amp;1;
+        f[i1][i2][i3][i4] += f[i1-(i==0)][i2-(i==1)][i3-(i==2)][i4-(i==3)];
+    }
+}
+</code></pre>
+<p>维度大小都是2的高维度数组，用一维数组来表示其实更好处理，只需要将下标看作n位二进制数</p>
+<p><strong>对于n个元素的子集，求子集和，时间复杂度$O(n2^n)$</strong></p>
+<pre><code class="cpp">for (int i=0; i&lt;n; i++) {
+    for (int j=0; j&lt;1&lt;&lt;n; j++) {
+        if (j&gt;&gt;i&amp;1) f[j] += f[j^(1&lt;&lt;i)];
+    }
+}
+</code></pre>
+<h1 id="SOS-DP-1"><a href="#SOS-DP-1" class="headerlink" title="SOS DP"></a>SOS DP</h1><p>高维度前缀和也称为SOS DP (Sum over Subsets dynamic programming) </p>
+<p>以dp视角看待求子集和，$dp_{i,j}$代表只处理了二进制集合$j$的低$i$位的子集和，$dp_{0,i}$对应初始化的$f_i$</p>
+<p>状态转移</p>
+<ul>
+<li>$j$的第$i$位为1时, $dp_{i, j} = dp_{i-1, j} + dp_{i-1, j’}$，$j’$代表$j$移除了第i位的1。</li>
+<li>$j$的第$i$位为0时，$dp_{i, j} = dp_{i-1,j}$</li>
+</ul>
+<p>时间复杂度是$O(n2^n)$</p>
+<pre><code class="cpp">int dp[n+1][1&lt;&lt;n];
+// dp[0][] = f[]
+for (int i=1; i&lt;=n; i++) {
+    for (int j=0; j&lt;1&lt;&lt;n; j++) {
+        if (j&gt;&gt;(i-1)&amp;1)
+            dp[i][j] = dp[i-1][j] + dp[i-1][j^(1&lt;&lt;i-1)];
+        else 
+            dp[i][j] = dp[i-1][j];
+    }
+}
+</code></pre>
+<p>例如$n=5$时，</p>
+<p>$dp_{3, 10101} = dp_{2, 10101}+dp_{2, 10001} \\= dp_{1, 10101} + dp_{1, 10001} \\= dp_{0, 10101} + dp_{0, 10100} + dp_{0, 10001} + dp_{0, 10000}$</p>
+<p>二进制<code>10**101**</code>末3位的子集分别是<code>10**101**,10**100**,10**001**,10**000**</code></p>
+<p>由于$dp_{i,j} = dp_{i-1, j}+dp_{i, j’}$，而$j’&lt;j$，使用滚动数组，从小到大枚举2进制状态进行覆盖是安全的。</p>
+<pre><code class="cpp">for (int i=0; i&lt;n; i++) {
+    for (int j=0; j&lt;1&lt;&lt;n; j++) {
+        if (j&gt;&gt;i&amp;1) f[j] += f[j^(1&lt;&lt;i)];
+    }
+}
+</code></pre>
+<h1 id="枚举子集的子集"><a href="#枚举子集的子集" class="headerlink" title="枚举子集的子集"></a>枚举子集的子集</h1><p>采用枚举子集的子集的方式计算子集和</p>
+<p>时间复杂度是$O(3^n)$</p>
+<p>小于$2^n$的非负整数中，含有$k$个$1$的二进制数个数有$\binom{n}{k}$个，其子集有$2^k$个</p>
+<p>$\sum \limits_{k=0}^{n} \binom{n}{k}2^k = (1+2)^n$ 二项式展开</p>
+<pre><code class="cpp">int f[1&lt;&lt;n], sf[1&lt;&lt;n];
+for (int i=0; i&lt;1&lt;&lt;n; i++) {
+    for (int j=i; j!=0; j = (j-1)&amp;i) { // 枚举i的子集，i的二进制1的个数为k，时间复杂度O(2^k)
+        sf[i] += f[j];
+    }
+}
+</code></pre>
