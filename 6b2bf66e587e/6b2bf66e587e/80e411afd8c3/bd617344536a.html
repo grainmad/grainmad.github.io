@@ -1,9 +1,9 @@
 <hr>
-<p>title: “背包dp”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-29 10:35:13<br>tag: [“notion”, “Algorithm”, “动态规划”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>背包dp</li></ul>‘</p>
+<p>title: “背包dp”<br>date: 2024-06-03 10:42:02<br>updated: 2024-11-03 15:19:23<br>tag: [“notion”, “Algorithm”, “动态规划”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>背包dp</li></ul>‘</p>
 <hr>
 <h1 id="背包dp"><a href="#背包dp" class="headerlink" title="背包dp"></a>背包dp</h1><h1 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h1><p>给出背包容量$V$，$n$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品只能选1次或不选，选取物品总体积不超过$V$的情况下，最大总价值是多少？</p>
 <p>定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。</p>
-<p>$$<br>f[i,v]=max{f[i-1, v],f[i-1, v-c_i]+w_i}<br>$$</p>
+<p>$$<br>f[i,v]=max\lbrace f[i-1, v],f[i-1, v-c_i]+w_i\rbrace<br>$$</p>
 <pre><code class="cpp">// [https://www.acwing.com/problem/content/2/](https://www.acwing.com/problem/content/2/)
 // WA，j&lt;vi时没有转移
 #include &lt;bits/stdc++.h&gt;
@@ -95,7 +95,7 @@ int main() {
 <p>如果并没有要求必须把背包装满，而是只希望价格尽量大，初始化时应该将$f[0…v]$全部设为 0。</p>
 <h1 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h1><p>给出背包容量$V$，$N$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品能选无数次或不选，选取物品总体积不超过$V$的情况下，最大总价值是多少？</p>
 <p>定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。</p>
-<p>$$<br>f[i,v]=max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v}<br>$$</p>
+<p>$$<br>f[i,v]=max\lbrace f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v\rbrace<br>$$</p>
 <p>状态$f[i,v]$的求解时间是$O(\frac{v}{c_i})$，总求解时间复杂度为$O(NV\sum \frac{V}{c_i})$</p>
 <pre><code class="cpp">// https://www.acwing.com/problem/content/3/
 
@@ -126,9 +126,9 @@ int main() {
 }
 </code></pre>
 <p><strong>优化</strong></p>
-<p>$\begin{array}{lll}<br>f[i,v]&amp; = &amp; max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v} \<br> &amp; = &amp; max{f[i-1, v], f[i-1, v- c_i]+w_i, \cdots, f[i-1, v-\lfloor \frac{v}{c_i} \rfloor \cdot c_i]+\lfloor \frac{v}{c_i} \rfloor\cdot w_i} \<br>\end{array}$</p>
-<p>$\begin{array}{lll}<br>f[i,v-c_i]&amp; = &amp; max{f[i-1, v-c_i-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v-c_i} \<br>&amp; = &amp; max{f[i-1, v-c_i], f[i-1, v- 2c_i]+w_i, \cdots, f[i-1, v-c_i-(\lfloor \frac{v}{c_i} \rfloor-1) \cdot c_i]+(\lfloor \frac{v}{c_i} \rfloor-1)\cdot w_i} \<br>\end{array}$</p>
-<p>$$<br>f[i,v]=max{f[i-1, v], f[i, v-c_i]+w_i}<br>$$</p>
+<p>$\begin{array}{lll}<br>f[i,v]&amp; = &amp; max\lbrace f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v\rbrace \\<br> &amp; = &amp; max\lbrace f[i-1, v], f[i-1, v- c_i]+w_i, \cdots, f[i-1, v-\lfloor \frac{v}{c_i} \rfloor \cdot c_i]+\lfloor \frac{v}{c_i} \rfloor\cdot w_i\rbrace<br>\end{array}$</p>
+<p>$\begin{array}{lll}<br>f[i,v-c_i]&amp; = &amp; max\lbrace f[i-1, v-c_i-k\cdot c_i]+k\cdot w_i|0\le k\cdot c_i \le v-c_i\rbrace \\<br>&amp; = &amp; max\lbrace f[i-1, v-c_i], f[i-1, v- 2c_i]+w_i, \cdots, f[i-1, v-c_i-(\lfloor \frac{v}{c_i} \rfloor-1) \cdot c_i]+(\lfloor \frac{v}{c_i} \rfloor-1)\cdot w_i\rbrace<br>\end{array}$</p>
+<p>$$<br>f[i,v]=max\lbrace f[i-1, v], f[i, v-c_i]+w_i\rbrace<br>$$</p>
 <p>时间复杂度$O(NV)$</p>
 <pre><code class="cpp">// https://www.acwing.com/problem/content/3/
 
@@ -180,7 +180,7 @@ int main() {
 </code></pre>
 <h1 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h1><p>给出背包容量$V$，$n$件物品，每件物品的体积为$v_i$, 价值为$w_i$，每件物品最多能选$m_i$次，选取物品总体积不超过$V$的情况下，最大总价值是多少？</p>
 <p>定义$f[i,v]$为前$i$件物品放入一个容量为$v$的背包可以获得的最大价值。$f[N,V]$为所求。</p>
-<p>$$<br>f[i,v]=max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k \le m_i}<br>$$</p>
+<p>$$<br>f[i,v]=max\lbrace f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k \le m_i\rbrace<br>$$</p>
 <p>复杂度$O(V\sum m_i)$</p>
 <pre><code class="cpp">// https://www.acwing.com/problem/content/4/
 
@@ -355,14 +355,12 @@ int main() {
 }
 </code></pre>
 <p><strong>单调队列优化</strong></p>
-<p>$f[i,v]=max{f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k \le m_i}$</p>
-<p>$f[i-1, v], f[i-1, v-c_i] + w_i,f[i-1, v-2c_i] + 2w_i, \cdots, f[i-1, v-m_ic_i] + m_iw_i$</p>
-<p>$f[i,v-c_i]=max{F[i-1, v-c_i-k\cdot c_i]+k\cdot w_i|0\le k \le m_i}$</p>
-<p>$f[i-1, v-c_i], f[i-1, v-2c_i] + w_i,f[i-1, v-3c_i] + 2w_i, \cdots, f[i-1, v-(m_i+1)c_i] + m_iw_i$</p>
-<p>在不看$+kc_i$的情况下，$f[i,v]$和$f[i, v-c_i]$分别展开后，我们可以认为$f[i,v]$比$f[i, v-c_i]$多了$f[i-1, v]$这一项，少了$f[i-1, v-(m_i+1)c_i]$这一项。</p>
-<p>对于第i件物品其体积为v，价值为w，最多可选次数为s。</p>
-<p>$f[i][]$的求解可以分为v组进行，这v组中第r组($0\le r &lt; v$)为$f[i-1][r], f[i-1][v+r], f[i-1][2v+r], \cdots, f[i-1][g\cdot v + r], (g=\lfloor \frac{V}{v} \rfloor)$</p>
-<p>对于可选次数为3，求解$f[i][4v+r]$，实际上为$max { f[i-1][4v+r], f[i-1][3v+r]+w, f[i-1][2v+r]+2w, f[i-1][v+r]+3w}$</p>
+<p>$f[i,v]=max\lbrace f[i-1, v-k\cdot c_i]+k\cdot w_i|0\le k \le m_i\rbrace \\ \Rightarrow max \lbrace f[i-1, v], f[i-1, v-c_i] + w_i,f[i-1, v-2c_i] + 2w_i, \cdots, f[i-1, v-m_ic_i] + m_iw_i \rbrace$</p>
+<p>$f[i,v-c_i]=max\lbrace F[i-1, v-c_i-k\cdot c_i]+k\cdot w_i|0\le k \le m_i\rbrace \\ \Rightarrow max \lbrace f[i-1, v-c_i], f[i-1, v-2c_i] + w_i,f[i-1, v-3c_i] + 2w_i, \cdots, f[i-1, v-(m_i+1)c_i] + m_iw_i \rbrace$</p>
+<p>$f[i,v]$和$f[i, v-c_i]$分别展开后，我们可以认为$f[i,v]$比$f[i, v-c_i]$多了$f[i-1, v]$这一项，少了$f[i-1, v-(m_i+1)c_i]$这一项。</p>
+<p>对于第$i$件物品其体积为$v$，价值为$w$，最多可选次数为$s$。</p>
+<p>$f[i][]$的求解可以分为$v$组进行，这$v$组中第$r$组($0\le r &lt; v$)为$f[i-1][r], f[i-1][v+r], f[i-1][2v+r], \cdots, f[i-1][g\cdot v + r], (g=\lfloor \frac{V}{v} \rfloor)$</p>
+<p>对于可选次数为$s=3$，求解$f[i][4v+r]$，实际上为$max { f[i-1][4v+r], f[i-1][3v+r]+w, f[i-1][2v+r]+2w, f[i-1][v+r]+3w}$</p>
 <p>用单调队列维护$r, r+v, r+2v, r+3v, \cdots, r+gv$。</p>
 <ul>
 <li>保证队首队尾相差不超过$sv$</li>
@@ -447,7 +445,7 @@ for (int j=V; j&gt;=si*vi; j--) {
 </code></pre>
 <h1 id="分组背包"><a href="#分组背包" class="headerlink" title="分组背包"></a>分组背包</h1><p>有N件物品和一个容量为V的背包。第 <em>i</em> 件物品的费用是 $c_i$，价值是$w_i$。这些物品被划分为K组，每组中的物品互相冲突，最多选一件。求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大。</p>
 <p>设$f[k,v]$为前k组物品花费v费用能获得的最大价值。</p>
-<p>$f[k,v] = max{ f[k-1,v], f[k-1, v-c_i]+w_i | item \ i \in group \ k}$</p>
+<p>$f[k,v] = max\lbrace f[k-1,v], f[k-1, v-c_i]+w_i | item \ i \in group \ k\rbrace$</p>
 <pre><code class="cpp">// https://www.acwing.com/problem/content/9/
 
 #include &lt;bits/stdc++.h&gt;
@@ -518,7 +516,7 @@ int main() {
 }
 </code></pre>
 <h1 id="多维费用背包"><a href="#多维费用背包" class="headerlink" title="多维费用背包"></a>多维费用背包</h1><p>共有N件物品，对于每件物品，具有两种不同的费用$c_i,d_i$，选择这件物品必须同时付出这两种费用。这两种费用都有一个可付出的最大值（背包容量）$V,U$。问怎样选择物品可以得到最大的价值。</p>
-<p>费用加了一维，只需状态也加一维即可。设 $f[i, v, u]$ 表示前 i 件物品付出两种费用 分别为 v 和 u 时可获得的最大价值。状态转移方程就是： $f[i, v, u] = max{f[i-1, v,u], F[i-1, v-c_i, u-d_i] + w_i}$</p>
+<p>费用加了一维，只需状态也加一维即可。设 $f[i, v, u]$ 表示前 i 件物品付出两种费用 分别为 v 和 u 时可获得的最大价值。状态转移方程就是： $f[i, v, u] = max\lbrace f[i-1, v,u], F[i-1, v-c_i, u-d_i] + w_i\rbrace$</p>
 <pre><code class="cpp">// https://www.acwing.com/problem/content/8/
 #include &lt;bits/stdc++.h&gt;
 

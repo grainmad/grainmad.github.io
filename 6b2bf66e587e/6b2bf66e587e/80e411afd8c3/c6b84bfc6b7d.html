@@ -1,5 +1,5 @@
 <hr>
-<p>title: “SOS DP”<br>date: 2024-11-03 06:29:02<br>updated: 2024-11-03 06:29:02<br>tag: [“notion”, “Algorithm”, “动态规划”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>SOS DP</li></ul>‘</p>
+<p>title: “SOS DP”<br>date: 2024-11-03 06:29:02<br>updated: 2024-11-03 15:19:23<br>tag: [“notion”, “Algorithm”, “动态规划”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>SOS DP</li></ul>‘</p>
 <hr>
 <h1 id="SOS-DP"><a href="#SOS-DP" class="headerlink" title="SOS DP"></a>SOS DP</h1><h1 id="高维度数组求前缀和"><a href="#高维度数组求前缀和" class="headerlink" title="高维度数组求前缀和"></a>高维度数组求前缀和</h1><p>例如4维数组<code>f[d1][d2][d3][d4]</code>，每个维度分别为<code>d1,d2,d3,d4</code></p>
 <pre><code class="cpp">int f[d1][d2][d3][d4];
@@ -118,7 +118,7 @@ for (int i=1; i&lt;=n; i++) {
 </code></pre>
 <p>例如$n=5$时，</p>
 <p>$dp_{3, 10101} = dp_{2, 10101}+dp_{2, 10001} \\= dp_{1, 10101} + dp_{1, 10001} \\= dp_{0, 10101} + dp_{0, 10100} + dp_{0, 10001} + dp_{0, 10000}$</p>
-<p>二进制<code>10**101**</code>末3位的子集分别是<code>10**101**,10**100**,10**001**,10**000**</code></p>
+<p>二进制<code>10101</code>末3位的子集分别是<code>10101,10100,10001,10000</code></p>
 <p>由于$dp_{i,j} = dp_{i-1, j}+dp_{i, j’}$，而$j’&lt;j$，使用滚动数组，从小到大枚举2进制状态进行覆盖是安全的。</p>
 <pre><code class="cpp">for (int i=0; i&lt;n; i++) {
     for (int j=0; j&lt;1&lt;&lt;n; j++) {
