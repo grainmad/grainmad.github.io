@@ -1,0 +1,86 @@
+<hr>
+<p>title: “欧拉图”<br>date: 2024-11-09 05:17:58<br>updated: 2024-11-09 05:17:58<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>欧拉图</li></ul>‘</p>
+<hr>
+<h1 id="欧拉图"><a href="#欧拉图" class="headerlink" title="欧拉图"></a>欧拉图</h1><p><strong>欧拉回路</strong>：通过图中每条边恰好一次的回路</p>
+<p><strong>欧拉通路</strong>：通过图中每条边恰好一次的通路</p>
+<p><strong>欧拉图</strong>：具有欧拉回路的图</p>
+<p><strong>半欧拉图</strong>：具有欧拉通路但不具有欧拉回路的图</p>
+<h2 id="无向图求欧拉通路-回路"><a href="#无向图求欧拉通路-回路" class="headerlink" title="无向图求欧拉通路/回路"></a>无向图求欧拉通路/回路</h2><pre><code class="cpp">// n点m边，可重边自边
+int n, m;
+cin &gt;&gt; n &gt;&gt; m;
+vector&lt;int&gt; deg(n), del(m); // deg[i]点i的度，del[i]编号i的边是否删除
+vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; g(n); // g[i] i的出边 连接点和编号
+for (int i=0; i&lt;m; i++) {
+    int x, y;
+    cin &gt;&gt; x &gt;&gt; y;
+    deg[x]++;
+    deg[y]++;
+    g[x].emplace_back(y, i);
+    g[y].emplace_back(x, i);
+}
+
+vector&lt;int&gt; stk; // 欧拉通路/回路所经过的点，若为有向图则是逆序
+function&lt;void(int)&gt; euler = [&amp;](int u) {
+    while(g[u].size()) {
+        auto [v, e] = g[u].back();
+        g[u].pop_back();
+        if (del[e]) continue;
+        del[e] = 1;
+        euler(v);
+    }
+    stk.push_back(u);
+};
+// deg 只存在两个奇数，其余为偶数，则存在欧拉通路
+// deg 只存在偶数，则存在欧拉回路
+for (int i=0; i&lt;n; i++) {
+    if (deg[i]%2) {
+        euler(i); // 欧拉通路从奇数度开始
+        break;
+    }
+}
+if (stk.empty()) euler(0); // 不存在奇数度，欧拉回路可从任意一点开始
+for (int i:stk) {
+    cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+}
+cout &lt;&lt; &quot;\n&quot;;
+</code></pre>
+<h2 id="有向图欧拉通路-回路"><a href="#有向图欧拉通路-回路" class="headerlink" title="有向图欧拉通路/回路"></a>有向图欧拉通路/回路</h2><pre><code class="cpp">// n点m边，可重边自边
+int n, m;
+cin &gt;&gt; n &gt;&gt; m;
+vector&lt;int&gt; deg(n), del(m); // deg[i] 点i的出度-入度，del[i]编号i的边是否删除
+vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; g(n); // g[i] i的出边 连接点和编号
+for (int i=0; i&lt;m; i++) {
+    int x, y;
+    cin &gt;&gt; x &gt;&gt; y;
+    deg[x]++;
+    deg[y]--;
+    g[x].emplace_back(y, i);
+}
+
+vector&lt;int&gt; stk; // 欧拉通路/回路所经过的点，若为有向图则是逆序
+function&lt;void(int)&gt; euler = [&amp;](int u) {
+    while(g[u].size()) {
+        auto [v, e] = g[u].back();
+        g[u].pop_back();
+        if (del[e]) continue;
+        del[e] = 1;
+        euler(v);
+    }
+    stk.push_back(u);
+};
+
+// deg 只存在一个1和-1，其余为0，则存在欧拉通路
+// deg 只存在0，则存在欧拉回路
+for (int i=0; i&lt;n; i++) {
+    if (deg[i] == 1) {
+        euler(i); // 欧拉通路从出度-入度=1开始
+        break;
+    }
+}
+if (stk.empty()) euler(0); // 不存在奇数度，欧拉回路可从任意一点开始
+reverse(stk.begin(), stk.end());
+for (int i:stk) {
+    cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+}
+cout &lt;&lt; &quot;\n&quot;;
+</code></pre>
