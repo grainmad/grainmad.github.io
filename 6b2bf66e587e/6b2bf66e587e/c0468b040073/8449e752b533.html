@@ -1,5 +1,5 @@
 <hr>
-<p>title: “线段树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-09 14:34:49<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>线段树</li></ul>‘</p>
+<p>title: “线段树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-11-15 07:20:07<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>线段树</li></ul>‘</p>
 <hr>
 <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><h2 id="结构体实现"><a href="#结构体实现" class="headerlink" title="结构体实现"></a>结构体实现</h2><h3 id="静态区间"><a href="#静态区间" class="headerlink" title="静态区间"></a>静态区间</h3><ul>
 <li>区间每个元素加val，区间求和<pre><code class="cpp">#define ll long long
@@ -359,6 +359,88 @@ int bs(int id, int l, int r, int th) {
     if (sum[LS]&gt;=th) return bs(LS, l, m, th);
     else return bs(RS, m+1, r, th-sum[LS]);
 }
+</code></pre>
+</li>
+<li>区间修改，区间求和<pre><code class="cpp">struct SegmentTree {
+    #define ll long long
+    #define LS (id &lt;&lt; 1)
+    #define RS (id &lt;&lt; 1 | 1)
+    vector&lt;ll&gt; tag, sum;
+    ll left, right, sz;
+    // bound [left, right]
+    SegmentTree(ll left, ll right):left(left), right(right) {
+        sz = (right-left)*4+5;
+        tag.resize(sz);
+        sum.resize(sz);
+    }
+
+    void build(const vector&lt;ll&gt;&amp; a) {
+        assert(a.size() == right-left+1);
+        build(1, left, right, a);
+    }
+    void add(ll l, ll r, ll val) {
+        assert(left &lt;= l &amp;&amp; r &lt;= right);
+        add(1, left, right, l, r, val);
+    }
+    ll ask(ll l, ll r) {
+        assert(left &lt;= l &amp;&amp; r &lt;= right);
+        return ask(1, left, right, l, r);
+    }
+
+    void push_up(int id) {
+        sum[id] = sum[LS] + sum[RS];
+    }
+    void push_down(int id, ll l, ll r) {
+        if (tag[id]) {
+            ll m = (r-l)/2+l;
+            tag[LS] += tag[id];
+            tag[RS] += tag[id];
+            sum[LS] += tag[id]*(m-l+1);
+            sum[RS] += tag[id]*(r-m);
+            tag[id] = 0;
+        }
+    }
+    void build(int id, ll l, ll r, const vector&lt;ll&gt;&amp; a) {
+        tag[id] = sum[id] = 0;
+        if (l == r) {
+            sum[id] = a[l];
+            return;
+        }
+        ll m = (r-l)/2+l;
+        build(LS, l, m, a);
+        build(RS, m + 1, r, a);
+        push_up(id);
+    }
+    // 区间增加v
+    void add(int id, ll l, ll r, ll ql, ll qr, ll v) {
+        if (ql &lt;= l &amp;&amp; r &lt;= qr) {
+            tag[id] += v;
+            sum[id] += v*(r-l+1);
+            return;
+        }
+        push_down(id, l, r);
+        ll m = (r-l)/2+l;
+        if (ql &lt;= m)
+            add(LS, l, m, ql, qr, v);
+        if (m &lt; qr)
+            add(RS, m + 1, r, ql, qr, v);
+        push_up(id);
+    }
+    // 区间查询和
+    ll ask(int id, int l, int r, int ql, int qr) {
+        if (ql &lt;= l &amp;&amp; r &lt;= qr) {
+            return sum[id];
+        }
+        push_down(id, l, r);
+        ll m = (r-l)/2+l;
+        ll rt = 0;
+        if (ql &lt;= m)
+            rt += ask(LS, l, m, ql, qr);
+        if (m &lt; qr)
+            rt += ask(RS, m + 1, r, ql, qr);
+        return rt;
+    }
+};
 </code></pre>
 </li>
 </ul>
