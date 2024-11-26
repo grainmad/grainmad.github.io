@@ -1,5 +1,5 @@
 <hr>
-<p>title: “最短路”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>最短路</li></ul>‘</p>
+<p>title: “最短路”<br>date: 2024-06-03 10:42:02<br>updated: 2024-11-26 03:36:24<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>最短路</li></ul>‘</p>
 <hr>
 <h1 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h1><h1 id="Dijkstra-算法"><a href="#Dijkstra-算法" class="headerlink" title="Dijkstra 算法"></a><strong>Dijkstra 算法</strong></h1><p>将结点分成两个集合：已确定最短路长度的点集（记为$S$ 集合）的和未确定最短路长度的点集（记为$T$ 集合）。一开始所有的点都属于$T$集合。初始化$dis(s) = 0$，其他点的均为$INF$。</p>
 <p>然后重复这些操作：</p>
@@ -90,6 +90,114 @@ void dijkstra(int n, int s) {
         }
     }
 }
+</code></pre>
+<p>二叉堆：</p>
+<p>维护$n$个元素的小根堆，对于更新图中点$i$的最短路，我们直接定位到这个点在堆数组$dis$中的位置$mp[i]$并对其采取上浮操作。保证每个元素只在堆中存在一次。而在优先队列优化中，一个点可能会多次进入队列。</p>
+<pre><code class="cpp">const int INF = 0x3f3f3f3f;
+
+template &lt;int PMAX = 105, int EMAX = 10005&gt; 
+struct Dijkstra {
+    int ecnt;
+    struct Edge {
+        int to, w, next;
+    } edge[EMAX];//边集
+    int head[PMAX];//head[i], i点出边链表
+
+    void init() {
+        for (int i = 0; i &lt; PMAX; i++) head[i] = -1;
+        ecnt = 0;
+    }
+
+    void add_edge(int u, int v, int w) {
+        edge[ecnt].to = v; //终点
+        edge[ecnt].w = w; //权值
+        edge[ecnt].next = head[u];
+        head[u] = ecnt++;
+        /*
+            before 
+            head[u] -&gt; v1 -&gt; v2 -&gt; ... -&gt; -1
+            after
+            head[u] -&gt; v -&gt; v1 -&gt; v2 -&gt; ... -&gt; -1
+        */
+    }
+
+    /*
+    for (int j = head[i]; j != -1; j = edge[j].next) //遍历i点的出边
+        printf(&quot;%d %d\n&quot;, edge[j].to, edge[j].w);
+    */  
+
+    // mp[i] 图上节点i，对应的堆中的下标
+    // o[i] 堆中下标i，对应的图上节点编号
+    int dis[PMAX], o[PMAX], mp[PMAX]; // o[i] = j, mp[j] = i
+    int hsz;
+    // 交换堆中p1和p2下标的值
+    void swap(int p1, int p2) {
+        
+        int t = dis[p1];
+        dis[p1] = dis[p2];
+        dis[p2] = t;
+
+        t = o[p1];
+        o[p1] = o[p2];
+        o[p2] = t;
+
+        mp[o[p1]] = p1;
+        mp[o[p2]] = p2;
+    }
+
+    // 下沉
+    void h_down_node(int pos) {
+        for (int i=pos*2+1; i&lt;hsz; pos=i, i=i*2+1) {
+            if (i+1&lt;hsz &amp;&amp; dis[i] &gt; dis[i+1]) i = i+1; 
+            if (dis[pos] &gt; dis[i]) {
+                swap(pos, i);
+            } else break;
+        }
+    }
+
+    // 上浮
+    void h_up_node(int pos) {
+        while (pos &amp;&amp; dis[pos-1&gt;&gt;1] &gt; dis[pos]) {
+            swap(pos, pos-1&gt;&gt;1);
+            pos = pos-1&gt;&gt;1;
+        }
+    }
+
+    // 删除堆顶
+    void heap_pop() {
+        assert(hsz&gt;0);
+        swap(0, --hsz);
+        h_down_node(0);
+    }
+
+    // n个点，从s出发
+    void dijkstra(int n, int s) {
+        // 用小根堆维护dis
+        memset(dis, 0x3f, sizeof(dis));
+        dis[s] = 0;
+        for (int i=0; i&lt;n; i++) mp[i] = o[i] = i;
+        hsz = n;
+        // 初始化n个元素的堆，只有mp[s]是0,其他是无穷大，直接上浮mp[s]
+        h_up_node(s);
+        while (hsz) {
+            int u = o[0];
+            heap_pop();
+            for (int j = head[u]; j != -1; j = edge[j].next) {
+                int v = edge[j].to, w = edge[j].w;
+                if (mp[v] &lt; hsz &amp;&amp; dis[mp[v]] &gt; dis[mp[u]] + w) {
+                    dis[mp[v]] = dis[mp[u]] + w;
+                    h_up_node(mp[v]);
+                }
+            }
+        }
+        // for (int i=0; i&lt;n; i++) {
+        //     cout &lt;&lt; i &lt;&lt; &quot; = &quot; &lt;&lt; dis[mp[i]] &lt;&lt; endl;
+        // }
+    }
+    Dijkstra() {
+        init();
+    }
+};
 </code></pre>
 <h1 id="Floyd-算法"><a href="#Floyd-算法" class="headerlink" title="Floyd 算法"></a><strong>Floyd 算法</strong></h1><p>多源最短路，求任意两个结点之间的最短路。时间复杂度$O(n^3)$，常数小。</p>
 <p>其思想是动态规划。</p>

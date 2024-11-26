@@ -1,0 +1,59 @@
+<hr>
+<p>title: “二叉堆”<br>date: 2024-11-26 03:36:24<br>updated: 2024-11-26 03:36:24<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>二叉堆</li></ul>‘</p>
+<hr>
+<h1 id="二叉堆"><a href="#二叉堆" class="headerlink" title="二叉堆"></a>二叉堆</h1><pre><code class="cpp">
+#define HMAX 10005
+struct HpNode {
+    int dis, u;
+} hp[HMAX];
+int hsz;
+
+// 小根堆
+bool cmp(const struct HpNode* a, const struct HpNode* b) {
+    return a-&gt;dis &gt; b-&gt;dis;
+}
+
+void h_down_node(int pos) {
+    struct HpNode t = hp[pos];
+    for (int i=pos*2+1; i&lt;hsz; i=i*2+1) {
+        if (i+1&lt;hsz &amp;&amp; cmp(&amp;hp[i], &amp;hp[i+1])) i = i+1; 
+        if (cmp(&amp;t, &amp;hp[i])) {
+            hp[pos] = hp[i]; pos = i;
+        } else break;
+    }
+    hp[pos] = t;
+}
+
+void h_up_node(int pos) {
+    struct HpNode o = hp[pos];
+    // 上浮
+    while (pos &amp;&amp; cmp(&amp;hp[pos-1&gt;&gt;1], &amp;o)) {
+        hp[pos] = hp[pos-1&gt;&gt;1];
+        pos = pos-1&gt;&gt;1;
+    }
+    hp[pos] = o;
+}
+
+void heap_init() {
+    hsz = 0;
+}
+
+void heap_add(const struct HpNode o) {
+    assert(hsz+1&lt;HMAX);
+    hp[hsz] = o;
+    // 上浮
+    h_up_node(hsz);
+    hsz++;
+}
+
+struct HpNode heap_top() {
+    return hp[0];
+}
+
+void heap_pop() {
+    assert(hsz&gt;0);
+    hsz--;
+    hp[0] = hp[hsz];
+    h_down_node(0);
+}
+</code></pre>

@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">590</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">592</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">590</span>
+          <span class="site-state-item-count">592</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,374 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E5%88%A0%E9%99%A4%E6%95%B0%E5%AF%B9%E5%90%8E%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E5%88%A0%E9%99%A4%E6%95%B0%E5%AF%B9%E5%90%8E%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6/" class="post-title-link" itemprop="url">删除数对后的最小数组长度</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-18 19:14:45" itemprop="dateCreated datePublished" datetime="2023-09-18T19:14:45+00:00">2023-09-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-array-length-after-pair-removals/description/">2856. 删除数对后的最小数组长度</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始的 <strong>非递减</strong> 整数数组 <code>nums</code> 。</p><p>你可以执行以下操作任意次：</p><ul><li><p>选择 <strong>两个</strong> 下标 <code>i</code> 和 <code>j</code> ，满足 <code>i &amp;lt; j</code> 且 <code>nums[i] &amp;lt; nums[j]</code> 。</p></li><li><p>将 <code>nums</code> 中下标在 <code>i</code> 和 <code>j</code> 处的元素删除。剩余元素按照原来的顺序组成新的数组，下标也重新从 <strong>0</strong> 开始编号。</p></li></ul><p>请你返回一个整数，表示执行以上操作任意次后（可以执行 <strong>0</strong> 次），<code>nums</code> 数组的 <strong>最小</strong> 数组长度。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,3,4,9]</p><p>输出：0</p><p>解释：一开始，nums = [1, 3, 4, 9] 。</p><p>第一次操作，我们选择下标 0 和 1 ，满足 nums[0] &lt; nums[1] &lt;=&gt; 1 &lt; 3 。</p><p>删除下标 0 和 1 处的元素，nums 变成 [4, 9] 。</p><p>下一次操作，我们选择下标 0 和 1 ，满足 nums[0] &lt; nums[1] &lt;=&gt; 4 &lt; 9 。</p><p>删除下标 0 和 1 处的元素，nums 变成空数组 [] 。</p><p>所以，可以得到的最小数组长度为 0 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [2,3,6,9]</p><p>输出：0</p><p>解释：一开始，nums = [2, 3, 6, 9] 。</p><p>第一次操作，我们选择下标 0 和 2 ，满足 nums[0] &lt; nums[2] &lt;=&gt; 2 &lt; 6 。</p><p>删除下标 0 和 2 处的元素，nums 变成 [3, 9] 。</p><p>下一次操作，我们选择下标 0 和 1 ，满足 nums[0] &lt; nums[1] &lt;=&gt; 3 &lt; 9 。</p><p>删除下标 0 和 1 处的元素，nums 变成空数组 [] 。</p><p>所以，可以得到的最小数组长度为 0 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [1,1,2]</p><p>输出：1</p><p>解释：一开始，nums = [1, 1, 2] 。</p><p>第一次操作，我们选择下标 0 和 2 ，满足 nums[0] &lt; nums[2] &lt;=&gt; 1 &lt; 2 。</p><p>删除下标 0 和 2 处的元素，nums 变成 [1] 。</p><p>无法对数组再执行操作。</p><p>所以，可以得到的最小数组长度为 1 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li><li><p><code>nums</code> 是 <strong>非递减</strong> 数组。</p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E5%88%A0%E9%99%A4%E6%95%B0%E5%AF%B9%E5%90%8E%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E5%9B%9E%E6%96%87%E4%B8%B2%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E6%9F%A5%E8%AF%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E5%9B%9E%E6%96%87%E4%B8%B2%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E6%9F%A5%E8%AF%A2/" class="post-title-link" itemprop="url">回文串重新排列查询</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-02 13:59:41" itemprop="dateCreated datePublished" datetime="2024-01-02T13:59:41+00:00">2024-01-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/palindrome-rearrangement-queries/">2983. 回文串重新排列查询</a></p><hr /><p>给你一个长度为 <strong>偶数</strong> <code>n</code> ，下标从 <strong>0</strong> 开始的字符串 <code>s</code> 。</p><p>同时给你一个下标从 <strong>0</strong> 开始的二维整数数组 <code>queries</code> ，其中 <code>queries[i] = [ai, bi, ci, di]</code> 。</p><p>对于每个查询 <code>i</code> ，你需要执行以下操作：</p><ul><li><p>将下标在范围 <code>0 &amp;lt;= ai &amp;lt;= bi &amp;lt; n / 2</code> 内的 <strong>子字符串</strong> <code>s[ai:bi]</code> 中的字符重新排列。</p></li><li><p>将下标在范围 <code>n / 2 &amp;lt;= ci &amp;lt;= di &amp;lt; n</code> 内的 <strong>子字符串</strong> <code>s[ci:di]</code> 中的字符重新排列。</p></li></ul><p>对于每个查询，你的任务是判断执行操作后能否让 <code>s</code> 变成一个 <strong>回文串</strong> 。</p><p>每个查询与其他查询都是 <strong>独立的</strong> 。</p><p>请你返回一个下标从 <strong>0</strong> 开始的数组 <code>answer</code> ，如果第 <code>i</code> 个查询执行操作后，可以将 <code>s</code> 变为一个回文串，那么 <code>answer[i] = true</code>，否则为 <code>false</code> 。</p><ul><li><p><strong>子字符串</strong> 指的是一个字符串中一段连续的字符序列。</p></li><li><p><code>s[x:y]</code> 表示 <code>s</code> 中从下标 <code>x</code> 到 <code>y</code> 且两个端点 <strong>都包含</strong> 的子字符串。</p></li></ul><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：s = &quot;abcabc&quot;, queries = [[1,1,3,5],[0,2,5,5]]</p><p>输出：[true,true]</p><p>解释：这个例子中，有 2 个查询：</p><p>第一个查询：</p><ul><li><p>a0 = 1, b0 = 1, c0 = 3, d0 = 5</p></li><li><p>你可以重新排列 s[1:1] =&gt; abcabc 和 s[3:5] =&gt; abcabc 。</p></li><li><p>为了让 s 变为回文串，s[3:5] 可以重新排列得到 =&gt; abccba 。</p></li><li><p>现在 s 是一个回文串。所以 answer[0] = true 。</p></li></ul><p>第二个查询：</p><ul><li><p>a1 = 0, b1 = 2, c1 = 5, d1 = 5.</p></li><li><p>你可以重新排列 s[0:2] =&gt; abcabc 和 s[5:5] =&gt; abcabc 。</p></li><li><p>为了让 s 变为回文串，s[0:2] 可以重新排列得到 =&gt; cbaabc 。</p></li><li><p>现在 s 是一个回文串，所以 answer[1] = true 。</p></li></ul><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：s = &quot;abbcdecbba&quot;, queries = [[0,2,7,9]]</p><p>输出：[false]</p><p>解释：这个示例中，只有一个查询。</p><p>a0 = 0, b0 = 2, c0 = 7, d0 = 9.</p><p>你可以重新排列 s[0:2] =&gt; abbcdecbba 和 s[7:9] =&gt; abbcdecbba 。</p><p>无法通过重新排列这些子字符串使 s 变为一个回文串，因为 s[3:6] 不是一个回文串。</p><p>所以 answer[0] = false 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：s = &quot;acbcab&quot;, queries = [[1,2,4,5]]</p><p>输出：[true]</p><p>解释：这个示例中，只有一个查询。</p><p>a0 = 1, b0 = 2, c0 = 4, d0 = 5.</p><p>你可以重新排列 s[1:2] =&gt; acbcab 和 s[4:5] =&gt; acbcab 。</p><p>为了让 s 变为回文串，s[1:2] 可以重新排列得到 =&gt; abccab 。</p><p>然后 s[4:5] 重新排列得到 abccba 。</p><p>现在 s 是一个回文串，所以 answer[0] = true 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>2 &amp;lt;= n == s.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= queries.length &amp;lt;= 10^5</code></p></li><li><p><code>queries[i].length == 4</code></p></li><li><p><code>ai == queries[i][0], bi == queries[i][1]</code></p></li><li><p><code>ci == queries[i][2], di == queries[i][3]</code></p></li><li><p><code>0 &amp;lt;= ai &amp;lt;= bi &amp;lt; n / 2</code></p></li><li><p><code>n / 2 &amp;lt;= ci &amp;lt;= di &amp;lt; n</code></p></li><li><p><code>n</code> 是一个偶数。</p></li><li><p><code>s</code> 只包含小写英文字母。</p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E5%9B%9E%E6%96%87%E4%B8%B2%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E6%9F%A5%E8%AF%A2/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E5%AE%8C%E6%88%90%E6%89%80%E6%9C%89%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E5%AE%8C%E6%88%90%E6%89%80%E6%9C%89%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/" class="post-title-link" itemprop="url">完成所有任务的最少时间</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-time-to-complete-all-tasks/">6318. 完成所有任务的最少时间</a></p><hr /><p>你有一台电脑，它可以 <strong>同时</strong> 运行无数个任务。给你一个二维整数数组 <code>tasks</code> ，其中 <code>tasks[i] = [starti, endi, durationi]</code> 表示第 <code>i</code> 个任务需要在 <strong>闭区间</strong> 时间段 <code>[starti, endi]</code> 内运行 <code>durationi</code> 个整数时间点（但不需要连续）。</p><p>当电脑需要运行任务时，你可以打开电脑，如果空闲时，你可以将电脑关闭。</p><p>请你返回完成所有任务的情况下，电脑最少需要运行多少秒。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：tasks = [[2,3,1],[4,5,1],[1,5,2]]</p><p>输出：2</p><p>解释：</p><ul><li><p>第一个任务在闭区间 [2, 2] 运行。</p></li><li><p>第二个任务在闭区间 [5, 5] 运行。</p></li><li><p>第三个任务在闭区间 [2, 2] 和 [5, 5] 运行。</p></li></ul><p>电脑总共运行 2 个整数时间点。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：tasks = [[1,3,2],[2,5,3],[5,6,2]]</p><p>输出：4</p><p>解释：</p><ul><li><p>第一个任务在闭区间 [2, 3] 运行</p></li><li><p>第二个任务在闭区间 [2, 3] 和 [5, 5] 运行。</p></li><li><p>第三个任务在闭区间 [5, 6] 运行。</p></li></ul><p>电脑总共运行 4 个整数时间点。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= tasks.length &amp;lt;= 2000</code></p></li><li><p><code>tasks[i].length == 3</code></p></li><li><p><code>1 &amp;lt;= starti, endi &amp;lt;= 2000</code></p></li><li><p><code>1 &amp;lt;= durationi &amp;lt;= endi - starti + 1</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E5%AE%8C%E6%88%90%E6%89%80%E6%9C%89%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E6%9C%80%E5%B0%8F%E6%97%A0%E6%B3%95%E5%BE%97%E5%88%B0%E7%9A%84%E6%88%96%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E6%9C%80%E5%B0%8F%E6%97%A0%E6%B3%95%E5%BE%97%E5%88%B0%E7%9A%84%E6%88%96%E5%80%BC/" class="post-title-link" itemprop="url">最小无法得到的或值</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-impossible-or/">6360. 最小无法得到的或值</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 。</p><p>如果存在一些整数满足 <code>0 &amp;lt;= index1 &amp;lt; index2 &amp;lt; ... &amp;lt; indexk &amp;lt; nums.length</code> ，得到 <code>nums[index1] | nums[index2] | ... | nums[indexk] = x</code> ，那么我们说 <code>x</code> 是 <strong>可表达的</strong> 。换言之，如果一个整数能由 <code>nums</code> 的某个子序列的或运算得到，那么它就是可表达的。</p><p>请你返回 <code>nums</code> 不可表达的 <strong>最小非零整数</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [2,1]</p><p>输出：4</p><p>解释：1 和 2 已经在数组中，因为 nums[0] | nums[1] = 2 | 1 = 3 ，所以 3 是可表达的。由于 4 是不可表达的，所以我们返回 4 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [5,3,2]</p><p>输出：1</p><p>解释：1 是最小不可表达的数字。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E6%9C%80%E5%B0%8F%E6%97%A0%E6%B3%95%E5%BE%97%E5%88%B0%E7%9A%84%E6%88%96%E5%80%BC/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -456,374 +824,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%87%8D%E6%8E%92%E6%B0%B4%E6%9E%9C/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%95%BF%E5%BA%A6%E9%80%92%E5%A2%9E%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0%E7%9B%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%95%BF%E5%BA%A6%E9%80%92%E5%A2%9E%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">长度递增组的最大数目</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-01 20:22:55" itemprop="dateCreated datePublished" datetime="2023-08-01T20:22:55+00:00">2023-08-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-number-of-groups-with-increasing-length/">2790. 长度递增组的最大数目</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始、长度为 <code>n</code> 的数组 <code>usageLimits</code> 。</p><p>你的任务是使用从 <code>0</code> 到 <code>n - 1</code> 的数字创建若干组，并确保每个数字 <code>i</code> 在 <strong>所有组</strong> 中使用的次数总共不超过 <code>usageLimits[i]</code> 次。此外，还必须满足以下条件：</p><ul><li><p>每个组必须由 <strong>不同</strong> 的数字组成，也就是说，单个组内不能存在重复的数字。</p></li><li><p>每个组（除了第一个）的长度必须 <strong>严格大于</strong> 前一个组。</p></li></ul><p>在满足所有条件的情况下，以整数形式返回可以创建的最大组数。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：usageLimits = [1,2,5]</p><p>输出：3</p><p>解释：在这个示例中，我们可以使用 0 至多一次，使用 1 至多 2 次，使用 2 至多 5 次。</p><p>一种既能满足所有条件，又能创建最多组的方式是： </p><p>组 1 包含数字 [2] 。</p><p>组 2 包含数字 [1,2] 。</p><p>组 3 包含数字 [0,1,2] 。 </p><p>可以证明能够创建的最大组数是 3 。 </p><p>所以，输出是 3 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：usageLimits = [2,1,2]</p><p>输出：2</p><p>解释：在这个示例中，我们可以使用 0 至多 2 次，使用 1 至多 1 次，使用 2 至多 2 次。</p><p>一种既能满足所有条件，又能创建最多组的方式是： </p><p>组 1 包含数字 [0] 。 </p><p>组 2 包含数字 [1,2] 。</p><p>可以证明能够创建的最大组数是 2 。 </p><p>所以，输出是 2 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：usageLimits = [1,1]</p><p>输出：1</p><p>解释：在这个示例中，我们可以使用 0 和 1 至多 1 次。 </p><p>一种既能满足所有条件，又能创建最多组的方式是：</p><p>组 1 包含数字 [0] 。</p><p>可以证明能够创建的最大组数是 1 。 </p><p>所以，输出是 1 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= usageLimits.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= usageLimits[i] &amp;lt;= 10^9</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%95%BF%E5%BA%A6%E9%80%92%E5%A2%9E%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0%E7%9B%AE/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%BB%91%E6%9D%BF%E5%BC%82%E6%88%96%E6%B8%B8%E6%88%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%BB%91%E6%9D%BF%E5%BC%82%E6%88%96%E6%B8%B8%E6%88%8F/" class="post-title-link" itemprop="url">黑板异或游戏</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/chalkboard-xor-game/">810. 黑板异或游戏</a></p><hr /><p>黑板上写着一个非负整数数组 <code>nums[i]</code> 。</p><p>Alice 和 Bob 轮流从黑板上擦掉一个数字，Alice 先手。如果擦除一个数字后，剩余的所有数字按位异或运算得出的结果等于 <code>0</code> 的话，当前玩家游戏失败。 另外，如果只剩一个数字，按位异或运算得到它本身；如果无数字剩余，按位异或运算结果为 <code>0</code>。</p><p>并且，轮到某个玩家时，如果当前黑板上所有数字按位异或运算结果等于 <code>0</code> ，这个玩家获胜。</p><p>假设两个玩家每步都使用最优解，当且仅当 Alice 获胜时返回 <code>true</code>。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入: nums = [1,1,2]</p><p>输出: false</p><p>解释: </p><p>Alice 有两个选择: 擦掉数字 1 或 2。</p><p>如果擦掉 1, 数组变成 [1, 2]。剩余数字按位异或得到 1 XOR 2 = 3。那么 Bob 可以擦掉任意数字，因为 Alice 会成为擦掉最后一个数字的人，她总是会输。</p><p>如果 Alice 擦掉 2，那么数组变成[1, 1]。剩余数字按位异或得到 1 XOR 1 = 0。Alice 仍然会输掉游戏。</p><p>```</p><p><strong>示例 2:</strong></p><p>```txt</p><p>输入: nums = [0,1]</p><p>输出: true</p><p>```</p><p><strong>示例 3:</strong></p><p>```txt</p><p>输入: nums = [1,2,3]</p><p>输出: true</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 1000</code></p></li><li><p><code>0 &amp;lt;= nums[i] &amp;lt; 2^16</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%80%9D%E7%BB%B4%E9%A2%98/%E9%BB%91%E6%9D%BF%E5%BC%82%E6%88%96%E6%B8%B8%E6%88%8F/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/LCS/%E6%9C%80%E7%9F%AD%E5%85%AC%E5%85%B1%E8%B6%85%E5%BA%8F%E5%88%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/LCS/%E6%9C%80%E7%9F%AD%E5%85%AC%E5%85%B1%E8%B6%85%E5%BA%8F%E5%88%97/" class="post-title-link" itemprop="url">最短公共超序列</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/shortest-common-supersequence/">1092. 最短公共超序列</a></p><hr /><p>给你两个字符串 <code>str1</code> 和 <code>str2</code>，返回同时以 <code>str1</code> 和 <code>str2</code> 作为 <strong>子序列</strong> 的最短字符串。如果答案不止一个，则可以返回满足条件的 <strong>任意一个</strong> 答案。</p><p>如果从字符串 <code>t</code> 中删除一些字符（也可能不删除），可以得到字符串 <code>s</code> ，那么 <code>s</code> 就是 t 的一个子序列。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：str1 = &quot;abac&quot;, str2 = &quot;cab&quot;</p><p>输出：&quot;cabac&quot;</p><p>解释：</p><p>str1 = &quot;abac&quot; 是 &quot;cabac&quot; 的一个子串，因为我们可以删去 &quot;cabac&quot; 的第一个 &quot;c&quot;得到 &quot;abac&quot;。 </p><p>str2 = &quot;cab&quot; 是 &quot;cabac&quot; 的一个子串，因为我们可以删去 &quot;cabac&quot; 末尾的 &quot;ac&quot; 得到 &quot;cab&quot;。</p><p>最终我们给出的答案是满足上述属性的最短字符串。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：str1 = &quot;aaaaaaaa&quot;, str2 = &quot;aaaaaaaa&quot;</p><p>输出：&quot;aaaaaaaa&quot;</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= str1.length, str2.length &amp;lt;= 1000</code></p></li><li><p><code>str1</code> 和 <code>str2</code> 都由小写英文字母组成。</p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/dp/LCS/%E6%9C%80%E7%9F%AD%E5%85%AC%E5%85%B1%E8%B6%85%E5%BA%8F%E5%88%97/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E5%8C%BA%E9%97%B4dp/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E5%8C%BA%E9%97%B4dp/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/" class="post-title-link" itemprop="url">多边形三角剖分的最低得分</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-score-triangulation-of-polygon/">1039. 多边形三角剖分的最低得分</a></p><hr /><p>你有一个凸的 <code>n</code> 边形，其每个顶点都有一个整数值。给定一个整数数组 <code>values</code> ，其中 <code>values[i]</code> 是第 <code>i</code> 个顶点的值（即 <strong>顺时针顺序</strong> ）。</p><p>假设将多边形 <strong>剖分</strong> 为 <code>n - 2</code> 个三角形。对于每个三角形，该三角形的值是顶点标记的<strong>乘积</strong>，三角剖分的分数是进行三角剖分后所有 <code>n - 2</code> 个三角形的值之和。</p><p>返回 <em>多边形进行三角剖分后可以得到的最低分</em> 。  </p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/02/25/shape1.jpg" /></p><p>```txt</p><p>输入：values = [1,2,3]</p><p>输出：6</p><p>解释：多边形已经三角化，唯一三角形的分数为 6。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/02/25/shape2.jpg" /></p><p>```txt</p><p>输入：values = [3,7,4,5]</p><p>输出：144</p><p>解释：有两种三角剖分，可能得分分别为：3<em>7</em>5 + 4<em>5</em>7 = 245，或 3<em>4</em>5 + 3<em>4</em>7 = 144。最低分数为 144。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/02/25/shape3.jpg" /></p><p>```txt</p><p>输入：values = [1,3,1,4,1,5]</p><p>输出：13</p><p>解释：最低分数三角剖分的得分情况为 1<em>1</em>3 + 1<em>1</em>4 + 1<em>1</em>5 + 1<em>1</em>1 = 13。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>n == values.length</code></p></li><li><p><code>3 &amp;lt;= n &amp;lt;= 50</code></p></li><li><p><code>1 &amp;lt;= values[i] &amp;lt;= 100</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E5%8C%BA%E9%97%B4dp/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/">
                 阅读全文 &raquo;
               </a>
             </div>

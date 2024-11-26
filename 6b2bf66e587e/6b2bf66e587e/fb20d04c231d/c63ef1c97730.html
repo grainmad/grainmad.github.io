@@ -1,0 +1,37 @@
+<hr>
+<p>title: “链式前向星”<br>date: 2024-11-26 03:36:24<br>updated: 2024-11-26 03:36:24<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>链式前向星</li></ul>‘</p>
+<hr>
+<h1 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h1><pre><code class="c">// 点数
+#define PMAX  105 
+// 边数
+#define EMAX 10005 
+
+int ecnt;
+struct Edge {
+    int to, w, next;
+} edge[EMAX];//边集
+int head[PMAX];//head[i], i点出边链表
+
+void init() {
+    for (int i = 0; i &lt; PMAX; i++) head[i] = -1;
+    ecnt = 0;
+}
+
+void add_edge(int u, int v, int w) {
+    edge[ecnt].to = v; //终点
+    edge[ecnt].w = w; //权值
+    edge[ecnt].next = head[u];
+    head[u] = ecnt++;
+    /*
+        before 
+        head[u] -&gt; v1 -&gt; v2 -&gt; ... -&gt; -1
+        after
+        head[u] -&gt; v -&gt; v1 -&gt; v2 -&gt; ... -&gt; -1
+    */
+}
+
+/*
+for (int j = head[i]; j != -1; j = edge[j].next) //遍历i点的出边
+    printf(&quot;%d %d\n&quot;, edge[j].to, edge[j].w);
+*/  
+</code></pre>
