@@ -210,6 +210,98 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/" class="post-title-link" itemprop="url">花括号展开 II</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/brace-expansion-ii/">1096. 花括号展开 II</a></p><hr /><p>如果你熟悉 Shell 编程，那么一定了解过花括号展开，它可以用来生成任意字符串。</p><p>花括号展开的表达式可以看作一个由 <strong>花括号</strong>、<strong>逗号</strong> 和 <strong>小写英文字母</strong> 组成的字符串，定义下面几条语法规则：</p><ul><li><p>如果只给出单一的元素 <code>x</code>，那么表达式表示的字符串就只有 <code>&amp;quot;x&amp;quot;</code>。<code>R(x) = {x}</code></p><ul><li><p>例如，表达式 <code>&amp;quot;a&amp;quot;</code> 表示字符串 <code>&amp;quot;a&amp;quot;</code>。</p></li><li><p>而表达式 <code>&amp;quot;w&amp;quot;</code> 就表示字符串 <code>&amp;quot;w&amp;quot;</code>。</p></li></ul></li><li><p>当两个或多个表达式并列，以逗号分隔，我们取这些表达式中元素的并集。<code>R({e_1,e_2,...}) = R(e_1) ∪ R(e_2) ∪ ...</code></p><ul><li><p>例如，表达式 <code>&amp;quot;{a,b,c}&amp;quot;</code> 表示字符串 <code>&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;</code>。</p></li><li><p>而表达式 <code>&amp;quot;{{a,b},{b,c}}&amp;quot;</code> 也可以表示字符串 <code>&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;</code>。</p></li></ul></li><li><p>要是两个或多个表达式相接，中间没有隔开时，我们从这些表达式中各取一个元素依次连接形成字符串。<code>R(e_1 + e_2) = {a + b for (a, b) in R(e_1) × R(e_2)}</code></p><ul><li>例如，表达式 <code>&amp;quot;{a,b}{c,d}&amp;quot;</code> 表示字符串 <code>&amp;quot;ac&amp;quot;,&amp;quot;ad&amp;quot;,&amp;quot;bc&amp;quot;,&amp;quot;bd&amp;quot;</code>。</li></ul></li><li><p>表达式之间允许嵌套，单一元素与表达式的连接也是允许的。</p><ul><li><p>例如，表达式 <code>&amp;quot;a{b,c,d}&amp;quot;</code> 表示字符串 <code>&amp;quot;ab&amp;quot;,&amp;quot;ac&amp;quot;,&amp;quot;ad&amp;quot;​​​​​​</code>。</p></li><li><p>例如，表达式 <code>&amp;quot;a{b,c}{d,e}f{g,h}&amp;quot;</code> 可以表示字符串 <code>&amp;quot;abdfg&amp;quot;, &amp;quot;abdfh&amp;quot;, &amp;quot;abefg&amp;quot;, &amp;quot;abefh&amp;quot;, &amp;quot;acdfg&amp;quot;, &amp;quot;acdfh&amp;quot;, &amp;quot;acefg&amp;quot;, &amp;quot;acefh&amp;quot;</code>。</p></li></ul></li></ul><p>给出表示基于给定语法规则的表达式 <code>expression</code>，返回它所表示的所有字符串组成的有序列表。</p><p>假如你希望以「集合」的概念了解此题，也可以通过点击 “<strong>显示英文描述</strong>” 获取详情。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：expression = &quot;{a,b}{c,{d,e}}&quot;</p><p>输出：[&quot;ac&quot;,&quot;ad&quot;,&quot;ae&quot;,&quot;bc&quot;,&quot;bd&quot;,&quot;be&quot;]</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：expression = &quot;{{a,z},a{b,c},{ab,z}}&quot;</p><p>输出：[&quot;a&quot;,&quot;ab&quot;,&quot;ac&quot;,&quot;z&quot;]</p><p>解释：输出中 不应 出现重复的组合结果。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= expression.length &amp;lt;= 60</code></p></li><li><p><code>expression[i]</code> 由 <code>&amp;#x27;{&amp;#x27;</code>，<code>&amp;#x27;}&amp;#x27;</code>，<code>&amp;#x27;,&amp;#x27;</code> 或小写英文字母组成</p></li><li><p>给出的表达式 <code>expression</code> 用以表示一组基于题目描述中语法构造的字符串</p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80%20II/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%A0%88%E9%98%9F%E5%88%97%E5%A0%86/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -754,98 +846,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E6%9C%80%E5%B0%8F%E6%80%BB%E4%BB%A3%E4%BB%B7%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%20II/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E6%9C%80%E5%B0%8F%E6%80%BB%E4%BB%A3%E4%BB%B7%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%20II/" class="post-title-link" itemprop="url">将数组分成最小总代价的子数组 II</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-02-07 22:44:36" itemprop="dateCreated datePublished" datetime="2024-02-07T22:44:36+00:00">2024-02-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/divide-an-array-into-subarrays-with-minimum-cost-ii/description/">3013. 将数组分成最小总代价的子数组 II</a></p><hr /><p>给你一个下标从 <strong>0</strong> 开始长度为 <code>n</code> 的整数数组 <code>nums</code> 和两个 <strong>正</strong> 整数 <code>k</code> 和 <code>dist</code> 。</p><p>一个数组的 <strong>代价</strong> 是数组中的 <strong>第一个</strong> 元素。比方说，<code>[1,2,3]</code> 的代价为 <code>1</code> ，<code>[3,4,1]</code> 的代价为 <code>3</code> 。</p><p>你需要将 <code>nums</code> 分割成 <code>k</code> 个 <strong>连续且互不相交</strong> 的子数组，满足 <strong>第二</strong> 个子数组与第 <code>k</code> 个子数组中第一个元素的下标距离 <strong>不超过</strong> <code>dist</code> 。换句话说，如果你将 <code>nums</code> 分割成子数组 <code>nums[0..(i1 - 1)], nums[i1..(i2 - 1)], ..., nums[ik-1..(n - 1)]</code> ，那么它需要满足 <code>ik-1 - i1 &amp;lt;= dist</code> 。</p><p>请你返回这些子数组的 <strong>最小</strong> 总代价。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,3,2,6,4,2], k = 3, dist = 3</p><p>输出：5</p><p>解释：将数组分割成 3 个子数组的最优方案是：[1,3] ，[2,6,4] 和 [2] 。这是一个合法分割，因为 ik-1 - i1 等于 5 - 2 = 3 ，等于 dist 。总代价为 nums[0] + nums[2] + nums[5] ，也就是 1 + 2 + 2 = 5 。</p><p>5 是分割成 3 个子数组的最小总代价。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [10,1,2,2,2,1], k = 4, dist = 3</p><p>输出：15</p><p>解释：将数组分割成 4 个子数组的最优方案是：[10] ，[1] ，[2] 和 [2,2,1] 。这是一个合法分割，因为 ik-1 - i1 等于 3 - 1 = 2 ，小于 dist 。总代价为 nums[0] + nums[1] + nums[2] + nums[3] ，也就是 10 + 1 + 2 + 2 = 15 。</p><p>分割 [10] ，[1] ，[2,2,2] 和 [1] 不是一个合法分割，因为 ik-1 和 i1 的差为 5 - 1 = 4 ，大于 dist 。</p><p>15 是分割成 4 个子数组的最小总代价。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：nums = [10,8,18,9], k = 3, dist = 1</p><p>输出：36</p><p>解释：将数组分割成 4 个子数组的最优方案是：[10] ，[8] 和 [18,9] 。这是一个合法分割，因为 ik-1 - i1 等于 2 - 1 = 1 ，等于 dist 。总代价为 nums[0] + nums[1] + nums[2] ，也就是 10 + 8 + 18 = 36 。</p><p>分割 [10] ，[8,18] 和 [9] 不是一个合法分割，因为 ik-1 和 i1 的差为 3 - 1 = 2 ，大于 dist 。</p><p>36 是分割成 3 个子数组的最小总代价。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>3 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 10^9</code></p></li><li><p><code>3 &amp;lt;= k &amp;lt;= n</code></p></li><li><p><code>k - 2 &amp;lt;= dist &amp;lt;= n - 2</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E6%9C%80%E5%B0%8F%E6%80%BB%E4%BB%A3%E4%BB%B7%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%20II/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/80/">80</a><a class="page-number" href="/page/86/">86</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -859,7 +859,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
