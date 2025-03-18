@@ -1,0 +1,166 @@
+<hr>
+<p>title: “哈希表”<br>date: 2025-03-18 07:58:13<br>updated: 2025-03-18 07:58:13<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>哈希表</li></ul>‘</p>
+<hr>
+<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><pre><code class="c">// ==================== hash table =======================
+#define HT_KT int
+#define HT_VT int
+struct Node {
+    unsigned int h;
+    HT_KT key;
+    HT_VT val;
+    struct Node* next;
+    struct Node* prev;
+};
+
+typedef struct Node Node;
+
+typedef struct {
+    Node** table;
+    int size;
+    int cap;
+    Node* head;
+} hashtable;
+
+unsigned int hash(hashtable* ht, HT_KT key) {
+    return (ht-&gt;cap+(key^key&gt;&gt;16)%ht-&gt;cap)%ht-&gt;cap;
+}
+
+hashtable* ht_new() {
+    hashtable* ht = (hashtable*)malloc(sizeof(hashtable));
+    assert(ht != NULL);
+    
+    int cap = 16;
+    ht-&gt;table = (Node**)malloc(cap * sizeof(Node*));
+    assert(ht-&gt;table != NULL);
+    memset(ht-&gt;table, 0, cap*sizeof(Node*));
+    
+    ht-&gt;head = (Node*)malloc(sizeof(Node));
+    assert(ht-&gt;head != NULL);
+    ht-&gt;head-&gt;prev = ht-&gt;head-&gt;next = ht-&gt;head;
+    ht-&gt;head-&gt;h = -1;
+
+    ht-&gt;size = 0;
+    ht-&gt;cap = cap;
+
+    return ht;
+}
+
+void ht_del(hashtable* ht) {
+    free(ht-&gt;table);
+    free(ht-&gt;head);
+    free(ht);
+}
+
+bool ht_has(hashtable* ht, HT_KT key) {
+    unsigned int hkey = hash(ht, key);
+    Node* hnode = ht-&gt;table[hkey];
+    if(hnode == NULL) return 0;
+
+    while (hnode-&gt;h == hkey) {
+        if (hnode-&gt;key == key) 
+            return 1;
+        hnode = hnode-&gt;next;
+    }
+    return 0;
+}
+
+void ht_add(hashtable* ht, Node* node) {
+    Node *hnode = ht-&gt;head;   
+    if (ht-&gt;table[node-&gt;h]) {
+        hnode = ht-&gt;table[node-&gt;h];
+    }
+    node-&gt;prev = hnode-&gt;prev;
+    node-&gt;next = hnode;
+    node-&gt;prev-&gt;next = node;
+    node-&gt;next-&gt;prev = node;
+    ht-&gt;table[node-&gt;h] = node;
+
+    ht-&gt;size += 1;
+}
+
+void ht_set(hashtable* ht, HT_KT key, HT_VT val) {
+    // 检测已经存在key
+    unsigned int hkey = hash(ht, key);
+    Node* hnode = ht-&gt;table[hkey];
+    while (hnode != NULL &amp;&amp; hnode-&gt;h == hkey) {
+        if (hnode-&gt;key == key) {
+            hnode-&gt;val = val;
+            return ;
+        }
+        hnode = hnode-&gt;next;
+    }
+    // 不存在
+    Node *node = (Node*)malloc(sizeof(Node));
+    node-&gt;h = hkey;
+    node-&gt;key = key;
+    node-&gt;val = val;
+    ht_add(ht, node);
+    // 达到cap扩容二倍
+    if (ht-&gt;size &gt; ht-&gt;cap) {
+        ht-&gt;size = 0;
+        ht-&gt;cap *= 2;
+        free(ht-&gt;table);
+        ht-&gt;table = (Node**)malloc(ht-&gt;cap * sizeof(Node*));
+        memset(ht-&gt;table, 0, ht-&gt;cap*sizeof(Node*));
+        // head自成环，链表剩余节点重新插入
+        Node *hnode = ht-&gt;head, *remain = hnode-&gt;next, *nxt;
+        hnode-&gt;prev-&gt;next = NULL;
+        hnode-&gt;prev = hnode;
+        hnode-&gt;next = hnode;
+        
+        while (remain != NULL) {
+            nxt = remain-&gt;next;
+            remain-&gt;h = hash(ht, remain-&gt;key);
+            ht_add(ht, remain);
+            remain = nxt;
+        }
+    }
+}
+
+HT_KT ht_get(hashtable* ht, HT_KT key) {
+    unsigned int hkey = hash(ht, key);
+    Node* hnode = ht-&gt;table[hkey];
+    assert(hnode != NULL);
+
+    while (hnode-&gt;h == hkey) {
+        if (hnode-&gt;key == key) 
+            return hnode-&gt;val;
+        hnode = hnode-&gt;next;
+    }
+    assert(0);
+}
+
+void ht_pop(hashtable* ht, HT_KT key) {
+    unsigned int hkey = hash(ht, key);
+    Node* hnode = ht-&gt;table[hkey];
+    assert(hnode != NULL);
+
+    while (hnode-&gt;h == hkey) {
+        if (hnode-&gt;key == key) 
+            break;
+        hnode = hnode-&gt;next;
+    }
+    assert(hnode-&gt;key == key);
+    hnode-&gt;prev-&gt;next = hnode-&gt;next;
+    hnode-&gt;next-&gt;prev = hnode-&gt;prev;
+    if (hnode == ht-&gt;table[key]) {
+        ht-&gt;table[key] = hnode-&gt;next;
+        if (ht-&gt;table[key]-&gt;h != hkey)
+            ht-&gt;table[key] = NULL;
+    }
+    free(hnode);
+    ht-&gt;size -= 1;
+}
+void ht_print(hashtable* ht) {
+    printf(&quot;hashtable size:%d, cap:%d&quot;, ht-&gt;size, ht-&gt;cap);
+    Node *hd = ht-&gt;head, *cur = hd-&gt;next;
+    while (cur != hd) {
+        if (cur-&gt;h != cur-&gt;prev-&gt;h) {
+            printf(&quot;\nbucket hash %d:&quot;, cur-&gt;h);
+        }
+        printf(&quot; [key=%d, val=%d]&quot;, cur-&gt;key, cur-&gt;val);
+        cur = cur-&gt;next;
+    }
+    printf(&quot;\n&quot;);
+}
+</code></pre>

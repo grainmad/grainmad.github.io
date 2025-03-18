@@ -1,5 +1,5 @@
 <hr>
-<p>title: “最短路”<br>date: 2024-06-03 10:42:02<br>updated: 2024-11-26 03:36:24<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>最短路</li></ul>‘</p>
+<p>title: “最短路”<br>date: 2024-06-03 10:42:02<br>updated: 2025-03-18 07:58:13<br>tag: [“notion”, “Algorithm”, “树与图”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>最短路</li></ul>‘</p>
 <hr>
 <h1 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h1><h1 id="Dijkstra-算法"><a href="#Dijkstra-算法" class="headerlink" title="Dijkstra 算法"></a><strong>Dijkstra 算法</strong></h1><p>将结点分成两个集合：已确定最短路长度的点集（记为$S$ 集合）的和未确定最短路长度的点集（记为$T$ 集合）。一开始所有的点都属于$T$集合。初始化$dis(s) = 0$，其他点的均为$INF$。</p>
 <p>然后重复这些操作：</p>
@@ -268,8 +268,8 @@ bool bellmanford(int n, int s) {
 <p>很显然，只有上一次被松弛的结点，所连接的边，才有可能引起下一次的松弛操作。</p>
 <p>那么我们用队列来维护「哪些结点可能会引起松弛操作」，就能只访问必要的边了。</p>
 <p>SPFA 也可以用于判断否能抵达一个负环，只需记录最短路经过了多少条边，当经过了至少n条边时，说明源点可以抵达一个负环。</p>
-<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
-<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</a></p>
+<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></a></p>
+<p><a href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></a></p>
 <pre><code class="cpp">struct edge {
     int v, w;
 };

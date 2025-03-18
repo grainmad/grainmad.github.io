@@ -1,0 +1,113 @@
+<hr>
+<p>title: “动态数组”<br>date: 2025-03-18 07:58:13<br>updated: 2025-03-18 07:58:13<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>动态数组</li></ul>‘</p>
+<hr>
+<h1 id="动态数组"><a href="#动态数组" class="headerlink" title="动态数组"></a>动态数组</h1><p>初始化最小容量为cap</p>
+<p>每次达到cap则扩容成两倍cap</p>
+<p>对于一个空的数组，不断的加入元素直到n个，扩容的次数应该是x次，$cap\times 2^x \ge n \Rightarrow x\approx O(log_2\frac{n}{cap})$</p>
+<p>如果申请大小为k的内存，时间复杂度是$O(k)$的话。</p>
+<p>第$i$次申请内存的大小是$cap\times 2^i$，申请$x\approx O(log_2\frac{n}{cap})$次，总内存大小是$cap\times(2^0+2^1+\cdots+2^x)\Rightarrow cap\times(2^{x+1}-1)\Rightarrow cap\times(2\frac{n}{cap}-1)\approx O(n)$</p>
+<pre><code class="c">// ==================== vector =======================
+#define VEC_VT int
+
+typedef struct {
+    VEC_VT* data;      
+    int size;   
+    int cap;
+} vector;
+
+vector* vc_new(int size) {
+    vector* vec = (vector*)malloc(sizeof(vector));
+    assert(vec != NULL);
+    
+    int cap = 16;
+    while (size&gt;cap) cap&lt;&lt;=1;
+    vec-&gt;data = (VEC_VT*)malloc(cap * sizeof(VEC_VT));
+    assert(vec-&gt;data != NULL);
+    
+    memset(vec-&gt;data, 0, size*sizeof(VEC_VT));
+    vec-&gt;size = size;
+    vec-&gt;cap = cap;
+    return vec;
+}
+
+void vc_del(vector* v) {
+    free(v-&gt;data);
+    free(v);
+}
+
+void vc_reverse(vector* vec) {
+    int l = 0, r = vec-&gt;size-1;
+    while (l&lt;r) {
+        VEC_VT t = vec-&gt;data[l];
+        vec-&gt;data[l] = vec-&gt;data[r];
+        vec-&gt;data[r] = t;
+        l++; r--;
+    }
+}
+
+void vc_push_back(vector* vec, VEC_VT value) {
+    if (vec-&gt;size &gt;= vec-&gt;cap) {
+        VEC_VT* new_data = (VEC_VT*)realloc(vec-&gt;data, 2 * vec-&gt;cap * sizeof(VEC_VT));
+        assert(new_data != NULL);
+        vec-&gt;data = new_data;
+        vec-&gt;cap &lt;&lt;= 1;
+    }
+    vec-&gt;data[vec-&gt;size] = value;
+    vec-&gt;size++;
+}
+
+void vc_pop_back(vector* vec) {
+    assert(vec-&gt;size&gt;0);
+    vec-&gt;size--;
+}
+
+int vc_get(vector* vec, size_t index) {
+    assert(vec &amp;&amp; index&lt;vec-&gt;size);
+    return vec-&gt;data[index];
+}
+
+void vc_set(vector* vec, int index, int value) {
+    assert(vec &amp;&amp; index&lt;vec-&gt;size);
+    vec-&gt;data[index] = value;
+}
+
+void vc_swap(VEC_VT* a, VEC_VT* b) {
+    VEC_VT t = *a;
+    *a = *b;
+    *b = t;
+}
+
+void vc_sort(vector* nums, int left, int right) { // [left, right)
+    if (left + 1 &gt;= right) return ;
+    int m = left+right&gt;&gt;1;
+    vc_sort(nums, left, m);
+    vc_sort(nums, m, right);
+    vector* mg = vc_new(0);
+    int p1 = left, p2 = m;
+    while (p1&lt;m &amp;&amp; p2&lt;right) {
+        if (nums-&gt;data[p1] &lt; nums-&gt;data[p2]) {
+            vc_push_back(mg, nums-&gt;data[p1++]);
+        } else {
+            vc_push_back(mg, nums-&gt;data[p2++]);
+        }
+    }
+    while (p1&lt;m) {
+        vc_push_back(mg, nums-&gt;data[p1++]);
+    }
+    while (p2&lt;right) {
+        vc_push_back(mg, nums-&gt;data[p2++]);
+    }
+    for (int i=left; i&lt;right; i++) {
+        nums-&gt;data[i] = mg-&gt;data[i-left];
+    }
+    vc_del(mg);
+}
+
+void vc_print(vector* vec) {
+    printf(&quot;vector size:%d, cap:%d\n&quot;, vec-&gt;size, vec-&gt;cap);
+    for (VEC_VT* a=vec-&gt;data; a&lt;vec-&gt;data+vec-&gt;size; a++) {
+        printf(&quot;%d &quot;, *a);
+    }
+    printf(&quot;\n&quot;);
+}
+</code></pre>
