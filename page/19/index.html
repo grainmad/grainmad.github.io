@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0%E7%9B%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B/" class="post-title-link" itemprop="url">重新安排行程</a>
+          <a href="/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">统计好子数组的数目</a>
         </h2>
 
         <div class="post-meta-container">
@@ -268,10 +268,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reconstruct-itinerary/">332. 重新安排行程</a></p><hr /><p>给你一份航线列表 <code>tickets</code> ，其中 <code>tickets[i] = [fromi, toi]</code> 表示飞机出发和降落的机场地点。请你对该行程进行重新规划排序。</p><p>所有这些机票都属于一个从 <code>JFK</code>（肯尼迪国际机场）出发的先生，所以该行程必须从 <code>JFK</code> 开始。如果存在多种有效的行程，请你按字典排序返回最小的行程组合。</p><ul><li>例如，行程 <code>[&amp;quot;JFK&amp;quot;, &amp;quot;LGA&amp;quot;]</code> 与 <code>[&amp;quot;JFK&amp;quot;, &amp;quot;LGB&amp;quot;]</code> 相比就更小，排序更靠前。</li></ul><p>假定所有机票至少存在一种合理的行程。且所有的机票 必须都用一次 且 只能用一次。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/03/14/itinerary1-graph.jpg" /></p><p>```txt</p><p>输入：tickets = [[&quot;MUC&quot;,&quot;LHR&quot;],[&quot;JFK&quot;,&quot;MUC&quot;],[&quot;SFO&quot;,&quot;SJC&quot;],[&quot;LHR&quot;,&quot;SFO&quot;]]</p><p>输出：[&quot;JFK&quot;,&quot;MUC&quot;,&quot;LHR&quot;,&quot;SFO&quot;,&quot;SJC&quot;]</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode.com/uploads/2021/03/14/itinerary2-graph.jpg" /></p><p>```txt</p><p>输入：tickets = [[&quot;JFK&quot;,&quot;SFO&quot;],[&quot;JFK&quot;,&quot;ATL&quot;],[&quot;SFO&quot;,&quot;ATL&quot;],[&quot;ATL&quot;,&quot;JFK&quot;],[&quot;ATL&quot;,&quot;SFO&quot;]]</p><p>输出：[&quot;JFK&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;SFO&quot;]</p><p>解释：另一种有效的行程是 [&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;ATL&quot;,&quot;SFO&quot;] ，但是它字典排序更大更靠后。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= tickets.length &amp;lt;= 300</code></p></li><li><p><code>tickets[i].length == 2</code></p></li><li><p><code>fromi.length == 3</code></p></li><li><p><code>toi.length == 3</code></p></li><li><p><code>fromi</code> 和 <code>toi</code> 由大写英文字母组成</p></li><li><p><code>fromi != toi</code></p></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-the-number-of-good-subarrays/">6293. 统计好子数组的数目</a></p><hr /><p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，请你返回 <code>nums</code> 中 <strong>好</strong> 子数组的数目。</p><p>一个子数组 <code>arr</code> 如果有 <strong>至少</strong> <code>k</code> 对下标 <code>(i, j)</code> 满足 <code>i &amp;lt; j</code> 且 <code>arr[i] == arr[j]</code> ，那么称它是一个 <strong>好</strong> 子数组。</p><p><strong>子数组</strong> 是原数组中一段连续 <strong>非空</strong> 的元素序列。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [1,1,1,1,1], k = 10</p><p>输出：1</p><p>解释：唯一的好子数组是这个数组本身。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [3,1,4,3,2,2,4], k = 2</p><p>输出：4</p><p>解释：总共有 4 个不同的好子数组：</p><ul><li><p>[3,1,4,3,2,2] 有 2 对。</p></li><li><p>[3,1,4,3,2,2,4] 有 3 对。</p></li><li><p>[1,4,3,2,2,4] 有 2 对。</p></li><li><p>[4,3,2,2,4] 有 2 对。</p></li></ul><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i], k &amp;lt;= 10^9</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B/">
+              <a class="btn" href="/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0%E7%9B%AE/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -302,7 +302,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E7%A0%B4%E8%A7%A3%E4%BF%9D%E9%99%A9%E7%AE%B1/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%BB%9F%E8%AE%A1%E5%AE%8C%E5%85%A8%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -320,7 +320,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E7%A0%B4%E8%A7%A3%E4%BF%9D%E9%99%A9%E7%AE%B1/" class="post-title-link" itemprop="url">破解保险箱</a>
+          <a href="/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%BB%9F%E8%AE%A1%E5%AE%8C%E5%85%A8%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-title-link" itemprop="url">统计完全子字符串</a>
         </h2>
 
         <div class="post-meta-container">
@@ -331,7 +331,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+      <time title="创建时间：2024-01-02 13:59:41" itemprop="dateCreated datePublished" datetime="2024-01-02T13:59:41+00:00">2024-01-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -360,10 +360,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/cracking-the-safe/">753. 破解保险箱</a></p><hr /><p>有一个需要密码才能打开的保险箱。密码是 <code>n</code> 位数, 密码的每一位是 <code>k</code> 位序列 <code>0, 1, ..., k-1</code> 中的一个 。</p><p>你可以随意输入密码，保险箱会自动记住最后 <code>n</code> 位输入，如果匹配，则能够打开保险箱。</p><p>举个例子，假设密码是 <code>&amp;quot;345&amp;quot;</code>，你可以输入 <code>&amp;quot;012345&amp;quot;</code> 来打开它，只是你输入了 6 个字符.</p><p>请返回一个能打开保险箱的最短字符串。</p><p><strong>示例1:</strong></p><p>```txt</p><p>输入: n = 1, k = 2</p><p>输出: &quot;01&quot;</p><p>说明: &quot;10&quot;也可以打开保险箱。</p><p>```</p><p><strong>示例2:</strong></p><p>```txt</p><p>输入: n = 2, k = 2</p><p>输出: &quot;00110&quot;</p><p>说明: &quot;01100&quot;, &quot;10011&quot;, &quot;11001&quot; 也能打开保险箱。</p><p>```</p><p><strong>提示：</strong></p><ol><li><p><code>n</code> 的范围是 <code>[1, 4]</code>。</p></li><li><p><code>k</code> 的范围是 <code>[1, 10]</code>。</p></li><li><p><code>k^n</code> 最大可能为 <code>4096</code>。</p></li></ol></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-complete-substrings/description/">2953. 统计完全子字符串</a></p><hr /><p>给你一个字符串 <code>word</code> 和一个整数 <code>k</code> 。</p><p>如果 <code>word</code> 的一个子字符串 <code>s</code> 满足以下条件，我们称它是 <strong>完全字符串：</strong></p><ul><li><p><code>s</code> 中每个字符 <strong>恰好</strong> 出现 <code>k</code> 次。</p></li><li><p>相邻字符在字母表中的顺序 <strong>至多</strong> 相差 <code>2</code> 。也就是说，<code>s</code> 中两个相邻字符 <code>c1</code> 和 <code>c2</code> ，它们在字母表中的位置相差 <strong>至多</strong> 为 <code>2</code> 。</p></li></ul><p>请你返回 <code>word</code> 中 <strong>完全</strong> 子字符串的数目。</p><p><strong>子字符串</strong> 指的是一个字符串中一段连续 <strong>非空</strong> 的字符序列。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：word = &quot;igigee&quot;, k = 2</p><p>输出：3</p><p>解释：完全子字符串需要满足每个字符恰好出现 2 次，且相邻字符相差至多为 2 ：igigee, igigee, igigee 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：word = &quot;aaabbbccc&quot;, k = 3</p><p>输出：6</p><p>解释：完全子字符串需要满足每个字符恰好出现 3 次，且相邻字符相差至多为 2 ：aaabbbccc, aaabbbccc, aaabbbccc, aaabbbccc, aaabbbccc, aaabbbccc 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= word.length &amp;lt;= 10^5</code></p></li><li><p><code>word</code> 只包含小写英文字母。</p></li><li><p><code>1 &amp;lt;= k &amp;lt;= word.length</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/%E7%A0%B4%E8%A7%A3%E4%BF%9D%E9%99%A9%E7%AE%B1/">
+              <a class="btn" href="/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8F%8C%E6%8C%87%E9%92%88/%E7%BB%9F%E8%AE%A1%E5%AE%8C%E5%85%A8%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -578,6 +578,98 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E5%8C%96%E7%AE%80%E5%85%AC%E5%BC%8F/%E7%BF%BB%E8%BD%AC%E5%AD%90%E6%95%B0%E7%BB%84%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84%E6%95%B0%E7%BB%84%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E5%8C%96%E7%AE%80%E5%85%AC%E5%BC%8F/%E7%BF%BB%E8%BD%AC%E5%AD%90%E6%95%B0%E7%BB%84%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84%E6%95%B0%E7%BB%84%E5%80%BC/" class="post-title-link" itemprop="url">翻转子数组得到最大的数组值</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-14 23:33:37" itemprop="dateCreated datePublished" datetime="2023-05-14T23:33:37+00:00">2023-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-subarray-to-maximize-array-value/">1330. 翻转子数组得到最大的数组值</a></p><hr /><p>给你一个整数数组 <code>nums</code> 。「数组值」定义为所有满足 <code>0 &amp;lt;= i &amp;lt; nums.length-1</code> 的 <code>|nums[i]-nums[i+1]|</code> 的和。</p><p>你可以选择给定数组的任意子数组，并将该子数组翻转。但你只能执行这个操作 <strong>一次</strong> 。</p><p>请你找到可行的最大 <strong>数组值</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：nums = [2,3,1,5,4]</p><p>输出：10</p><p>解释：通过翻转子数组 [3,1,5] ，数组变成 [2,5,1,3,4] ，数组值为 10 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [2,4,9,24,2,1,10]</p><p>输出：68</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 3*10^4</code></p></li><li><p><code>-10^5 &amp;lt;= nums[i] &amp;lt;= 10^5</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E5%8C%96%E7%AE%80%E5%85%AC%E5%BC%8F/%E7%BF%BB%E8%BD%AC%E5%AD%90%E6%95%B0%E7%BB%84%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84%E6%95%B0%E7%BB%84%E5%80%BC/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E4%BD%BF%E4%B9%98%E7%A7%AF%E4%BA%92%E8%B4%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -732,98 +824,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E7%82%B9%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%88%B0%E8%BE%BE/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">序列中不同最大公约数的数目</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:19" itemprop="dateModified" datetime="2024-06-07T18:11:19+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-different-subsequences-gcds/">1819. 序列中不同最大公约数的数目</a></p><hr /><p>给你一个由正整数组成的数组 <code>nums</code> 。</p><p>数字序列的 <strong>最大公约数</strong> 定义为序列中所有整数的共有约数中的最大整数。</p><ul><li>例如，序列 <code>[4,6,16]</code> 的最大公约数是 <code>2</code> 。</li></ul><p>数组的一个 <strong>子序列</strong> 本质是一个序列，可以通过删除数组中的某些元素（或者不删除）得到。</p><ul><li>例如，<code>[2,5,10]</code> 是 <code>[1,2,1,**2**,4,1,**5**,**10**]</code> 的一个子序列。</li></ul><p>计算并返回 <code>nums</code> 的所有 <strong>非空</strong> 子序列中 <strong>不同</strong> 最大公约数的 <strong>数目</strong> 。</p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/04/03/image-1.png" /></p><p>```txt</p><p>输入：nums = [6,10,3]</p><p>输出：5</p><p>解释：上图显示了所有的非空子序列与各自的最大公约数。</p><p>不同的最大公约数为 6 、10 、3 、2 和 1 。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：nums = [5,15,40,5,6]</p><p>输出：7</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= nums.length &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= nums[i] &amp;lt;= 2 * 10^5</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/">
                 阅读全文 &raquo;
               </a>
             </div>

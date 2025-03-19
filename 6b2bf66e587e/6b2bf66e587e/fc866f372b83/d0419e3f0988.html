@@ -1,28 +1,50 @@
 <hr>
-<p>title: “哈希表”<br>date: 2025-03-18 07:58:13<br>updated: 2025-03-18 07:58:13<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>哈希表</li></ul>‘</p>
+<p>title: “哈希表”<br>date: 2025-03-18 07:58:13<br>updated: 2025-03-19 09:16:18<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>哈希表</li></ul>‘</p>
 <hr>
 <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><pre><code class="c">// ==================== hash table =======================
-#define HT_KT int
-#define HT_VT int
-struct Node {
+typedef int HT_KT;
+typedef struct {
+    int lev;
+    int val;
+} kt;
+// 值类型
+typedef kt HT_VT;
+const unsigned int ht_prime_mod[] = {13, 31, 61, 127, 251, 509, 1021, 2039, 4093, 8191, 16381, 32749, 65521, 131071, 262139, 524287, 1048573, 2097143, 4194301, 8388593, 16777213, 33554393, 67108859};
+const unsigned int ht_pow_mod[] = {16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, 16777216, 33554432, 67108864};
+typedef struct Node {
     unsigned int h;
     HT_KT key;
     HT_VT val;
     struct Node* next;
     struct Node* prev;
-};
-
-typedef struct Node Node;
+} Node;
 
 typedef struct {
     Node** table;
     int size;
     int cap;
+    int modid;
     Node* head;
 } hashtable;
 
-unsigned int hash(hashtable* ht, HT_KT key) {
-    return (ht-&gt;cap+(key^key&gt;&gt;16)%ht-&gt;cap)%ht-&gt;cap;
+// modfy
+void ht_print(hashtable* ht) {
+    // your code
+    printf(&quot;hashtable size:%d, cap:%d, mod:%d&quot;, ht-&gt;size, ht-&gt;cap, ht_prime_mod[ht-&gt;modid]);
+    Node *hd = ht-&gt;head, *cur = hd-&gt;next;
+    while (cur != hd) {
+        if (cur-&gt;h != cur-&gt;prev-&gt;h) {
+            printf(&quot;\nbucket hash %d:&quot;, cur-&gt;h);
+        }
+        printf(&quot; [key=%d, lev=%d, val=%d]&quot;, cur-&gt;key, cur-&gt;val.lev, cur-&gt;val.val); // modify
+        cur = cur-&gt;next;
+    }
+    printf(&quot;\n&quot;);
+}
+
+unsigned int ht_hash(hashtable* ht, HT_KT key) {
+    unsigned int mod = ht_prime_mod[ht-&gt;modid];
+    return (mod+(key^key&gt;&gt;16)%mod)%mod;
 }
 
 hashtable* ht_new() {
@@ -41,6 +63,7 @@ hashtable* ht_new() {
 
     ht-&gt;size = 0;
     ht-&gt;cap = cap;
+    ht-&gt;modid = 0;
 
     return ht;
 }
@@ -52,10 +75,9 @@ void ht_del(hashtable* ht) {
 }
 
 bool ht_has(hashtable* ht, HT_KT key) {
-    unsigned int hkey = hash(ht, key);
+    unsigned int hkey = ht_hash(ht, key);
     Node* hnode = ht-&gt;table[hkey];
     if(hnode == NULL) return 0;
-
     while (hnode-&gt;h == hkey) {
         if (hnode-&gt;key == key) 
             return 1;
@@ -80,7 +102,7 @@ void ht_add(hashtable* ht, Node* node) {
 
 void ht_set(hashtable* ht, HT_KT key, HT_VT val) {
     // 检测已经存在key
-    unsigned int hkey = hash(ht, key);
+    unsigned int hkey = ht_hash(ht, key);
     Node* hnode = ht-&gt;table[hkey];
     while (hnode != NULL &amp;&amp; hnode-&gt;h == hkey) {
         if (hnode-&gt;key == key) {
@@ -99,6 +121,7 @@ void ht_set(hashtable* ht, HT_KT key, HT_VT val) {
     if (ht-&gt;size &gt; ht-&gt;cap) {
         ht-&gt;size = 0;
         ht-&gt;cap *= 2;
+        ht-&gt;modid += 1;
         free(ht-&gt;table);
         ht-&gt;table = (Node**)malloc(ht-&gt;cap * sizeof(Node*));
         memset(ht-&gt;table, 0, ht-&gt;cap*sizeof(Node*));
@@ -110,15 +133,15 @@ void ht_set(hashtable* ht, HT_KT key, HT_VT val) {
         
         while (remain != NULL) {
             nxt = remain-&gt;next;
-            remain-&gt;h = hash(ht, remain-&gt;key);
+            remain-&gt;h = ht_hash(ht, remain-&gt;key);
             ht_add(ht, remain);
             remain = nxt;
         }
     }
 }
 
-HT_KT ht_get(hashtable* ht, HT_KT key) {
-    unsigned int hkey = hash(ht, key);
+HT_VT ht_get(hashtable* ht, HT_KT key) {
+    unsigned int hkey = ht_hash(ht, key);
     Node* hnode = ht-&gt;table[hkey];
     assert(hnode != NULL);
 
@@ -131,7 +154,7 @@ HT_KT ht_get(hashtable* ht, HT_KT key) {
 }
 
 void ht_pop(hashtable* ht, HT_KT key) {
-    unsigned int hkey = hash(ht, key);
+    unsigned int hkey = ht_hash(ht, key);
     Node* hnode = ht-&gt;table[hkey];
     assert(hnode != NULL);
 
@@ -143,24 +166,28 @@ void ht_pop(hashtable* ht, HT_KT key) {
     assert(hnode-&gt;key == key);
     hnode-&gt;prev-&gt;next = hnode-&gt;next;
     hnode-&gt;next-&gt;prev = hnode-&gt;prev;
-    if (hnode == ht-&gt;table[key]) {
-        ht-&gt;table[key] = hnode-&gt;next;
-        if (ht-&gt;table[key]-&gt;h != hkey)
-            ht-&gt;table[key] = NULL;
+    if (hnode == ht-&gt;table[hkey]) {
+        ht-&gt;table[hkey] = hnode-&gt;next;
+        if (ht-&gt;table[hkey]-&gt;h != hkey)
+            ht-&gt;table[hkey] = NULL;
     }
     free(hnode);
     ht-&gt;size -= 1;
 }
-void ht_print(hashtable* ht) {
-    printf(&quot;hashtable size:%d, cap:%d&quot;, ht-&gt;size, ht-&gt;cap);
-    Node *hd = ht-&gt;head, *cur = hd-&gt;next;
-    while (cur != hd) {
-        if (cur-&gt;h != cur-&gt;prev-&gt;h) {
-            printf(&quot;\nbucket hash %d:&quot;, cur-&gt;h);
-        }
-        printf(&quot; [key=%d, val=%d]&quot;, cur-&gt;key, cur-&gt;val);
-        cur = cur-&gt;next;
-    }
-    printf(&quot;\n&quot;);
+
+typedef struct {
+    int cap;
+    int size;
+    vector* cnt;
+    hashtable* ht;
+} LFUCache;
+
+LFUCache* lFUCacheCreate(int capacity) {
+    LFUCache* rt = (LFUCache*) malloc(sizeof(LFUCache));
+    rt-&gt;cap = capacity;
+    rt-&gt;size = 0;
+    rt-&gt;cnt = vc_new(0);
+    rt-&gt;ht = ht_new();
+    return rt;
 }
 </code></pre>

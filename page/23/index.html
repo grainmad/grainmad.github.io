@@ -210,98 +210,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/" class="post-title-link" itemprop="url">制作 m 束花所需的最少天数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-days-to-make-m-bouquets/">1482. 制作 m 束花所需的最少天数</a></p><hr /><p>给你一个整数数组 <code>bloomDay</code>，以及两个整数 <code>m</code> 和 <code>k</code> 。</p><p>现需要制作 <code>m</code> 束花。制作花束时，需要使用花园中 <strong>相邻的 <code>k</code> 朵花</strong> 。</p><p>花园中有 <code>n</code> 朵花，第 <code>i</code> 朵花会在 <code>bloomDay[i]</code> 时盛开，<strong>恰好</strong> 可以用于 <strong>一束</strong> 花中。</p><p>请你返回从花园中摘 <code>m</code> 束花需要等待的最少的天数。如果不能摘到 <code>m</code> 束花则返回 <strong>-1</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,3,10,2], m = 3, k = 1</p><p>输出：3</p><p>解释：让我们一起观察这三天的花开过程，x 表示花开，而 _ 表示花还未开。</p><p>现在需要制作 3 束花，每束只需要 1 朵。</p><p>1 天后：[x, <em>, </em>, <em>, </em>]   // 只能制作 1 束花</p><p>2 天后：[x, <em>, </em>, _, x]   // 只能制作 2 束花</p><p>3 天后：[x, <em>, x, </em>, x]   // 可以制作 3 束花，答案为 3</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,3,10,2], m = 3, k = 2</p><p>输出：-1</p><p>解释：要制作 3 束花，每束需要 2 朵花，也就是一共需要 6 朵花。而花园中只有 5 朵花，无法满足制作要求，返回 -1 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：bloomDay = [7,7,7,7,12,7,7], m = 2, k = 3</p><p>输出：12</p><p>解释：要制作 2 束花，每束需要 3 朵。</p><p>花园在 7 天后和 12 天后的情况如下：</p><p>7 天后：[x, x, x, x, _, x, x]</p><p>可以用前 3 朵盛开的花制作第一束花。但不能使用后 3 朵盛开的花，因为它们不相邻。</p><p>12 天后：[x, x, x, x, x, x, x]</p><p>显然，我们可以用不同的方式制作两束花。</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：bloomDay = [1000000000,1000000000], m = 1, k = 1</p><p>输出：1000000000</p><p>解释：需要等 1000000000 天才能采到花来制作花束</p><p>```</p><p><strong>示例 5：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,2,9,3,8,4,7,5,6], m = 4, k = 2</p><p>输出：9</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>bloomDay.length == n</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= bloomDay[i] &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= m &amp;lt;= 10^6</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= n</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%BD%BF%E6%95%B0%E7%BB%84%E8%BF%9E%E7%BB%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -364,6 +272,98 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%BD%BF%E6%95%B0%E7%BB%84%E8%BF%9E%E7%BB%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/" class="post-title-link" itemprop="url">制作 m 束花所需的最少天数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-days-to-make-m-bouquets/">1482. 制作 m 束花所需的最少天数</a></p><hr /><p>给你一个整数数组 <code>bloomDay</code>，以及两个整数 <code>m</code> 和 <code>k</code> 。</p><p>现需要制作 <code>m</code> 束花。制作花束时，需要使用花园中 <strong>相邻的 <code>k</code> 朵花</strong> 。</p><p>花园中有 <code>n</code> 朵花，第 <code>i</code> 朵花会在 <code>bloomDay[i]</code> 时盛开，<strong>恰好</strong> 可以用于 <strong>一束</strong> 花中。</p><p>请你返回从花园中摘 <code>m</code> 束花需要等待的最少的天数。如果不能摘到 <code>m</code> 束花则返回 <strong>-1</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,3,10,2], m = 3, k = 1</p><p>输出：3</p><p>解释：让我们一起观察这三天的花开过程，x 表示花开，而 _ 表示花还未开。</p><p>现在需要制作 3 束花，每束只需要 1 朵。</p><p>1 天后：[x, <em>, </em>, <em>, </em>]   // 只能制作 1 束花</p><p>2 天后：[x, <em>, </em>, _, x]   // 只能制作 2 束花</p><p>3 天后：[x, <em>, x, </em>, x]   // 可以制作 3 束花，答案为 3</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,3,10,2], m = 3, k = 2</p><p>输出：-1</p><p>解释：要制作 3 束花，每束需要 2 朵花，也就是一共需要 6 朵花。而花园中只有 5 朵花，无法满足制作要求，返回 -1 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：bloomDay = [7,7,7,7,12,7,7], m = 2, k = 3</p><p>输出：12</p><p>解释：要制作 2 束花，每束需要 3 朵。</p><p>花园在 7 天后和 12 天后的情况如下：</p><p>7 天后：[x, x, x, x, _, x, x]</p><p>可以用前 3 朵盛开的花制作第一束花。但不能使用后 3 朵盛开的花，因为它们不相邻。</p><p>12 天后：[x, x, x, x, x, x, x]</p><p>显然，我们可以用不同的方式制作两束花。</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：bloomDay = [1000000000,1000000000], m = 1, k = 1</p><p>输出：1000000000</p><p>解释：需要等 1000000000 天才能采到花来制作花束</p><p>```</p><p><strong>示例 5：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,2,9,3,8,4,7,5,6], m = 4, k = 2</p><p>输出：9</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>bloomDay.length == n</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= bloomDay[i] &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= m &amp;lt;= 10^6</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= n</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>
