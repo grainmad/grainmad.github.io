@@ -1,5 +1,5 @@
 <hr>
-<p>title: “哈希表”<br>date: 2025-03-18 07:58:13<br>updated: 2025-03-19 09:16:18<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>哈希表</li></ul>‘</p>
+<p>title: “哈希表”<br>date: 2025-03-18 07:58:13<br>updated: 2025-03-25 05:44:23<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>哈希表</li></ul>‘</p>
 <hr>
 <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><pre><code class="c">// ==================== hash table =======================
 typedef int HT_KT;
@@ -173,21 +173,5 @@ void ht_pop(hashtable* ht, HT_KT key) {
     }
     free(hnode);
     ht-&gt;size -= 1;
-}
-
-typedef struct {
-    int cap;
-    int size;
-    vector* cnt;
-    hashtable* ht;
-} LFUCache;
-
-LFUCache* lFUCacheCreate(int capacity) {
-    LFUCache* rt = (LFUCache*) malloc(sizeof(LFUCache));
-    rt-&gt;cap = capacity;
-    rt-&gt;size = 0;
-    rt-&gt;cnt = vc_new(0);
-    rt-&gt;ht = ht_new();
-    return rt;
 }
 </code></pre>
