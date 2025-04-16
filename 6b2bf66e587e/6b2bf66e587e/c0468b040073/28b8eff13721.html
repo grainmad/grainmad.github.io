@@ -1,7 +1,71 @@
 <hr>
-<p>title: “树状数组”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>树状数组</li></ul>‘</p>
+<p>title: “树状数组”<br>date: 2024-06-03 10:42:02<br>updated: 2025-04-16 13:41:58<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>树状数组</li></ul>‘</p>
 <hr>
-<h1 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h1><pre><code class="cpp">ll BIT[N];
+<h1 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h1><ul>
+<li>封装<pre><code class="cpp">template&lt;typename T&gt;
+struct BIT {
+    int n;
+    vector&lt;T&gt; bit;
+    // 初始化 bit[0 ... size] = 0
+    BIT(int size) : n(size), bit(size + 1, T{}) {}
+
+    // bit[i] = sum(a[i&amp;(i-1)] .. a[i-1])
+    BIT(const vector&lt;T&gt;&amp; a) : n(a.size()), bit(a.size() + 1, T{}) {
+        for (int i=1, fa; i&lt;=n; i++) {
+            bit[i] += a[i-1];
+            fa = i+(i&amp;-i); // 父节点
+            if (fa&lt;=n) bit[fa] += bit[i];
+        }
+    }
+
+    // 单点加：a[i] += delta
+    void add(int i, T delta) {
+        while (i &lt;= n) {
+            bit[i] += delta;
+            i += i&amp;-i;
+        }
+    }
+
+    // 前缀和：a[1] + a[2] + ... + a[i]
+    T ask(int i) const {
+        T res = T{};
+        while (i) {
+            res += bit[i];
+            i -= i&amp;-i;
+        }
+        return res;
+    }
+
+    // 找到最小的 pos，使得 sum[1..pos] &gt;= x
+    int lower_bound(T x) const {
+        int i = 0, bm = n;
+        while (bm&amp;(bm-1)) bm &amp;= (bm-1);
+        while (bm) {
+            int t = i + bm;
+            if (t &lt;= n &amp;&amp; bit[t] &lt; x)
+                x -= bit[i=t];
+            bm &gt;&gt;= 1;
+        }
+        return i+1; 
+    }
+
+    // 找到最小的 pos，使得 sum[1..pos] &gt; x
+    int upper_bound(T x) const {
+        int i = 0, bm = n;
+        while (bm&amp;(bm-1)) bm &amp;= (bm-1);
+        while (bm) {
+            int t = i + bm;
+            if (t &lt;= n &amp;&amp; bit[t] &lt; x)
+                x -= bit[i=t];
+            bm &gt;&gt;= 1;
+        }
+        return i+1; 
+    }
+};
+</code></pre>
+</li>
+</ul>
+<pre><code class="cpp">ll BIT[N];
 // ll xBIT[N];
 
 void bit_add(int x, ll val) {
