@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">599</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">600</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">599</span>
+          <span class="site-state-item-count">600</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,98 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E4%BD%BF%E6%95%B0%E7%BB%84%E4%B8%A5%E6%A0%BC%E9%80%92%E5%A2%9E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E4%BD%BF%E6%95%B0%E7%BB%84%E4%B8%A5%E6%A0%BC%E9%80%92%E5%A2%9E/" class="post-title-link" itemprop="url">使数组严格递增</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/make-array-strictly-increasing/">1187. 使数组严格递增</a></p><hr /><p>给你两个整数数组 <code>arr1</code> 和 <code>arr2</code>，返回使 <code>arr1</code> 严格递增所需要的最小「操作」数（可能为 0）。</p><p>每一步「操作」中，你可以分别从 <code>arr1</code> 和 <code>arr2</code> 中各选出一个索引，分别为 <code>i</code> 和 <code>j</code>，<code>0 &amp;lt;= i &amp;lt; arr1.length</code> 和 <code>0 &amp;lt;= j &amp;lt; arr2.length</code>，然后进行赋值运算 <code>arr1[i] = arr2[j]</code>。</p><p>如果无法让 <code>arr1</code> 严格递增，请返回 <code>-1</code>。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：arr1 = [1,5,3,6,7], arr2 = [1,3,2,4]</p><p>输出：1</p><p>解释：用 2 来替换 5，之后 arr1 = [1, 2, 3, 6, 7]。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：arr1 = [1,5,3,6,7], arr2 = [4,3,1]</p><p>输出：2</p><p>解释：用 3 来替换 5，然后用 4 来替换 3，得到 arr1 = [1, 3, 4, 6, 7]。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：arr1 = [1,5,3,6,7], arr2 = [1,6,3,3]</p><p>输出：-1</p><p>解释：无法使 arr1 严格递增。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= arr1.length, arr2.length &amp;lt;= 2000</code></p></li><li><p><code>0 &amp;lt;= arr1[i], arr2[i] &amp;lt;= 10^9</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E4%BD%BF%E6%95%B0%E7%BB%84%E4%B8%A5%E6%A0%BC%E9%80%92%E5%A2%9E/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -732,98 +824,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E7%A7%BB%E9%99%A4%E6%89%80%E6%9C%89%E8%BD%BD%E6%9C%89%E8%BF%9D%E7%A6%81%E8%B4%A7%E7%89%A9%E8%BD%A6%E5%8E%A2%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E7%BB%9F%E8%AE%A1%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97%E6%95%B0%E7%9B%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E7%BB%9F%E8%AE%A1%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">统计回文子序列数目</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-palindromic-subsequences/">2484. 统计回文子序列数目</a></p><hr /><p>给你数字字符串 <code>s</code> ，请你返回 <code>s</code> 中长度为 <code>5</code> 的 <strong>回文子序列</strong> 数目。由于答案可能很大，请你将答案对 <code>10^9 + 7</code> <strong>取余</strong> 后返回。</p><p><strong>提示：</strong></p><ul><li><p>如果一个字符串从前往后和从后往前读相同，那么它是 <strong>回文字符串</strong> 。</p></li><li><p>子序列是一个字符串中删除若干个字符后，不改变字符顺序，剩余字符构成的字符串。</p></li></ul><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：s = &quot;103301&quot;</p><p>输出：2</p><p>解释：</p><p>总共有 6 长度为 5 的子序列：&quot;10330&quot; ，&quot;10331&quot; ，&quot;10301&quot; ，&quot;10301&quot; ，&quot;13301&quot; ，&quot;03301&quot; 。</p><p>它们中有两个（都是 &quot;10301&quot;）是回文的。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：s = &quot;0000000&quot;</p><p>输出：21</p><p>解释：所有 21 个长度为 5 的子序列都是 &quot;00000&quot; ，都是回文的。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：s = &quot;9999900000&quot;</p><p>输出：2</p><p>解释：仅有的两个回文子序列是 &quot;99999&quot; 和 &quot;00000&quot; 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= s.length &amp;lt;= 10^4</code></p></li><li><p><code>s</code> 只包含数字字符。</p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/dp/%E7%BA%BF%E6%80%A7dp/%E7%BB%9F%E8%AE%A1%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97%E6%95%B0%E7%9B%AE/">
                 阅读全文 &raquo;
               </a>
             </div>

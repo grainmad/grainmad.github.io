@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">599</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">600</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">599</span>
+          <span class="site-state-item-count">600</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,6 +201,190 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/dp/%E7%9F%A9%E9%98%B5%E4%B8%AD%E4%B8%A5%E6%A0%BC%E9%80%92%E5%A2%9E%E7%9A%84%E5%8D%95%E5%85%83%E6%A0%BC%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/dp/%E7%9F%A9%E9%98%B5%E4%B8%AD%E4%B8%A5%E6%A0%BC%E9%80%92%E5%A2%9E%E7%9A%84%E5%8D%95%E5%85%83%E6%A0%BC%E6%95%B0/" class="post-title-link" itemprop="url">矩阵中严格递增的单元格数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-28 23:33:35" itemprop="dateCreated datePublished" datetime="2023-05-28T23:33:35+00:00">2023-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-strictly-increasing-cells-in-a-matrix/">6456. 矩阵中严格递增的单元格数</a></p><hr /><p>给你一个下标从 <strong>1</strong> 开始、大小为 <code>m x n</code> 的整数矩阵 <code>mat</code>，你可以选择任一单元格作为 <strong>起始单元格</strong> 。</p><p>从起始单元格出发，你可以移动到 <strong>同一行或同一列</strong> 中的任何其他单元格，但前提是目标单元格的值 <strong>严格大于</strong> 当前单元格的值。</p><p>你可以多次重复这一过程，从一个单元格移动到另一个单元格，直到无法再进行任何移动。</p><p>请你找出从某个单元开始访问矩阵所能访问的 <strong>单元格的最大数量</strong> 。</p><p>返回一个表示可访问单元格最大数量的整数。</p><p><strong>示例 1：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2023/04/23/diag1drawio.png" /></strong></p><p>```txt</p><p>输入：mat = [[3,1],[3,4]]</p><p>输出：2</p><p>解释：上图展示了从第 1 行、第 2 列的单元格开始，可以访问 2 个单元格。可以证明，无论从哪个单元格开始，最多只能访问 2 个单元格，因此答案是 2 。</p><p>```</p><p><strong>示例 2：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2023/04/23/diag3drawio.png" /></strong></p><p>```txt</p><p>输入：mat = [[1,1],[1,1]]</p><p>输出：1</p><p>解释：由于目标单元格必须严格大于当前单元格，在本示例中只能访问 1 个单元格。</p><p>```</p><p><strong>示例 3：</strong></p><p><strong><img alt="" src="https://assets.leetcode.com/uploads/2023/04/23/diag4drawio.png" /></strong></p><p>```txt</p><p>输入：mat = [[3,1,6],[-9,5,7]]</p><p>输出：4</p><p>解释：上图展示了从第 2 行、第 1 列的单元格开始，可以访问 4 个单元格。可以证明，无论从哪个单元格开始，最多只能访问 4 个单元格，因此答案是 4 。</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>m == mat.length</code> </p></li><li><p><code>n == mat[i].length</code> </p></li><li><p><code>1 &amp;lt;= m, n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= m * n &amp;lt;= 10^5</code></p></li><li><p><code>-10^5 &amp;lt;= mat[i][j] &amp;lt;= 10^5</code></p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/dp/%E7%9F%A9%E9%98%B5%E4%B8%AD%E4%B8%A5%E6%A0%BC%E9%80%92%E5%A2%9E%E7%9A%84%E5%8D%95%E5%85%83%E6%A0%BC%E6%95%B0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%B8%91%E6%95%B0%20III/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
+      <meta itemprop="name" content="GrainMad">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | fork()==0世界线变动">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%B8%91%E6%95%B0%20III/" class="post-title-link" itemprop="url">丑数 III</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ugly-number-iii/">1201. 丑数 III</a></p><hr /><p>给你四个整数：<code>n</code> 、<code>a</code> 、<code>b</code> 、<code>c</code> ，请你设计一个算法来找出第 <code>n</code> 个丑数。</p><p>丑数是可以被 <code>a</code> <strong>或</strong> <code>b</code> <strong>或</strong> <code>c</code> 整除的 <strong>正整数</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 3, a = 2, b = 3, c = 5</p><p>输出：4</p><p>解释：丑数序列为 2, 3, 4, 5, 6, 8, 9, 10... 其中第 3 个是 4。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 4, a = 2, b = 3, c = 4</p><p>输出：6</p><p>解释：丑数序列为 2, 3, 4, 6, 8, 9, 10, 12... 其中第 4 个是 6。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：n = 5, a = 2, b = 11, c = 13</p><p>输出：10</p><p>解释：丑数序列为 2, 4, 6, 8, 10, 11, 12, 13... 其中第 5 个是 10。</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：n = 1000000000, a = 2, b = 217983653, c = 336916467</p><p>输出：1999999984</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n, a, b, c &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= a * b * c &amp;lt;= 10^18</code></p></li><li><p>本题结果在 <code>[1, 2 * 10^9]</code> 的范围内</p></li></ul></ul></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%B8%91%E6%95%B0%20III/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -272,98 +456,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%BD%BF%E6%95%B0%E7%BB%84%E8%BF%9E%E7%BB%AD%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/" class="post-title-link" itemprop="url">制作 m 束花所需的最少天数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-days-to-make-m-bouquets/">1482. 制作 m 束花所需的最少天数</a></p><hr /><p>给你一个整数数组 <code>bloomDay</code>，以及两个整数 <code>m</code> 和 <code>k</code> 。</p><p>现需要制作 <code>m</code> 束花。制作花束时，需要使用花园中 <strong>相邻的 <code>k</code> 朵花</strong> 。</p><p>花园中有 <code>n</code> 朵花，第 <code>i</code> 朵花会在 <code>bloomDay[i]</code> 时盛开，<strong>恰好</strong> 可以用于 <strong>一束</strong> 花中。</p><p>请你返回从花园中摘 <code>m</code> 束花需要等待的最少的天数。如果不能摘到 <code>m</code> 束花则返回 <strong>-1</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,3,10,2], m = 3, k = 1</p><p>输出：3</p><p>解释：让我们一起观察这三天的花开过程，x 表示花开，而 _ 表示花还未开。</p><p>现在需要制作 3 束花，每束只需要 1 朵。</p><p>1 天后：[x, <em>, </em>, <em>, </em>]   // 只能制作 1 束花</p><p>2 天后：[x, <em>, </em>, _, x]   // 只能制作 2 束花</p><p>3 天后：[x, <em>, x, </em>, x]   // 可以制作 3 束花，答案为 3</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,3,10,2], m = 3, k = 2</p><p>输出：-1</p><p>解释：要制作 3 束花，每束需要 2 朵花，也就是一共需要 6 朵花。而花园中只有 5 朵花，无法满足制作要求，返回 -1 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：bloomDay = [7,7,7,7,12,7,7], m = 2, k = 3</p><p>输出：12</p><p>解释：要制作 2 束花，每束需要 3 朵。</p><p>花园在 7 天后和 12 天后的情况如下：</p><p>7 天后：[x, x, x, x, _, x, x]</p><p>可以用前 3 朵盛开的花制作第一束花。但不能使用后 3 朵盛开的花，因为它们不相邻。</p><p>12 天后：[x, x, x, x, x, x, x]</p><p>显然，我们可以用不同的方式制作两束花。</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：bloomDay = [1000000000,1000000000], m = 1, k = 1</p><p>输出：1000000000</p><p>解释：需要等 1000000000 天才能采到花来制作花束</p><p>```</p><p><strong>示例 5：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,2,9,3,8,4,7,5,6], m = 4, k = 2</p><p>输出：9</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>bloomDay.length == n</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= bloomDay[i] &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= m &amp;lt;= 10^6</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= n</code></p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -578,98 +670,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%B8%91%E6%95%B0%20III/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
-      <meta itemprop="name" content="GrainMad">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | fork()==0世界线变动">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%B8%91%E6%95%B0%20III/" class="post-title-link" itemprop="url">丑数 III</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 19:03:51" itemprop="dateCreated datePublished" datetime="2023-04-09T19:03:51+00:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 18:11:18" itemprop="dateModified" datetime="2024-06-07T18:11:18+00:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ugly-number-iii/">1201. 丑数 III</a></p><hr /><p>给你四个整数：<code>n</code> 、<code>a</code> 、<code>b</code> 、<code>c</code> ，请你设计一个算法来找出第 <code>n</code> 个丑数。</p><p>丑数是可以被 <code>a</code> <strong>或</strong> <code>b</code> <strong>或</strong> <code>c</code> 整除的 <strong>正整数</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：n = 3, a = 2, b = 3, c = 5</p><p>输出：4</p><p>解释：丑数序列为 2, 3, 4, 5, 6, 8, 9, 10... 其中第 3 个是 4。</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：n = 4, a = 2, b = 3, c = 4</p><p>输出：6</p><p>解释：丑数序列为 2, 3, 4, 6, 8, 9, 10, 12... 其中第 4 个是 6。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：n = 5, a = 2, b = 11, c = 13</p><p>输出：10</p><p>解释：丑数序列为 2, 4, 6, 8, 10, 11, 12, 13... 其中第 5 个是 10。</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：n = 1000000000, a = 2, b = 217983653, c = 336916467</p><p>输出：1999999984</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>1 &amp;lt;= n, a, b, c &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= a * b * c &amp;lt;= 10^18</code></p></li><li><p>本题结果在 <code>[1, 2 * 10^9]</code> 的范围内</p></li></ul></ul></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E4%B8%91%E6%95%B0%20III/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%20IV/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -762,7 +762,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%94%BE%E7%BD%AE%E7%9B%92%E5%AD%90/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -780,7 +780,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%94%BE%E7%BD%AE%E7%9B%92%E5%AD%90/" class="post-title-link" itemprop="url">放置盒子</a>
+          <a href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/" class="post-title-link" itemprop="url">制作 m 束花所需的最少天数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -820,10 +820,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/building-boxes/">1739. 放置盒子</a></p><hr /><p>有一个立方体房间，其长度、宽度和高度都等于 <code>n</code> 个单位。请你在房间里放置 <code>n</code> 个盒子，每个盒子都是一个单位边长的立方体。放置规则如下：</p><ul><li><p>你可以把盒子放在地板上的任何地方。</p></li><li><p>如果盒子 <code>x</code> 需要放置在盒子 <code>y</code> 的顶部，那么盒子 <code>y</code> 竖直的四个侧面都 <strong>必须</strong> 与另一个盒子或墙相邻。</p></li></ul><p>给你一个整数 <code>n</code> ，返回接触地面的盒子的 <strong>最少</strong> 可能数量<em>。</em></p><p><strong>示例 1：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/3-boxes.png" /></p><p>```txt</p><p>输入：n = 3</p><p>输出：3</p><p>解释：上图是 3 个盒子的摆放位置。</p><p>这些盒子放在房间的一角，对应左侧位置。</p><p>```</p><p><strong>示例 2：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/4-boxes.png" /></p><p>```txt</p><p>输入：n = 4</p><p>输出：3</p><p>解释：上图是 3 个盒子的摆放位置。</p><p>这些盒子放在房间的一角，对应左侧位置。</p><p>```</p><p><strong>示例 3：</strong></p><p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/24/10-boxes.png" /></p><p>```txt</p><p>输入：n = 10</p><p>输出：6</p><p>解释：上图是 10 个盒子的摆放位置。</p><p>这些盒子放在房间的一角，对应后方位置。</p><p>```</p><p><strong>提示：</strong></p><ul><li><code>1 &amp;lt;= n &amp;lt;= 10^9</code></li></ul></ul></p>
+          <p><ul style="text-align:left;"><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-days-to-make-m-bouquets/">1482. 制作 m 束花所需的最少天数</a></p><hr /><p>给你一个整数数组 <code>bloomDay</code>，以及两个整数 <code>m</code> 和 <code>k</code> 。</p><p>现需要制作 <code>m</code> 束花。制作花束时，需要使用花园中 <strong>相邻的 <code>k</code> 朵花</strong> 。</p><p>花园中有 <code>n</code> 朵花，第 <code>i</code> 朵花会在 <code>bloomDay[i]</code> 时盛开，<strong>恰好</strong> 可以用于 <strong>一束</strong> 花中。</p><p>请你返回从花园中摘 <code>m</code> 束花需要等待的最少的天数。如果不能摘到 <code>m</code> 束花则返回 <strong>-1</strong> 。</p><p><strong>示例 1：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,3,10,2], m = 3, k = 1</p><p>输出：3</p><p>解释：让我们一起观察这三天的花开过程，x 表示花开，而 _ 表示花还未开。</p><p>现在需要制作 3 束花，每束只需要 1 朵。</p><p>1 天后：[x, <em>, </em>, <em>, </em>]   // 只能制作 1 束花</p><p>2 天后：[x, <em>, </em>, _, x]   // 只能制作 2 束花</p><p>3 天后：[x, <em>, x, </em>, x]   // 可以制作 3 束花，答案为 3</p><p>```</p><p><strong>示例 2：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,3,10,2], m = 3, k = 2</p><p>输出：-1</p><p>解释：要制作 3 束花，每束需要 2 朵花，也就是一共需要 6 朵花。而花园中只有 5 朵花，无法满足制作要求，返回 -1 。</p><p>```</p><p><strong>示例 3：</strong></p><p>```txt</p><p>输入：bloomDay = [7,7,7,7,12,7,7], m = 2, k = 3</p><p>输出：12</p><p>解释：要制作 2 束花，每束需要 3 朵。</p><p>花园在 7 天后和 12 天后的情况如下：</p><p>7 天后：[x, x, x, x, _, x, x]</p><p>可以用前 3 朵盛开的花制作第一束花。但不能使用后 3 朵盛开的花，因为它们不相邻。</p><p>12 天后：[x, x, x, x, x, x, x]</p><p>显然，我们可以用不同的方式制作两束花。</p><p>```</p><p><strong>示例 4：</strong></p><p>```txt</p><p>输入：bloomDay = [1000000000,1000000000], m = 1, k = 1</p><p>输出：1000000000</p><p>解释：需要等 1000000000 天才能采到花来制作花束</p><p>```</p><p><strong>示例 5：</strong></p><p>```txt</p><p>输入：bloomDay = [1,10,2,9,3,8,4,7,5,6], m = 4, k = 2</p><p>输出：9</p><p>```</p><p><strong>提示：</strong></p><ul><li><p><code>bloomDay.length == n</code></p></li><li><p><code>1 &amp;lt;= n &amp;lt;= 10^5</code></p></li><li><p><code>1 &amp;lt;= bloomDay[i] &amp;lt;= 10^9</code></p></li><li><p><code>1 &amp;lt;= m &amp;lt;= 10^6</code></p></li><li><p><code>1 &amp;lt;= k &amp;lt;= n</code></p></li></ul></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E6%94%BE%E7%BD%AE%E7%9B%92%E5%AD%90/">
+              <a class="btn" href="/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/%E5%88%B6%E4%BD%9C%20m%20%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/">
                 阅读全文 &raquo;
               </a>
             </div>

@@ -1,5 +1,5 @@
 <hr>
-<p>title: “线段树”<br>date: 2024-06-03 10:42:02<br>updated: 2024-11-15 07:20:07<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>线段树</li></ul>‘</p>
+<p>title: “线段树”<br>date: 2024-06-03 10:42:02<br>updated: 2025-06-22 14:14:45<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>线段树</li></ul>‘</p>
 <hr>
 <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><h2 id="结构体实现"><a href="#结构体实现" class="headerlink" title="结构体实现"></a>结构体实现</h2><h3 id="静态区间"><a href="#静态区间" class="headerlink" title="静态区间"></a>静态区间</h3><ul>
 <li>区间每个元素加val，区间求和<pre><code class="cpp">#define ll long long
@@ -501,3 +501,215 @@ function&lt;int(int,int,int,int,int,int)&gt; ask = [&amp;](int id, int l, int r,
     }
 };
 </code></pre>
+<ul>
+<li>0x3f<pre><code class="cpp">template&lt;typename T&gt;
+class SegmentTree {
+
+    int n;
+    vector&lt;T&gt; tree;
+
+    // 合并两个 val
+    T merge_val(T a, T b) const {
+        return max(a, b); // **根据题目修改**
+    }
+
+    // 合并左右儿子的 val 到当前节点的 val
+    void push_up(int node) {
+        tree[node] = merge_val(tree[node * 2], tree[node * 2 + 1]);
+    }
+
+    // 用 a 初始化线段树
+    // 时间复杂度 O(n)
+    void build(const vector&lt;T&gt;&amp; a, int node, int l, int r) {
+        if (l == r) { // 叶子
+            tree[node] = a[l]; // 初始化叶节点的值
+            return;
+        }
+        int m = (l + r) / 2;
+        build(a, node * 2, l, m); // 初始化左子树
+        build(a, node * 2 + 1, m + 1, r); // 初始化右子树
+        push_up(node);
+    }
+
+    void update(int node, int l, int r, int i, T val) {
+        if (l == r) { // 叶子（到达目标）
+            // 如果想直接替换的话，可以写 tree[node] = val
+            tree[node] = merge_val(tree[node], val);
+            return;
+        }
+        int m = (l + r) / 2;
+        if (i &lt;= m) {  // i 在左子树
+            update(node * 2, l, m, i, val);
+        } else {  // i 在右子树
+            update(node * 2 + 1, m + 1, r, i, val);
+        }
+        push_up(node);
+    }
+
+    T query(int node, int l, int r, int ql, int qr) const {
+        if (ql &lt;= l &amp;&amp; r &lt;= qr) { // 当前子树完全在 [ql, qr] 内
+            return tree[node];
+        }
+        int m = (l + r) / 2;
+        if (qr &lt;= m) {  // [ql, qr] 在左子树
+            return query(node * 2, l, m, ql, qr);
+        }
+        if (ql &gt; m) {  // [ql, qr] 在右子树
+            return query(node * 2 + 1, m + 1, r, ql, qr);
+        }
+        T l_res = query(node * 2, l, m, ql, qr);
+        T r_res = query(node * 2 + 1, m + 1, r, ql, qr);
+        return merge_val(l_res, r_res);
+    }
+
+public:
+    // 线段树维护一个长为 n 的数组（下标从 0 到 n-1），元素初始值为 init_val
+    SegmentTree(int n, T init_val) : SegmentTree(vector&lt;T&gt;(n, init_val)) {}
+
+    // 线段树维护数组 a
+    SegmentTree(const vector&lt;T&gt;&amp; a) : n(a.size()), tree(2 &lt;&lt; bit_width(a.size() - 1)) {
+        build(a, 1, 0, n - 1);
+    }
+
+    // 更新 a[i] 为 merge_val(a[i], val)
+    // 时间复杂度 O(log n)
+    void update(int i, T val) {
+        update(1, 0, n - 1, i, val);
+    }
+
+    // 返回用 merge_val 合并所有 a[i] 的计算结果，其中 i 在闭区间 [ql, qr] 中
+    // 时间复杂度 O(log n)
+    T query(int ql, int qr) const {
+        return query(1, 0, n - 1, ql, qr);
+    }
+
+    // 获取 a[i] 的值
+    // 时间复杂度 O(log n)
+    T get(int i) const {
+        return query(1, 0, n - 1, i, i);
+    }
+};
+
+template&lt;typename T, typename F&gt;
+class LazySegmentTree {
+    // 懒标记初始值
+    const F TAG_NONE = 0; // **根据题目修改**
+
+    struct Node {
+        T val; // **根据题目修改**
+        F tag;
+    };
+
+    int n;
+    vector&lt;Node&gt; tree;
+
+    // 合并两个 val
+    T merge_val(T a, T b) const {
+        return a + b; // **根据题目修改**
+    }
+
+    // 合并两个懒标记
+    F merge_tag(F a, F b) const {
+        return a + b; // **根据题目修改**
+    }
+
+    // 把懒标记作用到 node 子树（本例为区间加）
+    void apply(int node, int l, int r, F tag) {
+        Node&amp; cur = tree[node];
+        // 计算 tree[node] 区间的整体变化
+        cur.val += tag * (r - l + 1); // **根据题目修改**
+        cur.tag = merge_tag(tag, cur.tag);
+    }
+
+    // 把当前节点的懒标记下传给左右儿子
+    void push_down(int node, int l, int r) {
+        Node&amp; cur = tree[node];
+        F tag = cur.tag;
+        if (tag == TAG_NONE) { // 没有需要下传的信息
+            return;
+        }
+        int m = (l + r) / 2;
+        apply(node * 2, l, m, tag);
+        apply(node * 2 + 1, m + 1, r, tag);
+        cur.tag = TAG_NONE; // 下传完毕
+    }
+
+    // 合并左右儿子的 val 到当前节点的 val
+    void push_up(int node) {
+        tree[node].val = merge_val(tree[node * 2].val, tree[node * 2 + 1].val);
+    }
+
+    // 用 a 初始化线段树
+    // 时间复杂度 O(n)
+    void build(const vector&lt;T&gt;&amp; a, int node, int l, int r) {
+        Node&amp; cur = tree[node];
+        cur.tag = TAG_NONE;
+        if (l == r) { // 叶子
+            cur.val = a[l]; // 初始化叶节点的值
+            return;
+        }
+        int m = (l + r) / 2;
+        build(a, node * 2, l, m); // 初始化左子树
+        build(a, node * 2 + 1, m + 1, r); // 初始化右子树
+        push_up(node);
+    }
+
+    void update(int node, int l, int r, int ql, int qr, F f) {
+        if (ql &lt;= l &amp;&amp; r &lt;= qr) { // 当前子树完全在 [ql, qr] 内
+            apply(node, l, r, f);
+            return;
+        }
+        push_down(node, l, r);
+        int m = (l + r) / 2;
+        if (ql &lt;= m) { // 更新左子树
+            update(node * 2, l, m, ql, qr, f);
+        }
+        if (qr &gt; m) { // 更新右子树
+            update(node * 2 + 1, m + 1, r, ql, qr, f);
+        }
+        push_up(node);
+    }
+
+    T query(int node, int l, int r, int ql, int qr) {
+        if (ql &lt;= l &amp;&amp; r &lt;= qr) { // 当前子树完全在 [ql, qr] 内
+            return tree[node].val;
+        }
+        push_down(node, l, r);
+        int m = (l + r) / 2;
+        if (qr &lt;= m) { // [ql, qr] 在左子树
+            return query(node * 2, l, m, ql, qr);
+        }
+        if (ql &gt; m) { // [ql, qr] 在右子树
+            return query(node * 2 + 1, m + 1, r, ql, qr);
+        }
+        T l_res = query(node * 2, l, m, ql, qr);
+        T r_res = query(node * 2 + 1, m + 1, r, ql, qr);
+        return merge_val(l_res, r_res);
+    }
+
+public:
+    // 线段树维护一个长为 n 的数组（下标从 0 到 n-1），元素初始值为 init_val
+    LazySegmentTree(int n, T init_val = 0) : LazySegmentTree(vector&lt;T&gt;(n, init_val)) {}
+
+    // 线段树维护数组 a
+    LazySegmentTree(const vector&lt;T&gt;&amp; a) : n(a.size()), tree(2 &lt;&lt; bit_width(a.size() - 1)) {
+        build(a, 1, 0, n - 1);
+    }
+
+    // 用 f 更新 [ql, qr] 中的每个 a[i]
+    // 0 &lt;= ql &lt;= qr &lt;= n-1
+    // 时间复杂度 O(log n)
+    void update(int ql, int qr, F f) {
+        update(1, 0, n - 1, ql, qr, f);
+    }
+
+    // 返回用 merge_val 合并所有 a[i] 的计算结果，其中 i 在闭区间 [ql, qr] 中
+    // 0 &lt;= ql &lt;= qr &lt;= n-1
+    // 时间复杂度 O(log n)
+    T query(int ql, int qr) {
+        return query(1, 0, n - 1, ql, qr);
+    }
+};
+</code></pre>
+</li>
+</ul>

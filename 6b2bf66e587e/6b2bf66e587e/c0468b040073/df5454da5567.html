@@ -1,0 +1,26 @@
+<hr>
+<p>title: “有序集合”<br>date: 2025-06-22 14:14:45<br>updated: 2025-06-22 14:14:45<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>有序集合</li></ul>‘</p>
+<hr>
+<h1 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h1><p>基于红黑树的有序集合，<code>find_by_order</code>获取指定排名的键，<code>order_of_key</code>获取指定键的排名。</p>
+<pre><code class="cpp">#include &lt;ext/pb_ds/assoc_container.hpp&gt;
+#include &lt;ext/pb_ds/tree_policy.hpp&gt;
+using namespace __gnu_pbds;
+// 泛型定义，Mapped默认为null_type（即作为set使用）
+template &lt;typename Key, typename Mapped = null_type&gt;
+using ordered_map = tree
+    Key,
+    Mapped,
+    std::less&lt;Key&gt;,
+    rb_tree_tag,
+    tree_order_statistics_node_update&gt;;
+    
+// As a set
+ordered_map&lt;int&gt; os;
+os.insert(3); os.insert(1); os.insert(4);
+auto it = os.find_by_order(1); // Points to element with rank 1 (value 3)
+int rank = os.order_of_key(3);  // Returns 1 (0-indexed rank of 3)
+
+// As a map
+ordered_map&lt;int, string&gt; om;
+om[3] = &quot;three&quot;; om[1] = &quot;one&quot;;
+</code></pre>
