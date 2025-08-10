@@ -1,13 +1,14 @@
 <hr>
-<p>title: “有序集合”<br>date: 2025-06-22 14:14:45<br>updated: 2025-06-22 14:14:45<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>有序集合</li></ul>‘</p>
+<p>title: “有序集合”<br>date: 2025-06-22 14:14:45<br>updated: 2025-08-10 17:38:46<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>有序集合</li></ul>‘</p>
 <hr>
-<h1 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h1><p>基于红黑树的有序集合，<code>find_by_order</code>获取指定排名的键，<code>order_of_key</code>获取指定键的排名。</p>
+<h1 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h1><p>基于红黑树的有序集合，<code>find_by_order</code>获取指定排名的键，<code>order_of_key</code>获取指定键的排名。排名从0开始索引。</p>
+<p>不支持重复键，可以采用pair类型做键，第二字段作为区分。</p>
 <pre><code class="cpp">#include &lt;ext/pb_ds/assoc_container.hpp&gt;
 #include &lt;ext/pb_ds/tree_policy.hpp&gt;
 using namespace __gnu_pbds;
 // 泛型定义，Mapped默认为null_type（即作为set使用）
 template &lt;typename Key, typename Mapped = null_type&gt;
-using ordered_map = tree
+using ordered_map = tree&lt;
     Key,
     Mapped,
     std::less&lt;Key&gt;,
@@ -24,3 +25,36 @@ int rank = os.order_of_key(3);  // Returns 1 (0-indexed rank of 3)
 ordered_map&lt;int, string&gt; om;
 om[3] = &quot;three&quot;; om[1] = &quot;one&quot;;
 </code></pre>
+<ul>
+<li><a href="https://leetcode.cn/problems/sliding-window-median/description/"><strong>480. 滑动窗口中位数</strong></a><pre><code class="cpp">#include &lt;ext/pb_ds/assoc_container.hpp&gt;
+#include &lt;ext/pb_ds/tree_policy.hpp&gt;
+using namespace __gnu_pbds;
+// 泛型定义，Mapped默认为null_type（即作为set使用）
+template &lt;typename Key, typename Mapped = null_type&gt;
+using ordered_map = tree&lt;
+    Key,
+    Mapped,
+    std::less&lt;Key&gt;,
+    rb_tree_tag,
+    tree_order_statistics_node_update&gt;;
+    
+
+class Solution {
+public:
+    vector&lt;double&gt; medianSlidingWindow(vector&lt;int&gt;&amp; nums, int k) {
+        vector&lt;double&gt; ans;
+        ordered_map&lt;pair&lt;long,int&gt;&gt; os;
+        for (int i=0; i&lt;nums.size(); i++) {
+            os.insert({nums[i], i});
+            if (i&gt;=k) os.erase({nums[i-k], i-k});
+            if (i&gt;=k-1) {
+                ans.push_back((os.find_by_order(k/2)-&gt;first+os.find_by_order((k-1)/2)-&gt;first)/2.0);
+            }
+        }
+
+        return ans;
+    }
+};
+</code></pre>
+</li>
+</ul>

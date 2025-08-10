@@ -1,8 +1,8 @@
 <hr>
-<p>title: “普通莫队”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>普通莫队</li></ul>‘</p>
+<p>title: “莫队”<br>date: 2024-06-03 10:42:02<br>updated: 2025-08-10 17:38:46<br>tag: [“notion”, “Algorithm”, “数据结构”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>莫队</li></ul>‘</p>
 <hr>
-<h1 id="普通莫队"><a href="#普通莫队" class="headerlink" title="普通莫队"></a>普通莫队</h1><p>满足无区间修改，可离线，可$O(1)$得到相邻区间的计数，即可$O(qlogq+n^{\frac{3}{2}})$求出q个查询$[l,r],1≤l≤r≤n$</p>
-<p>算法流程</p>
+<h1 id="莫队"><a href="#莫队" class="headerlink" title="莫队"></a>莫队</h1><p>满足<strong>无区间修改</strong>，<strong>可离线</strong>，可**$O(1)$得到相邻区间的计数<strong>，即可$O(qlogq+n^{\frac{3}{2}})$求出</strong>q个查询区间**$[l,r],1≤l≤r≤n$</p>
+<h1 id="普通莫队"><a href="#普通莫队" class="headerlink" title="普通莫队"></a>普通莫队</h1><p>算法流程</p>
 <p>将长度为n的区间分成约$\sqrt n$个块，每块的大小最多为$\lfloor\sqrt n\rfloor$。确定每个查询的左端点所属块号，若第i个查询为$[l_i,r_i]$，$l_i$确定的块号$\frac{l_i}{\lfloor\sqrt n\rfloor}$</p>
 <p>将q个查询进行排序，若左端点所属块号相同，则按照右端点升序排序；否则按照左端点所属块号升序排序。</p>
 <p>初始双指针$l=1,r=0$。查询排序后，对于第i次查询$[l_i,r_i]$，将$l$移动到$l_i$,将$r$移动到$r_i$。此过程中维护区间计数。注意不能出现$l&gt;r$的情况，所以代码实现中移动判断的顺序有讲究。</p>
@@ -10,8 +10,8 @@
 <p>我们分别考虑左右指针的移动次数。</p>
 <p>对于右指针，在区间左端点所属同一块的区间右端点移动时间复杂度为$O(n)$，共$O(\sqrt n)$分块，总时间复杂度为$O(n\sqrt n)$</p>
 <p>若分块共计分成sz块，区间左端点分配到第i块的个数为$a_i$，对于第i块中的左端点由于是无序的，我们考虑最坏的移动情况，就是每次移动需要跨越整个块，这时候所需的时间复杂度为$O(a_i\sqrt n)$。所有块所需时间复杂度$O(\sum \limits_{i=1}^{sz} a_i \sqrt n) = O(n \sqrt n)$</p>
-<p>q次区间查询，每次查询求区间内去重后的元素个数。</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<ul>
+<li>q次区间查询，每次查询求区间内去重后的元素个数。<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
 #define SINGLE_INPUT
 #define ll long long
 #define N 1000006
@@ -83,8 +83,8 @@ int main() {
     return 0;
 }
 </code></pre>
-<p>区间最大频次</p>
-<pre><code class="cpp">int bsz;
+</li>
+<li>区间最大频次<pre><code class="cpp">int bsz;
 int feq[N], cnt[N], v[N], ans[N];
 int mxf = 0;
 struct Node {
@@ -138,3 +138,420 @@ void sol() {
     }
 }
 </code></pre>
+</li>
+</ul>
+<h1 id="回滚莫队"><a href="#回滚莫队" class="headerlink" title="回滚莫队"></a>回滚莫队</h1><p>普通莫队需要删除，有时候删除操作比较难维护，需要花更多时间。</p>
+<p>回滚莫队直接移除删除操作，只有添加。</p>
+<p>算法流程</p>
+<p>对于查询区间左右端点属于同一块号，则直接暴力计算</p>
+<p>剩余查询区间排序：若左端点所属块号相同，则按照右端点升序排序；否则按照左端点所属块号升序排序。</p>
+<p>对于左端点属于同一块号的区间：右端点是向右增长的，只有添加操作；左端点变化是在同一块内抖动，采用普通莫队会有删除操作，但是回滚莫队，每次计算完左端点后都将左端点退回到<strong>该块的最右端。</strong></p>
+<h2 id="template"><a href="#template" class="headerlink" title="template"></a>template</h2><pre><code class="cpp">namespace Mo {
+    struct Qr {
+        int brute; //块内暴力
+        int bid; // 块下标 l/bsz
+        int l, r; // 左闭右开区间
+        int qid; // 原始下标
+        // 根据情况添加其他字段
+        int thr;
+        Qr(
+            int brute, 
+            int bid, 
+            int l, 
+            int r, 
+            int qid,
+            int thr
+        ): 
+            brute(brute), 
+            bid(bid), 
+            l(l), 
+            r(r), 
+            qid(qid), 
+            thr(thr) 
+        {}
+        // friend ostream&amp; operator&lt;&lt;(ostream&amp; os, const Qr&amp; q) {
+        //     os &lt;&lt; format(&quot;brute:{}, bid:{}, l:{}, r:{}, qid:{}, thr:{}&quot;, 
+        //     q.brute,
+        //     q.bid,
+        //     q.l,
+        //     q.r,
+        //     q.qid,
+        //     q.thr);
+        //     return os;
+        // }
+        bool operator&lt;(const Qr&amp; o) const {
+            return std::tie(brute, bid, r) &lt; std::tie(o.brute, o.bid, o.r);
+        }
+    };
+    vector&lt;int&gt; rbmo(vector&lt;int&gt;&amp; rowSeg, vector&lt;vector&lt;int&gt;&gt;&amp; rowQr) {// rowQr 查询左闭右开
+        int n = rowSeg.size(), m = rowQr.size();
+        int bsz = ceil(n / sqrt(m * 2));
+        
+        // 处理区间 离散化
+        auto ori = rowSeg;  // 离散值 -&gt; 原始值
+        sort(ori.begin(), ori.end());
+        ori.erase(unique(ori.begin(), ori.end()), ori.end());
+        int usz = ori.size(); // 离散化后大小
+        for (auto&amp; x: rowSeg) {
+            x = lower_bound(ori.begin(), ori.end(), x) - ori.begin();
+        } 
+
+        // 处理查询 排序
+        vector&lt;Qr&gt; qrs;
+        bsz = ceil(n/sqrt(m*2)); // or sqrtn
+        for (int i=0; i&lt;m; i++) { // 根据情况改
+            int l = rowQr[i][0], r = rowQr[i][1]+1, thr = rowQr[i][2];
+            qrs.emplace_back((r - l &lt;= bsz), l / bsz, l, r, i, thr);
+        }
+        sort(qrs.begin(), qrs.end());
+        // for (auto&amp; i:qrs) {
+        //     cout &lt;&lt; i &lt;&lt; endl;
+        // }
+
+        // 以下当前区间数据结构与操作 根据情况改
+        vector&lt;int&gt; cnt(usz); 
+        int max_cnt = 0, min_val; 
+        int rb_max_cnt = 0, rb_min_val;
+        auto add = [&amp;](int idx) { // O(1)
+            int c = ++cnt[rowSeg[idx]];
+            if (c &gt; max_cnt) {
+                max_cnt = c;
+                min_val = rowSeg[idx];
+            } else if (c == max_cnt &amp;&amp; rowSeg[idx] &lt; min_val) {
+                min_val = rowSeg[idx];
+            }
+        };
+        auto reset = [&amp;]() {
+            for (int i=0; i&lt;usz; i++) cnt[i] = 0;
+            max_cnt = 0;
+        };
+        auto setRollBack = [&amp;](int l, int r) {
+            rb_max_cnt = max_cnt;
+            rb_min_val = min_val;
+        };
+        auto rollBack = [&amp;](int l, int r) {
+            max_cnt = rb_max_cnt;
+            min_val = rb_min_val;
+            for (int j=l; j&lt;r; j++) {
+                cnt[rowSeg[j]]--;
+            }
+        };
+        
+        // 回答查询
+        vector&lt;int&gt; ans(m);
+        auto assignAns = [&amp;](Qr&amp; q) { // 根据情况改
+            if (max_cnt &gt;= q.thr)
+                ans[q.qid] = ori[min_val];
+            else 
+                ans[q.qid] = -1;
+        };
+        int pbid=-1, r;
+        for (int i=0; i&lt;qrs.size(); i++) {
+            auto&amp; q = qrs[i];
+            if (q.brute) { // 区间在块内
+                reset();
+                for (int i=q.l; i&lt;q.r; i++) {
+                    add(i);
+                }
+                assignAns(q);
+                continue;
+            }
+            int l0 = (q.bid+1)*bsz;
+            if (q.bid != pbid) {
+                pbid = q.bid;
+                r = l0;
+                reset();
+            }
+            // 先操作右端 得到区间[l0, q.r) 数据
+            while (r&lt;q.r) {
+                add(r++);
+            }
+            setRollBack(q.l, l0);
+            // 操作左端 得到区间[q.l, q.r) 数据
+            for (int j=q.l; j&lt;l0; j++) {
+                add(j);
+            }
+            assignAns(q);
+            rollBack(q.l, l0);
+        }
+        return ans;
+    }
+};
+</code></pre>
+<ul>
+<li><a href="https://leetcode.cn/problems/threshold-majority-queries/description/"><strong>3636. 查询超过阈值频率最高元素</strong></a><pre><code class="cpp">namespace Mo {
+    struct Qr {
+        int brute; //块内暴力
+        int bid; // 块下标 l/bsz
+        int l, r; // 左闭右开区间
+        int qid; // 原始下标
+        // 添加其他字段
+        int thr;
+        Qr(
+            int brute, 
+            int bid, 
+            int l, 
+            int r, 
+            int qid,
+            int thr
+        ): 
+            brute(brute), 
+            bid(bid), 
+            l(l), 
+            r(r), 
+            qid(qid), 
+            thr(thr) 
+        {}
+        friend ostream&amp; operator&lt;&lt;(ostream&amp; os, const Qr&amp; q) {
+            os &lt;&lt; format(&quot;brute:{}, bid:{}, l:{}, r:{}, qid:{}, thr:{}&quot;, 
+            q.brute,
+            q.bid,
+            q.l,
+            q.r,
+            q.qid,
+            q.thr);
+            return os;
+        }
+        bool operator&lt;(const Qr&amp; o) const {
+            return std::tie(brute, bid, r) &lt; std::tie(o.brute, o.bid, o.r);
+        }
+    };
+    vector&lt;int&gt; rbmo(vector&lt;int&gt;&amp; seg, vector&lt;vector&lt;int&gt;&gt;&amp; qr) {// qr 查询左闭右开
+        int n = seg.size(), m = qr.size();
+        int bsz = ceil(n / sqrt(m * 2));
+        
+        // 处理区间 离散化
+        auto ori = seg;  // 离散值 -&gt; 原始值
+        sort(ori.begin(), ori.end());
+        ori.erase(unique(ori.begin(), ori.end()), ori.end());
+        int usz = ori.size(); // 离散化后大小
+        for (auto&amp; x: seg) {
+            x = lower_bound(ori.begin(), ori.end(), x) - ori.begin();
+        } 
+
+        // 处理查询 排序
+        vector&lt;Qr&gt; qrs;
+        bsz = ceil(n/sqrt(m*2)); // or sqrtn
+        for (int i=0; i&lt;m; i++) { // 根据情况改
+            int l = qr[i][0], r = qr[i][1]+1, thr = qr[i][2];
+            qrs.emplace_back((r - l &lt;= bsz), l / bsz, l, r, i, thr);
+        }
+        sort(qrs.begin(), qrs.end());
+        // for (auto&amp; i:qrs) {
+        //     cout &lt;&lt; i &lt;&lt; endl;
+        // }
+
+        // 当前区间数据结构与操作
+        vector&lt;int&gt; cnt(usz); 
+        int max_cnt = 0, min_val; 
+        int rb_max_cnt = 0, rb_min_val;
+        auto add = [&amp;](int idx) { // O(1)
+            int c = ++cnt[seg[idx]];
+            if (c &gt; max_cnt) {
+                max_cnt = c;
+                min_val = seg[idx];
+            } else if (c == max_cnt &amp;&amp; seg[idx] &lt; min_val) {
+                min_val = seg[idx];
+            }
+        };
+        auto reset = [&amp;]() {
+            for (int i=0; i&lt;usz; i++) cnt[i] = 0;
+            max_cnt = 0;
+        };
+        
+        auto setRollBack = [&amp;](int l, int r) {
+            rb_max_cnt = max_cnt;
+            rb_min_val = min_val;
+        };
+        auto rollBack = [&amp;](int l, int r) {
+            max_cnt = rb_max_cnt;
+            min_val = rb_min_val;
+            for (int j=l; j&lt;r; j++) {
+                cnt[seg[j]]--;
+            }
+        };
+        
+        // 回答查询
+        vector&lt;int&gt; ans(m);
+        auto assignAns = [&amp;](Qr&amp; q) {
+            // cout &lt;&lt; format(&quot;qid={} [{},{}], thr={}, max_cnt={}&quot;, q.qid, q.l, q.r, q.thr, max_cnt) &lt;&lt; endl;
+            if (max_cnt &gt;= q.thr)
+                ans[q.qid] = ori[min_val];
+            else 
+                ans[q.qid] = -1;
+        };
+        int pbid=-1, r;
+        for (int i=0; i&lt;qrs.size(); i++) {
+            auto&amp; q = qrs[i];
+            if (q.brute) { // 区间在块内
+                reset();
+                for (int i=q.l; i&lt;q.r; i++) {
+                    add(i);
+                }
+                assignAns(q);
+                continue;
+            }
+            int l0 = (q.bid+1)*bsz;
+            if (q.bid != pbid) {
+                pbid = q.bid;
+                r = l0;
+                reset();
+            }
+            // 先操作右端 得到区间[l0, q.r) 数据
+            while (r&lt;q.r) {
+                add(r++);
+            }
+            setRollBack(q.l, l0);
+            // 操作左端 得到区间[q.l, q.r) 数据
+            for (int j=q.l; j&lt;l0; j++) {
+                add(j);
+            }
+            assignAns(q);
+            rollBack(q.l, l0);
+        }
+        return ans;
+    }
+};
+class Solution {
+public:
+    vector&lt;int&gt; subarrayMajority(vector&lt;int&gt;&amp; nums, vector&lt;vector&lt;int&gt;&gt;&amp; qr) {
+        return Mo::rbmo(nums, qr);
+    }
+};
+</code></pre>
+</li>
+<li><a href="https://www.luogu.com.cn/problem/P5906"><strong>P5906 【模板】回滚莫队&amp;不删除莫队</strong></a><pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;unordered_map&gt;
+#include &lt;algorithm&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+namespace Mo {
+    struct Qr {
+        int brute; //块内暴力
+        int bid; // 块下标 l/bsz
+        int l, r; // 左闭右开区间
+        int qid; // 原始下标
+        // 添加其他字段
+    
+        Qr(int brute, int bid, int l, int r, int qid):brute(brute), bid(bid), l(l), r(r), qid(qid) {}
+        bool operator&lt;(const Qr&amp; o) const {
+            return std::tie(brute, bid, r) &lt; std::tie(o.brute, o.bid, o.r);
+        }
+    };
+    vector&lt;int&gt; rbmo(vector&lt;int&gt;&amp; seg, vector&lt;vector&lt;int&gt;&gt;&amp; qr) {// qr 查询左闭右开
+        int n = seg.size(), m = qr.size();
+        int bsz = ceil(n / sqrt(m * 2));
+        
+        // 处理区间 离散化
+        auto ori = seg;  // 离散值 -&gt; 原始值
+        sort(ori.begin(), ori.end());
+        ori.erase(unique(ori.begin(), ori.end()), ori.end());
+        int usz = ori.size(); // 离散化后大小
+        for (auto&amp; x: seg) {
+            x = lower_bound(ori.begin(), ori.end(), x) - ori.begin();
+        } 
+
+        // 处理查询 排序
+        vector&lt;Qr&gt; qrs;
+        bsz = ceil(n/sqrt(m*2)); // or sqrtn
+        for (int i=0; i&lt;m; i++) { // 根据情况改
+            int l = qr[i][0], r = qr[i][1];
+            qrs.emplace_back(r - l &lt;= bsz, l / bsz, l, r, i);
+        }
+        sort(qrs.begin(), qrs.end());
+        
+
+        // 当前区间数据结构与操作
+        vector&lt;pair&lt;int,int&gt;&gt; cnt(usz, {-1, -1}); // 记录每个值的最小下标和最大下标
+        vector&lt;pair&lt;int,int&gt;&gt; rb_cnt(usz, {-1, -1}); // 回滚时使用 记录变化值
+        int max_val = 0; // 当前区间最大值
+        int rb_max_val = 0; // 回滚时使用的最大值
+
+        auto add = [&amp;](int idx) {
+            int x = seg[idx];
+            if (cnt[x].first == -1) {
+                cnt[x] = {idx, idx}; // 初始化为当前idx
+            } else {
+                cnt[x].first = min(cnt[x].first, idx);
+                cnt[x].second = max(cnt[x].second, idx);
+            }
+            max_val = max(max_val, cnt[x].second - cnt[x].first);
+        };
+        auto reset = [&amp;]() {
+            cnt.assign(usz, {-1, -1});
+            max_val = 0;
+        };
+        auto setRollBack = [&amp;](int l, int r) {
+            rb_max_val = max_val;
+            for (int j=l; j&lt;r; j++) {
+                rb_cnt[seg[j]] = cnt[seg[j]];
+            }
+        };
+        auto rollBack = [&amp;](int l, int r) {
+            max_val = rb_max_val;
+            for (int j=l; j&lt;r; j++) {
+                cnt[seg[j]] = rb_cnt[seg[j]];
+            }
+        };
+        
+        // 回答查询
+        vector&lt;int&gt; ans(m);
+        auto assignAns = [&amp;](Qr&amp; q) {
+            ans[q.qid] = max_val;
+        };
+        int pbid=-1, r;
+        for (int i=0; i&lt;qrs.size(); i++) {
+            auto&amp; q = qrs[i];
+            if (q.brute) { // 区间在块内
+                reset();
+                for (int i=q.l; i&lt;q.r; i++) {
+                    add(i);
+                }
+                assignAns(q);
+                continue;
+            }
+            int l0 = (q.bid+1)*bsz;
+            if (q.bid != pbid) {
+                pbid = q.bid;
+                r = l0;
+                reset();
+            }
+            // 先操作右端 得到区间[l0, q.r) 数据
+            while (r&lt;q.r) {
+                add(r++);
+            }
+            setRollBack(q.l, l0);
+            // 操作左端 得到区间[q.l, q.r) 数据
+            for (int j=q.l; j&lt;l0; j++) {
+                add(j);
+            }
+            assignAns(q);
+            rollBack(q.l, l0);
+        }
+        return ans;
+    }
+};
+int main() {
+    int n, m;
+    cin &gt;&gt; n;
+    vector&lt;int&gt; rowSeg(n);
+    for (auto&amp; i: rowSeg) {
+        cin &gt;&gt; i;
+    }
+    cin &gt;&gt; m;
+    vector&lt;vector&lt;int&gt;&gt; rowQr(m, vector&lt;int&gt;(2));
+    for (auto&amp; q: rowQr) {
+        cin &gt;&gt; q[0] &gt;&gt; q[1];
+        q[0]--; // 转为0-indexed
+    }
+    auto ans = Mo::rbmo(rowSeg, rowQr);
+    for (int i=0; i&lt;m; i++) {
+        cout &lt;&lt; ans[i] &lt;&lt; &quot;\n&quot;;
+    }
+    return 0;
+}
+</code></pre>
+</li>
+</ul>
