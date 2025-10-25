@@ -1,5 +1,5 @@
 <hr>
-<p>title: “RSA”<br>date: 2024-06-03 10:42:02<br>updated: 2025-10-25 23:01:24<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>RSA</li></ul>‘</p>
+<p>title: “RSA”<br>date: 2024-06-03 10:42:02<br>updated: 2025-10-25 23:31:20<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>RSA</li></ul>‘</p>
 <hr>
 <h1 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h1><h1 id="RSA加密系统"><a href="#RSA加密系统" class="headerlink" title="RSA加密系统"></a>RSA加密系统</h1><p><a href="https://zh.wikipedia.org/wiki/RSA%E5%8A%A0%E5%AF%86%E6%BC%94%E7%AE%97%E6%B3%95">RSA加密</a>系统中，公钥和密钥的产生：</p>
 <ol>
@@ -280,7 +280,7 @@ decode_msg: 1314
 </code></pre>
 <h1 id="RSA的正确性"><a href="#RSA的正确性" class="headerlink" title="RSA的正确性"></a>RSA的正确性</h1><p>设密文为 $c$ ，明文为 $m$，$c = m^e\pmod n$，$m = c^d\pmod n$</p>
 <p>所以有$m\equiv m^{ed}\pmod {n}$</p>
-<p>由于$ed\equiv 1\pmod {\phi(n)}$，其中$\phi(n) = (p-1)(q-1)$，所以$ed = 1+k(p-1)(q-1)$$\begin{array}{llllc}<br>m^{ed} &amp; \equiv &amp; m(m^{p-1})^{k(q-1)} &amp; \pmod p &amp; \<br>&amp; \equiv &amp; m((m \mod p))^{p-1})^{k(q-1)} &amp; \pmod p &amp; \<br>&amp; \equiv &amp; m(1)^{k(q-1)} &amp; \pmod p &amp; 费马小定理\<br>&amp; \equiv &amp; m &amp; \pmod p &amp; \<br>\end{array}$</p>
+<p>由于$ed\equiv 1\pmod {\phi(n)}$，其中$\phi(n) = (p-1)(q-1)$，所以$ed = 1+k(p-1)(q-1)$$\begin{array}{llllc}<br>m^{ed} &amp; \equiv &amp; m(m^{p-1})^{k(q-1)} &amp; \pmod p &amp; \\<br>&amp; \equiv &amp; m((m \mod p))^{p-1})^{k(q-1)} &amp; \pmod p &amp; \\<br>&amp; \equiv &amp; m(1)^{k(q-1)} &amp; \pmod p &amp; 费马小定理\\<br>&amp; \equiv &amp; m &amp; \pmod p &amp; \\<br>\end{array}$</p>
 <p>类似地，有$m^{ed} \equiv m \pmod q$</p>
 <p>根据中国剩余定理，$m^{ed} \equiv m \pmod n$</p>
 <h1 id="RSA的安全性"><a href="#RSA的安全性" class="headerlink" title="RSA的安全性"></a>RSA的安全性</h1><p>对外公开公钥$p=(e,n)$，已知$n$是两个质数$p$和$q$的乘积，如果能分解找到$p$和$q$。那么便可以通过拓展欧几里得算法求出$ed\equiv 1\pmod {(p-1)(q-1)}$的$d$。从而可以得到密钥$s=(d,n)$</p>

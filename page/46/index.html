@@ -743,7 +743,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/29/1714F/">
+    <link itemprop="mainEntityOfPage" href="https://grainmad.github.io/codeforces/ape/2024/03/30/1213G/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/mona-loading-dimmed-5da225352fd7.gif">
@@ -761,7 +761,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/codeforces/ape/2024/03/29/1714F/" class="post-title-link" itemprop="url">Build a Tree and That Is It</a>
+          <a href="/codeforces/ape/2024/03/30/1213G/" class="post-title-link" itemprop="url">Path Queries</a>
         </h2>
 
         <div class="post-meta-container">
@@ -798,10 +798,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><ul style="text-align:left;"><p>树是一个没有环的无向连通图，<strong>注意</strong>，在本题中，我们讨论的是无根树</p><p>现有四个整数 $ n, d_{12}, d_{23} $ 和 $ d_{31} $ . 构建一颗满足以下条件的树:</p><ul><li><p>包含从 $ 1 $ 到 $ n $ 的 $n$ 个节点,</p></li><li><p>从节点 $ 1 $ 到节点 $ 2 $ 的距离（最短路的长度）为 $ d_{12} $ ,</p></li><li><p>从节点 $ 2 $ 到节点 $ 3 $ 的距离为 $ d_{23} $ ,</p></li><li><p>从节点 $ 3 $ 到节点 $ 1 $ 的距离为 $ d_{31} $ .</p></li></ul><p>输出满足条件的任意一棵树；若不存在，请~~证明~~.</p><p>输入</p><p>第一行包含一个整数 $ t $ ( $ 1 \le t \le 10^4 $ ) 表示测试组数.</p><p>接下来 $ t $ 组, 每组一行数据包含 $4$ 个整数 $ n, d_{12}, d_{23} $ and $ d_{31} $ ( $ 3 \le n \le 2\cdot10^5; 1 \le d_{12}, d_{23}, d_{31} \le n-1 $ ).</p><p>输入数据保证所有 $ n $ 不超过 $ 2\cdot10^5 $ .</p><p>输出</p><p>对于每一组数据，若存在这种树，输出<code>YES</code>；若不存在，输出<code>NO</code>.</p><p>对于存在的情况，额外输出 $ n-1 $ 行来描述这棵树的边（一对正整数 $ x_i, y_i $ 表示第 $ i $ 条边连接第 $ x_i $ 号节点和第 $ y_i $ 号节点.</p><p>你可以按照任何顺序输出这些边及其顶点，若有多种解，输出其中一种即可.</p></ul></p>
+          <p><ul style="text-align:left;"><p>$\mathsf E \color{red}\mathsf{ntropyIncreaser}$ 有一棵 $n$ 个点的树，每条边都带权。  </p><p>她会问你 $m$ 个问题，每次给你一个正整数 $q$，求最大权值不大于 $q$ 的简单路径数量。  </p><p>需要注意的是，对于一个点对 $(u,v)$ 只记一次，单独一个点不算路径。</p><p>输入格式</p><p>第一行两个正整数 $n,m$，意义如题目描述。  </p><p>接下来 $n-1$ 行，每行三个正整数 $u,v,w$，表示 $u,v$ 之间有一条权为 $w$ 的无向边。  </p><p>最后一行 $m$ 个正整数，表示询问。</p><p>输出格式  </p><p>对于每个询问，输出一行一个整数表示答案。</p><p>数据范围  </p><p>$1\le n,m \le 2\times10^5$  </p><p>$1\le u,v \le n$  </p><p>$1\le w,q \le 2\times 10^5$  </p></ul></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/codeforces/ape/2024/03/29/1714F/">
+              <a class="btn" href="/codeforces/ape/2024/03/30/1213G/">
                 阅读全文 &raquo;
               </a>
             </div>
