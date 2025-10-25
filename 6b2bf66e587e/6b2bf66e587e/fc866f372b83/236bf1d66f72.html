@@ -1,16 +1,16 @@
 <hr>
-<p>title: “RSA”<br>date: 2024-06-03 10:42:02<br>updated: 2024-06-05 07:32:22<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>RSA</li></ul>‘</p>
+<p>title: “RSA”<br>date: 2024-06-03 10:42:02<br>updated: 2025-10-25 23:01:24<br>tag: [“notion”, “Algorithm”, “轮子”]<br>categories: “Algorithm”<br>mathjax: true<br>comments: true<br>description: ‘<ul style="text-align:left;"><li>RSA</li></ul>‘</p>
 <hr>
-<h1 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h1><h1 id="RSA加密系统"><a href="#RSA加密系统" class="headerlink" title="RSA加密系统"></a>RSA加密系统</h1><p>RSA公钥加密系统中，公钥和密钥的产生：</p>
+<h1 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h1><h1 id="RSA加密系统"><a href="#RSA加密系统" class="headerlink" title="RSA加密系统"></a>RSA加密系统</h1><p><a href="https://zh.wikipedia.org/wiki/RSA%E5%8A%A0%E5%AF%86%E6%BC%94%E7%AE%97%E6%B3%95">RSA加密</a>系统中，公钥和密钥的产生：</p>
 <ol>
-<li>随机选取两个大质数p和q，使得p ≠ q。</li>
-<li>计算n=pq。</li>
-<li>选取一个与$\phi (n)$互质的小奇数e，其中$\phi (n)=(p-1)(q-1)$</li>
+<li>随机选取两个大质数$p$和$q$，使得$p \ne q$。</li>
+<li>计算$n=p\cdot q$。</li>
+<li>选取一个与$\phi (n)$互质的小奇数$e$，其中$\phi(n)$为<a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">欧拉函数</a>，因此$\phi (n)=(p-1)(q-1)$，</li>
 <li>对模$\phi (n)$，计算出e的乘法逆元d的值。即$ed\equiv 1\pmod {\phi(n)}$</li>
 <li>将$p=(e,n)$公开作为RSA公钥</li>
 <li>将$s=(d,n)$公开作为RSA密钥</li>
 </ol>
-<p>假设密文为 c ，明文为 m</p>
+<p>假设密文为 $c$ ，明文为 $m$</p>
 <p>RSA的加密过程为：$c = m^e\pmod n$</p>
 <p>RSA的解密过程为：$m = c^d\pmod n$</p>
 <p>这里是公钥加密，私钥解密。</p>
@@ -19,7 +19,7 @@
 <p>素数定理 </p>
 <p>$\lim \limits_{n \rightarrow \infty}\frac{\pi(n)}{n/\ln n} = 1$</p>
 <p>对于较小的n，近似式$n/\ln n$能精确的给出$\pi(n)$的估计值，如：$n=10^9$，误差不超过6%</p>
-<p>为了找一个长度与n相同的质数大概需要在n的附近找大约$\ln n$个数，如找一个1024位长度的质数，大约需要测试$\ln 2^{1024} \approx 710$个随机选取的长度为1024位长的整数素性。</p>
+<p>为了找一个长度与$n$相同的质数大概需要在$n$的附近找大约$\ln n$个数，如找一个1024位长度的质数，大约需要测试$\ln 2^{1024} \approx 710$个随机选取的长度为1024位长的整数素性。</p>
 <pre><code class="cpp">// rand big prime in 2^15
 ll rand_prime(ll rd) {
     ll prime = time(NULL) * rd % (2LL &lt;&lt; 15);
@@ -83,9 +83,9 @@ bool miller_rabin(ll n, ll s) {
 <p>如果直接for循环则需要13次。</p>
 <p>但是可以预处理出$a,a^2,a^4,a^8\cdots$，然后根据b的二进制位进行选择。</p>
 <p>$a^{13} = a^{1101_2} = a^{1000_2}a^{100_2}a^{1_2} = a^{8}a^{4}a^1$</p>
-<h1 id="拓展欧几里得算法求解模线性方程"><a href="#拓展欧几里得算法求解模线性方程" class="headerlink" title="拓展欧几里得算法求解模线性方程"></a>拓展欧几里得算法求解模线性方程</h1><p>已知a，b，n求解x，满足$ax\equiv b\pmod {n}$，这样的方程可能没有解，可能有一个或多个解。</p>
+<h1 id="拓展欧几里得算法求解模线性方程"><a href="#拓展欧几里得算法求解模线性方程" class="headerlink" title="拓展欧几里得算法求解模线性方程"></a>拓展欧几里得算法求解模线性方程</h1><p>已知$a,b,n$求解$x$，满足$ax\equiv b\pmod {n}$，这样的方程可能没有解，可能有一个或多个解。</p>
 <p>该式子实际上可以转化为$ax+kn=b$，如果$b$是$gcd(a,b)$的倍数就有解，解的个数是$\frac{b}{gcd(a,b)}$</p>
-<p>而对于已知的a，b，拓展欧几里得可以计算出满足$d = gcd(a,b) = ax+by$</p>
+<p>而对于已知的$a,b$，拓展欧几里得可以计算出满足$d = gcd(a,b) = ax+by$</p>
 <pre><code class="cpp">// extend eculid , d = gcd(a,b) = ax+by
 void ex_gcd(ll a, ll b, ll* d, ll* x, ll* y) {
     if (b == 0) {
@@ -103,7 +103,7 @@ void ex_gcd(ll a, ll b, ll* d, ll* x, ll* y) {
 <p>在RSA密钥生成过程中</p>
 <ul>
 <li>选取一个与$\phi (n)$互质的小奇数e，其中$\phi (n)=(p-1)(q-1)$</li>
-<li>对模$\phi (n)$，计算出e的乘法逆元d的值。即$ed\equiv 1\pmod {\phi(n)}$</li>
+<li>对模$\phi (n)$，计算出$e$的乘法逆元$d$的值。即$ed\equiv 1\pmod {\phi(n)}$</li>
 </ul>
 <p>$ed + k\phi(n) = gcd(e, \phi(n)) = 1$</p>
 <p>有唯一解</p>
@@ -278,14 +278,14 @@ d: 86011583
 code_msg: 17550476
 decode_msg: 1314
 </code></pre>
-<h1 id="RSA的正确性"><a href="#RSA的正确性" class="headerlink" title="RSA的正确性"></a>RSA的正确性</h1><p>设密文为 c ，明文为 m，$c = m^e\pmod n$，$m = c^d\pmod n$</p>
+<h1 id="RSA的正确性"><a href="#RSA的正确性" class="headerlink" title="RSA的正确性"></a>RSA的正确性</h1><p>设密文为 $c$ ，明文为 $m$，$c = m^e\pmod n$，$m = c^d\pmod n$</p>
 <p>所以有$m\equiv m^{ed}\pmod {n}$</p>
 <p>由于$ed\equiv 1\pmod {\phi(n)}$，其中$\phi(n) = (p-1)(q-1)$，所以$ed = 1+k(p-1)(q-1)$$\begin{array}{llllc}<br>m^{ed} &amp; \equiv &amp; m(m^{p-1})^{k(q-1)} &amp; \pmod p &amp; \<br>&amp; \equiv &amp; m((m \mod p))^{p-1})^{k(q-1)} &amp; \pmod p &amp; \<br>&amp; \equiv &amp; m(1)^{k(q-1)} &amp; \pmod p &amp; 费马小定理\<br>&amp; \equiv &amp; m &amp; \pmod p &amp; \<br>\end{array}$</p>
 <p>类似地，有$m^{ed} \equiv m \pmod q$</p>
 <p>根据中国剩余定理，$m^{ed} \equiv m \pmod n$</p>
-<h1 id="RSA的安全性"><a href="#RSA的安全性" class="headerlink" title="RSA的安全性"></a>RSA的安全性</h1><p>对外公开公钥$p=(e,n)$，已知n是两个质数p和q的乘积，如果能分解找到p和q。那么便可以通过拓展欧几里得算法求出$ed\equiv 1\pmod {(p-1)(q-1)}$的d。从而可以得到密钥$s=(d,n)$</p>
-<p>RSA的加密系统的安全性主要来源于对于大整数进行因式分解的困难性。如果对方能够对公钥中的模n进行分解，就可以更具公钥推出密钥，这是因为对方和公钥创建者以相同的方法使用因子p和q。因此，如果能够轻易分解大整数，也就能轻易打破RSA加密系统。</p>
-<p>经过20多年的研究，人们还没有发现比分解模n更容易的方法来打破RSA加密系统。</p>
+<h1 id="RSA的安全性"><a href="#RSA的安全性" class="headerlink" title="RSA的安全性"></a>RSA的安全性</h1><p>对外公开公钥$p=(e,n)$，已知$n$是两个质数$p$和$q$的乘积，如果能分解找到$p$和$q$。那么便可以通过拓展欧几里得算法求出$ed\equiv 1\pmod {(p-1)(q-1)}$的$d$。从而可以得到密钥$s=(d,n)$</p>
+<p>RSA的加密系统的安全性主要来源于对于大整数进行因式分解的困难性。如果对方能够对公钥中的模$n$进行分解，就可以更具公钥推出密钥，这是因为对方和公钥创建者以相同的方法使用因子$p$和$q$。因此，如果能够轻易分解大整数，也就能轻易打破RSA加密系统。</p>
+<p>经过20多年的研究，人们还没有发现比分解模$n$更容易的方法来打破RSA加密系统。</p>
 <p>通过随机选取两个1024为的质数并求它们的积，就可以创造无法用可行技术可行时间内破解的公钥。所以在数论算法的设计方法还缺乏根本突破的情况下，RSA算法加密系统可以为实际应用提供高度的安全性。</p>
 <h1 id="RSA的局限性"><a href="#RSA的局限性" class="headerlink" title="RSA的局限性"></a>RSA的局限性</h1><p>RSA从提出到至今，经历了各种攻击的考验，逐渐为人们接受，普遍认为是目前最优秀的公钥方案之一。</p>
 <p>但RSA算法也是有缺点的。</p>
